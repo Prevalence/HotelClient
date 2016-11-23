@@ -15,7 +15,6 @@ import po.promotionpo.webpromotionpo.VipLevelWebproPO;;
 public class VipLevelWebproCal implements CalculatePrice {
 	/*会员等级、折扣为一组，即vipLevel[i]、discount[i]为对应一组某等级的会员在某商圈的折扣*/
 
-	@Override
 	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo, OrderPO orderpo) {
 		
 		if(personpo.getVipType()==0){//不是VIP会员时

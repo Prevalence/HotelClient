@@ -13,7 +13,6 @@ import po.PromotionPO;
  *  酒店促销策略：双11活动折扣（在特定的期间住宿有折扣）*/
 public class PeriodHotelproCal implements CalculatePrice {
 
-	@Override
 	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo, OrderPO orderpo) {
 		double discountPrice=initialtotal;
 		boolean isAfterStartTime=((PeriodHotelproPO) po).getStartTime().before(Calendar.getInstance());

@@ -30,7 +30,6 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	@Override
 	public PersonPO searchPersonInfo(String personname) {
 		try {
 			return search.searchPersonInfo(personname);
@@ -41,7 +40,6 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	@Override
 	public HotelWorkerPO searchHotelWorkerInfo(String hotelWorkername) {
 		try {
 			return search.searchHotelWorkerInfo(hotelWorkername);
@@ -52,7 +50,6 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	@Override
 	public MarketPO searchMarketInfo(String marketname) {
 		try {
 			return search.searchMarketInfo(marketname);
@@ -63,7 +60,6 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	@Override
 	public ArrayList<SearchPO> showHistory(String username) {
 		try {
 			return searchhistory.showHistory(username);
@@ -84,7 +80,6 @@ public class SearchController implements SearchblService {
 		return false;
 	}
 
-	@Override
 	public boolean deleteHistory(SearchPO searchHistory) {
 		try {
 			return searchhistory.deleteHistory(searchHistory);

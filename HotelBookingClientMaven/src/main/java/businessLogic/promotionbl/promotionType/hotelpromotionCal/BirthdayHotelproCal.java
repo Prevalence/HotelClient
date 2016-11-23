@@ -16,7 +16,6 @@ public class BirthdayHotelproCal implements CalculatePrice{
 	/**
 	 * @param discount 如打九五折时，discount=95
 	 * */
-	@Override
 	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo, OrderPO orderpo) {
 		double discountPrice=initialtotal;
 		Calendar calendar=Calendar.getInstance();

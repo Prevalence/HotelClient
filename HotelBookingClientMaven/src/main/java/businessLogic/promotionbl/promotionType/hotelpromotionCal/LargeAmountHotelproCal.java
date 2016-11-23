@@ -13,7 +13,6 @@ import po.promotionpo.hotelpromotionpo.LargeAmountHotelproPO;
  *  酒店促销策略：三间及以上预订特惠*/
 public class LargeAmountHotelproCal implements CalculatePrice{
 
-	@Override
 	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo,OrderPO orderpo) {
 		double discountPrice=initialtotal;
 		ArrayList<Integer> RoomnumList=orderpo.getRoomnum();

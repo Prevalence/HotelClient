@@ -14,7 +14,6 @@ import po.promotionpo.webpromotionpo.PeriodWebproPO;;
  *  网站促销策略：双11活动折扣（在特定的期间预订有折扣）*/
 public class PeriodWebproCal implements CalculatePrice {
 
-	@Override
 	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo, OrderPO orderpo) {
 		double discountPrice=initialtotal;
 		boolean isAfterStartTime=((PeriodWebproPO) po).getStartTime().before(Calendar.getInstance());

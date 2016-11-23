@@ -23,7 +23,6 @@ public class UserController  implements UserblService{
 	 * @param type
 	 * @return boolean
 	 */
-	@Override
 	public boolean register(PersonVO userinfo) {
 		try {
 			return person.register(userinfo);
@@ -39,7 +38,6 @@ public class UserController  implements UserblService{
 	 * @param personInfo
 	 * @return boolean
 	 */
-	@Override
 	public boolean personSave(PersonVO personInfo) {
 		try {
 			return person.personSave(personInfo);
@@ -55,7 +53,6 @@ public class UserController  implements UserblService{
 	 * @param marketInfo
 	 * @return boolean
 	 */
-	@Override
 	public boolean marketSave(MarketVO marketInfo) {
 		return manager.marketSave(marketInfo);
 	}
@@ -65,7 +62,6 @@ public class UserController  implements UserblService{
 	 * @param hotelWorkerInfo
 	 * @return boolean
 	 */
-	@Override
 	public boolean hotelWorkerSave(HotelWorkerVO hotelWorkerInfo) {
 		try {
 			return manager.hotelWorkerSave(hotelWorkerInfo);
@@ -81,7 +77,6 @@ public class UserController  implements UserblService{
 	 * @param personname
 	 * @return boolean
 	 */
-	@Override
 	public boolean changeCredit(String personname, int credit) {
 		try {
 			return market.changeCredit(personname, credit);
@@ -98,7 +93,6 @@ public class UserController  implements UserblService{
 	 * @return boolean
 	 * @throws ParseException 
 	 */
-	@Override
 	public boolean registeMember(PersonVO personInfo, int vipType, String vipInfo) throws ParseException {
 		try {
 			return person.registeMember(personInfo, vipType, vipInfo);
@@ -113,7 +107,6 @@ public class UserController  implements UserblService{
 	 * 获取会员信息
 	 * @return boolean
 	 */	
-	@Override
 	public PersonPO getPersonInfo(String personname) {
 	try {
 		return person.getPersonInfo(personname);
@@ -128,7 +121,6 @@ public class UserController  implements UserblService{
 	 * 获取酒店工作人员信息
 	 * @return HotelWorkerPO
 	 */
-	@Override
 	public HotelWorkerPO getHotelWorkerInfo(String hotelWorkername) {
 		try {
 			return hotelworker.getHotelWorkerInfo(hotelWorkername);
@@ -143,7 +135,6 @@ public class UserController  implements UserblService{
 	 * 用户登录
 	 * @return boolean
 	 */
-	@Override
 	public boolean userLogin(String username, String password, String usertype) {
 		try {
 			return person.Personlogin(username, password);
@@ -158,7 +149,6 @@ public class UserController  implements UserblService{
 	 * 增加一个网站营销人员
 	 * @return boolean
 	 */
-	@Override
 	public boolean marketAdd(MarketVO marketInfo) {
 		try {
 			return manager.marketAdd(marketInfo);
@@ -173,7 +163,6 @@ public class UserController  implements UserblService{
 	 * 增加一个酒店工作人员
 	 * @return boolean
 	 */
-	@Override
 	public boolean hotelWorkerAdd(HotelWorkerVO marketInfo) {
 		return manager.hotelWorkerAdd(marketInfo);
 	}
@@ -182,7 +171,6 @@ public class UserController  implements UserblService{
 	 * 获取网站营销人员信息
 	 * @return boolean
 	 */
-	@Override
 	public MarketPO getMarketInfo(String marketname) {
 		try {
 			return market.getMarketInfo(marketname);

@@ -9,7 +9,6 @@ public class OrderController implements OrderblService{
 	public OrderController(){
 		order1=new Order();
 	}
-	@Override
 	public boolean handleAbnormalOrder(OrderVO order, int credit) {
 		 try {
 			order1.handleAbnormalOrder(order,credit);
@@ -20,7 +19,6 @@ public class OrderController implements OrderblService{
 		return false;
 	}
 
-	@Override
 	public boolean reverseOrder(OrderVO order) {
 		try {
 			order1.reverseOrder(order);
@@ -31,7 +29,6 @@ public class OrderController implements OrderblService{
 		return false;
 	}
 
-	@Override
 	public boolean finishOrder(OrderVO order) {
 		try {
 			order1.finishOrder(order);
@@ -42,13 +39,11 @@ public class OrderController implements OrderblService{
 		return false;
 	}
 
-	@Override
 	public boolean createOrder(OrderVO order) {
 		order1.createOrder(order);
 		return false;
 	}
 
-	@Override
 	public ArrayList<OrderVO> personOrders(String personname) {
 		try {
 			return order1.personOrders(personname);
@@ -59,7 +54,6 @@ public class OrderController implements OrderblService{
 		return null;
 	}
 
-	@Override
 	public ArrayList<OrderVO> hotelOrders(String hotelname) {
 		try {
 			return order1.hotelOrders(hotelname);
@@ -70,7 +64,6 @@ public class OrderController implements OrderblService{
 		return null;
 	}
 
-	@Override
 	public ArrayList<OrderVO> netOrders() {
 		try {
 			return order1.netOrders();
@@ -81,19 +74,16 @@ public class OrderController implements OrderblService{
 		return null;
 	}
 
-	@Override
 	public ArrayList<OrderVO> personStateOrders(int state){
 		return order1.personStateOrders(state);
 		
 	}
 	
-	@Override
 	public ArrayList<OrderVO> hotelTimeOrders(String time){
 		return order1.hotelTimeOrders(time);
 		
 	}
 	
-	@Override
 	public ArrayList<OrderVO> netNumOrders(String num){
 		return order1.netNumOrders(num);
 		
