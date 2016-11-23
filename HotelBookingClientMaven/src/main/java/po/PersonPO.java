@@ -1,29 +1,88 @@
 package po;
 import java.io.Serializable;
+import java.util.Calendar;
 
 import vo.PersonVO;
 public class PersonPO implements Serializable{
 	private String username;
 	private String password;
-	private int credit;
-	private int VIPlevel;
-	private String VIPinfo;
-	private String birthday;//客户生日，无论是否是会员都可以有此信息，格式如：20160212
-	private int vipType;	//0代表不是VIP，1代表是普通VIP，2代表是企业VIP
 	private int personID;
+	private int credit;
+	private Calendar birthday;//客户生日，仅包含年月日信息
+	private String vipType;	//no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
+	private int vipLevel;
 	private String enterpriseName;//企业会员登记企业名称
 
-	public String getBirthday() {
+	//构造函数
+	public PersonPO() {
+		super();
+	}
+	
+	public PersonPO(String username, String password, int personID, int credit, Calendar birthday, String vipType,
+			int vipLevel, String enterpriseName) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.personID = personID;
+		this.credit = credit;
+		this.birthday = birthday;
+		this.vipType = vipType;
+		this.vipLevel = vipLevel;
+		this.enterpriseName = enterpriseName;
+	}
+	public PersonPO(PersonVO vo) {
+		this.username=vo.getUsername();
+		this.password=vo.getPassword();
+		this.personID=vo.getPersonID();
+		this.credit=vo.getCredit();
+		this.birthday = vo.getBirthday();
+		this.vipType = vo.getVipType();
+		this.vipLevel = vo.getVipLevel();
+		this.enterpriseName = vo.getEnterpriseName();
+	}
+	
+	//get and set
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getPersonID() {
+		return personID;
+	}
+	public void setPersonID(int personID) {
+		this.personID = personID;
+	}
+	public int getCredit() {
+		return credit;
+	}
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+	public Calendar getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(String birthday) {
+	public void setBirthday(Calendar birthday) {
 		this.birthday = birthday;
 	}
-	public int getVipType() {
+	public String getVipType() {
 		return vipType;
 	}
-	public void setVipType(int vipType) {
+	public void setVipType(String vipType) {
 		this.vipType = vipType;
+	}
+	public int getVipLevel() {
+		return vipLevel;
+	}
+	public void setVipLevel(int vipLevel) {
+		this.vipLevel = vipLevel;
 	}
 	public String getEnterpriseName() {
 		return enterpriseName;
@@ -31,59 +90,6 @@ public class PersonPO implements Serializable{
 	public void setEnterpriseName(String enterpriseName) {
 		this.enterpriseName = enterpriseName;
 	}
-	public PersonPO(String userName,String password,String userType,String hotel,int Credit,int VIP,int VIPlevel,String VIPinfo,int id){
-		super();
-		this.username=userName;
-		this.password=password;
-		this.credit=Credit;
-		this.VIPlevel=VIPlevel;
-		this.VIPinfo=VIPinfo;
-		this.personID=id;
-		birthday=null;
-		vipType=0;
-		enterpriseName=null;
-	}
-	public PersonPO(){
-		super();
-		this.username=null;
-		this.password=null;
-		this.credit=0;
-		this.VIPlevel=0;
-		this.VIPinfo=null;
-		this.personID=0;
-	}
-	public PersonPO(PersonVO vo) {
-		this.username=vo.getuserName();
-		this.password=vo.getpassword();
-		this.credit=(int) vo.getCredit();
-		this.VIPlevel=vo.getVIPlevel();
-		birthday=vo.getBirthrday();
-		enterpriseName=vo.getEnterpriseName();
-	}
-	public int getPersonID(){
-		return personID;
-	}
-	public String getuserName(){
-		return username;}
-	public String getpassword(){
-		return password;}
-	public int getCredit(){
-		return credit;}
-	public int getVIPlevel(){
-		return VIPlevel;}
-	public String getVIPinfo (){
-		return VIPinfo;}
-	public void setuserName(String userName){
-		this.username=userName;}
-	public void setpassword(String password){
-		this.password=password;}
-	public void setCredit(int Credit){
-		this.credit=Credit;}
-	public void setVIPlevel(int VIPlevel){
-		this.VIPlevel=VIPlevel;}
-	public void setVIPinfo(String VIPinfo){
-		this.VIPinfo=VIPinfo;}
-	public void setPersonID(int id){
-		this.personID=id;
-	}
+	
+
 }
