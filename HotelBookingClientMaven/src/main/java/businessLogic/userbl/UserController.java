@@ -93,7 +93,7 @@ public class UserController  implements UserblService{
 	 * @return boolean
 	 * @throws ParseException 
 	 */
-	public boolean registeMember(PersonVO personInfo, int vipType, String vipInfo) throws ParseException {
+	public boolean registeMember(PersonVO personInfo, String vipType, String vipInfo) throws ParseException {
 		try {
 			return person.registeMember(personInfo, vipType, vipInfo);
 		} catch (RemoteException e) {
@@ -180,5 +180,6 @@ public class UserController  implements UserblService{
 		}
 		return null;
 	}
+
 	
 }	
