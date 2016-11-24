@@ -3,7 +3,6 @@ package businessLogic.searchbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.searchData.SearchDataMock;
 import dataService.searchDataService.SearchDataService;
 import po.HotelPO;
 import po.SearchPO;

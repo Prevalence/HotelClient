@@ -2,7 +2,6 @@ package businessLogic.userbl;
 
 import java.rmi.RemoteException;
 
-import data.userData.UserDataMock;
 import dataService.userDataService.UserDataService;
 import po.HotelWorkerPO;
 import rmi.RemoteHelper;
