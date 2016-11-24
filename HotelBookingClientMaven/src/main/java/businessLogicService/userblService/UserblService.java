@@ -47,7 +47,7 @@ public interface UserblService {
 	 * @return PersonPO
 	 * @throws ParseException 
 	 */
-	public boolean registeMember(PersonVO personInfo, int vipType, String vipInfo) throws ParseException;
+	public boolean registeMember(PersonVO personInfo, String vipType, String vipInfo) throws ParseException;
 	/**
 	 * 注册会员
 	 * @param userinfo

@@ -17,13 +17,13 @@ public class VipLevelWebproCal implements CalculatePrice {
 
 	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo, OrderPO orderpo) {
 		
-		if(personpo.getVipType()==0){//不是VIP会员时
+		if(personpo.getVipType().equals("no")){//不是VIP会员时
 			return initialtotal;
 		}else{//是会员时
 			double discountPrice=initialtotal;
 			ArrayList<Integer> vipLevel=((VipLevelWebproPO) po).getVipLevel();
 			for(int i=0; i<vipLevel.size(); i++){
-				if(vipLevel.get(i).equals(personpo.getVIPlevel())){
+				if(vipLevel.get(i).equals(personpo.getVipLevel())){
 					int discount=((VipLevelWebproPO) po).getDiscount().get(i);
 					discountPrice=discountPrice*discount/100.0;
 				}
