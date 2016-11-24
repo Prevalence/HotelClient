@@ -12,7 +12,7 @@ public class HotelMock extends Hotel{
 	 * @return 获取酒店信息（PO）
 	 */
 	public HotelPO showHotelInfo(String Hotelname){
-		HotelPO hotelpo=new HotelPO("南京大酒店", 5, "高级酒店", null, "仙林168号", "仙林大学城", null, null, null, null, "小李");
+		HotelPO hotelpo=new HotelPO("南京大酒店", 5, "高级酒店", null, "仙林168号", "仙林大学城",4.7, null, null, null, null, "小李");
 		return hotelpo;
 	}
 	/**
@@ -52,9 +52,9 @@ public class HotelMock extends Hotel{
 		return result;
 	}
 	public ArrayList<HotelPO> findWithReq(HotelPO p) {
-		HotelPO hotelpo=new HotelPO("南京大酒店1", 5, "高级酒店", null, "仙林168号", "商圈1", null, null, null, null, "小李");
-		HotelPO hotelpo2=new HotelPO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", null, null, null, null, "小李");
-		HotelPO hotelpo3=new HotelPO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2", null, null, null, null, "小李");
+		HotelPO hotelpo=new HotelPO("南京大酒店1", 5, "高级酒店", null, "仙林168号", "商圈1",4.7, null, null, null, null, "小李");
+		HotelPO hotelpo2=new HotelPO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", 4.5,null, null, null, null, "小李");
+		HotelPO hotelpo3=new HotelPO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2",4.9, null, null, null, null, "小李");
 		ArrayList<HotelPO> hotels=new ArrayList<HotelPO>();
 		if(p.getCircle().equals(hotelpo.getCircle()))
 			hotels.add(hotelpo);

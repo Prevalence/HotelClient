@@ -13,6 +13,7 @@ public class PersonVO  implements Serializable {
 	private String vipType;	//no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
 	private int vipLevel;
 	private String enterpriseName;//企业会员登记企业名称
+	private String phoneNumber;//由11位数字组成的电话号码
 	
 	
 	public PersonVO() {
@@ -21,7 +22,7 @@ public class PersonVO  implements Serializable {
 	}
 
 	public PersonVO(String username, String password, int personID, int credit, Calendar birthday, String vipType,
-			int vipLevel, String enterpriseName) {
+			int vipLevel, String enterpriseName, String phoneNumber) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -31,6 +32,7 @@ public class PersonVO  implements Serializable {
 		this.vipType = vipType;
 		this.vipLevel = vipLevel;
 		this.enterpriseName = enterpriseName;
+		this.setPhoneNumber(phoneNumber);
 	}
 	
 	//get and set
@@ -81,6 +83,14 @@ public class PersonVO  implements Serializable {
 	}
 	public void setEnterpriseName(String enterpriseName) {
 		this.enterpriseName = enterpriseName;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	
 	

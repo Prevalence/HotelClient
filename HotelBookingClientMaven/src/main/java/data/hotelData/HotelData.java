@@ -5,6 +5,7 @@ import java.util.List;
 import dataService.hotelDataService.HotelDataService;
 import po.HotelPO;
 import po.SearchPO;
+import vo.HotelVO;
 
 public class HotelData implements HotelDataService{
 	private static HotelData hoteldata;
@@ -20,7 +21,7 @@ public class HotelData implements HotelDataService{
 	public HotelPO showHotelinfo(String Hotelname) {
 		HotelPO test;
 		if(Hotelname.equals("南京大酒店"))
-			test=new HotelPO("南京大酒店", 5, "高级酒店", null, "仙林168号", "仙林大学城", null, null, null, null, Hotelname);
+			test=new HotelPO("南京大酒店", 5, "高级酒店", null, "仙林168号", "仙林大学城",4.7, null, null, null, null, Hotelname);
 		else
 			test=null;
 		return test;
@@ -32,7 +33,7 @@ public class HotelData implements HotelDataService{
 		return result;
 		
 	}
-	public ArrayList<HotelPO> findWithReq(HotelPO a) {
+	public ArrayList<HotelPO> findWithReq(HotelPO worstCondition, HotelPO bestCondition) {
 		System.out.println("findWithReq is called");
 		return null;
 	}

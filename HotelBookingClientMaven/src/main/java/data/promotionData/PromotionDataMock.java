@@ -8,8 +8,8 @@ public class PromotionDataMock extends PromotionData implements PromotionDataSer
 
 	@Override
 	public boolean add(PromotionPO promotion) {
-		if(promotion.getDiscount()!=0)
-			return true;
+//		if(promotion.getDiscount()!=0)
+//			return true;
 		return false;
 	}
 
@@ -19,7 +19,7 @@ public class PromotionDataMock extends PromotionData implements PromotionDataSer
 		PromotionPO pro=new PromotionPO();
 		pro.setName("南京大酒店");
 		if(pro.getName().equals(hotelnames))
-			pro.setDiscount(0.6);
+//			pro.setDiscount(0.6);
 			test.add(pro);
 		
 		return test;
@@ -27,8 +27,8 @@ public class PromotionDataMock extends PromotionData implements PromotionDataSer
 
 	@Override
 	public boolean modify(PromotionPO promotion) {
-		if(promotion.getDiscount()==0)
-			return false;
+//		if(promotion.getDiscount()==0)
+//			return false;
 		return true;
 	}
 

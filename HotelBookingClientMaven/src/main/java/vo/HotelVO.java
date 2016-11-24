@@ -9,20 +9,22 @@ import po.HotelPO;
 
 public class HotelVO implements Serializable {
 	private String hotelname;
-	private int star;
-	private String feature;
-	private ArrayList <Boolean> service;
+	private int star;//酒店星级
+	private String feature;//酒店简介
+	private ArrayList <Boolean> service;//设施服务
 	private String address;
 	private String circle;
+	private double score;//酒店平均评分
 	private ArrayList <String> roomType;
 	private ArrayList <Integer>roomnum;
 	private ArrayList<Integer> roomPrice;
-	private ArrayList <String> comment;
+	private ArrayList <String> comment;//“评分_时间_用户名_评价内容”，例如“5_2016-02-06_xiamutian_酒店很好” 酒店评价中_是非法字符
 	private String hotelworker;
 	
-	public HotelVO(String hotelName,int star,String feature,ArrayList<Boolean> service,String address,String circle,ArrayList<String> roomType,ArrayList<Integer> roomNum,ArrayList<Integer> roomPrice,ArrayList<String> comment,String hotelWorker){
+	public HotelVO(String hotelName,int star,String feature,ArrayList<Boolean> service,String address,String circle,double score,ArrayList<String> roomType,ArrayList<Integer> roomNum,ArrayList<Integer> roomPrice,ArrayList<String> comment,String hotelWorker){
 		this.address=address;
 		this.circle=circle;
+		this.score=score;
 		this.comment=comment;
 		this.feature=feature;
 		this.hotelname=hotelName;
@@ -84,6 +86,13 @@ public class HotelVO implements Serializable {
 	public void setCircle(String circle) {
 		this.circle = circle;
 	}
+	
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
 
 	public ArrayList<String> getRoomType() {
 		return roomType;
@@ -128,15 +137,17 @@ public class HotelVO implements Serializable {
 		HotelPO po=new HotelPO();
 		po.setAddress(vo.getAddress());
 		po.setCircle(vo.getCircle());
+		po.setScore(vo.getScore());
 		po.setComment(vo.getComment());
 		po.setFeature(vo.getFeature());
-		po.setHotelName(vo.getHotelName());
-		po.setHotelWorker(vo.getHotelWorker());
-		po.setRoomNum(vo.getRoomNum());
+		po.setHotelname(vo.getHotelName());
+		po.setHotelworker(vo.getHotelWorker());
+		po.setRoomnum(vo.getRoomNum());
 		po.setRoomPrice(vo.getRoomPrice());
 		po.setRoomType(vo.getRoomType());
 		po.setService(vo.getService());
 		po.setStar(vo.getStar());
 		return po;
 	}
+
 }

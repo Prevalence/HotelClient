@@ -65,7 +65,7 @@ public interface OrderblService {
 	 * @param state
 	 * @return
 	 */
-	public ArrayList<OrderVO> personStateOrders(int state);
+	public ArrayList<OrderVO> personStateOrders(String state);
 	
 	/**
 	 * 在酒店订单查看过程中，进一步查看某个状态（未执行，已执行，已撤销，异常）的订单

@@ -26,7 +26,7 @@ public class Search {
 	 */
 	public ArrayList<HotelPO> findHotel(HotelVO condition) throws RemoteException{
 		Hotel hotel=new Hotel();
-		return hotel.findWithReq(condition);
+		return hotel.findWithReq(condition, null);
 	}
 	
 	/**

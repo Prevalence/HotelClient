@@ -17,7 +17,7 @@ public class PersonMock extends Person {
 		return false;
 		
 	}
-	public boolean personSave(PersonVO personinfo){
+	public boolean modifyPerson(PersonVO personinfo){
 		/**
 		 * 客户信息保存
 		 * @author xiamutian
@@ -58,7 +58,7 @@ public class PersonMock extends Person {
 		}
 		return null;
 	}
-	public boolean Personlogin(String personname,String password){
+	public boolean personLogin(String personname,String password){
 		/**
 		 * 客户登陆
 		 * @author xiamutian
