@@ -10,6 +10,7 @@ import vo.HotelVO;
 /**
  * HotelController 控制hotel相关的逻辑操作
  * @author John
+ * @author 武秀峰
  *
  */
 public class HotelController implements HotelblService{
@@ -83,9 +84,9 @@ public class HotelController implements HotelblService{
 	/**
 	 * 
 	 */
-	public ArrayList<HotelPO> findWithReq(HotelVO condition) {
+	public ArrayList<HotelPO> findWithReq(HotelVO worstCondition, HotelVO bestCondition) {
 		try {
-			return hotel.findWithReq(condition);
+			return hotel.findWithReq(worstCondition, bestCondition);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

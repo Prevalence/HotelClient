@@ -27,15 +27,14 @@ public class Person {
 	public boolean register(PersonVO vo) throws RemoteException{
 		PersonPO personPO=new PersonPO(vo);
 		return userDataService.addPerson(personPO);
-		
 	}
 	
 	/**
-	 * 客户信息保存
+	 * 客户信息修改，信用不能修改，只能查看
 	 * @return boolean
 	 * @throws RemoteException 
 	 */
-	public boolean personSave(PersonVO personInfo) throws RemoteException{
+	public boolean modifyPerson(PersonVO personInfo) throws RemoteException{
 		PersonPO personPO=new PersonPO(personInfo);
 		return userDataService.modifyPerson(personPO);
 		
@@ -96,7 +95,7 @@ public class Person {
 	}
 	
 	/**
-	 * 会员信息获取
+	 * 客户信息获取
 	 * @return PersonPO
 	 * @throws RemoteException 
 	 */
@@ -109,7 +108,7 @@ public class Person {
 	 * @return boolean
 	 * @throws RemoteException 
 	 */
-	public boolean Personlogin(String personname,String password) throws RemoteException{
+	public boolean personLogin(String personname,String password) throws RemoteException{
 		return userDataService.personLogin(personname, password);
 		
 	}
