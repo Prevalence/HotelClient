@@ -7,7 +7,11 @@ import dataService.hotelDataService.HotelDataService;
 import po.HotelPO;
 import vo.HotelVO;
 import rmi.RemoteHelper;
-
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public class Hotel {
 	
 	private HotelDataService hoteldataservice;
@@ -55,13 +59,24 @@ public class Hotel {
 	}
 	/**
 	 * 
+	 * @param bestCondition TODO
 	 * @param roomtype 酒店的要求
 	 * @return 符合条件的酒店清单
 	 * @throws RemoteException 
+	 * <a>浏览酒店详细信息时，需要先明确地址和商圈，才能进行查看
 	 */
-	public ArrayList<HotelPO> findWithReq(HotelVO condition) throws RemoteException {
-		HotelPO hotelcondition=condition.toPO(condition);
-		return (ArrayList<HotelPO>) hoteldataservice.findWithReq(hotelcondition);
+	public ArrayList<HotelPO> findWithReq(HotelVO worstCondition, HotelVO bestCondition) throws RemoteException {
+		boolean isConditionRight=(worstCondition.getAddress().equals(bestCondition.getAddress()))&&
+				(worstCondition.getCircle().equals(bestCondition.getCircle()));//最坏和最好条件的地址和商圈需要相等
+		boolean isConditionComplete=((worstCondition.getAddress()!=null)&&(worstCondition.getCircle()!=null));//需要先明确地址和商圈，才能进行查看
+		if(isConditionRight&&isConditionComplete){//当输入的条件正确时，进行酒店搜索
+			HotelPO worstConditionPO=worstCondition.toPO(worstCondition);
+			HotelPO bestConditionPO=bestCondition.toPO(bestCondition);
+			return (ArrayList<HotelPO>) hoteldataservice.findWithReq(worstConditionPO, bestConditionPO);
+		}else{
+			return null;//需要提醒客户先明确地址和商圈
+		}
+		
 	}
 	/**
 	 * 构造方法

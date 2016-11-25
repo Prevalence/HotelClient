@@ -40,7 +40,7 @@ public class Order{
 	 */
 	public boolean handleAbnormalOrder(OrderVO order, int percentOfCredit) throws RemoteException {
 		//改变订单状态
-		order.setOrderstate(2);//1代表未执行订单、2代表已执行订单、3代表已撤销订单、4代表异常订单，此步将异常订单变为已执行
+		order.setOrderstate("alreadyExecute");//此步将异常订单变为已执行
 		OrderPO orderpo=new OrderPO(order);
 		orderDataService.modify(orderpo);
 		//恢复信用值
@@ -56,10 +56,10 @@ public class Order{
 	 * @throws RemoteException 
 	 */
 	public boolean reverseOrder(OrderVO order) throws RemoteException {
-		if(order.getOrderstate()==1){//当订单是未执行订单时，进行操作；否则报错
+		if(order.getOrderstate().equals("nonExecute")){//当订单是未执行订单时，进行操作；否则报错
 			//撤销订单
 			order.setCanceltime(Calendar.getInstance());
-			order.setOrderstate(3);
+			order.setOrderstate("cancel");
 			OrderPO orderPO=new OrderPO(order);
 			orderDataService.modify(orderPO);
 			//减少客户信用值
@@ -83,7 +83,7 @@ public class Order{
 	public boolean finishOrder(OrderVO order) throws RemoteException {
 		//将订单状态变为已执行
 		order.setExecutetime(Calendar.getInstance());
-		order.setOrderstate(1);
+		order.setOrderstate("alreadyExecute");
 		OrderPO orderPO=new OrderPO(order);
 		orderDataService.modify(orderPO);
 		//增加客户信用值
@@ -159,13 +159,13 @@ public class Order{
 	 * @param time
 	 * @return
 	 */
-	public ArrayList<OrderVO> personStateOrders(int state){
+	public ArrayList<OrderVO> personStateOrders(String state){
 		ArrayList<OrderVO> personStateList=new ArrayList<OrderVO>();
 		OrderPO temp=null;
 		OrderVO orderVO=null;
 		for(int i=0;i<personList.size();i++){
 			temp=personList.get(i);
-			if(temp.getOrderstate()==state){
+			if(temp.getOrderstate().equals(state)){
 				orderVO=new OrderVO(temp);
 				personStateList.add(orderVO);
 			}
@@ -204,7 +204,7 @@ public class Order{
 		OrderVO orderVO=null;
 		for(int i=0;i<netList.size();i++){
 			temp=netList.get(i);
-			if(temp.getID().equals(num)){
+			if(temp.getOrderID().equals(num)){
 				orderVO=new OrderVO(temp);
 				netNumList.add(orderVO);
 			}
