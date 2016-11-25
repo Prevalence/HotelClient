@@ -10,6 +10,11 @@ import java.rmi.RemoteException;
 import java.text.ParseException;
 
 import businessLogicService.userblService.UserblService;
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public class UserController  implements UserblService{
 	private Person person=new Person();
 	private Market market=new Market();

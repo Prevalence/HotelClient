@@ -13,6 +13,7 @@ import vo.PromotionVO;
 /**
  * 
  * @author John
+ * @author 武秀峰
  *
  */
 public class Promotion {

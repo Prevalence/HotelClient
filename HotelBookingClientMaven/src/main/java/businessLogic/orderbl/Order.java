@@ -6,7 +6,6 @@ import java.util.Calendar;
 
 import businessLogic.userbl.Person;
 import businessLogic.userbl.UserController;
-import data.orderData.OrderData;
 import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.OrderVO;
@@ -14,6 +13,7 @@ import dataService.orderDataService.OrderDataService;
 /**
  * 
  * @author 谢铠联
+ * @author 武秀峰
  *
  */
 public class Order{

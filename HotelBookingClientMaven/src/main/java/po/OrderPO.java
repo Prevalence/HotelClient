@@ -8,6 +8,7 @@ import vo.OrderVO;
 /**
  * 
  * @author xiamutian
+ * @author 武秀峰
  *
  */
 public class OrderPO implements Serializable{

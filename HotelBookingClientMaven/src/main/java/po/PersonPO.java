@@ -3,6 +3,11 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import vo.PersonVO;
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public class PersonPO implements Serializable{
 	private String username;
 	private String password;
