@@ -20,16 +20,16 @@ public class UserDataMock extends UserData{
 		// TODO Auto-generated method stub
 		PersonPO pp=new PersonPO();
 		PersonPO pp1=new PersonPO();
-		pp1.setuserName("xiamutian");
+		pp1.setUsername("xiamutian");
 		PersonPO pp2=new PersonPO();
-		pp2.setuserName("xiekailian");
+		pp2.setUsername("xiekailian");
 		pp1.setCredit(1000);
 		pp2.setCredit(900);
 		ArrayList<PersonPO> List = new ArrayList<PersonPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){
-			if(List.get(i).getuserName().equals(personname)){
+			if(List.get(i).getUsername().equals(personname)){
 				pp=List.get(i);
 				return pp;
 			}
@@ -40,16 +40,16 @@ public class UserDataMock extends UserData{
 	@Override
 	public boolean modifyPerson(PersonPO personInfo) {
 		PersonPO pp1=new PersonPO();
-		pp1.setuserName("xiamutian");
+		pp1.setUsername("xiamutian");
 		PersonPO pp2=new PersonPO();
-		pp2.setuserName("xiekailian");
+		pp2.setUsername("xiekailian");
 		pp1.setCredit(1000);
 		pp2.setCredit(900);
 		ArrayList<PersonPO> List = new ArrayList<PersonPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){
-			if(List.get(i).getuserName().equals(personInfo.getuserName())){
+			if(List.get(i).getUsername().equals(personInfo.getUsername())){
 				return true;
 			}
 		}
@@ -61,24 +61,24 @@ public class UserDataMock extends UserData{
 		boolean hasname=false;
 		PersonPO pp=new PersonPO();
 		PersonPO pp1=new PersonPO();
-		pp1.setuserName("xiamutian");
+		pp1.setUsername("xiamutian");
 		PersonPO pp2=new PersonPO();
-		pp2.setuserName("xiekailian");
-		pp1.setpassword("123");
-		pp2.setpassword("456");
+		pp2.setUsername("xiekailian");
+		pp1.setPassword("123");
+		pp2.setPassword("456");
 		pp1.setCredit(1000);
 		pp2.setCredit(900);
 		ArrayList<PersonPO> List = new ArrayList<PersonPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){
-			if(List.get(i).getuserName().equals(personname)){
+			if(List.get(i).getUsername().equals(personname)){
 				pp=List.get(i);
 				hasname=true;
 			}
 		}
 		if(hasname){
-			if(pp.getpassword().equals(password)){
+			if(pp.getPassword().equals(password)){
 				return true;
 			}
 			else{
@@ -164,14 +164,14 @@ public class UserDataMock extends UserData{
 	@Override
 	public boolean changeCredit(String username, int credit) {
 		PersonPO pp1=new PersonPO();
-		pp1.setuserName("xiamutian");
+		pp1.setUsername("xiamutian");
 		PersonPO pp2=new PersonPO();
-		pp2.setuserName("xiekailian");
+		pp2.setUsername("xiekailian");
 		ArrayList<PersonPO> List = new ArrayList<PersonPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){
-			if(List.get(i).getuserName().equals(username)){
+			if(List.get(i).getUsername().equals(username)){
 				return true;
 			}
 		}

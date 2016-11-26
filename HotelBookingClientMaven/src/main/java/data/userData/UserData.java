@@ -33,15 +33,15 @@ public class UserData implements UserDataService{
 				if(rs.getInt(1)>lastID){
 					lastID=rs.getInt(1);
 				}
-				if(rs.getString(2).equals(personInfo.getuserName())){
+				if(rs.getString(2).equals(personInfo.getUsername())){
 					return false;
 				}
 			}
 			rs.close();
 			ps=conn.prepareStatement(insert);
 			ps.setInt(1, lastID+1);
-			ps.setString(2, personInfo.getuserName());
-			ps.setString(3, personInfo.getpassword());
+			ps.setString(2, personInfo.getUsername());
+			ps.setString(3, personInfo.getPassword());
 			ps.setInt(4, 0);
 			ps.setString(5, "");
 			ps.setInt(6, 0);
@@ -70,10 +70,10 @@ public class UserData implements UserDataService{
 			while(rs.next()){//next函数 第一次调用先指向第一条，返回bool提示是否有下一条
 				if(rs.getString(2).equals(personname)){
 					pp.setPersonID(rs.getInt(1));
-					pp.setuserName(rs.getString(2));
-					pp.setpassword("");
-					pp.setVIPlevel(rs.getInt(4));
-					pp.setVIPinfo(rs.getString(5));
+					pp.setUsername(rs.getString(2));
+					pp.setPassword("");
+					pp.setVipLevel(rs.getInt(4));
+//					pp.setVIPinfo(rs.getString(5));
 					pp.setCredit(rs.getInt(6));
 					return pp;
 				}
@@ -102,12 +102,12 @@ public class UserData implements UserDataService{
 			ps=conn.prepareStatement(select);
 			rs=ps.executeQuery();
 			while(rs.next()){//next函数 第一次调用先指向第一条，返回bool提示是否有下一条
-				if(rs.getString(2).equals(personInfo.getuserName())){
+				if(rs.getString(2).equals(personInfo.getUsername())){
 					ps=conn.prepareStatement(update);
-					ps.setString(1, personInfo.getuserName());
-					ps.setString(2, personInfo.getpassword());
-					ps.setInt(3, personInfo.getVIPlevel());
-					ps.setString(4, personInfo.getVIPinfo());
+					ps.setString(1, personInfo.getUsername());
+					ps.setString(2, personInfo.getPassword());
+					ps.setInt(3, personInfo.getVipLevel());
+//					ps.setString(4, personInfo.getVIPinfo());
 					ps.setInt(5, personInfo.getCredit());
 					ps.setInt(6, rs.getInt(1));
 					ps.execute();

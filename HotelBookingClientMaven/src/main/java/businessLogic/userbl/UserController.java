@@ -40,7 +40,7 @@ public class UserController  implements UserblService{
 	 */
 	public boolean personSave(PersonVO personInfo) {
 		try {
-			return person.personSave(personInfo);
+			return person.modifyPerson(personInfo);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -93,7 +93,7 @@ public class UserController  implements UserblService{
 	 * @return boolean
 	 * @throws ParseException 
 	 */
-	public boolean registeMember(PersonVO personInfo, int vipType, String vipInfo) throws ParseException {
+	public boolean registeMember(PersonVO personInfo, String vipType, String vipInfo) throws ParseException {
 		try {
 			return person.registeMember(personInfo, vipType, vipInfo);
 		} catch (RemoteException e) {
@@ -137,7 +137,7 @@ public class UserController  implements UserblService{
 	 */
 	public boolean userLogin(String username, String password, String usertype) {
 		try {
-			return person.Personlogin(username, password);
+			return person.personLogin(username, password);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -180,5 +180,6 @@ public class UserController  implements UserblService{
 		}
 		return null;
 	}
+
 	
 }	

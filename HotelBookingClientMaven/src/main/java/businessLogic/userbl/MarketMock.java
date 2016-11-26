@@ -13,16 +13,16 @@ public class MarketMock extends Market{
 		 */
 		PersonPO pp=new PersonPO();
 		PersonPO pp1=new PersonPO();
-		pp1.setuserName("xiamutian");
+		pp1.setUsername("xiamutian");
 		PersonPO pp2=new PersonPO();
-		pp2.setuserName("xiekailian");
+		pp2.setUsername("xiekailian");
 		pp1.setCredit(1000);
 		pp2.setCredit(900);
 		ArrayList<PersonPO> List = new ArrayList<PersonPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){
-			if(List.get(i).getuserName().equals(personname)){
+			if(List.get(i).getUsername().equals(personname)){
 				pp=List.get(i);
 				return pp;
 			}

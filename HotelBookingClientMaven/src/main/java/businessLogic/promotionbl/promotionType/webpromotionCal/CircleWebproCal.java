@@ -17,7 +17,7 @@ public class CircleWebproCal implements CalculatePrice {
 	/*会员等级、商圈、折扣为一组，即vipLevel[i]、circle[i]、discount[i]为对应一组某等级的会员在某商圈的折扣*/
 
 	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo, OrderPO orderpo) {
-		if(personpo.getVipType()==0){//不是VIP会员时
+		if(personpo.getVipType().equals("no")){//不是VIP会员时
 			return initialtotal;
 		}else{//是会员时
 			double discountPrice=initialtotal;
@@ -34,7 +34,7 @@ public class CircleWebproCal implements CalculatePrice {
 			ArrayList<String> circle=((CircleWebproPO) po).getCircle();
 			if(hotelCircle!=null)
 			for(int i=0; i<vipLevel.size(); i++){
-				if(vipLevel.get(i).equals(personpo.getVIPlevel())&&(circle.get(i).equals(hotelCircle))){
+				if(vipLevel.get(i).equals(personpo.getVipLevel())&&(circle.get(i).equals(hotelCircle))){
 					int discount=((CircleWebproPO) po).getDiscount().get(i);
 					discountPrice=discountPrice*discount/100.0;
 				}

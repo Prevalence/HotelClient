@@ -74,7 +74,7 @@ public class OrderController implements OrderblService{
 		return null;
 	}
 
-	public ArrayList<OrderVO> personStateOrders(int state){
+	public ArrayList<OrderVO> personStateOrders(String state){
 		return order1.personStateOrders(state);
 		
 	}

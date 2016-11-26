@@ -38,5 +38,5 @@ public interface HotelblService {
 	 * @param condition 筛选条件
 	 * @return 符合条件的酒店PO列表
 	 */
-	public ArrayList<HotelPO> findWithReq(HotelVO condition);
+	public ArrayList<HotelPO> findWithReq(HotelVO worstCondition, HotelVO bestCondition);
 }

@@ -17,7 +17,7 @@ public class PersonMock extends Person {
 		return false;
 		
 	}
-	public boolean personSave(PersonVO personinfo){
+	public boolean modifyPerson(PersonVO personinfo){
 		/**
 		 * 客户信息保存
 		 * @author xiamutian
@@ -42,23 +42,23 @@ public class PersonMock extends Person {
 		 * @return PersonPO
 		 */
 
-		pp1.setuserName("xiamutian");
+		pp1.setUsername("xiamutian");
 
-		pp2.setuserName("xiekailian");
+		pp2.setUsername("xiekailian");
 		pp1.setCredit(1000);
 		pp2.setCredit(900);
 		ArrayList<PersonPO> List = new ArrayList<PersonPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){
-			if(List.get(i).getuserName().equals(personname)){
+			if(List.get(i).getUsername().equals(personname)){
 				pp=List.get(i);
 				return pp;
 			}
 		}
 		return null;
 	}
-	public boolean Personlogin(String personname,String password){
+	public boolean personLogin(String personname,String password){
 		/**
 		 * 客户登陆
 		 * @author xiamutian
