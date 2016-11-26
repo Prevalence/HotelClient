@@ -51,7 +51,7 @@ public class PriceCalc {
 		double bestprice=0.0;
 		if(personpo!=null)
 		for(int i=0;i<promotionlist.size();i++){
-			discount=Helper.getcalculateinstance(promotionlist.get(i).getName());
+			discount=Helper.getcalculateinstance(promotionlist.get(i).getPromotionType());
 			double thisprice=discount.getprice(initialtotal,promotionlist.get(i),personpo, orderpo);
 			if(thisprice<bestprice)
 				bestprice=thisprice;

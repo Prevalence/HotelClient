@@ -1,6 +1,7 @@
 package vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -8,62 +9,50 @@ import po.PromotionPO;
 
 
 public class PromotionVO implements Serializable {
-//	private String name;
-//	private Calendar start;
-//	private Calendar end;
-//	private int type;
-	private double discount;
-//	private List <String> hotel;
-	public PromotionVO(String name, Calendar start, Calendar end, int type,
-			double discount, List<String> hotel) {
+	private String promotionID;//promotion的唯一标识
+	private String promotionName;//promotion的名称，客户可见
+	private String promotionType;
+	private String hotelnameOrWeb;//若是酒店促销策略，则为酒店名称;若是网站促销策略，则为“WebPromotion”
+	
+	
+	public PromotionVO() {
 		super();
-//		this.name = name;
-//		this.start = start;
-//		this.end = end;
-//		this.type = type;
-		this.discount = discount;
-//		this.hotel = hotel;
 	}
-	public PromotionVO(){
-		
+//	public PromotionVO(String promotionID, String promotionName, String promotionType,
+//			ArrayList<String> hotelnameOrWeb) {
+//		super();
+//		this.promotionID = promotionID;
+//		this.promotionName = promotionName;
+//		this.promotionType = promotionType;
+//		this.hotelnameOrWeb = hotelnameOrWeb;
+//	}
+	public String getPromotionID() {
+		return promotionID;
 	}
-//	public String getName() {
-//		return name;
-//	}
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//	public Calendar getStart() {
-//		return start;
-//	}
-//	public void setStart(Calendar start) {
-//		this.start = start;
-//	}
-//	public Calendar getEnd() {
-//		return end;
-//	}
-//	public void setEnd(Calendar end) {
-//		this.end = end;
-//	}
-//	public int getType() {
-//		return type;
-//	}
-//	public void setType(int type) {
-//		this.type = type;
-//	}
-	public double getDiscount() {
-		return discount;
+	public void setPromotionID(String promotionID) {
+		this.promotionID = promotionID;
 	}
-	public void setDiscount(double discount) {
-		this.discount = discount;
+	public String getPromotionName() {
+		return promotionName;
 	}
-//	public List<String> getHotel() {
-//		return hotel;
-//	}
-//	public void setHotel(List<String> hotel) {
-//		this.hotel = hotel;
-//	}
-	public PromotionPO toPO(PromotionVO vo){
+	public void setPromotionName(String promotionName) {
+		this.promotionName = promotionName;
+	}
+	public String getPromotionType() {
+		return promotionType;
+	}
+	public void setPromotionType(String promotionType) {
+		this.promotionType = promotionType;
+	}
+	public String getHotelnameOrWeb() {
+		return hotelnameOrWeb;
+	}
+	public void setHotelnameOrWeb(String hotelnameOrWeb) {
+		this.hotelnameOrWeb = hotelnameOrWeb;
+	}
+	//vo to po
+	public PromotionPO topo(PromotionVO promotionvo){
 		return null;
 	}
+	
 }

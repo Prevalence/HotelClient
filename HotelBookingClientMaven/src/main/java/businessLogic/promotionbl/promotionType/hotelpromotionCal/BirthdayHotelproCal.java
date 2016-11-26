@@ -24,7 +24,7 @@ public class BirthdayHotelproCal implements CalculatePrice{
 		boolean isMonthEqual=((calendar.get(Calendar.MONTH))==(personpo.getBirthday().getTime().getMonth()));
 		boolean isDateEqual=((calendar.get(Calendar.DATE))==(personpo.getBirthday().getTime().getDate()));
 		if(isMonthEqual&&isDateEqual){
-			discountPrice=discountPrice*(((BirthdayHotelproPO) po).getdiscount())/100.0;
+			discountPrice=discountPrice*(((BirthdayHotelproPO) po).getDiscount())/100.0;
 		}
 		return discountPrice;
 	}

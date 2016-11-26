@@ -1,52 +1,44 @@
 package vo.promotionvo.hotelpromotionvo;
 
+import java.util.ArrayList;
+
+import po.PromotionPO;
 import po.promotionpo.hotelpromotionpo.BirthdayHotelproPO;
+import vo.PromotionVO;
 
 /**
  * @author 武秀峰
  * 酒店促销策略：生日特惠折扣*/
-public class BirthdayHotelproVO {
-	private String promotionID;
-	private String promotionType="HotelPromtion";
-	private String hotelname;
+public class BirthdayHotelproVO extends PromotionVO{
+//	private String promotionType="BirthdayHotelPromtion";
 	private int discount;//如打九五折时，discount=95
-	public BirthdayHotelproVO(String promotionID, String hotelname, int discount){
-		this.promotionID=promotionID;
-		this.hotelname=hotelname;
-		this.discount=discount;
+	
+	public BirthdayHotelproVO(String promotionID, String promotionName, String promotionType,
+			String hotelnameOrWeb, int discount) {
+		super.setPromotionID(promotionID);
+		super.setPromotionName(promotionName);
+		super.setPromotionType(promotionType);
+		super.setHotelnameOrWeb(hotelnameOrWeb);
+		this.setDiscount(discount);
 	}
 	
-	public String getHotelname(){
-		return hotelname;
-	}
-	public void setHotelname(String hotelname){
-		this.hotelname=hotelname;
-	}
-	public int getDiscount(){
+	public int getDiscount() {
 		return discount;
 	}
-	public void setDiscount(int discount){
-		this.discount=discount;
-	}
 
-	public String getPromotionID() {
-		return promotionID;
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
-
-	public void setPromotionID(String promotionID) {
-		this.promotionID = promotionID;
-	}
-
-	public String getPromotionType() {
-		return promotionType;
-	}
+	
 	public BirthdayHotelproPO toPO(BirthdayHotelproVO vo){
 		BirthdayHotelproPO po=new BirthdayHotelproPO();
-		po.setDiscount(vo.getDiscount());
-		po.setHotelname(vo.getHotelname());
 		po.setPromotionID(vo.getPromotionID());
+		po.setPromotionName(vo.getPromotionName());
+		po.setPromotionType(vo.getPromotionType());
+		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
+		po.setDiscount(vo.discount);
 		return po;
-		
 	}
+	
 
 }

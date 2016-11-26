@@ -13,7 +13,7 @@ public class HotelPO implements Serializable{
 	private String hotelname;
 	private int star;//酒店星级
 	private String feature;//酒店简介
-	private ArrayList <Boolean> service;//设施服务
+	private ArrayList <Boolean> service;//设施服务，需要初始化list，所有的都要设为false
 	private String address;
 	private String circle;
 	private double score;//酒店平均评分
