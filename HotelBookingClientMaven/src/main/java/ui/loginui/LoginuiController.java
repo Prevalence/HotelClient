@@ -1,52 +1,100 @@
 package ui.loginui;
 
+import businessLogic.userbl.UserController;
+import businessLogicService.userblService.UserblService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import ui.personui.hotelSearchui.HotelSearchui;
 
 public class LoginuiController {
 
-    @FXML
-    private Button loginButton;
-    @FXML
-    private Button signupButton;
-    @FXML
-    private Button otherButton;
-    @FXML
-    private Button forgetButton;
-    @FXML
-    private Label cityLabel;
-    @FXML
-    private Label birthdayLabel;
+	@FXML
+	private Button loginButton;
+	@FXML
+	private Button signupButton;
+	@FXML
+	private ChoiceBox<String> otherChoices;
+	@FXML
+	private Button forgetButton;
+	@FXML
+	private TextField userNameField;
+	@FXML
+	private TextField passwordField;
+	@FXML
+	private TextField feedBackField;
+	@FXML
+	private Pane mainPane;
 
-    // Reference to the main application.
-    private Main main;
+	// 用户类型默认为客户，如果用户用其他方式登录再进行改变。
+	private String usertype = "客户";
 
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
-    public LoginuiController() {
-    }
+	private UserblService userbl;
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-        // Initialize the person table with the two columns.
-    }
+	// 客户的第一个界面：酒店搜索界面
+	private Pane hotelSearchPane;
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
-    public void setMain(Main main) {
-        this.main = main;
+	// 酒店工作人员的第一个界面：酒店工作人员订单查看界面
+	private Pane hotelWorkerOrderInfouiPane;
 
-        // Add observable list data to the table
-    }
+	// 网站营销人员的第一个界面：网站营销人员订单查看界面
+	private Pane marketOrderInfouiPane;
+
+	// 网站管理人员的第一个界面：搜索与添加用户界面
+	private Pane managerSearchAndAdduiPane;
+
+	private Stage primaryStage;
+
+	/**
+	 * The constructor. The constructor is called before the initialize()
+	 * method.
+	 */
+	public LoginuiController() {
+		userbl = new UserController();
+
+	}
+
+	/**
+	 * 登录操作，根据逻辑层登录方法返回的布尔值显示错误提示或者跳转到下个界面
+	 * 
+	 * @return boolean
+	 */
+	
+	@FXML
+	private void Login() {
+		String username = userNameField.getText();
+		String password = passwordField.getText();
+		usertype = otherChoices.getSelectionModel().getSelectedItem();
+		System.out.println(usertype);
+//		if (userbl.userLogin(username, password, usertype)) {
+//			hotelSearchPane = new HotelSearchui(primaryStage);
+//			mainPane.getChildren().remove(0);
+//			mainPane.getChildren().add(hotelSearchPane);
+//		} else {
+//			feedBackField.setText("用户名或密码不正确！");
+//		}
+	}
+
+	/**
+	 * 传递Main的primaryStage
+	 * 
+	 * @param primaryStage
+	 */
+	public void launchStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
+
+	/**
+	 * 设置其他方式登录的组件
+	 * 
+	 * @param others
+	 */
+	public void setChoiceBox(ObservableList<String> others) {
+		otherChoices.setItems(others);
+	}
 }

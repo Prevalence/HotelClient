@@ -1,5 +1,5 @@
 package ui.managerui.managerSearchui;
 
-public class ManagerSearchui {
+public class ManagerSearchAndAddui {
 
 }

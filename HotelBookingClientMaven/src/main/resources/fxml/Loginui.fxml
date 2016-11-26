@@ -11,28 +11,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="533.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="533.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.loginui.LoginuiController">
    <children>
       <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="106.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../登录界面/账户.png" />
          </image>
       </ImageView>
-      <Button fx:id="otherButton" layoutX="236.0" layoutY="432.0" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="18.0" prefWidth="129.0" style="-fx-background-color: transparent;" textFill="#28010100" textOverrun="CLIP">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../登录界面/以其他身份登录.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button fx:id="signupButton" layoutX="106.0" layoutY="431.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="55.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT">
          <font>
             <Font size="1.0" />
@@ -88,7 +73,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="loginButton" layoutX="106.0" layoutY="333.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="388.0" style="-fx-background-color: transparent;">
+      <Button fx:id="loginButton" layoutX="106.0" layoutY="333.0" mnemonicParsing="false" onAction="#Login" prefHeight="74.0" prefWidth="388.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -112,6 +97,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField alignment="TOP_LEFT" editable="false" layoutX="292.0" layoutY="207.0" style="-fx-background-color: transparent;" />
+      <TextField fx:id="feedBackField" alignment="TOP_LEFT" editable="false" layoutX="292.0" layoutY="207.0" style="-fx-background-color: transparent;" />
+      <ChoiceBox fx:id="otherChoices" layoutX="223.0" layoutY="427.0" prefHeight="18.0" prefWidth="158.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="20.0" fitWidth="130.0" layoutX="227.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../登录界面/以其他身份登录.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
