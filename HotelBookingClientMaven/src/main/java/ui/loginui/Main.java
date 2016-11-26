@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 
 public class Main extends Application {
 
+	private LoginuiController loginuiController;
     private Stage primaryStage;
     private Pane rootLayout;
     private ObservableList<String> others = FXCollections.observableArrayList();
@@ -42,7 +43,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             //将primaryStage传递到controller中
-            LoginuiController loginuiController = loader.getController();
+            loginuiController = loader.getController();
             loginuiController.launchStage(primaryStage);
             loginuiController.setChoiceBox(others);
         } catch (IOException e) {

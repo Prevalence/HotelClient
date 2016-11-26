@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 public class HotelSearchui extends Pane {
 	private Stage primaryStage;
 
+	private HotelSearchuiController hotelSearchuiController;
 	/**
 	 * 接受primarystage用来完成界面最小化和可移动化设置
 	 * 
@@ -25,7 +26,7 @@ public class HotelSearchui extends Pane {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HotelSearchui.fxml"));
 		loader.setRoot(this);
 		
-		HotelSearchuiController hotelSearchuiController = new HotelSearchuiController();
+		hotelSearchuiController = loader.getController();
 		hotelSearchuiController.launchStage(primaryStage);
 		try {
 			loader.load();
