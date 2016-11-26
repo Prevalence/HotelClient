@@ -4,9 +4,12 @@ import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -27,13 +30,18 @@ public class LoginuiController {
 	@FXML
 	private TextField passwordField;
 	@FXML
-	private TextField feedBackField;
+	private Label feedBackLabel;
+	@FXML
+	private Label otherLabel;
 	@FXML
 	private Pane mainPane;
 
 	// 用户类型默认为客户，如果用户用其他方式登录再进行改变。
 	private String usertype = "客户";
 
+	// 与选择框对应的身份字符串数组
+	private String type[] = { "酒店工作人员", "网站营销人员", "网站管理人员", "还原" };
+	
 	private UserblService userbl;
 
 	// 客户的第一个界面：酒店搜索界面
@@ -64,20 +72,19 @@ public class LoginuiController {
 	 * 
 	 * @return boolean
 	 */
-	
+
 	@FXML
 	private void Login() {
 		String username = userNameField.getText();
 		String password = passwordField.getText();
-		usertype = otherChoices.getSelectionModel().getSelectedItem();
-		System.out.println(usertype);
-//		if (userbl.userLogin(username, password, usertype)) {
-//			hotelSearchPane = new HotelSearchui(primaryStage);
-//			mainPane.getChildren().remove(0);
-//			mainPane.getChildren().add(hotelSearchPane);
-//		} else {
-//			feedBackField.setText("用户名或密码不正确！");
-//		}
+		System.out.println("ok!");
+		// if (userbl.userLogin(username, password, usertype)) {
+		 hotelSearchPane = new HotelSearchui(primaryStage,username);
+		 mainPane.getChildren().remove(0);
+		 mainPane.getChildren().add(hotelSearchPane);
+		// } else {
+		// feedBackField.setText("用户名或密码不正确！");
+		// }
 	}
 
 	/**
@@ -96,5 +103,17 @@ public class LoginuiController {
 	 */
 	public void setChoiceBox(ObservableList<String> others) {
 		otherChoices.setItems(others);
+		otherChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				usertype = type[otherChoices.getSelectionModel().getSelectedIndex()];
+				if (usertype.equals("还原")) {
+					usertype = "客户";
+					otherLabel.setText("其他方式登录");
+				} else {
+					otherLabel.setText(usertype);
+				}
+				System.out.println(usertype);
+			}
+		});
 	}
 }

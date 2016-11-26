@@ -12,7 +12,7 @@ public class HotelSearchui extends Pane {
 	 * 
 	 * @param primaryStage
 	 */
-	public HotelSearchui(Stage primaryStage) {
+	public HotelSearchui(Stage primaryStage,String personname) {
 		this.primaryStage = primaryStage;
 		initHotelSearchui();
 	};
@@ -21,9 +21,12 @@ public class HotelSearchui extends Pane {
 	 * 初始化hotelSearchPane
 	 */
 	public void initHotelSearchui() {
-		// Load root layout from fxml file.
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Userui.fxml"));
+		// 设置新的Pane
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HotelSearchui.fxml"));
 		loader.setRoot(this);
+		
+		HotelSearchuiController hotelSearchuiController = new HotelSearchuiController();
+		hotelSearchuiController.launchStage(primaryStage);
 		try {
 			loader.load();
 		} catch (Exception e) {

@@ -23,6 +23,7 @@ public class Main extends Application {
         others.add("酒店工作人员");
         others.add("网站营销人员");
         others.add("网站管理人员");
+        others.add("还原");
         initLoginui();
     }
 
