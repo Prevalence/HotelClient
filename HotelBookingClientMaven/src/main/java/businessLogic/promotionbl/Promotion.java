@@ -13,6 +13,7 @@ import vo.PromotionVO;
 /**
  * 
  * @author John
+ * @author 武秀峰
  *
  */
 public class Promotion {
@@ -24,7 +25,7 @@ public class Promotion {
 	 * @return
 	 */
 	public boolean addProm(PromotionVO prom){
-		PromotionPO promotionpo=prom.toPO(prom);
+		PromotionPO promotionpo=prom.topo(prom);
 		return promotiondataservice.add(promotionpo);
 	}
 	
@@ -34,7 +35,7 @@ public class Promotion {
 	 * @return
 	 */
 	public boolean deleteProm(PromotionVO prom){
-		PromotionPO promotionpo=prom.toPO(prom);
+		PromotionPO promotionpo=prom.topo(prom);
 		return promotiondataservice.delete(promotionpo);
 	}
 	
@@ -44,7 +45,7 @@ public class Promotion {
 	 * @return
 	 */
 	public boolean modifyProm(PromotionVO prom){
-		PromotionPO promotionpo=prom.toPO(prom);
+		PromotionPO promotionpo=prom.topo(prom);
 		return promotiondataservice.modify(promotionpo);
 	}
 	

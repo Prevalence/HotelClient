@@ -10,6 +10,7 @@ import vo.HotelWorkerVO;
 import vo.MarketVO;
 /**
  * @author xiamutian
+ * @author 武秀峰
  */
 public class Manager {
 	
@@ -17,6 +18,14 @@ public class Manager {
 	HotelWorkerPO hotelworker=new HotelWorkerPO();
 	MarketPO market=new MarketPO();
 	UserDataService userDataService;
+	/**
+	 * 网站管理人员登录
+	 *@author xiamutian
+	 * @throws RemoteException 
+	 */
+	public boolean managerLonin (String managername,String password) throws RemoteException{
+		return userDataService.managerLogin(managername, password);
+	}
 	
 	/**
 	 * 保存网站营销人员信息
@@ -52,15 +61,6 @@ public class Manager {
 	 */
 	public HotelWorkerPO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
 		return userDataService.findHotelWorker(hotelWorkername);
-	}
-	
-	/**
-	 * 网站管理人员登录
-	 *@author xiamutian
-	 * @throws RemoteException 
-	 */
-	public boolean managerLonin (String managername,String password) throws RemoteException{
-		return userDataService.managerLogin(managername, password);
 	}
 	
 	/**

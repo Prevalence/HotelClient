@@ -16,7 +16,11 @@ import po.HotelWorkerPO;
 import po.MarketPO;
 import po.PersonPO;
 import vo.HotelVO;
-
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public class Search {
 	
 	/**

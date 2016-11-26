@@ -63,7 +63,7 @@ public class MarketMock extends Market{
 		return true;
 		
 	}
-	public boolean Marketlogin(String marketname,String password){
+	public boolean marketlogin(String marketname,String password){
 		/**
 		 * 网站营销人员的登陆
 		 * @author xiamutian

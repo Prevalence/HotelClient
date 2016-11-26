@@ -3,7 +3,6 @@ package businessLogic.hotelbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.hotelData.HotelData;
 import dataService.hotelDataService.HotelDataService;
 import po.HotelPO;
 import vo.HotelVO;
