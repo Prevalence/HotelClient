@@ -64,12 +64,12 @@ public class OrderControllerTest {
 
 	@Test
 	public void testPersonOrders() {
-		assertEquals(null,oc.personOrders("wuxiufeng"));
+		assertEquals("南京大酒店",oc.personOrders("小夏").get(0).getHotelname());
 	}
 
 	@Test
 	public void testHotelOrders() {
-		assertEquals(null,oc.hotelOrders("nju"));
+		assertEquals(2,oc.hotelOrders("nju").size());
 	}
 
 	@Test
