@@ -75,10 +75,11 @@ public class Manager {
 	
 	/**
 	 * 增加酒店工作人员
+	 * @throws RemoteException 
 	 */
-	public boolean hotelWorkerAdd (HotelWorkerVO marketInfo){
-		//需要等dataservice层里加了方法之后调用
-		return false;
+	public boolean hotelWorkerAdd (HotelWorkerVO hotelworkerInfo) throws RemoteException{
+		HotelWorkerPO hotelworkerPO=new HotelWorkerPO(hotelworkerInfo);
+		return userDataService.addHotelWorker(hotelworkerPO);
 		
 	}
 	
