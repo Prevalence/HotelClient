@@ -38,8 +38,6 @@ public class HotelSearchui extends Pane {
 //		Scene scene = new Scene(this);
 //		primaryStage.setScene(scene);
 		hotelSearchuiController = loader.getController();
-
 		hotelSearchuiController.launchStage(primaryStage);
-		
 	}
 }

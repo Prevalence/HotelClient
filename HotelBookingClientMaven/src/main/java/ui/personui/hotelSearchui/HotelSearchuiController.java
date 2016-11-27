@@ -18,15 +18,23 @@ import ui.personui.personInfoui.PersonInfoViewui;
 public class HotelSearchuiController {
 
 	@FXML
-	private Button loginButton;
+	private Button hotelSearchButton;
 	@FXML
-	private Button signupButton;
+	private Button personInfoButton;
 	@FXML
-	private ChoiceBox<String> otherChoices;
+	private Button orderInfoButton;
 	@FXML
-	private Button forgetButton;
+	private Button priceButton;
 	@FXML
-	private TextField userNameField;
+	private Button starButton;
+	@FXML
+	private Button facilityButton;
+	@FXML
+	private Button haveBookedButton;
+	@FXML
+	private Button searchButton;
+	@FXML
+	private TextField searchField;
 	@FXML
 	private TextField passwordField;
 	@FXML
