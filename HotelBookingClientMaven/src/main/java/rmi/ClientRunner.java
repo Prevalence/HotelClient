@@ -37,8 +37,11 @@ public class ClientRunner {
 	
 	public void test() throws RemoteException{
 		//remoteHelper.getHotelDataService().showHotelinfo("nanj");
-		
-		remoteHelper.getOrderDataService().exceptionFind();
+//		System.out.println(remoteHelper.getOrderDataService().exceptionFind().get(0).getOrderstate());
+		//System.out.println(remoteHelper.getHotelDataService().showHotelinfo("南京大酒店").getAddress());
+		System.out.println(remoteHelper.getPromotionDataService().find("南京大酒店").get(1).getPromotionType());
+//		System.out.println(remoteHelper.getSearchDataService().showSearchHistory("小夏"));
+//		System.out.println(remoteHelper.getUserDataService().findHotelWorker("小夏"));
 	}
 	
 	public static void main(String[] args) throws RemoteException{//������
