@@ -39,5 +39,6 @@ public class HotelSearchui extends Pane {
 //		primaryStage.setScene(scene);
 		hotelSearchuiController = loader.getController();
 		hotelSearchuiController.launchStage(primaryStage);
+		hotelSearchuiController.setPersonname(personname);
 	}
 }

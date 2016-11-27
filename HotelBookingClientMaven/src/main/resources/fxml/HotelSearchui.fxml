@@ -187,5 +187,12 @@
          </image>
       </ImageView>
       <Slider layoutX="991.0" layoutY="258.0" orientation="VERTICAL" prefHeight="545.0" prefWidth="17.0" />
+      <TableView layoutX="170.0" layoutY="337.0" prefHeight="447.0" prefWidth="817.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn prefWidth="93.0" text="Column X" />
+        </columns>
+      </TableView>
    </children>
 </fx:root>

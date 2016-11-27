@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.personInfoui.PersonInfoViewui;
 
 public class HotelSearchuiController {
@@ -43,7 +44,7 @@ public class HotelSearchuiController {
 	private Label otherLabel;
 	@FXML
 	private Pane mainPane;
-	
+
 	private UserblService userbl;
 
 	// 酒店详情查看界面
@@ -54,33 +55,37 @@ public class HotelSearchuiController {
 
 	private Stage primaryStage;
 
+	private String personname;
+
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
 	public HotelSearchuiController() {
 		userbl = new UserController();
-
 	}
 
 	/**
-	 * 登录操作，根据逻辑层登录方法返回的布尔值显示错误提示或者跳转到下个界面
+	 * 跳转到个人信息维护界面
 	 * 
 	 * @return boolean
 	 */
 
 	@FXML
-	private void ViewPersonInfo() {
-		String username = userNameField.getText();
-		String password = passwordField.getText();
-		System.out.println("ok!");
-		// if (userbl.userLogin(username, password, usertype)) {
-		 personInfoViewPane = new PersonInfoViewui(primaryStage,username);
-		 mainPane.getChildren().remove(0);
-		 mainPane.getChildren().add(personInfoViewPane);
-		// } else {
-		// feedBackField.setText("用户名或密码不正确！");
-		// }
+	private void viewPersonInfo() {
+		personInfoViewPane = new PersonInfoViewui(primaryStage, personname);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(personInfoViewPane);
+	}
+
+	/**
+	 * 跳转到酒店详情查看界面
+	 */
+	@FXML
+	private void hotelInfoView() {
+		hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(hotelInfoViewPane);
 	}
 
 	/**
@@ -93,9 +98,11 @@ public class HotelSearchuiController {
 	}
 
 	/**
-	 * 设置其他方式登录的组件
+	 * 传递用户名
 	 * 
-	 * @param others
+	 * @param personname
 	 */
-	
+	public void setPersonname(String personname) {
+		this.personname = personname;
+	}
 }
