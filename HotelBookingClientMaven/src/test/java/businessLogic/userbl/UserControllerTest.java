@@ -22,7 +22,7 @@ public class UserControllerTest {
 
 	PersonVO personvo1=new PersonVO("xiamutian", "123", 0, 0, null, null,
 			0, null, null);
-	PersonVO personvo2=new PersonVO("wuxiufeng", "123", 0, 0, null, null,
+	PersonVO personvo2=new PersonVO("wuxiufeng", "123", 0, 0, null, "no",
 			0, null, null);
 
 	@Before
@@ -52,13 +52,13 @@ public class UserControllerTest {
 
 	@Test
 	public void testChangeCredit() {
-		assertEquals(false,uc.changeCredit("wuxiufeng", 100));
+		assertEquals(true,uc.changeCredit("wuxiufeng", 100));
 		assertEquals(true,uc.changeCredit("xiamutian", 100));
 	}
 
 	@Test
 	public void testRegisteMember() throws ParseException {
-		assertEquals(false,uc.registeMember(personvo2, "enterprise", "nju"));
+		assertEquals(true,uc.registeMember(personvo2, "enterprise", "nju"));
 	}
 
 	@Test
@@ -68,7 +68,7 @@ public class UserControllerTest {
 
 	@Test
 	public void testGetHotelWorkerInfo() {
-		assertEquals("南京大学",uc.getHotelWorkerInfo("xiamutian").getHotelname());
+		assertEquals("南京大酒店",uc.getHotelWorkerInfo("xiamutian").getHotelname());
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class UserControllerTest {
 	@Test
 	public void testMarketAdd() {
 		MarketVO marketvo1=new MarketVO("xiamutian", "123456");
-		assertEquals(true, uc.marketAdd(marketvo1));
+		assertEquals(false, uc.marketAdd(marketvo1));
 		
 		MarketVO marketvo2=new MarketVO("wuxiufeng", "123456");
 		assertEquals(false, uc.marketAdd(marketvo2));
@@ -95,7 +95,7 @@ public class UserControllerTest {
 	@Test
 	public void testGetMarketInfo() {
 		MarketVO marketvo=new MarketVO("xiamutian", "123");
-		assertEquals(true, uc.marketAdd(marketvo));
+		assertEquals(false, uc.marketAdd(marketvo));
 	}
 	
 //	@Test

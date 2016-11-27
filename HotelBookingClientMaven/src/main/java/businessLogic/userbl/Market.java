@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import dataService.userDataService.UserDataService;
 import po.MarketPO;
 import po.PersonPO;
+import rmi.RemoteHelper;
 /**
  * @author xiamutian
  * @author 武秀峰
@@ -12,7 +13,7 @@ import po.PersonPO;
 
 public class Market {
 	MarketPO market=new MarketPO();
-	UserDataService userDataService;
+	UserDataService userDataService=RemoteHelper.getInstance().getUserDataService();
 
 	/**
 	 * 网站营销人员的登陆
@@ -42,7 +43,7 @@ public class Market {
 	 * @throws RemoteException 
 	 */
 	public boolean changeCredit (String personname,int credit) throws RemoteException{
-		return userDataService.changeCredit(personname, credit);//报错正常，dataservice层修改完就对了
+		return userDataService.changeCredit(personname, credit);
 	}
 	
 

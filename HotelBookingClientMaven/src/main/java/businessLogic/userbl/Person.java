@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
 
 import dataService.userDataService.UserDataService;
 import po.PersonPO;
+import rmi.RemoteHelper;
 import vo.HotelVO;
 import vo.PersonVO;
 /**
@@ -17,7 +18,7 @@ import vo.PersonVO;
  */
 
 public class Person {
-	UserDataService userDataService;
+	UserDataService userDataService=RemoteHelper.getInstance().getUserDataService();
 	PersonPO person=new PersonPO();
 	
 	/**
