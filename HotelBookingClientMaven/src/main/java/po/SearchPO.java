@@ -2,7 +2,11 @@ package po;
 
 import java.io.Serializable;
 import java.util.Calendar;
-
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public class SearchPO implements Serializable{
 	private String personname;
 	private Calendar time;

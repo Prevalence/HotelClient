@@ -12,7 +12,7 @@ import po.PersonPO;
 import po.SearchPO;
 import vo.HotelVO;
 
-/*
+/**
  * @author 武秀峰
  * */
 

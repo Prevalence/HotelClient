@@ -13,6 +13,7 @@ import vo.HotelVO;
 import vo.PersonVO;
 /**
  * @author xiamutian
+ * @author 武秀峰
  */
 
 public class Person {

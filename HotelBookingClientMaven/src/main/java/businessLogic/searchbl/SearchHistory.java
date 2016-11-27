@@ -7,7 +7,11 @@ import dataService.searchDataService.SearchDataService;
 import po.HotelPO;
 import po.SearchPO;
 import rmi.RemoteHelper;
-
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public class SearchHistory {
 	
 	SearchDataService searchdataservice;

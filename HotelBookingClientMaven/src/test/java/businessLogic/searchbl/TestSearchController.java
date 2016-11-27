@@ -15,20 +15,21 @@ import po.HotelWorkerPO;
 import po.MarketPO;
 import po.PersonPO;
 import po.SearchPO;
+import vo.HotelVO;
 
 public class TestSearchController {
 	SearchController sc=new SearchController();
 	
 	@Test
 	public void testFindHotel() {
-		HotelPO hotelReq=new HotelPO(null, -1, null, null, null, "商圈2", null, null, null, null, null);
-		HotelPO hotelpo2=new HotelPO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", null, null, null, null, "小李");
-		HotelPO hotelpo3=new HotelPO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2", null, null, null, null, "小李");
-		ArrayList<HotelPO> result=new ArrayList<HotelPO>();
+		HotelVO hotelReq=new HotelVO(null, -1, null, null, null, "商圈2", 0, null, null, null, null, null);
+		HotelVO hotelpo2=new HotelVO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", 0, null, null, null, null, "小李");
+		HotelVO hotelpo3=new HotelVO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2", 0, null, null, null, null, "小李");
+		ArrayList<HotelVO> result=new ArrayList<HotelVO>();
 		result.add(hotelpo2);
 		result.add(hotelpo3);
-		assertEquals("南京大酒店2",sc.findHotel(hotelReq).get(0).getHotelName());
-		assertEquals("南京大酒店3",sc.findHotel(hotelReq).get(1).getHotelName());
+		assertEquals("南京大酒店2",sc.findHotel(hotelReq).get(0).getHotelname());
+		assertEquals("南京大酒店3",sc.findHotel(hotelReq).get(1).getHotelname());
 		
 	}
 	
@@ -36,8 +37,8 @@ public class TestSearchController {
 	public void TestSearchPersonInfo(){
 		PersonPO pp1=new PersonPO();
 		PersonPO pp2=new PersonPO();
-		pp1.setuserName("xiamutian");
-		pp2.setuserName("xiekailian");
+		pp1.setUsername("xiamutian");
+		pp2.setUsername("xiekailian");
 		pp1.setCredit(1000);
 		pp2.setCredit(900);
 		assertEquals(null,sc.searchPersonInfo("wuxiufeng"));

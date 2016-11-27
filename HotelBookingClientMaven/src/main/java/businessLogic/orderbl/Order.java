@@ -13,6 +13,7 @@ import dataService.orderDataService.OrderDataService;
 /**
  * 
  * @author 谢铠联
+ * @author 武秀峰
  *
  */
 public class Order{

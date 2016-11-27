@@ -6,7 +6,11 @@ import java.util.List;
 
 import po.HotelPO;
 
-
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public class HotelVO implements Serializable {
 	private String hotelname;
 	private int star;//酒店星级
