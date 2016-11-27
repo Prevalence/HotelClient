@@ -10,53 +10,37 @@ import vo.promotionvo.hotelpromotionvo.EnterpriseHotelproVO;
  *  @author 武秀峰
  *  酒店促销策略：合作企业客户折扣*/
 public class EnterpriseHotelproPO extends PromotionPO{
-	private String promotionID;
-	private String promotionType="HotelPromtion";
-	private String hotelname;
+//	private String promotionType="EnterpriseHotelPromtion";
 	private ArrayList<String> enterprise;//合作企业名称列表
 	private int discount;//如打九五折时，discount=95
 	
-	public EnterpriseHotelproPO(String promotionID, String hotelname, ArrayList<String> enterprise, int discount){
-		this.promotionID=promotionID;
-		this.hotelname=hotelname;
+	public EnterpriseHotelproPO() {
+		super();
+	}
+
+	public EnterpriseHotelproPO(String promotionID, String promotionName, String promotionType,
+			String hotelnameOrWeb, ArrayList<String> enterprise, int discount) {
+		super.setPromotionID(promotionID);
+		super.setPromotionName(promotionName);
+		super.setPromotionType(promotionType);
+		super.setHotelnameOrWeb(hotelnameOrWeb);
 		this.enterprise=enterprise;
 		this.discount=discount;
 	}
-	public EnterpriseHotelproPO(EnterpriseHotelproVO enterpriseHotelproVO){
-		this.hotelname=enterpriseHotelproVO.getHotelname();
-		this.enterprise=enterpriseHotelproVO.getEnterprise();
-		this.discount=enterpriseHotelproVO.getDiscount();
-	}
-	
-	public EnterpriseHotelproPO() {
-		// TODO Auto-generated constructor stub
-	}
-	public String getHotelname(){
-		return hotelname;
-	}
-	public void setHotelname(String hotelname){
-		this.hotelname=hotelname;
-	}
-	public ArrayList<String> getEnterprise(){
+
+	public ArrayList<String> getEnterprise() {
 		return enterprise;
 	}
-	public void setEnterprise(ArrayList<String> enterprise){
-		this.enterprise=enterprise;
+	public void setEnterprise(ArrayList<String> enterprise) {
+		this.enterprise = enterprise;
 	}
-	public int getDiscount(){
+
+
+	public int getDiscount() {
 		return discount;
 	}
-	public void setDiscount(int discount){
-		this.discount=discount;
-	}
-	public String getPromotionID() {
-		return promotionID;
-	}
-	public void setPromotionID(String promotionID) {
-		this.promotionID = promotionID;
-	}
-	public String getPromotionType() {
-		return promotionType;
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 	
 }

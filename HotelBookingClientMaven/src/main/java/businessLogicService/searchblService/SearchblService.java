@@ -8,7 +8,11 @@ import po.MarketPO;
 import po.PersonPO;
 import po.SearchPO;
 import vo.HotelVO;
-
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public interface SearchblService {
 	
 	/*已知客户筛选条件，返回符合条件的酒店*/

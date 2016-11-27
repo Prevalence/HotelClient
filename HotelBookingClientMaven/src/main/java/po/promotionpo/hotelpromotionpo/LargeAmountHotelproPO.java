@@ -1,5 +1,7 @@
 package po.promotionpo.hotelpromotionpo;
 
+import java.util.ArrayList;
+
 import po.PromotionPO;
 import vo.promotionvo.hotelpromotionvo.LargeAmountHotelproVO;
 
@@ -7,44 +9,28 @@ import vo.promotionvo.hotelpromotionvo.LargeAmountHotelproVO;
  *  @author 武秀峰
  *  酒店促销策略：三间及以上预订特惠*/
 public class LargeAmountHotelproPO extends PromotionPO {
-	private String promotionID;
-	private String promotionType="HotelPromtion";
-	private String hotelname;
+//	private String promotionType="LargeAmountHotelPromtion";
 	private int discount;//如打九五折时，discount=95
-
-	public LargeAmountHotelproPO(String promotionID, String hotelname, int dicount){
-		this.promotionID=promotionID;
-		this.hotelname=hotelname;
-		this.discount=dicount;
-	}
-	public LargeAmountHotelproPO(LargeAmountHotelproVO largeAmountHotelproVO){
-		this.hotelname=largeAmountHotelproVO.getHotelname();
-		this.discount=largeAmountHotelproVO.getDiscount();
-	}
 	
 	public LargeAmountHotelproPO() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
-	public String getHotelname(){
-		return hotelname;
+
+	public LargeAmountHotelproPO(String promotionID, String promotionName, String promotionType,
+			String hotelnameOrWeb, int discount) {
+		super.setPromotionID(promotionID);
+		super.setPromotionName(promotionName);
+		super.setPromotionType(promotionType);
+		super.setHotelnameOrWeb(hotelnameOrWeb);
+		this.setDiscount(discount);
 	}
-	public void setHotelname(String hotelname){
-		this.hotelname=hotelname;
-	}
-	public int getDiscount(){
+	
+	public int getDiscount() {
 		return discount;
 	}
-	public void setDiscount(int discount){
-		this.discount=discount;
-	}
-	public String getPromotionID() {
-		return promotionID;
-	}
-	public void setPromotionID(String promotionID) {
-		this.promotionID = promotionID;
-	}
-	public String getPromotionType() {
-		return promotionType;
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 	
 }

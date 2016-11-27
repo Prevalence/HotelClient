@@ -7,12 +7,20 @@ import po.MarketPO;
 import po.PersonPO;
 /**
  * @author xiamutian
+ * @author 武秀峰
  */
 
 public class Market {
 	MarketPO market=new MarketPO();
 	UserDataService userDataService;
 
+	/**
+	 * 网站营销人员的登陆
+	 * @throws RemoteException 
+	 */
+	public boolean marketlogin(String marketname,String password) throws RemoteException{
+		return userDataService.marketLogin(marketname, password);
+	}
 	/**
 	 * 获取客户信息
 	 * @throws RemoteException 
@@ -37,13 +45,7 @@ public class Market {
 		return userDataService.changeCredit(personname, credit);//报错正常，dataservice层修改完就对了
 	}
 	
-	/**
-	 * 网站营销人员的登陆
-	 * @throws RemoteException 
-	 */
-	public boolean Marketlogin(String marketname,String password) throws RemoteException{
-		return userDataService.marketLogin(marketname, password);
-	}
+
 	
 	
 }

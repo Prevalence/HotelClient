@@ -8,11 +8,12 @@ import vo.OrderVO;
 /**
  * 
  * @author xiamutian
+ * @author 武秀峰
  *
  */
 public class OrderPO implements Serializable{
 	//订单的基本信息
-	private String orderID;
+	private String orderID;//时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
 	private int orderprice;
 	private String ordernum;
 	private String orderstate;

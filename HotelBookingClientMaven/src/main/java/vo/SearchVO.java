@@ -2,7 +2,11 @@ package vo;
 
 import java.io.Serializable;
 import java.util.Calendar;
-
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 
 public class SearchVO implements Serializable {
 	private String personname;

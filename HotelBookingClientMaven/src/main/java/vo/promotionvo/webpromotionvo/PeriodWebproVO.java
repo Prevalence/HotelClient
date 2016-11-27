@@ -4,61 +4,74 @@ import java.util.Calendar;
 
 import po.promotionpo.hotelpromotionpo.BirthdayHotelproPO;
 import po.promotionpo.webpromotionpo.PeriodWebproPO;
+import vo.PromotionVO;
 import vo.promotionvo.hotelpromotionvo.BirthdayHotelproVO;
 
 /**
  * @author 武秀峰
  * 网站促销策略：双11活动折扣（在特定的期间预订有折扣）*/
-public class PeriodWebproVO {
-	private String promotionID;
-	private String promotionType="WebPromtion";
+public class PeriodWebproVO extends PromotionVO{
+//	private String promotionType="PeriodWebPromtion";
 	private Calendar startTime;
 	private Calendar endTime;
 	private int discount;//如打九五折时，discount=95
 	
-	public PeriodWebproVO(String promotionID, Calendar startTime, Calendar endTime, int discount){
-		this.promotionID=promotionID;
-		this.startTime=startTime;
-		this.endTime=endTime;
-		this.discount=discount;
+
+	public PeriodWebproVO() {
+		super();
 	}
-	
-	public Calendar getStartTime(){
+
+	public PeriodWebproVO(String promotionID, String promotionName, String promotionType,
+			String hotelnameOrWeb,Calendar startTime, Calendar endTime, int discount) {
+		super.setPromotionID(promotionID);
+		super.setPromotionName(promotionName);
+		super.setPromotionType(promotionType);
+		super.setHotelnameOrWeb(hotelnameOrWeb);
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.discount = discount;
+	}
+
+
+	public Calendar getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(Calendar startTime){
-		this.startTime=startTime;
+
+
+	public void setStartTime(Calendar startTime) {
+		this.startTime = startTime;
 	}
-	public Calendar getEndTime(){
+
+
+	public Calendar getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(Calendar endTime){
-		this.endTime=endTime;
+
+
+	public void setEndTime(Calendar endTime) {
+		this.endTime = endTime;
 	}
-	public int getDiscount(){
+
+
+	public int getDiscount() {
 		return discount;
 	}
-	public void setDiscount(int discount){
-		this.discount=discount;
+
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 
-	public String getPromotionID() {
-		return promotionID;
-	}
 
-	public void setPromotionID(String promotionID) {
-		this.promotionID = promotionID;
-	}
-
-	public String getPromotionType() {
-		return promotionType;
-	}
 	public PeriodWebproPO toPO(PeriodWebproVO vo){
 		PeriodWebproPO po=new PeriodWebproPO();
-		po.setDiscount(vo.getDiscount());
+		po.setPromotionID(vo.getPromotionID());
+		po.setPromotionName(vo.getPromotionName());
+		po.setPromotionType(vo.getPromotionType());
+		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
 		po.setStartTime(vo.getStartTime());
 		po.setEndTime(vo.getEndTime());
-		po.setPromotionID(vo.getPromotionID());
+		po.setDiscount(vo.getDiscount());
 		return po;
 	}
 }

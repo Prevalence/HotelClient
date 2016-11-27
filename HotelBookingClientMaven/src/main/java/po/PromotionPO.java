@@ -6,40 +6,52 @@ import java.util.*;
 
 /**
  * @author xiamutian
+ * @author 谢凯航
+ * @author 武秀峰
  */
 public class PromotionPO implements Serializable {
-	private String name;
-	private String type;
-	private ArrayList <String> hotel;
-	public PromotionPO(String name, Calendar start, Calendar end, String type,
-			double discount, ArrayList<String> hotel) {
+	private String promotionID;//promotion的唯一标识
+	private String promotionName;//promotion的名称，客户可见
+	private String promotionType;
+	private String hotelnameOrWeb;//若是酒店促销策略，则为酒店名称;若是网站促销策略，则为“WebPromotion”
+	
+	
+	public PromotionPO() {
 		super();
-		this.name = name;
-		this.type = type;
-		this.hotel = hotel;
 	}
-	public PromotionPO(){
-		name=null;
-		type=null;
-		hotel=null;
-		
+//	public PromotionPO(String promotionID, String promotionName, String promotionType,
+//			ArrayList<String> hotelnameOrWeb) {
+//		super();
+//		this.promotionID = promotionID;
+//		this.promotionName = promotionName;
+//		this.promotionType = promotionType;
+//		this.hotelnameOrWeb = hotelnameOrWeb;
+//	}
+	public String getPromotionID() {
+		return promotionID;
 	}
-	public String getName() {
-		return name;
+	public void setPromotionID(String promotionID) {
+		this.promotionID = promotionID;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public String getPromotionName() {
+		return promotionName;
 	}
-	public String getType() {
-		return type;
+	public void setPromotionName(String promotionName) {
+		this.promotionName = promotionName;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public String getPromotionType() {
+		return promotionType;
 	}
-	public List<String> getHotel() {
-		return hotel;
+	public void setPromotionType(String promotionType) {
+		this.promotionType = promotionType;
 	}
-	public void setHotel(ArrayList<String> hotel) {
-		this.hotel = hotel;
+	public String getHotelnameOrWeb() {
+		return hotelnameOrWeb;
 	}
+	public void setHotelnameOrWeb(String hotelnameOrWeb) {
+		this.hotelnameOrWeb = hotelnameOrWeb;
 	}
+
+	
+
+}
