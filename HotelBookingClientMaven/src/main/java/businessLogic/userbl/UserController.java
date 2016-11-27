@@ -142,7 +142,15 @@ public class UserController  implements UserblService{
 	 */
 	public boolean userLogin(String username, String password, String usertype) {
 		try {
-			return person.personLogin(username, password);
+			if(usertype.equals("person")){
+				return person.personLogin(username, password);
+			}else if(usertype.equals("hotelworker")){
+				return hotelworker.hotelworkerLogin(username, password);
+			}else if(usertype.equals("market")){
+				return market.marketlogin(username, password);
+			}else{
+				return false;
+			}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
