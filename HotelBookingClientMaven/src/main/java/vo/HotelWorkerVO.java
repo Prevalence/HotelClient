@@ -8,7 +8,7 @@ public class HotelWorkerVO  implements Serializable {
 	private String username;
 	private String password;
 
-	public HotelWorkerVO(String username, String password, int userType,String hotelname) {
+	public HotelWorkerVO(String username, String password,String hotelname) {
 		this.hotelname=hotelname;
 		this.username=username;
 		this.password=password;

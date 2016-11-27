@@ -43,7 +43,7 @@ public class Person {
 	
 	/**
 	 * 会员注册
-	 * @param vipType 0代表不是VIP，1代表是普通VIP，2代表是企业VIP
+	 * @param vipType no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
 	 * @param vipInfo 若是普通VIP，info为生日，格式如：20160120；若是企业VIP，格式为非空字符
 	 * @return boolean
 	 * @throws ParseException 
