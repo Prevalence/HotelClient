@@ -176,8 +176,14 @@ public class UserController  implements UserblService{
 	 * 增加一个酒店工作人员
 	 * @return boolean
 	 */
-	public boolean hotelWorkerAdd(HotelWorkerVO marketInfo) {
-		return manager.hotelWorkerAdd(marketInfo);
+	public boolean hotelWorkerAdd(HotelWorkerVO hotelworkerInfo) {
+		try {
+			return manager.hotelWorkerAdd(hotelworkerInfo);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	/**

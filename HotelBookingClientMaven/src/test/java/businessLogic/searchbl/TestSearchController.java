@@ -15,47 +15,49 @@ import po.HotelWorkerPO;
 import po.MarketPO;
 import po.PersonPO;
 import po.SearchPO;
+import rmi.ClientRunner;
 import vo.HotelVO;
 
 public class TestSearchController {
+	ClientRunner cr=new ClientRunner();
 	SearchController sc=new SearchController();
 	
-	@Test
-	public void testFindHotel() {
-		HotelVO hotelReq=new HotelVO(null, -1, null, null, null, "商圈2", 0, null, null, null, null, null);
-		HotelVO hotelpo2=new HotelVO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", 0, null, null, null, null, "小李");
-		HotelVO hotelpo3=new HotelVO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2", 0, null, null, null, null, "小李");
-		ArrayList<HotelVO> result=new ArrayList<HotelVO>();
-		result.add(hotelpo2);
-		result.add(hotelpo3);
-		assertEquals("南京大酒店2",sc.findHotel(hotelReq).get(0).getHotelname());
-		assertEquals("南京大酒店3",sc.findHotel(hotelReq).get(1).getHotelname());
-		
-	}
+//	@Test
+//	public void testFindHotel() {
+//		HotelVO hotelReq=new HotelVO(null, -1, null, null, null, "商圈2", 0, null, null, null, null, null);
+//		HotelVO hotelpo2=new HotelVO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", 0, null, null, null, null, "小李");
+//		HotelVO hotelpo3=new HotelVO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2", 0, null, null, null, null, "小李");
+//		ArrayList<HotelVO> result=new ArrayList<HotelVO>();
+//		result.add(hotelpo2);
+//		result.add(hotelpo3);
+//		assertEquals("南京大酒店2",sc.findHotel(hotelReq).get(0).getHotelname());
+//		assertEquals("南京大酒店3",sc.findHotel(hotelReq).get(1).getHotelname());
+//	}
 	
 	@Test
 	public void TestSearchPersonInfo(){
-		PersonPO pp1=new PersonPO();
-		PersonPO pp2=new PersonPO();
-		pp1.setUsername("xiamutian");
-		pp2.setUsername("xiekailian");
-		pp1.setCredit(1000);
-		pp2.setCredit(900);
-		assertEquals(null,sc.searchPersonInfo("wuxiufeng"));
-		assertEquals(pp1.getCredit(),sc.searchPersonInfo("xiamutian").getCredit());
-		assertEquals(pp2.getCredit(),sc.searchPersonInfo("xiekailian").getCredit());
+		assertEquals(5000,sc.searchPersonInfo("xiamutian").getCredit());
+		assertEquals("南京大学",sc.searchPersonInfo("xiamutian").getEnterpriseName());
+//		PersonPO pp1=new PersonPO();
+//		PersonPO pp2=new PersonPO();
+//		pp1.setUsername("xiamutian");
+//		pp2.setUsername("xiekailian");
+//		pp1.setCredit(1000);
+//		pp2.setCredit(900);
+//		assertEquals(null,sc.searchPersonInfo("wuxiufeng"));
+//		assertEquals(pp1.getCredit(),sc.searchPersonInfo("xiamutian").getCredit());
+//		assertEquals(pp2.getCredit(),sc.searchPersonInfo("xiekailian").getCredit());
 	}
 	
 	@Test
 	public void TestSearchHotelWorkerInfo(){
-		assertEquals("123456",sc.searchHotelWorkerInfo("大酒店").getPassword());
-		assertEquals("XIAMUTIAN",sc.searchHotelWorkerInfo("大酒店").getUsername());
+		assertEquals("123",sc.searchHotelWorkerInfo("xiamutian").getPassword());
+		assertEquals("南京大酒店",sc.searchHotelWorkerInfo("xiamutian").getHotelname());
 	}
 
 	@Test
 	public void TestMarketInfo(){
 		assertEquals("123",sc.searchMarketInfo("xiamutian").getPassword());
-		assertEquals("456",sc.searchMarketInfo("xiekailian").getPassword());
 	}
 
 	@Test
