@@ -6,6 +6,7 @@ import dataService.userDataService.UserDataService;
 import po.HotelWorkerPO;
 import po.MarketPO;
 import po.PersonPO;
+import rmi.RemoteHelper;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 /**
@@ -17,7 +18,7 @@ public class Manager {
 	PersonPO person=new PersonPO();
 	HotelWorkerPO hotelworker=new HotelWorkerPO();
 	MarketPO market=new MarketPO();
-	UserDataService userDataService;
+	UserDataService userDataService=RemoteHelper.getInstance().getUserDataService();
 	/**
 	 * 网站管理人员登录
 	 *@author xiamutian
