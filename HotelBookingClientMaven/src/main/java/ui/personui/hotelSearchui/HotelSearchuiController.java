@@ -1,20 +1,21 @@
 package ui.personui.hotelSearchui;
 
-import businessLogic.userbl.UserController;
-import businessLogicService.userblService.UserblService;
+import businessLogic.hotelbl.HotelController;
+import businessLogicService.hotelblService.HotelblService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.personInfoui.PersonInfoViewui;
+import vo.hotelVO.HotelSearchVO;
 
 public class HotelSearchuiController {
 
@@ -36,16 +37,28 @@ public class HotelSearchuiController {
 	private Button searchButton;
 	@FXML
 	private TextField searchField;
+	@SuppressWarnings("rawtypes")
 	@FXML
-	private TextField passwordField;
+	private TableColumn hotelNameCol;
+	@SuppressWarnings("rawtypes")
 	@FXML
-	private Label feedBackLabel;
+	private TableColumn starCol;
+	@SuppressWarnings("rawtypes")
 	@FXML
-	private Label otherLabel;
+	private TableColumn areaCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn locationCol;
+	@FXML
+	private TableView<HotelSearchVO> searchTable;
 	@FXML
 	private Pane mainPane;
 
-	private UserblService userbl;
+	private HotelblService hotelbl;
+	
+	private ObservableList<HotelSearchVO> searchData;
+	
+	private HotelSearchVO hotelInfo;
 
 	// 酒店详情查看界面
 	private Pane hotelInfoViewPane;
@@ -57,12 +70,8 @@ public class HotelSearchuiController {
 
 	private String personname;
 
-	/**
-	 * The constructor. The constructor is called before the initialize()
-	 * method.
-	 */
 	public HotelSearchuiController() {
-		userbl = new UserController();
+		hotelbl = new HotelController();
 	}
 
 	/**
@@ -79,13 +88,37 @@ public class HotelSearchuiController {
 	}
 
 	/**
-	 * 跳转到酒店详情查看界面
+	 * 输入酒店名称搜索后，跳转到酒店详情查看界面
 	 */
 	@FXML
 	private void hotelInfoView() {
-		hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname);
+		String hotelName = searchField.getText();
+//		hotelInfo = hotelbl.showHotelInfo(hotelName);
+		hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname,hotelName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelInfoViewPane);
+	}
+	
+	/**
+	 * 以列表形式显示搜索结果
+	 */
+	@SuppressWarnings("unchecked")
+	@FXML
+	private void search() {
+		searchTable.getColumns().clear();
+		String hotelName = searchField.getText();
+		searchData.get(0);
+//		searchData=FXCollections.observableArrayList(hotelbl.showHotelInfo(hotelName));
+		hotelNameCol.setCellValueFactory(
+                new PropertyValueFactory<>("hotelName"));
+		starCol.setCellValueFactory(
+                new PropertyValueFactory<>("star"));
+		areaCol.setCellValueFactory(
+                new PropertyValueFactory<>("area"));
+		locationCol.setCellValueFactory(
+                new PropertyValueFactory<>("location"));
+		searchTable.setItems(searchData);
+		
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package vo;
+package vo.personVO;
 
 import java.io.Serializable;
 import java.util.Calendar;

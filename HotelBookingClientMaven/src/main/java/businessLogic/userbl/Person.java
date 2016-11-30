@@ -11,7 +11,7 @@ import dataService.userDataService.UserDataService;
 import po.PersonPO;
 import rmi.RemoteHelper;
 import vo.HotelVO;
-import vo.PersonVO;
+import vo.personVO.PersonVO;
 /**
  * @author xiamutian
  * @author 武秀峰

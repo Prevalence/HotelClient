@@ -149,7 +149,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="searchButton" layoutX="753.0" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: transparent;">
+      <Button fx:id="searchButton" layoutX="753.0" layoutY="120.0" mnemonicParsing="false" onAction="#search" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -186,12 +186,12 @@
             <Image url="@../酒店搜索界面/结果栏/地址.png" />
          </image>
       </ImageView>
-      <Slider layoutX="991.0" layoutY="258.0" orientation="VERTICAL" prefHeight="545.0" prefWidth="17.0" />
-      <TableView layoutX="170.0" layoutY="337.0" prefHeight="447.0" prefWidth="817.0">
+      <TableView fx:id="SearchTable" layoutX="168.0" layoutY="328.0" prefHeight="447.0" prefWidth="817.0" style="-fx-background-color: transparent;">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-            <TableColumn prefWidth="93.0" text="Column X" />
+            <TableColumn fx:id="hotelNameCol" prefWidth="199.0" />
+            <TableColumn fx:id="starCol" prefWidth="173.0" />
+          <TableColumn fx:id="areaCol" prefWidth="229.0" />
+          <TableColumn fx:id="locationCol" minWidth="0.0" prefWidth="214.0" />
         </columns>
       </TableView>
    </children>

@@ -24,7 +24,7 @@ public class HotelSearchui extends Pane {
 	};
 
 	/**
-	 * 初始化hotelSearchPane
+	 * 初始化本界面
 	 */
 	public void initHotelSearchui() {
 		// 设置新的Pane

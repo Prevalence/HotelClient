@@ -1,4 +1,4 @@
-package ui.personui.personInfoui;
+package ui.personui.registerui;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
@@ -8,8 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.loginui.Loginui;
 
-public class PersonInfoViewuiController {
+public class SucceedToRegisteruiController {
 	//TODO
 	
 	@FXML
@@ -18,26 +19,26 @@ public class PersonInfoViewuiController {
 	private UserblService userbl;
 
 	// 酒店详情查看界面
-	private Pane hotelInfoViewPane;
-
-	// 个人信息界面
-	private Pane personInfoViewPane;
+	private Pane loginuiPane;
 
 	private Stage primaryStage;
 
-	private String personname;
-
-	/**
-	 * The constructor. The constructor is called before the initialize()
-	 * method.
-	 */
-	public PersonInfoViewuiController() {
+	public SucceedToRegisteruiController() {
 		userbl = new UserController();
 	}
 
-	
-	
-	
+	/**
+	 * 返回到登录界面
+	 * 
+	 * @return boolean
+	 */
+
+	@FXML
+	private void backToLoginui() {
+		loginuiPane = new Loginui(primaryStage);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(loginuiPane);
+	}
 
 	/**
 	 * 传递Main的primaryStage
@@ -46,14 +47,5 @@ public class PersonInfoViewuiController {
 	 */
 	public void launchStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-	}
-
-	/**
-	 * 传递用户名
-	 * 
-	 * @param personname
-	 */
-	public void setPersonname(String personname) {
-		this.personname = personname;
 	}
 }
