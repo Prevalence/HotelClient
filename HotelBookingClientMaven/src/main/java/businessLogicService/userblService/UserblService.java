@@ -4,10 +4,9 @@ import java.text.ParseException;
 
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.PersonPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.PersonVO;
+import vo.personvo.PersonVO;
 
 public interface UserblService {
 
@@ -53,13 +52,13 @@ public interface UserblService {
 	 * @param userinfo
 	 * @return boolean
 	 */
-	public PersonPO getPersonInfo(String username);
+	public PersonVO getPersonInfo(String username);
 	/**
 	 * 获取会员信息
 	 * @author xiamutian
 	 * @return boolean
 	 */
-	public HotelWorkerPO getHotelWorkerInfo(String hotelWorkername);
+	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername);
 	/**
 	 * 获取酒店工作人员信息
 	 * @author xiamutian
@@ -83,7 +82,7 @@ public interface UserblService {
 	 * @author xiamutian
 	 * @return boolean
 	 */
-	public MarketPO getMarketInfo(String marketname);
+	public MarketVO getMarketInfo(String marketname);
 	/**
 	 * 获取网站营销人员信息
 	 * @author xiamutian

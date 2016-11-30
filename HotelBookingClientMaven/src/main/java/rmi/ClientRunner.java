@@ -35,7 +35,7 @@ public class ClientRunner {
 //	}
 	
 	public void test() throws RemoteException{
-		System.out.println(remoteHelper.getHotelDataService().showHotelinfo("南京大酒店"));
+//		System.out.println(remoteHelper.getHotelDataService().showHotelinfo("南京大酒店"));
 	}
 	
 	public static void main(String[] args){//������

@@ -10,13 +10,11 @@ import org.junit.Test;
 import businessLogic.searchbl.Search;
 import businessLogic.searchbl.SearchController;
 import businessLogic.searchbl.SearchHistory;
-import po.HotelPO;
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.PersonPO;
 import po.SearchPO;
 import rmi.ClientRunner;
-import vo.HotelVO;
+import vo.SearchVO;
 
 public class TestSearchController {
 	ClientRunner cr=new ClientRunner();
@@ -52,7 +50,7 @@ public class TestSearchController {
 	@Test
 	public void TestSearchHotelWorkerInfo(){
 		assertEquals("123",sc.searchHotelWorkerInfo("xiamutian").getPassword());
-		assertEquals("南京大酒店",sc.searchHotelWorkerInfo("xiamutian").getHotelname());
+		assertEquals("南京大酒店",sc.searchHotelWorkerInfo("xiamutian").getHotelName());
 	}
 
 	@Test
@@ -70,13 +68,13 @@ public class TestSearchController {
 
 	@Test
 	public void TestSaveHistory(){
-		SearchPO s=new SearchPO("wuxiufeng", null, "酒店5");
+		SearchVO s=new SearchVO("wuxiufeng", null, "酒店5");
 		assertEquals(true,sc.saveHistory(s));
 	}
 	
 	@Test
 	public void TestDeleteHistory(){
-		SearchPO s=new SearchPO("wuxiufeng", null, "酒店5");
+		SearchVO s=new SearchVO("wuxiufeng", null, "酒店5");
 		assertEquals(true,sc.deleteHistory(s));
 	}
 

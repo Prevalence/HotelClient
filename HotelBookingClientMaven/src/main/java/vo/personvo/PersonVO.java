@@ -1,14 +1,13 @@
-package po;
+package vo.personvo;
+
 import java.io.Serializable;
 import java.util.Calendar;
 
-import vo.PersonVO;
-/**
- * 
- * @author 武秀峰
- *
- */
-public class PersonPO implements Serializable{
+import po.personpo.PersonPO;
+
+
+
+public class PersonVO  implements Serializable {
 	private String username;
 	private String password;
 	private int personID;
@@ -18,13 +17,14 @@ public class PersonPO implements Serializable{
 	private int vipLevel;
 	private String enterpriseName;//企业会员登记企业名称
 	private String phoneNumber;//由11位数字组成的电话号码
-
-	//构造函数
-	public PersonPO() {
-		super();
-	}
 	
-	public PersonPO(String username, String password, int personID, int credit, Calendar birthday, String vipType,
+	
+	public PersonVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public PersonVO(String username, String password, int personID, int credit, Calendar birthday, String vipType,
 			int vipLevel, String enterpriseName, String phoneNumber) {
 		super();
 		this.username = username;
@@ -35,18 +35,20 @@ public class PersonPO implements Serializable{
 		this.vipType = vipType;
 		this.vipLevel = vipLevel;
 		this.enterpriseName = enterpriseName;
-		this.phoneNumber=phoneNumber;
+		this.phoneNumber = phoneNumber;
 	}
-	public PersonPO(PersonVO vo) {
-		this.username=vo.getUsername();
-		this.password=vo.getPassword();
-		this.personID=vo.getPersonID();
-		this.credit=vo.getCredit();
-		this.birthday = vo.getBirthday();
-		this.vipType = vo.getVipType();
-		this.vipLevel = vo.getVipLevel();
-		this.enterpriseName = vo.getEnterpriseName();
-		this.phoneNumber=vo.getPhoneNumber();
+	
+	public PersonVO(PersonPO po) {
+		super();
+		this.username = po.getUsername();
+		this.password = po.getPassword();
+		this.personID = po.getPersonID();
+		this.credit = po.getCredit();
+		this.birthday = po.getBirthday();
+		this.vipType = po.getVipType();
+		this.vipLevel = po.getVipLevel();
+		this.enterpriseName = po.getEnterpriseName();
+		this.phoneNumber = po.getPhoneNumber();
 	}
 	
 	//get and set
@@ -107,5 +109,5 @@ public class PersonPO implements Serializable{
 		this.phoneNumber = phoneNumber;
 	}
 	
-
+	
 }

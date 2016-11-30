@@ -1,21 +1,12 @@
 package businessLogic.promotion;
 
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import businessLogic.promotionbl.PromotionController;
-import po.HotelPO;
-import po.PromotionPO;
-import po.promotionpo.hotelpromotionpo.BirthdayHotelproPO;
 import rmi.ClientRunner;
-import ui.hotelworkerui.promotionuiController.PromotionuiController;
-import vo.OrderVO;
 import vo.PromotionVO;
-import vo.promotionvo.hotelpromotionvo.BirthdayHotelproVO;
 
 public class PromotionControllerTest {
 	ClientRunner cr=new ClientRunner();
