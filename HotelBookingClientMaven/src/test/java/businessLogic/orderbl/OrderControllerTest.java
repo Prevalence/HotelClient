@@ -53,7 +53,7 @@ public class OrderControllerTest {
 		latestExecutetime.set(2016, 11, 29);
 		
 		OrderVO order=new OrderVO(null, 300, null, "nonExecute", "酒店1",
-				null, null, null, "wuxiufeng",
+				null, null, null, "xiamutian",
 				null, 1, 0, null, null,
 				null, latestExecutetime, null, null);
 		assertEquals(true,oc.reverseOrder(order));
