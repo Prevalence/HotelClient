@@ -2,7 +2,7 @@ package businessLogic.userbl;
 import java.util.ArrayList;
 
 import po.PersonPO;
-import vo.PersonVO;
+import vo.personVO.PersonVO;
 
 public class PersonMock extends Person {
 	PersonPO pp=new PersonPO();

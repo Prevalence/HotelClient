@@ -1,9 +1,10 @@
-package ui.hotelworkerui.orderViewui;
+package ui.personui.orderViewui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class OrderViewui {
+public class OrderViewui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
