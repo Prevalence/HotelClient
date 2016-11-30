@@ -30,8 +30,7 @@ public class PromotionController implements PromotionblService{
 	 */
 	public ArrayList<PromotionPO>getProm(String hotelname){
 		Promotion pro=new Promotion();
-		ArrayList<PromotionPO> promList=(ArrayList<PromotionPO>) pro.getProm(hotelname);
-		return promList;
+		return pro.getProm(hotelname);
 	}
 	/**
 	 * 

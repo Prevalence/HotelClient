@@ -1,7 +1,6 @@
 package businessLogic.searchbl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ import po.SearchPO;
 import rmi.ClientRunner;
 import vo.HotelVO;
 
-public class SearchControllerTest {
+public class TestSearchController {
 	ClientRunner cr=new ClientRunner();
 	SearchController sc=new SearchController();
 	
@@ -58,8 +57,7 @@ public class SearchControllerTest {
 
 	@Test
 	public void TestMarketInfo(){
-//		assertEquals("123",sc.searchMarketInfo("xiamutian").getPassword());
-		assertNull(sc.searchMarketInfo("xiamutian"));//预计是123，然而是null，why
+		assertNull(sc.searchMarketInfo("wuxiufeng"));
 	}
 
 	@Test
