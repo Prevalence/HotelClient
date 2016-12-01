@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import dataService.hotelDataService.HotelDataService;
 import po.hotelpo.HotelPO;
 import rmi.RemoteHelper;
-import vo.hotelvo.HotelVO;
+import vo.hotelVO.HotelVO;
 /**
  * 
  * @author 武秀峰

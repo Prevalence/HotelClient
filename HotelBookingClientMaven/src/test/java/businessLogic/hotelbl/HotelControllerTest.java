@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import businessLogic.hotelbl.HotelController;
 import rmi.ClientRunner;
-import vo.hotelvo.HotelVO;
+import vo.hotelVO.HotelVO;
 
 public class HotelControllerTest {
 	ClientRunner cr=new ClientRunner();

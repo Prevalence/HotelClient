@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businessLogicService.hotelblService.HotelblService;
-import vo.hotelvo.HotelVO;
+import vo.hotelVO.HotelVO;
 
 /**
  * HotelController 控制hotel相关的逻辑操作

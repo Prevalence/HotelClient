@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import vo.hotelvo.CommentVO;
+import vo.hotelVO.CommentVO;
 
 public class CommentPO implements Serializable{
 	private String hotelname;

@@ -16,7 +16,7 @@ import po.MarketPO;
 import po.personpo.PersonPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.hotelvo.HotelVO;
+import vo.hotelVO.HotelVO;
 import vo.personvo.PersonVO;
 /**
  * 

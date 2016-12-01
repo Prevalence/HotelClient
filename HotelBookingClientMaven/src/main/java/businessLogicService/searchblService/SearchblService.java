@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.SearchVO;
-import vo.hotelvo.HotelVO;
+import vo.hotelVO.HotelVO;
 import vo.personvo.PersonVO;
 /**
  * 

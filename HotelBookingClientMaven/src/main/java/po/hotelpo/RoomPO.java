@@ -3,7 +3,7 @@ package po.hotelpo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import vo.hotelvo.RoomVO;
+import vo.hotelVO.RoomVO;
 
 public class RoomPO implements Serializable {
 	private String roomType;

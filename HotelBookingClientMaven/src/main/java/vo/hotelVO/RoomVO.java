@@ -1,4 +1,4 @@
-package vo.hotelvo;
+package vo.hotelVO;
 
 import java.io.Serializable;
 

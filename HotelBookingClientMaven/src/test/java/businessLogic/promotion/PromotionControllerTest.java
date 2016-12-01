@@ -84,12 +84,12 @@ public class PromotionControllerTest {
 
 	@Test
 	public void testAddProm() {
-		PromotionVO prom=new BirthdayHotelproVO("123", "生日折扣","BirthdayHotelPromtion",
-				"南京大酒店", 500);
-		System.out.println(prom.getPromotionID());
-		PromotionPO po=prom.topo(prom);
-		System.out.println(po.getHotelnameOrWeb());
-		System.out.println(po);
+//		PromotionVO prom=new BirthdayHotelproVO("123", "生日折扣","BirthdayHotelPromtion",
+//				"南京大酒店", 500);
+//		System.out.println(prom.getPromotionID());
+//		PromotionPO po=prom.toPO(prom);
+//		System.out.println(po.getHotelnameOrWeb());
+//		System.out.println(po);
 		
 //		BirthdayHotelproPO po=new BirthdayHotelproPO();
 //		po.setPromotionID(vo.getPromotionID());
@@ -111,7 +111,6 @@ public class PromotionControllerTest {
 		PromotionVO vo=new PromotionVO();
 		vo.setPromotionName("生日折扣");
 		vo.setPromotionType("111");
-		
 		assertEquals(true, promotioncontroller.addProm(vo));
 //		assertEquals(true, promotioncontroller.addProm(vo));
 		

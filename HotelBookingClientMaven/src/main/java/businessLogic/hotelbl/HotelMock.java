@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import po.hotelpo.CommentPO;
 import po.hotelpo.HotelPO;
 import po.hotelpo.RoomPO;
-import vo.hotelvo.CommentVO;
-import vo.hotelvo.HotelVO;
-import vo.hotelvo.RoomVO;
+import vo.hotelVO.CommentVO;
+import vo.hotelVO.HotelVO;
+import vo.hotelVO.RoomVO;
 
 public class HotelMock extends Hotel{
 	/**

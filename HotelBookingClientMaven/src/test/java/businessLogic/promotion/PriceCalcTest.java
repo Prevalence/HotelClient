@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import businessLogic.promotionbl.PriceCalc;
 import vo.OrderVO;
-import vo.hotelvo.HotelVO;
-import vo.hotelvo.RoomVO;
+import vo.hotelVO.HotelVO;
+import vo.hotelVO.RoomVO;
 
 public class PriceCalcTest {
 	PriceCalc price=new PriceCalc();

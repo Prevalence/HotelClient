@@ -3,9 +3,9 @@ package po.hotelpo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import vo.hotelvo.CommentVO;
-import vo.hotelvo.HotelVO;
-import vo.hotelvo.RoomVO;
+import vo.hotelVO.CommentVO;
+import vo.hotelVO.HotelVO;
+import vo.hotelVO.RoomVO;
 
 public class HotelPO implements Serializable{
 	private String hotelname;

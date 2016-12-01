@@ -9,7 +9,7 @@ import po.PromotionPO;
 import po.personpo.PersonPO;
 import vo.OrderVO;
 import vo.PromotionVO;
-import vo.hotelvo.HotelVO;
+import vo.hotelVO.HotelVO;
 import vo.personvo.PersonVO;
 /**
  * 
@@ -32,7 +32,7 @@ public class PriceCalc {
 		
 		ArrayList<PromotionPO>promotionpolist = new ArrayList<PromotionPO>();
 		for(int i=0; i<promotionvolist.size(); i++){
-			PromotionPO propo=promotionvolist.get(i).topo(promotionvolist.get(i));
+			PromotionPO propo=promotionvolist.get(i).toPO(promotionvolist.get(i));
 			promotionpolist.add(propo);
 		}
 		//process the PO and VO

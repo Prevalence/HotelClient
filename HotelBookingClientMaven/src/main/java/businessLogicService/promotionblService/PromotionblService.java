@@ -4,7 +4,7 @@ import java.util.List;
 
 import vo.OrderVO;
 import vo.PromotionVO;
-import vo.hotelvo.HotelVO;
+import vo.hotelVO.HotelVO;
 
 public interface PromotionblService {
 	/**
