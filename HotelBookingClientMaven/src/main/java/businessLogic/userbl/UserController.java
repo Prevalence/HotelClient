@@ -1,10 +1,9 @@
 package businessLogic.userbl;
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.PersonPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.personVO.PersonVO;
+import vo.personvo.PersonVO;
 
 import java.rmi.RemoteException;
 import java.text.ParseException;
@@ -112,7 +111,7 @@ public class UserController  implements UserblService{
 	 * 获取会员信息
 	 * @return boolean
 	 */	
-	public PersonPO getPersonInfo(String personname) {
+	public PersonVO getPersonInfo(String personname) {
 	try {
 		return person.getPersonInfo(personname);
 	} catch (RemoteException e) {
@@ -126,7 +125,7 @@ public class UserController  implements UserblService{
 	 * 获取酒店工作人员信息
 	 * @return HotelWorkerPO
 	 */
-	public HotelWorkerPO getHotelWorkerInfo(String hotelWorkername) {
+	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) {
 		try {
 			return hotelworker.getHotelWorkerInfo(hotelWorkername);
 		} catch (RemoteException e) {
@@ -190,7 +189,7 @@ public class UserController  implements UserblService{
 	 * 获取网站营销人员信息
 	 * @return boolean
 	 */
-	public MarketPO getMarketInfo(String marketname) {
+	public MarketVO getMarketInfo(String marketname) {
 		try {
 			return market.getMarketInfo(marketname);
 		} catch (RemoteException e) {

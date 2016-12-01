@@ -2,8 +2,12 @@ package businessLogic.hotelbl;
 
 import java.util.ArrayList;
 
-import po.HotelPO;
-import vo.HotelVO;
+import po.hotelpo.CommentPO;
+import po.hotelpo.HotelPO;
+import po.hotelpo.RoomPO;
+import vo.hotelvo.CommentVO;
+import vo.hotelvo.HotelVO;
+import vo.hotelvo.RoomVO;
 
 public class HotelMock extends Hotel{
 	/**
@@ -11,9 +15,19 @@ public class HotelMock extends Hotel{
 	 * @param Hotelname
 	 * @return 获取酒店信息（PO）
 	 */
-	public HotelPO showHotelInfo(String Hotelname){
-		HotelPO hotelpo=new HotelPO("南京大酒店", 5, "高级酒店", null, "仙林168号", "仙林大学城",4.7, null, null, null, null, "小李");
-		return hotelpo;
+	public HotelVO showHotelInfo(String Hotelname){
+		RoomVO roomvo=new RoomVO("hello", 0, 0);
+		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
+		roomvoList.add(roomvo);
+		CommentVO commentvo=new CommentVO("南京大酒店", "小李", null, 5, "很好");
+		ArrayList<CommentVO> commentvoList=new ArrayList<CommentVO>();
+		commentvoList.add(commentvo);
+//		public HotelVO(String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
+//				String circle, double score, RoomPO room, CommentPO comment, String hotelworker)
+		HotelVO hotelvo=new HotelVO("南京大酒店", 5, "高级酒店", null, "仙林168号", 
+				"仙林大学城",4.7, roomvoList, commentvoList, "小李");
+		
+		return hotelvo;
 	}
 	/**
 	 * 
@@ -51,17 +65,24 @@ public class HotelMock extends Hotel{
 			result=true;
 		return result;
 	}
-	public ArrayList<HotelPO> findWithReq(HotelPO p) {
-		HotelPO hotelpo=new HotelPO("南京大酒店1", 5, "高级酒店", null, "仙林168号", "商圈1",4.7, null, null, null, null, "小李");
-		HotelPO hotelpo2=new HotelPO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", 4.5,null, null, null, null, "小李");
-		HotelPO hotelpo3=new HotelPO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2",4.9, null, null, null, null, "小李");
-		ArrayList<HotelPO> hotels=new ArrayList<HotelPO>();
-		if(p.getCircle().equals(hotelpo.getCircle()))
-			hotels.add(hotelpo);
-		if(p.getCircle().equals(hotelpo2.getCircle()))
-			hotels.add(hotelpo2);
-		if(p.getCircle().equals(hotelpo3.getCircle()))
-			hotels.add(hotelpo3);
+	public ArrayList<HotelVO> findWithReq(HotelVO p) {
+		RoomVO roomvo=new RoomVO("hello", 0, 0);
+		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
+		roomvoList.add(roomvo);
+		CommentVO commentvo=new CommentVO("南京大酒店", "小李", null, 5, "很好");
+		ArrayList<CommentVO> commentvoList=new ArrayList<CommentVO>();
+		commentvoList.add(commentvo);
+		
+		HotelVO hotelvo1=new HotelVO("南京大酒店1", 5, "高级酒店", null, "仙林168号", "商圈1",4.7,roomvoList, commentvoList, "小李");
+		HotelVO hotelvo2=new HotelVO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", 4.5,roomvoList, commentvoList, "小李");
+		HotelVO hotelvo3=new HotelVO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2",4.9, roomvoList, commentvoList, "小李");
+		ArrayList<HotelVO> hotels=new ArrayList<HotelVO>();
+		if(p.getCircle().equals(hotelvo1.getCircle()))
+			hotels.add(hotelvo1);
+		if(p.getCircle().equals(hotelvo2.getCircle()))
+			hotels.add(hotelvo2);
+		if(p.getCircle().equals(hotelvo3.getCircle()))
+			hotels.add(hotelvo3);
 		return hotels;
 	}
 }

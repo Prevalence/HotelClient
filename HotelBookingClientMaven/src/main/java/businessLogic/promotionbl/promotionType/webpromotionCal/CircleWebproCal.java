@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import businessLogic.hotelbl.Hotel;
 import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
-import po.PersonPO;
 import po.PromotionPO;
+import po.personpo.PersonPO;
 import po.promotionpo.webpromotionpo.CircleWebproPO;;
 
 /**
