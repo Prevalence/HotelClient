@@ -1,32 +1,32 @@
-package ui.marketui.creditPayui;
+package ui.marketui.promotionui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
-public class CreditPayui {
+public class Promotionui {
 	private Stage primaryStage;
 
 	private String personname;
 
-	private CreditPayuiController creditPayViewuiController;
+	private PromotionuiController promotionViewuiController;
 
 	/**
 		 * 接受primarystage用来完成界面最小化和可移动化设置
 		 * 
 		 * @param primaryStage
 		 */
-		public CreditPayui(Stage primaryStage, String personname) {
+		public Promotionui(Stage primaryStage, String personname) {
 			this.primaryStage = primaryStage;
 			this.personname = personname;
-			initCreditPayViewui();
+			initPromotionViewui();
 		};
 
 	/**
 	 * 初始化界面
 	 */
-	public void initCreditPayViewui() {
+	public void initPromotionViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreditPayui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Promotionui.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -35,8 +35,8 @@ public class CreditPayui {
 		}
 		// Scene scene = new Scene(this);
 		// primaryStage.setScene(scene);
-		creditPayViewuiController = loader.getController();
-		creditPayViewuiController.launchStage(primaryStage);
-		creditPayViewuiController.setPersonname(personname);
+		promotionViewuiController = loader.getController();
+		promotionViewuiController.launchStage(primaryStage);
+		promotionViewuiController.setPersonname(personname);
 	}
 }

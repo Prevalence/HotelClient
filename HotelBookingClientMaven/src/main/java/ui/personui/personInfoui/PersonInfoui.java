@@ -5,19 +5,19 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.personui.hotelInfoViewui.HotelInfoViewuiController;
 
-public class PersonInfoViewui extends Pane{
+public class PersonInfoui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
 
-	private PersonInfoViewuiController personInfoViewuiController;
+	private PersonInfouiController personInfoViewuiController;
 
 	/**
 		 * 接受primarystage用来完成界面最小化和可移动化设置
 		 * 
 		 * @param primaryStage
 		 */
-		public PersonInfoViewui(Stage primaryStage, String personname) {
+		public PersonInfoui(Stage primaryStage, String personname) {
 			this.primaryStage = primaryStage;
 			this.personname = personname;
 			initPersonInfoViewui();
@@ -28,7 +28,7 @@ public class PersonInfoViewui extends Pane{
 	 */
 	public void initPersonInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PersonInfoViewui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PersonInfoui.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();

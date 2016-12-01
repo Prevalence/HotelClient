@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.loginui.Loginui;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
-import ui.personui.personInfoui.PersonInfoViewui;
+import ui.personui.personInfoui.PersonInfoui;
 
 public class RegisteruiController {
 	//TODO
