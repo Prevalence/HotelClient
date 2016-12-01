@@ -1,11 +1,12 @@
 package po.hotelpo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import vo.hotelvo.CommentVO;
 
-public class CommentPO {
+public class CommentPO implements Serializable{
 	private String hotelname;
 	private String personname;//评价者
 	private Calendar time;

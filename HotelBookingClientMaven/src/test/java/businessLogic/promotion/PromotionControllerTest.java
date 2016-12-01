@@ -5,8 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import businessLogic.promotionbl.PromotionController;
+import po.PromotionPO;
 import rmi.ClientRunner;
 import vo.PromotionVO;
+import vo.promotionvo.hotelpromotionvo.BirthdayHotelproVO;
 
 public class PromotionControllerTest {
 	ClientRunner cr=new ClientRunner();
@@ -82,10 +84,12 @@ public class PromotionControllerTest {
 
 	@Test
 	public void testAddProm() {
-//		PromotionVO vo=new BirthdayHotelproVO("123", "生日折扣","BirthdayHotelPromtion",
-//				"南京大酒店", 500);
-		
-//		PromotionPO po=prom.topo(prom);
+		PromotionVO prom=new BirthdayHotelproVO("123", "生日折扣","BirthdayHotelPromtion",
+				"南京大酒店", 500);
+		System.out.println(prom.getPromotionID());
+		PromotionPO po=prom.topo(prom);
+		System.out.println(po.getHotelnameOrWeb());
+		System.out.println(po);
 		
 //		BirthdayHotelproPO po=new BirthdayHotelproPO();
 //		po.setPromotionID(vo.getPromotionID());

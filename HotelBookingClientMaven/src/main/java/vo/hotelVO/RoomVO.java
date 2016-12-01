@@ -1,8 +1,10 @@
 package vo.hotelvo;
 
+import java.io.Serializable;
+
 import po.hotelpo.RoomPO;
 
-public class RoomVO {
+public class RoomVO implements Serializable {
 	private String roomType;
 	private int roomnum;
 	private int roomPrice;

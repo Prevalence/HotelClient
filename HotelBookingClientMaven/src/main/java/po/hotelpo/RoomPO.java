@@ -1,10 +1,11 @@
 package po.hotelpo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import vo.hotelvo.RoomVO;
 
-public class RoomPO {
+public class RoomPO implements Serializable {
 	private String roomType;
 	private int roomnum;
 	private int roomPrice;

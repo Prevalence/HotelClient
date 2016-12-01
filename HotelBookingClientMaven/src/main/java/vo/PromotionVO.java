@@ -59,7 +59,7 @@ public class PromotionVO implements Serializable {
 		this.hotelnameOrWeb = hotelnameOrWeb;
 	}
 	//vo to po
-	public PromotionPO topo(PromotionVO promotionvo){
+	public PromotionPO toPO(PromotionVO promotionvo){
 		return null;
 	}
 	

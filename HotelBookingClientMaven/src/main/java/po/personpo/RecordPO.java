@@ -1,9 +1,12 @@
 package po.personpo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class RecordPO {
+import vo.personvo.RecordVO;
+
+public class RecordPO implements Serializable {
 	//时间，订单号，动作（订单执行、订单异常、订单撤销、充值），信用度变化、信用度结果
 	private Calendar time;
 	private String orderId;
@@ -24,7 +27,14 @@ public class RecordPO {
 		this.changeCredit = changeCredit;
 		this.resultCredit = resultCredit;
 	}
-
+	
+	public RecordPO(RecordVO vo) {
+		this.time = time;
+		this.orderId = orderId;
+		this.operation = operation;
+		this.changeCredit = changeCredit;
+		this.resultCredit = resultCredit;
+	}
 
 	public Calendar getTime() {
 		return time;
