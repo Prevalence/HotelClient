@@ -1,4 +1,4 @@
-package vo.hotelVO;
+package vo.hotelVO.hotelblVO;
 
 public class HotelConditionVO {
 	

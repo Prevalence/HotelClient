@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import vo.hotelVO.HotelInfoVO;
+import vo.hotelVO.hoteluiVO.HotelInfoVO;
 
 public class HotelInfoViewuiController {
 	//TODO
