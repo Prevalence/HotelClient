@@ -11,7 +11,6 @@ import businessLogic.promotionbl.PromotionController;
 import po.HotelPO;
 import po.PromotionPO;
 import rmi.ClientRunner;
-import ui.hotelworkerui.promotionuiController.PromotionuiController;
 import vo.OrderVO;
 import vo.PromotionVO;
 

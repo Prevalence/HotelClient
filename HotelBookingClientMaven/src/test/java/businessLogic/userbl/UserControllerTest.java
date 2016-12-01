@@ -12,7 +12,7 @@ import po.PersonPO;
 import rmi.ClientRunner;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.PersonVO;
+import vo.personVO.PersonVO;
 
 public class UserControllerTest {
 	ClientRunner cr=new ClientRunner();
