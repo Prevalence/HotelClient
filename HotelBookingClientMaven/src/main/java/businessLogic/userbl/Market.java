@@ -7,7 +7,7 @@ import po.MarketPO;
 import po.personpo.PersonPO;
 import rmi.RemoteHelper;
 import vo.MarketVO;
-import vo.personvo.PersonVO;
+import vo.personVO.PersonVO;
 /**
  * @author xiamutian
  * @author 武秀峰

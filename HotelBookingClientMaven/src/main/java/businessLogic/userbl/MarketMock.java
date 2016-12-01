@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import po.MarketPO;
 import po.personpo.PersonPO;
 import vo.MarketVO;
-import vo.personvo.PersonVO;
+import vo.personVO.PersonVO;
 
 public class MarketMock extends Market{
 	public PersonVO getPersonInfo(String personname){

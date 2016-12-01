@@ -3,7 +3,7 @@ import po.HotelWorkerPO;
 import po.MarketPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.personvo.PersonVO;
+import vo.personVO.PersonVO;
 
 import java.rmi.RemoteException;
 import java.text.ParseException;

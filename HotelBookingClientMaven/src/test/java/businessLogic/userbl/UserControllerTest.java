@@ -11,7 +11,7 @@ import org.junit.Test;
 import rmi.ClientRunner;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.personvo.PersonVO;
+import vo.personVO.PersonVO;
 
 public class UserControllerTest {
 	ClientRunner cr=new ClientRunner();

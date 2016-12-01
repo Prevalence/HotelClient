@@ -5,6 +5,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import dataService.hotelDataService.HotelDataService;
 import rmi.RemoteHelper;
 
 public class ClientRunner {
@@ -35,11 +36,32 @@ public class ClientRunner {
 //	}
 	
 	public void test() throws RemoteException{
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 //		System.out.println(remoteHelper.getHotelDataService().showHotelinfo("南京大酒店"));
+=======
+=======
+>>>>>>> master
+=======
+>>>>>>> master
+		//remoteHelper.getHotelDataService().showHotelinfo("nanj");
+//		System.out.println(remoteHelper.getOrderDataService().exceptionFind().get(0).getOrderstate());
+		//System.out.println(remoteHelper.getHotelDataService().showHotelinfo("南京大酒店").getAddress());
+		System.out.println(remoteHelper.getPromotionDataService().find("南京大酒店").get(1).getPromotionType());
+//		System.out.println(remoteHelper.getSearchDataService().showSearchHistory("小夏"));
+//		System.out.println(remoteHelper.getUserDataService().findHotelWorker("小夏"));
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> master
+=======
+>>>>>>> master
+=======
+>>>>>>> master
 	}
 	
-	public static void main(String[] args){//������
+	public static void main(String[] args) throws RemoteException{//������
 		ClientRunner cr = new ClientRunner();
-		//cr.test();
+		cr.test();
 	}
 }

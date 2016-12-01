@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
 import dataService.userDataService.UserDataService;
 import po.personpo.PersonPO;
 import rmi.RemoteHelper;
-import vo.personvo.PersonVO;
+import vo.personVO.PersonVO;
 /**
  * @author xiamutian
  * @author 武秀峰

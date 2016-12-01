@@ -6,7 +6,7 @@ import po.HotelWorkerPO;
 import po.MarketPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.personvo.PersonVO;
+import vo.personVO.PersonVO;
 
 public interface UserblService {
 

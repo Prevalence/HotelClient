@@ -2,7 +2,7 @@ package po.personpo;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import vo.personvo.PersonVO;
+import vo.personVO.PersonVO;
 
 /**
  * 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import vo.personvo.RecordVO;
+import vo.personVO.RecordVO;
 
 public class RecordPO implements Serializable {
 	//时间，订单号，动作（订单执行、订单异常、订单撤销、充值），信用度变化、信用度结果

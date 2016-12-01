@@ -10,7 +10,7 @@ import po.personpo.PersonPO;
 import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.HotelVO;
-import vo.personvo.PersonVO;
+import vo.personVO.PersonVO;
 /**
  * 
  * @author John
