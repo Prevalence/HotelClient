@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
-import ui.personui.personInfoui.PersonInfoViewui;
+import ui.personui.personInfoui.PersonInfoui;
 import vo.hotelVO.HotelSearchVO;
 
 public class HotelSearchuiController {
@@ -82,7 +82,7 @@ public class HotelSearchuiController {
 
 	@FXML
 	private void viewPersonInfo() {
-		personInfoViewPane = new PersonInfoViewui(primaryStage, personname);
+		personInfoViewPane = new PersonInfoui(primaryStage, personname);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(personInfoViewPane);
 	}
