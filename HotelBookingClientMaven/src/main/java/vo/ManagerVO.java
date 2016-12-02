@@ -22,6 +22,6 @@ public class ManagerVO  implements Serializable {
 		this.username=username;
 		this.password=password;
 	}
-		// TODO Auto-generated constructor stub
-	}
+}
+
 

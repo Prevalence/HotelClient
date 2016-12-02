@@ -1,10 +1,10 @@
-package po.promotionpo.hotelpromotionpo;
+package po.promotionpo.hotelpromotionPO;
 
 import java.util.ArrayList;
 
 import po.PromotionPO;
-import vo.promotionvo.hotelpromotionvo.BirthdayHotelproVO;
-import vo.promotionvo.hotelpromotionvo.EnterpriseHotelproVO;
+import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
+import vo.promotionvo.hotelpromotionVO.EnterpriseHotelproVO;
 
 /**
  *  @author 武秀峰
