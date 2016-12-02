@@ -36,7 +36,6 @@ public class ClientRunner {
 //	}
 	
 	public void test() throws RemoteException{
-//		System.out.println(remoteHelper.getHotelDataService().showHotelinfo("南京大酒店"));
 		//remoteHelper.getHotelDataService().showHotelinfo("nanj");
 //		System.out.println(remoteHelper.getOrderDataService().exceptionFind().get(0).getOrderstate());
 		//System.out.println(remoteHelper.getHotelDataService().showHotelinfo("南京大酒店").getAddress());
