@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import po.PromotionPO;
-import vo.promotionvo.hotelpromotionVO.LargeAmountHotelproVO;
-import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
+import vo.promotionvo.hotelpromotionVOl.LargeAmountHotelproVO;
+import vo.promotionvo.hotelpromotionVOl.PeriodHotelproVO;
 
 /**
  *  @author 武秀峰

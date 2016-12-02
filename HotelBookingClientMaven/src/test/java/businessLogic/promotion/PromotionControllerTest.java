@@ -8,7 +8,7 @@ import businessLogic.promotionbl.PromotionController;
 import po.PromotionPO;
 import rmi.ClientRunner;
 import vo.PromotionVO;
-import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
+import vo.promotionvo.hotelpromotionVOl.BirthdayHotelproVO;
 
 public class PromotionControllerTest {
 	ClientRunner cr=new ClientRunner();

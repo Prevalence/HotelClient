@@ -1,22 +1,19 @@
-package vo.promotionvo.hotelpromotionVO;
+package vo.promotionvo.hotelpromotionVOl;
 
 import java.util.ArrayList;
 
-import po.promotionpo.hotelpromotionPO.LargeAmountHotelproPO;
+import po.PromotionPO;
+import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
 import vo.PromotionVO;
 
 /**
  * @author 武秀峰
- * 酒店促销策略：三间及以上预订特惠*/
-public class LargeAmountHotelproVO extends PromotionVO{
-//	private String promotionType="LargeAmountHotelPromtion";
+ * 酒店促销策略：生日特惠折扣*/
+public class BirthdayHotelproVO extends PromotionVO{
+//	private String promotionType="BirthdayHotelPromtion";
 	private int discount;//如打九五折时，discount=95
 	
-	public LargeAmountHotelproVO() {
-		super();
-	}
-
-	public LargeAmountHotelproVO(String promotionID, String promotionName, String promotionType,
+	public BirthdayHotelproVO(String promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb, int discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);
@@ -32,15 +29,15 @@ public class LargeAmountHotelproVO extends PromotionVO{
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
-
-	public LargeAmountHotelproPO toPO(LargeAmountHotelproVO vo){
-		LargeAmountHotelproPO po=new LargeAmountHotelproPO();
+	
+	public BirthdayHotelproPO toPO(BirthdayHotelproVO vo){
+		BirthdayHotelproPO po=new BirthdayHotelproPO();
 		po.setPromotionID(vo.getPromotionID());
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
 		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
 		po.setDiscount(vo.discount);
 		return po;
-		
 	}
+
 }

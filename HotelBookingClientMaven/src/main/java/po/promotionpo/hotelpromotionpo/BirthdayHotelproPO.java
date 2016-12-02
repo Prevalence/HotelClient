@@ -3,7 +3,7 @@ package po.promotionpo.hotelpromotionPO;
 import java.util.ArrayList;
 
 import po.PromotionPO;
-import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
+import vo.promotionvo.hotelpromotionVOl.BirthdayHotelproVO;
 
 /**
  *  @author 武秀峰
