@@ -1,9 +1,9 @@
-package po.promotionpo.webpromotionpo;
+package po.promotionpo.webpromotionPO;
 
 import java.util.ArrayList;
 
 import po.PromotionPO;
-import vo.promotionvo.webpromotionvo.CircleWebproVO;
+import vo.promotionvo.webpromotionVO.CircleWebproVO;
 
 /**
  *  @author 武秀峰

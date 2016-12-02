@@ -1,12 +1,12 @@
 package businessLogic.promotionbl.promotionType.hotelpromotionCal;
 
 import java.util.Calendar;
-import po.promotionpo.hotelpromotionpo.PeriodHotelproPO;
 
 import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
-import po.PersonPO;
 import po.PromotionPO;
+import po.personPO.PersonPO;
+import po.promotionpo.hotelpromotionPO.PeriodHotelproPO;
 
 /**
  *  @author 武秀峰

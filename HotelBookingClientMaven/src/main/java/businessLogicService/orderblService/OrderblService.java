@@ -1,6 +1,7 @@
 package businessLogicService.orderblService;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import vo.OrderVO;
@@ -65,19 +66,20 @@ public interface OrderblService {
 	 * @param state
 	 * @return
 	 */
-	public ArrayList<OrderVO> personStateOrders(String state);
+	public ArrayList<OrderVO> personStateOrders(String personname, String state);
 	
 	/**
 	 * 在酒店订单查看过程中，进一步查看某个状态（未执行，已执行，已撤销，异常）的订单
 	 * @param time
 	 * @return
 	 */
-	public ArrayList<OrderVO> hotelTimeOrders(String time);
+	public ArrayList<OrderVO> hotelStateOrders(String hotelname, String state);
 	
 	/**
-	 * 在浏览网站订单的过程中，进一步查看某个编号的订单
+	 * 在浏览网站订单的过程中，进一步查看某日订单
 	 * @param num
 	 * @return
 	 */
-	public ArrayList<OrderVO> netNumOrders(String num);
+	public ArrayList<OrderVO> netNumOrders(Calendar date);
 }
+

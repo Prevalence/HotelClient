@@ -1,9 +1,9 @@
-package vo.promotionvo.hotelpromotionvo;
+package vo.promotionvo.hotelpromotionVO;
 
 import java.util.ArrayList;
 
-import po.promotionpo.hotelpromotionpo.BirthdayHotelproPO;
-import po.promotionpo.hotelpromotionpo.EnterpriseHotelproPO;
+import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
+import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
 import vo.PromotionVO;
 
 /**
