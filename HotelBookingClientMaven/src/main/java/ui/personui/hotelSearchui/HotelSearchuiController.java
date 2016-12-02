@@ -2,13 +2,11 @@ package ui.personui.hotelSearchui;
 
 import businessLogic.hotelbl.HotelController;
 import businessLogicService.hotelblService.HotelblService;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -18,10 +16,6 @@ import javafx.stage.Stage;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.personInfoui.PersonInfoui;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.util.Callback;
 
 public class HotelSearchuiController {
 
@@ -30,7 +24,7 @@ public class HotelSearchuiController {
 	@FXML
 	private Button personInfoButton;
 	@FXML
-	private Button HotelSearchVOInfoButton;
+	private Button orderInfoButton;
 	@FXML
 	private Button priceButton;
 	@FXML
@@ -78,70 +72,7 @@ public class HotelSearchuiController {
 
 	public HotelSearchuiController() {
 		hotelbl = new HotelController();
-		initViewTable();
 	}
-	
-	 private void initHotelSearchVOsViewTable() {
-
-	        // create other columns. Removed as not important
-
-	        //Insert Button
-	        TableColumn<HotelSearchVO, String> actionCol = new TableColumn<>("Action");
-	        actionCol.setSortable(false);
-
-	        actionCol.setCellValueFactory(
-	                new Callback<TableColumn.CellDataFeatures<HotelSearchVO, String>, ObservableValue<String>>() {
-
-	                    @Override
-	                    public ObservableValue<String> call(TableColumn.CellDataFeatures<HotelSearchVO, String> p) {
-	                        return p.getValue().actionProperty();
-	                    }
-	                });
-
-	        actionCol.setCellFactory(
-	                new Callback<TableColumn<HotelSearchVO, String>, TableCell<HotelSearchVO, String>>() {
-
-	                    @Override
-	                    public TableCell<HotelSearchVO, String> call(TableColumn<HotelSearchVO, String> p) {
-	                        ButtonCell buttonCell = new ButtonCell();
-
-	                        // HOW TO BIND TO HotelSearchVO.action stringProperty ???
-	                        //buttonCell.textProperty().bind(???);
-
-	                        return buttonCell;
-	                    }
-
-	                });
-
-	        searchTable.setItems();
-	        searchTable.getColumns().addAll(actionCol);
-	    }
-
-	    //Define the button cell
-	    private class ButtonCell extends TableCell<HotelSearchVO, String> {
-	        final Button cellButton = new Button();
-
-	        ButtonCell(){
-	        	cellButton.setOnAction(new EventHandler<ActionEvent>(){
-	                @Override
-	                public void handle(ActionEvent t) {
-	                    String id = ((HotelSearchVO) getTableRow().getItem()).hotelName(); // it will be order.id
-	                    String action = getItem(); // it's actually will be order.action field
-
-	                    // orderManager.doSomethingWithIdandAction
-	                }
-	            });
-	        }
-
-	        //Display button if the row is not empty
-	        @Override
-	        protected void updateItem(String t, boolean empty) {
-	            super.updateItem(t, empty);
-	            if (!empty) {
-	                setGraphic(cellButton);
-	            }
-	        }
-	    }
 
 	/**
 	 * 跳转到个人信息维护界面
