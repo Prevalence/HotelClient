@@ -2,7 +2,7 @@ package businessLogicService.hotelblService;
 
 import java.util.ArrayList;
 
-import vo.hotelVO.HotelVO;
+import vo.hotelVO.hotelblVO.HotelVO;
 
 
 public interface HotelblService {

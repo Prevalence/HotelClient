@@ -1,11 +1,11 @@
-package po.hotelpo;
+package po.hotelPO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import vo.hotelVO.CommentVO;
-import vo.hotelVO.HotelVO;
-import vo.hotelVO.RoomVO;
+import vo.hotelVO.hotelblVO.CommentVO;
+import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 
 public class HotelPO implements Serializable{
 	private String hotelname;

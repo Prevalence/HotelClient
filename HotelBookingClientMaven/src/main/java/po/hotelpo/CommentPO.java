@@ -1,10 +1,10 @@
-package po.hotelpo;
+package po.hotelPO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import vo.hotelVO.CommentVO;
+import vo.hotelVO.hotelblVO.CommentVO;
 
 public class CommentPO implements Serializable{
 	private String hotelname;

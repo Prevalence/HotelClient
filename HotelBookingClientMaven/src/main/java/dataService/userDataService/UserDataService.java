@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import po.*;
-import po.personpo.PersonPO;
+import po.personPO.PersonPO;
 
 public interface UserDataService extends Remote{
 	public boolean addPerson (PersonPO personInfo)throws RemoteException;

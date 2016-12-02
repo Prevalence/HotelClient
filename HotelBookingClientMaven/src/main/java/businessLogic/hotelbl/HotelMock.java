@@ -2,12 +2,12 @@ package businessLogic.hotelbl;
 
 import java.util.ArrayList;
 
-import po.hotelpo.CommentPO;
-import po.hotelpo.HotelPO;
-import po.hotelpo.RoomPO;
-import vo.hotelVO.CommentVO;
-import vo.hotelVO.HotelVO;
-import vo.hotelVO.RoomVO;
+import po.hotelPO.CommentPO;
+import po.hotelPO.HotelPO;
+import po.hotelPO.RoomPO;
+import vo.hotelVO.hotelblVO.CommentVO;
+import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 
 public class HotelMock extends Hotel{
 	/**

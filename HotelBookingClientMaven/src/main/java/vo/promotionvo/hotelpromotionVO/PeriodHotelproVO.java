@@ -3,7 +3,7 @@ package vo.promotionvo.hotelpromotionVO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import po.promotionpo.hotelpromotionpo.PeriodHotelproPO;
+import po.promotionpo.hotelpromotionPO.PeriodHotelproPO;
 import vo.PromotionVO;
 
 /**

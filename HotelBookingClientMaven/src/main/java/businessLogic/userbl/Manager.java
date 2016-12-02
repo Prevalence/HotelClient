@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import dataService.userDataService.UserDataService;
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.personpo.PersonPO;
+import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 import vo.HotelWorkerVO;
 import vo.MarketVO;

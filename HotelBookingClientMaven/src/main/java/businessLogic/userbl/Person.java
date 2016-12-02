@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import dataService.userDataService.UserDataService;
-import po.personpo.PersonPO;
+import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 import vo.personVO.PersonVO;
 /**

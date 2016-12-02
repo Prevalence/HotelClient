@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import businessLogic.userbl.Person;
 import po.OrderPO;
 import po.PromotionPO;
-import po.personpo.PersonPO;
+import po.personPO.PersonPO;
 import vo.OrderVO;
 import vo.PromotionVO;
-import vo.hotelVO.HotelVO;
+import vo.hotelVO.hotelblVO.HotelVO;
 import vo.personVO.PersonVO;
 /**
  * 

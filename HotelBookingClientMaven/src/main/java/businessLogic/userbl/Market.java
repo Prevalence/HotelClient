@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 import dataService.userDataService.UserDataService;
 import po.MarketPO;
-import po.personpo.PersonPO;
+import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 import vo.MarketVO;
 import vo.personVO.PersonVO;

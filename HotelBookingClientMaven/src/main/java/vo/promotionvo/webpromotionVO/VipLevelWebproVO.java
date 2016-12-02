@@ -2,8 +2,8 @@ package vo.promotionvo.webpromotionVO;
 
 import java.util.ArrayList;
 
-import po.promotionpo.webpromotionpo.PeriodWebproPO;
-import po.promotionpo.webpromotionpo.VipLevelWebproPO;
+import po.promotionpo.webpromotionPO.PeriodWebproPO;
+import po.promotionpo.webpromotionPO.VipLevelWebproPO;
 import vo.PromotionVO;
 
 /**

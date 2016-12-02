@@ -2,7 +2,7 @@ package vo.promotionvo.hotelpromotionVO;
 
 import java.util.ArrayList;
 
-import po.promotionpo.hotelpromotionpo.LargeAmountHotelproPO;
+import po.promotionpo.hotelpromotionPO.LargeAmountHotelproPO;
 import vo.PromotionVO;
 
 /**

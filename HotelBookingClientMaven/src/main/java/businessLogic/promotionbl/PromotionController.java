@@ -7,7 +7,7 @@ import businessLogicService.promotionblService.PromotionblService;
 import po.PromotionPO;
 import vo.OrderVO;
 import vo.PromotionVO;
-import vo.hotelVO.HotelVO;
+import vo.hotelVO.hotelblVO.HotelVO;
 
 public class PromotionController implements PromotionblService{
 	/**
