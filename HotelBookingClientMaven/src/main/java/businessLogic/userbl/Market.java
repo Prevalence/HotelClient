@@ -4,15 +4,16 @@ import java.rmi.RemoteException;
 
 import dataService.userDataService.UserDataService;
 import po.MarketPO;
-import po.PersonPO;
+import po.personpo.PersonPO;
 import rmi.RemoteHelper;
+import vo.MarketVO;
+import vo.personVO.PersonVO;
 /**
  * @author xiamutian
  * @author 武秀峰
  */
 
 public class Market {
-	MarketPO market=new MarketPO();
 	UserDataService userDataService=RemoteHelper.getInstance().getUserDataService();
 
 	/**
@@ -26,16 +27,20 @@ public class Market {
 	 * 获取客户信息
 	 * @throws RemoteException 
 	 */
-	public PersonPO getPersonInfo(String personname) throws RemoteException{
-		return userDataService.findPerson(personname);
+	public PersonVO getPersonInfo(String personname) throws RemoteException{
+		PersonPO po=userDataService.findPerson(personname);
+		PersonVO vo=new PersonVO(po);
+		return vo;
 	}
 	
 	/**
 	 * 获取网站营销人员信息
 	 * @throws RemoteException 
 	 */
-	public MarketPO getMarketInfo(String marketname) throws RemoteException{
-		return userDataService.findMarket(marketname);
+	public MarketVO getMarketInfo(String marketname) throws RemoteException{
+		MarketPO po=userDataService.findMarket(marketname);
+		MarketVO vo=new MarketVO(po);
+		return vo;
 	}
 	
 	/**

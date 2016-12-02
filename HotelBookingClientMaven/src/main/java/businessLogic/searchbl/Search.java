@@ -11,11 +11,13 @@ import businessLogic.userbl.Market;
 import businessLogic.userbl.MarketMock;
 import businessLogic.userbl.Person;
 import businessLogic.userbl.PersonMock;
-import po.HotelPO;
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.PersonPO;
-import vo.HotelVO;
+import po.personpo.PersonPO;
+import vo.HotelWorkerVO;
+import vo.MarketVO;
+import vo.hotelVO.HotelVO;
+import vo.personVO.PersonVO;
 /**
  * 
  * @author 武秀峰
@@ -28,7 +30,7 @@ public class Search {
 	 * @return 符合条件的酒店列表
 	 * @throws RemoteException 
 	 */
-	public ArrayList<HotelPO> findHotel(HotelVO condition) throws RemoteException{
+	public ArrayList<HotelVO> findHotel(HotelVO condition) throws RemoteException{
 		Hotel hotel=new Hotel();
 		return hotel.findWithReq(condition, null);
 	}
@@ -38,9 +40,10 @@ public class Search {
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public PersonPO searchPersonInfo (String personname) throws RemoteException{
+	public PersonVO searchPersonInfo (String personname) throws RemoteException{
 		Person person=new Person();
-		return person.getPersonInfo(personname);
+		PersonVO personvo=person.getPersonInfo(personname);
+		return personvo;
 	}
 	
 	/**
@@ -48,9 +51,10 @@ public class Search {
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public HotelWorkerPO searchHotelWorkerInfo (String hotelWorkername) throws RemoteException{
+	public HotelWorkerVO searchHotelWorkerInfo (String hotelWorkername) throws RemoteException{
 		HotelWorker hotelworker=new HotelWorker();
-		return hotelworker.getHotelWorkerInfo(hotelWorkername);
+		HotelWorkerVO vo=hotelworker.getHotelWorkerInfo(hotelWorkername);
+		return vo;
 	}
 	
 	/**
@@ -58,7 +62,7 @@ public class Search {
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public MarketPO searchMarketInfo (String marketname) throws RemoteException{
+	public MarketVO searchMarketInfo (String marketname) throws RemoteException{
 		Market market=new Market();
 		return market.getMarketInfo(marketname);
 	}

@@ -3,7 +3,7 @@ package po.promotionpo.webpromotionpo;
 import java.util.Calendar;
 
 import po.PromotionPO;
-import vo.promotionvo.webpromotionvo.PeriodWebproVO;
+import vo.promotionvo.webpromotionVO.PeriodWebproVO;
 
 /**
  *  @author 武秀峰

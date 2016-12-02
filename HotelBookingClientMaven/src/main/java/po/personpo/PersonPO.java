@@ -1,8 +1,9 @@
-package po;
+package po.personpo;
 import java.io.Serializable;
 import java.util.Calendar;
 
 import vo.personVO.PersonVO;
+
 /**
  * 
  * @author 武秀峰

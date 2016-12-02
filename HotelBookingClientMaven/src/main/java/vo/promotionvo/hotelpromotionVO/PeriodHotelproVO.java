@@ -1,27 +1,27 @@
-package vo.promotionvo.webpromotionvo;
+package vo.promotionvo.hotelpromotionVO;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
-import po.promotionpo.hotelpromotionpo.BirthdayHotelproPO;
-import po.promotionpo.webpromotionpo.PeriodWebproPO;
+import po.promotionpo.hotelpromotionpo.PeriodHotelproPO;
 import vo.PromotionVO;
-import vo.promotionvo.hotelpromotionvo.BirthdayHotelproVO;
 
 /**
  * @author 武秀峰
- * 网站促销策略：双11活动折扣（在特定的期间预订有折扣）*/
-public class PeriodWebproVO extends PromotionVO{
-//	private String promotionType="PeriodWebPromtion";
+ * 酒店促销策略：双11活动折扣（在特定的期间住宿有折扣）*/
+public class PeriodHotelproVO extends PromotionVO{
+//	private String promotionType="PeriodHotelPromtion";
 	private Calendar startTime;
 	private Calendar endTime;
 	private int discount;//如打九五折时，discount=95
 	
 
-	public PeriodWebproVO() {
+	public PeriodHotelproVO() {
 		super();
 	}
 
-	public PeriodWebproVO(String promotionID, String promotionName, String promotionType,
+
+	public PeriodHotelproVO(String promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb,Calendar startTime, Calendar endTime, int discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);
@@ -63,8 +63,8 @@ public class PeriodWebproVO extends PromotionVO{
 	}
 
 
-	public PeriodWebproPO toPO(PeriodWebproVO vo){
-		PeriodWebproPO po=new PeriodWebproPO();
+	public PeriodHotelproPO toPO(PeriodHotelproVO vo){
+		PeriodHotelproPO po=new PeriodHotelproPO();
 		po.setPromotionID(vo.getPromotionID());
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
@@ -73,5 +73,7 @@ public class PeriodWebproVO extends PromotionVO{
 		po.setEndTime(vo.getEndTime());
 		po.setDiscount(vo.getDiscount());
 		return po;
+		
 	}
+
 }

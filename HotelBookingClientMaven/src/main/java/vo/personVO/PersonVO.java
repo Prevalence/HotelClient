@@ -3,6 +3,9 @@ package vo.personVO;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import po.personpo.PersonPO;
+
+
 
 public class PersonVO  implements Serializable {
 	private String username;
@@ -32,7 +35,20 @@ public class PersonVO  implements Serializable {
 		this.vipType = vipType;
 		this.vipLevel = vipLevel;
 		this.enterpriseName = enterpriseName;
-		this.setPhoneNumber(phoneNumber);
+		this.phoneNumber = phoneNumber;
+	}
+	
+	public PersonVO(PersonPO po) {
+		super();
+		this.username = po.getUsername();
+		this.password = po.getPassword();
+		this.personID = po.getPersonID();
+		this.credit = po.getCredit();
+		this.birthday = po.getBirthday();
+		this.vipType = po.getVipType();
+		this.vipLevel = po.getVipLevel();
+		this.enterpriseName = po.getEnterpriseName();
+		this.phoneNumber = po.getPhoneNumber();
 	}
 	
 	//get and set

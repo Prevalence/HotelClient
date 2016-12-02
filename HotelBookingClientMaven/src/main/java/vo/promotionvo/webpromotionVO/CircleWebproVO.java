@@ -1,11 +1,11 @@
-package vo.promotionvo.webpromotionvo;
+package vo.promotionvo.webpromotionVO;
 
 import java.util.ArrayList;
 
 import po.promotionpo.hotelpromotionpo.BirthdayHotelproPO;
 import po.promotionpo.webpromotionpo.CircleWebproPO;
 import vo.PromotionVO;
-import vo.promotionvo.hotelpromotionvo.BirthdayHotelproVO;
+import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
 /**
  * @author 武秀峰

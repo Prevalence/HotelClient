@@ -1,4 +1,4 @@
-package vo.promotionvo.webpromotionvo;
+package vo.promotionvo.webpromotionVO;
 
 import java.util.ArrayList;
 
