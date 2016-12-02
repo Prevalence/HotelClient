@@ -16,10 +16,10 @@ public class HotelSearchVO {
         this.star = new SimpleStringProperty(star);
         this.area = new SimpleStringProperty(area);
         this.location = new SimpleStringProperty(location);
-        initSelect();
     }
 
-    public SimpleStringProperty hotelName(){
+    public SimpleStringProperty gethotelName(){
+		return area;
     	
     }
     
