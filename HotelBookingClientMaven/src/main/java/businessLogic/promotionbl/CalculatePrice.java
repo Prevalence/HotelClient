@@ -2,8 +2,8 @@ package businessLogic.promotionbl;
 
 
 import po.OrderPO;
+import po.PersonPO;
 import po.PromotionPO;
-import po.personpo.PersonPO;
 
 
 /**

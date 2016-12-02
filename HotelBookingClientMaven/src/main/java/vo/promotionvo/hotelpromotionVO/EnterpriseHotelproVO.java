@@ -1,4 +1,4 @@
-package vo.promotionvo.hotelpromotionVO;
+package vo.promotionvo.hotelpromotionvo;
 
 import java.util.ArrayList;
 

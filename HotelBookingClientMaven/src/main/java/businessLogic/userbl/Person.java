@@ -8,8 +8,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import dataService.userDataService.UserDataService;
-import po.personpo.PersonPO;
+import po.PersonPO;
 import rmi.RemoteHelper;
+import vo.HotelVO;
 import vo.personVO.PersonVO;
 /**
  * @author xiamutian
@@ -100,10 +101,8 @@ public class Person {
 	 * @return PersonPO
 	 * @throws RemoteException 
 	 */
-	public PersonVO getPersonInfo(String personname) throws RemoteException{
-		PersonPO po=userDataService.findPerson(personname);
-		PersonVO vo=new PersonVO(po);
-		return vo;
+	public PersonPO getPersonInfo(String personname) throws RemoteException{
+		return 	userDataService.findPerson(personname);
 	}
 	
 	/**

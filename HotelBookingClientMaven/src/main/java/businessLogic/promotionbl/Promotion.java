@@ -5,6 +5,7 @@ import java.util.List;
 
 import businessLogicService.promotionblService.PromotionblService;
 import dataService.promotionDataService.PromotionDataService;
+import po.HotelPO;
 import po.PromotionPO;
 import rmi.RemoteHelper;
 import vo.OrderVO;
@@ -24,7 +25,7 @@ public class Promotion {
 	 * @return
 	 */
 	public boolean addProm(PromotionVO prom){
-		PromotionPO promotionpo=prom.toPO(prom);
+		PromotionPO promotionpo=prom.topo(prom);
 		return promotiondataservice.add(promotionpo);
 	}
 	
@@ -34,7 +35,7 @@ public class Promotion {
 	 * @return
 	 */
 	public boolean deleteProm(PromotionVO prom){
-		PromotionPO promotionpo=prom.toPO(prom);
+		PromotionPO promotionpo=prom.topo(prom);
 		return promotiondataservice.delete(promotionpo);
 	}
 	
@@ -44,7 +45,7 @@ public class Promotion {
 	 * @return
 	 */
 	public boolean modifyProm(PromotionVO prom){
-		PromotionPO promotionpo=prom.toPO(prom);
+		PromotionPO promotionpo=prom.topo(prom);
 		return promotiondataservice.modify(promotionpo);
 	}
 	
@@ -53,17 +54,10 @@ public class Promotion {
 	 * @param hotelname
 	 * @return
 	 */
-	public ArrayList<PromotionVO> getProm(String promotionType){
+	public ArrayList<PromotionPO> getProm(String promotionType){
 		//如果promotionType.equals("WebPromotion")，那么返回所有的网站促销策略
 		//否则，promotionType为酒店名称，返回的是对应酒店的酒店促销策略
-		ArrayList<PromotionPO> propoList=promotiondataservice.find(promotionType);
-		ArrayList<PromotionVO> provoList=new ArrayList<PromotionVO>();
-		for(int i=0; i<propoList.size(); i++){
-			PromotionVO provo=new PromotionVO(propoList.get(i));
-			provoList.add(provo);
-		}
-		
-		return provoList;
+		return  promotiondataservice.find(promotionType);
 	}
 
 	

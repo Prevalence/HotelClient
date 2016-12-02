@@ -3,6 +3,7 @@ package businessLogic.orderbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import businessLogic.userbl.Person;
 import businessLogic.userbl.UserController;
 import po.OrderPO;
@@ -16,18 +17,18 @@ import dataService.orderDataService.OrderDataService;
  *
  */
 public class Order{
-//	private Person person;
-//	
-//	private ArrayList<OrderPO> personList = null;
-//	
-//	private ArrayList<OrderPO> hotelList = null;
-//	
-//	private ArrayList<OrderPO> netList = null;
+	private Person person;
+	
+	private ArrayList<OrderPO> personList = null;
+	
+	private ArrayList<OrderPO> hotelList = null;
+	
+	private ArrayList<OrderPO> netList = null;
 	
 	private OrderDataService orderDataService;
 	
 	public Order(){
-		Person person=new Person();
+		person=new Person();
 		orderDataService=RemoteHelper.getInstance().getOrderDataService();
 	}
 	
@@ -61,15 +62,14 @@ public class Order{
 			order.setCanceltime(Calendar.getInstance());
 			order.setOrderstate("cancel");
 			OrderPO orderPO=new OrderPO(order);
-			boolean isReverse=orderDataService.modify(orderPO);
+			orderDataService.modify(orderPO);
 			//减少客户信用值
-			boolean isCreditChange=true;
 			if(Calendar.getInstance().compareTo(order.getLatestExecutetime())<6*60*60*1000){//如果撤销的订单距离最晚订单执行时间不足6个小时，扣除信用值
 				UserController user=new UserController();
-				isCreditChange=user.changeCredit(order.getPersonname(), -(order.getOrderprice()/2));
+				user.changeCredit(order.getPersonname(), -(order.getOrderprice()/2));
 			}
 
-			return isReverse&&isCreditChange;
+			return true;
 		}else{
 			return false;
 		}
@@ -114,7 +114,7 @@ public class Order{
 	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> personOrders(String personname) throws RemoteException {
-		ArrayList<OrderPO> personList=orderDataService.personFind(personname);
+		personList=orderDataService.personFind(personname);
 		ArrayList<OrderVO> personListVO=new ArrayList<OrderVO>();
 		for (OrderPO personPO : personList) {
 			OrderVO personVO = new OrderVO(personPO);
@@ -130,7 +130,7 @@ public class Order{
 	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> hotelOrders(String hotelname) throws RemoteException {
-		ArrayList<OrderPO> hotelList=orderDataService.hotelFind(hotelname);
+		hotelList=orderDataService.hotelFind(hotelname);
 		ArrayList<OrderVO> hotelListVO=new ArrayList<OrderVO>();
 		for (OrderPO hotelPO : hotelList) {
 			OrderVO hotelVO = new OrderVO(hotelPO);
@@ -146,7 +146,7 @@ public class Order{
 	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> netOrders() throws RemoteException {
-		ArrayList<OrderPO> netList=orderDataService.exceptionFind();
+		netList=orderDataService.exceptionFind();
 		ArrayList<OrderVO> netListVO=new ArrayList<OrderVO>();
 		for (OrderPO netPO : netList) {
 			OrderVO netVO = new OrderVO(netPO);
@@ -160,18 +160,15 @@ public class Order{
 	 * @param time
 	 * @return
 	 */
-	public ArrayList<OrderVO> personStateOrders(String personname, String state){
-		Order order=new Order();
+	public ArrayList<OrderVO> personStateOrders(String state){
 		ArrayList<OrderVO> personStateList=new ArrayList<OrderVO>();
-		try {
-			personStateList = order.personOrders(personname);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for(int i=0; i<personStateList.size(); i++){
-			if(!(personStateList.get(i).getOrderstate().equals(state))){
-				personStateList.remove(i);
+		OrderPO temp=null;
+		OrderVO orderVO=null;
+		for(int i=0;i<personList.size();i++){
+			temp=personList.get(i);
+			if(temp.getOrderstate().equals(state)){
+				orderVO=new OrderVO(temp);
+				personStateList.add(orderVO);
 			}
 		}
 		return personStateList;
@@ -182,46 +179,40 @@ public class Order{
 	 * @param time 格式举例：    20160321
 	 * @return
 	 */
-	public ArrayList<OrderVO> hotelStateOrders(String hotelname, String state){
-		ArrayList<OrderVO> hotelStateList=new ArrayList<OrderVO>();
-		try {
-			hotelStateList.addAll(hotelOrders(hotelname));
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for(int i=0; i<hotelStateList.size(); i++){
-			if(!(hotelStateList.get(i).equals(state))){
-				hotelStateList.remove(i);
+	public ArrayList<OrderVO> hotelTimeOrders(String time){
+		ArrayList<OrderVO> hotelTimeList=new ArrayList<OrderVO>();
+		OrderPO temp=null;
+		OrderVO orderVO=null;
+		for(int i=0;i<hotelList.size();i++){
+			temp=hotelList.get(i);
+			String temptime=temp.getProducttime().toString().substring(0, 8);
+			if(temptime.equals(time)){
+				orderVO=new OrderVO(temp);
+				hotelTimeList.add(orderVO);
 			}
 		}
-		return hotelStateList;
+		return hotelTimeList;
 	}
 	
 	/**
 	 * 在浏览网站订单的过程中，进一步查看某个编号的订单
-	 * @param date
+	 * @param num
 	 * @return
 	 */
-	public ArrayList<OrderVO> netNumOrders(Calendar date){
+	public ArrayList<OrderVO> netNumOrders(String num){
 		ArrayList<OrderVO> netNumList=new ArrayList<OrderVO>();
-		try {
-			netNumList.addAll(netOrders());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for(int i=0; i<netNumList.size(); i++){
-			OrderVO ordervo=netNumList.get(i);
-//			OrderVO ordervo=new OrderVO();
-			if((ordervo.getProducttime().getTime().getYear()!=date.getTime().getYear())
-					||(ordervo.getProducttime().getTime().getMonth()!=date.getTime().getMonth())
-					||(ordervo.getProducttime().getTime().getDate()!=date.getTime().getDate())){
-				netNumList.remove(i);
+		OrderPO temp=null;
+		OrderVO orderVO=null;
+		for(int i=0;i<netList.size();i++){
+			temp=netList.get(i);
+			if(temp.getOrderID().equals(num)){
+				orderVO=new OrderVO(temp);
+				netNumList.add(orderVO);
 			}
 		}
 		return netNumList;
 	}
 }
+
 
 

@@ -2,9 +2,10 @@ package businessLogicService.promotionblService;
 
 import java.util.List;
 
+import po.HotelPO;
+import po.PromotionPO;
 import vo.OrderVO;
 import vo.PromotionVO;
-import vo.hotelVO.HotelVO;
 
 public interface PromotionblService {
 	/**
@@ -13,7 +14,7 @@ public interface PromotionblService {
 	 * @param numberAndType(OrderVO)
 	 * @return 酒店价格
 	 */
-	public double priceCut(HotelVO price,OrderVO numberAndType);
+	public double priceCut(HotelPO price,OrderVO numberAndType);
 	/**
 	 * 
 	 * @param prom
@@ -37,5 +38,5 @@ public interface PromotionblService {
 	 * @param prom
 	 * @return 促销策略列表
 	 */
-	public List<PromotionVO>getProm(String hotelname);
+	public List<PromotionPO>getProm(String hotelname);
 }

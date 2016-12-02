@@ -5,11 +5,10 @@ import java.rmi.RemoteException;
 import dataService.userDataService.UserDataService;
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.personpo.PersonPO;
+import po.PersonPO;
 import rmi.RemoteHelper;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.personVO.PersonVO;
 /**
  * @author xiamutian
  * @author 武秀峰
@@ -52,10 +51,8 @@ public class Manager {
 	 * 获取客户信息
 	 * @throws RemoteException 
 	 */
-	public PersonVO getPersonInfo(String personname) throws RemoteException{
-		PersonPO po=userDataService.findPerson(personname);
-		PersonVO vo=new PersonVO(po);
-		return vo;
+	public PersonPO getPersonInfo(String personname) throws RemoteException{
+		return userDataService.findPerson(personname);
 		
 	}
 	
@@ -63,10 +60,8 @@ public class Manager {
 	 * 获取酒店工作人员信息
 	 * @throws RemoteException 
 	 */
-	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
-		HotelWorkerPO po=userDataService.findHotelWorker(hotelWorkername);
-		HotelWorkerVO vo=new HotelWorkerVO(po);
-		return vo;
+	public HotelWorkerPO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
+		return userDataService.findHotelWorker(hotelWorkername);
 	}
 	
 	/**
@@ -93,9 +88,7 @@ public class Manager {
 	 * 获取网站营销人员信息
 	 * @throws RemoteException 
 	 */
-	public MarketVO getMarketInfo(String marketname) throws RemoteException{
-		MarketPO po=userDataService.findMarket(marketname);
-		MarketVO vo=new MarketVO(po);
-		return vo;
+	public MarketPO getMarketInfo(String marketname) throws RemoteException{
+		return userDataService.findMarket(marketname);
 	}
 }

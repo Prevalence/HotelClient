@@ -1,6 +1,7 @@
 package businessLogic.userbl;
 import po.HotelWorkerPO;
 import po.MarketPO;
+import po.PersonPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.personVO.PersonVO;
@@ -111,7 +112,7 @@ public class UserController  implements UserblService{
 	 * 获取会员信息
 	 * @return boolean
 	 */	
-	public PersonVO getPersonInfo(String personname) {
+	public PersonPO getPersonInfo(String personname) {
 	try {
 		return person.getPersonInfo(personname);
 	} catch (RemoteException e) {
@@ -125,7 +126,7 @@ public class UserController  implements UserblService{
 	 * 获取酒店工作人员信息
 	 * @return HotelWorkerPO
 	 */
-	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) {
+	public HotelWorkerPO getHotelWorkerInfo(String hotelWorkername) {
 		try {
 			return hotelworker.getHotelWorkerInfo(hotelWorkername);
 		} catch (RemoteException e) {
@@ -189,7 +190,7 @@ public class UserController  implements UserblService{
 	 * 获取网站营销人员信息
 	 * @return boolean
 	 */
-	public MarketVO getMarketInfo(String marketname) {
+	public MarketPO getMarketInfo(String marketname) {
 		try {
 			return market.getMarketInfo(marketname);
 		} catch (RemoteException e) {

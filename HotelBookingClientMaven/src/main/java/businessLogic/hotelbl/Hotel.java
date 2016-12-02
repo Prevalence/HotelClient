@@ -4,9 +4,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataService.hotelDataService.HotelDataService;
-import po.hotelpo.HotelPO;
+import po.HotelPO;
+import vo.HotelVO;
 import rmi.RemoteHelper;
-import vo.hotelVO.HotelVO;
 /**
  * 
  * @author 武秀峰
@@ -15,16 +15,16 @@ import vo.hotelVO.HotelVO;
 public class Hotel {
 	
 	private HotelDataService hoteldataservice;
+	private HotelPO hotelpo;
 	/**
 	 * 
 	 * @param Hotelname
 	 * @return 获取酒店信息（PO）
 	 * @throws RemoteException 
 	 */
-	public HotelVO showHotelInfo(String Hotelname) throws RemoteException{
-		HotelPO hotelpo=hoteldataservice.showHotelinfo(Hotelname);
-		HotelVO hotelvo=new HotelVO(hotelpo);
-		return hotelvo;
+	public HotelPO showHotelInfo(String Hotelname) throws RemoteException{
+		hotelpo=hoteldataservice.showHotelinfo(Hotelname);
+		return hotelpo;
 	}
 	/**
 	 * 
@@ -33,7 +33,7 @@ public class Hotel {
 	 * @throws RemoteException 
 	 */
 	public boolean modifyHotelInfo(HotelVO hotelinfo) throws RemoteException{
-		HotelPO PO=new HotelPO(hotelinfo);
+		HotelPO PO=hotelinfo.toPO(hotelinfo);
 		return hoteldataservice.modify(PO);
 	}
 	/**
@@ -65,20 +65,14 @@ public class Hotel {
 	 * @throws RemoteException 
 	 * <a>浏览酒店详细信息时，需要先明确地址和商圈，才能进行查看
 	 */
-	public ArrayList<HotelVO> findWithReq(HotelVO worstCondition, HotelVO bestCondition) throws RemoteException {
+	public ArrayList<HotelPO> findWithReq(HotelVO worstCondition, HotelVO bestCondition) throws RemoteException {
 		boolean isConditionRight=(worstCondition.getAddress().equals(bestCondition.getAddress()))&&
 				(worstCondition.getCircle().equals(bestCondition.getCircle()));//最坏和最好条件的地址和商圈需要相等
 		boolean isConditionComplete=((worstCondition.getAddress()!=null)&&(worstCondition.getCircle()!=null));//需要先明确地址和商圈，才能进行查看
 		if(isConditionRight&&isConditionComplete){//当输入的条件正确时，进行酒店搜索
-			HotelPO worstConditionPO=new HotelPO(worstCondition);
-			HotelPO bestConditionPO=new HotelPO(bestCondition);
-			ArrayList<HotelPO> hotelpoList= hoteldataservice.findWithReq(worstConditionPO, bestConditionPO);
-			ArrayList<HotelVO> hotelvoList=new ArrayList<HotelVO>();
-			for(int i=0; i<hotelpoList.size(); i++){
-				HotelVO hotelvo=new HotelVO(hotelpoList.get(i));
-				hotelvoList.add(hotelvo);
-			}
-			return hotelvoList;
+			HotelPO worstConditionPO=worstCondition.toPO(worstCondition);
+			HotelPO bestConditionPO=bestCondition.toPO(bestCondition);
+			return (ArrayList<HotelPO>) hoteldataservice.findWithReq(worstConditionPO, bestConditionPO);
 		}else{
 			return null;//需要提醒客户先明确地址和商圈
 		}

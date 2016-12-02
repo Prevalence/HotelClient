@@ -18,22 +18,14 @@ public class PromotionVO implements Serializable {
 	public PromotionVO() {
 		super();
 	}
-
-	public PromotionVO(String promotionID, String promotionName, String promotionType, String hotelnameOrWeb) {
-		super();
-		this.promotionID = promotionID;
-		this.promotionName = promotionName;
-		this.promotionType = promotionType;
-		this.hotelnameOrWeb = hotelnameOrWeb;
-	}
-	
-	public PromotionVO(PromotionPO po) {
-		this.promotionID = po.getPromotionID();
-		this.promotionName = po.getPromotionName();
-		this.promotionType = po.getPromotionType();
-		this.hotelnameOrWeb = po.getHotelnameOrWeb();
-	}
-
+//	public PromotionVO(String promotionID, String promotionName, String promotionType,
+//			ArrayList<String> hotelnameOrWeb) {
+//		super();
+//		this.promotionID = promotionID;
+//		this.promotionName = promotionName;
+//		this.promotionType = promotionType;
+//		this.hotelnameOrWeb = hotelnameOrWeb;
+//	}
 	public String getPromotionID() {
 		return promotionID;
 	}
@@ -59,7 +51,7 @@ public class PromotionVO implements Serializable {
 		this.hotelnameOrWeb = hotelnameOrWeb;
 	}
 	//vo to po
-	public PromotionPO toPO(PromotionVO promotionvo){
+	public PromotionPO topo(PromotionVO promotionvo){
 		return null;
 	}
 	

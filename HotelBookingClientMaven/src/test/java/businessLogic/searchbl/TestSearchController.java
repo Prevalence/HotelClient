@@ -1,6 +1,6 @@
 package businessLogic.searchbl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +10,13 @@ import org.junit.Test;
 import businessLogic.searchbl.Search;
 import businessLogic.searchbl.SearchController;
 import businessLogic.searchbl.SearchHistory;
+import po.HotelPO;
 import po.HotelWorkerPO;
 import po.MarketPO;
+import po.PersonPO;
 import po.SearchPO;
 import rmi.ClientRunner;
-import vo.SearchVO;
+import vo.HotelVO;
 
 public class TestSearchController {
 	ClientRunner cr=new ClientRunner();
@@ -50,12 +52,12 @@ public class TestSearchController {
 	@Test
 	public void TestSearchHotelWorkerInfo(){
 		assertEquals("123",sc.searchHotelWorkerInfo("xiamutian").getPassword());
-		assertEquals("南京大酒店",sc.searchHotelWorkerInfo("xiamutian").getHotelName());
+		assertEquals("南京大酒店",sc.searchHotelWorkerInfo("xiamutian").getHotelname());
 	}
 
 	@Test
 	public void TestMarketInfo(){
-		assertNull(sc.searchMarketInfo("wuxiufeng"));
+		assertEquals("123",sc.searchMarketInfo("xiamutian").getPassword());
 	}
 
 	@Test
@@ -68,13 +70,13 @@ public class TestSearchController {
 
 	@Test
 	public void TestSaveHistory(){
-		SearchVO s=new SearchVO("wuxiufeng", null, "酒店5");
+		SearchPO s=new SearchPO("wuxiufeng", null, "酒店5");
 		assertEquals(true,sc.saveHistory(s));
 	}
 	
 	@Test
 	public void TestDeleteHistory(){
-		SearchVO s=new SearchVO("wuxiufeng", null, "酒店5");
+		SearchPO s=new SearchPO("wuxiufeng", null, "酒店5");
 		assertEquals(true,sc.deleteHistory(s));
 	}
 

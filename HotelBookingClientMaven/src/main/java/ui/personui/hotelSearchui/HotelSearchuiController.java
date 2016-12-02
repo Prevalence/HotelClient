@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.personInfoui.PersonInfoui;
-import vo.hotelVO.HotelSearchVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
 public class HotelSearchuiController {
 

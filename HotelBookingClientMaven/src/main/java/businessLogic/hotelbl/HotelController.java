@@ -4,7 +4,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businessLogicService.hotelblService.HotelblService;
-import vo.hotelVO.HotelVO;
+import po.HotelPO;
+import vo.HotelVO;
 
 /**
  * HotelController 控制hotel相关的逻辑操作
@@ -22,8 +23,8 @@ public class HotelController implements HotelblService{
 	 * @param Hotelname
 	 * @return 获取酒店信息（PO）
 	 */
-	public HotelVO showHotelInfo(String Hotelname){
-		HotelVO result = null;
+	public HotelPO showHotelInfo(String Hotelname){
+		HotelPO result = null;
 		try {
 			result = hotel.showHotelInfo(Hotelname);
 		} catch (RemoteException e) {
@@ -83,7 +84,7 @@ public class HotelController implements HotelblService{
 	/**
 	 * 
 	 */
-	public ArrayList<HotelVO> findWithReq(HotelVO worstCondition, HotelVO bestCondition) {
+	public ArrayList<HotelPO> findWithReq(HotelVO worstCondition, HotelVO bestCondition) {
 		try {
 			return hotel.findWithReq(worstCondition, bestCondition);
 		} catch (RemoteException e) {

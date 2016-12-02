@@ -1,14 +1,13 @@
 package businessLogic.userbl;
 import java.util.ArrayList;
 
-import po.personpo.PersonPO;
+import po.PersonPO;
 import vo.personVO.PersonVO;
 
-
 public class PersonMock extends Person {
-	PersonVO pp=new PersonVO();
-	PersonVO pp1=new PersonVO();
-	PersonVO pp2=new PersonVO();
+	PersonPO pp=new PersonPO();
+	PersonPO pp1=new PersonPO();
+	PersonPO pp2=new PersonPO();
 	public boolean register(PersonVO personinfo){
 		/**
 		 * 客户注册
@@ -36,7 +35,7 @@ public class PersonMock extends Person {
 		return false;
 		
 	}
-	public PersonVO getPersonInfo(String personname){
+	public PersonPO getPersonInfo(String personname){
 		/**
 		 * 会员信息获取
 		 * @author xiamutian
@@ -48,7 +47,7 @@ public class PersonMock extends Person {
 		pp2.setUsername("xiekailian");
 		pp1.setCredit(1000);
 		pp2.setCredit(900);
-		ArrayList<PersonVO> List = new ArrayList<PersonVO>(); 
+		ArrayList<PersonPO> List = new ArrayList<PersonPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){

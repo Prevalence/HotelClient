@@ -3,24 +3,22 @@ package businessLogic.userbl;
 import java.util.ArrayList;
 
 import po.MarketPO;
-import po.personpo.PersonPO;
-import vo.MarketVO;
-import vo.personVO.PersonVO;
+import po.PersonPO;
 
 public class MarketMock extends Market{
-	public PersonVO getPersonInfo(String personname){
+	public PersonPO getPersonInfo(String personname){
 		/**
 		 * 获取客户信息
 		 * @author xiamutian
 		 */
-		PersonVO pp=new PersonVO();
-		PersonVO pp1=new PersonVO();
+		PersonPO pp=new PersonPO();
+		PersonPO pp1=new PersonPO();
 		pp1.setUsername("xiamutian");
-		PersonVO pp2=new PersonVO();
+		PersonPO pp2=new PersonPO();
 		pp2.setUsername("xiekailian");
 		pp1.setCredit(1000);
 		pp2.setCredit(900);
-		ArrayList<PersonVO> List = new ArrayList<PersonVO>(); 
+		ArrayList<PersonPO> List = new ArrayList<PersonPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){
@@ -32,18 +30,18 @@ public class MarketMock extends Market{
 		return null;
 	
 	}
-	public MarketVO getMarketInfo(String marketname){
+	public MarketPO getMarketInfo(String marketname){
 		/**
 		 * 获取网站营销人员信息
 		 * @author xiamutian
 		 */
-		MarketVO pp1=new MarketVO();
+		MarketPO pp1=new MarketPO();
 		pp1.setUsername("xiamutian");
-		MarketVO pp2=new MarketVO();
+		MarketPO pp2=new MarketPO();
 		pp2.setUsername("xiekailian");
 		pp1.setPassword("123");
 		pp2.setPassword("456");
-		ArrayList<MarketVO> List = new ArrayList<MarketVO>(); 
+		ArrayList<MarketPO> List = new ArrayList<MarketPO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){
