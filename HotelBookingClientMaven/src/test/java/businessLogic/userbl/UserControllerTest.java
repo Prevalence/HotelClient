@@ -8,7 +8,6 @@ import java.util.Calendar;
 import org.junit.Before;
 import org.junit.Test;
 
-import po.PersonPO;
 import rmi.ClientRunner;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
@@ -68,7 +67,7 @@ public class UserControllerTest {
 
 	@Test
 	public void testGetHotelWorkerInfo() {
-		assertEquals("南京大酒店",uc.getHotelWorkerInfo("xiamutian").getHotelname());
+		assertEquals("南京大酒店",uc.getHotelWorkerInfo("xiamutian").getHotelName());
 	}
 
 	@Test

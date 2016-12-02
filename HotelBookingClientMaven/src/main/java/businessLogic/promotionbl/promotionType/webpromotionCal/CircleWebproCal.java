@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import businessLogic.hotelbl.Hotel;
 import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
-import po.PersonPO;
 import po.PromotionPO;
-import po.promotionpo.webpromotionpo.CircleWebproPO;;
+import po.personPO.PersonPO;
+import po.promotionpo.webpromotionPO.CircleWebproPO;;
 
 /**
  *  @author 武秀峰

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
-import po.PersonPO;
 import po.PromotionPO;
-import po.promotionpo.hotelpromotionpo.EnterpriseHotelproPO;
+import po.personPO.PersonPO;
+import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
 
 /**
  *  @author 武秀峰

@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import businessLogicService.searchblService.SearchblService;
-import po.HotelPO;
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.PersonPO;
 import po.SearchPO;
-import vo.HotelVO;
+import vo.HotelWorkerVO;
+import vo.MarketVO;
+import vo.SearchVO;
+import vo.hotelVO.hotelblVO.HotelVO;
+import vo.personVO.PersonVO;
 
 /**
  * @author 武秀峰
@@ -20,7 +22,7 @@ public class SearchController implements SearchblService {
 	private Search search=new Search();
 	private SearchHistory searchhistory=new SearchHistory();
 
-	public ArrayList<HotelPO> findHotel(HotelVO condition) {
+	public ArrayList<HotelVO> findHotel(HotelVO condition) {
 			try {
 			return search.findHotel(condition);
 		} catch (RemoteException e) {
@@ -30,7 +32,7 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	public PersonPO searchPersonInfo(String personname) {
+	public PersonVO searchPersonInfo(String personname) {
 		try {
 			return search.searchPersonInfo(personname);
 		} catch (RemoteException e) {
@@ -40,7 +42,7 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	public HotelWorkerPO searchHotelWorkerInfo(String hotelWorkername) {
+	public HotelWorkerVO searchHotelWorkerInfo(String hotelWorkername) {
 		try {
 			return search.searchHotelWorkerInfo(hotelWorkername);
 		} catch (RemoteException e) {
@@ -50,7 +52,7 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	public MarketPO searchMarketInfo(String marketname) {
+	public MarketVO searchMarketInfo(String marketname) {
 		try {
 			return search.searchMarketInfo(marketname);
 		} catch (RemoteException e) {
@@ -60,7 +62,7 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	public ArrayList<SearchPO> showHistory(String username) {
+	public ArrayList<SearchVO> showHistory(String username) {
 		try {
 			return searchhistory.showHistory(username);
 		} catch (RemoteException e) {
@@ -70,7 +72,7 @@ public class SearchController implements SearchblService {
 		return null;
 	}
 
-	public boolean saveHistory(SearchPO searchHistory) {
+	public boolean saveHistory(SearchVO searchHistory) {
 		try {
 			return searchhistory.saveHistory(searchHistory);
 		} catch (RemoteException e) {
@@ -80,7 +82,7 @@ public class SearchController implements SearchblService {
 		return false;
 	}
 
-	public boolean deleteHistory(SearchPO searchHistory) {
+	public boolean deleteHistory(SearchVO searchHistory) {
 		try {
 			return searchhistory.deleteHistory(searchHistory);
 		} catch (RemoteException e) {

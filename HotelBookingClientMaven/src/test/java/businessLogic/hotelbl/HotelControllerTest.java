@@ -6,9 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import businessLogic.hotelbl.HotelController;
-import po.HotelPO;
 import rmi.ClientRunner;
-import vo.HotelVO;
+import vo.hotelVO.hotelblVO.HotelVO;
 
 public class HotelControllerTest {
 	ClientRunner cr=new ClientRunner();
@@ -26,7 +25,7 @@ public class HotelControllerTest {
 	@Test
 	public void testModifyHotelInfo() {
 		HotelVO hotelinfo=new HotelVO();
-		hotelinfo.setHotelName("南京大酒店");
+		hotelinfo.setHotelname("南京大酒店");
 //		hotelinfo.setCircle("新街口");
 //		assertEquals(true,hotel.modifyHotelInfo(hotelinfo));
 //		hotelinfo=null;
@@ -47,11 +46,11 @@ public class HotelControllerTest {
 	@Test
 	public void testFindWithReq() {
 		HotelVO po=new HotelVO();
-		po.setHotelName("111");
+		po.setHotelname("111");
 		po.setAddress("111");
 		po.setCircle("111");
 		HotelVO po2=new HotelVO();
-		po2.setHotelName("111");
+		po2.setHotelname("111");
 		po2.setAddress("111");
 		po2.setCircle("111");
 		assertEquals("很好，很棒",hotel.findWithReq(po, po2).get(0).getComment().get(0));
