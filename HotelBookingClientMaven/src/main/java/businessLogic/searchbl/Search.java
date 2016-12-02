@@ -13,10 +13,10 @@ import businessLogic.userbl.Person;
 import businessLogic.userbl.PersonMock;
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.personpo.PersonPO;
+import po.personPO.PersonPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.hotelVO.HotelVO;
+import vo.hotelVO.hotelblVO.HotelVO;
 import vo.personVO.PersonVO;
 /**
  * 

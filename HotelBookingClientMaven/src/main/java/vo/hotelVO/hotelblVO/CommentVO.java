@@ -1,12 +1,10 @@
-package vo.hotelVO;
+package vo.hotelVO.hotelblVO;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 
-import po.hotelpo.CommentPO;
+import po.hotelPO.CommentPO;
 
-public class CommentVO implements Serializable {
+public class CommentVO {
 	private String hotelname;
 	private String personname;//评价者
 	private Calendar time;
@@ -85,6 +83,5 @@ public class CommentVO implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 
 }

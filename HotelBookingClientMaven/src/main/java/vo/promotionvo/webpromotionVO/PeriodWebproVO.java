@@ -2,8 +2,8 @@ package vo.promotionvo.webpromotionVO;
 
 import java.util.Calendar;
 
-import po.promotionpo.hotelpromotionpo.BirthdayHotelproPO;
-import po.promotionpo.webpromotionpo.PeriodWebproPO;
+import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
+import po.promotionpo.webpromotionPO.PeriodWebproPO;
 import vo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 

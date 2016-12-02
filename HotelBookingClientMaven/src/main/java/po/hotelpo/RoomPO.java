@@ -1,9 +1,9 @@
-package po.hotelpo;
+package po.hotelPO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import vo.hotelVO.RoomVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 
 public class RoomPO implements Serializable {
 	private String roomType;

@@ -4,9 +4,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataService.hotelDataService.HotelDataService;
-import po.hotelpo.HotelPO;
+import po.hotelPO.HotelPO;
 import rmi.RemoteHelper;
-import vo.hotelVO.HotelVO;
+import vo.hotelVO.hotelblVO.HotelVO;
 /**
  * 
  * @author 武秀峰

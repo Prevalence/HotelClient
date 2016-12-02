@@ -3,8 +3,7 @@ package vo.personVO;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import po.personpo.PersonPO;
-
+import po.personPO.PersonPO;
 
 
 public class PersonVO  implements Serializable {

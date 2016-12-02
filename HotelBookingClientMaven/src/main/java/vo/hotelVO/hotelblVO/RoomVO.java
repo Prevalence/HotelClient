@@ -1,10 +1,8 @@
-package vo.hotelVO;
+package vo.hotelVO.hotelblVO;
 
-import java.io.Serializable;
+import po.hotelPO.RoomPO;
 
-import po.hotelpo.RoomPO;
-
-public class RoomVO implements Serializable {
+public class RoomVO {
 	private String roomType;
 	private int roomnum;
 	private int roomPrice;

@@ -5,8 +5,8 @@ import java.util.Calendar;
 import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
 import po.PromotionPO;
-import po.personpo.PersonPO;
-import po.promotionpo.webpromotionpo.PeriodWebproPO;;
+import po.personPO.PersonPO;
+import po.promotionpo.webpromotionPO.PeriodWebproPO;;
 
 
 /**

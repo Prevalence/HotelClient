@@ -1,20 +1,12 @@
-package vo.hotelVO;
+package vo.hotelVO.hotelblVO;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
-import po.hotelpo.CommentPO;
-import po.hotelpo.HotelPO;
-import po.hotelpo.RoomPO;
+import po.hotelPO.CommentPO;
+import po.hotelPO.HotelPO;
+import po.hotelPO.RoomPO;
 
-
-/**
- * 
- * @author 武秀峰
- *
- */
-public class HotelVO implements Serializable {
+public class HotelVO {
 	private String hotelname;
 	private int star;//酒店星级
 	private String feature;//酒店简介
@@ -154,7 +146,4 @@ public class HotelVO implements Serializable {
 	public void setHotelworker(String hotelworker) {
 		this.hotelworker = hotelworker;
 	}
-
-
-
 }
