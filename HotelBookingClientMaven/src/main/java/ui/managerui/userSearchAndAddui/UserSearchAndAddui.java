@@ -38,5 +38,6 @@ public class UserSearchAndAddui {
 		userSearchAndAddViewuiController = loader.getController();
 		userSearchAndAddViewuiController.launchStage(primaryStage);
 		userSearchAndAddViewuiController.setPersonname(personname);
+		userSearchAndAddViewuiController.modifyStageSize();
 	}
 }

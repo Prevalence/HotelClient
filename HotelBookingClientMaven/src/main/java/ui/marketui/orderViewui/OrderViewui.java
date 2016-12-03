@@ -9,7 +9,7 @@ public class OrderViewui extends Pane{
 
 	private String personname;
 
-	private OrderViewuiController orderViewViewuiController;
+	private OrderViewuiController orderViewuiController;
 
 	/**
 		 * 接受primarystage用来完成界面最小化和可移动化设置
@@ -36,8 +36,9 @@ public class OrderViewui extends Pane{
 		}
 		// Scene scene = new Scene(this);
 		// primaryStage.setScene(scene);
-		orderViewViewuiController = loader.getController();
-		orderViewViewuiController.launchStage(primaryStage);
-		orderViewViewuiController.setPersonname(personname);
+		orderViewuiController = loader.getController();
+		orderViewuiController.launchStage(primaryStage);
+		orderViewuiController.setPersonname(personname);
+		orderViewuiController.modifyStageSize();
 	}
 }
