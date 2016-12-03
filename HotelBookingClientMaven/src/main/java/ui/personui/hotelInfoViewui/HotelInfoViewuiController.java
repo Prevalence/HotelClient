@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.personui.hotelSearchui.HotelSearchui;
+import ui.personui.orderViewui.OrderViewui;
+import ui.personui.personInfoui.PersonInfoui;
 import vo.hotelVO.hoteluiVO.HotelInfoVO;
 
 public class HotelInfoViewuiController {
@@ -23,14 +26,11 @@ public class HotelInfoViewuiController {
 	// 酒店搜索界面
 	private Pane hotelSearchPane;
 
-	// 酒店详情查看界面
-	private Pane hotelInfoViewPane;
-
 	// 个人信息界面
 	private Pane personInfoViewPane;
 
 	// 订单查看界面
-	private Pane OrderViewPane;
+	private Pane personOrderViewPane;
 
 	private Stage primaryStage;
 
@@ -49,7 +49,40 @@ public class HotelInfoViewuiController {
 	public void goTohotelSearchui() {
 
 	}
+	
+	/**
+	 * 跳转到个人信息维护界面
+	 * 
+	 * @return boolean
+	 */
 
+	@FXML
+	private void viewPersonInfo() {
+		personInfoViewPane = new PersonInfoui(primaryStage, personname);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(personInfoViewPane);
+	}
+
+	/**
+	 * 跳转到个人订单查看界面
+	 */
+	@FXML
+	private void viewPersonOrder() {
+		personOrderViewPane = new OrderViewui(primaryStage, personname);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(personOrderViewPane);
+	}
+	
+	/**
+	 * 跳转到酒店搜索界面
+	 */
+	@FXML
+	private void viewHotelSearch() {
+		hotelSearchPane = new HotelSearchui(primaryStage, personname);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(hotelSearchPane);
+	}
+	
 	/**
 	 * 传递Main的primaryStage
 	 * 

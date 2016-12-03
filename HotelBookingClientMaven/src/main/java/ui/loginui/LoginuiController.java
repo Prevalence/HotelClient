@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.hotelworkerui.orderViewui.OrderViewui;
 import ui.personui.hotelSearchui.HotelSearchui;
 
 public class LoginuiController {
@@ -47,10 +48,10 @@ public class LoginuiController {
 	// 客户的第一个界面：酒店搜索界面
 	private Pane hotelSearchPane;
 
-	// 酒店工作人员的第一个界面：酒店工作人员订单查看界面
+	// 酒店工作人员的第一个界面：酒店工作人员订单浏览界面
 	private Pane hotelWorkerOrderInfouiPane;
 
-	// 网站营销人员的第一个界面：网站营销人员订单查看界面
+	// 网站营销人员的第一个界面：网站营销人员订单浏览界面
 	private Pane marketOrderInfouiPane;
 
 	// 网站管理人员的第一个界面：搜索与添加用户界面
@@ -77,11 +78,18 @@ public class LoginuiController {
 	private void Login() {
 		String username = userNameField.getText();
 		String password = passwordField.getText();
-		System.out.println("ok!");
 		// if (userbl.userLogin(username, password, usertype)) {
+		if(usertype.equals("酒店工作人员")){
+			System.out.println("yes!");
+			 hotelWorkerOrderInfouiPane=new OrderViewui(primaryStage,username);
+			 mainPane.getChildren().remove(0);
+			 mainPane.getChildren().add(hotelWorkerOrderInfouiPane);
+		}
+		else if(usertype.equals("客户")){
 		 hotelSearchPane = new HotelSearchui(primaryStage,username);
 		 mainPane.getChildren().remove(0);
 		 mainPane.getChildren().add(hotelSearchPane);
+		}
 		// } else {
 		// feedBackField.setText("用户名或密码不正确！");
 		// }
