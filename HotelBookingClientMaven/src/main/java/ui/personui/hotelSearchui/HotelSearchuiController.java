@@ -4,9 +4,12 @@ import businessLogic.hotelbl.HotelController;
 import businessLogicService.hotelblService.HotelblService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -49,6 +52,9 @@ public class HotelSearchuiController {
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableColumn locationCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn buttonCol;
 	@FXML
 	private TableView<HotelSearchVO> searchTable;
 	@FXML
@@ -69,10 +75,48 @@ public class HotelSearchuiController {
 	private Stage primaryStage;
 
 	private String personname;
+	
+	private String selectedHotelName;
 
 	public HotelSearchuiController() {
 		hotelbl = new HotelController();
 	}
+	
+	//Define the button cell
+    public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
+        private final Button cellButton = new Button("查看详情");
+
+        ButtonCell(){
+            cellButton.setOnAction(new EventHandler<ActionEvent>(){
+                @Override
+                public void handle(ActionEvent t) {
+                	selectedHotelName=((HotelSearchVO)searchTable.getItems().get(getTableRow().getIndex())).getHotelName();
+
+                }
+            });
+        }
+
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (empty) {
+                setGraphic(null);
+                setText(null);
+            } else {
+//                btnBox.getChildren().clear();
+//                if(((OrderVO)tableView.getItems().get(getTableRow().getIndex())).orderType == OrderType.Executed){
+//                    btnBox.getChildren().add(detailButton);
+//                }else {
+//                    btnBox.getChildren().addAll(detailButton, checkInButton);
+//                }
+                setGraphic(cellButton);
+                setText(null);
+            }
+        }
+
+    }
+
 
 	/**
 	 * 跳转到个人信息维护界面
@@ -109,6 +153,10 @@ public class HotelSearchuiController {
 		String hotelName = searchField.getText();
 		searchData.get(0);
 //		searchData=FXCollections.observableArrayList(hotelbl.showHotelInfo(hotelName));
+		for(int i=0;i<searchData.size();i++){
+			ButtonCell selectedButton=new ButtonCell();
+			searchData.get(i).setSelectedButton(selectedButton);
+		}
 		hotelNameCol.setCellValueFactory(
                 new PropertyValueFactory<>("hotelName"));
 		starCol.setCellValueFactory(
@@ -117,6 +165,7 @@ public class HotelSearchuiController {
                 new PropertyValueFactory<>("area"));
 		locationCol.setCellValueFactory(
                 new PropertyValueFactory<>("location"));
+		buttonCol.setCellValueFactory(new PropertyValueFactory<>("selectedButton"));
 		searchTable.setItems(searchData);
 		
 	}

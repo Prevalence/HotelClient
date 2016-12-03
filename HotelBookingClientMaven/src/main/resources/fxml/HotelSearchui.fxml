@@ -171,27 +171,28 @@
             <Image url="@../酒店搜索界面/结果栏/酒店名称.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="41.0" layoutX="425.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="18.0" fitWidth="41.0" layoutX="400.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店搜索界面/结果栏/星级.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="100.0" layoutX="612.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="18.0" fitWidth="100.0" layoutX="542.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店搜索界面/结果栏/酒店商圈.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="40.0" layoutX="846.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="18.0" fitWidth="40.0" layoutX="740.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店搜索界面/结果栏/地址.png" />
          </image>
       </ImageView>
       <TableView fx:id="SearchTable" layoutX="168.0" layoutY="328.0" prefHeight="447.0" prefWidth="817.0" style="-fx-background-color: transparent;">
         <columns>
-            <TableColumn fx:id="hotelNameCol" prefWidth="199.0" />
-            <TableColumn fx:id="starCol" prefWidth="173.0" />
-          <TableColumn fx:id="areaCol" prefWidth="229.0" />
-          <TableColumn fx:id="locationCol" minWidth="0.0" prefWidth="214.0" />
+            <TableColumn fx:id="hotelNameCol" prefWidth="183.0" />
+            <TableColumn fx:id="starCol" prefWidth="145.0" />
+          <TableColumn fx:id="areaCol" prefWidth="188.0" />
+          <TableColumn fx:id="locationCol" minWidth="0.0" prefWidth="149.0" />
+            <TableColumn fx:id="buttonCol" prefWidth="225.0" />
         </columns>
       </TableView>
    </children>
