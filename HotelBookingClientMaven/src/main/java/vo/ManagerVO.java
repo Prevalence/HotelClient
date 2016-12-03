@@ -3,7 +3,7 @@ package vo;
 import java.io.Serializable;
 
 
-public class ManagerVO  implements Serializable {
+public class ManagerVO {
 	String username;
 	String password;
 	public String getUsername() {

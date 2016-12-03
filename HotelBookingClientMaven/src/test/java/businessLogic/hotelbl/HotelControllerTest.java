@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import businessLogic.hotelbl.HotelController;
 import rmi.ClientRunner;
+import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 
 public class HotelControllerTest {
@@ -45,11 +46,11 @@ public class HotelControllerTest {
 
 	@Test
 	public void testFindWithReq() {
-		HotelVO po=new HotelVO();
+		HotelConditionVO po=new HotelConditionVO();
 		po.setHotelname("111");
 		po.setAddress("111");
 		po.setCircle("111");
-		HotelVO po2=new HotelVO();
+		HotelConditionVO po2=new HotelConditionVO();
 		po2.setHotelname("111");
 		po2.setAddress("111");
 		po2.setCircle("111");

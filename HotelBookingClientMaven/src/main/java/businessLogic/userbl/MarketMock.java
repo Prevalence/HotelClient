@@ -2,8 +2,6 @@ package businessLogic.userbl;
 
 import java.util.ArrayList;
 
-import po.MarketPO;
-import po.personPO.PersonPO;
 import vo.MarketVO;
 import vo.personVO.PersonVO;
 

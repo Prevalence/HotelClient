@@ -8,7 +8,7 @@ import java.util.List;
 import po.PromotionPO;
 
 
-public class PromotionVO implements Serializable {
+public class PromotionVO {
 	private String promotionID;//promotion的唯一标识
 	private String promotionName;//promotion的名称，客户可见
 	private String promotionType;

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import po.MarketPO;
 
-public class MarketVO  implements Serializable{
+public class MarketVO {
 	String username;
 	String password;
 

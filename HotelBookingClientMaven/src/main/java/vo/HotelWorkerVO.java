@@ -5,7 +5,7 @@ import java.io.Serializable;
 import po.HotelWorkerPO;
 
 
-public class HotelWorkerVO  implements Serializable {
+public class HotelWorkerVO {
 	private String hotelname;
 	private String username;
 	private String password;
