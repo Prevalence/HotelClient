@@ -16,7 +16,7 @@ public class HotelMock extends Hotel{
 	 * @return 获取酒店信息（PO）
 	 */
 	public HotelVO showHotelInfo(String Hotelname){
-		RoomVO roomvo=new RoomVO("hello", 0, 0);
+		RoomVO roomvo=new RoomVO("hello", 0, 0, null, null);
 		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
 		roomvoList.add(roomvo);
 		CommentVO commentvo=new CommentVO("南京大酒店", "小李", null, 5, "很好");
@@ -66,7 +66,7 @@ public class HotelMock extends Hotel{
 		return result;
 	}
 	public ArrayList<HotelVO> findWithReq(HotelVO p) {
-		RoomVO roomvo=new RoomVO("hello", 0, 0);
+		RoomVO roomvo=new RoomVO("hello", 0, 0, null, null);
 		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
 		roomvoList.add(roomvo);
 		CommentVO commentvo=new CommentVO("南京大酒店", "小李", null, 5, "很好");
