@@ -53,4 +53,13 @@ public class UserSearchAndAdduiController {
 		public void setPersonname(String personname) {
 			this.personname = personname;
 		}
+		
+		/**
+		 * 登录之后调整界面大小，和之后更大的工作区域匹配
+		 */
+		public void modifyStageSize() {
+			primaryStage.setWidth(1000);
+			primaryStage.setHeight(800);
+			primaryStage.setX(400);
+		}
 }

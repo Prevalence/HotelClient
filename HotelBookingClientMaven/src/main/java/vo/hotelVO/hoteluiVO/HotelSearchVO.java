@@ -10,7 +10,6 @@ public class HotelSearchVO {
     private final SimpleStringProperty star;
     private final SimpleStringProperty area;
     private final SimpleStringProperty location;
-    private ButtonCell selectedButton;
 
     public HotelSearchVO(String hotelName, String star, String area, String location) {
         this.hotelName = new SimpleStringProperty(hotelName);
@@ -50,12 +49,12 @@ public class HotelSearchVO {
     public void setLocation(String content) {
         location.set(content);
     }
-    
-    public ButtonCell getSelectedButton(){
-    	return selectedButton;
-    }
-    
-    public void setSelectedButton(ButtonCell selectedButton){
-    	this.selectedButton=selectedButton;
-    }
+//    
+//    public ButtonCell getSelectedButton(){
+//    	return selectedButton;
+//    }
+//    
+//    public void setSelectedButton(ButtonCell selectedButton){
+//    	this.selectedButton=selectedButton;
+//    }
 }

@@ -7,14 +7,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1009.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.orderViewui.OrderViewuiController">
    <children>
-      <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="835.0" fitWidth="1058.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Rectangle%204.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="66.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="95.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/蓝色色块.png" />
          </image>
@@ -25,14 +25,14 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <ImageView fitHeight="65.0" fitWidth="817.0" layoutX="146.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="76.0" fitWidth="861.0" layoutX="151.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
       <Pane layoutX="145.0" layoutY="62.0" prefHeight="138.0" prefWidth="817.0">
          <children>
-            <ImageView fitHeight="250.0" fitWidth="817.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="149.0" fitWidth="855.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../酒店详情界面/Rectangle%208.png" />
                </image>
@@ -66,7 +66,7 @@
             </Button>
          </children>
       </Pane>
-      <Button layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="hotelSearchButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -78,7 +78,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+      <Button fx:id="personOrderButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -90,7 +90,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="personInfoButton" layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -161,7 +161,7 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="422.0" layoutY="694.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="reverseButton" layoutX="422.0" layoutY="694.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -173,7 +173,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="568.0" layoutY="694.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="commentButton" layoutX="568.0" layoutY="694.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -184,4 +184,4 @@
          </image>
       </ImageView>
    </children>
-</Pane>
+</fx:root>
