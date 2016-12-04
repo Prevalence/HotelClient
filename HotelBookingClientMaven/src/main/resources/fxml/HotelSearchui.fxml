@@ -183,12 +183,12 @@
             <Image url="@../酒店搜索界面/结果栏/地址.png" />
          </image>
       </ImageView>
-      <Button fx:id="searchButton" layoutX="780.0" layoutY="120.0" mnemonicParsing="false" onAction="#viewHotelInfo" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: green;">
+      <Button fx:id="searchButton" layoutX="762.0" layoutY="125.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="40.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="46.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../酒店搜索界面/搜索框/搜索图标.png" />
                </image>
