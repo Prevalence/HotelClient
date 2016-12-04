@@ -4,18 +4,12 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businessLogic.hotelbl.Hotel;
-import businessLogic.hotelbl.HotelMock;
 import businessLogic.userbl.HotelWorker;
-import businessLogic.userbl.HotelWorkerMock;
 import businessLogic.userbl.Market;
-import businessLogic.userbl.MarketMock;
 import businessLogic.userbl.Person;
-import businessLogic.userbl.PersonMock;
-import po.HotelWorkerPO;
-import po.MarketPO;
-import po.personPO.PersonPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
+import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.personVO.PersonVO;
 /**
@@ -30,9 +24,9 @@ public class Search {
 	 * @return 符合条件的酒店列表
 	 * @throws RemoteException 
 	 */
-	public ArrayList<HotelVO> findHotel(HotelVO condition) throws RemoteException{
+	public ArrayList<HotelVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException{
 		Hotel hotel=new Hotel();
-		return hotel.findWithReq(condition, null);
+		return hotel.findWithReq(worstCondition, bestCondition);
 	}
 	
 	/**

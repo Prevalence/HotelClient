@@ -6,7 +6,7 @@ import java.util.Calendar;
 import po.personPO.PersonPO;
 
 
-public class PersonVO  implements Serializable {
+public class PersonVO {
 	private String username;
 	private String password;
 	private int personID;

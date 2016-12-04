@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.SearchVO;
+import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.personVO.PersonVO;
 /**
@@ -15,7 +16,7 @@ import vo.personVO.PersonVO;
 public interface SearchblService {
 	
 	/*已知客户筛选条件，返回符合条件的酒店*/
-	public ArrayList<HotelVO> findHotel(HotelVO condition); 
+	public ArrayList<HotelVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition); 
 
 	/*已知客户名称，返回客户信息*/
 	public PersonVO searchPersonInfo (String personname);

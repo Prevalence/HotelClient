@@ -10,7 +10,7 @@ import po.SearchPO;
  *
  */
 
-public class SearchVO implements Serializable {
+public class SearchVO {
 	private String personname;
 	private Calendar time;
 	private String hotelname;

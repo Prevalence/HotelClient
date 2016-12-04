@@ -2,15 +2,12 @@ package businessLogic.searchbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.List;
 
 import businessLogicService.searchblService.SearchblService;
-import po.HotelWorkerPO;
-import po.MarketPO;
-import po.SearchPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.SearchVO;
+import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.personVO.PersonVO;
 
@@ -22,9 +19,9 @@ public class SearchController implements SearchblService {
 	private Search search=new Search();
 	private SearchHistory searchhistory=new SearchHistory();
 
-	public ArrayList<HotelVO> findHotel(HotelVO condition) {
+	public ArrayList<HotelVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
 			try {
-			return search.findHotel(condition);
+			return search.findHotel(worstCondition, bestCondition);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

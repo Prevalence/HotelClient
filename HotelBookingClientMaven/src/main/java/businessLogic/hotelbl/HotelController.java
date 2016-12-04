@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businessLogicService.hotelblService.HotelblService;
+import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 
 /**
@@ -83,7 +84,7 @@ public class HotelController implements HotelblService{
 	/**
 	 * 
 	 */
-	public ArrayList<HotelVO> findWithReq(HotelVO worstCondition, HotelVO bestCondition) {
+	public ArrayList<HotelVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
 		try {
 			return hotel.findWithReq(worstCondition, bestCondition);
 		} catch (RemoteException e) {

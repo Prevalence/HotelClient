@@ -3,7 +3,6 @@ package businessLogic.orderbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import businessLogic.userbl.Person;
 import businessLogic.userbl.UserController;
 import po.OrderPO;
 import rmi.RemoteHelper;
@@ -16,18 +15,10 @@ import dataService.orderDataService.OrderDataService;
  *
  */
 public class Order{
-//	private Person person;
-//	
-//	private ArrayList<OrderPO> personList = null;
-//	
-//	private ArrayList<OrderPO> hotelList = null;
-//	
-//	private ArrayList<OrderPO> netList = null;
 	
 	private OrderDataService orderDataService;
 	
 	public Order(){
-		Person person=new Person();
 		orderDataService=RemoteHelper.getInstance().getOrderDataService();
 	}
 	
@@ -213,7 +204,6 @@ public class Order{
 		}
 		for(int i=0; i<netNumList.size(); i++){
 			OrderVO ordervo=netNumList.get(i);
-//			OrderVO ordervo=new OrderVO();
 			if((ordervo.getProducttime().getTime().getYear()!=date.getTime().getYear())
 					||(ordervo.getProducttime().getTime().getMonth()!=date.getTime().getMonth())
 					||(ordervo.getProducttime().getTime().getDate()!=date.getTime().getDate())){

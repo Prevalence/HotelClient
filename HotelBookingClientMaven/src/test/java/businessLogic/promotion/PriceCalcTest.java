@@ -15,8 +15,8 @@ public class PriceCalcTest {
 	PriceCalc price=new PriceCalc();
 	@Test
 	public void testPriceCut() {
-		RoomVO room1=new RoomVO("单人房", 5, 200);
-		RoomVO room2=new RoomVO("双人房", 1, 300);
+		RoomVO room1=new RoomVO("单人房", 5, 200, null, null);
+		RoomVO room2=new RoomVO("双人房", 1, 300, null, null);
 		ArrayList<RoomVO> rooms=new ArrayList<RoomVO>();
 		rooms.add(room1);
 		rooms.add(room2);
