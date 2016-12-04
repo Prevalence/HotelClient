@@ -101,7 +101,8 @@
          </image>
       </ImageView>
       <TextField fx:id="searchField" layoutX="400.0" layoutY="122.0" prefHeight="38.0" prefWidth="332.0" style="-fx-background-color: transparent;" />
-      <Button fx:id="priceButton" layoutX="170.0" layoutY="179.0" mnemonicParsing="false" onAction="#search" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: transparent;">
+      <ChoiceBox fx:id="priceChoices" layoutX="178.0" layoutY="182.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black;" />
+      <Button fx:id="priceButton" layoutX="7.0" layoutY="328.0" mnemonicParsing="false" onAction="#searchWithPrice" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -113,7 +114,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="starButton" layoutX="388.0" layoutY="178.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: transparent;">
+      <Button fx:id="starButton" layoutX="388.0" layoutY="178.0" mnemonicParsing="false" onAction="#searchWithStar" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -125,7 +126,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="facilityButton" layoutX="608.0" layoutY="178.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: transparent;">
+      <Button fx:id="facilityButton" layoutX="608.0" layoutY="178.0" mnemonicParsing="false" onAction="#searchWithScore" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -137,7 +138,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="haveBookedButton" layoutX="826.0" layoutY="178.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="151.0" style="-fx-background-color: transparent;">
+      <Button fx:id="haveBookedButton" layoutX="826.0" layoutY="178.0" mnemonicParsing="false" onAction="#searchWithHistory" prefHeight="40.0" prefWidth="151.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -183,7 +184,7 @@
             <Image url="@../酒店搜索界面/结果栏/地址.png" />
          </image>
       </ImageView>
-      <Button fx:id="searchButton" layoutX="762.0" layoutY="125.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="40.0" style="-fx-background-color: transparent;">
+      <Button fx:id="searchButton" layoutX="750.0" layoutY="120.0" mnemonicParsing="false" onAction="#searchHotelInfo" prefHeight="41.0" prefWidth="40.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>

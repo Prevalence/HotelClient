@@ -1,5 +1,7 @@
 package ui.personui.hotelSearchui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -11,6 +13,8 @@ public class HotelSearchui extends Pane {
 	private String personname;
 
 	private HotelSearchuiController hotelSearchuiController;
+	
+	private ObservableList<String> prices=FXCollections.observableArrayList();
 
 	/**
 	 * 接受primarystage用来完成界面最小化和可移动化设置
@@ -20,6 +24,8 @@ public class HotelSearchui extends Pane {
 	public HotelSearchui(Stage primaryStage, String personname) {
 		this.primaryStage = primaryStage;
 		this.personname = personname;
+		prices.add("0-300");
+		System.out.println(prices.get(0));
 		initHotelSearchui();
 	};
 
@@ -41,5 +47,6 @@ public class HotelSearchui extends Pane {
 		hotelSearchuiController.launchStage(primaryStage);
 		hotelSearchuiController.setPersonname(personname);
 		hotelSearchuiController.modifyStageSize();
+		hotelSearchuiController.setChoiceBox(prices);
 	}
 }

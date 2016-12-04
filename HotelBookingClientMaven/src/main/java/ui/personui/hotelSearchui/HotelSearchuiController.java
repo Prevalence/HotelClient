@@ -1,6 +1,7 @@
 package ui.personui.hotelSearchui;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import businessLogic.hotelbl.HotelController;
 import businessLogicService.hotelblService.HotelblService;
@@ -22,7 +23,8 @@ import javafx.util.Callback;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
-import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.HotelConditionVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchMock;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
@@ -48,6 +50,7 @@ public class HotelSearchuiController {
 	private TextField searchField;
 	@FXML
 	private ChoiceBox<String> priceChoices;
+	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView searchTable;
 	@SuppressWarnings("rawtypes")
@@ -71,11 +74,14 @@ public class HotelSearchuiController {
 
 	private HotelblService hotelbl;
 
+	// 填充进TableView的酒店数据
 	private ObservableList<HotelSearchVO> searchData;
 
-	private HotelSearchVO hotelInfo;
-	
-	private HotelVO hotelVO;
+	// 筛选上限条件的数据包
+	private HotelConditionVO hotelWorstConditionVO;
+
+	// 筛选下限条件的数据包
+	private HotelConditionVO hotelBestConditionVO;
 
 	// 酒店详情查看界面
 	private Pane hotelInfoViewPane;
@@ -89,15 +95,21 @@ public class HotelSearchuiController {
 	private Stage primaryStage;
 
 	private String personname;
-	
-	private int[] lowerPrice={0,300,600,900,1200};
-	
-	private int[] higherPrice={};
-	
-	private int[] star = {1,2,3,4,5};
+
+	private int[] lowerPrice = { 0, 300, 600, 900, 1200 };
+
+	private int priceLower;
+
+	private int[] higherPrice = { 300, 600, 900, 1200, -1 };
+
+	private int priceHigher;
+
+	private int[] star = { 1, 2, 3, 4, 5 };
 
 	public HotelSearchuiController() {
 		hotelbl = new HotelController();
+		hotelWorstConditionVO = new HotelConditionVO(null, null, null, null, 0, 0.0, false, null);
+		hotelBestConditionVO = new HotelConditionVO(null, null, null, null, 0, 0.0, false, null);
 	}
 
 	// 内部类，定义TableView中的按钮
@@ -110,7 +122,7 @@ public class HotelSearchuiController {
 				public void handle(ActionEvent t) {
 					String selectedHotelName = ((HotelSearchVO) searchTable.getItems().get(getTableRow().getIndex()))
 							.getHotelName();
-					hotelInfoViewPane=new HotelInfoViewui(primaryStage, personname, selectedHotelName);
+					hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, selectedHotelName);
 					mainPane.getChildren().remove(0);
 					mainPane.getChildren().add(hotelInfoViewPane);
 				}
@@ -125,18 +137,33 @@ public class HotelSearchuiController {
 				setGraphic(null);
 				setText(null);
 			} else {
-				// btnBox.getChildren().clear();
-				// if(((OrderVO)tableView.getItems().get(getTableRow().getIndex())).orderType
-				// == OrderType.Executed){
-				// btnBox.getChildren().add(detailButton);
-				// }else {
-				// btnBox.getChildren().addAll(detailButton, checkInButton);
-				// }
+
 				setGraphic(cellButton);
 				setText(null);
 			}
 		}
 
+	}
+
+	/**
+	 * 初始设置TableView的属性，绑定内部按钮
+	 */
+	@SuppressWarnings("unchecked")
+	private void initTableView() {
+		hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+		starCol.setCellValueFactory(new PropertyValueFactory<>("star"));
+		areaCol.setCellValueFactory(new PropertyValueFactory<>("area"));
+		locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+		buttonCol
+				.setCellFactory(new Callback<TableColumn<HotelSearchVO, Boolean>, TableCell<HotelSearchVO, Boolean>>() {
+
+					@Override
+					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
+						ButtonCell buttonCell = new ButtonCell();
+						return buttonCell;
+					}
+
+				});
 	}
 
 	/**
@@ -166,7 +193,7 @@ public class HotelSearchuiController {
 	 * 输入酒店名称搜索后，跳转到酒店详情查看界面
 	 */
 	@FXML
-	private void ViewHotelInfo() {
+	private void searchHotelInfo() {
 		String hotelName = searchField.getText();
 		// hotelInfo = hotelbl.showHotelInfo(hotelName);
 		hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
@@ -175,32 +202,67 @@ public class HotelSearchuiController {
 	}
 
 	/**
-	 * 以列表形式显示搜索结果
+	 * 用价格区间筛选，以列表形式显示搜索结果
 	 */
 	@SuppressWarnings("unchecked")
 	@FXML
-	private void search() {
+	private void searchWithPrice() {
 		searchTable.refresh();
-		ArrayList<HotelSearchVO> searchData0 = new ArrayList<HotelSearchVO>();
-		searchData0.add(new HotelSearchMock("njuHotel", "5", "nanjing", "nju"));
-		searchData = FXCollections.observableArrayList(searchData0);
-		// searchData=FXCollections.observableArrayList(hotelbl.showHotelInfo(hotelName));
-		hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
-		starCol.setCellValueFactory(new PropertyValueFactory<>("star"));
-		areaCol.setCellValueFactory(new PropertyValueFactory<>("area"));
-		locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-		buttonCol
-				.setCellFactory(new Callback<TableColumn<HotelSearchVO, Boolean>, TableCell<HotelSearchVO, Boolean>>() {
-
-					@Override
-					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
-						ButtonCell buttonCell = new ButtonCell();
-						return buttonCell;
-					}
-
-				});
+		initTableView();
+		
+		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
+		searchDataList.add(new HotelSearchMock("njuHotel", "5", "nanjing", "nju"));
+		searchData = FXCollections.observableArrayList(searchDataList);
+		
 		searchTable.setItems(searchData);
-
+	}
+	
+	/**
+	 * 用星级筛选，以列表形式显示搜索结果
+	 */
+	@SuppressWarnings("unchecked")
+	@FXML
+	private void searchWithStar() {
+		searchTable.refresh();
+		initTableView();
+		
+		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
+		searchDataList.add(new HotelSearchMock("njuHotel", "4", "nanjing", "nju"));
+		searchData = FXCollections.observableArrayList(searchDataList);
+		
+		searchTable.setItems(searchData);
+	}
+	
+	/**
+	 * 用评分区间筛选，以列表形式显示搜索结果
+	 */
+	@SuppressWarnings("unchecked")
+	@FXML
+	private void searchWithScore() {
+		searchTable.refresh();
+		initTableView();
+		
+		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
+		searchDataList.add(new HotelSearchMock("njuHotel", "3", "nanjing", "nju"));
+		searchData = FXCollections.observableArrayList(searchDataList);
+		
+		searchTable.setItems(searchData);
+	}
+	
+	/**
+	 * 用是否预定过筛选，以列表形式显示搜索结果
+	 */
+	@SuppressWarnings("unchecked")
+	@FXML
+	private void searchWithHistory() {
+		searchTable.refresh();
+		initTableView();
+		
+		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
+		searchDataList.add(new HotelSearchMock("njuHotel", "2", "nanjing", "nju"));
+		searchData = FXCollections.observableArrayList(searchDataList);
+		
+		searchTable.setItems(searchData);
 	}
 
 	/**
@@ -229,9 +291,9 @@ public class HotelSearchuiController {
 		primaryStage.setHeight(800);
 		primaryStage.setX(400);
 	}
-	
+
 	/**
-	 * 设置其他方式登录的组件
+	 * 设置价格区间选择的组件
 	 * 
 	 * @param others
 	 */
@@ -239,14 +301,20 @@ public class HotelSearchuiController {
 		priceChoices.setItems(others);
 		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				usertype = type[priceChoices.getSelectionModel().getSelectedIndex()];
-				if (usertype.equals("还原")) {
-					usertype = "客户";
-					otherLabel.setText("其他方式登录");
-				} else {
-					otherLabel.setText(usertype);
-				}
-				System.out.println(usertype);
+				priceLower = lowerPrice[priceChoices.getSelectionModel().getSelectedIndex()];
+				priceHigher = higherPrice[priceChoices.getSelectionModel().getSelectedIndex()];
+				ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
+				ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
+				RoomVO roomLower = new RoomVO(null, priceLower, 0, null, null);
+				RoomVO roomHigher = new RoomVO(null, priceHigher, 0, null, null);
+				roomListLower.add(roomLower);
+				roomListHigher.add(roomHigher);
+				hotelWorstConditionVO.setRoom(roomListLower);
+				hotelBestConditionVO.setRoom(roomListHigher);
+				ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+						hotelBestConditionVO);
+				searchData = FXCollections.observableArrayList(searchDataList);
+				searchWithPrice();
 			}
 		});
 	}
