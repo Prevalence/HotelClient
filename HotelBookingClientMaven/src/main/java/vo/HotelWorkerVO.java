@@ -2,8 +2,10 @@ package vo;
 
 import java.io.Serializable;
 
+import po.HotelWorkerPO;
 
-public class HotelWorkerVO  implements Serializable {
+
+public class HotelWorkerVO {
 	private String hotelname;
 	private String username;
 	private String password;
@@ -12,6 +14,12 @@ public class HotelWorkerVO  implements Serializable {
 		this.hotelname=hotelname;
 		this.username=username;
 		this.password=password;
+	}
+	
+	public HotelWorkerVO(HotelWorkerPO po) {
+		this.hotelname=po.getHotelname();
+		this.username=po.getUsername();
+		this.password=po.getPassword();
 	}
 
 	public HotelWorkerVO(){

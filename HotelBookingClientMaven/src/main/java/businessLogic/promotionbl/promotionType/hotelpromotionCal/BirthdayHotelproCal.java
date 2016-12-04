@@ -4,9 +4,9 @@ import java.util.Calendar;
 
 import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
-import po.PersonPO;
 import po.PromotionPO;
-import po.promotionpo.hotelpromotionpo.BirthdayHotelproPO;
+import po.personPO.PersonPO;
+import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
 
 /**
  * @author 武秀峰

@@ -1,4 +1,4 @@
-package vo.hotelVO;
+package vo.hotelVO.hoteluiVO;
 
 import java.util.ArrayList;
 

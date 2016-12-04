@@ -3,7 +3,7 @@ package vo;
 import java.io.Serializable;
 
 
-public class ManagerVO  implements Serializable {
+public class ManagerVO {
 	String username;
 	String password;
 	public String getUsername() {
@@ -22,6 +22,6 @@ public class ManagerVO  implements Serializable {
 		this.username=username;
 		this.password=password;
 	}
-		// TODO Auto-generated constructor stub
-	}
+}
+
 

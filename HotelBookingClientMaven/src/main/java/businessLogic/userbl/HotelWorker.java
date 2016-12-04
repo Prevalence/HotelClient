@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import dataService.userDataService.UserDataService;
 import po.HotelWorkerPO;
 import rmi.RemoteHelper;
+import vo.HotelWorkerVO;
 /**
  * @author xiamutian
  * @author 武秀峰
@@ -31,8 +32,10 @@ public class HotelWorker {
 	 * @param hotelWorkername
 	 * @throws RemoteException 
 	 */
-	public HotelWorkerPO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
-		return userdataservice.findHotelWorker(hotelWorkername);
+	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
+		HotelWorkerPO po=userdataservice.findHotelWorker(hotelWorkername);
+		HotelWorkerVO vo=new HotelWorkerVO(po);
+		return vo;
 		
 	}
 	

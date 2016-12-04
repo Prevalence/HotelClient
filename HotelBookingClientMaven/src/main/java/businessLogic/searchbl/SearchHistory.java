@@ -4,9 +4,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataService.searchDataService.SearchDataService;
-import po.HotelPO;
 import po.SearchPO;
 import rmi.RemoteHelper;
+import vo.SearchVO;
 /**
  * 
  * @author 武秀峰
@@ -20,8 +20,14 @@ public class SearchHistory {
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public ArrayList<SearchPO> showHistory(String username) throws RemoteException{
-		return searchdataservice.showSearchHistory(username);
+	public ArrayList<SearchVO> showHistory(String username) throws RemoteException{
+		ArrayList<SearchPO> searchpoList=searchdataservice.showSearchHistory(username);
+		ArrayList<SearchVO> searchvoList=new ArrayList<SearchVO>();
+		for(int i=0; i<searchpoList.size(); i++){
+			SearchVO searchvo=new SearchVO(searchpoList.get(i));
+			searchvoList.add(searchvo);
+		}
+		return searchvoList;
 	}
 
 	/**
@@ -29,8 +35,9 @@ public class SearchHistory {
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public boolean saveHistory (SearchPO searchHistory) throws RemoteException{
-		return searchdataservice.addSearchHistory(searchHistory);
+	public boolean saveHistory (SearchVO searchHistory) throws RemoteException{
+		SearchPO po=new SearchPO(searchHistory);
+		return searchdataservice.addSearchHistory(po);
 	}
 
 	/**
@@ -38,8 +45,9 @@ public class SearchHistory {
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public boolean deleteHistory(SearchPO searchHistory) throws RemoteException{
-		return searchdataservice.deleteSearchHistory(searchHistory);
+	public boolean deleteHistory(SearchVO searchHistory) throws RemoteException{
+		SearchPO po=new SearchPO(searchHistory);
+		return searchdataservice.deleteSearchHistory(po);
 	}
 	public SearchHistory(){
 		searchdataservice=RemoteHelper.getInstance().getSearchDataService();

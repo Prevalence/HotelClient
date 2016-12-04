@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 import po.HotelWorkerPO;
 import po.MarketPO;
-import po.PersonPO;
+import vo.HotelWorkerVO;
 
 public class HotelWorkerMock extends HotelWorker{
 	HotelWorkerPO pp=new HotelWorkerPO();
 
 	@Override
-	public HotelWorkerPO getHotelWorkerInfo(String hotelWorkername) {
-		HotelWorkerPO pp1=new HotelWorkerPO();
+	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) {
+		HotelWorkerVO pp1=new HotelWorkerVO();
 		pp1.setUsername("xiamutian");
-		HotelWorkerPO pp2=new HotelWorkerPO();
+		HotelWorkerVO pp2=new HotelWorkerVO();
 		pp2.setUsername("xiekailian");
 		pp1.setPassword("123");
 		pp2.setPassword("456");
-		ArrayList<HotelWorkerPO> List = new ArrayList<HotelWorkerPO>(); 
+		ArrayList<HotelWorkerVO> List = new ArrayList<HotelWorkerVO>(); 
 		List.add(pp1);
 		List.add(pp2);
 		for(int i=0;i<List.size();i++){

@@ -31,7 +31,7 @@ public class HotelInfoViewui extends Pane {
 	 */
 	public void initHotelInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HotelInfoViewui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店详情界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();

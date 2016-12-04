@@ -1,32 +1,24 @@
-package vo.hotelVO;
+package vo.hotelVO.hoteluiVO;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import ui.personui.hotelSearchui.HotelSearchuiController.ButtonCell;
 
 public class HotelSearchVO {
 	private final SimpleStringProperty hotelName;
     private final SimpleStringProperty star;
     private final SimpleStringProperty area;
     private final SimpleStringProperty location;
-    private Button select;
 
-    private HotelSearchVO(String hotelName, String star, String area, String location) {
+    public HotelSearchVO(String hotelName, String star, String area, String location) {
         this.hotelName = new SimpleStringProperty(hotelName);
         this.star = new SimpleStringProperty(star);
         this.area = new SimpleStringProperty(area);
         this.location = new SimpleStringProperty(location);
-        this.select = new Button("select");
-        initSelect();
     }
 
-    private void initSelect(){
-    	select.setOnAction((ActionEvent e) -> {
-            
-        });
-    }
-    
-    public String hotelName() {
+    public String getHotelName() {
         return hotelName.get();
     }
 
@@ -57,4 +49,12 @@ public class HotelSearchVO {
     public void setLocation(String content) {
         location.set(content);
     }
+//    
+//    public ButtonCell getSelectedButton(){
+//    	return selectedButton;
+//    }
+//    
+//    public void setSelectedButton(ButtonCell selectedButton){
+//    	this.selectedButton=selectedButton;
+//    }
 }

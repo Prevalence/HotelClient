@@ -8,7 +8,7 @@ import java.util.List;
 import po.PromotionPO;
 
 
-public class PromotionVO implements Serializable {
+public class PromotionVO {
 	private String promotionID;//promotion的唯一标识
 	private String promotionName;//promotion的名称，客户可见
 	private String promotionType;
@@ -18,14 +18,22 @@ public class PromotionVO implements Serializable {
 	public PromotionVO() {
 		super();
 	}
-//	public PromotionVO(String promotionID, String promotionName, String promotionType,
-//			ArrayList<String> hotelnameOrWeb) {
-//		super();
-//		this.promotionID = promotionID;
-//		this.promotionName = promotionName;
-//		this.promotionType = promotionType;
-//		this.hotelnameOrWeb = hotelnameOrWeb;
-//	}
+
+	public PromotionVO(String promotionID, String promotionName, String promotionType, String hotelnameOrWeb) {
+		super();
+		this.promotionID = promotionID;
+		this.promotionName = promotionName;
+		this.promotionType = promotionType;
+		this.hotelnameOrWeb = hotelnameOrWeb;
+	}
+	
+	public PromotionVO(PromotionPO po) {
+		this.promotionID = po.getPromotionID();
+		this.promotionName = po.getPromotionName();
+		this.promotionType = po.getPromotionType();
+		this.hotelnameOrWeb = po.getHotelnameOrWeb();
+	}
+
 	public String getPromotionID() {
 		return promotionID;
 	}
@@ -51,7 +59,7 @@ public class PromotionVO implements Serializable {
 		this.hotelnameOrWeb = hotelnameOrWeb;
 	}
 	//vo to po
-	public PromotionPO topo(PromotionVO promotionvo){
+	public PromotionPO toPO(PromotionVO promotionvo){
 		return null;
 	}
 	

@@ -1,9 +1,10 @@
 package ui.hotelworkerui.orderViewui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class OrderViewui {
+public class OrderViewui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
@@ -26,7 +27,7 @@ public class OrderViewui {
 	 */
 	public void initOrderViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrderViewui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店工作人员首界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -38,5 +39,6 @@ public class OrderViewui {
 		orderViewuiController = loader.getController();
 		orderViewuiController.launchStage(primaryStage);
 		orderViewuiController.setPersonname(personname);
+		orderViewuiController.modifyStageSize();
 	}
 }

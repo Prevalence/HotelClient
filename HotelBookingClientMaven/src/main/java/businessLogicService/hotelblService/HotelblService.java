@@ -2,8 +2,9 @@ package businessLogicService.hotelblService;
 
 import java.util.ArrayList;
 
-import po.HotelPO;
-import vo.HotelVO;
+import vo.hotelVO.hotelblVO.HotelConditionVO;
+import vo.hotelVO.hotelblVO.HotelVO;
+
 
 public interface HotelblService {
 	/**
@@ -11,7 +12,7 @@ public interface HotelblService {
 	 * @param Hotelname 酒店名
 	 * @return 获取酒店信息（PO）
 	 */
-	public HotelPO showHotelInfo(String Hotelname);
+	public HotelVO showHotelInfo(String Hotelname);
 	/**
 	 * 
 	 * @param hotelinfo 修改的酒店信息（VO）
@@ -38,5 +39,5 @@ public interface HotelblService {
 	 * @param condition 筛选条件
 	 * @return 符合条件的酒店PO列表
 	 */
-	public ArrayList<HotelPO> findWithReq(HotelVO worstCondition, HotelVO bestCondition);
+	public ArrayList<HotelVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition);
 }

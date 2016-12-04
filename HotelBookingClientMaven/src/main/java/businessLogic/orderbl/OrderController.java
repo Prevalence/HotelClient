@@ -1,6 +1,7 @@
 package businessLogic.orderbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import businessLogicService.orderblService.OrderblService;
 import vo.OrderVO;
@@ -9,9 +10,9 @@ public class OrderController implements OrderblService{
 	public OrderController(){
 		order1=new Order();
 	}
-	public boolean handleAbnormalOrder(OrderVO order, int credit) {
+	public boolean handleAbnormalOrder(OrderVO order, int percentOfCredit) {
 		 try {
-			order1.handleAbnormalOrder(order,credit);
+			return order1.handleAbnormalOrder(order,percentOfCredit);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -21,7 +22,7 @@ public class OrderController implements OrderblService{
 
 	public boolean reverseOrder(OrderVO order) {
 		try {
-			order1.reverseOrder(order);
+			return order1.reverseOrder(order);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,18 +75,21 @@ public class OrderController implements OrderblService{
 		return null;
 	}
 
-	public ArrayList<OrderVO> personStateOrders(String state){
-		return order1.personStateOrders(state);
+	public ArrayList<OrderVO> personStateOrders(String personname, String state){
+		return order1.personStateOrders(personname, state);
 		
 	}
 	
-	public ArrayList<OrderVO> hotelTimeOrders(String time){
-		return order1.hotelTimeOrders(time);
+	public ArrayList<OrderVO> hotelStateOrders(String hotelname, String state){
+		return order1.hotelStateOrders(hotelname, state);
 		
 	}
 	
-	public ArrayList<OrderVO> netNumOrders(String num){
-		return order1.netNumOrders(num);
+	public ArrayList<OrderVO> netNumOrders(Calendar date){
+		return order1.netNumOrders(date);
 		
 	}
+
 }
+
+

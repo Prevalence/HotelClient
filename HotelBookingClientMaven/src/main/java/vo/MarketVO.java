@@ -2,11 +2,21 @@ package vo;
 
 import java.io.Serializable;
 
-public class MarketVO  implements Serializable{
+import po.MarketPO;
+
+public class MarketVO {
 	String username;
 	String password;
+
+	public MarketVO() {
+		super();
+	}
 	public MarketVO(String userName, String password) {
 		this.username=username;
+		this.password=password;
+	}
+	public MarketVO(MarketPO po) {
+		this.username=po.getUsername();
 		this.password=password;
 	}
 	
