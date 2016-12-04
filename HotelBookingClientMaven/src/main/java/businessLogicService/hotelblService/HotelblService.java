@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
 
 public interface HotelblService {
@@ -39,5 +40,5 @@ public interface HotelblService {
 	 * @param condition 筛选条件
 	 * @return 符合条件的酒店PO列表
 	 */
-	public ArrayList<HotelVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition);
+	public ArrayList<HotelSearchVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition);
 }

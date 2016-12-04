@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import businessLogicService.hotelblService.HotelblService;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
 /**
  * HotelController 控制hotel相关的逻辑操作
@@ -84,7 +85,7 @@ public class HotelController implements HotelblService{
 	/**
 	 * 
 	 */
-	public ArrayList<HotelVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
+	public ArrayList<HotelSearchVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
 		try {
 			return hotel.findWithReq(worstCondition, bestCondition);
 		} catch (RemoteException e) {

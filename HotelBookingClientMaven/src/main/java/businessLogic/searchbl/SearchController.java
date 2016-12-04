@@ -9,6 +9,7 @@ import vo.MarketVO;
 import vo.SearchVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.personVO.PersonVO;
 
 /**
@@ -19,7 +20,7 @@ public class SearchController implements SearchblService {
 	private Search search=new Search();
 	private SearchHistory searchhistory=new SearchHistory();
 
-	public ArrayList<HotelVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
+	public ArrayList<HotelSearchVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
 			try {
 			return search.findHotel(worstCondition, bestCondition);
 		} catch (RemoteException e) {
