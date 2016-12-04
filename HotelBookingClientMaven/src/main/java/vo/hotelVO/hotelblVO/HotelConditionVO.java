@@ -16,12 +16,13 @@ public class HotelConditionVO {
 	private int star;//酒店星级
 	private double score;//酒店平均评分
 	private boolean isBooked;//是否预订过,默认为没有被预订过，即false
+	private String personname;//若限制已预订过，则必须有客户名称
 	
 	public HotelConditionVO() {
 		super();
 	}
 	public HotelConditionVO(String address, String circle, String hotelname, ArrayList<RoomVO> room, int star,
-			double score, boolean isBooked) {
+			double score, boolean isBooked, String personname) {
 		super();
 		this.address = address;
 		this.circle = circle;
@@ -30,6 +31,7 @@ public class HotelConditionVO {
 		this.star = star;
 		this.score = score;
 		this.isBooked = isBooked;
+		this.personname = personname;
 	}
 	public String getAddress() {
 		return address;
@@ -73,6 +75,12 @@ public class HotelConditionVO {
 	public void setBooked(boolean isBooked) {
 		this.isBooked = isBooked;
 	}
+	public String getPersonname() {
+		return personname;
+	}
+	public void setPersonname(String personname) {
+		this.personname = personname;
+	}
 	
 	//向hotelVO转化
 	public HotelVO toHotelVO(HotelConditionVO hotelConditionVO){
@@ -86,5 +94,6 @@ public class HotelConditionVO {
 		hotelVO.setRoom(hotelConditionVO.getRoom());
 		return hotelVO;
 	}
+
 	
 }

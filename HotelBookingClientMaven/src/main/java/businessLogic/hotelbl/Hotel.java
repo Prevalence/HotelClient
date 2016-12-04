@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import dataService.hotelDataService.HotelDataService;
 import po.hotelPO.HotelPO;
 import rmi.RemoteHelper;
+import vo.OrderVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
+import businessLogic.orderbl.Order;
 
 public class Hotel {
 	private HotelDataService hoteldataservice;
+	Order order=new Order();
 	/**
 	 * 
 	 * @param Hotelname
@@ -61,8 +65,9 @@ public class Hotel {
 	 * @throws RemoteException 
 	 * <a>浏览酒店详细信息时，需要先明确地址和商圈，才能进行查看
 	 */
-	public ArrayList<HotelVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException {
-		ArrayList<HotelVO> hotelvoList=new ArrayList<HotelVO>();//hotelvoList为返回结果
+	public ArrayList<HotelSearchVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException {
+		ArrayList<HotelVO> resulthotelvolist=new ArrayList<HotelVO>();//resulthotelvoList将转化为HotelSearchVO
+		ArrayList<HotelVO> hotelvoList=new ArrayList<HotelVO>();//hotelvoList为中间值
 		boolean isConditionRight=(worstCondition.getAddress().equals(bestCondition.getAddress()))&&
 				(worstCondition.getCircle().equals(bestCondition.getCircle()))&&
 				(worstCondition.isBooked()==bestCondition.isBooked());//最坏和最好条件的地址、商圈、是否预订过需要相等
@@ -83,13 +88,29 @@ public class Hotel {
 		
 		//做是否预订过的筛选
 		if(!worstCondition.isBooked()){//如果没有限制是自己已预订过的，直接返回hotelvoList
-			return hotelvoList;
+			resulthotelvolist= hotelvoList;
 		}else{//如果限制是自己已预订过的，则对hotelvoList进行筛选
-			//待修正
+			ArrayList<OrderVO> ordervoList=order.personOrders(worstCondition.getPersonname());
+
+			for(int i=0; i<ordervoList.size(); i++){
+				String hotelname=ordervoList.get(i).getHotelname();//客户已预订过的酒店名称
+				for(int j=0; j<hotelvoList.size(); j++){
+					if(hotelvoList.get(j).getHotelname().equals(hotelname)){
+						resulthotelvolist.add(hotelvoList.get(j));
+					}
+				}
+			}
 			
-			return hotelvoList;
+		}
+		/*String hotelName, String star, String area, String location*/
+		ArrayList<HotelSearchVO> hotelSearchVOList=new ArrayList<HotelSearchVO>();
+		for(int i=0; i<resulthotelvolist.size(); i++){
+			HotelVO hotel=resulthotelvolist.get(i);
+			HotelSearchVO hotelSearchVO=new HotelSearchVO(hotel.getHotelname(), Integer.toString(hotel.getStar()), hotel.getCircle(), hotel.getAddress());
+			hotelSearchVOList.add(hotelSearchVO);
 		}
 		
+		return hotelSearchVOList;
 	}
 	/**
 	 * 构造方法
