@@ -142,6 +142,12 @@
                   <Image url="@../酒店评价界面/确定.png" />
                </image>
             </ImageView>
+            <Label layoutX="129.0" layoutY="135.0" prefHeight="27.0" prefWidth="68.0" text="名称：" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField layoutX="205.0" layoutY="133.0" prefHeight="30.0" prefWidth="105.0" />
          </children>
       </Pane>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
