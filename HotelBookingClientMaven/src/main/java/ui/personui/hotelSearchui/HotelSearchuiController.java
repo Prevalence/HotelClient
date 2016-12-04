@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,6 +22,7 @@ import javafx.util.Callback;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
+import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hoteluiVO.HotelSearchMock;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
@@ -44,6 +46,8 @@ public class HotelSearchuiController {
 	private Button searchButton;
 	@FXML
 	private TextField searchField;
+	@FXML
+	private ChoiceBox<String> priceChoices;
 	@FXML
 	private TableView searchTable;
 	@SuppressWarnings("rawtypes")
@@ -70,6 +74,8 @@ public class HotelSearchuiController {
 	private ObservableList<HotelSearchVO> searchData;
 
 	private HotelSearchVO hotelInfo;
+	
+	private HotelVO hotelVO;
 
 	// 酒店详情查看界面
 	private Pane hotelInfoViewPane;
@@ -83,6 +89,12 @@ public class HotelSearchuiController {
 	private Stage primaryStage;
 
 	private String personname;
+	
+	private int[] lowerPrice={0,300,600,900,1200};
+	
+	private int[] higherPrice={};
+	
+	private int[] star = {1,2,3,4,5};
 
 	public HotelSearchuiController() {
 		hotelbl = new HotelController();
@@ -216,5 +228,26 @@ public class HotelSearchuiController {
 		primaryStage.setWidth(1000);
 		primaryStage.setHeight(800);
 		primaryStage.setX(400);
+	}
+	
+	/**
+	 * 设置其他方式登录的组件
+	 * 
+	 * @param others
+	 */
+	public void setChoiceBox(ObservableList<String> others) {
+		priceChoices.setItems(others);
+		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				usertype = type[priceChoices.getSelectionModel().getSelectedIndex()];
+				if (usertype.equals("还原")) {
+					usertype = "客户";
+					otherLabel.setText("其他方式登录");
+				} else {
+					otherLabel.setText(usertype);
+				}
+				System.out.println(usertype);
+			}
+		});
 	}
 }

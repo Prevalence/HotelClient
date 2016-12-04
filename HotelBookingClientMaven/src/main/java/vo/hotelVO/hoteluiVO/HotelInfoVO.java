@@ -2,6 +2,11 @@ package vo.hotelVO.hoteluiVO;
 
 import java.util.ArrayList;
 
+/**
+ * 酒店详细信息
+ * @author 铠联
+ *
+ */
 public class HotelInfoVO {
 	private String hotelname;
 	private int star;//酒店星级
