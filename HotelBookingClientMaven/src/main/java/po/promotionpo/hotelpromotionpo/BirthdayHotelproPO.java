@@ -11,6 +11,7 @@ import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 public class BirthdayHotelproPO extends PromotionPO{
 //	private String promotionType="BirthdayHotelPromtion";
 	private int discount;//如打九五折时，discount=95
+	private static final long serialVersionUID = 1L;
 	
 	public BirthdayHotelproPO() {
 		// TODO Auto-generated constructor stub

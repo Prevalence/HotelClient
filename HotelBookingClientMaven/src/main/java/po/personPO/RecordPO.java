@@ -8,6 +8,7 @@ import vo.personVO.RecordVO;
 
 public class RecordPO implements Serializable {
 	//时间，订单号，动作（订单执行、订单异常、订单撤销、充值），信用度变化、信用度结果
+	private static final long serialVersionUID = 1L;
 	private Calendar time;
 	private String orderId;
 	private String operation;//"执行"\"异常"\"撤销"\"充值"
