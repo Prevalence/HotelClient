@@ -15,6 +15,7 @@ import vo.OrderVO;
 public class OrderPO implements Serializable{
 	//订单的基本信息
 	private String orderID;//时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
+	private static final long serialVersionUID = 1L;
 	private int orderprice;
 	private String orderstate;
 	//订单状态,"nonExecute"代表未执行订单、"alreadyExecute"代表已执行订单、

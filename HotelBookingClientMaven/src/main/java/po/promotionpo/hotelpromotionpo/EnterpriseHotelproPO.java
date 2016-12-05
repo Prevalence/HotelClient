@@ -13,7 +13,7 @@ public class EnterpriseHotelproPO extends PromotionPO{
 //	private String promotionType="EnterpriseHotelPromtion";
 	private ArrayList<String> enterprise;//合作企业名称列表
 	private int discount;//如打九五折时，discount=95
-	
+	private static final long serialVersionUID = 1L;
 	public EnterpriseHotelproPO() {
 		super();
 	}

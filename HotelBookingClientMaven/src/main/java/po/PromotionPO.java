@@ -10,6 +10,7 @@ import java.util.*;
  * @author 武秀峰
  */
 public class PromotionPO implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String promotionID;//promotion的唯一标识
 	private String promotionName;//promotion的名称，客户可见
 	private String promotionType;

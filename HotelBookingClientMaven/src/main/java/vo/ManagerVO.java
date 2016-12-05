@@ -2,6 +2,8 @@ package vo;
 
 import java.io.Serializable;
 
+import po.ManagerPO;
+
 
 public class ManagerVO {
 	String username;
@@ -9,6 +11,15 @@ public class ManagerVO {
 	public String getUsername() {
 		return username;
 	}
+	public ManagerVO(String username, String password) {
+		this.username=username;
+		this.password=password;
+	}
+	public ManagerVO(ManagerPO po){
+		username=po.getUsername();
+		password=po.getPassword();
+	}
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -18,10 +29,7 @@ public class ManagerVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public ManagerVO(String username, String password) {
-		this.username=username;
-		this.password=password;
-	}
+
 }
 
 
