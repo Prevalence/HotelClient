@@ -305,8 +305,8 @@ public class HotelSearchuiController {
 				priceHigher = higherPrice[priceChoices.getSelectionModel().getSelectedIndex()];
 				ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
 				ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
-				RoomVO roomLower = new RoomVO(null, priceLower, 0, null, null);
-				RoomVO roomHigher = new RoomVO(null, priceHigher, 0, null, null);
+				RoomVO roomLower = new RoomVO(null, null,priceLower, null, null);
+				RoomVO roomHigher = new RoomVO(null, null,priceHigher, null, null);
 				roomListLower.add(roomLower);
 				roomListHigher.add(roomHigher);
 				hotelWorstConditionVO.setRoom(roomListLower);
