@@ -8,7 +8,7 @@ import vo.hotelVO.hotelblVO.RoomVO;
 
 public class RoomPO implements Serializable {
 	private String roomType;
-	private int roomnum;
+	private String roomnum;//房间号
 	private int roomPrice;
 	private ArrayList<Calendar> checkInTime;//入住日期
 	private ArrayList<Calendar> checkOutTime;//退房日期
@@ -17,7 +17,7 @@ public class RoomPO implements Serializable {
 		super();
 	}
 	
-	public RoomPO(String roomType, int roomnum, int roomPrice, ArrayList<Calendar> checkInTime,
+	public RoomPO(String roomType, String roomnum, int roomPrice, ArrayList<Calendar> checkInTime,
 			ArrayList<Calendar> checkOutTime) {
 		super();
 		this.roomType = roomType;
@@ -44,11 +44,11 @@ public class RoomPO implements Serializable {
 		this.roomType = roomType;
 	}
 
-	public int getRoomnum() {
+	public String getRoomnum() {
 		return roomnum;
 	}
 
-	public void setRoomnum(int roomnum) {
+	public void setRoomnum(String roomnum) {
 		this.roomnum = roomnum;
 	}
 
