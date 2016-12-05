@@ -1,6 +1,7 @@
 package businessLogic.hotelbl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import po.hotelPO.CommentPO;
 import po.hotelPO.HotelPO;
@@ -16,7 +17,7 @@ public class HotelMock extends Hotel{
 	 * @return 获取酒店信息（PO）
 	 */
 	public HotelVO showHotelInfo(String Hotelname){
-		RoomVO roomvo=new RoomVO("hello", 0, 0, null, null);
+		RoomVO roomvo=new RoomVO("单人间", "111", 300, null, null);
 		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
 		roomvoList.add(roomvo);
 		CommentVO commentvo=new CommentVO("南京大酒店", "小李", null, 5, "很好");
@@ -66,7 +67,9 @@ public class HotelMock extends Hotel{
 		return result;
 	}
 	public ArrayList<HotelVO> findWithReq(HotelVO p) {
-		RoomVO roomvo=new RoomVO("hello", 0, 0, null, null);
+		/*	public RoomVO(String roomType, String roomnum, int roomPrice, ArrayList<Calendar> checkInTime,
+			ArrayList<Calendar> checkOutTime)*/
+		RoomVO roomvo=new RoomVO("单人间", "111", 300, null, null);
 		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
 		roomvoList.add(roomvo);
 		CommentVO commentvo=new CommentVO("南京大酒店", "小李", null, 5, "很好");
