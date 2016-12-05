@@ -11,13 +11,13 @@ public class MarketVO {
 	public MarketVO() {
 		super();
 	}
-	public MarketVO(String userName, String password) {
+	public MarketVO(String username, String password) {
 		this.username=username;
 		this.password=password;
 	}
 	public MarketVO(MarketPO po) {
 		this.username=po.getUsername();
-		this.password=password;
+		this.password=po.getPassword();
 	}
 	
 	public String getUsername() {

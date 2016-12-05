@@ -11,11 +11,7 @@ import vo.personVO.PersonVO;
  */
 public class PersonPO implements Serializable{
 	private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
 	private String username;//客户真实姓名
-=======
-	private String username;
->>>>>>> origin/wuxiufeng
 	private String password;
 	private int personID;//五位personID，客户唯一标识
 	private int credit;

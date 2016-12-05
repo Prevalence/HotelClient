@@ -30,11 +30,11 @@ public class RecordPO implements Serializable {
 	}
 	
 	public RecordPO(RecordVO vo) {
-		this.time = time;
-		this.orderId = orderId;
-		this.operation = operation;
-		this.changeCredit = changeCredit;
-		this.resultCredit = resultCredit;
+		this.time = vo.getTime();
+		this.orderId = vo.getOrderId();
+		this.operation = vo.getOperation();
+		this.changeCredit = vo.getChangeCredit();
+		this.resultCredit = vo.getResultCredit();
 	}
 
 	public Calendar getTime() {

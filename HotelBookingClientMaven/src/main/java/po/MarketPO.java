@@ -12,6 +12,16 @@ public class MarketPO  implements Serializable{
 		this.username=null;
 		this.password=null;
 	}
+	public MarketPO(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	public MarketPO(MarketVO vo){
+		username=vo.getUsername();
+		password=vo.getPassword();
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -23,15 +33,6 @@ public class MarketPO  implements Serializable{
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public MarketPO(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
-	}
-	public MarketPO(MarketVO vo){
-		username=vo.getUsername();
-		password=vo.getPassword();
 	}
 	
 }
