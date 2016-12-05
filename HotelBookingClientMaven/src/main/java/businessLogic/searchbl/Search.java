@@ -11,6 +11,7 @@ import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.personVO.PersonVO;
 /**
  * 
@@ -24,7 +25,7 @@ public class Search {
 	 * @return 符合条件的酒店列表
 	 * @throws RemoteException 
 	 */
-	public ArrayList<HotelVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException{
+	public ArrayList<HotelSearchVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException{
 		Hotel hotel=new Hotel();
 		return hotel.findWithReq(worstCondition, bestCondition);
 	}
