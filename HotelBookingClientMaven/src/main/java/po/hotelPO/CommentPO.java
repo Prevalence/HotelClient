@@ -7,6 +7,7 @@ import java.util.Calendar;
 import vo.hotelVO.hotelblVO.CommentVO;
 
 public class CommentPO implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String hotelname;
 	private String personname;//评价者
 	private Calendar time;

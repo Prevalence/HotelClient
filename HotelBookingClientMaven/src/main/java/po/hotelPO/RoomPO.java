@@ -7,6 +7,7 @@ import java.util.Calendar;
 import vo.hotelVO.hotelblVO.RoomVO;
 
 public class RoomPO implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String roomType;
 	private String roomnum;//房间号
 	private int roomPrice;
