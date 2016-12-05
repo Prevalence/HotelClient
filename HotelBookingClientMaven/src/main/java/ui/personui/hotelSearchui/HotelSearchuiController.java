@@ -311,9 +311,9 @@ public class HotelSearchuiController {
 				roomListHigher.add(roomHigher);
 				hotelWorstConditionVO.setRoom(roomListLower);
 				hotelBestConditionVO.setRoom(roomListHigher);
-				ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
-						hotelBestConditionVO);
-				searchData = FXCollections.observableArrayList(searchDataList);
+//				ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+//						hotelBestConditionVO);
+//				searchData = FXCollections.observableArrayList(searchDataList);
 				searchWithPrice();
 			}
 		});
