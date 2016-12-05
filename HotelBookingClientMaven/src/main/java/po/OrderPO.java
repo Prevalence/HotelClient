@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import po.hotelPO.RoomPO;
 import vo.OrderVO;
 /**
  * 
@@ -15,16 +16,13 @@ public class OrderPO implements Serializable{
 	//订单的基本信息
 	private String orderID;//时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
 	private int orderprice;
-	private String ordernum;
 	private String orderstate;
 	//订单状态,"nonExecute"代表未执行订单、"alreadyExecute"代表已执行订单、
 	//"cancel"代表已撤销订单、"abnormal"代表异常订单、"delay"代表延期订单
 	
 	//酒店信息
 	private String hotelname;
-	private ArrayList<String> roomtype;
-	private ArrayList<Integer> roomnum;//房间数量
-	private ArrayList<String> theNumOfRoom;//房间号
+	private ArrayList<RoomPO> room;//包括房间类型、房间号、房间价格
 	
 	//入住者信息
 	private String personname;
@@ -49,16 +47,16 @@ public class OrderPO implements Serializable{
 	public OrderPO(OrderVO orderVO){
 		this.orderID=orderVO.getOrderID();
 		this.orderprice=orderVO.getOrderprice();
-		this.ordernum=orderVO.getOrdernum();
 		this.orderstate=orderVO.getOrderstate();
+		
 		this.hotelname=orderVO.getHotelname();
-		this.roomtype=orderVO.getRoomtype();
-		this.roomnum=orderVO.getRoomnum();
-		this.theNumOfRoom=orderVO.getTheNumOfRoom();
+		this.room=orderVO.getRoom();
+		
 		this.personname=orderVO.getPersonname();
 		this.realname=orderVO.getRealname();//客户真实姓名
 		this.peoplenum=orderVO.getPeoplenum();//包括child的人数
 		this.childnum=orderVO.getChildnum();//儿童的人数。默认为0
+		
 		this.producttime=orderVO.getProducttime();//订单生成时间
 		this.executetime=orderVO.getProducttime();//订单执行时间
 		this.canceltime=orderVO.getCanceltime();//订单取消时间
@@ -66,21 +64,17 @@ public class OrderPO implements Serializable{
 		this.predictLeaveTime = orderVO.getPredictLeaveTime();
 		this.actualLeaveTime=orderVO.getActualLeaveTime();//退房时间
 	}
-	
+
 	//有所有参数的构造函数
-	public OrderPO(String orderID, int orderprice, String ordernum, String orderstate, String hotelname,
-			ArrayList<String> roomtype, ArrayList<Integer> roomnum, ArrayList<String> theNumOfRoom, String personname,
-			String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
+	public OrderPO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomPO> room,
+			String personname, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
 			Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime) {
 		super();
 		this.orderID = orderID;
 		this.orderprice = orderprice;
-		this.ordernum = ordernum;
 		this.orderstate = orderstate;
 		this.hotelname = hotelname;
-		this.roomtype = roomtype;
-		this.roomnum = roomnum;
-		this.theNumOfRoom = theNumOfRoom;
+		this.room = room;
 		this.personname = personname;
 		this.realname = realname;
 		this.peoplenum = peoplenum;
@@ -92,7 +86,7 @@ public class OrderPO implements Serializable{
 		this.predictLeaveTime = predictLeaveTime;
 		this.actualLeaveTime = actualLeaveTime;
 	}
-
+	
 	//get and set
 	public String getOrderID() {
 		return orderID;
@@ -108,14 +102,6 @@ public class OrderPO implements Serializable{
 
 	public void setOrderprice(int orderprice) {
 		this.orderprice = orderprice;
-	}
-
-	public String getOrdernum() {
-		return ordernum;
-	}
-
-	public void setOrdernum(String ordernum) {
-		this.ordernum = ordernum;
 	}
 
 	public String getOrderstate() {
@@ -134,28 +120,12 @@ public class OrderPO implements Serializable{
 		this.hotelname = hotelname;
 	}
 
-	public ArrayList<String> getRoomtype() {
-		return roomtype;
+	public ArrayList<RoomPO> getRoom() {
+		return room;
 	}
 
-	public void setRoomtype(ArrayList<String> roomtype) {
-		this.roomtype = roomtype;
-	}
-
-	public ArrayList<Integer> getRoomnum() {
-		return roomnum;
-	}
-
-	public void setRoomnum(ArrayList<Integer> roomnum) {
-		this.roomnum = roomnum;
-	}
-
-	public ArrayList<String> getTheNumOfRoom() {
-		return theNumOfRoom;
-	}
-
-	public void setTheNumOfRoom(ArrayList<String> theNumOfRoom) {
-		this.theNumOfRoom = theNumOfRoom;
+	public void setRoom(ArrayList<RoomPO> room) {
+		this.room = room;
 	}
 
 	public String getPersonname() {
@@ -237,5 +207,7 @@ public class OrderPO implements Serializable{
 	public void setActualLeaveTime(Calendar actualLeaveTime) {
 		this.actualLeaveTime = actualLeaveTime;
 	}
+	
+
 	
 }

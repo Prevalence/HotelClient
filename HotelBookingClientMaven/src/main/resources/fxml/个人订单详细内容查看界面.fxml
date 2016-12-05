@@ -25,14 +25,14 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <ImageView fitHeight="76.0" fitWidth="861.0" layoutX="151.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="73.0" fitWidth="858.0" layoutX="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
       <Pane layoutX="145.0" layoutY="62.0" prefHeight="138.0" prefWidth="817.0">
          <children>
-            <ImageView fitHeight="149.0" fitWidth="855.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="858.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../酒店详情界面/Rectangle%208.png" />
                </image>
