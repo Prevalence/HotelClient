@@ -317,5 +317,18 @@ public class HotelSearchuiController {
 				searchWithPrice();
 			}
 		});
+//		priceChoices.setItems(others);
+//		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
+//			public void handle(ActionEvent event) {
+//				usertype = type[priceChoices.getSelectionModel().getSelectedIndex()];
+//				if (usertype.equals("还原")) {
+//					usertype = "客户";
+//					otherLabel.setText("其他方式登录");
+//				} else {
+//					otherLabel.setText(usertype);
+//				}
+//				System.out.println(usertype);
+//			}
+//		});
 	}
 }

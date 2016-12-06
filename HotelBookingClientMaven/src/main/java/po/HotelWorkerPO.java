@@ -11,7 +11,7 @@ import vo.HotelWorkerVO;
 		private String username;
 		private String password;
 		private String hotelname;
-	
+		private static final long serialVersionUID = 1L;
 
 	public HotelWorkerPO(String username, String password, String hotelname) {
 			super();
@@ -24,6 +24,12 @@ import vo.HotelWorkerVO;
 		this.username = null;
 		this.password = null;
 		this.hotelname = null;	}
+	
+	public HotelWorkerPO(HotelWorkerVO vo){
+		username=vo.getUsername();
+		password=vo.getPassword();
+		hotelname=vo.getHotelName();
+	}
 
 	public String getUsername() {
 			return username;
@@ -48,10 +54,6 @@ import vo.HotelWorkerVO;
 		public void setHotelname(String hotelname) {
 			this.hotelname = hotelname;
 		}
-		public HotelWorkerPO(HotelWorkerVO vo){
-			username=vo.getUsername();
-			password=vo.getPassword();
-			hotelname=vo.getHotelName();
-		}
+
 
 	}
