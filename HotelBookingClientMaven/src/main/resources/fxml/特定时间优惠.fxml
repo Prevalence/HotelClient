@@ -34,17 +34,17 @@
          <children>
             <ImageView fitHeight="250.0" fitWidth="817.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Desktop/界面图/酒店详情界面/Rectangle%208.png" />
+                  <Image url="@../酒店详情界面/Rectangle%208.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="19.0" fitWidth="145.0" layoutX="115.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Desktop/界面图/酒店详情界面/5.png" />
+                  <Image url="@../酒店详情界面/5.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="19.0" fitWidth="14.0" layoutX="115.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Desktop/界面图/酒店详情界面/Shape%2016.png" />
+                  <Image url="@../酒店详情界面/Shape%2016.png" />
                </image>
             </ImageView>
             <Label layoutX="136.0" layoutY="80.0" text="4.98/5" />
@@ -59,7 +59,7 @@
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Desktop/界面图/酒店详情界面/reply.png" />
+                        <Image url="@../酒店详情界面/reply.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -164,7 +164,7 @@
       </Pane>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../Desktop/界面图/酒店详情界面/Shape%201.png" />
+            <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
    </children>

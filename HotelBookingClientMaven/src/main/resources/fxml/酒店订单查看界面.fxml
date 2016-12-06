@@ -59,7 +59,7 @@
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Desktop/界面图/酒店详情界面/reply.png" />
+                        <Image url="@../酒店详情界面/reply.png" />
                      </image>
                   </ImageView>
                </graphic>
