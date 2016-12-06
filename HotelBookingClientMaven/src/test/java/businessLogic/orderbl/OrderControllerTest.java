@@ -52,15 +52,15 @@ public class OrderControllerTest {
 //		assertEquals(true,oc.reverseOrder(order));
 	}
 
-//	@Test
-//	public void testFinishOrder() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testFinishOrder() {
+		fail("Not yet implemented");
+	}
 
-//	@Test
-//	public void testCreateOrder() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testCreateOrder() {
+		fail("Not yet implemented");
+	}
 
 	@Test
 	public void testPersonOrders() {
@@ -81,6 +81,16 @@ public class OrderControllerTest {
 	@Test
 	public void testPersonStateOrders() {
 		assertEquals("南京大酒店",oc.personStateOrders("小夏", "nonExecute").get(0).getHotelname());
+	}
+	
+	@Test
+	public void testHotelStateOrders() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testNetNumOrders() {
+		fail("Not yet implemented");
 	}
 	
 }
