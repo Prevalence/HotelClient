@@ -101,19 +101,12 @@
          </image>
       </ImageView>
       <TextField fx:id="searchField" layoutX="400.0" layoutY="122.0" prefHeight="38.0" prefWidth="332.0" style="-fx-background-color: transparent;" />
-      <ChoiceBox fx:id="priceChoices" layoutX="178.0" layoutY="182.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black;" />
-      <Button fx:id="priceButton" layoutX="7.0" layoutY="328.0" mnemonicParsing="false" onAction="#searchWithPrice" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: transparent;">
+      <ChoiceBox fx:id="priceChoices" layoutX="194.0" layoutY="182.0" prefHeight="32.0" prefWidth="134.0" style="-fx-background-color: white; -fx-border-color: black;" />
+      <Label fx:id="priceLabel" layoutX="241.0" layoutY="187.0" text="价格" textFill="#000c0d">
          <font>
-            <Font size="1.0" />
+            <Font size="18.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="38.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店搜索界面/搜索框/价格筛选.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      </Label>
       <Button fx:id="starButton" layoutX="388.0" layoutY="178.0" mnemonicParsing="false" onAction="#searchWithStar" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />

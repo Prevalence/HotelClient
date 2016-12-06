@@ -37,8 +37,6 @@ public class HotelSearchuiController {
 	@FXML
 	private Button orderInfoButton;
 	@FXML
-	private Button priceButton;
-	@FXML
 	private Button starButton;
 	@FXML
 	private Button facilityButton;
