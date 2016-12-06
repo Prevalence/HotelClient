@@ -12,7 +12,7 @@ public interface UserDataService extends Remote{
 	public boolean modifyPerson (PersonPO personInfo)throws RemoteException;
 	public boolean personLogin(String personname,String password)throws RemoteException;
 	public MarketPO findMarket (String marketname)throws RemoteException;
-	public boolean modifyMarket (MarketPO marketInfo);
+	public boolean modifyMarket (MarketPO marketInfo)throws RemoteException;
 	public boolean marketLogin(String marketname,String password)throws RemoteException;
 	public boolean changeCredit(String username,int credit)throws RemoteException;
 	public HotelWorkerPO findHotelWorker (String hotelWorkername)throws RemoteException;

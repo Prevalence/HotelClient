@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import po.OrderPO;
 import po.hotelPO.RoomPO;
+import vo.hotelVO.hotelblVO.RoomVO;
 
 public class OrderVO {
 	//订单的基本信息
@@ -15,10 +16,10 @@ public class OrderVO {
 	
 	//酒店信息
 	private String hotelname;
-	private ArrayList<RoomPO> room;//包括房间类型、房间号、房间价格
+	private ArrayList<RoomVO> room;//包括房间类型、房间号、房间价格
 	
 	//入住者信息
-	private String personname;
+	private String personname;//客户唯一标识，相当于personID
 	private String realname;//客户真实姓名
 	private int peoplenum;//包括child的人数
 	private int childnum;//儿童的人数。默认为0
@@ -43,7 +44,13 @@ public class OrderVO {
 		this.orderstate=orderPO.getOrderstate();
 		
 		this.hotelname=orderPO.getHotelname();
-		this.room=orderPO.getRoom();
+		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
+		ArrayList<RoomPO> roompoList=orderPO.getRoom();
+		for(int i=0; i<roompoList.size(); i++){
+			RoomVO roomvo=new RoomVO(roompoList.get(i));
+			roomvoList.add(roomvo);
+		}
+		this.room=roomvoList;
 		
 		this.personname=orderPO.getPersonname();
 		this.realname=orderPO.getRealname();//客户真实姓名
@@ -59,7 +66,7 @@ public class OrderVO {
 	}
 
 	//有所有参数的构造函数
-	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomPO> room,
+	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
 			String personname, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
 			Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime) {
 		super();
@@ -113,11 +120,11 @@ public class OrderVO {
 		this.hotelname = hotelname;
 	}
 
-	public ArrayList<RoomPO> getRoom() {
+	public ArrayList<RoomVO> getRoom() {
 		return room;
 	}
 
-	public void setRoom(ArrayList<RoomPO> room) {
+	public void setRoom(ArrayList<RoomVO> room) {
 		this.room = room;
 	}
 

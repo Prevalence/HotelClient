@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import po.hotelPO.RoomPO;
 import vo.OrderVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 /**
  * 
  * @author xiamutian
@@ -26,7 +27,7 @@ public class OrderPO implements Serializable{
 	private ArrayList<RoomPO> room;//包括房间类型、房间号、房间价格
 	
 	//入住者信息
-	private String personname;
+	private String personname;//客户唯一标识，相当于personID
 	private String realname;//客户真实姓名
 	private int peoplenum;//包括child的人数
 	private int childnum;//儿童的人数。默认为0
@@ -51,7 +52,13 @@ public class OrderPO implements Serializable{
 		this.orderstate=orderVO.getOrderstate();
 		
 		this.hotelname=orderVO.getHotelname();
-		this.room=orderVO.getRoom();
+		ArrayList<RoomPO> roompoList=new ArrayList<RoomPO>();
+		ArrayList<RoomVO> roomvoList=orderVO.getRoom();
+		for(int i=0; i<roomvoList.size(); i++){
+			RoomPO roomvo=new RoomPO(roomvoList.get(i));
+			roompoList.add(roomvo);
+		}
+		this.room=roompoList;
 		
 		this.personname=orderVO.getPersonname();
 		this.realname=orderVO.getRealname();//客户真实姓名

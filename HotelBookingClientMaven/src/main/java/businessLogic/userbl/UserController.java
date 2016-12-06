@@ -56,8 +56,9 @@ public class UserController  implements UserblService{
 	 * 已知更改网站营销人员信息,更新用户信息并返回保存结果
 	 * @param marketInfo
 	 * @return boolean
+	 * @throws RemoteException 
 	 */
-	public boolean marketSave(MarketVO marketInfo) {
+	public boolean marketSave(MarketVO marketInfo) throws RemoteException {
 		return manager.marketSave(marketInfo);
 	}
 
