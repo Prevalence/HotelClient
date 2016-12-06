@@ -47,11 +47,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-<<<<<<< HEAD
-            <Label fx:id="memberLevelLabel" layoutX="208.0" layoutY="51.0" text="VIP3" textFill="#76d4de">
-=======
             <Label fx:id="memberLevelLabel" layoutX="208.0" layoutY="51.0" prefHeight="22.0" prefWidth="80.0" textFill="#76d4de">
->>>>>>> refs/remotes/origin/master
                <font>
                   <Font size="16.0" />
                </font>
