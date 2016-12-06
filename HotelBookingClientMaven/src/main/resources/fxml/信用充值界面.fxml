@@ -45,7 +45,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="349.0" layoutY="111.0" text="订单编号：" textFill="#5db9c2">
+      <Label layoutX="349.0" layoutY="111.0" text="客户编号：" textFill="#5db9c2">
          <font>
             <Font size="22.0" />
          </font>
@@ -91,19 +91,14 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <Pane layoutX="298.0" layoutY="233.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
+      <Pane layoutX="298.0" layoutY="233.0" prefHeight="334.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="25.0" layoutY="50.0" prefHeight="45.0" prefWidth="82.0" text="订单号：" textFill="#74d5df">
+            <Label layoutX="25.0" layoutY="51.0" prefHeight="45.0" prefWidth="82.0" text="客户名：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="95.0" prefHeight="58.0" prefWidth="105.0" text="房间类型：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="153.0" prefHeight="45.0" prefWidth="82.0" text="人数：" textFill="#74d5df">
+            <Label layoutX="25.0" layoutY="129.0" prefHeight="45.0" prefWidth="82.0" text="性别：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
@@ -113,46 +108,47 @@
                   <Image url="@../订单详情界面/酒店工作人员首界面.fxml.png" />
                </image>
             </ImageView>
-            <Label layoutX="25.0" layoutY="205.0" prefHeight="48.0" prefWidth="105.0" text="入住时间：" textFill="#74d5df">
+            <Label layoutX="294.0" layoutY="118.0" prefHeight="48.0" prefWidth="105.0" text="年龄：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="260.0" prefHeight="48.0" prefWidth="105.0" text="退房时间：" textFill="#74d5df">
+            <Label layoutX="25.0" layoutY="280.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="319.0" prefHeight="48.0" prefWidth="105.0" text="入住人：" textFill="#74d5df">
+            <Label layoutX="25.0" layoutY="201.0" prefHeight="48.0" prefWidth="105.0" text="VIP类型：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="375.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
+            <Label layoutX="294.0" layoutY="201.0" prefHeight="48.0" prefWidth="105.0" text="VIP等级：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="362.0" layoutY="387.0" prefHeight="48.0" prefWidth="105.0" text="价格：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="343.0" layoutY="49.0" prefHeight="48.0" prefWidth="105.0" text="状态：" textFill="#74d5df">
+            <Label layoutX="294.0" layoutY="49.0" prefHeight="48.0" prefWidth="105.0" text="信用值：" textFill="#74d5df">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Button layoutX="501.0" layoutY="703.0" mnemonicParsing="false" style="-fx-background-color: transprent;">
+      <Label layoutX="330.0" layoutY="616.0" text="需要增加的信用值：" textFill="#5db9c2">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="647.0" layoutY="611.0" mnemonicParsing="false" style="-fx-background-color: transprent;">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../网站营销人员订单详细查看界面/处理订单.png" />
+                  <Image url="@../酒店评价界面/确定.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
+      <TextField layoutX="528.0" layoutY="615.0" prefHeight="30.0" prefWidth="110.0" />
    </children>
 </fx:root>

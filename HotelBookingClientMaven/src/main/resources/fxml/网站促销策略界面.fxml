@@ -30,36 +30,54 @@
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
-      <Pane layoutX="145.0" layoutY="65.0" prefHeight="138.0" prefWidth="817.0">
+      <Pane layoutX="145.0" layoutY="65.0" prefHeight="718.0" prefWidth="817.0">
          <children>
-            <ImageView fitHeight="145.0" fitWidth="817.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="718.0" layoutY="1.0" stroke="WHITE" strokeType="INSIDE" width="817.0" />
+            <TableView layoutX="50.0" layoutY="49.0" prefHeight="439.0" prefWidth="717.0" style="-fx-border-color: ;">
+               <columns>
+                  <TableColumn prefWidth="200.0" />
+                  <TableColumn prefWidth="200.0" />
+                  <TableColumn prefWidth="200.0" />
+                  <TableColumn prefWidth="200.0" />
+               </columns>
+            </TableView>
+            <ImageView fitHeight="44.0" fitWidth="717.0" layoutX="51.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../酒店详情界面/Rectangle%208.png" />
+                  <Image url="@../酒店促销策略/促销策略.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="19.0" fitWidth="145.0" layoutX="115.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/5.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="19.0" fitWidth="14.0" layoutX="115.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/Shape%2016.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="136.0" layoutY="80.0" text="4.98/5" />
-            <Label layoutX="115.0" layoutY="15.0" text="南京大酒店">
+            <Button layoutX="114.0" layoutY="503.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
                <font>
-                  <Font size="24.0" />
+                  <Font size="1.0" />
                </font>
-            </Label>
-            <Label layoutX="593.0" layoutY="110.0" text="联系方式：" />
-            <Label layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
-            <Button layoutX="717.0" layoutY="40.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../酒店详情界面/reply.png" />
+                        <Image url="@../酒店促销策略/新增.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="356.0" layoutY="503.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../酒店促销策略/编辑.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="593.0" layoutY="503.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../酒店促销策略/删除.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -107,73 +125,10 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Button layoutX="500.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="33.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../网站营销人员订单详细查看界面/处理订单.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="538.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <Pane layoutX="298.0" layoutY="233.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
-         <children>
-            <Label layoutX="25.0" layoutY="50.0" prefHeight="45.0" prefWidth="82.0" text="订单号：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="95.0" prefHeight="58.0" prefWidth="105.0" text="房间类型：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="153.0" prefHeight="45.0" prefWidth="82.0" text="人数：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="32.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../订单详情界面/酒店工作人员首界面.fxml.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="25.0" layoutY="205.0" prefHeight="48.0" prefWidth="105.0" text="入住时间：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="260.0" prefHeight="48.0" prefWidth="105.0" text="退房时间：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="319.0" prefHeight="48.0" prefWidth="105.0" text="入住人：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="375.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="362.0" layoutY="387.0" prefHeight="48.0" prefWidth="105.0" text="价格：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="343.0" layoutY="49.0" prefHeight="48.0" prefWidth="105.0" text="状态：" textFill="#74d5df">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
    </children>
 </fx:root>
