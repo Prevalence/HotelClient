@@ -1,7 +1,6 @@
 package ui.personui.hotelSearchui;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import businessLogic.hotelbl.HotelController;
 import businessLogicService.hotelblService.HotelblService;
@@ -12,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -48,6 +48,8 @@ public class HotelSearchuiController {
 	private Button searchButton;
 	@FXML
 	private TextField searchField;
+	@FXML
+	private Label priceLabel;
 	@FXML
 	private ChoiceBox<String> priceChoices;
 	@SuppressWarnings("rawtypes")
@@ -301,6 +303,7 @@ public class HotelSearchuiController {
 		priceChoices.setItems(others);
 		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
+				priceLabel.setText("");
 				priceLower = lowerPrice[priceChoices.getSelectionModel().getSelectedIndex()];
 				priceHigher = higherPrice[priceChoices.getSelectionModel().getSelectedIndex()];
 				ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
