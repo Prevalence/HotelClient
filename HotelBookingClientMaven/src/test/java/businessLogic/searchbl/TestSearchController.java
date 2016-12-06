@@ -55,7 +55,7 @@ public class TestSearchController {
 
 	@Test
 	public void TestMarketInfo(){
-		assertNull(sc.searchMarketInfo("wuxiufeng"));
+		assertEquals("123", sc.searchMarketInfo("xiamutian").getPassword());
 	}
 
 	@Test

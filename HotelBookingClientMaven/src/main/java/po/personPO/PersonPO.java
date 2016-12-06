@@ -10,9 +10,10 @@ import vo.personVO.PersonVO;
  *
  */
 public class PersonPO implements Serializable{
-	private String username;
+	private static final long serialVersionUID = 1L;
+	private String username;//客户真实姓名
 	private String password;
-	private int personID;
+	private int personID;//五位personID，客户唯一标识
 	private int credit;
 	private Calendar birthday;//客户生日，仅包含年月日信息
 	private String vipType;	//no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP

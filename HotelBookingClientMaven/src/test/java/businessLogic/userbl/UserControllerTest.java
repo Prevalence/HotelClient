@@ -19,10 +19,10 @@ public class UserControllerTest {
 //	PersonVO personvo=new PersonVO(String username, String password, int personID, int credit, Calendar birthday, String vipType,
 //			int vipLevel, String enterpriseName, String phoneNumber);
 
-	PersonVO personvo1=new PersonVO("xiamutian", "123", 0, 0, null, null,
-			0, null, null);
-	PersonVO personvo2=new PersonVO("wuxiufeng", "123", 0, 0, null, "no",
-			0, null, null);
+	PersonVO personvo1=new PersonVO("xiamutian", "123", 12345, 3000, null, "enterprise",
+			3, "南京大学", "11122223333");
+	PersonVO personvo2=new PersonVO("wuxiufeng", "123", 23456, 2000, null, "no",
+			2, null, "22233334444");
 
 	@Before
 	public void setUp() throws Exception {
@@ -79,7 +79,7 @@ public class UserControllerTest {
 	@Test
 	public void testMarketAdd() {
 		MarketVO marketvo1=new MarketVO("xiamutian", "123456");
-		assertEquals(false, uc.marketAdd(marketvo1));
+		assertEquals(true, uc.marketAdd(marketvo1));
 		
 		MarketVO marketvo2=new MarketVO("wuxiufeng", "123456");
 		assertEquals(false, uc.marketAdd(marketvo2));
@@ -94,7 +94,7 @@ public class UserControllerTest {
 	@Test
 	public void testGetMarketInfo() {
 		MarketVO marketvo=new MarketVO("xiamutian", "123");
-		assertEquals(false, uc.marketAdd(marketvo));
+		assertEquals(true, uc.marketAdd(marketvo));
 	}
 	
 //	@Test

@@ -9,7 +9,7 @@ public class RoomVO {
 	/*房间（类型、原始价格区间、有空房期间（房间数量、入住日期，退房日期））*/
 	private String roomType;
 	private int roomPrice;
-	private int roomnum;
+	private String roomnum;//房间号
 	private ArrayList<Calendar> checkInTime;//入住日期
 	private ArrayList<Calendar> checkOutTime;//退房日期
 	
@@ -17,12 +17,12 @@ public class RoomVO {
 		super();
 	}
 	
-	public RoomVO(String roomType, int roomPrice, int roomnum, ArrayList<Calendar> checkInTime,
+	public RoomVO(String roomType, String roomnum, int roomPrice, ArrayList<Calendar> checkInTime,
 			ArrayList<Calendar> checkOutTime) {
 		super();
 		this.roomType = roomType;
-		this.roomPrice = roomPrice;
 		this.roomnum = roomnum;
+		this.roomPrice = roomPrice;
 		this.checkInTime = checkInTime;
 		this.checkOutTime = checkOutTime;
 	}
@@ -44,11 +44,11 @@ public class RoomVO {
 		this.roomType = roomType;
 	}
 
-	public int getRoomnum() {
+	public String getRoomnum() {
 		return roomnum;
 	}
 
-	public void setRoomnum(int roomnum) {
+	public void setRoomnum(String roomnum) {
 		this.roomnum = roomnum;
 	}
 
