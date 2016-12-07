@@ -28,7 +28,7 @@ public class PersonInfoui extends Pane{
 	 */
 	public void initPersonInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PersonInfoui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/个人信息及信用值界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();

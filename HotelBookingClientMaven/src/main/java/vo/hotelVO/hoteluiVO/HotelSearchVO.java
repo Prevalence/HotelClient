@@ -1,9 +1,6 @@
 package vo.hotelVO.hoteluiVO;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import ui.personui.hotelSearchui.HotelSearchuiController.ButtonCell;
 
 public class HotelSearchVO {
 	private final SimpleStringProperty hotelName;

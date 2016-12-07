@@ -27,7 +27,7 @@ public class OrderViewui extends Pane{
 	 */
 	public void initOrderViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/订单查看界面.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/个人订单查看界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -39,5 +39,6 @@ public class OrderViewui extends Pane{
 		orderViewuiController = loader.getController();
 		orderViewuiController.launchStage(primaryStage);
 		orderViewuiController.setPersonname(personname);
+		orderViewuiController.initOrderTable();
 	}
 }
