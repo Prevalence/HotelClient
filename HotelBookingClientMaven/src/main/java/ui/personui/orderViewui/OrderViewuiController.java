@@ -1,7 +1,10 @@
 package ui.personui.orderViewui;
 
+import java.util.ArrayList;
+
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,10 +15,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import ui.helper.ButtonCell;
+import ui.helper.OrderButtonCell;
+import ui.helper.SearchButtonCell;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.personInfoui.PersonInfoui;
+import vo.hotelVO.hoteluiVO.HotelSearchMock;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
+import vo.orderVO.orderuiVO.OrderViewVO;
 
 public class OrderViewuiController {
 
@@ -53,7 +59,7 @@ public class OrderViewuiController {
 	private UserblService userbl;
 
 	// 填充进TableView的酒店数据
-	private ObservableList<HotelSearchVO> orderData;
+	private ObservableList<OrderViewVO> orderData;
 	// 酒店搜索界面
 	private Pane hotelSearchPane;
 
@@ -125,18 +131,20 @@ public class OrderViewuiController {
 	public void initOrderTable() {
 		hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
-		expectedTimeCol.setCellValueFactory(new PropertyValueFactory<>("area"));
-		stateCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+		expectedTimeCol.setCellValueFactory(new PropertyValueFactory<>("expectedTime"));
+		stateCol.setCellValueFactory(new PropertyValueFactory<>("state"));
 		buttonCol
-				.setCellFactory(new Callback<TableColumn<HotelSearchVO, Boolean>, TableCell<HotelSearchVO, Boolean>>() {
+				.setCellFactory(new Callback<TableColumn<OrderViewVO, Boolean>, TableCell<OrderViewVO, Boolean>>() {
 
 					@Override
-					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
-						ButtonCell buttonCell = new ButtonCell(personname,orderTable, mainPane, primaryStage);
+					public TableCell<OrderViewVO, Boolean> call(TableColumn<OrderViewVO, Boolean> p) {
+						OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage,personname);
 						return buttonCell;
 					}
-
 				});
+		ArrayList<OrderViewVO> orderDataList = new ArrayList<OrderViewVO>();
+		orderDataList.add(new OrderViewVO("njuHotel", "2008", "20:00", "未执行"));
+		orderData = FXCollections.observableArrayList(orderDataList);
 		orderTable.setItems(orderData);
 	}
 }

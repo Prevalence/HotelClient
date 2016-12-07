@@ -20,7 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import ui.helper.ButtonCell;
+import ui.helper.SearchButtonCell;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
@@ -292,7 +292,7 @@ public class HotelSearchuiController {
 
 					@Override
 					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
-						ButtonCell buttonCell = new ButtonCell(searchTable, mainPane, primaryStage, personname);
+						SearchButtonCell buttonCell = new SearchButtonCell(searchTable, mainPane, primaryStage, personname);
 						return buttonCell;
 					}
 
