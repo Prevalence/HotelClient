@@ -16,9 +16,9 @@ public class PromotionController implements PromotionblService{
 	 * @param orderVO
 	 * @return
 	 */
-	public double priceCut(HotelVO hotelPO,OrderVO orderVO){
+	public double priceCut(HotelVO hotelVO,OrderVO orderVO){
 		PriceCalc pricecalc=new PriceCalc();
-		double result=pricecalc.priceCut(hotelPO, orderVO);
+		double result=pricecalc.priceCut(hotelVO, orderVO);
 		return result;
 	}
 	
