@@ -2,7 +2,6 @@ package ui.loginui;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
