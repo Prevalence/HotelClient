@@ -11,15 +11,15 @@ import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.orderInfoViewui.OrderInfoViewui;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
-public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
+public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 	private final Button cellButton = new Button("查看详情");
-	Pane newPane;
-	Pane mainPane;
-	Stage primaryStage;
-	String personname;
-	String selectedHotelName;
+	private Pane newPane;
+	private Pane mainPane;
+	private Stage primaryStage;
+	private String personname;
+	private String selectedHotelName;
 	@SuppressWarnings("rawtypes")
-	TableView table;
+	private TableView table;
 
 	/**
 	 * 搜索列表初始化
@@ -31,7 +31,7 @@ public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
 	 * @param selectedHotelName
 	 */
 	@SuppressWarnings("rawtypes")
-	public ButtonCell(TableView table, Pane mainPane, Stage primaryStage, String personname) {
+	public SearchButtonCell(TableView table, Pane mainPane, Stage primaryStage, String personname) {
 		this.table = table;
 		this.mainPane = mainPane;
 		this.primaryStage = primaryStage;
@@ -58,7 +58,7 @@ public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
 	 * @param personname
 	 */
 	@SuppressWarnings("rawtypes")
-	public ButtonCell(String personname, TableView table, Pane mainPane, Stage primaryStage) {
+	public SearchButtonCell(String personname, TableView table, Pane mainPane, Stage primaryStage) {
 		this.table = table;
 		this.mainPane = mainPane;
 		this.primaryStage = primaryStage;

@@ -39,5 +39,6 @@ public class OrderViewui extends Pane{
 		orderViewuiController = loader.getController();
 		orderViewuiController.launchStage(primaryStage);
 		orderViewuiController.setPersonname(personname);
+		orderViewuiController.initOrderTable();
 	}
 }
