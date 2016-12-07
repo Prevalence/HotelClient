@@ -134,5 +134,14 @@
             <Image url="@../酒店详情界面/酒店评价.png" />
          </image>
       </ImageView>
+      <Button layoutX="467.0" layoutY="698.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="74.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../酒店详情界面/生成订单.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </fx:root>
