@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import ui.helper.ButtonCell;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
@@ -112,39 +113,6 @@ public class HotelSearchuiController {
 		hotelBestConditionVO = new HotelConditionVO(null, null, null, null, 0, 0.0, false, null);
 	}
 
-	// 内部类，定义TableView中的按钮
-	public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
-		private final Button cellButton = new Button("查看详情");
-
-		ButtonCell() {
-			cellButton.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent t) {
-					String selectedHotelName = ((HotelSearchVO) searchTable.getItems().get(getTableRow().getIndex()))
-							.getHotelName();
-					hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, selectedHotelName);
-					mainPane.getChildren().remove(0);
-					mainPane.getChildren().add(hotelInfoViewPane);
-				}
-			});
-		}
-
-		// Display button if the row is not empty
-		@Override
-		protected void updateItem(Boolean t, boolean empty) {
-			super.updateItem(t, empty);
-			if (empty) {
-				setGraphic(null);
-				setText(null);
-			} else {
-
-				setGraphic(cellButton);
-				setText(null);
-			}
-		}
-
-	}
-
 	/**
 	 * 初始设置TableView的属性，绑定内部按钮
 	 */
@@ -159,7 +127,8 @@ public class HotelSearchuiController {
 
 					@Override
 					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
-						ButtonCell buttonCell = new ButtonCell();
+						ButtonCell buttonCell = new ButtonCell(searchTable, mainPane, primaryStage, personname,
+								personname);
 						return buttonCell;
 					}
 
@@ -209,14 +178,14 @@ public class HotelSearchuiController {
 	private void searchWithPrice() {
 		searchTable.refresh();
 		initTableView();
-		
+
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
 		searchDataList.add(new HotelSearchMock("njuHotel", "5", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
-		
+
 		searchTable.setItems(searchData);
 	}
-	
+
 	/**
 	 * 用星级筛选，以列表形式显示搜索结果
 	 */
@@ -225,14 +194,14 @@ public class HotelSearchuiController {
 	private void searchWithStar() {
 		searchTable.refresh();
 		initTableView();
-		
+
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
 		searchDataList.add(new HotelSearchMock("njuHotel", "4", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
-		
+
 		searchTable.setItems(searchData);
 	}
-	
+
 	/**
 	 * 用评分区间筛选，以列表形式显示搜索结果
 	 */
@@ -241,14 +210,14 @@ public class HotelSearchuiController {
 	private void searchWithScore() {
 		searchTable.refresh();
 		initTableView();
-		
+
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
 		searchDataList.add(new HotelSearchMock("njuHotel", "3", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
-		
+
 		searchTable.setItems(searchData);
 	}
-	
+
 	/**
 	 * 用是否预定过筛选，以列表形式显示搜索结果
 	 */
@@ -257,11 +226,11 @@ public class HotelSearchuiController {
 	private void searchWithHistory() {
 		searchTable.refresh();
 		initTableView();
-		
+
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
 		searchDataList.add(new HotelSearchMock("njuHotel", "2", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
-		
+
 		searchTable.setItems(searchData);
 	}
 
@@ -306,30 +275,32 @@ public class HotelSearchuiController {
 				priceHigher = higherPrice[priceChoices.getSelectionModel().getSelectedIndex()];
 				ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
 				ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
-				RoomVO roomLower = new RoomVO(null, null,priceLower, null, null);
-				RoomVO roomHigher = new RoomVO(null, null,priceHigher, null, null);
+				RoomVO roomLower = new RoomVO(null, null, priceLower, null, null);
+				RoomVO roomHigher = new RoomVO(null, null, priceHigher, null, null);
 				roomListLower.add(roomLower);
 				roomListHigher.add(roomHigher);
 				hotelWorstConditionVO.setRoom(roomListLower);
 				hotelBestConditionVO.setRoom(roomListHigher);
-//				ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
-//						hotelBestConditionVO);
-//				searchData = FXCollections.observableArrayList(searchDataList);
+				// ArrayList<HotelSearchVO> searchDataList =
+				// hotelbl.findWithReq(hotelWorstConditionVO,
+				// hotelBestConditionVO);
+				// searchData =
+				// FXCollections.observableArrayList(searchDataList);
 				searchWithPrice();
 			}
 		});
-//		priceChoices.setItems(others);
-//		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
-//			public void handle(ActionEvent event) {
-//				usertype = type[priceChoices.getSelectionModel().getSelectedIndex()];
-//				if (usertype.equals("还原")) {
-//					usertype = "客户";
-//					otherLabel.setText("其他方式登录");
-//				} else {
-//					otherLabel.setText(usertype);
-//				}
-//				System.out.println(usertype);
-//			}
-//		});
+		// priceChoices.setItems(others);
+		// priceChoices.setOnAction(new EventHandler<ActionEvent>() {
+		// public void handle(ActionEvent event) {
+		// usertype = type[priceChoices.getSelectionModel().getSelectedIndex()];
+		// if (usertype.equals("还原")) {
+		// usertype = "客户";
+		// otherLabel.setText("其他方式登录");
+		// } else {
+		// otherLabel.setText(usertype);
+		// }
+		// System.out.println(usertype);
+		// }
+		// });
 	}
 }

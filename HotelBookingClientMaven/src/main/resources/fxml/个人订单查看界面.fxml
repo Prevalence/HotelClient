@@ -95,7 +95,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+      <Button fx:id="personOrderButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -107,7 +107,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="spersonInfoButton" layoutY="148.0" mnemonicParsing="false" onAction="#viewPersonInfo" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -137,15 +137,16 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView layoutX="158.0" layoutY="223.0" prefHeight="439.0" prefWidth="785.0">
+      <TableView fx:id="orderTable" layoutX="158.0" layoutY="223.0" prefHeight="439.0" prefWidth="785.0">
          <columns>
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
+            <TableColumn fx:id="orderNumberCol" prefWidth="155.0" />
+            <TableColumn fx:id="hotelNameCol" prefWidth="170.99993896484375" />
+            <TableColumn fx:id="expectedTimeCol" prefWidth="247.99993896484375" />
+            <TableColumn fx:id="stateCol" prefWidth="150.0" />
+            <TableColumn prefWidth="61.0" />
          </columns>
       </TableView>
-      <Button layoutX="483.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+      <Button fx:id="orderInfoViewButton" layoutX="483.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="46.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
