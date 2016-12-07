@@ -2,18 +2,16 @@ package businessLogic.promotionbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import businessLogic.userbl.Person;
 import po.OrderPO;
 import po.PromotionPO;
 import po.personPO.PersonPO;
+import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
 import vo.OrderVO;
 import vo.PromotionVO;
-import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
-import vo.personVO.PersonVO;
 /**
  * 
  * @author John
@@ -30,7 +28,7 @@ public class PriceCalc {
 	 */
 	public double priceCut(HotelVO hotelvo,OrderVO ordervo){
 		/**
-		 * 	public HotelVO(String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
+		 * 	public HotelVO(int hotelID, String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
 			String circle, double score, ArrayList<RoomVO> room, ArrayList<CommentVO> comment, String hotelworker)
 			
 			public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
@@ -70,15 +68,21 @@ public class PriceCalc {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//以下实现促销策略降价计算，这部分代码有问题
 		OrderPO orderpo=new OrderPO(ordervo);
-		double bestprice=0.0;
-		if(personpo!=null)
-		for(int i=0;i<promotionpolist.size();i++){
-			discount=Helper.getcalculateinstance(promotionpolist.get(i).getPromotionType());
-			double thisprice=discount.getprice(initialtotal,promotionpolist.get(i),personpo, orderpo);
-			if(thisprice<bestprice)
-				bestprice=thisprice;
+		double bestprice=initialtotal;
+		if((personpo!=null)&&(promotionpolist!=null)){
+			for(int i=0;i<promotionpolist.size();i++){
+				discount=Helper.getcalculateinstance(promotionpolist.get(i).getPromotionType());//promotionlist中的项为空，有错
+				double thisprice=discount.getprice(initialtotal,promotionpolist.get(i), personpo, orderpo);
+				if(thisprice<bestprice)
+					bestprice=thisprice;
+			}
 		}
+
 		return bestprice;
-	}
-}
+		
+	}//结束方法
+	
+}//结束类
