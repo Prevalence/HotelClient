@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.orderViewui.OrderViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.orderViewui.OrderViewuiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -83,7 +83,7 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="hotelSearchButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -95,7 +95,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+      <Button fx:id="personOrderButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -107,7 +107,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="spersonInfoButton" layoutY="148.0" mnemonicParsing="false" onAction="#viewPersonInfo" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -137,15 +137,16 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView layoutX="158.0" layoutY="223.0" prefHeight="439.0" prefWidth="785.0">
+      <TableView fx:id="orderTable" layoutX="158.0" layoutY="223.0" prefHeight="439.0" prefWidth="785.0">
          <columns>
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
+            <TableColumn fx:id="orderNumberCol" prefWidth="155.0" />
+            <TableColumn fx:id="hotelNameCol" prefWidth="170.99993896484375" />
+            <TableColumn fx:id="expectedTimeCol" prefWidth="247.99993896484375" />
+            <TableColumn fx:id="stateCol" prefWidth="150.0" />
+            <TableColumn fx:id="buttonCol" prefWidth="61.0" />
          </columns>
       </TableView>
-      <Button layoutX="483.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+      <Button fx:id="orderInfoViewButton" layoutX="483.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="46.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -159,6 +160,14 @@
             <Image url="@../个人订单界面/状态.png" />
          </image>
       </ImageView>
+      <MenuButton layoutX="827.0" layoutY="226.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="64.0" style="-fx-background-color: transparent;">
+        <items>
+          <MenuItem mnemonicParsing="false" text="已执行" />
+          <MenuItem mnemonicParsing="false" text="未执行" />
+            <MenuItem mnemonicParsing="false" text="已撤销" />
+            <MenuItem mnemonicParsing="false" text="异常" />
+        </items>
+      </MenuButton>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="517.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Shape%201.png" />

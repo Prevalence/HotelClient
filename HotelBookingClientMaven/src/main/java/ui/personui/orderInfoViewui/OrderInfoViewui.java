@@ -27,7 +27,7 @@ public class OrderInfoViewui extends Pane{
 	 */
 	public void initOrderInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrderInfoViewui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/个人订单详细内容查看界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();

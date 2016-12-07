@@ -127,11 +127,6 @@
             <Image url="@../酒店促销策略/促销策略.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="514.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../酒店详情界面/Shape%201.png" />
-         </image>
-      </ImageView>
       <Button layoutX="770.0" layoutY="687.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -168,5 +163,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="514.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/Shape%201.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
