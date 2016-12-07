@@ -4,11 +4,15 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataService.hotelDataService.HotelDataService;
+import po.hotelPO.CommentPO;
 import po.hotelPO.HotelPO;
+import po.hotelPO.RoomPO;
 import rmi.RemoteHelper;
 import vo.OrderVO;
+import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import businessLogic.orderbl.Order;
 
@@ -44,8 +48,9 @@ public class Hotel {
 	 * @return 是否增加评论成功
 	 * @throws RemoteException 
 	 */
-	public boolean addComment(String comment,String username,String hotelname) throws RemoteException{
-		return hoteldataservice.addComment(comment, username, hotelname);
+	public boolean addComment(CommentVO commentvo) throws RemoteException{
+		CommentPO commentpo=new CommentPO(commentvo);
+		return hoteldataservice.addComment(commentpo);
 	}
 	/**
 	 * 
@@ -54,8 +59,13 @@ public class Hotel {
 	 * @return 是否修改房间数量成功
 	 * @throws RemoteException 
 	 */
-	public boolean roomModify(String roomtype,int number) throws RemoteException{
-		return hoteldataservice.roomModify(roomtype,number);
+	public boolean roomModify(String hotelname, ArrayList<RoomVO> roomvoList) throws RemoteException{
+		ArrayList<RoomPO> roompoList=new ArrayList<RoomPO>();
+		for(int i=0; i<roomvoList.size(); i++){
+			RoomPO roompo=new RoomPO(roomvoList.get(i));
+			roompoList.add(roompo);
+		}
+		return hoteldataservice.roomModify(hotelname, roompoList);
 	}
 	/**
 	 * 
@@ -112,6 +122,20 @@ public class Hotel {
 		
 		return hotelSearchVOList;
 	}
+	/**
+	 * 增加酒店
+	 */
+	public boolean addHotel(HotelVO hotelvo){
+		try {
+			HotelPO hotelpo=new HotelPO(hotelvo);
+			return hoteldataservice.addHotel(hotelpo);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	/**
 	 * 构造方法
 	 */

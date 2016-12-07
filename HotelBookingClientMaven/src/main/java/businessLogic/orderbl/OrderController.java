@@ -32,7 +32,7 @@ public class OrderController implements OrderblService{
 
 	public boolean finishOrder(OrderVO order) {
 		try {
-			order1.finishOrder(order);
+			return order1.finishOrder(order);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,8 +41,7 @@ public class OrderController implements OrderblService{
 	}
 
 	public boolean createOrder(OrderVO order) {
-		order1.createOrder(order);
-		return false;
+		return order1.createOrder(order);
 	}
 
 	public ArrayList<OrderVO> personOrders(String personname) {
@@ -51,8 +50,8 @@ public class OrderController implements OrderblService{
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 	public ArrayList<OrderVO> hotelOrders(String hotelname) {

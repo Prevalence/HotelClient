@@ -63,17 +63,42 @@ public class OrderControllerTest {
 
 	@Test
 	public void testFinishOrder() {
-		fail("Not yet implemented");
+		Calendar latestExecutetime=Calendar.getInstance();
+		latestExecutetime.set(2016, 11, 29);
+		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
+		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
+		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
+		roomList.add(room1);
+		roomList.add(room2);
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				"xiamutian","xiamutian", 3, 0, null, null,
+				null, latestExecutetime, null, null);
+		
+		assertEquals(true,oc.finishOrder(order));
 	}
 
 	@Test
 	public void testCreateOrder() {
-		fail("Not yet implemented");
+		Calendar latestExecutetime=Calendar.getInstance();
+		latestExecutetime.set(2016, 11, 29);
+		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
+		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
+		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
+		roomList.add(room1);
+		roomList.add(room2);
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				"xiamutian","xiamutian", 3, 0, null, null,
+				null, latestExecutetime, null, null);
+		
+		assertEquals(true,oc.createOrder(order));
 	}
 
 	@Test
 	public void testPersonOrders() {
 		assertEquals("南京大酒店",oc.personOrders("小夏").get(0).getHotelname());
+		assertEquals("nonExecute",oc.personOrders("小夏").get(0).getOrderstate());
+		assertEquals("nonExecute",oc.personOrders("小夏").get(1).getOrderstate());
+		
 	}
 
 	@Test
@@ -83,23 +108,25 @@ public class OrderControllerTest {
 
 	@Test
 	public void testNetOrders() {
-		assertEquals(null,oc.netOrders().get(0).getPersonname());
-		assertEquals(null,oc.netOrders().get(1).getPersonname());
+		assertEquals("未执行",oc.netOrders().get(0).getOrderstate());
+		assertEquals(3,oc.netOrders().size());
 	}
 
 	@Test
 	public void testPersonStateOrders() {
 		assertEquals("南京大酒店",oc.personStateOrders("小夏", "nonExecute").get(0).getHotelname());
+		assertEquals(2,oc.personStateOrders("小夏", "nonExecute").size());
 	}
 	
 	@Test
 	public void testHotelStateOrders() {
-		fail("Not yet implemented");
+		assertEquals(0,oc.hotelStateOrders("nju", "nonExecute").size());
 	}
 
 	@Test
 	public void testNetNumOrders() {
-		fail("Not yet implemented");
+		Calendar calendar=Calendar.getInstance();
+		assertEquals(3,oc.netNumOrders(calendar).size());
 	}
 	
 }

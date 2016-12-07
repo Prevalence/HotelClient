@@ -94,8 +94,7 @@ public class Order{
 			return false;
 		}
 		OrderPO orderPO=new OrderPO(order);
-		orderDataService.add(orderPO);
-		return true;
+		return orderDataService.add(orderPO);
 	}
 
 	/**
@@ -107,9 +106,9 @@ public class Order{
 	public ArrayList<OrderVO> personOrders(String personname) throws RemoteException {
 		ArrayList<OrderPO> personList=orderDataService.personFind(personname);
 		ArrayList<OrderVO> personListVO=new ArrayList<OrderVO>();
-		for (OrderPO personPO : personList) {
-			OrderVO personVO = new OrderVO(personPO);
-			personListVO.add(personVO);
+		for(int i=0; i<personList.size(); i++){
+			OrderVO ordervo=new OrderVO(personList.get(i));
+			personListVO.add(ordervo);
 		}
 		return personListVO;
 	}

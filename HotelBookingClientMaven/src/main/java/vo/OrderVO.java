@@ -46,9 +46,11 @@ public class OrderVO {
 		this.hotelname=orderPO.getHotelname();
 		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
 		ArrayList<RoomPO> roompoList=orderPO.getRoom();
-		for(int i=0; i<roompoList.size(); i++){
-			RoomVO roomvo=new RoomVO(roompoList.get(i));
-			roomvoList.add(roomvo);
+		if(roompoList!=null){
+			for(int i=0; i<roompoList.size(); i++){
+				RoomVO roomvo=new RoomVO(roompoList.get(i));
+				roomvoList.add(roomvo);
+			}
 		}
 		this.room=roomvoList;
 		

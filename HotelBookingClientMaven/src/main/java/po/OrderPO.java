@@ -54,9 +54,11 @@ public class OrderPO implements Serializable{
 		this.hotelname=orderVO.getHotelname();
 		ArrayList<RoomPO> roompoList=new ArrayList<RoomPO>();
 		ArrayList<RoomVO> roomvoList=orderVO.getRoom();
-		for(int i=0; i<roomvoList.size(); i++){
-			RoomPO roomvo=new RoomPO(roomvoList.get(i));
-			roompoList.add(roomvo);
+		if(roomvoList!=null){
+			for(int i=0; i<roomvoList.size(); i++){
+				RoomPO roomvo=new RoomPO(roomvoList.get(i));
+				roompoList.add(roomvo);
+			}
 		}
 		this.room=roompoList;
 		

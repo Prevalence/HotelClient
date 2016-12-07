@@ -2,6 +2,7 @@ package businessLogic.promotionbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import businessLogic.userbl.Person;
 import po.OrderPO;
@@ -9,7 +10,9 @@ import po.PromotionPO;
 import po.personPO.PersonPO;
 import vo.OrderVO;
 import vo.PromotionVO;
+import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 import vo.personVO.PersonVO;
 /**
  * 
@@ -26,7 +29,29 @@ public class PriceCalc {
 	 * @return 计算优惠后的最低价格
 	 */
 	public double priceCut(HotelVO hotelvo,OrderVO ordervo){
+		/**
+		 * 	public HotelVO(String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
+			String circle, double score, ArrayList<RoomVO> room, ArrayList<CommentVO> comment, String hotelworker)
+			
+			public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
+			String personname, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
+			Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime)
+		 */
 		
+		//以下方法实现计算原价
+		int initialtotal=0;//原价
+		ArrayList<RoomVO> orderRoomvoList=ordervo.getRoom();
+		ArrayList<RoomVO> hotelRoomvoList=hotelvo.getRoom();
+		for(int i=0; i<orderRoomvoList.size(); i++){
+			for(int j=0; j<hotelRoomvoList.size(); j++){
+				if(orderRoomvoList.get(i).getRoomType().equals(hotelRoomvoList.get(j).getRoomType())){//当房型确定时
+					initialtotal=initialtotal+hotelRoomvoList.get(j).getRoomPrice();
+					break;
+				}
+			}
+		}
+		
+		//以下方法实现获取所有促销策略（包括酒店与网站促销策略）
 		ArrayList<PromotionVO>promotionvolist=new Promotion().getProm(hotelvo.getHotelname());//加入酒店促销策略;
 		promotionvolist.addAll(new Promotion().getProm("WebPromotion"));//加入网站促销策略
 		
@@ -35,22 +60,10 @@ public class PriceCalc {
 			PromotionPO propo=promotionvolist.get(i).toPO(promotionvolist.get(i));
 			promotionpolist.add(propo);
 		}
-		//process the PO and VO
-//		ArrayList<String> roomtypes=ordervo.getRoomtype();
-//		ArrayList<Integer> roomnumbers=ordervo.getRoomnum();
-//		ArrayList<String> hotelroomtypes=hotelvo.getRoom().getRoomType();
-//		ArrayList<Integer> hotelroomprice=hotelvo.getRoomPrice();
-		int initialtotal=0;//原价
-//		for(int i=0;i<roomtypes.size();i++){
-//			for(int j=0;j<hotelroomtypes.size();j++){
-//				if(roomtypes.get(i).equals(hotelroomtypes.get(j))){
-//					initialtotal+=hotelroomprice.get(j)*roomnumbers.get(i);
-//				}
-//			}
-//		}
 		
+		//以下实现找人
 		Person person=new Person();
-		PersonPO personpo = null;
+		PersonPO personpo=null;
 		try {
 			personpo = new PersonPO(person.getPersonInfo(ordervo.getPersonname()));
 		} catch (RemoteException e) {

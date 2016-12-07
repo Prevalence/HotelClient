@@ -1,13 +1,11 @@
 package businessLogic.promotion;
 
-import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
 import businessLogic.promotionbl.PriceCalc;
-import vo.OrderVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 
