@@ -2,6 +2,7 @@ package ui.personui.orderViewui;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -17,7 +18,7 @@ import ui.personui.personInfoui.PersonInfoui;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
 public class OrderViewuiController {
-	
+
 	@FXML
 	private Button hotelSearchButton;
 	@FXML
@@ -51,6 +52,8 @@ public class OrderViewuiController {
 
 	private UserblService userbl;
 
+	// 填充进TableView的酒店数据
+	private ObservableList<HotelSearchVO> orderData;
 	// 酒店搜索界面
 	private Pane hotelSearchPane;
 
@@ -78,7 +81,7 @@ public class OrderViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelSearchPane);
 	}
-	
+
 	/**
 	 * 跳转个人信息界面
 	 */
@@ -88,13 +91,13 @@ public class OrderViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(personInfoPane);
 	}
-	
+
 	/**
 	 * 查看订单详细内容
 	 */
 	@FXML
-	private void viewOrderInfo(){
-		
+	private void viewOrderInfo() {
+
 	}
 
 	/**
@@ -114,25 +117,26 @@ public class OrderViewuiController {
 	public void setPersonname(String personname) {
 		this.personname = personname;
 	}
-	
+
 	/**
 	 * 初始化订单列表
 	 */
-	public void initOrderTable(){
+	@SuppressWarnings("unchecked")
+	public void initOrderTable() {
 		hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
-		starCol.setCellValueFactory(new PropertyValueFactory<>("star"));
-		areaCol.setCellValueFactory(new PropertyValueFactory<>("area"));
-		locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+		orderNumberCol.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
+		expectedTimeCol.setCellValueFactory(new PropertyValueFactory<>("area"));
+		stateCol.setCellValueFactory(new PropertyValueFactory<>("location"));
 		buttonCol
 				.setCellFactory(new Callback<TableColumn<HotelSearchVO, Boolean>, TableCell<HotelSearchVO, Boolean>>() {
 
 					@Override
 					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
-						ButtonCell buttonCell = new ButtonCell(searchTable, mainPane, primaryStage, personname,
-								personname);
+						ButtonCell buttonCell = new ButtonCell(personname,orderTable, mainPane, primaryStage);
 						return buttonCell;
 					}
 
 				});
+		orderTable.setItems(orderData);
 	}
 }

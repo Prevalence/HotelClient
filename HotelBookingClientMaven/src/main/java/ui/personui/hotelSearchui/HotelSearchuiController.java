@@ -114,28 +114,6 @@ public class HotelSearchuiController {
 	}
 
 	/**
-	 * 初始设置TableView的属性，绑定内部按钮
-	 */
-	@SuppressWarnings("unchecked")
-	private void initTableView() {
-		hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
-		starCol.setCellValueFactory(new PropertyValueFactory<>("star"));
-		areaCol.setCellValueFactory(new PropertyValueFactory<>("area"));
-		locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-		buttonCol
-				.setCellFactory(new Callback<TableColumn<HotelSearchVO, Boolean>, TableCell<HotelSearchVO, Boolean>>() {
-
-					@Override
-					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
-						ButtonCell buttonCell = new ButtonCell(searchTable, mainPane, primaryStage, personname,
-								personname);
-						return buttonCell;
-					}
-
-				});
-	}
-
-	/**
 	 * 跳转到个人信息维护界面
 	 * 
 	 * @return boolean
@@ -177,7 +155,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithPrice() {
 		searchTable.refresh();
-		initTableView();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
 		searchDataList.add(new HotelSearchMock("njuHotel", "5", "nanjing", "nju"));
@@ -193,7 +170,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithStar() {
 		searchTable.refresh();
-		initTableView();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
 		searchDataList.add(new HotelSearchMock("njuHotel", "4", "nanjing", "nju"));
@@ -209,7 +185,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithScore() {
 		searchTable.refresh();
-		initTableView();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
 		searchDataList.add(new HotelSearchMock("njuHotel", "3", "nanjing", "nju"));
@@ -225,7 +200,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithHistory() {
 		searchTable.refresh();
-		initTableView();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
 		searchDataList.add(new HotelSearchMock("njuHotel", "2", "nanjing", "nju"));
@@ -302,5 +276,26 @@ public class HotelSearchuiController {
 		// System.out.println(usertype);
 		// }
 		// });
+	}
+
+	/**
+	 * 初始设置TableView的属性，绑定内部按钮
+	 */
+	@SuppressWarnings("unchecked")
+	public void initTableView() {
+		hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+		starCol.setCellValueFactory(new PropertyValueFactory<>("star"));
+		areaCol.setCellValueFactory(new PropertyValueFactory<>("area"));
+		locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+		buttonCol
+				.setCellFactory(new Callback<TableColumn<HotelSearchVO, Boolean>, TableCell<HotelSearchVO, Boolean>>() {
+
+					@Override
+					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
+						ButtonCell buttonCell = new ButtonCell(searchTable, mainPane, primaryStage, personname);
+						return buttonCell;
+					}
+
+				});
 	}
 }

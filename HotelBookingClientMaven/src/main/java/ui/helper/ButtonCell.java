@@ -8,6 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
+import ui.personui.orderInfoViewui.OrderInfoViewui;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
 public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
@@ -30,7 +31,7 @@ public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
 	 * @param selectedHotelName
 	 */
 	@SuppressWarnings("rawtypes")
-	public ButtonCell(TableView table, Pane mainPane, Stage primaryStage, String personname, String selectedHotelName) {
+	public ButtonCell(TableView table, Pane mainPane, Stage primaryStage, String personname) {
 		this.table = table;
 		this.mainPane = mainPane;
 		this.primaryStage = primaryStage;
@@ -57,7 +58,7 @@ public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
 	 * @param personname
 	 */
 	@SuppressWarnings("rawtypes")
-	public ButtonCell(TableView table, Pane mainPane, Stage primaryStage, String personname) {
+	public ButtonCell(String personname, TableView table, Pane mainPane, Stage primaryStage) {
 		this.table = table;
 		this.mainPane = mainPane;
 		this.primaryStage = primaryStage;
@@ -65,9 +66,7 @@ public class ButtonCell extends TableCell<HotelSearchVO, Boolean> {
 		cellButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent t) {
-				String selectedHotelName = ((HotelSearchVO) table.getItems().get(getTableRow().getIndex()))
-						.getHotelName();
-				newPane = new HotelInfoViewui(primaryStage, personname, selectedHotelName);
+				newPane = new OrderInfoViewui(primaryStage, personname);
 				mainPane.getChildren().remove(0);
 				mainPane.getChildren().add(newPane);
 			}

@@ -48,5 +48,6 @@ public class HotelSearchui extends Pane {
 		hotelSearchuiController.setPersonname(personname);
 		hotelSearchuiController.modifyStageSize();
 		hotelSearchuiController.setChoiceBox(prices);
+		hotelSearchuiController.initTableView();
 	}
 }
