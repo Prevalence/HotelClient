@@ -21,7 +21,7 @@ public class SearchController implements SearchblService {
 	private SearchHistory searchhistory=new SearchHistory();
 
 	public ArrayList<HotelSearchVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
-			try {
+		try {
 			return search.findHotel(worstCondition, bestCondition);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

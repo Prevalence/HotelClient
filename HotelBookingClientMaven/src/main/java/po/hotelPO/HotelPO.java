@@ -9,6 +9,7 @@ import vo.hotelVO.hotelblVO.RoomVO;
 
 public class HotelPO implements Serializable{
 	private static final long serialVersionUID = 1L;
+	private int hotelID;//酒店唯一标识
 	private String hotelname;
 	private int star;//酒店星级
 	private String feature;//酒店简介
@@ -24,9 +25,11 @@ public class HotelPO implements Serializable{
 		super();
 	}
 
-	public HotelPO(String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
+
+	public HotelPO(int hotelID, String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
 			String circle, double score, ArrayList<RoomPO> room, ArrayList<CommentPO> comment, String hotelworker) {
 		super();
+		this.setHotelID(hotelID);
 		this.hotelname = hotelname;
 		this.star = star;
 		this.feature = feature;
@@ -39,9 +42,8 @@ public class HotelPO implements Serializable{
 		this.hotelworker = hotelworker;
 	}
 
-
-
 	public HotelPO(HotelVO vo){
+		this.hotelID=vo.getHotelID();
 		this.hotelname = vo.getHotelname();
 		this.star = vo.getStar();
 		this.feature = vo.getFeature();
@@ -145,6 +147,16 @@ public class HotelPO implements Serializable{
 
 	public void setHotelworker(String hotelworker) {
 		this.hotelworker = hotelworker;
+	}
+
+
+	public int getHotelID() {
+		return hotelID;
+	}
+
+
+	public void setHotelID(int hotelID) {
+		this.hotelID = hotelID;
 	}
 	
 
