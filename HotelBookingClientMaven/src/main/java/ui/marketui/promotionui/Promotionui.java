@@ -1,9 +1,10 @@
 package ui.marketui.promotionui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Promotionui {
+public class Promotionui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;

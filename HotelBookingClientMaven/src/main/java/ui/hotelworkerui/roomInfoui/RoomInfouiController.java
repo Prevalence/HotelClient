@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.hotelworkerui.hotelInfoui.HotelInfoui;
-import ui.hotelworkerui.orderViewui.OrderViewui;
+import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.promotionui.Promotionui;
 
 public class RoomInfouiController {
@@ -29,10 +29,10 @@ public class RoomInfouiController {
 	// 酒店订单浏览界面
 	private Pane hotelOrderPane;
 
-	// 酒店详情查看界面
+	// 促销策略界面
 	private Pane promotionPane;
 
-	// 个人信息界面
+	// 酒店信息界面
 	private Pane hotelInfoPane;
 
 	// 房间信息界面
@@ -41,6 +41,7 @@ public class RoomInfouiController {
 	private Stage primaryStage;
 
 	private String hotelName;
+
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
@@ -54,7 +55,7 @@ public class RoomInfouiController {
 	 */
 	@FXML
 	private void viewHotelOrder() {
-		hotelOrderPane = new OrderViewui(primaryStage, hotelName);
+		hotelOrderPane = new HotelOrderViewui(primaryStage, hotelName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelOrderPane);
 	}
@@ -77,7 +78,7 @@ public class RoomInfouiController {
 		// hotelInfo = hotelbl.showHotelInfo(hotelName);
 		hotelInfoPane = new HotelInfoui(primaryStage, hotelName);
 		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(roomInfoPane);
+		mainPane.getChildren().add(hotelInfoPane);
 	}
 
 	/**
@@ -90,9 +91,7 @@ public class RoomInfouiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(roomInfoPane);
 	}
-	
 
-	
 	/**
 	 * 传递Main的primaryStage
 	 * 

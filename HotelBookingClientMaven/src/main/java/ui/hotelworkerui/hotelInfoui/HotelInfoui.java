@@ -38,6 +38,6 @@ public class HotelInfoui extends Pane{
 		// primaryStage.setScene(scene);
 		hotelInfoViewuiController = loader.getController();
 		hotelInfoViewuiController.launchStage(primaryStage);
-		hotelInfoViewuiController.setPersonname(personname);
+		hotelInfoViewuiController.setHotelName(personname);
 	}
 }

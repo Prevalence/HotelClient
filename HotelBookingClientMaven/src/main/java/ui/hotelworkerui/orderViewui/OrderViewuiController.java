@@ -30,10 +30,10 @@ public class OrderViewuiController {
 	// 酒店订单浏览界面
 	private Pane hotelOrderPane;
 
-	// 酒店详情查看界面
+	// 促销策略界面
 	private Pane promotionPane;
 
-	// 个人信息界面
+	// 酒店信息界面
 	private Pane hotelInfoPane;
 
 	// 房间信息界面
@@ -56,7 +56,7 @@ public class OrderViewuiController {
 	 */
 	@FXML
 	private void viewHotelOrder() {
-		hotelOrderPane = new OrderViewui(primaryStage, hotelName);
+		hotelOrderPane = new HotelOrderViewui(primaryStage, hotelName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelOrderPane);
 	}
@@ -79,7 +79,7 @@ public class OrderViewuiController {
 		// hotelInfo = hotelbl.showHotelInfo(hotelName);
 		hotelInfoPane = new HotelInfoui(primaryStage, hotelName);
 		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(roomInfoPane);
+		mainPane.getChildren().add(hotelInfoPane);
 	}
 
 	/**
