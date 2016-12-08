@@ -3,6 +3,8 @@ package po;
 import java.io.Serializable;
 import java.util.*;
 
+import vo.PromotionVO;
+
 
 /**
  * @author xiamutian
@@ -53,6 +55,8 @@ public class PromotionPO implements Serializable {
 		this.hotelnameOrWeb = hotelnameOrWeb;
 	}
 
-	
+	public PromotionVO toVO(PromotionPO promotionpo){
+		return null;
+	}
 
 }

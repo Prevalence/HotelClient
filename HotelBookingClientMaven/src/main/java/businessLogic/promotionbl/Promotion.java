@@ -55,10 +55,9 @@ public class Promotion {
 		ArrayList<PromotionPO> propoList=promotiondataservice.find(hotelnameOrWeb);
 		ArrayList<PromotionVO> provoList=new ArrayList<PromotionVO>();
 		for(int i=0; i<propoList.size(); i++){
-			PromotionVO provo=new PromotionVO(propoList.get(i));
+			PromotionVO provo=(propoList.get(i)).toVO(propoList.get(i));
 			provoList.add(provo);
 		}
-		
 		return provoList;
 	}
 

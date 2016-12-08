@@ -27,12 +27,12 @@ public class PromotionVO {
 		this.hotelnameOrWeb = hotelnameOrWeb;
 	}
 	
-	public PromotionVO(PromotionPO po) {
-		this.promotionID = po.getPromotionID();
-		this.promotionName = po.getPromotionName();
-		this.promotionType = po.getPromotionType();
-		this.hotelnameOrWeb = po.getHotelnameOrWeb();
-	}
+//	public PromotionVO(PromotionPO po) {
+//		this.promotionID = po.getPromotionID();
+//		this.promotionName = po.getPromotionName();
+//		this.promotionType = po.getPromotionType();
+//		this.hotelnameOrWeb = po.getHotelnameOrWeb();
+//	}
 
 	public String getPromotionID() {
 		return promotionID;
