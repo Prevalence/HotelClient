@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.managerui.hotelworkerInfoui.HotelworkerInfouiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,7 +35,7 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <Button layoutX="469.0" layoutY="577.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="returnButton" layoutX="469.0" layoutY="577.0" mnemonicParsing="false" onAction="#returnToFirst" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -72,4 +72,4 @@
          </children>
       </Pane>
    </children>
-</Pane>
+</fx:root>
