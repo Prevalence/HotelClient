@@ -2,7 +2,6 @@ package vo.promotionvo.hotelpromotionVO;
 
 import java.util.ArrayList;
 
-import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
 import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
 import vo.PromotionVO;
 
@@ -14,6 +13,10 @@ public class EnterpriseHotelproVO extends PromotionVO {
 	private ArrayList<String> enterprise;//合作企业名称列表
 	private int discount;//如打九五折时，discount=95
 	
+	public EnterpriseHotelproVO() {
+		super();
+	}
+	
 	public EnterpriseHotelproVO(String promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb, ArrayList<String> enterprise, int discount) {
 		super.setPromotionID(promotionID);
@@ -22,18 +25,6 @@ public class EnterpriseHotelproVO extends PromotionVO {
 		super.setHotelnameOrWeb(hotelnameOrWeb);
 		this.enterprise=enterprise;
 		this.discount=discount;
-	}
-
-	
-	public EnterpriseHotelproPO toPO(EnterpriseHotelproVO vo){
-		EnterpriseHotelproPO po=new EnterpriseHotelproPO();
-		po.setPromotionID(vo.getPromotionID());
-		po.setPromotionName(vo.getPromotionName());
-		po.setPromotionType(vo.getPromotionType());
-		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
-		po.setEnterprise(vo.getEnterprise());
-		po.setDiscount(vo.getDiscount());
-		return po;
 	}
 
 
@@ -55,4 +46,16 @@ public class EnterpriseHotelproVO extends PromotionVO {
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
+	
+	public EnterpriseHotelproPO toPO(EnterpriseHotelproVO vo){
+		EnterpriseHotelproPO po=new EnterpriseHotelproPO();
+		po.setPromotionID(vo.getPromotionID());
+		po.setPromotionName(vo.getPromotionName());
+		po.setPromotionType(vo.getPromotionType());
+		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
+		po.setEnterprise(vo.getEnterprise());
+		po.setDiscount(vo.getDiscount());
+		return po;
+	}
+	
 }

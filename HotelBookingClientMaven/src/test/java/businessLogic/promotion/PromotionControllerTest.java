@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import businessLogic.promotionbl.PromotionController;
+import po.PromotionPO;
+import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
 import rmi.ClientRunner;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -67,6 +69,17 @@ public class PromotionControllerTest {
 		assertEquals(2, promotioncontroller.getProm("酒店").size());
 		assertEquals("hotelPro1", promotioncontroller.getProm("酒店").get(0).getPromotionName());
 		assertEquals(1, promotioncontroller.getProm("WebPromotion").size());
+		
+		//另外加的
+		ArrayList<String> enterprise=new ArrayList<String>();
+		enterprise.add("南京大学");
+		enterprise.add("企业2");
+		enterprise.add("企业3");
+		/*public EnterpriseHotelproPO(String promotionID, String promotionName, String promotionType,
+			String hotelnameOrWeb, ArrayList<String> enterprise, int discount)*/
+//		Promotio hotelPro1=new EnterpriseHotelproPO("123", "hotelPro1", "EnterpriseHotelPromotion",
+//				"酒店1", enterprise, 80);
+		System.out.println();
 	}
 
 	@Test

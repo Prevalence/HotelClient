@@ -60,4 +60,17 @@ public class PeriodWebproPO extends PromotionPO {
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
+	
+	public PeriodWebproVO toVO(PeriodWebproPO po){
+		PeriodWebproVO vo=new PeriodWebproVO();
+		vo.setPromotionID(po.getPromotionID());
+		vo.setPromotionName(po.getPromotionName());
+		vo.setPromotionType(po.getPromotionType());
+		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
+		vo.setStartTime(po.getStartTime());
+		vo.setEndTime(po.getEndTime());
+		vo.setDiscount(po.getDiscount());
+		return vo;
+	}
+	
 }

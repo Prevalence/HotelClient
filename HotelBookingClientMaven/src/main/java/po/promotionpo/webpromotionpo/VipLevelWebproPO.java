@@ -44,4 +44,15 @@ public class VipLevelWebproPO extends PromotionPO {
 	public void setDiscount(ArrayList<Integer> discount) {
 		this.discount = discount;
 	}
+	public VipLevelWebproVO toVO(VipLevelWebproPO po){
+		VipLevelWebproVO vo=new VipLevelWebproVO();
+		vo.setPromotionID(po.getPromotionID());
+		vo.setPromotionName(po.getPromotionName());
+		vo.setPromotionType(po.getPromotionType());
+		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
+		vo.setVipLevel(po.getVipLevel());
+		vo.setDiscount(po.getDiscount());
+		return vo;
+	}
+	
 }

@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 
 import dataService.hotelDataService.HotelDataService;
 import dataService.userDataService.UserDataService;
+import po.PromotionPO;
 import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 import vo.personVO.PersonVO;
@@ -47,9 +48,12 @@ public class ClientRunner {
 //		System.out.println(remoteHelper.getPromotionDataService().find("南京大酒店").get(1).getPromotionType());
 //		System.out.println(remoteHelper.getSearchDataService().showSearchHistory("小夏"));
 //		System.out.println(remoteHelper.getUserDataService().findHotelWorker("小夏"));
-		UserDataService e=remoteHelper.getUserDataService();
-		boolean r=e.addPerson(personvo1);
-		System.out.println(r);
+//		UserDataService e=remoteHelper.getUserDataService();
+//		boolean r=e.addPerson(personvo1);
+//		System.out.println(r);
+//		PromotionVO v=new PromotionVO();
+//		PromotionPO propo=new PromotionPO();
+//		propo=.toPO(promotionvolist.get(i));
 	}
 	
 	public static void main(String[] args) throws RemoteException{//������

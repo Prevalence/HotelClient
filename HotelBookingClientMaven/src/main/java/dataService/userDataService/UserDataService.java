@@ -9,6 +9,7 @@ import po.personPO.PersonPO;
 public interface UserDataService extends Remote{
 	public boolean addPerson (PersonPO personInfo)throws RemoteException;
 	public PersonPO findPerson (String personname)throws RemoteException;
+	public PersonPO findPerson (int personID)throws RemoteException;
 	public boolean modifyPerson (PersonPO personInfo)throws RemoteException;
 	public boolean personLogin(String personname,String password)throws RemoteException;
 	public MarketPO findMarket (String marketname)throws RemoteException;

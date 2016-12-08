@@ -64,4 +64,17 @@ public class PeriodHotelproPO extends PromotionPO {
 		this.discount = discount;
 	}
 	
+	public PeriodHotelproVO toVO(PeriodHotelproPO po){
+		PeriodHotelproVO vo=new PeriodHotelproVO();
+		vo.setPromotionID(po.getPromotionID());
+		vo.setPromotionName(po.getPromotionName());
+		vo.setPromotionType(po.getPromotionType());
+		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
+		vo.setStartTime(po.getStartTime());
+		vo.setEndTime(po.getEndTime());
+		vo.setDiscount(po.getDiscount());
+		return vo;
+		
+	}
+	
 }

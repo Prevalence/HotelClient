@@ -3,6 +3,7 @@ package po.promotionpo.hotelpromotionPO;
 import java.util.ArrayList;
 
 import po.PromotionPO;
+import vo.promotionvo.hotelpromotionVO.EnterpriseHotelproVO;
 
 /**
  *  @author 武秀峰
@@ -39,6 +40,17 @@ public class EnterpriseHotelproPO extends PromotionPO{
 	}
 	public void setDiscount(int discount) {
 		this.discount = discount;
+	}
+	
+	public EnterpriseHotelproVO toVO(EnterpriseHotelproPO po){
+		EnterpriseHotelproVO vo=new EnterpriseHotelproVO();
+		vo.setPromotionID(po.getPromotionID());
+		vo.setPromotionName(po.getPromotionName());
+		vo.setPromotionType(po.getPromotionType());
+		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
+		vo.setEnterprise(po.getEnterprise());
+		vo.setDiscount(po.getDiscount());
+		return vo;
 	}
 	
 }

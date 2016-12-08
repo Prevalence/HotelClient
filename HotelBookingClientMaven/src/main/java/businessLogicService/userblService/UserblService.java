@@ -56,7 +56,13 @@ public interface UserblService {
 	 */
 	public PersonVO getPersonInfo(String username);
 	/**
-	 * 获取会员信息
+	 * 用客户名称获取客户信息
+	 * @author xiamutian
+	 * @return boolean
+	 */
+	public PersonVO getPersonInfo(int personID);
+	/**
+	 * 用客户ID获取客户信息
 	 * @author xiamutian
 	 * @return boolean
 	 */

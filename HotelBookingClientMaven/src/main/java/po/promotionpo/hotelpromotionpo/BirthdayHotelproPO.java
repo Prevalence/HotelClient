@@ -1,7 +1,5 @@
 package po.promotionpo.hotelpromotionPO;
 
-import java.util.ArrayList;
-
 import po.PromotionPO;
 import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
@@ -34,5 +32,14 @@ public class BirthdayHotelproPO extends PromotionPO{
 		this.discount = discount;
 	}
 	
+	public BirthdayHotelproVO toVO(BirthdayHotelproPO po){
+		BirthdayHotelproVO vo=new BirthdayHotelproVO();
+		vo.setPromotionID(po.getPromotionID());
+		vo.setPromotionName(po.getPromotionName());
+		vo.setPromotionType(po.getPromotionType());
+		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
+		vo.setDiscount(po.getDiscount());
+		return vo;
+	}
 
 }

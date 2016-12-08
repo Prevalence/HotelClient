@@ -33,4 +33,14 @@ public class LargeAmountHotelproPO extends PromotionPO {
 		this.discount = discount;
 	}
 	
+	public LargeAmountHotelproVO toVO(LargeAmountHotelproPO po){
+		LargeAmountHotelproVO vo=new LargeAmountHotelproVO();
+		vo.setPromotionID(po.getPromotionID());
+		vo.setPromotionName(po.getPromotionName());
+		vo.setPromotionType(po.getPromotionType());
+		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
+		vo.setDiscount(po.discount);
+		return vo;
+		
+	}
 }
