@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class Promotionui extends Pane{
 	private Stage primaryStage;
 
-	private String personname;
+	private String marketName;
 
 	private PromotionuiController promotionViewuiController;
 
@@ -16,9 +16,9 @@ public class Promotionui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public Promotionui(Stage primaryStage, String personname) {
+		public Promotionui(Stage primaryStage, String marketName) {
 			this.primaryStage = primaryStage;
-			this.personname = personname;
+			this.marketName = marketName;
 			initPromotionViewui();
 		};
 
@@ -27,7 +27,7 @@ public class Promotionui extends Pane{
 	 */
 	public void initPromotionViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Promotionui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/网站促销策略界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -38,6 +38,6 @@ public class Promotionui extends Pane{
 		// primaryStage.setScene(scene);
 		promotionViewuiController = loader.getController();
 		promotionViewuiController.launchStage(primaryStage);
-		promotionViewuiController.setPersonname(personname);
+		promotionViewuiController.setMarketName(marketName);
 	}
 }

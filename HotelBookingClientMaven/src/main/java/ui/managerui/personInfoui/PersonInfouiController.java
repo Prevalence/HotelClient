@@ -1,4 +1,4 @@
-package ui.managerui.userInfoui;
+package ui.managerui.personInfoui;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class UserInfouiController {
+public class PersonInfouiController {
 	//TODO
 	
 		@FXML
@@ -28,7 +28,7 @@ public class UserInfouiController {
 		 * The constructor. The constructor is called before the initialize()
 		 * method.
 		 */
-		public UserInfouiController() {
+		public PersonInfouiController() {
 			userbl = new UserController();
 		}
 
