@@ -7,7 +7,6 @@ import businessLogic.userbl.Person;
 import po.OrderPO;
 import po.PromotionPO;
 import po.personPO.PersonPO;
-import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
 import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
@@ -52,14 +51,12 @@ public class PriceCalc {
 		//以下方法实现获取所有促销策略（包括酒店与网站促销策略）
 		ArrayList<PromotionVO>promotionvolist=new Promotion().getProm(hotelvo.getHotelname());//加入酒店促销策略;
 		promotionvolist.addAll(new Promotion().getProm("WebPromotion"));//加入网站促销策略
-		System.out.println(promotionvolist.get(0).getHotelnameOrWeb());
 		
 		ArrayList<PromotionPO>promotionpolist = new ArrayList<PromotionPO>();
 		for(int i=0; i<promotionvolist.size(); i++){
 			PromotionPO propo=new PromotionPO();
 			propo=promotionvolist.get(i).toPO(promotionvolist.get(i));
 			promotionpolist.add(propo);
-			System.out.println(propo.getHotelnameOrWeb());
 		}
 		
 		//以下实现找人
@@ -78,7 +75,8 @@ public class PriceCalc {
 		if((personpo!=null)&&(promotionpolist!=null)){
 			for(int i=0;i<promotionpolist.size();i++){
 				PromotionPO temp=promotionpolist.get(i);
-				discount=Helper.getcalculateinstance(temp.getPromotionType());//promotionlist中的项为空，有错
+				String promotionType=temp.getPromotionType();
+				discount=Helper.getcalculateinstance(promotionType);
 				double thisprice=discount.getprice(initialtotal,promotionpolist.get(i), personpo, orderpo);
 				if(thisprice<bestprice)
 					bestprice=thisprice;

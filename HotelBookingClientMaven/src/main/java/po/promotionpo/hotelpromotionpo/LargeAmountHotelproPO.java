@@ -3,13 +3,14 @@ package po.promotionpo.hotelpromotionPO;
 import java.util.ArrayList;
 
 import po.PromotionPO;
+import vo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.LargeAmountHotelproVO;
 
 /**
  *  @author 武秀峰
  *  酒店促销策略：三间及以上预订特惠*/
 public class LargeAmountHotelproPO extends PromotionPO {
-//	private String promotionType="LargeAmountHotelPromtion";
+//	private String promotionType="LargeAmountHotelPromotion";
 	private int discount;//如打九五折时，discount=95
 	private static final long serialVersionUID = 1L;
 	public LargeAmountHotelproPO() {
@@ -33,13 +34,13 @@ public class LargeAmountHotelproPO extends PromotionPO {
 		this.discount = discount;
 	}
 	
-	public LargeAmountHotelproVO toVO(LargeAmountHotelproPO po){
+	public PromotionVO toVO(PromotionPO po){
 		LargeAmountHotelproVO vo=new LargeAmountHotelproVO();
 		vo.setPromotionID(po.getPromotionID());
 		vo.setPromotionName(po.getPromotionName());
 		vo.setPromotionType(po.getPromotionType());
 		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
-		vo.setDiscount(po.discount);
+		vo.setDiscount(((LargeAmountHotelproPO)po).discount);
 		return vo;
 		
 	}

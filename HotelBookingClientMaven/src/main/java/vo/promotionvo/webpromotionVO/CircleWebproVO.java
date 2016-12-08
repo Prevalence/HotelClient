@@ -2,6 +2,7 @@ package vo.promotionvo.webpromotionVO;
 
 import java.util.ArrayList;
 
+import po.PromotionPO;
 import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
 import po.promotionpo.webpromotionPO.CircleWebproPO;
 import vo.PromotionVO;
@@ -50,15 +51,15 @@ public class CircleWebproVO extends PromotionVO{
 		this.discount = discount;
 	}
 
-	public CircleWebproPO toPO(CircleWebproVO vo){
+	public PromotionPO toPO(PromotionVO vo){
 		CircleWebproPO po=new CircleWebproPO();
 		po.setPromotionID(vo.getPromotionID());
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
 		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
-		po.setCircle(vo.getCircle());
-		po.setVipLevel(vo.getVipLevel());
-		po.setDiscount(vo.getDiscount());
+		po.setCircle(((CircleWebproVO)vo).getCircle());
+		po.setVipLevel(((CircleWebproVO)vo).getVipLevel());
+		po.setDiscount(((CircleWebproVO)vo).getDiscount());
 		return po;
 		
 	}

@@ -1,17 +1,16 @@
 package po.promotionpo.hotelpromotionPO;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import po.PromotionPO;
-import vo.promotionvo.hotelpromotionVO.LargeAmountHotelproVO;
+import vo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
 
 /**
  *  @author 武秀峰
  *  酒店促销策略：双11活动折扣（在特定的期间住宿有折扣）*/
 public class PeriodHotelproPO extends PromotionPO {
-//	private String promotionType="PeriodHotelPromtion";
+//	private String promotionType="PeriodHotelPromotion";
 	private static final long serialVersionUID = 1L;
 	private Calendar startTime;
 	private Calendar endTime;
@@ -64,15 +63,15 @@ public class PeriodHotelproPO extends PromotionPO {
 		this.discount = discount;
 	}
 	
-	public PeriodHotelproVO toVO(PeriodHotelproPO po){
+	public PromotionVO toVO(PromotionPO po){
 		PeriodHotelproVO vo=new PeriodHotelproVO();
 		vo.setPromotionID(po.getPromotionID());
 		vo.setPromotionName(po.getPromotionName());
 		vo.setPromotionType(po.getPromotionType());
 		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
-		vo.setStartTime(po.getStartTime());
-		vo.setEndTime(po.getEndTime());
-		vo.setDiscount(po.getDiscount());
+		vo.setStartTime(((PeriodHotelproPO)po).getStartTime());
+		vo.setEndTime(((PeriodHotelproPO)po).getEndTime());
+		vo.setDiscount(((PeriodHotelproPO)po).getDiscount());
 		return vo;
 		
 	}

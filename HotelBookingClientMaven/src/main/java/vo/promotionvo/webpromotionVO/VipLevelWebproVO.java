@@ -2,6 +2,7 @@ package vo.promotionvo.webpromotionVO;
 
 import java.util.ArrayList;
 
+import po.PromotionPO;
 import po.promotionpo.webpromotionPO.PeriodWebproPO;
 import po.promotionpo.webpromotionPO.VipLevelWebproPO;
 import vo.PromotionVO;
@@ -45,14 +46,14 @@ public class VipLevelWebproVO extends PromotionVO{
 		this.discount = discount;
 	}
 
-	public VipLevelWebproPO toPO(VipLevelWebproVO vo){
+	public PromotionPO toPO(PromotionVO vo){
 		VipLevelWebproPO po=new VipLevelWebproPO();
 		po.setPromotionID(vo.getPromotionID());
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
 		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
-		po.setVipLevel(vo.getVipLevel());
-		po.setDiscount(vo.getDiscount());
+		po.setVipLevel(((VipLevelWebproVO)vo).getVipLevel());
+		po.setDiscount(((VipLevelWebproVO)vo).getDiscount());
 		return po;
 	}
 }

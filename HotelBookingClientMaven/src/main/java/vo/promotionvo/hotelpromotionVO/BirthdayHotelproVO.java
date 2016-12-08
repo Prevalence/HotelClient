@@ -34,13 +34,13 @@ public class BirthdayHotelproVO extends PromotionVO{
 		this.discount = discount;
 	}
 	
-	public BirthdayHotelproPO toPO(BirthdayHotelproVO vo){
+	public PromotionPO toPO(PromotionVO vo){
 		BirthdayHotelproPO po=new BirthdayHotelproPO();
 		po.setPromotionID(vo.getPromotionID());
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
 		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
-		po.setDiscount(vo.getDiscount());
+		po.setDiscount(((BirthdayHotelproVO)vo).getDiscount());
 		return po;
 	}
 

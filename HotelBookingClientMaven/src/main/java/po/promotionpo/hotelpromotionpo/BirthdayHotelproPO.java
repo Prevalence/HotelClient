@@ -1,13 +1,14 @@
 package po.promotionpo.hotelpromotionPO;
 
 import po.PromotionPO;
+import vo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
 /**
  *  @author 武秀峰
  *  酒店促销策略：生日特惠折扣*/
 public class BirthdayHotelproPO extends PromotionPO{
-//	private String promotionType="BirthdayHotelPromtion";
+//	private String promotionType="BirthdayHotelPromotion";
 	private int discount;//如打九五折时，discount=95
 	private static final long serialVersionUID = 1L;
 	
@@ -32,13 +33,13 @@ public class BirthdayHotelproPO extends PromotionPO{
 		this.discount = discount;
 	}
 	
-	public BirthdayHotelproVO toVO(BirthdayHotelproPO po){
+	public PromotionVO toVO(PromotionPO po){
 		BirthdayHotelproVO vo=new BirthdayHotelproVO();
 		vo.setPromotionID(po.getPromotionID());
 		vo.setPromotionName(po.getPromotionName());
 		vo.setPromotionType(po.getPromotionType());
 		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
-		vo.setDiscount(po.getDiscount());
+		vo.setDiscount(((BirthdayHotelproPO)po).getDiscount());
 		return vo;
 	}
 

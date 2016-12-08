@@ -16,6 +16,7 @@ import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
+import vo.promotionvo.hotelpromotionVO.EnterpriseHotelproVO;
 
 public class PromotionControllerTest {
 	ClientRunner cr=new ClientRunner();
@@ -70,16 +71,18 @@ public class PromotionControllerTest {
 		assertEquals("hotelPro1", promotioncontroller.getProm("酒店").get(0).getPromotionName());
 		assertEquals(1, promotioncontroller.getProm("WebPromotion").size());
 		
-		//另外加的
-		ArrayList<String> enterprise=new ArrayList<String>();
-		enterprise.add("南京大学");
-		enterprise.add("企业2");
-		enterprise.add("企业3");
-		/*public EnterpriseHotelproPO(String promotionID, String promotionName, String promotionType,
-			String hotelnameOrWeb, ArrayList<String> enterprise, int discount)*/
-//		Promotio hotelPro1=new EnterpriseHotelproPO("123", "hotelPro1", "EnterpriseHotelPromotion",
+		
+//		//另外加的
+//		ArrayList<String> enterprise=new ArrayList<String>();
+//		enterprise.add("南京大学");
+//		enterprise.add("企业2");
+//		enterprise.add("企业3");
+//		/*public EnterpriseHotelproPO(String promotionID, String promotionName, String promotionType,
+//			String hotelnameOrWeb, ArrayList<String> enterprise, int discount)*/
+//		PromotionVO hotelPro=new EnterpriseHotelproVO("123", "hotelPro1", "EnterpriseHotelPromotion",
 //				"酒店1", enterprise, 80);
-		System.out.println();
+//		PromotionPO t=(hotelPro).toPO(hotelPro);
+//		System.out.println(t.getHotelnameOrWeb());//应为“酒店1”
 	}
 
 	@Test

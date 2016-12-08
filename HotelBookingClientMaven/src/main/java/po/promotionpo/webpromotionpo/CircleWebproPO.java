@@ -3,13 +3,14 @@ package po.promotionpo.webpromotionPO;
 import java.util.ArrayList;
 
 import po.PromotionPO;
+import vo.PromotionVO;
 import vo.promotionvo.webpromotionVO.CircleWebproVO;
 
 /**
  *  @author 武秀峰
  *  网站促销策略：VIP会员特定商圈专属折扣（不不同商同等级圈折扣不一样）*/
 public class CircleWebproPO extends PromotionPO {
-//	private String promotionType="CircleWebPromtion";
+//	private String promotionType="CircleWebPromotion";
 	/*会员等级、商圈、折扣为一组，即vipLevel[i]、circle[i]、discount[i]为对应一组某等级的会员在某商圈的折扣*/
 	private ArrayList<Integer> vipLevel;
 	private ArrayList<String> circle;//商圈
@@ -49,15 +50,15 @@ public class CircleWebproPO extends PromotionPO {
 		this.discount = discount;
 	}
 	
-	public CircleWebproVO toVO(CircleWebproPO po){
+	public PromotionVO toVO(PromotionPO po){
 		CircleWebproVO vo=new CircleWebproVO();
 		vo.setPromotionID(po.getPromotionID());
 		vo.setPromotionName(po.getPromotionName());
 		vo.setPromotionType(po.getPromotionType());
 		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
-		vo.setCircle(po.getCircle());
-		vo.setVipLevel(po.getVipLevel());
-		vo.setDiscount(po.getDiscount());
+		vo.setCircle(((CircleWebproPO)po).getCircle());
+		vo.setVipLevel(((CircleWebproPO)po).getVipLevel());
+		vo.setDiscount(((CircleWebproPO)po).getDiscount());
 		return vo;
 		
 	}

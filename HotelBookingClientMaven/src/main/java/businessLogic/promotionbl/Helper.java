@@ -15,19 +15,21 @@ import businessLogic.promotionbl.promotionType.webpromotionCal.VipLevelWebproCal
  */
 public class Helper {
 	public static CalculatePrice getcalculateinstance(String promotionType){
-		if(promotionType.equals("BirthdayHotelPromtion"))
+		if(promotionType.equals("BirthdayHotelPromotion")){
 			return new BirthdayHotelproCal();
-		if(promotionType.equals("EnterpriseHotelPromtion"))
+		}
+		if(promotionType.equals("EnterpriseHotelPromotion")){
 			return new EnterpriseHotelproCal();
-		if(promotionType.equals("LargeAmountHotelPromtion"))
+		}
+		if(promotionType.equals("LargeAmountHotelPromotion"))
 			return new LargeAmountHotelproCal();
-		if(promotionType.equals("PeriodHotelPromtion"))
+		if(promotionType.equals("PeriodHotelPromotion"))
 			return new PeriodHotelproCal();
-		if(promotionType.equals("CircleWebPromtion"))
+		if(promotionType.equals("CircleWebPromotion"))
 			return new CircleWebproCal();
-		if(promotionType.equals("PeriodWebPromtion"))
+		if(promotionType.equals("PeriodWebPromotion"))
 			return new PeriodWebproCal();
-		if(promotionType.equals("VipLevelWebPromtion"))
+		if(promotionType.equals("VipLevelWebPromotion"))
 			return new VipLevelWebproCal();
 		
 		return null;

@@ -3,13 +3,14 @@ package po.promotionpo.webpromotionPO;
 import java.util.Calendar;
 
 import po.PromotionPO;
+import vo.PromotionVO;
 import vo.promotionvo.webpromotionVO.PeriodWebproVO;
 
 /**
  *  @author 武秀峰
  *  网站促销策略：双11活动折扣（在特定的期间预订有折扣）*/
 public class PeriodWebproPO extends PromotionPO {
-//	private String promotionType="PeriodWebPromtion";
+//	private String promotionType="PeriodWebPromotion";
 	private Calendar startTime;
 	private Calendar endTime;
 	private int discount;//如打九五折时，discount=95
@@ -61,15 +62,15 @@ public class PeriodWebproPO extends PromotionPO {
 		this.discount = discount;
 	}
 	
-	public PeriodWebproVO toVO(PeriodWebproPO po){
+	public PromotionVO toVO(PromotionPO po){
 		PeriodWebproVO vo=new PeriodWebproVO();
 		vo.setPromotionID(po.getPromotionID());
 		vo.setPromotionName(po.getPromotionName());
 		vo.setPromotionType(po.getPromotionType());
 		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
-		vo.setStartTime(po.getStartTime());
-		vo.setEndTime(po.getEndTime());
-		vo.setDiscount(po.getDiscount());
+		vo.setStartTime(((PeriodWebproPO)po).getStartTime());
+		vo.setEndTime(((PeriodWebproPO)po).getEndTime());
+		vo.setDiscount(((PeriodWebproPO)po).getDiscount());
 		return vo;
 	}
 	
