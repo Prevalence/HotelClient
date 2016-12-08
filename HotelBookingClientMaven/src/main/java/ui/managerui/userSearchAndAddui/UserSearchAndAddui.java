@@ -1,9 +1,10 @@
 package ui.managerui.userSearchAndAddui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class UserSearchAndAddui {
+public class UserSearchAndAddui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.orderViewui.OrderViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.hotelInfoui.HotelInfouiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -30,7 +30,7 @@
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
-      <Button layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="hotelOrderButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelOrder" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -42,7 +42,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+      <Button fx:id="hotelInfoButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewHotelInfo" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -54,7 +54,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="promotionButton" layoutY="148.0" mnemonicParsing="false" onAction="#viewPromotion" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -66,7 +66,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="roomInfoButton" layoutX="1.0" layoutY="265.0" mnemonicParsing="false" onAction="#viewRoomInfo" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -78,7 +78,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="538.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
@@ -109,18 +109,18 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="259.0" layoutY="147.0" />
-      <TextField layoutX="647.0" layoutY="147.0" />
-      <TextField layoutX="259.0" layoutY="208.0" />
-      <TextField layoutX="646.0" layoutY="208.0" />
-      <TextField layoutX="259.0" layoutY="265.0" />
-      <TextField layoutX="260.0" layoutY="91.0" />
+      <TextField fx:id="areaField" layoutX="259.0" layoutY="147.0" />
+      <TextField fx:id="facilityField" layoutX="647.0" layoutY="147.0" />
+      <TextField fx:id="featureField" layoutX="259.0" layoutY="208.0" />
+      <TextField fx:id="connectionField" layoutX="646.0" layoutY="208.0" />
+      <TextField fx:id="locationField" layoutX="259.0" layoutY="265.0" />
+      <TextField fx:id="hotelNameField" layoutX="260.0" layoutY="91.0" />
       <Label layoutX="164.0" layoutY="93.0" text="酒店名：">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="647.0" layoutY="91.0" />
+      <TextField fx:id="starField" layoutX="647.0" layoutY="91.0" />
       <Label layoutX="572.0" layoutY="96.0" text="星级：">
          <font>
             <Font size="20.0" />
