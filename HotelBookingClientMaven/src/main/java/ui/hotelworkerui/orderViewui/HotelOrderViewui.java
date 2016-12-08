@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class OrderViewui extends Pane{
+public class HotelOrderViewui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
@@ -16,7 +16,7 @@ public class OrderViewui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public OrderViewui(Stage primaryStage, String personname) {
+		public HotelOrderViewui(Stage primaryStage, String personname) {
 			this.primaryStage = primaryStage;
 			this.personname = personname;
 			initOrderViewui();
@@ -38,7 +38,7 @@ public class OrderViewui extends Pane{
 		// primaryStage.setScene(scene);
 		orderViewuiController = loader.getController();
 		orderViewuiController.launchStage(primaryStage);
-		orderViewuiController.setPersonname(personname);
+		orderViewuiController.setHotelName(personname);
 		orderViewuiController.modifyStageSize();
 	}
 }

@@ -1,9 +1,10 @@
 package ui.managerui.userInfoui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class UserInfoui {
+public class UserInfoui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
