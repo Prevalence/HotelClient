@@ -1,5 +1,6 @@
 package businessLogicService.userblService;
 
+import java.rmi.RemoteException;
 import java.text.ParseException;
 
 import po.HotelWorkerPO;
@@ -25,8 +26,9 @@ public interface UserblService {
 	 * 已知更改客户信息,更新用户信息并返回保存结果
 	 * @param user_info
 	 * @return boolean
+	 * @throws RemoteException 
 	 */
-	public boolean marketSave(MarketVO marketinfo);
+	public boolean marketSave(MarketVO marketinfo) throws RemoteException;
 	
 	/**
 	 * 已知更改网站营销人员信息,更新用户信息并返回保存结果

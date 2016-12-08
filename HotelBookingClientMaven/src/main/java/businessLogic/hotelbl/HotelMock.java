@@ -25,7 +25,7 @@ public class HotelMock extends Hotel{
 		commentvoList.add(commentvo);
 //		public HotelVO(String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
 //				String circle, double score, RoomPO room, CommentPO comment, String hotelworker)
-		HotelVO hotelvo=new HotelVO("南京大酒店", 5, "高级酒店", null, "仙林168号", 
+		HotelVO hotelvo=new HotelVO(11111,"南京大酒店", 5, "高级酒店", null, "仙林168号", 
 				"仙林大学城",4.7, roomvoList, commentvoList, "小李");
 		
 		return hotelvo;
@@ -76,9 +76,9 @@ public class HotelMock extends Hotel{
 		ArrayList<CommentVO> commentvoList=new ArrayList<CommentVO>();
 		commentvoList.add(commentvo);
 		
-		HotelVO hotelvo1=new HotelVO("南京大酒店1", 5, "高级酒店", null, "仙林168号", "商圈1",4.7,roomvoList, commentvoList, "小李");
-		HotelVO hotelvo2=new HotelVO("南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", 4.5,roomvoList, commentvoList, "小李");
-		HotelVO hotelvo3=new HotelVO("南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2",4.9, roomvoList, commentvoList, "小李");
+		HotelVO hotelvo1=new HotelVO(11111,"南京大酒店1", 5, "高级酒店", null, "仙林168号", "商圈1",4.7,roomvoList, commentvoList, "小李");
+		HotelVO hotelvo2=new HotelVO(22222,"南京大酒店2", 5, "高级酒店", null, "仙林168号", "商圈2", 4.5,roomvoList, commentvoList, "小李");
+		HotelVO hotelvo3=new HotelVO(33333,"南京大酒店3", 5, "高级酒店", null, "仙林168号", "商圈2",4.9, roomvoList, commentvoList, "小李");
 		ArrayList<HotelVO> hotels=new ArrayList<HotelVO>();
 		if(p.getCircle().equals(hotelvo1.getCircle()))
 			hotels.add(hotelvo1);

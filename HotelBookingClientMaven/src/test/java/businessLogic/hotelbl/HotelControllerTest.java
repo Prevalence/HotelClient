@@ -2,13 +2,18 @@ package businessLogic.hotelbl;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import businessLogic.hotelbl.HotelController;
 import rmi.ClientRunner;
+import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 
 public class HotelControllerTest {
 	ClientRunner cr=new ClientRunner();
@@ -35,13 +40,26 @@ public class HotelControllerTest {
 
 	@Test
 	public void testAddComment() {
-		assertEquals(true, hotel.addComment("很好", "小李", "饭店"));
+		/*public CommentVO(String hotelname, String personname, 
+		 * Calendar time, int score, String content)*/
+		CommentVO comment=new CommentVO("南京大酒店","xiamutian", null, 5, "很好");
+		assertEquals(true, hotel.addComment(comment));
 	}
 
 	@Test
 	public void testRoomModify() {
-		assertEquals(false, hotel.roomModify(null,7));
-		assertEquals(false, hotel.roomModify("单人房", 0));
+		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
+		RoomVO room1=new RoomVO();
+		room1.setRoomnum("111");
+		room1.setRoomPrice(200);
+		room1.setRoomType("单人间");
+		RoomVO room2=new RoomVO();
+		room2.setRoomnum("222");
+		room2.setRoomPrice(300);
+		room2.setRoomType("双人间");
+		roomList.add(room1);
+		roomList.add(room2);
+		assertEquals(true, hotel.roomModify("南京大酒店", roomList));
 	}
 
 	@Test

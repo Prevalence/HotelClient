@@ -16,21 +16,22 @@ public class PromotionController implements PromotionblService{
 	 * @param orderVO
 	 * @return
 	 */
-	public double priceCut(HotelVO hotelPO,OrderVO orderVO){
+	public double priceCut(HotelVO hotelVO,OrderVO orderVO){
 		PriceCalc pricecalc=new PriceCalc();
-		double result=pricecalc.priceCut(hotelPO, orderVO);
+		double result=pricecalc.priceCut(hotelVO, orderVO);
 		return result;
 	}
 	
 	
 	/**
-	 * 
-	 * @param hotelname
+	 * 返回酒店促销策略或者网站促销策略，当hotelNameOrWeb为"WebPromotion"时，返网站促销策略；
+	 * 否则为酒店名称，返回对应酒店促销策略
+	 * @param hotelnameOrWeb
 	 * @return
 	 */
-	public ArrayList<PromotionVO>getProm(String hotelname){
+	public ArrayList<PromotionVO>getProm(String hotelnameOrWeb){
 		Promotion pro=new Promotion();
-		return pro.getProm(hotelname);
+		return pro.getProm(hotelnameOrWeb);
 	}
 	/**
 	 * 
