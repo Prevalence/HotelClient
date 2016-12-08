@@ -14,11 +14,17 @@ public class OrderInfoViewuiController {
 
 		private UserblService userbl;
 
-		// 酒店详情查看界面
-		private Pane hotelInfoViewPane;
+		// 酒店订单浏览界面
+		private Pane hotelOrderPane;
 
-		// 个人信息界面
-		private Pane personInfoViewPane;
+		// 促销策略界面
+		private Pane promotionPane;
+
+		// 酒店信息界面
+		private Pane hotelInfoPane;
+
+		// 房间信息界面
+		private Pane roomInfoPane;
 
 		private Stage primaryStage;
 

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.orderViewui.OrderViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.marketui.creditPayui.CreditPayuiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,8 +35,8 @@
             <Image url="@../酒店详情界面/Rectangle%208.png" />
          </image>
       </ImageView>
-      <TextField layoutX="472.0" layoutY="111.0" />
-      <Button layoutX="717.0" layoutY="106.0" mnemonicParsing="false" style="-fx-background-color: transprent;">
+      <TextField fx:id="personNumberField" layoutX="472.0" layoutY="111.0" />
+      <Button fx:id="searchButton" layoutX="717.0" layoutY="106.0" mnemonicParsing="false" onAction="#searchWithPersonNumber" style="-fx-background-color: transprent;">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -50,7 +50,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="marketOrderrButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewMarketOrder" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -62,7 +62,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+      <Button fx:id="creditRechargeButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" onAction="#rechargeCredit" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -74,7 +74,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="promotionButton" layoutY="148.0" mnemonicParsing="false" onAction="#viewPromotion" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -133,6 +133,11 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <TextField fx:id="personNameField" layoutX="104.0" layoutY="57.0" prefHeight="34.0" prefWidth="187.0" style="-fx-background-color: transparent;" />
+            <TextField fx:id="creditField" layoutX="388.0" layoutY="59.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: transparent;" />
+            <TextField fx:id="VIPTypeField" layoutX="116.0" layoutY="210.0" prefHeight="30.0" prefWidth="159.0" style="-fx-background-color: transparent;" />
+            <TextField fx:id="VIPLevelField" layoutX="388.0" layoutY="210.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: transparent;" />
+            <TextField fx:id="connectionField" layoutX="123.0" layoutY="289.0" prefHeight="30.0" prefWidth="357.0" style="-fx-background-color: transparent;" />
          </children>
       </Pane>
       <Label layoutX="330.0" layoutY="616.0" text="需要增加的信用值：" textFill="#5db9c2">
@@ -140,7 +145,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="647.0" layoutY="611.0" mnemonicParsing="false" style="-fx-background-color: transprent;">
+      <Button fx:id="addButton" layoutX="647.0" layoutY="611.0" mnemonicParsing="false" onAction="#addCredit" style="-fx-background-color: transprent;">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -149,6 +154,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField layoutX="528.0" layoutY="615.0" prefHeight="30.0" prefWidth="110.0" />
+      <TextField fx:id="creditAddedField" layoutX="528.0" layoutY="615.0" prefHeight="30.0" prefWidth="110.0" />
    </children>
 </fx:root>

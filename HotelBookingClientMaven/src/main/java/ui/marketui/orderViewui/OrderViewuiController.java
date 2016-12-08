@@ -3,26 +3,39 @@ package ui.marketui.orderViewui;
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.marketui.creditPayui.CreditPayui;
+import ui.marketui.promotionui.Promotionui;
 
 public class OrderViewuiController {
-	//TODO
 	
+	@FXML
+	private Button marketOrderButton;
+	@FXML
+	private Button promotionButton;
+	@FXML
+	private Button creditRechargeButton;
+	@FXML
+	private Button searchButton;
 	@FXML
 	private Pane mainPane;
 
 	private UserblService userbl;
 
-	// 酒店详情查看界面
-	private Pane hotelInfoViewPane;
+	// 网站订单浏览界面
+	private Pane marketOrderPane;
 
-	// 个人信息界面
-	private Pane personInfoViewPane;
+	// 促销策略界面
+	private Pane promotionPane;
+
+	// 信用充值界面
+	private Pane creditPayPane;
 
 	private Stage primaryStage;
 
-	private String personname;
+	private String marketName;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -32,9 +45,44 @@ public class OrderViewuiController {
 		userbl = new UserController();
 	}
 
+	/**
+	 * 跳转到网站订单浏览界面
+	 */
+	@FXML
+	private void viewMarketOrder() {
+		marketOrderPane = new MarketOrderViewui(primaryStage, marketName);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(marketOrderPane);
+	}
+
+	/**
+	 * 跳转到促销策略界面
+	 */
+	@FXML
+	private void viewPromotion() {
+		promotionPane = new Promotionui(primaryStage, marketName);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(promotionPane);
+	}
+
+	/**
+	 * 跳转到信用充值界面
+	 */
+	@FXML
+	private void rechargeCredit() {
+		// hotelInfo = hotelbl.showHotelInfo(marketName);
+		creditPayPane = new CreditPayui(primaryStage, marketName);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(creditPayPane);
+	}
 	
-	
-	
+	/**
+	 * 根据订单号查看订单详情
+	 */
+	@FXML
+	private void searchWithOrderNumber() {
+		
+	}
 
 	/**
 	 * 传递Main的primaryStage
@@ -48,10 +96,10 @@ public class OrderViewuiController {
 	/**
 	 * 传递用户名
 	 * 
-	 * @param personname
+	 * @param marketName
 	 */
-	public void setPersonname(String personname) {
-		this.personname = personname;
+	public void setMarketName(String marketName) {
+		this.marketName = marketName;
 	}
 	
 	/**

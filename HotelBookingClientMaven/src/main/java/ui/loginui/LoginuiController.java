@@ -12,7 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ui.hotelworkerui.orderViewui.OrderViewui;
+import ui.hotelworkerui.orderViewui.HotelOrderViewui;
+import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
+import ui.marketui.orderViewui.MarketOrderViewui;
 import ui.personui.hotelSearchui.HotelSearchui;
 
 public class LoginuiController {
@@ -41,7 +43,7 @@ public class LoginuiController {
 
 	// 与选择框对应的身份字符串数组
 	private String type[] = { "酒店工作人员", "网站营销人员", "网站管理人员", "还原" };
-	
+
 	private UserblService userbl;
 
 	// 客户的第一个界面：酒店搜索界面
@@ -78,16 +80,24 @@ public class LoginuiController {
 		String username = userNameField.getText();
 		String password = passwordField.getText();
 		// if (userbl.userLogin(username, password, usertype)) {
-		if(usertype.equals("酒店工作人员")){
+		if (usertype.equals("酒店工作人员")) {
 			System.out.println("yes!");
-			 hotelWorkerOrderInfouiPane=new OrderViewui(primaryStage,username);
-			 mainPane.getChildren().remove(0);
-			 mainPane.getChildren().add(hotelWorkerOrderInfouiPane);
+			hotelWorkerOrderInfouiPane = new HotelOrderViewui(primaryStage, username);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(hotelWorkerOrderInfouiPane);
+		} else if (usertype.equals("客户")) {
+			hotelSearchPane = new HotelSearchui(primaryStage, username);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(hotelSearchPane);
+		} else if (usertype.equals("网站营销人员")) {
+			marketOrderInfouiPane = new MarketOrderViewui(primaryStage, username);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(marketOrderInfouiPane);
 		}
-		else if(usertype.equals("客户")){
-		 hotelSearchPane = new HotelSearchui(primaryStage,username);
-		 mainPane.getChildren().remove(0);
-		 mainPane.getChildren().add(hotelSearchPane);
+		else if (usertype.equals("网站管理人员")) {
+			managerSearchAndAdduiPane = new UserSearchAndAddui(primaryStage, username);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(managerSearchAndAdduiPane);
 		}
 		// } else {
 		// feedBackField.setText("用户名或密码不正确！");

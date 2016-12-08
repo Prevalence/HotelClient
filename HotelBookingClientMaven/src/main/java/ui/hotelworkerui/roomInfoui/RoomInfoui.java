@@ -1,12 +1,13 @@
 package ui.hotelworkerui.roomInfoui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class RoomInfoui {
+public class RoomInfoui extends Pane{
 	private Stage primaryStage;
 
-	private String personname;
+	private String hotelName;
 
 	private RoomInfouiController roomInfoViewuiController;
 
@@ -15,9 +16,9 @@ public class RoomInfoui {
 		 * 
 		 * @param primaryStage
 		 */
-		public RoomInfoui(Stage primaryStage, String personname) {
+		public RoomInfoui(Stage primaryStage, String hotelName) {
 			this.primaryStage = primaryStage;
-			this.personname = personname;
+			this.hotelName = hotelName;
 			initRoomInfoViewui();
 		};
 
@@ -26,7 +27,7 @@ public class RoomInfoui {
 	 */
 	public void initRoomInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RoomInfoui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店客房信息修改界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -37,6 +38,6 @@ public class RoomInfoui {
 		// primaryStage.setScene(scene);
 		roomInfoViewuiController = loader.getController();
 		roomInfoViewuiController.launchStage(primaryStage);
-		roomInfoViewuiController.setPersonname(personname);
+		roomInfoViewuiController.setHotelName(hotelName);
 	}
 }
