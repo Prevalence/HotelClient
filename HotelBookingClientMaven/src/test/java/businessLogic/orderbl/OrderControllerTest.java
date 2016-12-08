@@ -2,18 +2,16 @@ package businessLogic.orderbl;
 
 import static org.junit.Assert.*;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import javax.swing.plaf.metal.OceanTheme;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import po.OrderPO;
 import rmi.ClientRunner;
 import vo.OrderVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 
 public class OrderControllerTest {
 	ClientRunner cr=new ClientRunner();
@@ -26,45 +24,77 @@ public class OrderControllerTest {
 
 	@Test
 	public void testHandleAbnormalOrder() {
+//		public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
+//				String personname, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
+//				Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime)
 
-//		OrderVO order1=new OrderVO(null, 300, null, null, "南京大酒店",
-//				null, null, null, "xiamutian",
-//				null, 1, 0, null, null,
-//				null, null, null, null);
-//		assertEquals(true,oc.handleAbnormalOrder(order1, 1));
-//		
-//		OrderVO order2=new OrderVO(null, 300, null, null, "酒店1",
-//				null, null, null, "wuxiufeng",
-//				null, 1, 0, null, null,
-//				null, null, null, null);
-//		assertEquals(true,oc.handleAbnormalOrder(order2, 2));
+//		public RoomVO(String roomType, String roomnum, int roomPrice, ArrayList<Calendar> checkInTime,
+//				ArrayList<Calendar> checkOutTime) 
+		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
+		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
+		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
+		roomList.add(room1);
+		roomList.add(room2);
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				"xiamutian","xiamutian", 3, 0, null, null,
+				null, null, null, null);
+		assertEquals(true,oc.handleAbnormalOrder(order, 2));
 	}
 
 	@Test
 	public void testReverseOrder() {
 		Calendar latestExecutetime=Calendar.getInstance();
 		latestExecutetime.set(2016, 11, 29);
+		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
+		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
+		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
+		roomList.add(room1);
+		roomList.add(room2);
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				"xiamutian","xiamutian", 3, 0, null, null,
+				null, latestExecutetime, null, null);
 		
-//		OrderVO order=new OrderVO(null, 300, null, "nonExecute", "酒店1",
-//				null, null, null, "xiamutian",
-//				null, 1, 0, null, null,
-//				null, latestExecutetime, null, null);
-//		assertEquals(true,oc.reverseOrder(order));
+		assertEquals(true,oc.reverseOrder(order));
 	}
 
-//	@Test
-//	public void testFinishOrder() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testFinishOrder() {
+		Calendar latestExecutetime=Calendar.getInstance();
+		latestExecutetime.set(2016, 11, 29);
+		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
+		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
+		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
+		roomList.add(room1);
+		roomList.add(room2);
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				"xiamutian","xiamutian", 3, 0, null, null,
+				null, latestExecutetime, null, null);
+		
+		assertEquals(true,oc.finishOrder(order));
+	}
 
-//	@Test
-//	public void testCreateOrder() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testCreateOrder() {
+		Calendar latestExecutetime=Calendar.getInstance();
+		latestExecutetime.set(2016, 11, 29);
+		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
+		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
+		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
+		roomList.add(room1);
+		roomList.add(room2);
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				"xiamutian","xiamutian", 3, 0, null, null,
+				null, latestExecutetime, null, null);
+		
+		assertEquals(true,oc.createOrder(order));
+	}
 
 	@Test
 	public void testPersonOrders() {
 		assertEquals("南京大酒店",oc.personOrders("小夏").get(0).getHotelname());
+		assertEquals("nonExecute",oc.personOrders("小夏").get(0).getOrderstate());
+		assertEquals("nonExecute",oc.personOrders("小夏").get(1).getOrderstate());
+		
 	}
 
 	@Test
@@ -74,220 +104,27 @@ public class OrderControllerTest {
 
 	@Test
 	public void testNetOrders() {
-		assertEquals(null,oc.netOrders().get(0).getPersonname());
-		assertEquals(null,oc.netOrders().get(1).getPersonname());
+		assertEquals("未执行",oc.netOrders().get(0).getOrderstate());
+		assertEquals(3,oc.netOrders().size());
 	}
 
 	@Test
 	public void testPersonStateOrders() {
 		assertEquals("南京大酒店",oc.personStateOrders("小夏", "nonExecute").get(0).getHotelname());
+		assertEquals(2,oc.personStateOrders("小夏", "nonExecute").size());
+	}
+	
+	@Test
+	public void testHotelStateOrders() {
+		assertEquals(0,oc.hotelStateOrders("nju", "nonExecute").size());
+	}
+
+	@Test
+	public void testNetNumOrders() {
+		Calendar calendar=Calendar.getInstance();
+		assertEquals(3,oc.netNumOrders(calendar).size());
 	}
 	
 }
 
 
-
-
-
-//package businessLogic.orderbl;
-//
-//import static org.junit.Assert.*;
-//
-//import java.rmi.RemoteException;
-//import java.util.ArrayList;
-//import java.util.Calendar;
-//
-//import javax.swing.plaf.metal.OceanTheme;
-//
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import po.OrderPO;
-//import rmi.ClientRunner;
-//import vo.OrderVO;
-//
-//public class OrderControllerTest {
-//	ClientRunner cr=new ClientRunner();
-//
-//	OrderController oc=new OrderController();
-//
-//	@Before
-//	public void setUp() throws Exception {
-//	}
-//
-//	@Test
-//	public void testHandleAbnormalOrder() {
-////		OrderVO order=new OrderVO(String orderID, int orderprice, String ordernum, String orderstate, String hotelname,
-////				ArrayList<String> roomtype, ArrayList<Integer> roomnum, ArrayList<String> theNumOfRoom, String personname,
-////				String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
-////				Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime);
-//		OrderVO order1=new OrderVO(null, 300, null, null, "南京大酒店",
-//				null, null, null, "xiamutian",
-//				null, 1, 0, null, null,
-//				null, null, null, null);
-//		assertEquals(true,oc.handleAbnormalOrder(order1, 1));
-//		
-//		OrderVO order2=new OrderVO(null, 300, null, null, "酒店1",
-//				null, null, null, "wuxiufeng",
-//				null, 1, 0, null, null,
-//				null, null, null, null);
-//		assertEquals(true,oc.handleAbnormalOrder(order2, 2));
-//	}
-//
-//	@Test
-//	public void testReverseOrder() {
-////		OrderVO order=new OrderVO(String orderID, int orderprice, String ordernum, String orderstate, String hotelname,
-////		ArrayList<String> roomtype, ArrayList<Integer> roomnum, ArrayList<String> theNumOfRoom, String personname,
-////		String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
-////		Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime);
-//		Calendar latestExecutetime=Calendar.getInstance();
-//		latestExecutetime.set(2016, 11, 29);
-//		
-//		OrderVO order=new OrderVO(null, 300, null, "nonExecute", "酒店1",
-//				null, null, null, "xiamutian",
-//				null, 1, 0, null, null,
-//				null, latestExecutetime, null, null);
-//		assertEquals(true,oc.reverseOrder(order));
-//	}
-//
-////	@Test
-////	public void testFinishOrder() {
-////		fail("Not yet implemented");
-////	}
-//
-////	@Test
-////	public void testCreateOrder() {
-////		fail("Not yet implemented");
-////	}
-//
-//	@Test
-//	public void testPersonOrders() {
-//		assertEquals("南京大酒店",oc.personOrders("小夏").get(0).getHotelname());
-//	}
-//
-//	@Test
-//	public void testHotelOrders() {
-//		assertEquals(1,oc.hotelOrders("nju").size());
-//	}
-//
-//	@Test
-//	public void testNetOrders() {
-//		assertEquals(null,oc.netOrders().get(0).getPersonname());
-//		assertEquals(null,oc.netOrders().get(1).getPersonname());
-//	}
-//
-//	@Test
-//	public void testPersonStateOrders() {
-//		assertEquals("南京大酒店",oc.personStateOrders("小夏", "nonExecute").get(0).getHotelname());
-//	}
-//
-////	@Test
-////	public void testHotelTimeOrders() {
-////		fail("Not yet implemented");
-////	}
-////
-////	@Test
-////	public void testNetNumOrders() {
-////		fail("Not yet implemented");
-////	}
-//	
-//}
-//
-//
-//
-////package businessLogic.orderbl;
-////
-////import static org.junit.Assert.*;
-////
-////import java.rmi.RemoteException;
-////import java.util.ArrayList;
-////import java.util.Calendar;
-////
-////import javax.swing.plaf.metal.OceanTheme;
-////
-////import org.junit.Before;
-////import org.junit.Test;
-////
-////import po.OrderPO;
-////import rmi.ClientRunner;
-////import vo.OrderVO;
-////
-////public class OrderControllerTest {
-////	ClientRunner cr=new ClientRunner();
-////
-////	OrderController oc=new OrderController();
-////
-////	@Before
-////	public void setUp() throws Exception {
-////	}
-////
-////	@Test
-////	public void testHandleAbnormalOrder() {
-//////		OrderVO order=new OrderVO(String orderID, int orderprice, String ordernum, String orderstate, String hotelname,
-//////				ArrayList<String> roomtype, ArrayList<Integer> roomnum, ArrayList<String> theNumOfRoom, String personname,
-//////				String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
-//////				Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime);
-////		OrderVO order1=new OrderVO(null, 300, null, null, "南京大酒店",
-////				null, null, null, "xiamutian",
-////				null, 1, 0, null, null,
-////				null, null, null, null);
-////		assertEquals(true,oc.handleAbnormalOrder(order1, 1));
-////		
-////		OrderVO order2=new OrderVO(null, 300, null, null, "酒店1",
-////				null, null, null, "wuxiufeng",
-////				null, 1, 0, null, null,
-////				null, null, null, null);
-////		assertEquals(false,oc.handleAbnormalOrder(order2, 2));
-////	}
-////
-////	@Test
-////	public void testReverseOrder() {
-////		OrderVO order=new OrderVO(null, 300, null, "nonExecute", "酒店1",
-////				null, null, null, "wuxiufeng",
-////				null, 1, 0, null, null,
-////				null, null, null, null);
-////		assertEquals(true,oc.reverseOrder(order));
-////	}
-////
-//////	@Test
-//////	public void testFinishOrder() {
-//////		fail("Not yet implemented");
-//////	}
-////
-//////	@Test
-//////	public void testCreateOrder() {
-//////		fail("Not yet implemented");
-//////	}
-////
-////	@Test
-////	public void testPersonOrders() {
-////		assertEquals("南京大酒店",oc.personOrders("小夏").get(0).getHotelname());
-////	}
-////
-////	@Test
-////	public void testHotelOrders() {
-////		assertEquals(2,oc.hotelOrders("nju").size());
-////	}
-////
-////	@Test
-////	public void testNetOrders() {
-////		assertEquals(null,oc.netOrders().get(0).getPersonname());
-////		assertEquals(null,oc.netOrders().get(1).getPersonname());
-////	}
-////
-////	@Test
-////	public void testPersonStateOrders() {
-////		assertEquals(null,oc.personStateOrders("nonExecute"));
-////	}
-////
-//////	@Test
-//////	public void testHotelTimeOrders() {
-//////		fail("Not yet implemented");
-//////	}
-//////
-//////	@Test
-//////	public void testNetNumOrders() {
-//////		fail("Not yet implemented");
-//////	}
-////	
-////}

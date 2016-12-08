@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import dataService.hotelDataService.HotelDataService;
+import dataService.userDataService.UserDataService;
 import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 import vo.personVO.PersonVO;
@@ -46,7 +47,9 @@ public class ClientRunner {
 //		System.out.println(remoteHelper.getPromotionDataService().find("南京大酒店").get(1).getPromotionType());
 //		System.out.println(remoteHelper.getSearchDataService().showSearchHistory("小夏"));
 //		System.out.println(remoteHelper.getUserDataService().findHotelWorker("小夏"));
-		System.out.println("in line 49: "+remoteHelper.getUserDataService().addPerson(personvo1));
+		UserDataService e=remoteHelper.getUserDataService();
+		boolean r=e.addPerson(personvo1);
+		System.out.println(r);
 	}
 	
 	public static void main(String[] args) throws RemoteException{//������

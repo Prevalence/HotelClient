@@ -20,6 +20,7 @@ public class TestSearchController {
 	ClientRunner cr=new ClientRunner();
 	SearchController sc=new SearchController();
 	
+	//因为我电脑不能运行服务器的hotel模块，而此方法需要hotel模块，所以不能写测试用例
 //	@Test
 //	public void testFindHotel() {
 //		HotelVO hotelReq=new HotelVO(null, -1, null, null, null, "商圈2", 0, null, null, null, null, null);
@@ -36,15 +37,6 @@ public class TestSearchController {
 	public void TestSearchPersonInfo(){
 		assertEquals(5000,sc.searchPersonInfo("xiamutian").getCredit());
 		assertEquals("南京大学",sc.searchPersonInfo("xiamutian").getEnterpriseName());
-//		PersonPO pp1=new PersonPO();
-//		PersonPO pp2=new PersonPO();
-//		pp1.setUsername("xiamutian");
-//		pp2.setUsername("xiekailian");
-//		pp1.setCredit(1000);
-//		pp2.setCredit(900);
-//		assertEquals(null,sc.searchPersonInfo("wuxiufeng"));
-//		assertEquals(pp1.getCredit(),sc.searchPersonInfo("xiamutian").getCredit());
-//		assertEquals(pp2.getCredit(),sc.searchPersonInfo("xiekailian").getCredit());
 	}
 	
 	@Test

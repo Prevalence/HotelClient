@@ -7,6 +7,7 @@ import po.hotelPO.HotelPO;
 import po.hotelPO.RoomPO;
 
 public class HotelVO {
+	private int hotelID;//酒店唯一标识
 	private String hotelname;
 	private int star;//酒店星级
 	private String feature;//酒店简介
@@ -22,10 +23,10 @@ public class HotelVO {
 		super();
 	}
 
-
-	public HotelVO(String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
+	public HotelVO(int hotelID, String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
 			String circle, double score, ArrayList<RoomVO> room, ArrayList<CommentVO> comment, String hotelworker) {
 		super();
+		this.setHotelID(hotelID);
 		this.hotelname = hotelname;
 		this.star = star;
 		this.feature = feature;
@@ -38,9 +39,8 @@ public class HotelVO {
 		this.hotelworker = hotelworker;
 	}
 
-
-
 	public HotelVO(HotelPO po){
+		this.hotelID=po.getHotelID();
 		this.hotelname = po.getHotelname();
 		this.star = po.getStar();
 		this.feature = po.getFeature();
@@ -145,5 +145,13 @@ public class HotelVO {
 
 	public void setHotelworker(String hotelworker) {
 		this.hotelworker = hotelworker;
+	}
+
+	public int getHotelID() {
+		return hotelID;
+	}
+
+	public void setHotelID(int hotelID) {
+		this.hotelID = hotelID;
 	}
 }

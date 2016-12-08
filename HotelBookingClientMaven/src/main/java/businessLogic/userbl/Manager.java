@@ -32,8 +32,9 @@ public class Manager {
 	/**
 	 * 保存网站营销人员信息
 	 *@param marketInfo
+	 * @throws RemoteException 
 	 */
-	public boolean marketSave(MarketVO marketInfo){
+	public boolean marketSave(MarketVO marketInfo) throws RemoteException{
 		MarketPO marketPO=new MarketPO(marketInfo);
 		return userDataService.modifyMarket(marketPO);
 		

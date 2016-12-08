@@ -4,7 +4,9 @@ import java.rmi.RemoteException;
 import java.util.*;
 
 import po.*;
+import po.hotelPO.CommentPO;
 import po.hotelPO.HotelPO;
+import po.hotelPO.RoomPO;
 
 public interface HotelDataService extends Remote{
 	/**
@@ -26,7 +28,7 @@ public interface HotelDataService extends Remote{
 	 * @param hotelname 酒店名
 	 * @return
 	 */
-	public boolean addComment (String comment,String username,String hotelname)throws RemoteException;
+	public boolean addComment (CommentPO comment)throws RemoteException;
 	/**
 	 * 依据筛选条件返回满足条件的酒店列表
 	 * @param condition 筛选条件
@@ -39,5 +41,10 @@ public interface HotelDataService extends Remote{
 	 * @param number 修改数量
 	 * @return
 	 */
-	public boolean roomModify(String roomtype, int number)throws RemoteException;
+	public boolean roomModify(String hotelname, ArrayList<RoomPO> rooms)throws RemoteException;
+	/**
+	 * 增加酒店
+	 * @return
+	 */
+	public boolean addHotel(HotelPO hotel) throws RemoteException ;
 }

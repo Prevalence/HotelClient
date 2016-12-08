@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businessLogicService.hotelblService.HotelblService;
+import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 
 /**
@@ -56,10 +58,10 @@ public class HotelController implements HotelblService{
 	 * @param hotelname 酒店名
 	 * @return 是否增加评论成功
 	 */
-	public boolean addComment(String comment,String username,String hotelname){
+	public boolean addComment(CommentVO commentvo){
 		boolean result = false;
 		try {
-			result = hotel.addComment(comment, username, hotelname);
+			result = hotel.addComment(commentvo);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,10 +74,10 @@ public class HotelController implements HotelblService{
 	 * @param number 修改数量（包括正数和负数）
 	 * @return 是否修改房间数量成功
 	 */
-	public boolean roomModify(String roomtype,int number){
+	public boolean roomModify(String hotelname, ArrayList<RoomVO> roomvoList){
 		boolean result = false;
 		try {
-			result = hotel.roomModify(roomtype, number);
+			result = hotel.roomModify(hotelname, roomvoList);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -93,5 +95,13 @@ public class HotelController implements HotelblService{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	/**
+	 * 增加酒店
+	 */
+	@Override
+	public boolean addHotel(HotelVO hotelvo) {
+		// TODO Auto-generated method stub
+		return hotel.addHotel(hotelvo);
 	}
 }
