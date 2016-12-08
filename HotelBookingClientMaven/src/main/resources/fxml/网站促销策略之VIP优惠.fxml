@@ -82,20 +82,20 @@
       </Button>
       <Pane layoutX="290.0" layoutY="178.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="262.0" layoutY="102.0" prefHeight="45.0" prefWidth="58.0" text="VIP1:" textFill="#74d5df">
+            <Label layoutX="149.0" layoutY="150.0" prefHeight="45.0" prefWidth="58.0" text="VIP1:" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="340.0" layoutY="110.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="460.0" layoutY="110.0" text="\%" textFill="#76d4de">
+            <TextField layoutX="227.0" layoutY="158.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="347.0" layoutY="158.0" text="\%" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
             <ImageView fitHeight="94.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../VIP特定商圈优惠策略/VIP特定商圈优惠策略.png" />
+                  <Image url="@../网站促销策略之VIP优惠/VIP优惠.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="41.0" fitWidth="93.0" layoutX="412.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
@@ -103,52 +103,52 @@
                   <Image url="@../酒店评价界面/确定.png" />
                </image>
             </ImageView>
-            <Label layoutX="14.0" layoutY="212.0" prefHeight="27.0" prefWidth="68.0" text="商圈：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField layoutX="92.0" layoutY="210.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="460.0" layoutY="155.0" text="\%" textFill="#76d4de">
+            <Label layoutX="347.0" layoutY="203.0" text="\%" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <TextField layoutX="340.0" layoutY="155.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="262.0" layoutY="147.0" prefHeight="45.0" prefWidth="58.0" text="VIP2:" textFill="#74d5df">
+            <TextField layoutX="227.0" layoutY="203.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="149.0" layoutY="195.0" prefHeight="45.0" prefWidth="58.0" text="VIP2:" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="460.0" layoutY="210.0" text="\%" textFill="#76d4de">
+            <Label layoutX="347.0" layoutY="258.0" text="\%" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <TextField layoutX="340.0" layoutY="210.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="262.0" layoutY="202.0" prefHeight="45.0" prefWidth="58.0" text="VIP3:" textFill="#74d5df">
+            <TextField layoutX="227.0" layoutY="258.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="149.0" layoutY="250.0" prefHeight="45.0" prefWidth="58.0" text="VIP3:" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="460.0" layoutY="265.0" text="\%" textFill="#76d4de">
+            <Label layoutX="347.0" layoutY="313.0" text="\%" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <TextField layoutX="340.0" layoutY="265.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="262.0" layoutY="257.0" prefHeight="45.0" prefWidth="58.0" text="VIP4:" textFill="#74d5df">
+            <TextField layoutX="227.0" layoutY="313.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="149.0" layoutY="305.0" prefHeight="45.0" prefWidth="58.0" text="VIP4:" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="460.0" layoutY="310.0" text="\%" textFill="#76d4de">
+            <Label layoutX="347.0" layoutY="358.0" text="\%" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <TextField layoutX="340.0" layoutY="310.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="262.0" layoutY="302.0" prefHeight="45.0" prefWidth="58.0" text="VIP5:" textFill="#74d5df">
+            <TextField layoutX="227.0" layoutY="358.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="149.0" layoutY="350.0" prefHeight="45.0" prefWidth="58.0" text="VIP5:" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField layoutX="227.0" layoutY="113.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="146.0" layoutY="106.0" prefHeight="45.0" prefWidth="65.0" text="名称：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
