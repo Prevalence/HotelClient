@@ -1,9 +1,10 @@
 package ui.hotelworkerui.promotionui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Promotionui {
+public class Promotionui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
@@ -26,7 +27,7 @@ public class Promotionui {
 	 */
 	public void initPromotionViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Promotionui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/促销策略界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -37,6 +38,6 @@ public class Promotionui {
 		// primaryStage.setScene(scene);
 		promotionViewuiController = loader.getController();
 		promotionViewuiController.launchStage(primaryStage);
-		promotionViewuiController.setPersonname(personname);
+		promotionViewuiController.setHotelName(personname);
 	}
 }

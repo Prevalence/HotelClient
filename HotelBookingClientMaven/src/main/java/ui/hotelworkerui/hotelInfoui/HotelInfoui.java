@@ -1,9 +1,10 @@
 package ui.hotelworkerui.hotelInfoui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class HotelInfoui {
+public class HotelInfoui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
@@ -26,7 +27,7 @@ public class HotelInfoui {
 	 */
 	public void initHotelInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HotelInfoui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店信息修改界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
