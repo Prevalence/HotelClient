@@ -30,14 +30,21 @@ public class CircleWebproCal implements CalculatePrice {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}//order中的hotel对应的商圈
-			ArrayList<Integer> vipLevel=((CircleWebproPO) po).getVipLevel();
-			ArrayList<String> circle=((CircleWebproPO) po).getCircle();
+//			ArrayList<Integer> vipLevel=((CircleWebproPO) po).getVipLevel();
+//			ArrayList<String> circle=((CircleWebproPO) po).getCircle();
+//			if(hotelCircle!=null)
+//			for(int i=0; i<vipLevel.size(); i++){
+//				if(vipLevel.get(i).equals(personpo.getVipLevel())&&(circle.get(i).equals(hotelCircle))){
+//					int discount=((CircleWebproPO) po).getDiscount().get(i);
+//					discountPrice=discountPrice*discount/100.0;
+//				}
+//			}
+			int vipLevel=((CircleWebproPO) po).getVipLevel();
+			String circle=((CircleWebproPO) po).getCircle();
 			if(hotelCircle!=null)
-			for(int i=0; i<vipLevel.size(); i++){
-				if(vipLevel.get(i).equals(personpo.getVipLevel())&&(circle.get(i).equals(hotelCircle))){
-					int discount=((CircleWebproPO) po).getDiscount().get(i);
-					discountPrice=discountPrice*discount/100.0;
-				}
+			if(vipLevel==(personpo.getVipLevel())&&(circle.equals(hotelCircle))){
+				int discount=((CircleWebproPO) po).getDiscount();
+				discountPrice=discountPrice*discount/100.0;
 			}
 			
 			return discountPrice;
