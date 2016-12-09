@@ -1,72 +1,56 @@
-package ui.managerui.userSearchAndAddui;
+package ui.managerui.hotelworkerInfoui;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ui.managerui.hotelworkerInfoui.HotelworkerInfoui;
+import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
 import ui.marketui.creditPayui.CreditPayui;
+import ui.marketui.orderViewui.MarketOrderViewui;
+import ui.marketui.promotionui.Promotionui;
 
-public class UserSearchAndAdduiController {
-
+public class HotelworkerInfouiController {
 	@FXML
-	private Button addButton;
+	private Button marketOrderButton;
+	@FXML
+	private Button promotionButton;
+	@FXML
+	private Button creditRechargeButton;
 	@FXML
 	private Button searchButton;
-	@FXML
-	private TextField usertypeField;
-	@FXML
-	private TextField usernameField;
 	@FXML
 	private Pane mainPane;
 
 	private UserblService userbl;
 
-	// 用户信息界面
-	private Pane userInfoPane;
+	// 网站管理人员首界面
+	private Pane userSearchAndAddPane;
 
 	private Stage primaryStage;
 
 	private String managerName;
 
-	private String usertype;
-
-	private String username;
-
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public UserSearchAndAdduiController() {
+	public HotelworkerInfouiController() {
 		userbl = new UserController();
 	}
 
 	/**
-	 * 添加用户（酒店工作人员和网站营销人员）
+	 * 返回网站管理人员首界面
 	 */
 	@FXML
-	private void addUser() {
-		usertype = usertypeField.getText();
-		username = usernameField.getText();
-		userInfoPane = new HotelworkerInfoui(primaryStage, managerName);
+	private void returnToFirst() {
+		userSearchAndAddPane = new UserSearchAndAddui(primaryStage, managerName);
 		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(userInfoPane);
+		mainPane.getChildren().add(userSearchAndAddPane);
 	}
-
-	/**
-	 * 搜索用户（客户、酒店工作人员和网站营销人员）
-	 */
-	@FXML
-	private void searchUser() {
-		usertype = usertypeField.getText();
-		username = usernameField.getText();
-		userInfoPane = new HotelworkerInfoui(primaryStage, managerName);
-		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(userInfoPane);
-	}
+	
+	
 
 	/**
 	 * 传递Main的primaryStage
@@ -85,7 +69,7 @@ public class UserSearchAndAdduiController {
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}
-
+	
 	/**
 	 * 登录之后调整界面大小，和之后更大的工作区域匹配
 	 */

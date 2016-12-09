@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class UserSearchAndAddui extends Pane{
 	private Stage primaryStage;
 
-	private String personname;
+	private String managerName;
 
 	private UserSearchAndAdduiController userSearchAndAddViewuiController;
 
@@ -16,9 +16,9 @@ public class UserSearchAndAddui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public UserSearchAndAddui(Stage primaryStage, String personname) {
+		public UserSearchAndAddui(Stage primaryStage, String managerName) {
 			this.primaryStage = primaryStage;
-			this.personname = personname;
+			this.managerName = managerName;
 			initUserSearchAndAddViewui();
 		};
 
@@ -27,7 +27,7 @@ public class UserSearchAndAddui extends Pane{
 	 */
 	public void initUserSearchAndAddViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserSearchAndAddui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/网站管理人员首界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -38,7 +38,7 @@ public class UserSearchAndAddui extends Pane{
 		// primaryStage.setScene(scene);
 		userSearchAndAddViewuiController = loader.getController();
 		userSearchAndAddViewuiController.launchStage(primaryStage);
-		userSearchAndAddViewuiController.setPersonname(personname);
+		userSearchAndAddViewuiController.setManagerName(managerName);
 		userSearchAndAddViewuiController.modifyStageSize();
 	}
 }
