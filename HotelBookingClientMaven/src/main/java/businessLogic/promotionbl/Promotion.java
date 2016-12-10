@@ -13,11 +13,11 @@ import vo.PromotionVO;
  */
 public class Promotion {
 	private PromotionDataService promotiondataservice;
+	
 	/**
-	 * 
+	 * 增加促销策略
 	 * @param prom
-	 * @param operation
-	 * @return
+	 * @return 是否成功增加促销策略
 	 */
 	public boolean addProm(PromotionVO prom){
 		PromotionPO promotionpo=prom.toPO(prom);
@@ -25,9 +25,9 @@ public class Promotion {
 	}
 	
 	/**
-	 * 
+	 * 删除促销策略
 	 * @param prom
-	 * @return
+	 * @return 是否成功删除促销策略
 	 */
 	public boolean deleteProm(PromotionVO prom){
 		PromotionPO promotionpo=prom.toPO(prom);
@@ -35,9 +35,9 @@ public class Promotion {
 	}
 	
 	/**
-	 * 
+	 * 修改促销策略
 	 * @param prom
-	 * @return
+	 * @return 是否成功修改促销策略
 	 */
 	public boolean modifyProm(PromotionVO prom){
 		PromotionPO promotionpo=prom.toPO(prom);
@@ -46,8 +46,10 @@ public class Promotion {
 	
 	/**
 	 * 找到促销策略
-	 * @param hotelname
-	 * @return
+	 * @param hotelnameOrWeb 
+	 * 	注：返回酒店促销策略或者网站促销策略，当hotelNameOrWeb为"WebPromotion"时，返网站促销策略；
+			否则为酒店名称，返回对应酒店促销策略
+	 * @return ArrayList<PromotionVO> 促销策略列表
 	 */
 	public ArrayList<PromotionVO> getProm(String hotelnameOrWeb){
 		//返回酒店促销策略或者网站促销策略，当hotelNameOrWeb为"WebPromotion"时，返网站促销策略；
@@ -62,7 +64,9 @@ public class Promotion {
 	}
 
 	
-	/*构造函数*/
+	/**
+	 * 构造函数
+	 */
 	public Promotion(){
 		promotiondataservice=RemoteHelper.getInstance().getPromotionDataService();
 	}

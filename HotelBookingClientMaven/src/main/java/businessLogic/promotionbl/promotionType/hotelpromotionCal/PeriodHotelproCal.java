@@ -13,12 +13,19 @@ import po.promotionpo.hotelpromotionPO.PeriodHotelproPO;
  *  酒店促销策略：双11活动折扣（在特定的期间住宿有折扣）*/
 public class PeriodHotelproCal implements CalculatePrice {
 
-	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo, OrderPO orderpo) {
+	/**
+	 * @param initialtotal
+	 * @param promotionpo
+	 * @param personpo
+	 * @param orderpo
+	 * @return double 返回价格
+	 * */
+	public double getprice(double initialtotal, PromotionPO promotionpo, PersonPO personpo, OrderPO orderpo) {
 		double discountPrice=initialtotal;
-		boolean isAfterStartTime=((PeriodHotelproPO) po).getStartTime().before(Calendar.getInstance());
-		boolean isBeforeEndTime=((PeriodHotelproPO) po).getEndTime().after(Calendar.getInstance());
+		boolean isAfterStartTime=((PeriodHotelproPO) promotionpo).getStartTime().before(Calendar.getInstance());
+		boolean isBeforeEndTime=((PeriodHotelproPO) promotionpo).getEndTime().after(Calendar.getInstance());
 		if(isAfterStartTime&&isBeforeEndTime){
-			int discount=((PeriodHotelproPO) po).getDiscount();
+			int discount=((PeriodHotelproPO) promotionpo).getDiscount();
 			discountPrice=discountPrice*discount/100.0;
 		}
 		return discountPrice;

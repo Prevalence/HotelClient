@@ -21,10 +21,11 @@ public class HotelController implements HotelblService{
 	public HotelController(){
 		hotel=new Hotel();
 	}
+	
 	/**
-	 * 
+	 * 根据酒店名称，获取酒店信息
 	 * @param Hotelname
-	 * @return 获取酒店信息（PO）
+	 * @return HotelVO
 	 */
 	public HotelVO showHotelInfo(String Hotelname){
 		HotelVO result = null;
@@ -36,8 +37,9 @@ public class HotelController implements HotelblService{
 		}
 		return result;
 	}
+
 	/**
-	 * 
+	 * 修改酒店信息
 	 * @param hotelinfo
 	 * @return 是否修改成功（成功则返回true,不能则返回false）
 	 */
@@ -51,11 +53,10 @@ public class HotelController implements HotelblService{
 		}
 		return result;
 	}
+
 	/**
-	 * 
-	 * @param comment 酒店评价内容
-	 * @param username 用户名
-	 * @param hotelname 酒店名
+	 * 客户评论
+	 * @param commentvo 评价内容
 	 * @return 是否增加评论成功
 	 */
 	public boolean addComment(CommentVO commentvo){
@@ -68,11 +69,12 @@ public class HotelController implements HotelblService{
 		}
 		return result;
 	}
+	
 	/**
-	 * 
-	 * @param roomtype 房间类型
-	 * @param number 修改数量（包括正数和负数）
-	 * @return 是否修改房间数量成功
+	 * 房间内容修改
+	 * @param hotelname 酒店名称
+	 * @param roomvoList 房间的信息
+	 * @return 是否修改房间信息成功
 	 */
 	public boolean roomModify(String hotelname, ArrayList<RoomVO> roomvoList){
 		boolean result = false;
@@ -84,8 +86,14 @@ public class HotelController implements HotelblService{
 		}
 		return result;
 	}
+
 	/**
-	 * 
+	 * 客户给出要求的房间条件区间，筛选符合条件的酒店，返回酒店列表
+	 * @param worstCondition 最坏酒店条件
+	 * @param bestCondition 最好酒店条件
+	 * @return 符合条件的酒店清单
+	 * @throws RemoteException 
+	 * 注意：浏览酒店详细信息时，需要先明确地址和商圈，才能进行查看
 	 */
 	public ArrayList<HotelSearchVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
 		try {
@@ -96,12 +104,22 @@ public class HotelController implements HotelblService{
 		}
 		return null;
 	}
+
 	/**
 	 * 增加酒店
+	 * @param hotelvo 待增加酒店信息
+	 * @return 是否增加成功
+	 * @throws RemoteException 
 	 */
 	@Override
 	public boolean addHotel(HotelVO hotelvo) {
 		// TODO Auto-generated method stub
-		return hotel.addHotel(hotelvo);
+		try {
+			return hotel.addHotel(hotelvo);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

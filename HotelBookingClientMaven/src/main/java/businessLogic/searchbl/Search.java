@@ -20,9 +20,11 @@ import vo.personVO.PersonVO;
 public class Search {
 	
 	/**
-	 * @param 客户输入的房间筛选条件
+	 * 找到符合条件的酒店列表
+	 * @param worstCondition 最坏酒店条件
+	 * @param bestCondition 最好酒店条件
 	 * @return 符合条件的酒店列表
-	 * @throws RemoteException 
+	 * @throws RemoteException
 	 */
 	public ArrayList<HotelSearchVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException{
 		Hotel hotel=new Hotel();
@@ -30,9 +32,10 @@ public class Search {
 	}
 	
 	/**
+	 * 根据客户名称，找到客户信息
 	 * @param personname
-	 * @return
-	 * @throws RemoteException 
+	 * @return PersonVO 客户信息
+	 * @throws RemoteException
 	 */
 	public PersonVO searchPersonInfo (String personname) throws RemoteException{
 		Person person=new Person();
@@ -41,9 +44,10 @@ public class Search {
 	}
 	
 	/**
+	 * 根据酒店工作人员名称，返回酒店工作人员信息
 	 * @param hotelWorkername
-	 * @return
-	 * @throws RemoteException 
+	 * @return 酒店工作人员信息
+	 * @throws RemoteException
 	 */
 	public HotelWorkerVO searchHotelWorkerInfo (String hotelWorkername) throws RemoteException{
 		HotelWorker hotelworker=new HotelWorker();
@@ -52,9 +56,10 @@ public class Search {
 	}
 	
 	/**
+	 * 根据网站营销人员名称，返回网站营销人员信息
 	 * @param marketname
-	 * @return
-	 * @throws RemoteException 
+	 * @return 网站营销人员信息
+	 * @throws RemoteException
 	 */
 	public MarketVO searchMarketInfo (String marketname) throws RemoteException{
 		Market market=new Market();

@@ -2,10 +2,7 @@ package businessLogic.userbl;
 
 import java.rmi.RemoteException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import dataService.userDataService.UserDataService;
 import po.personPO.PersonPO;
@@ -22,8 +19,9 @@ public class Person {
 	
 	/**
 	 * 客户注册
-	 * @return boolean
-	 * @throws RemoteException 
+	 * @param vo
+	 * @return 是否注册成功
+	 * @throws RemoteException
 	 */
 	public boolean register(PersonVO vo) throws RemoteException{
 		PersonPO personPO=new PersonPO(vo);
@@ -32,7 +30,8 @@ public class Person {
 	
 	/**
 	 * 客户信息修改，信用不能修改，只能查看
-	 * @return boolean
+	 * @param personInfo
+	 * @return boolean 是否修改成功
 	 * @throws RemoteException 
 	 */
 	public boolean modifyPerson(PersonVO personInfo) throws RemoteException{
@@ -43,11 +42,12 @@ public class Person {
 	
 	/**
 	 * 会员注册
+	 * @param personvo
 	 * @param vipType no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
 	 * @param vipInfo 若是普通VIP，info为生日，格式如：20160120；若是企业VIP，格式为非空字符
-	 * @return boolean
-	 * @throws ParseException 
-	 * @throws RemoteException 
+	 * @return 是否注册成功
+	 * @throws ParseException
+	 * @throws RemoteException
 	 */
 	public boolean registeMember(PersonVO personvo, String vipType, String vipInfo) throws ParseException, RemoteException{
 		if(personvo.getVipType().equals("no")){//不是会员，可以注册
@@ -96,9 +96,10 @@ public class Person {
 	}
 	
 	/**
-	 * 客户信息获取
-	 * @return PersonPO
-	 * @throws RemoteException 
+	 * 根据客户名称获取客户信息
+	 * @param personname
+	 * @return 客户信息
+	 * @throws RemoteException
 	 */
 	public PersonVO getPersonInfo(String personname) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personname);
@@ -106,6 +107,12 @@ public class Person {
 		return vo;
 	}
 	
+	/**
+	 * 根据客户ID获取客户信息
+	 * @param personID
+	 * @return 客户信息
+	 * @throws RemoteException
+	 */
 	public PersonVO getPersonInfo(int personID) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personID);
 		PersonVO vo=new PersonVO(po);
@@ -114,8 +121,10 @@ public class Person {
 	
 	/**
 	 * 客户登陆
-	 * @return boolean
-	 * @throws RemoteException 
+	 * @param personname
+	 * @param password
+	 * @return 是否登陆成功
+	 * @throws RemoteException
 	 */
 	public boolean personLogin(String personname,String password) throws RemoteException{
 		return userDataService.personLogin(personname, password);
@@ -124,7 +133,9 @@ public class Person {
 	
 	/**
 	 * 判断客户是否存在
-	 * @throws RemoteException 
+	 * @param personname
+	 * @return 若存在，返回true；若不存在，返回false
+	 * @throws RemoteException
 	 */
 	public boolean isExist(String personname) throws RemoteException{
 		return userDataService.isExist(personname, "person");
