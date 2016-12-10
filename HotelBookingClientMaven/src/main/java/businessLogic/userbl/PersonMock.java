@@ -1,7 +1,6 @@
 package businessLogic.userbl;
 import java.util.ArrayList;
 
-import po.personPO.PersonPO;
 import vo.personVO.PersonVO;
 
 

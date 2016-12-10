@@ -73,6 +73,9 @@ public class UserControllerTest {
 	@Test
 	public void testUserLogin() {
 		assertEquals(true, uc.userLogin("xiamutian", "123", "person"));
+		assertEquals(true, uc.userLogin("xiamutian", "123", "manager"));
+		assertEquals(true, uc.userLogin("xiamutian", "123", "market"));
+		assertEquals(true, uc.userLogin("xiamutian", "123", "hotelworker"));
 		assertEquals(false, uc.userLogin("xiamutian", "789", "person"));
 	}
 

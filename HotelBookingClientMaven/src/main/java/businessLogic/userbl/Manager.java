@@ -20,10 +20,13 @@ public class Manager {
 	HotelWorkerPO hotelworker=new HotelWorkerPO();
 	MarketPO market=new MarketPO();
 	UserDataService userDataService=RemoteHelper.getInstance().getUserDataService();
+	
 	/**
 	 * 网站管理人员登录
-	 *@author xiamutian
-	 * @throws RemoteException 
+	 * @param managername
+	 * @param password
+	 * @return 是否登陆成功
+	 * @throws RemoteException
 	 */
 	public boolean managerLogin (String managername,String password) throws RemoteException{
 		return userDataService.managerLogin(managername, password);
@@ -31,8 +34,9 @@ public class Manager {
 	
 	/**
 	 * 保存网站营销人员信息
-	 *@param marketInfo
-	 * @throws RemoteException 
+	 * @param marketInfo
+	 * @return 是否保存成功
+	 * @throws RemoteException
 	 */
 	public boolean marketSave(MarketVO marketInfo) throws RemoteException{
 		MarketPO marketPO=new MarketPO(marketInfo);
@@ -41,7 +45,9 @@ public class Manager {
 	
 	/**
 	 * 保存酒店工作人员信息
-	 * @throws RemoteException 
+	 * @param hotelWorkerInfo
+	 * @return 是否保存成功
+	 * @throws RemoteException
 	 */
 	public boolean hotelWorkerSave(HotelWorkerVO hotelWorkerInfo) throws RemoteException{
 		HotelWorkerPO hotelWorkerPO=new HotelWorkerPO(hotelWorkerInfo);
@@ -50,7 +56,9 @@ public class Manager {
 	
 	/**
 	 * 获取客户信息
-	 * @throws RemoteException 
+	 * @param personname
+	 * @return 客户信息
+	 * @throws RemoteException
 	 */
 	public PersonVO getPersonInfo(String personname) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personname);
@@ -61,7 +69,9 @@ public class Manager {
 	
 	/**
 	 * 获取酒店工作人员信息
-	 * @throws RemoteException 
+	 * @param hotelWorkername
+	 * @return 酒店工作人员信息
+	 * @throws RemoteException
 	 */
 	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
 		HotelWorkerPO po=userDataService.findHotelWorker(hotelWorkername);
@@ -71,7 +81,9 @@ public class Manager {
 	
 	/**
 	 * 增加网站营销人员
-	 * @throws RemoteException 
+	 * @param marketInfo
+	 * @return 是否增加成功
+	 * @throws RemoteException
 	 */
 	public boolean marketAdd (MarketVO marketInfo) throws RemoteException{
 		MarketPO marketPO=new MarketPO(marketInfo);
@@ -81,7 +93,9 @@ public class Manager {
 	
 	/**
 	 * 增加酒店工作人员
-	 * @throws RemoteException 
+	 * @param hotelworkerInfo
+	 * @return 是否增加成功
+	 * @throws RemoteException
 	 */
 	public boolean hotelWorkerAdd (HotelWorkerVO hotelworkerInfo) throws RemoteException{
 		HotelWorkerPO hotelworkerPO=new HotelWorkerPO(hotelworkerInfo);
@@ -91,7 +105,9 @@ public class Manager {
 	
 	/**
 	 * 获取网站营销人员信息
-	 * @throws RemoteException 
+	 * @param marketname
+	 * @return 网站营销人员信息
+	 * @throws RemoteException
 	 */
 	public MarketVO getMarketInfo(String marketname) throws RemoteException{
 		MarketPO po=userDataService.findMarket(marketname);
@@ -101,7 +117,9 @@ public class Manager {
 	
 	/**
 	 * 判断网站管理人员是否存在
-	 * @throws RemoteException 
+	 * @param managername
+	 * @return 若存在，返回true；若不存在，返回false
+	 * @throws RemoteException
 	 */
 	public boolean isExist(String managername) throws RemoteException{
 		return userDataService.isExist(managername, "manager");
