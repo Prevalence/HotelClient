@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.managerui.personInfoui.PersonInfouiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -49,12 +49,7 @@
       </Button>
       <Pane layoutX="280.0" layoutY="186.0" prefHeight="334.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="25.0" layoutY="51.0" prefHeight="45.0" prefWidth="82.0" text="客户名：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="129.0" prefHeight="45.0" prefWidth="82.0" text="性别：" textFill="#74d5df">
+            <Label layoutX="14.0" layoutY="52.0" prefHeight="45.0" prefWidth="82.0" text="客户名：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
@@ -64,22 +59,17 @@
                   <Image url="@../订单详情界面/酒店工作人员首界面.fxml.png" />
                </image>
             </ImageView>
-            <Label layoutX="294.0" layoutY="118.0" prefHeight="48.0" prefWidth="105.0" text="年龄：" textFill="#74d5df">
+            <Label layoutX="14.0" layoutY="280.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="280.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
+            <Label layoutX="14.0" layoutY="129.0" prefHeight="48.0" prefWidth="105.0" text="VIP类型：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="201.0" prefHeight="48.0" prefWidth="105.0" text="VIP类型：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="294.0" layoutY="201.0" prefHeight="48.0" prefWidth="105.0" text="VIP等级：" textFill="#74d5df">
+            <Label layoutX="14.0" layoutY="206.0" prefHeight="48.0" prefWidth="94.0" text="VIP等级：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
@@ -89,7 +79,12 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <TextField fx:id="personnameField" layoutX="113.0" layoutY="59.0" prefHeight="30.0" prefWidth="153.0" />
+            <TextField fx:id="VIPTypeField" layoutX="113.0" layoutY="138.0" prefHeight="30.0" prefWidth="153.0" />
+            <TextField fx:id="connectionField" layoutX="113.0" layoutY="289.0" prefHeight="30.0" prefWidth="153.0" />
+            <TextField fx:id="creditField" layoutX="390.0" layoutY="58.0" prefHeight="30.0" prefWidth="116.0" />
+            <TextField fx:id="VIPLevelField" layoutX="113.0" layoutY="215.0" prefHeight="30.0" prefWidth="153.0" />
          </children>
       </Pane>
    </children>
-</Pane>
+</fx:root>

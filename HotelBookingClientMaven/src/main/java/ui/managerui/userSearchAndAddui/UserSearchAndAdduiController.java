@@ -4,11 +4,11 @@ import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ui.managerui.hotelworkerInfoui.HotelworkerInfoui;
-import ui.marketui.creditPayui.CreditPayui;
+import ui.Factory.ManagerFactory;
 
 public class UserSearchAndAdduiController {
 
@@ -20,6 +20,8 @@ public class UserSearchAndAdduiController {
 	private TextField usertypeField;
 	@FXML
 	private TextField usernameField;
+	@FXML
+	private Label feedbackLabel;
 	@FXML
 	private Pane mainPane;
 
@@ -49,11 +51,15 @@ public class UserSearchAndAdduiController {
 	 */
 	@FXML
 	private void addUser() {
-		usertype = usertypeField.getText();
-		username = usernameField.getText();
-		userInfoPane = new HotelworkerInfoui(primaryStage, managerName);
-		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(userInfoPane);
+		if (usertype == null || username == null) {
+			feedbackLabel.setText("添加信息不全，无法继续，请补全用户类型或用户名称！");
+		} else {
+			usertype = usertypeField.getText();
+			username = usernameField.getText();
+			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(userInfoPane);
+		}
 	}
 
 	/**
@@ -63,9 +69,13 @@ public class UserSearchAndAdduiController {
 	private void searchUser() {
 		usertype = usertypeField.getText();
 		username = usernameField.getText();
-		userInfoPane = new HotelworkerInfoui(primaryStage, managerName);
-		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(userInfoPane);
+		if (usertype == null || username == null) {
+			feedbackLabel.setText("搜索信息不全，无法搜索，请补全用户类型或用户名称！");
+		} else {
+			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(userInfoPane);
+		}
 	}
 
 	/**
