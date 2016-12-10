@@ -100,8 +100,8 @@ public class UserSearchAndAdduiController {
 	 * 登录之后调整界面大小，和之后更大的工作区域匹配
 	 */
 	public void modifyStageSize() {
-		primaryStage.setWidth(1000);
-		primaryStage.setHeight(800);
+		primaryStage.setWidth(980);
+		primaryStage.setHeight(832);
 		primaryStage.setX(400);
 	}
 }
