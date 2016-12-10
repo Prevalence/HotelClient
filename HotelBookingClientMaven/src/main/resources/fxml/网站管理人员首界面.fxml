@@ -80,7 +80,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="feedbackLabel" layoutX="151.0" layoutY="725.0" prefHeight="30.0" prefWidth="807.0" textFill="#f80303">
+      <Label fx:id="feedbackLabel" layoutX="144.0" layoutY="753.0" prefHeight="30.0" prefWidth="817.0" textFill="#f80303">
          <font>
             <Font size="20.0" />
          </font>

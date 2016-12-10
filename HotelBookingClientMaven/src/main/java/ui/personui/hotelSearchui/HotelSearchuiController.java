@@ -50,6 +50,8 @@ public class HotelSearchuiController {
 	@FXML
 	private Label priceLabel;
 	@FXML
+	private Label feedbackLabel;
+	@FXML
 	private ChoiceBox<String> priceChoices;
 	@SuppressWarnings("rawtypes")
 	@FXML
@@ -143,9 +145,14 @@ public class HotelSearchuiController {
 	private void searchHotelInfo() {
 		String hotelName = searchField.getText();
 		// hotelInfo = hotelbl.showHotelInfo(hotelName);
-		hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
-		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(hotelInfoViewPane);
+		if (hotelbl.showHotelInfo(hotelName) != null) {
+			hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(hotelInfoViewPane);
+		}
+		else{
+			feedbackLabel.setText("搜索的酒店不存在，请确保酒店名称正确。");
+		}
 	}
 
 	/**
@@ -292,7 +299,8 @@ public class HotelSearchuiController {
 
 					@Override
 					public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO, Boolean> p) {
-						SearchButtonCell buttonCell = new SearchButtonCell(searchTable, mainPane, primaryStage, personname);
+						SearchButtonCell buttonCell = new SearchButtonCell(searchTable, mainPane, primaryStage,
+								personname);
 						return buttonCell;
 					}
 
