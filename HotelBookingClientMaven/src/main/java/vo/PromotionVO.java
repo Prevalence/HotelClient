@@ -9,7 +9,7 @@ import po.PromotionPO;
 
 
 public class PromotionVO {
-	private String promotionID;//promotion的唯一标识
+	private int promotionID;//promotion的唯一标识
 	private String promotionName;//promotion的名称，客户可见
 	private String promotionType;
 	private String hotelnameOrWeb;//若是酒店促销策略，则为酒店名称;若是网站促销策略，则为“WebPromotion”
@@ -19,9 +19,9 @@ public class PromotionVO {
 		super();
 	}
 
-	public PromotionVO(String promotionID, String promotionName, String promotionType, String hotelnameOrWeb) {
+	public PromotionVO(int promotionID, String promotionName, String promotionType, String hotelnameOrWeb) {
 		super();
-		this.promotionID = promotionID;
+		this.setPromotionID(promotionID);
 		this.promotionName = promotionName;
 		this.promotionType = promotionType;
 		this.hotelnameOrWeb = hotelnameOrWeb;
@@ -34,10 +34,11 @@ public class PromotionVO {
 //		this.hotelnameOrWeb = po.getHotelnameOrWeb();
 //	}
 
-	public String getPromotionID() {
+	public int getPromotionID() {
 		return promotionID;
 	}
-	public void setPromotionID(String promotionID) {
+
+	public void setPromotionID(int promotionID) {
 		this.promotionID = promotionID;
 	}
 	public String getPromotionName() {
@@ -62,5 +63,6 @@ public class PromotionVO {
 	public PromotionPO toPO(PromotionVO promotionvo){
 		return null;
 	}
+
 	
 }

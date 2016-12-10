@@ -1,6 +1,5 @@
 package businessLogic.userbl;
-import po.HotelWorkerPO;
-import po.MarketPO;
+
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.personVO.PersonVO;
@@ -161,7 +160,10 @@ public class UserController  implements UserblService{
 				return hotelworker.hotelworkerLogin(username, password);
 			}else if(usertype.equals("market")){
 				return market.marketlogin(username, password);
-			}else{
+			}else if(usertype.equals("manager")){
+				return manager.managerLogin(username, password);
+			}
+			else{
 				return false;
 			}
 		} catch (RemoteException e) {
@@ -211,6 +213,34 @@ public class UserController  implements UserblService{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	/**
+	 * 判断某用户是否存在
+	 * @param username 用户名称
+	 * @param usertype 用户类型
+	 */
+	@Override
+	public boolean isExist(String username, String usertype) {
+		// TODO Auto-generated method stub
+		try {
+			if(usertype.equals("person")){
+				return person.isExist(username);
+			}else if(usertype.equals("hotelworker")){
+				return hotelworker.isExist(username);
+			}else if(usertype.equals("market")){
+				return market.isExist(username);
+			}else if(usertype.equals("manager")){
+				return manager.isExist(username);
+			}
+			else{
+				return false;
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	

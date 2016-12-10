@@ -22,7 +22,7 @@ public class CircleWebproPO extends PromotionPO {
 		super();
 	}
 	
-	public CircleWebproPO(String promotionID, String promotionName, String promotionType,
+	public CircleWebproPO(int promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb,int vipLevel, String circle, int discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);

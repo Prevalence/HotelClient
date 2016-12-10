@@ -20,7 +20,7 @@ public class VipLevelWebproPO extends PromotionPO {
 		super();
 	}
 
-	public VipLevelWebproPO(String promotionID, String promotionName, String promotionType,
+	public VipLevelWebproPO(int promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb,ArrayList<Integer> vipLevel, ArrayList<Integer> discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);
