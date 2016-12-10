@@ -13,7 +13,7 @@ import vo.HotelWorkerVO;
  */
 public class HotelWorker {
 	HotelWorkerPO hotelworker=new HotelWorkerPO();
-	UserDataService userdataservice;
+	UserDataService userDataService;
 
 	/**
 	 * 酒店工作人员登陆
@@ -23,7 +23,7 @@ public class HotelWorker {
 	 * @throws RemoteException
 	 */
 	public boolean hotelworkerLogin(String hotelworkername,String password) throws RemoteException{
-		return userdataservice.hotelWorkerLogin(hotelworkername, password);
+		return userDataService.hotelWorkerLogin(hotelworkername, password);
 		
 	}
 	
@@ -33,13 +33,21 @@ public class HotelWorker {
 	 * @throws RemoteException 
 	 */
 	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
-		HotelWorkerPO po=userdataservice.findHotelWorker(hotelWorkername);
+		HotelWorkerPO po=userDataService.findHotelWorker(hotelWorkername);
 		HotelWorkerVO vo=new HotelWorkerVO(po);
 		return vo;
 		
 	}
 	
 	public HotelWorker(){
-		userdataservice=RemoteHelper.getInstance().getUserDataService();
+		userDataService=RemoteHelper.getInstance().getUserDataService();
+	}
+	
+	/**
+	 * 判断酒店工作人员是否存在
+	 * @throws RemoteException 
+	 */
+	public boolean isExist(String hotelworkername) throws RemoteException{
+		return userDataService.isExist(hotelworkername, "hotelworker");
 	}
 }

@@ -51,7 +51,13 @@ public class Market {
 		return userDataService.changeCredit(personname, credit);
 	}
 	
-
+	/**
+	 * 判断网站营销人员是否存在
+	 * @throws RemoteException 
+	 */
+	public boolean isExist(String marketname) throws RemoteException{
+		return userDataService.isExist(marketname, "market");
+	}
 	
 	
 }

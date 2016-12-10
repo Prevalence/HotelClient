@@ -13,7 +13,7 @@ import vo.PromotionVO;
  */
 public class PromotionPO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String promotionID;//promotion的唯一标识
+	private int promotionID;//promotion的唯一标识
 	private String promotionName;//promotion的名称，客户可见
 	private String promotionType;
 	private String hotelnameOrWeb;//若是酒店促销策略，则为酒店名称;若是网站促销策略，则为“WebPromotion”
@@ -30,12 +30,14 @@ public class PromotionPO implements Serializable {
 //		this.promotionType = promotionType;
 //		this.hotelnameOrWeb = hotelnameOrWeb;
 //	}
-	public String getPromotionID() {
+	public int getPromotionID() {
 		return promotionID;
 	}
-	public void setPromotionID(String promotionID) {
+
+	public void setPromotionID(int promotionID) {
 		this.promotionID = promotionID;
 	}
+
 	public String getPromotionName() {
 		return promotionName;
 	}
@@ -58,5 +60,7 @@ public class PromotionPO implements Serializable {
 	public PromotionVO toVO(PromotionPO promotionpo){
 		return null;
 	}
+
+
 
 }

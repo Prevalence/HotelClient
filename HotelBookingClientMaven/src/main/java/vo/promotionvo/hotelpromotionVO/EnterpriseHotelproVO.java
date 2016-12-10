@@ -18,7 +18,7 @@ public class EnterpriseHotelproVO extends PromotionVO {
 		super();
 	}
 	
-	public EnterpriseHotelproVO(String promotionID, String promotionName, String promotionType,
+	public EnterpriseHotelproVO(int promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb, ArrayList<String> enterprise, int discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);
