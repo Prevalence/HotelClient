@@ -30,42 +30,15 @@
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
-      <Pane layoutX="145.0" layoutY="62.0" prefHeight="138.0" prefWidth="817.0">
-         <children>
-            <ImageView fitHeight="250.0" fitWidth="817.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="863.0" layoutY="106.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../酒店详情界面/Rectangle%208.png" />
+                  <Image url="@../酒店详情界面/reply.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="19.0" fitWidth="145.0" layoutX="115.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/5.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="19.0" fitWidth="14.0" layoutX="115.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/Shape%2016.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="136.0" layoutY="80.0" text="4.98/5" />
-            <Label layoutX="115.0" layoutY="15.0" text="南京大酒店">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="593.0" layoutY="110.0" text="联系方式：" />
-            <Label layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
-            <Button layoutX="717.0" layoutY="40.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../酒店详情界面/reply.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </Pane>
+         </graphic>
+      </Button>
       <Button layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -85,7 +58,7 @@
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../酒店工作人员首界面/酒店信息.png" />
+                  <Image url="@../网站营销人员首界面/信用充值.png" />
                </image>
             </ImageView>
          </graphic>
@@ -102,24 +75,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/客房信息.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button layoutX="711.0" layoutY="693.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
       </Button>
-      <Pane layoutX="301.0" layoutY="223.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
+      <Pane layoutX="290.0" layoutY="178.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="262.0" layoutY="102.0" prefHeight="45.0" prefWidth="58.0" text="VIP1:" textFill="#74d5df">
                <font>
@@ -194,6 +155,11 @@
             </Label>
          </children>
       </Pane>
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/色块.png" />
+         </image>
+      </ImageView>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Shape%201.png" />
