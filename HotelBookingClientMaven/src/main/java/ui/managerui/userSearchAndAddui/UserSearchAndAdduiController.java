@@ -53,8 +53,6 @@ public class UserSearchAndAdduiController {
 	private void addUser() {
 		usertype = usertypeField.getText();
 		username = usernameField.getText();
-		System.out.println("++"+usertype+"++");
-		System.out.println(username);
 		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("添加信息不全，无法继续，请补全用户类型或用户名称！");
 		} else {
