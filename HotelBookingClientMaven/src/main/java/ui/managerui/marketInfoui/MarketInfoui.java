@@ -4,21 +4,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class MarketInfouil extends Pane {
+public class MarketInfoui extends Pane {
 	private Stage primaryStage;
 
 	private String managerName;
 
 	private String marketName;
 
-	private MarketInfouiControllerl marketInfouiController;
+	private MarketInfouiController marketInfouiController;
 
 	/**
 	 * 接受primarystage用来完成界面最小化和可移动化设置
 	 * 
 	 * @param primaryStage
 	 */
-	public MarketInfouil(Stage primaryStage, String managerName, String marketName) {
+	public MarketInfoui(Stage primaryStage, String managerName, String marketName) {
 		this.primaryStage = primaryStage;
 		this.managerName = managerName;
 		initMarketInfoui();

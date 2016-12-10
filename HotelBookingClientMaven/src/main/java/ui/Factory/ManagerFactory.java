@@ -3,7 +3,7 @@ package ui.Factory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.managerui.hotelworkerInfoui.HotelworkerInfoui;
-import ui.managerui.marketInfoui.MarketInfouil;
+import ui.managerui.marketInfoui.MarketInfoui;
 import ui.managerui.personInfoui.PersonInfoui;
 
 public class ManagerFactory {
@@ -18,7 +18,7 @@ public class ManagerFactory {
 			userInfoPane = new HotelworkerInfoui(primaryStage, managerName, username);
 			break;
 		case "网站营销人员":
-			userInfoPane = new MarketInfouil(primaryStage, managerName, username);
+			userInfoPane = new MarketInfoui(primaryStage, managerName, username);
 			break;
 		default:
 			break;
