@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
 
-public class MarketInfouiController {
+public class MarketInfouiControllerl {
 	@FXML
 	private Button returnButton;
 	@FXML
@@ -36,7 +36,7 @@ public class MarketInfouiController {
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public MarketInfouiController() {
+	public MarketInfouiControllerl() {
 		userbl = new UserController();
 	}
 

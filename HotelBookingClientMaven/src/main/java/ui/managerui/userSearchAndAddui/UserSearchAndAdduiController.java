@@ -51,11 +51,13 @@ public class UserSearchAndAdduiController {
 	 */
 	@FXML
 	private void addUser() {
-		if (usertype == null || username == null) {
+		usertype = usertypeField.getText();
+		username = usernameField.getText();
+		System.out.println("++"+usertype+"++");
+		System.out.println(username);
+		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("添加信息不全，无法继续，请补全用户类型或用户名称！");
 		} else {
-			usertype = usertypeField.getText();
-			username = usernameField.getText();
 			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userInfoPane);
@@ -69,7 +71,7 @@ public class UserSearchAndAdduiController {
 	private void searchUser() {
 		usertype = usertypeField.getText();
 		username = usernameField.getText();
-		if (usertype == null || username == null) {
+		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("搜索信息不全，无法搜索，请补全用户类型或用户名称！");
 		} else {
 			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
