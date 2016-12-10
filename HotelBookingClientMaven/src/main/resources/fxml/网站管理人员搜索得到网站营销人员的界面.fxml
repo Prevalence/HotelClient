@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.managerui.marketInfoui.MarketInfouiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,7 +35,7 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <Button layoutX="469.0" layoutY="577.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="returnButton" layoutX="469.0" layoutY="577.0" mnemonicParsing="false" onAction="#returnToFirst" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -59,12 +59,14 @@
                   <Image url="@../订单详情界面/酒店工作人员首界面.fxml.png" />
                </image>
             </ImageView>
-            <Label layoutX="25.0" layoutY="155.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
+            <Label layoutX="25.0" layoutY="155.0" prefHeight="48.0" prefWidth="64.0" text="密码：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
+            <TextField fx:id="marketNameField" layoutX="107.0" layoutY="59.0" prefHeight="30.0" prefWidth="287.0" />
+            <TextField fx:id="passwordField" layoutX="107.0" layoutY="167.0" prefHeight="30.0" prefWidth="287.0" />
          </children>
       </Pane>
    </children>
-</Pane>
+</fx:root>

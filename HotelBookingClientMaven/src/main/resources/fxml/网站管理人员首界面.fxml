@@ -80,5 +80,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="feedbackLabel" layoutX="145.0" layoutY="751.0" prefHeight="37.0" prefWidth="817.0" style="-fx-background-color: transparent;" textFill="#fc0202">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </fx:root>

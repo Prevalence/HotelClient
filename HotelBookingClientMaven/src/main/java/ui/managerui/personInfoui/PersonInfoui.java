@@ -16,7 +16,7 @@ public class PersonInfoui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public PersonInfoui(Stage primaryStage, String personname) {
+		public PersonInfoui(Stage primaryStage, String managerName, String personname) {
 			this.primaryStage = primaryStage;
 			this.personname = personname;
 			initUserInfoViewui();
