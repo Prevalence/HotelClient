@@ -155,6 +155,11 @@
             </Label>
          </children>
       </Pane>
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/色块.png" />
+         </image>
+      </ImageView>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Shape%201.png" />

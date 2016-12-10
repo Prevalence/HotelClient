@@ -155,5 +155,10 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/色块.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
