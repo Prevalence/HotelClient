@@ -22,7 +22,7 @@ public class PeriodHotelproPO extends PromotionPO {
 	}
 
 
-	public PeriodHotelproPO(String promotionID, String promotionName, String promotionType,
+	public PeriodHotelproPO(int promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb,Calendar startTime, Calendar endTime, int discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);

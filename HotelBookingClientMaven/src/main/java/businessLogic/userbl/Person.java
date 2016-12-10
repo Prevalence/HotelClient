@@ -122,5 +122,13 @@ public class Person {
 		return userDataService.personLogin(personname, password);
 		
 	}
+	
+	/**
+	 * 判断客户是否存在
+	 * @throws RemoteException 
+	 */
+	public boolean isExist(String personname) throws RemoteException{
+		return userDataService.isExist(personname, "person");
+	}
 
 }

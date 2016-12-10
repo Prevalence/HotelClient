@@ -16,7 +16,7 @@ public class BirthdayHotelproPO extends PromotionPO{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BirthdayHotelproPO(String promotionID, String promotionName, String promotionType,
+	public BirthdayHotelproPO(int promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb, int discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);

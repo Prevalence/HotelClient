@@ -25,7 +25,7 @@ public class Manager {
 	 *@author xiamutian
 	 * @throws RemoteException 
 	 */
-	public boolean managerLonin (String managername,String password) throws RemoteException{
+	public boolean managerLogin (String managername,String password) throws RemoteException{
 		return userDataService.managerLogin(managername, password);
 	}
 	
@@ -37,7 +37,6 @@ public class Manager {
 	public boolean marketSave(MarketVO marketInfo) throws RemoteException{
 		MarketPO marketPO=new MarketPO(marketInfo);
 		return userDataService.modifyMarket(marketPO);
-		
 	}
 	
 	/**
@@ -98,5 +97,13 @@ public class Manager {
 		MarketPO po=userDataService.findMarket(marketname);
 		MarketVO vo=new MarketVO(po);
 		return vo;
+	}
+	
+	/**
+	 * 判断网站管理人员是否存在
+	 * @throws RemoteException 
+	 */
+	public boolean isExist(String managername) throws RemoteException{
+		return userDataService.isExist(managername, "manager");
 	}
 }
