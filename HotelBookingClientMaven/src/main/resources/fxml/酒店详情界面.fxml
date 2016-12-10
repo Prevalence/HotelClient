@@ -7,14 +7,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.hotelInfoViewui.HotelInfoViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.hotelInfoViewui.HotelInfoViewuiController">
    <children>
-      <ImageView fitHeight="829.0" fitWidth="1059.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Rectangle%204.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="90.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="66.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/蓝色色块.png" />
          </image>
@@ -25,14 +25,14 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <ImageView fitHeight="69.0" fitWidth="852.0" layoutX="151.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="73.0" fitWidth="817.0" layoutX="146.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
       <Pane layoutX="147.0" layoutY="68.0" prefHeight="148.0" prefWidth="852.0">
          <children>
-            <ImageView fitHeight="158.0" fitWidth="848.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="143.0" fitWidth="817.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../酒店详情界面/Rectangle%208.png" />
                </image>
@@ -143,5 +143,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutX="-1.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/色块.png" />
+         </image>
+      </ImageView>
    </children>
 </fx:root>
