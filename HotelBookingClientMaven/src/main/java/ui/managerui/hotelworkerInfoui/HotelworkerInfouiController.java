@@ -4,22 +4,22 @@ import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
-import ui.marketui.creditPayui.CreditPayui;
-import ui.marketui.orderViewui.MarketOrderViewui;
-import ui.marketui.promotionui.Promotionui;
 
 public class HotelworkerInfouiController {
 	@FXML
-	private Button marketOrderButton;
+	private Button returnButton;
 	@FXML
-	private Button promotionButton;
+	private Button saveButton;
 	@FXML
-	private Button creditRechargeButton;
+	private TextField workNameField;
 	@FXML
-	private Button searchButton;
+	private TextField hotelField;
+	@FXML
+	private TextField passwordField;
 	@FXML
 	private Pane mainPane;
 
@@ -31,6 +31,8 @@ public class HotelworkerInfouiController {
 	private Stage primaryStage;
 
 	private String managerName;
+	
+	private String hotelworkerName;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -50,7 +52,13 @@ public class HotelworkerInfouiController {
 		mainPane.getChildren().add(userSearchAndAddPane);
 	}
 	
-	
+	/**
+	 * 保存修改的信息
+	 */
+	@FXML
+	private void saveChanges() {
+		
+	}
 
 	/**
 	 * 传递Main的primaryStage
@@ -77,5 +85,10 @@ public class HotelworkerInfouiController {
 		primaryStage.setWidth(1000);
 		primaryStage.setHeight(800);
 		primaryStage.setX(400);
+	}
+	
+	public void setHotelworkerName(String hotelworkerName){
+		this.hotelworkerName=hotelworkerName;
+		workNameField.setText(hotelworkerName);
 	}
 }
