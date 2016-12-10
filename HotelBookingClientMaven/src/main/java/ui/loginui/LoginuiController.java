@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.Factory.UserFactory;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
 import ui.marketui.orderViewui.MarketOrderViewui;
@@ -39,24 +40,24 @@ public class LoginuiController {
 	private Pane mainPane;
 
 	// 用户类型默认为客户，如果用户用其他方式登录再进行改变。
-	private String usertype = "客户";
+	private String usertype = "person";
 
 	// 与选择框对应的身份字符串数组
-	private String type[] = { "酒店工作人员", "网站营销人员", "网站管理人员", "还原" };
+	private String type[] = { "hotelworker", "market", "manager", "还原" };
 
 	private UserblService userbl;
 
 	// 客户的第一个界面：酒店搜索界面
-	private Pane hotelSearchPane;
-
-	// 酒店工作人员的第一个界面：酒店工作人员订单浏览界面
-	private Pane hotelWorkerOrderInfouiPane;
-
-	// 网站营销人员的第一个界面：网站营销人员订单浏览界面
-	private Pane marketOrderInfouiPane;
-
-	// 网站管理人员的第一个界面：搜索与添加用户界面
-	private Pane managerSearchAndAdduiPane;
+	private Pane userFirstPane;
+//
+//	// 酒店工作人员的第一个界面：酒店工作人员订单浏览界面
+//	private Pane hotelWorkerOrderInfouiPane;
+//
+//	// 网站营销人员的第一个界面：网站营销人员订单浏览界面
+//	private Pane marketOrderInfouiPane;
+//
+//	// 网站管理人员的第一个界面：搜索与添加用户界面
+//	private Pane managerSearchAndAdduiPane;
 
 	private Stage primaryStage;
 
@@ -79,25 +80,16 @@ public class LoginuiController {
 	private void Login() {
 		String username = userNameField.getText();
 		String password = passwordField.getText();
+		System.out.println(usertype);
 		// if (userbl.userLogin(username, password, usertype)) {
-		if (usertype.equals("酒店工作人员")) {
-			System.out.println("yes!");
-			hotelWorkerOrderInfouiPane = new HotelOrderViewui(primaryStage, username);
+		if (userbl.userLogin(username, password, usertype)) {
+			System.out.println("========");
+			userFirstPane = UserFactory.createUserPane(primaryStage, usertype, username);
 			mainPane.getChildren().remove(0);
-			mainPane.getChildren().add(hotelWorkerOrderInfouiPane);
-		} else if (usertype.equals("客户")) {
-			hotelSearchPane = new HotelSearchui(primaryStage, username);
-			mainPane.getChildren().remove(0);
-			mainPane.getChildren().add(hotelSearchPane);
-		} else if (usertype.equals("网站营销人员")) {
-			marketOrderInfouiPane = new MarketOrderViewui(primaryStage, username);
-			mainPane.getChildren().remove(0);
-			mainPane.getChildren().add(marketOrderInfouiPane);
+			mainPane.getChildren().add(userFirstPane);
 		}
-		else if (usertype.equals("网站管理人员")) {
-			managerSearchAndAdduiPane = new UserSearchAndAddui(primaryStage, username);
-			mainPane.getChildren().remove(0);
-			mainPane.getChildren().add(managerSearchAndAdduiPane);
+		else{
+			System.out.println("fail!");
 		}
 		// } else {
 		// feedBackField.setText("用户名或密码不正确！");
@@ -124,7 +116,7 @@ public class LoginuiController {
 			public void handle(ActionEvent event) {
 				usertype = type[otherChoices.getSelectionModel().getSelectedIndex()];
 				if (usertype.equals("还原")) {
-					usertype = "客户";
+					usertype = "person";
 					otherLabel.setText("其他方式登录");
 				} else {
 					otherLabel.setText(usertype);
