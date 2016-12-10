@@ -51,11 +51,11 @@ public class UserSearchAndAdduiController {
 	 */
 	@FXML
 	private void addUser() {
-		if (usertype == null || username == null) {
+		usertype = usertypeField.getText();
+		username = usernameField.getText();
+		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("添加信息不全，无法继续，请补全用户类型或用户名称！");
 		} else {
-			usertype = usertypeField.getText();
-			username = usernameField.getText();
 			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userInfoPane);
@@ -69,7 +69,7 @@ public class UserSearchAndAdduiController {
 	private void searchUser() {
 		usertype = usertypeField.getText();
 		username = usernameField.getText();
-		if (usertype == null || username == null) {
+		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("搜索信息不全，无法搜索，请补全用户类型或用户名称！");
 		} else {
 			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
@@ -100,8 +100,8 @@ public class UserSearchAndAdduiController {
 	 * 登录之后调整界面大小，和之后更大的工作区域匹配
 	 */
 	public void modifyStageSize() {
-		primaryStage.setWidth(1000);
-		primaryStage.setHeight(800);
+		primaryStage.setWidth(980);
+		primaryStage.setHeight(832);
 		primaryStage.setX(400);
 	}
 }
