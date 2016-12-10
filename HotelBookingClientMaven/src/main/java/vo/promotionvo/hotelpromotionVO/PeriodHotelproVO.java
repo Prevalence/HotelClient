@@ -3,6 +3,7 @@ package vo.promotionvo.hotelpromotionVO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import po.PromotionPO;
 import po.promotionpo.hotelpromotionPO.PeriodHotelproPO;
 import vo.PromotionVO;
 
@@ -63,15 +64,15 @@ public class PeriodHotelproVO extends PromotionVO{
 	}
 
 
-	public PeriodHotelproPO toPO(PeriodHotelproVO vo){
+	public PromotionPO toPO(PromotionVO vo){
 		PeriodHotelproPO po=new PeriodHotelproPO();
 		po.setPromotionID(vo.getPromotionID());
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
 		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
-		po.setStartTime(vo.getStartTime());
-		po.setEndTime(vo.getEndTime());
-		po.setDiscount(vo.getDiscount());
+		po.setStartTime(((PeriodHotelproVO)vo).getStartTime());
+		po.setEndTime(((PeriodHotelproVO)vo).getEndTime());
+		po.setDiscount(((PeriodHotelproVO)vo).getDiscount());
 		return po;
 		
 	}

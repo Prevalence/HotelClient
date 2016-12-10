@@ -109,8 +109,7 @@ public class UserController  implements UserblService{
 	}
 
 	/**
-	 * 获取会员信息
-	 * @return boolean
+	 * 获取客户信息
 	 */	
 	public PersonVO getPersonInfo(String personname) {
 	try {
@@ -121,6 +120,19 @@ public class UserController  implements UserblService{
 		return null;
 	}
 	
+	}
+	/**
+	 * 获取客户信息
+	 */	
+	public PersonVO getPersonInfo(int personID) {
+		// TODO Auto-generated method stub
+		try {
+			return person.getPersonInfo(personID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**
