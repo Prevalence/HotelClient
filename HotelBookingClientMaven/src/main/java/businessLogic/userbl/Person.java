@@ -12,13 +12,14 @@ import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 import vo.personVO.PersonVO;
 /**
- * @author xiamutian
+ * @authorxiamutian 
  * @author 武秀峰
  */
 
 public class Person {
 	UserDataService userDataService=RemoteHelper.getInstance().getUserDataService();
 	PersonPO person=new PersonPO();
+	
 	
 	/**
 	 * 客户注册
