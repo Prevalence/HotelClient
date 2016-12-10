@@ -2,6 +2,7 @@ package vo.promotionvo.hotelpromotionVO;
 
 import java.util.ArrayList;
 
+import po.PromotionPO;
 import po.promotionpo.hotelpromotionPO.LargeAmountHotelproPO;
 import vo.PromotionVO;
 
@@ -33,13 +34,13 @@ public class LargeAmountHotelproVO extends PromotionVO{
 		this.discount = discount;
 	}
 
-	public LargeAmountHotelproPO toPO(LargeAmountHotelproVO vo){
+	public PromotionPO toPO(PromotionVO vo){
 		LargeAmountHotelproPO po=new LargeAmountHotelproPO();
 		po.setPromotionID(vo.getPromotionID());
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
 		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
-		po.setDiscount(vo.discount);
+		po.setDiscount(((LargeAmountHotelproVO)vo).getDiscount());
 		return po;
 		
 	}

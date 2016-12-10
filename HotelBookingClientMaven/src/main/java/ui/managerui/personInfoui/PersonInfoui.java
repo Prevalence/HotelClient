@@ -1,22 +1,22 @@
-package ui.managerui.userInfoui;
+package ui.managerui.personInfoui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class UserInfoui extends Pane{
+public class PersonInfoui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
 
-	private UserInfouiController userInfoViewuiController;
+	private PersonInfouiController userInfoViewuiController;
 
 	/**
 		 * 接受primarystage用来完成界面最小化和可移动化设置
 		 * 
 		 * @param primaryStage
 		 */
-		public UserInfoui(Stage primaryStage, String personname) {
+		public PersonInfoui(Stage primaryStage, String managerName, String personname) {
 			this.primaryStage = primaryStage;
 			this.personname = personname;
 			initUserInfoViewui();

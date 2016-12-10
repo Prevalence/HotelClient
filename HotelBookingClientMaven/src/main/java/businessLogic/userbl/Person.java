@@ -59,15 +59,15 @@ public class Person {
 					int year=Integer.parseInt(vipInfo.substring(0, 4));
 					int month=Integer.parseInt(vipInfo.substring(4, 6));
 					int date=Integer.parseInt(vipInfo.substring(6, 8));
-					//计算该月天数
-					String strDate = year+""+date;
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM"); 
-					Calendar calendar = new GregorianCalendar(); 
-					Date date1 = sdf.parse(strDate); 
-					calendar.setTime(date1); //放入日期 
-					int daysOfThisMonth=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+//					//计算该月天数
+//					String strDate = year+""+date;
+//					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM"); 
+//					Calendar calendar = new GregorianCalendar(); 
+//					Date date1 = sdf.parse(strDate); 
+//					calendar.setTime(date1); //放入日期 
+//					int daysOfThisMonth=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 					
-					if((1900<=year)&&(year<=Calendar.getInstance().YEAR)&&(1<=month)&&(month<=12)&&(1<=date)&&(date<=daysOfThisMonth)){//日期正确
+					if((1900<=year)&&(year<=Calendar.getInstance().YEAR)&&(1<=month)&&(month<=12)&&(1<=date)&&(date<=31)){//日期正确
 						Calendar birthday=Calendar.getInstance();
 						birthday.set(year, month, date);
 						personvo.setBirthday(birthday);;
@@ -102,6 +102,12 @@ public class Person {
 	 */
 	public PersonVO getPersonInfo(String personname) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personname);
+		PersonVO vo=new PersonVO(po);
+		return vo;
+	}
+	
+	public PersonVO getPersonInfo(int personID) throws RemoteException{
+		PersonPO po=userDataService.findPerson(personID);
 		PersonVO vo=new PersonVO(po);
 		return vo;
 	}

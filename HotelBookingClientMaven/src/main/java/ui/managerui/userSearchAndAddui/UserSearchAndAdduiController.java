@@ -3,63 +3,105 @@ package ui.managerui.userSearchAndAddui;
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.Factory.ManagerFactory;
 
 public class UserSearchAndAdduiController {
-	//TODO
-	
-		@FXML
-		private Pane mainPane;
 
-		private UserblService userbl;
+	@FXML
+	private Button addButton;
+	@FXML
+	private Button searchButton;
+	@FXML
+	private TextField usertypeField;
+	@FXML
+	private TextField usernameField;
+	@FXML
+	private Label feedbackLabel;
+	@FXML
+	private Pane mainPane;
 
-		// 酒店详情查看界面
-		private Pane hotelInfoViewPane;
+	private UserblService userbl;
 
-		// 个人信息界面
-		private Pane personInfoViewPane;
+	// 用户信息界面
+	private Pane userInfoPane;
 
-		private Stage primaryStage;
+	private Stage primaryStage;
 
-		private String personname;
+	private String managerName;
 
-		/**
-		 * The constructor. The constructor is called before the initialize()
-		 * method.
-		 */
-		public UserSearchAndAdduiController() {
-			userbl = new UserController();
+	private String usertype;
+
+	private String username;
+
+	/**
+	 * The constructor. The constructor is called before the initialize()
+	 * method.
+	 */
+	public UserSearchAndAdduiController() {
+		userbl = new UserController();
+	}
+
+	/**
+	 * 添加用户（酒店工作人员和网站营销人员）
+	 */
+	@FXML
+	private void addUser() {
+		if (usertype == null || username == null) {
+			feedbackLabel.setText("添加信息不全，无法继续，请补全用户类型或用户名称！");
+		} else {
+			usertype = usertypeField.getText();
+			username = usernameField.getText();
+			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(userInfoPane);
 		}
+	}
 
-		
-		
-		
+	/**
+	 * 搜索用户（客户、酒店工作人员和网站营销人员）
+	 */
+	@FXML
+	private void searchUser() {
+		usertype = usertypeField.getText();
+		username = usernameField.getText();
+		if (usertype == null || username == null) {
+			feedbackLabel.setText("搜索信息不全，无法搜索，请补全用户类型或用户名称！");
+		} else {
+			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(userInfoPane);
+		}
+	}
 
-		/**
-		 * 传递Main的primaryStage
-		 * 
-		 * @param primaryStage
-		 */
-		public void launchStage(Stage primaryStage) {
-			this.primaryStage = primaryStage;
-		}
+	/**
+	 * 传递Main的primaryStage
+	 * 
+	 * @param primaryStage
+	 */
+	public void launchStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
 
-		/**
-		 * 传递用户名
-		 * 
-		 * @param personname
-		 */
-		public void setPersonname(String personname) {
-			this.personname = personname;
-		}
-		
-		/**
-		 * 登录之后调整界面大小，和之后更大的工作区域匹配
-		 */
-		public void modifyStageSize() {
-			primaryStage.setWidth(1000);
-			primaryStage.setHeight(800);
-			primaryStage.setX(400);
-		}
+	/**
+	 * 传递用户名
+	 * 
+	 * @param managerName
+	 */
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+
+	/**
+	 * 登录之后调整界面大小，和之后更大的工作区域匹配
+	 */
+	public void modifyStageSize() {
+		primaryStage.setWidth(1000);
+		primaryStage.setHeight(800);
+		primaryStage.setX(400);
+	}
 }

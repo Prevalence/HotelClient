@@ -13,6 +13,10 @@ public class BirthdayHotelproVO extends PromotionVO{
 //	private String promotionType="BirthdayHotelPromtion";
 	private int discount;//如打九五折时，discount=95
 	
+	public BirthdayHotelproVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public BirthdayHotelproVO(String promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb, int discount) {
 		super.setPromotionID(promotionID);
@@ -30,13 +34,13 @@ public class BirthdayHotelproVO extends PromotionVO{
 		this.discount = discount;
 	}
 	
-	public BirthdayHotelproPO toPO(BirthdayHotelproVO vo){
+	public PromotionPO toPO(PromotionVO vo){
 		BirthdayHotelproPO po=new BirthdayHotelproPO();
 		po.setPromotionID(vo.getPromotionID());
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
 		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
-		po.setDiscount(vo.discount);
+		po.setDiscount(((BirthdayHotelproVO)vo).getDiscount());
 		return po;
 	}
 

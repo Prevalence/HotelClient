@@ -7,7 +7,6 @@ import businessLogic.userbl.Person;
 import po.OrderPO;
 import po.PromotionPO;
 import po.personPO.PersonPO;
-import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
 import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
@@ -55,7 +54,8 @@ public class PriceCalc {
 		
 		ArrayList<PromotionPO>promotionpolist = new ArrayList<PromotionPO>();
 		for(int i=0; i<promotionvolist.size(); i++){
-			PromotionPO propo=promotionvolist.get(i).toPO(promotionvolist.get(i));
+			PromotionPO propo=new PromotionPO();
+			propo=promotionvolist.get(i).toPO(promotionvolist.get(i));
 			promotionpolist.add(propo);
 		}
 		
@@ -74,7 +74,9 @@ public class PriceCalc {
 		double bestprice=initialtotal;
 		if((personpo!=null)&&(promotionpolist!=null)){
 			for(int i=0;i<promotionpolist.size();i++){
-				discount=Helper.getcalculateinstance(promotionpolist.get(i).getPromotionType());//promotionlist中的项为空，有错
+				PromotionPO temp=promotionpolist.get(i);
+				String promotionType=temp.getPromotionType();
+				discount=Helper.getcalculateinstance(promotionType);
 				double thisprice=discount.getprice(initialtotal,promotionpolist.get(i), personpo, orderpo);
 				if(thisprice<bestprice)
 					bestprice=thisprice;
