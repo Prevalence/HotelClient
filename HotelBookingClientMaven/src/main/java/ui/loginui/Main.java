@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import rmi.ClientRunner;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
@@ -19,6 +20,7 @@ public class Main extends Application {
     private ObservableList<String> others = FXCollections.observableArrayList();
     @Override
     public void start(Stage primaryStage) {
+    	ClientRunner cr=new ClientRunner();
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Hotel Booking System");
         others.add("酒店工作人员");

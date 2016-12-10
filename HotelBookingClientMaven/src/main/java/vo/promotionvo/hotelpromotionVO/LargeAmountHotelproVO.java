@@ -17,7 +17,7 @@ public class LargeAmountHotelproVO extends PromotionVO{
 		super();
 	}
 
-	public LargeAmountHotelproVO(String promotionID, String promotionName, String promotionType,
+	public LargeAmountHotelproVO(int promotionID, String promotionName, String promotionType,
 			String hotelnameOrWeb, int discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);

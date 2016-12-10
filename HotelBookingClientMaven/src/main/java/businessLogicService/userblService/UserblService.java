@@ -96,5 +96,5 @@ public interface UserblService {
 	 * @author xiamutian
 	 * @return boolean
 	 */
-
+	public boolean isExist(String username, String usertype);
 }

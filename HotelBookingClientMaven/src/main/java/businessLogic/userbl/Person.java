@@ -12,13 +12,14 @@ import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 import vo.personVO.PersonVO;
 /**
- * @author xiamutian
+ * @authorxiamutian 
  * @author 武秀峰
  */
 
 public class Person {
 	UserDataService userDataService=RemoteHelper.getInstance().getUserDataService();
 	PersonPO person=new PersonPO();
+	
 	
 	/**
 	 * 客户注册
@@ -120,6 +121,14 @@ public class Person {
 	public boolean personLogin(String personname,String password) throws RemoteException{
 		return userDataService.personLogin(personname, password);
 		
+	}
+	
+	/**
+	 * 判断客户是否存在
+	 * @throws RemoteException 
+	 */
+	public boolean isExist(String personname) throws RemoteException{
+		return userDataService.isExist(personname, "person");
 	}
 
 }
