@@ -50,9 +50,21 @@ public class HotelSearchuiController {
 	@FXML
 	private Label priceLabel;
 	@FXML
+	private Label starLabel;
+	@FXML
+	private Label areaLabel;
+	@FXML
+	private Label bookedLabel;
+	@FXML
 	private Label feedbackLabel;
 	@FXML
 	private ChoiceBox<String> priceChoices;
+	@FXML
+	private ChoiceBox<String> starChoices;
+	@FXML
+	private ChoiceBox<String> areaChoices;
+	@FXML
+	private ChoiceBox<String> bookedChoices;
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView searchTable;
@@ -107,8 +119,9 @@ public class HotelSearchuiController {
 
 	private int priceHigher;
 
-	@SuppressWarnings("unused")
 	private int[] star = { 1, 2, 3, 4, 5 };
+
+	private int starSelected;
 
 	public HotelSearchuiController() {
 		hotelbl = new HotelController();
@@ -150,8 +163,7 @@ public class HotelSearchuiController {
 			hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(hotelInfoViewPane);
-		}
-		else{
+		} else {
 			feedbackLabel.setText("搜索的酒店不存在，请确保酒店名称正确。");
 		}
 	}
@@ -191,7 +203,7 @@ public class HotelSearchuiController {
 	 */
 	@SuppressWarnings("unchecked")
 	@FXML
-	private void searchWithScore() {
+	private void searchWithArea() {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
@@ -248,7 +260,7 @@ public class HotelSearchuiController {
 	 * 
 	 * @param others
 	 */
-	public void setChoiceBox(ObservableList<String> others) {
+	public void setPriceChoiceBox(ObservableList<String> others) {
 		priceChoices.setItems(others);
 		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -263,27 +275,36 @@ public class HotelSearchuiController {
 				roomListHigher.add(roomHigher);
 				hotelWorstConditionVO.setRoom(roomListLower);
 				hotelBestConditionVO.setRoom(roomListHigher);
-				// ArrayList<HotelSearchVO> searchDataList =
-				// hotelbl.findWithReq(hotelWorstConditionVO,
-				// hotelBestConditionVO);
-				// searchData =
-				// FXCollections.observableArrayList(searchDataList);
 				searchWithPrice();
 			}
 		});
-		// priceChoices.setItems(others);
-		// priceChoices.setOnAction(new EventHandler<ActionEvent>() {
-		// public void handle(ActionEvent event) {
-		// usertype = type[priceChoices.getSelectionModel().getSelectedIndex()];
-		// if (usertype.equals("还原")) {
-		// usertype = "客户";
-		// otherLabel.setText("其他方式登录");
-		// } else {
-		// otherLabel.setText(usertype);
-		// }
-		// System.out.println(usertype);
-		// }
-		// });
+	}
+
+	/**
+	 * 设置价格区间选择的组件
+	 * 
+	 * @param others
+	 */
+	public void setStarChoiceBox(ObservableList<String> others) {
+		starChoices.setItems(others);
+		starChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				starLabel.setText("");
+				starSelected = star[starChoices.getSelectionModel().getSelectedIndex()];
+				ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
+				ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
+				RoomVO roomLower = new RoomVO(null, null, priceLower, null, null);
+				RoomVO roomHigher = new RoomVO(null, null, priceHigher, null, null);
+				roomListLower.add(roomLower);
+				roomListHigher.add(roomHigher);
+				hotelWorstConditionVO.setRoom(roomListLower);
+				hotelBestConditionVO.setRoom(roomListHigher);
+				ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+						hotelBestConditionVO);
+				searchData = FXCollections.observableArrayList(searchDataList);
+				searchWithStar();
+			}
+		});
 	}
 
 	/**
@@ -304,7 +325,6 @@ public class HotelSearchuiController {
 								personname);
 						return buttonCell;
 					}
-
 				});
 	}
 }
