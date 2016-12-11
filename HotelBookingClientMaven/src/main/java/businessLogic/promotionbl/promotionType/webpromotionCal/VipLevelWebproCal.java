@@ -2,7 +2,6 @@ package businessLogic.promotionbl.promotionType.webpromotionCal;
 
 import java.util.ArrayList;
 
-import businessLogic.hotelbl.Hotel;
 import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
 import po.PromotionPO;

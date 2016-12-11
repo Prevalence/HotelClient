@@ -13,10 +13,13 @@ import vo.orderVO.orderuiVO.OrderViewVO;
 public class OrderButtonCell extends TableCell<OrderViewVO, Boolean> {
 	private final Button cellButton = new Button("查看详情");
 	private Pane newPane;
+	@SuppressWarnings("unused")
 	private Pane mainPane;
+	@SuppressWarnings("unused")
 	private Stage primaryStage;
+	@SuppressWarnings("unused")
 	private String personname;
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unused" })
 	private TableView table;
 
 	/**

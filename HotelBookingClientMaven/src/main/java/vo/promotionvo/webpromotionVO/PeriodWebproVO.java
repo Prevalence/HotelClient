@@ -3,10 +3,8 @@ package vo.promotionvo.webpromotionVO;
 import java.util.Calendar;
 
 import po.PromotionPO;
-import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
 import po.promotionpo.webpromotionPO.PeriodWebproPO;
 import vo.PromotionVO;
-import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
 /**
  * @author 武秀峰

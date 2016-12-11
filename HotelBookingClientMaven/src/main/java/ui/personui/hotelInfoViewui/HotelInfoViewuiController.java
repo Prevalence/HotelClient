@@ -1,27 +1,45 @@
 package ui.personui.hotelInfoViewui;
 
+import java.util.ArrayList;
+
+import businessLogic.hotelbl.HotelController;
 import businessLogic.userbl.UserController;
+import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
-import vo.hotelVO.hoteluiVO.HotelInfoVO;
+import vo.hotelVO.hotelblVO.CommentVO;
+import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
+import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
 public class HotelInfoViewuiController {
-	//TODO
+	// TODO
 
 	@FXML
 	private Pane mainPane;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
-	
-	private HotelInfoVO hotelInfo;
+
+	private HotelblService hotelbl;
+
+	private HotelVO hotelInfo;
+
+	@SuppressWarnings("unused")
+	private ArrayList<RoomVO> room;
+
+	@SuppressWarnings("unused")
+	private ArrayList<RoomInfoVO> roomInfo;
+
+	private ArrayList<CommentVO> comment;
+
+	@SuppressWarnings("unused")
+	private ArrayList<String> commentList;
 
 	// 酒店搜索界面
 	private Pane hotelSearchPane;
@@ -36,6 +54,7 @@ public class HotelInfoViewuiController {
 
 	private String personname;
 
+	@SuppressWarnings("unused")
 	private String hotelName;
 
 	/**
@@ -44,12 +63,13 @@ public class HotelInfoViewuiController {
 	 */
 	public HotelInfoViewuiController() {
 		userbl = new UserController();
+		hotelbl = new HotelController();
 	}
 
 	public void goTohotelSearchui() {
 
 	}
-	
+
 	/**
 	 * 跳转到个人信息维护界面
 	 * 
@@ -72,7 +92,7 @@ public class HotelInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(personOrderViewPane);
 	}
-	
+
 	/**
 	 * 跳转到酒店搜索界面
 	 */
@@ -82,7 +102,7 @@ public class HotelInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelSearchPane);
 	}
-	
+
 	/**
 	 * 传递Main的primaryStage
 	 * 
@@ -103,11 +123,42 @@ public class HotelInfoViewuiController {
 
 	/**
 	 * 传递酒店名，并将该酒店详情显示在界面上
+	 * 
 	 * @param hotelName
 	 */
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
-		
+		hotelInfo = hotelbl.showHotelInfo(hotelName);
+		comment = hotelInfo.getComment();
+		room = hotelInfo.getRoom();
+		commentList = getCommentList(comment);
+
 	}
 
+	/**
+	 * 从commentVO列表中获取comment字符串组成列表，用于界面显示
+	 * 
+	 * @return commentList
+	 */
+	private ArrayList<String> getCommentList(ArrayList<CommentVO> comment) {
+		ArrayList<String> commentList = new ArrayList<String>();
+		for (int i = 0; i < comment.size(); i++) {
+			commentList.add(comment.get(i).getContent());
+		}
+		return commentList;
+	}
+	
+	/**
+	 * 从roomVO列表中获取用于界面显示的roomInfo列表
+	 * 
+	 * @return roomInfo
+	 */
+	@SuppressWarnings("unused")
+	private ArrayList<RoomInfoVO> getRoomInfoList(ArrayList<RoomVO> room) {
+		ArrayList<RoomInfoVO> roomInfo = new ArrayList<RoomInfoVO>();
+		for (int i = 0; i < room.size(); i++) {
+			
+		}
+		return roomInfo;
+	}
 }

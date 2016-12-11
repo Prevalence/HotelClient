@@ -1,10 +1,8 @@
 package businessLogic.promotionbl;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import businessLogicService.promotionblService.PromotionblService;
-import po.PromotionPO;
 import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;

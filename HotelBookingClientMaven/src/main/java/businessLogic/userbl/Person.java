@@ -2,10 +2,7 @@ package businessLogic.userbl;
 
 import java.rmi.RemoteException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import dataService.userDataService.UserDataService;
 import po.personPO.PersonPO;
@@ -50,6 +47,7 @@ public class Person {
 	 * @throws ParseException 
 	 * @throws RemoteException 
 	 */
+	@SuppressWarnings("static-access")
 	public boolean registeMember(PersonVO personvo, String vipType, String vipInfo) throws ParseException, RemoteException{
 		if(personvo.getVipType().equals("no")){//不是会员，可以注册
 			//判断vipInfo是否符合格式

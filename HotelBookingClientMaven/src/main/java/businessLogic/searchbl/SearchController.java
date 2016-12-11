@@ -8,7 +8,6 @@ import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.SearchVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
-import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.personVO.PersonVO;
 

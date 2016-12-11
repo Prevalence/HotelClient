@@ -1,6 +1,5 @@
 package vo.promotionvo.hotelpromotionVO;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import po.PromotionPO;

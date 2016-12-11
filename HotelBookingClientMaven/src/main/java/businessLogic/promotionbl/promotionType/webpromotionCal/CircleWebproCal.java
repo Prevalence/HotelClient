@@ -1,7 +1,6 @@
 package businessLogic.promotionbl.promotionType.webpromotionCal;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import businessLogic.hotelbl.Hotel;
 import businessLogic.promotionbl.CalculatePrice;

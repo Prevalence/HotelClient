@@ -193,6 +193,7 @@ public class Order{
 	 * @param date
 	 * @return
 	 */
+	@SuppressWarnings("deprecation")
 	public ArrayList<OrderVO> netNumOrders(Calendar date){
 		ArrayList<OrderVO> netNumList=new ArrayList<OrderVO>();
 		try {

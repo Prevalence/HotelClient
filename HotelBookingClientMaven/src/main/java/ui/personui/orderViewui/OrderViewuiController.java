@@ -16,11 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import ui.helper.OrderButtonCell;
-import ui.helper.SearchButtonCell;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.personInfoui.PersonInfoui;
-import vo.hotelVO.hoteluiVO.HotelSearchMock;
-import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.orderVO.orderuiVO.OrderViewVO;
 
 public class OrderViewuiController {
@@ -56,6 +53,7 @@ public class OrderViewuiController {
 	@FXML
 	private TableColumn buttonCol;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	// 填充进TableView的酒店数据

@@ -14,10 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.Factory.UserFactory;
-import ui.hotelworkerui.orderViewui.HotelOrderViewui;
-import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
-import ui.marketui.orderViewui.MarketOrderViewui;
-import ui.personui.hotelSearchui.HotelSearchui;
 
 public class LoginuiController {
 
@@ -45,6 +41,7 @@ public class LoginuiController {
 
 	// 与选择框对应的身份字符串数组
 	private String type[] = { "hotelworker", "market", "manager", "还原" };
+	private String type2[] = { "酒店工作人员", "网站营销人员", "网站营销人员", "客户" };
 
 	private UserblService userbl;
 
@@ -70,6 +67,11 @@ public class LoginuiController {
 		userbl = new UserController();
 
 	}
+	
+	@FXML
+	private void seePassword(){
+		passwordField.setVisible(true);
+	}
 
 	/**
 	 * 登录操作，根据逻辑层登录方法返回的布尔值显示错误提示或者跳转到下个界面
@@ -84,7 +86,6 @@ public class LoginuiController {
 		System.out.println(usertype);
 		// if (userbl.userLogin(username, password, usertype)) {
 		if (userbl.userLogin(username, password, usertype)) {
-			System.out.println("========");
 			userFirstPane = UserFactory.createUserPane(primaryStage, usertype, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userFirstPane);
@@ -116,11 +117,9 @@ public class LoginuiController {
 		otherChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				usertype = type[otherChoices.getSelectionModel().getSelectedIndex()];
+				otherLabel.setText(type2[otherChoices.getSelectionModel().getSelectedIndex()]);
 				if (usertype.equals("还原")) {
 					usertype = "person";
-					otherLabel.setText("其他方式登录");
-				} else {
-					otherLabel.setText(usertype);
 				}
 				System.out.println(usertype);
 			}

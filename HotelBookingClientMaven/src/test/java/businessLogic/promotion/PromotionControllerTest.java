@@ -3,20 +3,16 @@ package businessLogic.promotion;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import businessLogic.promotionbl.PromotionController;
-import po.PromotionPO;
-import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
 import rmi.ClientRunner;
 import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
-import vo.promotionvo.hotelpromotionVO.EnterpriseHotelproVO;
 
 public class PromotionControllerTest {
 	ClientRunner cr=new ClientRunner();
@@ -27,7 +23,6 @@ public class PromotionControllerTest {
 	public void setUp() throws Exception {
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testPriceCut() {
 		/**

@@ -12,16 +12,21 @@ public class HotelCommentuiController {
 		@FXML
 		private Pane mainPane;
 
+		@SuppressWarnings("unused")
 		private UserblService userbl;
 
 		// 酒店详情查看界面
+		@SuppressWarnings("unused")
 		private Pane hotelInfoViewPane;
 
 		// 个人信息界面
+		@SuppressWarnings("unused")
 		private Pane personInfoViewPane;
 
+		@SuppressWarnings("unused")
 		private Stage primaryStage;
 
+		@SuppressWarnings("unused")
 		private String personname;
 
 		/**
