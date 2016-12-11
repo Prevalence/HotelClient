@@ -115,13 +115,4 @@ public class Manager {
 		return vo;
 	}
 	
-	/**
-	 * 判断网站管理人员是否存在
-	 * @param managername
-	 * @return 若存在，返回true；若不存在，返回false
-	 * @throws RemoteException
-	 */
-	public boolean isExist(String managername) throws RemoteException{
-		return userDataService.isExist(managername, "manager");
-	}
 }

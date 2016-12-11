@@ -22,5 +22,4 @@ public interface UserDataService extends Remote{
 	public boolean addMarket(MarketPO marketInfo)throws RemoteException;
 	public boolean managerLogin(String managername,String password)throws RemoteException;
 	public boolean addHotelWorker(HotelWorkerPO hotelworker)throws RemoteException;
-	public boolean isExist(String username, String usertype) throws RemoteException;
 }

@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.text.ParseException;
 
 import businessLogicService.userblService.UserblService;
+
 /**
  * 
  * @author 武秀峰
@@ -242,10 +243,7 @@ public class UserController  implements UserblService{
 				return hotelworker.isExist(username);
 			}else if(usertype.equals("market")){
 				return market.isExist(username);
-			}else if(usertype.equals("manager")){
-				return manager.isExist(username);
-			}
-			else{
+			}else{
 				return false;
 			}
 		} catch (RemoteException e) {
