@@ -25,6 +25,7 @@ public class UserSearchAndAdduiController {
 	@FXML
 	private Pane mainPane;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	// 用户信息界面

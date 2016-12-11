@@ -1,7 +1,5 @@
 package po.promotionpo.webpromotionPO;
 
-import java.sql.Date;
-import java.util.ArrayList;
 
 import po.PromotionPO;
 import vo.PromotionVO;

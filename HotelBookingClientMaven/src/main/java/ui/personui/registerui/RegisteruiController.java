@@ -3,14 +3,9 @@ package ui.personui.registerui;
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.loginui.Loginui;
-import ui.personui.hotelInfoViewui.HotelInfoViewui;
-import ui.personui.personInfoui.PersonInfoui;
 
 public class RegisteruiController {
 	//TODO
@@ -18,6 +13,7 @@ public class RegisteruiController {
 	@FXML
 	private Pane mainPane;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	// 酒店详情查看界面
