@@ -18,11 +18,11 @@ import vo.hotelVO.hotelblVO.RoomVO;
  */
 public class PriceCalc {
 	private CalculatePrice discount=null;
-//	private ArrayList<PromotionPO>promotionlist;
+
 	/**
-	 * 
-	 * @param price 酒店房间的价格
-	 * @param numberAndType 订单中房间数和类型
+	 * 计算最优价格
+	 * @param hotelvo
+	 * @param ordervo
 	 * @return 计算优惠后的最低价格
 	 */
 	public double priceCut(HotelVO hotelvo,OrderVO ordervo){

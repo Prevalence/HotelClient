@@ -16,13 +16,19 @@ import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import businessLogic.orderbl.Order;
 
+/**
+ * 
+ * @author 武秀峰
+ *
+ */
 public class Hotel {
 	private HotelDataService hoteldataservice;
 	Order order=new Order();
+	
 	/**
-	 * 
+	 * 根据酒店名称，获取酒店信息
 	 * @param Hotelname
-	 * @return 获取酒店信息（PO）
+	 * @return HotelVO
 	 * @throws RemoteException 
 	 */
 	public HotelVO showHotelInfo(String Hotelname) throws RemoteException{
@@ -30,8 +36,9 @@ public class Hotel {
 		HotelVO hotelvo=new HotelVO(hotelpo);
 		return hotelvo;
 	}
+	
 	/**
-	 * 
+	 * 修改酒店信息
 	 * @param hotelinfo
 	 * @return 是否修改成功（成功则返回true,不能则返回false）
 	 * @throws RemoteException 
@@ -40,11 +47,10 @@ public class Hotel {
 		HotelPO PO=new HotelPO(hotelinfo);
 		return hoteldataservice.modify(PO);
 	}
+	
 	/**
-	 * 
-	 * @param comment 酒店评价内容
-	 * @param username 用户名
-	 * @param hotelname 酒店名
+	 * 客户评论
+	 * @param commentvo 评价内容
 	 * @return 是否增加评论成功
 	 * @throws RemoteException 
 	 */
@@ -52,11 +58,12 @@ public class Hotel {
 		CommentPO commentpo=new CommentPO(commentvo);
 		return hoteldataservice.addComment(commentpo);
 	}
+	
 	/**
-	 * 
-	 * @param roomtype 房间类型
-	 * @param number 修改数量（包括正数和负数）
-	 * @return 是否修改房间数量成功
+	 * 房间内容修改
+	 * @param hotelname 酒店名称
+	 * @param roomvoList 房间的信息
+	 * @return 是否修改房间信息成功
 	 * @throws RemoteException 
 	 */
 	public boolean roomModify(String hotelname, ArrayList<RoomVO> roomvoList) throws RemoteException{
@@ -67,13 +74,14 @@ public class Hotel {
 		}
 		return hoteldataservice.roomModify(hotelname, roompoList);
 	}
+	
 	/**
-	 * 
-	 * @param bestCondition TODO
-	 * @param roomtype 酒店的要求
+	 * 客户给出要求的房间条件区间，筛选符合条件的酒店，返回酒店列表
+	 * @param worstCondition 最坏酒店条件
+	 * @param bestCondition 最好酒店条件
 	 * @return 符合条件的酒店清单
 	 * @throws RemoteException 
-	 * <a>浏览酒店详细信息时，需要先明确地址和商圈，才能进行查看
+	 * 注意：浏览酒店详细信息时，需要先明确地址和商圈，才能进行查看
 	 */
 	public ArrayList<HotelSearchVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException {
 		ArrayList<HotelVO> resulthotelvolist=new ArrayList<HotelVO>();//resulthotelvoList将转化为HotelSearchVO
@@ -122,10 +130,14 @@ public class Hotel {
 		
 		return hotelSearchVOList;
 	}
+	
 	/**
 	 * 增加酒店
+	 * @param hotelvo 待增加酒店信息
+	 * @return 是否增加成功
+	 * @throws RemoteException 
 	 */
-	public boolean addHotel(HotelVO hotelvo){
+	public boolean addHotel(HotelVO hotelvo) throws RemoteException{
 		try {
 			HotelPO hotelpo=new HotelPO(hotelvo);
 			return hoteldataservice.addHotel(hotelpo);

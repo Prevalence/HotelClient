@@ -18,14 +18,20 @@ public class Market {
 
 	/**
 	 * 网站营销人员的登陆
-	 * @throws RemoteException 
+	 * @param marketname
+	 * @param password
+	 * @return 是否登陆成功
+	 * @throws RemoteException
 	 */
 	public boolean marketlogin(String marketname,String password) throws RemoteException{
 		return userDataService.marketLogin(marketname, password);
 	}
+	
 	/**
 	 * 获取客户信息
-	 * @throws RemoteException 
+	 * @param personname
+	 * @return 客户信息
+	 * @throws RemoteException
 	 */
 	public PersonVO getPersonInfo(String personname) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personname);
@@ -35,7 +41,9 @@ public class Market {
 	
 	/**
 	 * 获取网站营销人员信息
-	 * @throws RemoteException 
+	 * @param marketname
+	 * @return 网站营销人员信息
+	 * @throws RemoteException
 	 */
 	public MarketVO getMarketInfo(String marketname) throws RemoteException{
 		MarketPO po=userDataService.findMarket(marketname);
@@ -45,7 +53,10 @@ public class Market {
 	
 	/**
 	 * 修改信用值
-	 * @throws RemoteException 
+	 * @param personname
+	 * @param credit
+	 * @return 是否修改成功
+	 * @throws RemoteException
 	 */
 	public boolean changeCredit (String personname,int credit) throws RemoteException{
 		return userDataService.changeCredit(personname, credit);
@@ -53,7 +64,9 @@ public class Market {
 	
 	/**
 	 * 判断网站营销人员是否存在
-	 * @throws RemoteException 
+	 * @param marketname
+	 * @return 若存在，返回true；若不存在，返回false
+	 * @throws RemoteException
 	 */
 	public boolean isExist(String marketname) throws RemoteException{
 		return userDataService.isExist(marketname, "market");

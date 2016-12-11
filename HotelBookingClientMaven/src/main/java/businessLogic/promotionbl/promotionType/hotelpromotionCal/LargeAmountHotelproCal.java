@@ -14,12 +14,19 @@ import po.promotionpo.hotelpromotionPO.LargeAmountHotelproPO;
  *  酒店促销策略：三间及以上预订特惠*/
 public class LargeAmountHotelproCal implements CalculatePrice{
 
-	public double getprice(double initialtotal, PromotionPO po, PersonPO personpo,OrderPO orderpo) {
+	/**
+	 * @param initialtotal
+	 * @param promotionpo
+	 * @param personpo
+	 * @param orderpo
+	 * @return double 返回价格
+	 * */
+	public double getprice(double initialtotal, PromotionPO promotionpo, PersonPO personpo,OrderPO orderpo) {
 		double discountPrice=initialtotal;
 		ArrayList<RoomPO> RoomnumList=orderpo.getRoom();
 		
 		if(RoomnumList.size()>=3){//当房间数量大于等于3时
-			int discount=((LargeAmountHotelproPO) po).getDiscount();
+			int discount=((LargeAmountHotelproPO) promotionpo).getDiscount();
 			discountPrice=discountPrice*discount/100.0;
 		}
 		

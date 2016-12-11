@@ -18,6 +18,9 @@ public class Order{
 	
 	private OrderDataService orderDataService;
 	
+	/**
+	 * 构造方法
+	 */
 	public Order(){
 		orderDataService=RemoteHelper.getInstance().getOrderDataService();
 	}
@@ -42,8 +45,8 @@ public class Order{
 
 	/**
 	 * 撤销订单，将订单状态变为已撤销，根据撤销时间减少客户信用值
-	 * @param order
-	 * @return boolean
+	 * @param order 订单信息
+	 * @return boolean 是否撤销成功
 	 * @throws RemoteException 
 	 */
 	public boolean reverseOrder(OrderVO order) throws RemoteException {
@@ -69,7 +72,7 @@ public class Order{
 	/**
 	 * 执行订单，将订单状态变为已执行并且增加客户信用值
 	 * @param order
-	 * @return boolean
+	 * @return boolean 是否执行成功
 	 * @throws RemoteException 
 	 */
 	public boolean finishOrder(OrderVO order) throws RemoteException {
@@ -86,9 +89,10 @@ public class Order{
 	/**
 	 * 生成订单，持久化保存订单信息
 	 * @param order
-	 * @return boolean
+	 * @return boolean 是否成功生成订单
+	 * @throws RemoteException 
 	 */
-	public boolean createOrder(OrderVO order) {
+	public boolean createOrder(OrderVO order) throws RemoteException {
 		UserController user=new UserController();
 		if(user.getPersonInfo(order.getPersonname()).getCredit()<0){//如果客户的信用值小于0，用户不能生成订单
 			return false;
@@ -99,8 +103,8 @@ public class Order{
 
 	/**
 	 * 查看个人订单，根据用户名返回个人订单列表
-	 * @param order
-	 * @return List<OrderVO>
+	 * @param personname
+	 * @return ArrayList<OrderVO> 订单列表
 	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> personOrders(String personname) throws RemoteException {
@@ -115,8 +119,8 @@ public class Order{
 
 	/**
 	 * 酒店工作人员浏览酒店订单，根据酒店名称返回酒店订单列表
-	 * @param order
-	 * @return List<OrderVO>
+	 * @param hotelname
+	 * @return ArrayList<OrderVO> 订单列表
 	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> hotelOrders(String hotelname) throws RemoteException {
@@ -131,8 +135,8 @@ public class Order{
 
 	/**
 	 * 网站营销人员浏览网站订单，返回网站未执行和异常订单列表
-	 * @param order
-	 * @return List<OrderVO>
+	 * @param  无参数
+	 * @return ArrayList<OrderVO> 网站订单列表
 	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> netOrders() throws RemoteException {
@@ -147,10 +151,14 @@ public class Order{
 
 	/**
 	 * 在个人订单查看过程中，进一步查看某个状态（未执行，已执行，已撤销，异常）的订单
-	 * @param time
-	 * @return
+	 * @param personname
+	 * @param 订单状态
+	 * 	 附：订单状态,"nonExecute"代表未执行订单、"alreadyExecute"代表已执行订单、
+			"cancel"代表已撤销订单、"abnormal"代表异常订单、"delay"代表延期订单
+	 * @return 符合条件的酒店列表
+	 * @throws RemoteException 
 	 */
-	public ArrayList<OrderVO> personStateOrders(String personname, String state){
+	public ArrayList<OrderVO> personStateOrders(String personname, String state)throws RemoteException{
 		Order order=new Order();
 		ArrayList<OrderVO> personStateList=new ArrayList<OrderVO>();
 		try {
@@ -168,11 +176,15 @@ public class Order{
 	}
 	
 	/**
-	 * 在酒店订单查看过程中，进一步查看某日的订单
-	 * @param time 格式举例：    20160321
-	 * @return
+	 * 在酒店订单查看过程中，进一步查看某状态订单
+	 * @param hotelname
+	 * @param state 订单状态
+	 * 	 附：订单状态,"nonExecute"代表未执行订单、"alreadyExecute"代表已执行订单、
+			"cancel"代表已撤销订单、"abnormal"代表异常订单、"delay"代表延期订单
+	 * @return ArrayList<OrderVO> 订单列表
+	 * @throws RemoteException 
 	 */
-	public ArrayList<OrderVO> hotelStateOrders(String hotelname, String state){
+	public ArrayList<OrderVO> hotelStateOrders(String hotelname, String state)throws RemoteException{
 		ArrayList<OrderVO> hotelStateList=new ArrayList<OrderVO>();
 		try {
 			hotelStateList.addAll(hotelOrders(hotelname));
@@ -189,11 +201,12 @@ public class Order{
 	}
 	
 	/**
-	 * 在浏览网站订单的过程中，进一步查看某个编号的订单
-	 * @param date
-	 * @return
+	 * 在浏览网站订单的过程中，进一步查看某日订单
+	 * @param date 需要精确到年月日
+	 * @return ArrayList<OrderVO> 订单列表
+	 * @throws RemoteException 
 	 */
-	public ArrayList<OrderVO> netNumOrders(Calendar date){
+	public ArrayList<OrderVO> netNumOrders(Calendar date)throws RemoteException{
 		ArrayList<OrderVO> netNumList=new ArrayList<OrderVO>();
 		try {
 			netNumList.addAll(netOrders());

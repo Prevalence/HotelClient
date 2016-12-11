@@ -20,11 +20,9 @@ public class UserController  implements UserblService{
 	private HotelWorker hotelworker=new HotelWorker();
 	
 	/**
-	 * 客户注册，已知注册信息,根据注册信息更新网站用户信息并返回注册结果
-	 * @param price
-	 * @param number
-	 * @param type
-	 * @return boolean
+	 * 客户注册
+	 * @param userinfo
+	 * @return 是否注册成功
 	 */
 	public boolean register(PersonVO userinfo) {
 		try {
@@ -37,9 +35,9 @@ public class UserController  implements UserblService{
 	}
 
 	/**
-	 * 已知更改客户信息,更新用户信息并返回保存结果
+	 * 客户信息修改，信用不能修改，只能查看
 	 * @param personInfo
-	 * @return boolean
+	 * @return boolean 是否修改成功
 	 */
 	public boolean personSave(PersonVO personInfo) {
 		try {
@@ -52,19 +50,18 @@ public class UserController  implements UserblService{
 	}
 
 	/**
-	 * 已知更改网站营销人员信息,更新用户信息并返回保存结果
+	 * 保存网站营销人员信息
 	 * @param marketInfo
-	 * @return boolean
-	 * @throws RemoteException 
+	 * @return 是否保存成功
 	 */
 	public boolean marketSave(MarketVO marketInfo) throws RemoteException {
 		return manager.marketSave(marketInfo);
 	}
 
 	/**
-	 * 已知更改酒店工作人员人员信息,更新用户信息并返回保存结果
+	 * 保存酒店工作人员信息
 	 * @param hotelWorkerInfo
-	 * @return boolean
+	 * @return 是否保存成功
 	 */
 	public boolean hotelWorkerSave(HotelWorkerVO hotelWorkerInfo) {
 		try {
@@ -79,7 +76,8 @@ public class UserController  implements UserblService{
 	/**
 	 * 修改信用值
 	 * @param personname
-	 * @return boolean
+	 * @param credit
+	 * @return 是否修改成功
 	 */
 	public boolean changeCredit(String personname, int credit) {
 		try {
@@ -92,10 +90,12 @@ public class UserController  implements UserblService{
 	}
 
 	/**
-	 * 注册会员
-	 * @param personInfo
-	 * @return boolean
-	 * @throws ParseException 
+	 * 会员注册
+	 * @param personvo
+	 * @param vipType no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
+	 * @param vipInfo 若是普通VIP，info为生日，格式如：20160120；若是企业VIP，格式为非空字符
+	 * @return 是否注册成功
+	 * @throws ParseException
 	 */
 	public boolean registeMember(PersonVO personInfo, String vipType, String vipInfo) throws ParseException {
 		try {
@@ -108,8 +108,10 @@ public class UserController  implements UserblService{
 	}
 
 	/**
-	 * 获取客户信息
-	 */	
+	 * 根据客户名称获取客户信息
+	 * @param personname
+	 * @return 客户信息
+	 */
 	public PersonVO getPersonInfo(String personname) {
 	try {
 		return person.getPersonInfo(personname);
@@ -120,9 +122,12 @@ public class UserController  implements UserblService{
 	}
 	
 	}
+
 	/**
-	 * 获取客户信息
-	 */	
+	 * 根据客户ID获取客户信息
+	 * @param personID
+	 * @return 客户信息
+	 */
 	public PersonVO getPersonInfo(int personID) {
 		// TODO Auto-generated method stub
 		try {
@@ -136,7 +141,8 @@ public class UserController  implements UserblService{
 
 	/**
 	 * 获取酒店工作人员信息
-	 * @return HotelWorkerPO
+	 * @param hotelWorkername
+	 * @return 酒店工作人员信息
 	 */
 	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) {
 		try {
@@ -150,7 +156,10 @@ public class UserController  implements UserblService{
 
 	/**
 	 * 用户登录
-	 * @return boolean
+	 * @param username
+	 * @param password
+	 * @param usertype
+	 * @return 是否登陆成功
 	 */
 	public boolean userLogin(String username, String password, String usertype) {
 		try {
@@ -174,8 +183,9 @@ public class UserController  implements UserblService{
 	}
 
 	/**
-	 * 增加一个网站营销人员
-	 * @return boolean
+	 * 增加网站营销人员
+	 * @param marketInfo
+	 * @return 是否增加成功
 	 */
 	public boolean marketAdd(MarketVO marketInfo) {
 		try {
@@ -188,8 +198,9 @@ public class UserController  implements UserblService{
 	}
 
 	/**
-	 * 增加一个酒店工作人员
-	 * @return boolean
+	 * 增加酒店工作人员
+	 * @param hotelworkerInfo
+	 * @return 是否增加成功
 	 */
 	public boolean hotelWorkerAdd(HotelWorkerVO hotelworkerInfo) {
 		try {
@@ -203,7 +214,8 @@ public class UserController  implements UserblService{
 
 	/**
 	 * 获取网站营销人员信息
-	 * @return boolean
+	 * @param marketname
+	 * @return 网站营销人员信息
 	 */
 	public MarketVO getMarketInfo(String marketname) {
 		try {
@@ -219,8 +231,8 @@ public class UserController  implements UserblService{
 	 * 判断某用户是否存在
 	 * @param username 用户名称
 	 * @param usertype 用户类型
+	 * @return 若存在，返回true；若不存在，返回false
 	 */
-	@Override
 	public boolean isExist(String username, String usertype) {
 		// TODO Auto-generated method stub
 		try {

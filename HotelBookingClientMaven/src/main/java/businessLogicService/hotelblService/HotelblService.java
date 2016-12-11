@@ -2,7 +2,6 @@ package businessLogicService.hotelblService;
 
 import java.util.ArrayList;
 
-import po.hotelPO.RoomPO;
 import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;

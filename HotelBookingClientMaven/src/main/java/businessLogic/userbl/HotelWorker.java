@@ -14,12 +14,18 @@ import vo.HotelWorkerVO;
 public class HotelWorker {
 	HotelWorkerPO hotelworker=new HotelWorkerPO();
 	UserDataService userDataService;
+	/**
+	 * 构造函数
+	 */
+	public HotelWorker(){
+		userDataService=RemoteHelper.getInstance().getUserDataService();
+	}
 
 	/**
 	 * 酒店工作人员登陆
 	 * @param hotelworkername
 	 * @param password
-	 * @return
+	 * @return 是否登陆成功
 	 * @throws RemoteException
 	 */
 	public boolean hotelworkerLogin(String hotelworkername,String password) throws RemoteException{
@@ -30,6 +36,7 @@ public class HotelWorker {
 	/**
 	 * 获取酒店工作人员信息
 	 * @param hotelWorkername
+	 * @return 酒店工作人员信息
 	 * @throws RemoteException 
 	 */
 	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
@@ -39,13 +46,11 @@ public class HotelWorker {
 		
 	}
 	
-	public HotelWorker(){
-		userDataService=RemoteHelper.getInstance().getUserDataService();
-	}
-	
 	/**
 	 * 判断酒店工作人员是否存在
-	 * @throws RemoteException 
+	 * @param hotelworkername
+	 * @return 是否存在，存在返回true，不存在返回false
+	 * @throws RemoteException
 	 */
 	public boolean isExist(String hotelworkername) throws RemoteException{
 		return userDataService.isExist(hotelworkername, "hotelworker");

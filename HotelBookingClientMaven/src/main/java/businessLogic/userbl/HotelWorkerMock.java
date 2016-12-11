@@ -3,7 +3,6 @@ package businessLogic.userbl;
 import java.util.ArrayList;
 
 import po.HotelWorkerPO;
-import po.MarketPO;
 import vo.HotelWorkerVO;
 
 public class HotelWorkerMock extends HotelWorker{
