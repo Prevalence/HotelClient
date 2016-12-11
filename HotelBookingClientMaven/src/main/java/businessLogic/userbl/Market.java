@@ -69,7 +69,11 @@ public class Market {
 	 * @throws RemoteException
 	 */
 	public boolean isExist(String marketname) throws RemoteException{
-		return userDataService.isExist(marketname, "market");
+		UserController usercontroller=new UserController();
+		if(usercontroller.getMarketInfo(marketname)==null){
+			return false;
+		}
+		return true;
 	}
 	
 	

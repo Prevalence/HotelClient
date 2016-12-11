@@ -53,6 +53,10 @@ public class HotelWorker {
 	 * @throws RemoteException
 	 */
 	public boolean isExist(String hotelworkername) throws RemoteException{
-		return userDataService.isExist(hotelworkername, "hotelworker");
+		UserController usercontroller=new UserController();
+		if(usercontroller.getHotelWorkerInfo(hotelworkername)==null){
+			return false;
+		}
+		return true;
 	}
 }

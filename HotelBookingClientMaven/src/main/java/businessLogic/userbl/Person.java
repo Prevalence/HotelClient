@@ -139,7 +139,11 @@ public class Person {
 	 * @throws RemoteException
 	 */
 	public boolean isExist(String personname) throws RemoteException{
-		return userDataService.isExist(personname, "person");
+		UserController usercontroller=new UserController();
+		if(usercontroller.getPersonInfo(personname)==null){
+			return false;
+		}
+		return true;
 	}
 
 }
