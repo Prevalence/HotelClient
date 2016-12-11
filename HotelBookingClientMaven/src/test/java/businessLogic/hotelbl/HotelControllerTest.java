@@ -10,7 +10,6 @@ import org.junit.Test;
 import businessLogic.hotelbl.HotelController;
 import rmi.ClientRunner;
 import vo.hotelVO.hotelblVO.CommentVO;
-import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 
