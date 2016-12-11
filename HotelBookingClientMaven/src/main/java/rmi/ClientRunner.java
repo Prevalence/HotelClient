@@ -5,7 +5,6 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 
 public class ClientRunner {
