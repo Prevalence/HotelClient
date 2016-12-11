@@ -88,10 +88,9 @@ public class Hotel {
 	public ArrayList<HotelSearchVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException {
 		ArrayList<HotelVO> resulthotelvolist=new ArrayList<HotelVO>();//resulthotelvoList将转化为HotelSearchVO
 		ArrayList<HotelVO> hotelvoList=new ArrayList<HotelVO>();//hotelvoList为中间值
-		boolean isConditionRight=(worstCondition.getAddress().equals(bestCondition.getAddress()))&&
-				(worstCondition.getCircle().equals(bestCondition.getCircle()))&&
+		boolean isConditionRight=(worstCondition.getCircle().equals(bestCondition.getCircle()))&&
 				(worstCondition.isBooked()==bestCondition.isBooked());//最坏和最好条件的地址、商圈、是否预订过需要相等
-		boolean isConditionComplete=((worstCondition.getAddress()!=null)&&(worstCondition.getCircle()!=null));//需要先明确地址和商圈，才能进行查看
+		boolean isConditionComplete=(worstCondition.getCircle()!=null);//需要先明确商圈，才能进行查看
 		if(isConditionRight&&isConditionComplete){//当输入的条件正确时，进行酒店搜索
 			HotelPO worstConditionPO=new HotelPO(worstCondition.toHotelVO(worstCondition));
 			HotelPO bestConditionPO=new HotelPO(bestCondition.toHotelVO(bestCondition));
@@ -103,7 +102,7 @@ public class Hotel {
 			}
 			
 		}else{
-			return null;//需要提醒客户先明确地址和商圈
+			return null;//需要提醒客户先明确商圈
 		}
 		
 		//做是否预订过的筛选
