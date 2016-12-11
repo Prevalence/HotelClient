@@ -63,14 +63,14 @@ public class HotelControllerTest {
 
 	@Test
 	public void testFindWithReq() {
-		HotelConditionVO po=new HotelConditionVO();
-		po.setHotelname("111");
-		po.setAddress("111");
-		po.setCircle("111");
-		HotelConditionVO po2=new HotelConditionVO();
-		po2.setHotelname("111");
-		po2.setAddress("111");
-		po2.setCircle("111");
+//		HotelConditionVO po=new HotelConditionVO();
+//		po.setHotelname("111");
+//		po.setAddress("111");
+//		po.setCircle("111");
+//		HotelConditionVO po2=new HotelConditionVO();
+//		po2.setHotelname("111");
+//		po2.setAddress("111");
+//		po2.setCircle("111");
 //		assertEquals("很好，很棒",hotel.findWithReq(po, po2).get(0).getComment().get(0));
 	}
 
