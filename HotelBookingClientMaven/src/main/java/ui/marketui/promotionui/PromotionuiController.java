@@ -21,6 +21,7 @@ public class PromotionuiController {
 	@FXML
 	private Pane mainPane;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	// 网站订单浏览界面

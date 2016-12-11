@@ -2,7 +2,6 @@ package ui.personui.registerui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import ui.personui.hotelSearchui.HotelSearchuiController;
 
 public class Registerui {
 	private Stage primaryStage;

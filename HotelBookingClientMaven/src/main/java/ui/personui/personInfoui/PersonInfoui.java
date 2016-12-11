@@ -3,7 +3,6 @@ package ui.personui.personInfoui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ui.personui.hotelInfoViewui.HotelInfoViewuiController;
 
 public class PersonInfoui extends Pane{
 	private Stage primaryStage;

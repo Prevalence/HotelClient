@@ -1,6 +1,5 @@
 package po.promotionpo.hotelpromotionPO;
 
-import java.util.ArrayList;
 
 import po.PromotionPO;
 import vo.PromotionVO;

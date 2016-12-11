@@ -12,22 +12,29 @@ public class OrderInfoViewuiController {
 		@FXML
 		private Pane mainPane;
 
+		@SuppressWarnings("unused")
 		private UserblService userbl;
 
 		// 酒店订单浏览界面
+		@SuppressWarnings("unused")
 		private Pane hotelOrderPane;
 
 		// 促销策略界面
+		@SuppressWarnings("unused")
 		private Pane promotionPane;
 
 		// 酒店信息界面
+		@SuppressWarnings("unused")
 		private Pane hotelInfoPane;
 
 		// 房间信息界面
+		@SuppressWarnings("unused")
 		private Pane roomInfoPane;
 
+		@SuppressWarnings("unused")
 		private Stage primaryStage;
 
+		@SuppressWarnings("unused")
 		private String personname;
 
 		/**
