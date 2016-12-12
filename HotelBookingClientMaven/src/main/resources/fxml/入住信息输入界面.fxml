@@ -154,12 +154,22 @@
             <TextField layoutX="130.0" layoutY="269.0" prefHeight="30.0" prefWidth="105.0" />
             <TextField layoutX="130.0" layoutY="328.0" prefHeight="30.0" prefWidth="105.0" />
             <TextField layoutX="130.0" layoutY="384.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="280.0" layoutY="147.0" prefHeight="48.0" prefWidth="105.0" text="剩余数量：" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
             <Label layoutX="280.0" layoutY="102.0" prefHeight="45.0" prefWidth="82.0" text="房间数：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <TextField layoutX="362.0" layoutY="109.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="280.0" layoutY="202.0" prefHeight="48.0" prefWidth="105.0" text="房间价格：" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Button fx:id="reverseButton" layoutX="543.0" layoutY="689.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
