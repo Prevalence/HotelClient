@@ -62,6 +62,7 @@ public class HotelSearchui extends Pane {
 		hotelSearchuiController.setStarChoiceBox(stars);
 		hotelSearchuiController.setScoreChoiceBox(scores);
 		hotelSearchuiController.setAreaChoiceBox(areas);
+		hotelSearchuiController.setBookedChoiceBox(booked);
 		hotelSearchuiController.initTableView();
 	}
 }

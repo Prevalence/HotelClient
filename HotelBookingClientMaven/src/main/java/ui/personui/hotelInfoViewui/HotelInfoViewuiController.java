@@ -129,6 +129,9 @@ public class HotelInfoViewuiController {
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
 		hotelInfo = hotelbl.showHotelInfo(hotelName);
+		if(hotelInfo==null){
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		}
 		comment = hotelInfo.getComment();
 		room = hotelInfo.getRoom();
 		commentList = getCommentList(comment);

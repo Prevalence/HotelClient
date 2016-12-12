@@ -196,7 +196,7 @@ public class HotelSearchuiController {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "5", "nanjing", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel1", "5", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
@@ -211,7 +211,7 @@ public class HotelSearchuiController {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "4", "nanjing", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel2", "4", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
@@ -226,7 +226,7 @@ public class HotelSearchuiController {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "1", "商圈", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel3", "1", "商圈", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
@@ -241,7 +241,7 @@ public class HotelSearchuiController {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "3", "nanjing", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel4", "3", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
@@ -252,11 +252,11 @@ public class HotelSearchuiController {
 	 */
 	@SuppressWarnings("unchecked")
 	@FXML
-	private void searchWithHistory() {
+	private void searchWithBooked() {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "2", "nanjing", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel5", "2", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
@@ -437,6 +437,45 @@ public class HotelSearchuiController {
 //							hotelBestConditionVO);
 //					searchData = FXCollections.observableArrayList(searchDataList);
 					searchWithArea();
+				} else {
+					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
+				}
+			}
+		});
+	}
+	
+	/**
+	 * 设置评分区间选择的组件
+	 * 
+	 * @param others
+	 */
+	public void setBookedChoiceBox(ObservableList<String> others) {
+		bookedChoices.setItems(others);
+		bookedChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				bookedLabel.setText("");
+				if (!area.equals("")) {
+					bookedSelected = booked[bookedChoices.getSelectionModel().getSelectedIndex()];
+					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
+					ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
+					RoomVO roomLower = new RoomVO(null, null, 0, null, null);
+					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
+					roomListLower.add(roomLower);
+					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setRoom(roomListLower);
+					hotelBestConditionVO.setRoom(roomListHigher);
+					hotelWorstConditionVO.setStar(starSelected);
+					hotelBestConditionVO.setStar(5);
+					hotelWorstConditionVO.setScore(scoreSelected);
+					hotelBestConditionVO.setScore(5.0);
+					hotelWorstConditionVO.setCircle(area);
+					hotelBestConditionVO.setCircle(area);
+					hotelWorstConditionVO.setBooked(bookedSelected);
+					hotelBestConditionVO.setBooked(bookedSelected);
+//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+//							hotelBestConditionVO);
+//					searchData = FXCollections.observableArrayList(searchDataList);
+					searchWithBooked();
 				} else {
 					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
 				}

@@ -45,6 +45,7 @@ public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 			public void handle(ActionEvent t) {
 				String selectedHotelName = ((HotelSearchVO) table.getItems().get(getTableRow().getIndex()))
 						.getHotelName();
+				System.out.println("hotelName:"+selectedHotelName);
 				newPane = new HotelInfoViewui(primaryStage, personname, selectedHotelName);
 				mainPane.getChildren().remove(0);
 				mainPane.getChildren().add(newPane);
