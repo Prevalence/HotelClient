@@ -17,6 +17,8 @@ public class HotelSearchui extends Pane {
 	
 	private ObservableList<String> stars=FXCollections.observableArrayList();
 	
+	private ObservableList<String> scores=FXCollections.observableArrayList();
+	
 	private ObservableList<String> areas=FXCollections.observableArrayList();
 	
 	private ObservableList<String> booked=FXCollections.observableArrayList();
@@ -30,7 +32,8 @@ public class HotelSearchui extends Pane {
 		this.primaryStage = primaryStage;
 		this.personname = personname;
 		prices.addAll("0-300","300-600","600-1200","1200以上");
-		stars.addAll("1","2","3","4","5");
+		stars.addAll("1-5","2-5","3-5","4-5","5");
+		scores.addAll("1.0-5.0","2.0-5.0","3.0-5.0","4.0-5.0","5.0");
 		areas.addAll("商圈1","商圈2");
 		booked.addAll("是","否");
 		System.out.println(prices.get(0));
@@ -57,6 +60,8 @@ public class HotelSearchui extends Pane {
 		hotelSearchuiController.modifyStageSize();
 		hotelSearchuiController.setPriceChoiceBox(prices);
 		hotelSearchuiController.setStarChoiceBox(stars);
+		hotelSearchuiController.setScoreChoiceBox(scores);
+		hotelSearchuiController.setAreaChoiceBox(areas);
 		hotelSearchuiController.initTableView();
 	}
 }

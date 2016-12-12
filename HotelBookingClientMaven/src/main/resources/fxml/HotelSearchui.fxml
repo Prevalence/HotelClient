@@ -91,7 +91,7 @@
       <ChoiceBox fx:id="starChoices" layoutX="347.0" layoutY="181.0" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: white; -fx-border-color: black;" />
       <ChoiceBox fx:id="areaChoices" layoutX="632.0" layoutY="181.0" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: white; -fx-border-color: black;" />
       <ChoiceBox fx:id="bookedChoices" layoutX="773.0" layoutY="181.0" prefHeight="32.0" prefWidth="181.0" style="-fx-background-color: white; -fx-border-color: black;" />
-      <ChoiceBox layoutX="489.0" layoutY="181.0" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: white; -fx-border-color: black;" />
+      <ChoiceBox fx:id="scoreChoices" layoutX="489.0" layoutY="181.0" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: white; -fx-border-color: black;" />
       <Label fx:id="priceLabel" layoutX="234.0" layoutY="185.0" text="价格" textFill="#000c0d">
          <font>
             <Font size="18.0" />
@@ -169,7 +169,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="518.0" layoutY="185.0" text="评分">
+      <Label fx:id="scoreLabel" layoutX="518.0" layoutY="185.0" text="评分">
          <font>
             <Font size="18.0" />
          </font>
