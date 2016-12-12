@@ -193,7 +193,7 @@ public class Order{
 			e.printStackTrace();
 		}
 		for(int i=0; i<hotelStateList.size(); i++){
-			if(!(hotelStateList.get(i).equals(state))){
+			if(hotelStateList.get(i).equals(state)!=false){
 				hotelStateList.remove(i);
 			}
 		}

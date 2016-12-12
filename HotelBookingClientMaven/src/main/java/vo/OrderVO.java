@@ -60,9 +60,9 @@ public class OrderVO {
 		this.childnum=orderPO.getChildnum();//儿童的人数。默认为0
 		
 		this.producttime=orderPO.getProducttime();//订单生成时间
-		this.executetime=orderPO.getProducttime();//订单执行时间
+		this.executetime=orderPO.getExecutetime();//订单执行时间
 		this.canceltime=orderPO.getCanceltime();//订单取消时间
-		this.latestExecutetime=orderPO.getCanceltime();//订单最晚执行时间
+		this.latestExecutetime=orderPO.getLatestExecutetime();//订单最晚执行时间
 		this.predictLeaveTime = orderPO.getPredictLeaveTime();
 		this.actualLeaveTime=orderPO.getActualLeaveTime();//退房时间
 	}
