@@ -116,17 +116,22 @@
             <Image url="@../酒店搜索界面/结果栏/酒店名称.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="41.0" layoutX="400.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="18.0" fitWidth="41.0" layoutX="359.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店搜索界面/结果栏/星级.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="100.0" layoutX="542.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="18.0" fitWidth="100.0" layoutX="632.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店搜索界面/结果栏/酒店商圈.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="40.0" layoutX="730.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="18.0" fitWidth="77.0" layoutX="498.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店搜索界面/结果栏/评分.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="40.0" layoutX="800.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店搜索界面/结果栏/地址.png" />
          </image>
