@@ -2,6 +2,7 @@ package businessLogic.hotelbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import businessLogicService.hotelblService.HotelblService;
 import vo.hotelVO.hotelblVO.CommentVO;
@@ -9,6 +10,7 @@ import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
+import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
 /**
  * HotelController 控制hotel相关的逻辑操作
@@ -120,6 +122,26 @@ public class HotelController implements HotelblService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+	/**
+	 * 返回符合条件的对应酒店的房间
+	 * @param hotelname
+	 * @param roomtype
+	 * @param starttime
+	 * @param endtime
+	 * @return 符合条件的对应酒店的房间
+	 */
+	@Override
+	public RoomInfoVO findReqRoom(String hotelname, String roomtype, Calendar starttime, Calendar endtime) {
+		// TODO Auto-generated method stub
+		try {
+			return hotel.findReqRoom(hotelname, roomtype, starttime, endtime);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

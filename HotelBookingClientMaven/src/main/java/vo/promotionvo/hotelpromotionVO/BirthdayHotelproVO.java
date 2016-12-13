@@ -1,7 +1,5 @@
 package vo.promotionvo.hotelpromotionVO;
 
-import java.util.ArrayList;
-
 import po.PromotionPO;
 import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
 import vo.PromotionVO;

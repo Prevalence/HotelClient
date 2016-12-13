@@ -2,6 +2,7 @@ package businessLogic.hotelbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import dataService.hotelDataService.HotelDataService;
 import po.hotelPO.CommentPO;
@@ -14,6 +15,7 @@ import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
+import vo.hotelVO.hoteluiVO.RoomInfoVO;
 import businessLogic.orderbl.Order;
 
 /**
@@ -86,10 +88,9 @@ public class Hotel {
 	public ArrayList<HotelSearchVO> findWithReq(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException {
 		ArrayList<HotelVO> resulthotelvolist=new ArrayList<HotelVO>();//resulthotelvoList将转化为HotelSearchVO
 		ArrayList<HotelVO> hotelvoList=new ArrayList<HotelVO>();//hotelvoList为中间值
-		boolean isConditionRight=(worstCondition.getAddress().equals(bestCondition.getAddress()))&&
-				(worstCondition.getCircle().equals(bestCondition.getCircle()))&&
+		boolean isConditionRight=(worstCondition.getCircle().equals(bestCondition.getCircle()))&&
 				(worstCondition.isBooked()==bestCondition.isBooked());//最坏和最好条件的地址、商圈、是否预订过需要相等
-		boolean isConditionComplete=((worstCondition.getAddress()!=null)&&(worstCondition.getCircle()!=null));//需要先明确地址和商圈，才能进行查看
+		boolean isConditionComplete=(worstCondition.getCircle()!=null);//需要先明确商圈，才能进行查看
 		if(isConditionRight&&isConditionComplete){//当输入的条件正确时，进行酒店搜索
 			HotelPO worstConditionPO=new HotelPO(worstCondition.toHotelVO(worstCondition));
 			HotelPO bestConditionPO=new HotelPO(bestCondition.toHotelVO(bestCondition));
@@ -101,7 +102,7 @@ public class Hotel {
 			}
 			
 		}else{
-			return null;//需要提醒客户先明确地址和商圈
+			return null;//需要提醒客户先明确商圈
 		}
 		
 		//做是否预订过的筛选
@@ -146,6 +147,54 @@ public class Hotel {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	/**
+	 * 返回符合条件的对应酒店的房间
+	 * @param hotelname
+	 * @param roomtype
+	 * @param starttime
+	 * @param endtime
+	 * @return 符合条件的对应酒店的房间
+	 */
+	public RoomInfoVO findReqRoom(String hotelname, String roomtype, Calendar starttime, Calendar endtime)throws RemoteException {
+		// TODO Auto-generated method stub
+		HotelController hotelcontroller=new HotelController();
+		HotelVO hotelvo=hotelcontroller.showHotelInfo(hotelname);
+		ArrayList<RoomVO> rooms=hotelvo.getRoom();
+		
+		int numOfRoom=0;
+		int roomPrice=0;
+		for(int i=0; i<rooms.size(); i++){
+			if(rooms.get(i).getRoomType().equals(roomtype)){//当roomtype符合时
+				roomPrice=rooms.get(i).getRoomPrice();
+				
+				ArrayList<Calendar> roomStarttime=rooms.get(i).getCheckInTime();
+				ArrayList<Calendar> roomEndtime=rooms.get(i).getCheckOutTime();
+				
+				boolean isEmpty=(roomStarttime.size()==0)&&(roomEndtime.size()==0);
+				boolean isFreeForBooking=false;
+				for(int j=0; j<roomStarttime.size()-1; j++){
+					if((starttime.after(roomEndtime.get(j)))&&(endtime.before(roomStarttime.get(j+1)))){
+						isFreeForBooking=true;
+					}
+				}
+				if(roomStarttime.size()>0){
+					if(starttime.after(roomEndtime.get(roomStarttime.size()-1))){
+						isFreeForBooking=true;
+					}
+				}
+				
+				if(isEmpty||isFreeForBooking){
+					numOfRoom=numOfRoom+1;
+				}
+				
+			}
+		}
+		
+		RoomInfoVO roomInfoVO=new RoomInfoVO(roomtype,roomPrice, numOfRoom);
+		
+		return roomInfoVO;
 	}
 	
 	/**

@@ -14,11 +14,15 @@ import vo.hotelVO.hoteluiVO.HotelSearchVO;
 public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 	private final Button cellButton = new Button("查看详情");
 	private Pane newPane;
+	@SuppressWarnings("unused")
 	private Pane mainPane;
+	@SuppressWarnings("unused")
 	private Stage primaryStage;
+	@SuppressWarnings("unused")
 	private String personname;
+	@SuppressWarnings("unused")
 	private String selectedHotelName;
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unused" })
 	private TableView table;
 
 	/**
@@ -36,12 +40,12 @@ public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 		this.mainPane = mainPane;
 		this.primaryStage = primaryStage;
 		this.personname = personname;
-		this.selectedHotelName = selectedHotelName;
 		cellButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent t) {
 				String selectedHotelName = ((HotelSearchVO) table.getItems().get(getTableRow().getIndex()))
 						.getHotelName();
+				System.out.println("hotelName:"+selectedHotelName);
 				newPane = new HotelInfoViewui(primaryStage, personname, selectedHotelName);
 				mainPane.getChildren().remove(0);
 				mainPane.getChildren().add(newPane);

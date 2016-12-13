@@ -20,7 +20,8 @@ public class Main extends Application {
     private ObservableList<String> others = FXCollections.observableArrayList();
     @Override
     public void start(Stage primaryStage) {
-    	ClientRunner cr=new ClientRunner();
+    	@SuppressWarnings("unused")
+		ClientRunner cr=new ClientRunner();
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Hotel Booking System");
         others.add("酒店工作人员");

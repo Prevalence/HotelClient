@@ -27,6 +27,7 @@ public class PersonInfouiController {
 	@FXML
 	private Pane mainPane;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	// 网站管理人员首界面
@@ -36,6 +37,7 @@ public class PersonInfouiController {
 
 	private String managerName;
 	
+	@SuppressWarnings("unused")
 	private String personname;
 
 	/**

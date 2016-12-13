@@ -50,6 +50,7 @@ public class Person {
 	 * @throws ParseException
 	 * @throws RemoteException
 	 */
+	@SuppressWarnings("static-access")
 	public boolean registeMember(PersonVO personvo, String vipType, String vipInfo) throws ParseException, RemoteException{
 		if(personvo.getVipType().equals("no")){//不是会员，可以注册
 			//判断vipInfo是否符合格式
@@ -139,7 +140,11 @@ public class Person {
 	 * @throws RemoteException
 	 */
 	public boolean isExist(String personname) throws RemoteException{
-		return userDataService.isExist(personname, "person");
+		UserController usercontroller=new UserController();
+		if(usercontroller.getPersonInfo(personname)==null){
+			return false;
+		}
+		return true;
 	}
 
 }

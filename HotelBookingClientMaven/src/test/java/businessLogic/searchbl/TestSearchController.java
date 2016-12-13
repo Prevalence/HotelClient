@@ -2,17 +2,10 @@ package businessLogic.searchbl;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Test;
 
-import businessLogic.searchbl.Search;
 import businessLogic.searchbl.SearchController;
-import businessLogic.searchbl.SearchHistory;
-import po.HotelWorkerPO;
-import po.MarketPO;
-import po.SearchPO;
 import rmi.ClientRunner;
 import vo.SearchVO;
 

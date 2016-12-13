@@ -68,9 +68,9 @@ public class OrderPO implements Serializable{
 		this.childnum=orderVO.getChildnum();//儿童的人数。默认为0
 		
 		this.producttime=orderVO.getProducttime();//订单生成时间
-		this.executetime=orderVO.getProducttime();//订单执行时间
+		this.executetime=orderVO.getExecutetime();//订单执行时间
 		this.canceltime=orderVO.getCanceltime();//订单取消时间
-		this.latestExecutetime=orderVO.getCanceltime();//订单最晚执行时间
+		this.latestExecutetime=orderVO.getLatestExecutetime();//订单最晚执行时间
 		this.predictLeaveTime = orderVO.getPredictLeaveTime();
 		this.actualLeaveTime=orderVO.getActualLeaveTime();//退房时间
 	}

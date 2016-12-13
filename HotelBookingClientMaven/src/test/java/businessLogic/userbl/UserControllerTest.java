@@ -3,7 +3,6 @@ package businessLogic.userbl;
 import static org.junit.Assert.*;
 
 import java.text.ParseException;
-import java.util.Calendar;
 
 import org.junit.Before;
 import org.junit.Test;

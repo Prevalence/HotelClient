@@ -193,7 +193,7 @@ public class Order{
 			e.printStackTrace();
 		}
 		for(int i=0; i<hotelStateList.size(); i++){
-			if(!(hotelStateList.get(i).equals(state))){
+			if(hotelStateList.get(i).equals(state)!=false){
 				hotelStateList.remove(i);
 			}
 		}
@@ -206,6 +206,7 @@ public class Order{
 	 * @return ArrayList<OrderVO> 订单列表
 	 * @throws RemoteException 
 	 */
+	@SuppressWarnings("deprecation")
 	public ArrayList<OrderVO> netNumOrders(Calendar date)throws RemoteException{
 		ArrayList<OrderVO> netNumList=new ArrayList<OrderVO>();
 		try {

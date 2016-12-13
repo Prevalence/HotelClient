@@ -24,6 +24,7 @@ public class RoomInfouiController {
 	@FXML
 	private Pane mainPane;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	// 酒店订单浏览界面

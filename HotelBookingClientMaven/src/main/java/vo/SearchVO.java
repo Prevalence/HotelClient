@@ -1,6 +1,5 @@
 package vo;
 
-import java.io.Serializable;
 import java.util.Calendar;
 
 import po.SearchPO;

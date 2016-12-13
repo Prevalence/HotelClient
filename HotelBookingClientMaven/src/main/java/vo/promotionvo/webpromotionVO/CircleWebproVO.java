@@ -1,12 +1,8 @@
 package vo.promotionvo.webpromotionVO;
 
-import java.util.ArrayList;
-
 import po.PromotionPO;
-import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
 import po.promotionpo.webpromotionPO.CircleWebproPO;
 import vo.PromotionVO;
-import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
 /**
  * @author 武秀峰
@@ -17,6 +13,7 @@ public class CircleWebproVO extends PromotionVO{
 	private int vipLevel;
 	private String circle;//商圈
 	private int discount;//如打九五折时，discount=95
+	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 	
 	public CircleWebproVO() {

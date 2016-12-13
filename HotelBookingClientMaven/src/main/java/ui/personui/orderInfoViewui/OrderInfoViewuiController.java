@@ -19,6 +19,7 @@ public class OrderInfoViewuiController {
 	@FXML
 	private Pane mainPane;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	// 酒店详情查看界面

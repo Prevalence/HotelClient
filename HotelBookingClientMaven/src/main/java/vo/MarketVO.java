@@ -1,7 +1,5 @@
 package vo;
 
-import java.io.Serializable;
-
 import po.MarketPO;
 
 public class MarketVO {
