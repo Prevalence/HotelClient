@@ -56,9 +56,11 @@ public class Promotion {
 		//否则为酒店名称，返回对应酒店促销策略
 		ArrayList<PromotionPO> propoList=promotiondataservice.find(hotelnameOrWeb);
 		ArrayList<PromotionVO> provoList=new ArrayList<PromotionVO>();
-		for(int i=0; i<propoList.size(); i++){
-			PromotionVO provo=(propoList.get(i)).toVO(propoList.get(i));
-			provoList.add(provo);
+		if(propoList!=null){
+			for(int i=0; i<propoList.size(); i++){
+				PromotionVO provo=(propoList.get(i)).toVO(propoList.get(i));
+				provoList.add(provo);
+			}
 		}
 		return provoList;
 	}

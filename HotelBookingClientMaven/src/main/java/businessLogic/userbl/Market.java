@@ -35,7 +35,10 @@ public class Market {
 	 */
 	public PersonVO getPersonInfo(String personname) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personname);
-		PersonVO vo=new PersonVO(po);
+		PersonVO vo=new PersonVO();
+		if(po!=null){
+			vo=new PersonVO(po);
+		}
 		return vo;
 	}
 	
@@ -47,7 +50,10 @@ public class Market {
 	 */
 	public MarketVO getMarketInfo(String marketname) throws RemoteException{
 		MarketPO po=userDataService.findMarket(marketname);
-		MarketVO vo=new MarketVO(po);
+		MarketVO vo=new MarketVO();
+		if(po!=null){
+			vo=new MarketVO(po);
+		}
 		return vo;
 	}
 	
@@ -59,7 +65,14 @@ public class Market {
 	 * @throws RemoteException
 	 */
 	public boolean changeCredit (String personname,int credit) throws RemoteException{
-		return userDataService.changeCredit(personname, credit);
+		Person person=new Person();
+		PersonVO personvo=person.getPersonInfo(personname);
+		int oriCredit=personvo.getCredit();
+		personvo.setCredit(oriCredit+credit);
+		if(personvo.getVipType().equals("no")==false){//当客户是VIP时
+			personvo.setVipLevel((oriCredit+credit)/1000);
+		}
+		return person.modifyPerson(personvo);
 	}
 	
 	/**

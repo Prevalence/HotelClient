@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -42,7 +43,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <Label fx:id="memberTypeLabel" layoutX="133.0" layoutY="51.0" text="普通会员" textFill="#aab1b2">
+            <Label fx:id="memberTypeLabel" layoutX="133.0" layoutY="51.0" text="普通会员">
                <font>
                   <Font size="16.0" />
                </font>
@@ -52,7 +53,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="creditLabel" layoutX="156.0" layoutY="83.0" prefHeight="22.0" prefWidth="93.0" text="9036" textFill="#aab1b2">
+            <Label fx:id="creditLabel" layoutX="156.0" layoutY="83.0" prefHeight="22.0" prefWidth="93.0" text="9036">
                <font>
                   <Font size="16.0" />
                </font>
@@ -85,16 +86,62 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TextField layoutX="372.0" layoutY="74.0" prefHeight="41.0" prefWidth="93.0" promptText="联系方式：" style="-fx-background-color: transparent;">
+            <Label layoutX="379.0" layoutY="52.0" text="所属企业：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="464.0" layoutY="73.0" prefHeight="41.0" prefWidth="93.0" promptText="联系方式" style="-fx-background-color: transparent;">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField layoutX="372.0" layoutY="42.0" prefHeight="41.0" prefWidth="93.0" promptText="所属企业：" style="-fx-background-color: transparent;">
+            <TextField layoutX="464.0" layoutY="42.0" prefHeight="41.0" prefWidth="93.0" promptText="所属企业" style="-fx-background-color: transparent;">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
+            <TextField layoutX="427.0" layoutY="11.0" prefHeight="28.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="379.0" layoutY="83.0" text="联系方式：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="379.0" layoutY="17.0" text="生日：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="565.0" layoutY="11.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="499.0" layoutY="11.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="475.0" layoutY="17.0" text="年">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="545.0" layoutY="17.0" text="月">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="607.0" layoutY="17.0" text="日">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button layoutX="208.0" layoutY="45.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: transparent;" text="登记为会员？" textFill="#5db9c2" />
          </children>
       </Pane>
       <Button fx:id="hotelSearchButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">

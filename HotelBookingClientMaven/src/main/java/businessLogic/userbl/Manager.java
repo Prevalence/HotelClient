@@ -62,7 +62,10 @@ public class Manager {
 	 */
 	public PersonVO getPersonInfo(String personname) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personname);
-		PersonVO vo=new PersonVO(po);
+		PersonVO vo=new PersonVO();
+		if(vo!=null){
+			vo=new PersonVO(po);
+		}
 		return vo;
 		
 	}
@@ -75,7 +78,10 @@ public class Manager {
 	 */
 	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
 		HotelWorkerPO po=userDataService.findHotelWorker(hotelWorkername);
-		HotelWorkerVO vo=new HotelWorkerVO(po);
+		HotelWorkerVO vo=new HotelWorkerVO();
+		if(po!=null){
+			vo=new HotelWorkerVO(po);
+		}
 		return vo;
 	}
 	
@@ -111,7 +117,10 @@ public class Manager {
 	 */
 	public MarketVO getMarketInfo(String marketname) throws RemoteException{
 		MarketPO po=userDataService.findMarket(marketname);
-		MarketVO vo=new MarketVO(po);
+		MarketVO vo=new MarketVO();
+		if(po!=null){
+			vo=new MarketVO(po);
+		}
 		return vo;
 	}
 	
