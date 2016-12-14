@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.Factory.UserFactory;
+import ui.personui.registerui.Registerui;
 
 public class LoginuiController {
 
@@ -47,15 +48,18 @@ public class LoginuiController {
 
 	// 客户的第一个界面：酒店搜索界面
 	private Pane userFirstPane;
-//
-//	// 酒店工作人员的第一个界面：酒店工作人员订单浏览界面
-//	private Pane hotelWorkerOrderInfouiPane;
-//
-//	// 网站营销人员的第一个界面：网站营销人员订单浏览界面
-//	private Pane marketOrderInfouiPane;
-//
-//	// 网站管理人员的第一个界面：搜索与添加用户界面
-//	private Pane managerSearchAndAdduiPane;
+
+	// 客户的第一个界面：酒店搜索界面
+	private Pane signupPane;
+	//
+	// // 酒店工作人员的第一个界面：酒店工作人员订单浏览界面
+	// private Pane hotelWorkerOrderInfouiPane;
+	//
+	// // 网站营销人员的第一个界面：网站营销人员订单浏览界面
+	// private Pane marketOrderInfouiPane;
+	//
+	// // 网站管理人员的第一个界面：搜索与添加用户界面
+	// private Pane managerSearchAndAdduiPane;
 
 	private Stage primaryStage;
 
@@ -67,9 +71,9 @@ public class LoginuiController {
 		userbl = new UserController();
 
 	}
-	
+
 	@FXML
-	private void seePassword(){
+	private void seePassword() {
 		passwordField.setVisible(true);
 	}
 
@@ -89,13 +93,25 @@ public class LoginuiController {
 			userFirstPane = UserFactory.createUserPane(primaryStage, usertype, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userFirstPane);
-		}
-		else{
+		} else {
 			System.out.println("fail!");
 		}
 		// } else {
 		// feedBackField.setText("用户名或密码不正确！");
 		// }
+	}
+
+	/**
+	 * 注册操作，跳转到注册界面
+	 * 
+	 * @return boolean
+	 */
+
+	@FXML
+	private void signup() {
+		signupPane = new Registerui(primaryStage);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(signupPane);
 	}
 
 	/**

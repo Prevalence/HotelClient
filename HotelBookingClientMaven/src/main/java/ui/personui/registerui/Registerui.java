@@ -1,9 +1,10 @@
 package ui.personui.registerui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Registerui {
+public class Registerui extends Pane{
 	private Stage primaryStage;
 
 	private RegisteruiController registeruiController;
@@ -23,7 +24,7 @@ public class Registerui {
 	 */
 	public void initRegisterui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Registerui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/客户注册界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();

@@ -117,30 +117,30 @@ public class HotelSearchuiController {
 
 	private int[] lowerPrice = { 0, 300, 600, 900, 1200 };
 
-	private int priceLower=0;
+	private int priceLower = 0;
 
 	private int[] higherPrice = { 300, 600, 900, 1200, -1 };
 
-	private int priceHigher=-1;
-	
+	private int priceHigher = -1;
+
 	private int[] star = { 1, 2, 3, 4, 5 };
-	
-	//选择的星级筛选条件，表示最低星级
-	private int starSelected=1;
-	
-	private double[] score = {0.0,1.0,2.0,3.0,4.0};
-	
-	//选择的评分筛选条件，表示最低评分
-	private double scoreSelected=0.0;
+
+	// 选择的星级筛选条件，表示最低星级
+	private int starSelected = 1;
+
+	private double[] score = { 0.0, 1.0, 2.0, 3.0, 4.0 };
+
+	// 选择的评分筛选条件，表示最低评分
+	private double scoreSelected = 0.0;
 
 	private String[] areas = { "商圈1", "商圈2" };
 
 	private String area = "";
-	
-	private boolean[] booked={true,false};
-	
+
+	private boolean[] booked = { true, false };
+
 	@SuppressWarnings("unused")
-	private boolean bookedSelected=false;
+	private boolean bookedSelected = false;
 
 	public HotelSearchuiController() {
 		hotelbl = new HotelController();
@@ -216,7 +216,7 @@ public class HotelSearchuiController {
 
 		searchTable.setItems(searchData);
 	}
-	
+
 	/**
 	 * 用评分区间筛选，以列表形式显示搜索结果
 	 */
@@ -318,9 +318,11 @@ public class HotelSearchuiController {
 					hotelBestConditionVO.setCircle(area);
 					hotelWorstConditionVO.setBooked(bookedSelected);
 					hotelBestConditionVO.setBooked(bookedSelected);
-//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
-//							hotelBestConditionVO);
-//					searchData = FXCollections.observableArrayList(searchDataList);
+					// ArrayList<HotelSearchVO> searchDataList =
+					// hotelbl.findWithReq(hotelWorstConditionVO,
+					// hotelBestConditionVO);
+					// searchData =
+					// FXCollections.observableArrayList(searchDataList);
 					searchWithPrice();
 				} else {
 					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
@@ -355,9 +357,11 @@ public class HotelSearchuiController {
 					hotelBestConditionVO.setCircle(area);
 					hotelWorstConditionVO.setBooked(bookedSelected);
 					hotelBestConditionVO.setBooked(bookedSelected);
-//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
-//							hotelBestConditionVO);
-//					searchData = FXCollections.observableArrayList(searchDataList);
+					// ArrayList<HotelSearchVO> searchDataList =
+					// hotelbl.findWithReq(hotelWorstConditionVO,
+					// hotelBestConditionVO);
+					// searchData =
+					// FXCollections.observableArrayList(searchDataList);
 					searchWithStar();
 				} else {
 					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
@@ -365,7 +369,7 @@ public class HotelSearchuiController {
 			}
 		});
 	}
-	
+
 	/**
 	 * 设置评分区间选择的组件
 	 * 
@@ -394,9 +398,11 @@ public class HotelSearchuiController {
 					hotelBestConditionVO.setCircle(area);
 					hotelWorstConditionVO.setBooked(bookedSelected);
 					hotelBestConditionVO.setBooked(bookedSelected);
-//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
-//							hotelBestConditionVO);
-//					searchData = FXCollections.observableArrayList(searchDataList);
+					// ArrayList<HotelSearchVO> searchDataList =
+					// hotelbl.findWithReq(hotelWorstConditionVO,
+					// hotelBestConditionVO);
+					// searchData =
+					// FXCollections.observableArrayList(searchDataList);
 					searchWithScore();
 				} else {
 					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
@@ -404,7 +410,7 @@ public class HotelSearchuiController {
 			}
 		});
 	}
-	
+
 	/**
 	 * 设置商圈选择的组件
 	 * 
@@ -433,9 +439,11 @@ public class HotelSearchuiController {
 					hotelBestConditionVO.setCircle(area);
 					hotelWorstConditionVO.setBooked(bookedSelected);
 					hotelBestConditionVO.setBooked(bookedSelected);
-//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
-//							hotelBestConditionVO);
-//					searchData = FXCollections.observableArrayList(searchDataList);
+					// ArrayList<HotelSearchVO> searchDataList =
+					// hotelbl.findWithReq(hotelWorstConditionVO,
+					// hotelBestConditionVO);
+					// searchData =
+					// FXCollections.observableArrayList(searchDataList);
 					searchWithArea();
 				} else {
 					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
@@ -443,7 +451,7 @@ public class HotelSearchuiController {
 			}
 		});
 	}
-	
+
 	/**
 	 * 设置评分区间选择的组件
 	 * 
@@ -472,9 +480,11 @@ public class HotelSearchuiController {
 					hotelBestConditionVO.setCircle(area);
 					hotelWorstConditionVO.setBooked(bookedSelected);
 					hotelBestConditionVO.setBooked(bookedSelected);
-//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
-//							hotelBestConditionVO);
-//					searchData = FXCollections.observableArrayList(searchDataList);
+					// ArrayList<HotelSearchVO> searchDataList =
+					// hotelbl.findWithReq(hotelWorstConditionVO,
+					// hotelBestConditionVO);
+					// searchData =
+					// FXCollections.observableArrayList(searchDataList);
 					searchWithBooked();
 				} else {
 					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
