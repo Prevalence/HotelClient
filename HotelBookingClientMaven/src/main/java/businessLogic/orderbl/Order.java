@@ -36,11 +36,12 @@ public class Order{
 		//改变订单状态
 		order.setOrderstate("alreadyExecute");//此步将异常订单变为已执行
 		OrderPO orderpo=new OrderPO(order);
-		orderDataService.modify(orderpo);
+		boolean orderChange=orderDataService.modify(orderpo);
 		//恢复信用值
 		UserController user=new UserController();
 		int credit=percentOfCredit* order.getOrderprice() /2;
-		return user.changeCredit(order.getPersonname(), credit);
+		boolean creditChange=user.changeCredit(order.getPersonname(), credit);
+		return orderChange&&creditChange;
 	}
 
 	/**
@@ -80,10 +81,11 @@ public class Order{
 		order.setExecutetime(Calendar.getInstance());
 		order.setOrderstate("alreadyExecute");
 		OrderPO orderPO=new OrderPO(order);
-		orderDataService.modify(orderPO);
+		boolean orderChange=orderDataService.modify(orderPO);
 		//增加客户信用值
 		UserController user=new UserController();
-		return user.changeCredit(order.getPersonname(), order.getOrderprice());
+		boolean creditChange=user.changeCredit(order.getPersonname(), order.getOrderprice());
+		return orderChange&&creditChange;
 	}
 
 	/**
@@ -110,9 +112,11 @@ public class Order{
 	public ArrayList<OrderVO> personOrders(String personname) throws RemoteException {
 		ArrayList<OrderPO> personList=orderDataService.personFind(personname);
 		ArrayList<OrderVO> personListVO=new ArrayList<OrderVO>();
-		for(int i=0; i<personList.size(); i++){
-			OrderVO ordervo=new OrderVO(personList.get(i));
-			personListVO.add(ordervo);
+		if(personList!=null){
+			for(int i=0; i<personList.size(); i++){
+				OrderVO ordervo=new OrderVO(personList.get(i));
+				personListVO.add(ordervo);
+			}
 		}
 		return personListVO;
 	}
@@ -126,9 +130,11 @@ public class Order{
 	public ArrayList<OrderVO> hotelOrders(String hotelname) throws RemoteException {
 		ArrayList<OrderPO> hotelList=orderDataService.hotelFind(hotelname);
 		ArrayList<OrderVO> hotelListVO=new ArrayList<OrderVO>();
-		for (OrderPO hotelPO : hotelList) {
-			OrderVO hotelVO = new OrderVO(hotelPO);
-			hotelListVO.add(hotelVO);
+		if(hotelList!=null){
+			for (OrderPO hotelPO : hotelList) {
+				OrderVO hotelVO = new OrderVO(hotelPO);
+				hotelListVO.add(hotelVO);
+			}	
 		}
 		return hotelListVO;
 	}
@@ -142,10 +148,13 @@ public class Order{
 	public ArrayList<OrderVO> netOrders() throws RemoteException {
 		ArrayList<OrderPO> netList=orderDataService.exceptionFind();
 		ArrayList<OrderVO> netListVO=new ArrayList<OrderVO>();
-		for (OrderPO netPO : netList) {
-			OrderVO netVO = new OrderVO(netPO);
-			netListVO.add(netVO);
+		if(netList!=null){
+			for (OrderPO netPO : netList) {
+				OrderVO netVO = new OrderVO(netPO);
+				netListVO.add(netVO);
+			}			
 		}
+
 		return netListVO;
 	}
 

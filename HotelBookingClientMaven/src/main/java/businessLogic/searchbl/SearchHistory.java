@@ -25,9 +25,11 @@ public class SearchHistory {
 	public ArrayList<SearchVO> showHistory(String personname) throws RemoteException{
 		ArrayList<SearchPO> searchpoList=searchdataservice.showSearchHistory(personname);
 		ArrayList<SearchVO> searchvoList=new ArrayList<SearchVO>();
-		for(int i=0; i<searchpoList.size(); i++){
-			SearchVO searchvo=new SearchVO(searchpoList.get(i));
-			searchvoList.add(searchvo);
+		if(searchpoList!=null){
+			for(int i=0; i<searchpoList.size(); i++){
+				SearchVO searchvo=new SearchVO(searchpoList.get(i));
+				searchvoList.add(searchvo);
+			}
 		}
 		return searchvoList;
 	}
