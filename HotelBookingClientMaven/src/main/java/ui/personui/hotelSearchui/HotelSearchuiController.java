@@ -139,7 +139,6 @@ public class HotelSearchuiController {
 
 	private boolean[] booked = { true, false };
 
-	@SuppressWarnings("unused")
 	private boolean bookedSelected = false;
 
 	public HotelSearchuiController() {

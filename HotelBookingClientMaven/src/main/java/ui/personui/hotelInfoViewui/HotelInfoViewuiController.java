@@ -7,9 +7,17 @@ import businessLogic.hotelbl.HotelController;
 import businessLogic.userbl.UserController;
 import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.userblService.UserblService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import ui.helper.SearchButtonCell;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
@@ -17,11 +25,32 @@ import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.CommentInfoVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
 public class HotelInfoViewuiController {
-	// TODO
 
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableView roomInfoTable;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn roomtypeCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn priceCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableView commentTable;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn nameCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn timeCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn commentCol;
 	@FXML
 	private Pane mainPane;
 
@@ -32,13 +61,18 @@ public class HotelInfoViewuiController {
 
 	private HotelVO hotelInfo;
 
-	@SuppressWarnings("unused")
 	private ArrayList<RoomVO> room;
 
+	// 填充进hotelInfoTable的酒店数据
+	private ObservableList<RoomInfoVO> roomData;
+	
 	private ArrayList<RoomInfoVO> roomInfoList;
 
 	private RoomInfoVO roomInfo;
 
+	// 填充进commentTable的酒店数据
+	private ObservableList<CommentInfoVO> commentData;
+	
 	private ArrayList<CommentVO> comment;
 
 	private ArrayList<CommentInfoVO> commentList;
@@ -130,6 +164,7 @@ public class HotelInfoViewuiController {
 	 * 
 	 * @param hotelName
 	 */
+	@SuppressWarnings("unchecked")
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
 		hotelInfo = hotelbl.showHotelInfo(hotelName);
@@ -137,7 +172,10 @@ public class HotelInfoViewuiController {
 		room = hotelInfo.getRoom();
 		commentList = getCommentList(comment);
 		roomInfoList = getRoomInfoList(room);
-		
+		roomData = FXCollections.observableArrayList(roomInfoList);
+		commentData = FXCollections.observableArrayList(commentList);
+		roomInfoTable.setItems(roomData);
+		commentTable.setItems(commentData);
 	}
 
 	/**
@@ -176,5 +214,17 @@ public class HotelInfoViewuiController {
 			roomInfoList.add(roomInfo);
 		}
 		return roomInfoList;
+	}
+	
+	/**
+	 * 初始设置TableView的属性，绑定内部按钮
+	 */
+	@SuppressWarnings("unchecked")
+	public void initTableView() {
+		roomtypeCol.setCellValueFactory(new PropertyValueFactory<>("roomtype"));
+		priceCol.setCellValueFactory(new PropertyValueFactory<>("roomPrice"));
+		nameCol.setCellValueFactory(new PropertyValueFactory<>("personname"));
+		timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+		commentCol.setCellValueFactory(new PropertyValueFactory<>("content"));
 	}
 }

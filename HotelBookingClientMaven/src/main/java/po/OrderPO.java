@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import po.hotelPO.RoomPO;
-import vo.OrderVO;
 import vo.hotelVO.hotelblVO.RoomVO;
+import vo.orderVO.orderblVO.OrderVO;
 /**
  * 
  * @author xiamutian

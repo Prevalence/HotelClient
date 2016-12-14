@@ -3,9 +3,9 @@ package businessLogic.promotionbl;
 import java.util.ArrayList;
 
 import businessLogicService.promotionblService.PromotionblService;
-import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.orderVO.orderblVO.OrderVO;
 
 public class PromotionController implements PromotionblService{
 	/**
