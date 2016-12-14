@@ -1,6 +1,7 @@
 package ui.personui.hotelInfoViewui;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import businessLogic.hotelbl.HotelController;
 import businessLogic.userbl.UserController;
@@ -15,6 +16,7 @@ import ui.personui.personInfoui.PersonInfoui;
 import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
+import vo.hotelVO.hoteluiVO.CommentInfoVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
 public class HotelInfoViewuiController {
@@ -33,13 +35,15 @@ public class HotelInfoViewuiController {
 	@SuppressWarnings("unused")
 	private ArrayList<RoomVO> room;
 
-	@SuppressWarnings("unused")
-	private ArrayList<RoomInfoVO> roomInfo;
+	private ArrayList<RoomInfoVO> roomInfoList;
+
+	private RoomInfoVO roomInfo;
 
 	private ArrayList<CommentVO> comment;
 
-	@SuppressWarnings("unused")
-	private ArrayList<String> commentList;
+	private ArrayList<CommentInfoVO> commentList;
+
+	private CommentInfoVO commentInfo;
 
 	// 酒店搜索界面
 	private Pane hotelSearchPane;
@@ -132,7 +136,8 @@ public class HotelInfoViewuiController {
 		comment = hotelInfo.getComment();
 		room = hotelInfo.getRoom();
 		commentList = getCommentList(comment);
-
+		roomInfoList = getRoomInfoList(room);
+		
 	}
 
 	/**
@@ -140,25 +145,36 @@ public class HotelInfoViewuiController {
 	 * 
 	 * @return commentList
 	 */
-	private ArrayList<String> getCommentList(ArrayList<CommentVO> comment) {
-		ArrayList<String> commentList = new ArrayList<String>();
+	private ArrayList<CommentInfoVO> getCommentList(ArrayList<CommentVO> comment) {
+		ArrayList<CommentInfoVO> commentList = new ArrayList<CommentInfoVO>();
+		String name = "";
+		Calendar time = null;
+		String content = "";
 		for (int i = 0; i < comment.size(); i++) {
-			commentList.add(comment.get(i).getContent());
+			name = comment.get(i).getPersonname();
+			time = comment.get(i).getTime();
+			content = comment.get(i).getContent();
+			commentInfo=new CommentInfoVO(name,time,content);
+			commentList.add(commentInfo);
 		}
 		return commentList;
 	}
-	
+
 	/**
 	 * 从roomVO列表中获取用于界面显示的roomInfo列表
 	 * 
 	 * @return roomInfo
 	 */
-	@SuppressWarnings("unused")
 	private ArrayList<RoomInfoVO> getRoomInfoList(ArrayList<RoomVO> room) {
-		ArrayList<RoomInfoVO> roomInfo = new ArrayList<RoomInfoVO>();
+		ArrayList<RoomInfoVO> roomInfoList = new ArrayList<RoomInfoVO>();
+		String roomtype="";
+		int roomPrice=0;
 		for (int i = 0; i < room.size(); i++) {
-			
+			roomtype=room.get(i).getRoomType();
+			roomPrice=room.get(i).getRoomPrice();
+			roomInfo=new RoomInfoVO(roomtype,roomPrice);
+			roomInfoList.add(roomInfo);
 		}
-		return roomInfo;
+		return roomInfoList;
 	}
 }

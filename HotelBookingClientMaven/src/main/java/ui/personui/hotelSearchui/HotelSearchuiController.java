@@ -50,9 +50,25 @@ public class HotelSearchuiController {
 	@FXML
 	private Label priceLabel;
 	@FXML
+	private Label starLabel;
+	@FXML
+	private Label scoreLabel;
+	@FXML
+	private Label areaLabel;
+	@FXML
+	private Label bookedLabel;
+	@FXML
 	private Label feedbackLabel;
 	@FXML
 	private ChoiceBox<String> priceChoices;
+	@FXML
+	private ChoiceBox<String> starChoices;
+	@FXML
+	private ChoiceBox<String> scoreChoices;
+	@FXML
+	private ChoiceBox<String> areaChoices;
+	@FXML
+	private ChoiceBox<String> bookedChoices;
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView searchTable;
@@ -101,19 +117,35 @@ public class HotelSearchuiController {
 
 	private int[] lowerPrice = { 0, 300, 600, 900, 1200 };
 
-	private int priceLower;
+	private int priceLower=0;
 
 	private int[] higherPrice = { 300, 600, 900, 1200, -1 };
 
-	private int priceHigher;
-
-	@SuppressWarnings("unused")
+	private int priceHigher=-1;
+	
 	private int[] star = { 1, 2, 3, 4, 5 };
+	
+	//选择的星级筛选条件，表示最低星级
+	private int starSelected=1;
+	
+	private double[] score = {0.0,1.0,2.0,3.0,4.0};
+	
+	//选择的评分筛选条件，表示最低评分
+	private double scoreSelected=0.0;
+
+	private String[] areas = { "商圈1", "商圈2" };
+
+	private String area = "";
+	
+	private boolean[] booked={true,false};
+	
+	@SuppressWarnings("unused")
+	private boolean bookedSelected=false;
 
 	public HotelSearchuiController() {
 		hotelbl = new HotelController();
-		hotelWorstConditionVO = new HotelConditionVO(null, null, null, null, 0, 0.0, false, null);
-		hotelBestConditionVO = new HotelConditionVO(null, null, null, null, 0, 0.0, false, null);
+		hotelWorstConditionVO = new HotelConditionVO("", null, 0, 0.0, false, null);
+		hotelBestConditionVO = new HotelConditionVO("", null, 5, 5.0, false, null);
 	}
 
 	/**
@@ -150,8 +182,7 @@ public class HotelSearchuiController {
 			hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(hotelInfoViewPane);
-		}
-		else{
+		} else {
 			feedbackLabel.setText("搜索的酒店不存在，请确保酒店名称正确。");
 		}
 	}
@@ -165,7 +196,7 @@ public class HotelSearchuiController {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "5", "nanjing", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel1", "5", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
@@ -180,12 +211,12 @@ public class HotelSearchuiController {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "4", "nanjing", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel2", "4", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
 	}
-
+	
 	/**
 	 * 用评分区间筛选，以列表形式显示搜索结果
 	 */
@@ -195,7 +226,22 @@ public class HotelSearchuiController {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "3", "nanjing", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel3", "1", "商圈", "nju"));
+		searchData = FXCollections.observableArrayList(searchDataList);
+
+		searchTable.setItems(searchData);
+	}
+
+	/**
+	 * 用商圈筛选，以列表形式显示搜索结果
+	 */
+	@SuppressWarnings("unchecked")
+	@FXML
+	private void searchWithArea() {
+		searchTable.refresh();
+
+		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
+		searchDataList.add(new HotelSearchMock("njuHotel4", "3", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
@@ -206,11 +252,11 @@ public class HotelSearchuiController {
 	 */
 	@SuppressWarnings("unchecked")
 	@FXML
-	private void searchWithHistory() {
+	private void searchWithBooked() {
 		searchTable.refresh();
 
 		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel", "2", "nanjing", "nju"));
+		searchDataList.add(new HotelSearchMock("njuHotel5", "2", "nanjing", "nju"));
 		searchData = FXCollections.observableArrayList(searchDataList);
 
 		searchTable.setItems(searchData);
@@ -248,42 +294,193 @@ public class HotelSearchuiController {
 	 * 
 	 * @param others
 	 */
-	public void setChoiceBox(ObservableList<String> others) {
+	public void setPriceChoiceBox(ObservableList<String> others) {
 		priceChoices.setItems(others);
 		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				priceLabel.setText("");
-				priceLower = lowerPrice[priceChoices.getSelectionModel().getSelectedIndex()];
-				priceHigher = higherPrice[priceChoices.getSelectionModel().getSelectedIndex()];
-				ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
-				ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
-				RoomVO roomLower = new RoomVO(null, null, priceLower, null, null);
-				RoomVO roomHigher = new RoomVO(null, null, priceHigher, null, null);
-				roomListLower.add(roomLower);
-				roomListHigher.add(roomHigher);
-				hotelWorstConditionVO.setRoom(roomListLower);
-				hotelBestConditionVO.setRoom(roomListHigher);
-				// ArrayList<HotelSearchVO> searchDataList =
-				// hotelbl.findWithReq(hotelWorstConditionVO,
-				// hotelBestConditionVO);
-				// searchData =
-				// FXCollections.observableArrayList(searchDataList);
-				searchWithPrice();
+				if (!area.equals("")) {
+					priceLower = lowerPrice[priceChoices.getSelectionModel().getSelectedIndex()];
+					priceHigher = higherPrice[priceChoices.getSelectionModel().getSelectedIndex()];
+					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
+					ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
+					RoomVO roomLower = new RoomVO(null, null, priceLower, null, null);
+					RoomVO roomHigher = new RoomVO(null, null, priceHigher, null, null);
+					roomListLower.add(roomLower);
+					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setRoom(roomListLower);
+					hotelBestConditionVO.setRoom(roomListHigher);
+					hotelWorstConditionVO.setStar(starSelected);
+					hotelBestConditionVO.setStar(5);
+					hotelWorstConditionVO.setScore(scoreSelected);
+					hotelBestConditionVO.setScore(5.0);
+					hotelWorstConditionVO.setCircle(area);
+					hotelBestConditionVO.setCircle(area);
+					hotelWorstConditionVO.setBooked(bookedSelected);
+					hotelBestConditionVO.setBooked(bookedSelected);
+//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+//							hotelBestConditionVO);
+//					searchData = FXCollections.observableArrayList(searchDataList);
+					searchWithPrice();
+				} else {
+					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
+				}
 			}
 		});
-		// priceChoices.setItems(others);
-		// priceChoices.setOnAction(new EventHandler<ActionEvent>() {
-		// public void handle(ActionEvent event) {
-		// usertype = type[priceChoices.getSelectionModel().getSelectedIndex()];
-		// if (usertype.equals("还原")) {
-		// usertype = "客户";
-		// otherLabel.setText("其他方式登录");
-		// } else {
-		// otherLabel.setText(usertype);
-		// }
-		// System.out.println(usertype);
-		// }
-		// });
+	}
+
+	/**
+	 * 设置星级区间选择的组件
+	 * 
+	 * @param others
+	 */
+	public void setStarChoiceBox(ObservableList<String> others) {
+		starChoices.setItems(others);
+		starChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				starLabel.setText("");
+				if (!area.equals("")) {
+					starSelected = star[starChoices.getSelectionModel().getSelectedIndex()];
+					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
+					ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
+					RoomVO roomLower = new RoomVO(null, null, 0, null, null);
+					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
+					roomListLower.add(roomLower);
+					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setStar(starSelected);
+					hotelBestConditionVO.setStar(5);
+					hotelWorstConditionVO.setScore(scoreSelected);
+					hotelBestConditionVO.setScore(5.0);
+					hotelWorstConditionVO.setCircle(area);
+					hotelBestConditionVO.setCircle(area);
+					hotelWorstConditionVO.setBooked(bookedSelected);
+					hotelBestConditionVO.setBooked(bookedSelected);
+//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+//							hotelBestConditionVO);
+//					searchData = FXCollections.observableArrayList(searchDataList);
+					searchWithStar();
+				} else {
+					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
+				}
+			}
+		});
+	}
+	
+	/**
+	 * 设置评分区间选择的组件
+	 * 
+	 * @param others
+	 */
+	public void setScoreChoiceBox(ObservableList<String> others) {
+		scoreChoices.setItems(others);
+		scoreChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				scoreLabel.setText("");
+				if (!area.equals("")) {
+					scoreSelected = score[scoreChoices.getSelectionModel().getSelectedIndex()];
+					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
+					ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
+					RoomVO roomLower = new RoomVO(null, null, 0, null, null);
+					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
+					roomListLower.add(roomLower);
+					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setRoom(roomListLower);
+					hotelBestConditionVO.setRoom(roomListHigher);
+					hotelWorstConditionVO.setStar(starSelected);
+					hotelBestConditionVO.setStar(5);
+					hotelWorstConditionVO.setScore(scoreSelected);
+					hotelBestConditionVO.setScore(5.0);
+					hotelWorstConditionVO.setCircle(area);
+					hotelBestConditionVO.setCircle(area);
+					hotelWorstConditionVO.setBooked(bookedSelected);
+					hotelBestConditionVO.setBooked(bookedSelected);
+//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+//							hotelBestConditionVO);
+//					searchData = FXCollections.observableArrayList(searchDataList);
+					searchWithScore();
+				} else {
+					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
+				}
+			}
+		});
+	}
+	
+	/**
+	 * 设置商圈选择的组件
+	 * 
+	 * @param others
+	 */
+	public void setAreaChoiceBox(ObservableList<String> others) {
+		areaChoices.setItems(others);
+		areaChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				areaLabel.setText("");
+				area = areas[areaChoices.getSelectionModel().getSelectedIndex()];
+				if (!area.equals("")) {
+					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
+					ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
+					RoomVO roomLower = new RoomVO(null, null, 0, null, null);
+					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
+					roomListLower.add(roomLower);
+					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setRoom(roomListLower);
+					hotelBestConditionVO.setRoom(roomListHigher);
+					hotelWorstConditionVO.setStar(starSelected);
+					hotelBestConditionVO.setStar(5);
+					hotelWorstConditionVO.setScore(scoreSelected);
+					hotelBestConditionVO.setScore(5.0);
+					hotelWorstConditionVO.setCircle(area);
+					hotelBestConditionVO.setCircle(area);
+					hotelWorstConditionVO.setBooked(bookedSelected);
+					hotelBestConditionVO.setBooked(bookedSelected);
+//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+//							hotelBestConditionVO);
+//					searchData = FXCollections.observableArrayList(searchDataList);
+					searchWithArea();
+				} else {
+					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
+				}
+			}
+		});
+	}
+	
+	/**
+	 * 设置评分区间选择的组件
+	 * 
+	 * @param others
+	 */
+	public void setBookedChoiceBox(ObservableList<String> others) {
+		bookedChoices.setItems(others);
+		bookedChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				bookedLabel.setText("");
+				if (!area.equals("")) {
+					bookedSelected = booked[bookedChoices.getSelectionModel().getSelectedIndex()];
+					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
+					ArrayList<RoomVO> roomListHigher = new ArrayList<RoomVO>();
+					RoomVO roomLower = new RoomVO(null, null, 0, null, null);
+					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
+					roomListLower.add(roomLower);
+					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setRoom(roomListLower);
+					hotelBestConditionVO.setRoom(roomListHigher);
+					hotelWorstConditionVO.setStar(starSelected);
+					hotelBestConditionVO.setStar(5);
+					hotelWorstConditionVO.setScore(scoreSelected);
+					hotelBestConditionVO.setScore(5.0);
+					hotelWorstConditionVO.setCircle(area);
+					hotelBestConditionVO.setCircle(area);
+					hotelWorstConditionVO.setBooked(bookedSelected);
+					hotelBestConditionVO.setBooked(bookedSelected);
+//					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+//							hotelBestConditionVO);
+//					searchData = FXCollections.observableArrayList(searchDataList);
+					searchWithBooked();
+				} else {
+					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");
+				}
+			}
+		});
 	}
 
 	/**
@@ -304,7 +501,6 @@ public class HotelSearchuiController {
 								personname);
 						return buttonCell;
 					}
-
 				});
 	}
 }
