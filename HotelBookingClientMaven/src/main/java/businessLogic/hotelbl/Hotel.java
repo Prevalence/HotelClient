@@ -9,13 +9,13 @@ import po.hotelPO.CommentPO;
 import po.hotelPO.HotelPO;
 import po.hotelPO.RoomPO;
 import rmi.RemoteHelper;
-import vo.OrderVO;
 import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
+import vo.orderVO.orderblVO.OrderVO;
 import businessLogic.orderbl.Order;
 
 /**

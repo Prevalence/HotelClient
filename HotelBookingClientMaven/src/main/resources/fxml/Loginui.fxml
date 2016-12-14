@@ -18,7 +18,7 @@
             <Image url="@../登录界面/账户.png" />
          </image>
       </ImageView>
-      <Button fx:id="signupButton" layoutX="106.0" layoutY="431.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="41.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT">
+      <Button fx:id="signupButton" layoutX="106.0" layoutY="431.0" mnemonicParsing="false" onAction="#signup" prefHeight="18.0" prefWidth="41.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT">
          <font>
             <Font size="1.0" />
          </font>

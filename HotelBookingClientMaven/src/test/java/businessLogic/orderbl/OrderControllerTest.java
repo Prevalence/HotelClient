@@ -10,8 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import rmi.ClientRunner;
-import vo.OrderVO;
 import vo.hotelVO.hotelblVO.RoomVO;
+import vo.orderVO.orderblVO.OrderVO;
 
 public class OrderControllerTest {
 	ClientRunner cr=new ClientRunner();

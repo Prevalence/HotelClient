@@ -6,7 +6,7 @@ import java.util.Calendar;
 import businessLogic.userbl.UserController;
 import po.OrderPO;
 import rmi.RemoteHelper;
-import vo.OrderVO;
+import vo.orderVO.orderblVO.OrderVO;
 import dataService.orderDataService.OrderDataService;
 /**
  * 
