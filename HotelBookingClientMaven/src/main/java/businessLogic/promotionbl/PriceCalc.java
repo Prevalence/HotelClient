@@ -69,7 +69,7 @@ public class PriceCalc {
 			e.printStackTrace();
 		}
 		
-		//以下实现促销策略降价计算，这部分代码有问题
+		//以下实现促销策略降价计算
 		OrderPO orderpo=new OrderPO(ordervo);
 		double bestprice=initialtotal;
 		if((personpo!=null)&&(promotionpolist!=null)){

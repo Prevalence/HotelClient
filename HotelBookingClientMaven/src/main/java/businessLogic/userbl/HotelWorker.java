@@ -41,7 +41,10 @@ public class HotelWorker {
 	 */
 	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
 		HotelWorkerPO po=userDataService.findHotelWorker(hotelWorkername);
-		HotelWorkerVO vo=new HotelWorkerVO(po);
+		HotelWorkerVO vo=new HotelWorkerVO();
+		if(po!=null){
+			vo=new HotelWorkerVO(po);
+		}
 		return vo;
 		
 	}

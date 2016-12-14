@@ -110,12 +110,13 @@ public class Hotel {
 			resulthotelvolist= hotelvoList;
 		}else{//如果限制是自己已预订过的，则对hotelvoList进行筛选
 			ArrayList<OrderVO> ordervoList=order.personOrders(worstCondition.getPersonname());
-
-			for(int i=0; i<ordervoList.size(); i++){
-				String hotelname=ordervoList.get(i).getHotelname();//客户已预订过的酒店名称
-				for(int j=0; j<hotelvoList.size(); j++){
-					if(hotelvoList.get(j).getHotelname().equals(hotelname)){
-						resulthotelvolist.add(hotelvoList.get(j));
+			if(ordervoList!=null){
+				for(int i=0; i<ordervoList.size(); i++){
+					String hotelname=ordervoList.get(i).getHotelname();//客户已预订过的酒店名称
+					for(int j=0; j<hotelvoList.size(); j++){
+						if(hotelvoList.get(j).getHotelname().equals(hotelname)){
+							resulthotelvolist.add(hotelvoList.get(j));
+						}
 					}
 				}
 			}

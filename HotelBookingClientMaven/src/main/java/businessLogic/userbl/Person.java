@@ -105,7 +105,10 @@ public class Person {
 	 */
 	public PersonVO getPersonInfo(String personname) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personname);
-		PersonVO vo=new PersonVO(po);
+		PersonVO vo=new PersonVO();
+		if(po!=null){
+			vo=new PersonVO(po);	
+		}
 		return vo;
 	}
 	
@@ -117,7 +120,10 @@ public class Person {
 	 */
 	public PersonVO getPersonInfo(int personID) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personID);
-		PersonVO vo=new PersonVO(po);
+		PersonVO vo=new PersonVO();
+		if(po!=null){
+			vo=new PersonVO(po);
+		}
 		return vo;
 	}
 	
