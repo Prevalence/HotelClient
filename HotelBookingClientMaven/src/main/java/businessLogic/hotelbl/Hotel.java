@@ -192,7 +192,7 @@ public class Hotel {
 			}
 		}
 		
-		RoomInfoVO roomInfoVO=new RoomInfoVO(roomtype,roomPrice, numOfRoom);
+		RoomInfoVO roomInfoVO=new RoomInfoVO(roomtype,roomPrice);
 		
 		return roomInfoVO;
 	}
