@@ -1,4 +1,4 @@
-package ui.personui.hotelInfoViewui;
+package ui.personui.createOrderui;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -11,8 +11,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -25,8 +23,8 @@ import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.CommentInfoVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
-public class HotelInfoViewuiController {
-
+public class CreateOrderuiController {
+	
 	@FXML
 	private Label wifiLabel;
 	@FXML
@@ -47,27 +45,6 @@ public class HotelInfoViewuiController {
 	private Label scoreLabel;
 	@FXML
 	private Label areaLabel;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableView roomInfoTable;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn roomtypeCol;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn priceCol;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableView commentTable;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn nameCol;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn timeCol;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn commentCol;
 	@FXML
 	private Pane mainPane;
 
@@ -116,7 +93,7 @@ public class HotelInfoViewuiController {
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public HotelInfoViewuiController() {
+	public CreateOrderuiController() {
 		userbl = new UserController();
 		hotelbl = new HotelController();
 	}
@@ -179,6 +156,15 @@ public class HotelInfoViewuiController {
 	public void setPersonname(String personname) {
 		this.personname = personname;
 	}
+	
+	/**
+	 * 传递酒店信息的VO
+	 * 
+	 * @param hotelInfo
+	 */
+	public void setHotelVO(HotelVO hotelInfo) {
+		this.hotelInfo = hotelInfo;
+	}
 
 	/**
 	 * 传递酒店名，并将该酒店详情显示在界面上
@@ -208,64 +194,6 @@ public class HotelInfoViewuiController {
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
 		
-		
-		comment = hotelInfo.getComment();
-		room = hotelInfo.getRoom();
-		commentList = getCommentList(comment);
-		roomInfoList = getRoomInfoList(room);
-		roomData = FXCollections.observableArrayList(roomInfoList);
-		commentData = FXCollections.observableArrayList(commentList);
-		roomInfoTable.setItems(roomData);
-		commentTable.setItems(commentData);
 	}
 
-	/**
-	 * 从commentVO列表中获取comment字符串组成列表，用于界面显示
-	 * 
-	 * @return commentList
-	 */
-	private ArrayList<CommentInfoVO> getCommentList(ArrayList<CommentVO> comment) {
-		ArrayList<CommentInfoVO> commentList = new ArrayList<CommentInfoVO>();
-		String name = "";
-		Calendar time = null;
-		String content = "";
-		for (int i = 0; i < comment.size(); i++) {
-			name = comment.get(i).getPersonname();
-			time = comment.get(i).getTime();
-			content = comment.get(i).getContent();
-			commentInfo=new CommentInfoVO(name,time,content);
-			commentList.add(commentInfo);
-		}
-		return commentList;
-	}
-
-	/**
-	 * 从roomVO列表中获取用于界面显示的roomInfo列表
-	 * 
-	 * @return roomInfo
-	 */
-	private ArrayList<RoomInfoVO> getRoomInfoList(ArrayList<RoomVO> room) {
-		ArrayList<RoomInfoVO> roomInfoList = new ArrayList<RoomInfoVO>();
-		String roomtype="";
-		int roomPrice=0;
-		for (int i = 0; i < room.size(); i++) {
-			roomtype=room.get(i).getRoomType();
-			roomPrice=room.get(i).getRoomPrice();
-			roomInfo=new RoomInfoVO(roomtype,roomPrice);
-			roomInfoList.add(roomInfo);
-		}
-		return roomInfoList;
-	}
-	
-	/**
-	 * 初始设置TableView的属性，绑定内部按钮
-	 */
-	@SuppressWarnings("unchecked")
-	public void initTableView() {
-		roomtypeCol.setCellValueFactory(new PropertyValueFactory<>("roomtype"));
-		priceCol.setCellValueFactory(new PropertyValueFactory<>("roomPrice"));
-		nameCol.setCellValueFactory(new PropertyValueFactory<>("personname"));
-		timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
-		commentCol.setCellValueFactory(new PropertyValueFactory<>("content"));
-	}
 }
