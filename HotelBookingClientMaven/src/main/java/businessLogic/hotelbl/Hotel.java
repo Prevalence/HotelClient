@@ -17,6 +17,7 @@ import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
 import vo.orderVO.orderblVO.OrderVO;
 import businessLogic.orderbl.Order;
+import businessLogic.TimeFormTrans;
 
 /**
  * 
@@ -196,6 +197,55 @@ public class Hotel {
 		RoomInfoVO roomInfoVO=new RoomInfoVO(roomtype,roomPrice);
 		
 		return roomInfoVO;
+	}
+	
+	/**
+	 * 返回符合条件的对应酒店的可用房间数量
+	 * @param hotelname
+	 * @param roomtype
+	 * @param starttime
+	 * @param endtime
+	 * @return 返回对应的房间剩余数量
+	 */
+	public int getAvailableNumber(String hotelname, String roomtype, String starttime1, String endtime1)throws RemoteException {
+		// TODO Auto-generated method stub
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar starttime=t.myToCalendar(starttime1);
+		Calendar endtime=t.myToCalendar(endtime1);
+		
+		HotelController hotelcontroller=new HotelController();
+		HotelVO hotelvo=hotelcontroller.showHotelInfo(hotelname);
+		ArrayList<RoomVO> rooms=hotelvo.getRoom();
+		
+		int numOfRoom=0;
+		int roomPrice=0;
+		for(int i=0; i<rooms.size(); i++){
+			if(rooms.get(i).getRoomType().equals(roomtype)){//当roomtype符合时
+				roomPrice=rooms.get(i).getRoomPrice();
+				
+				ArrayList<Calendar> roomStarttime=rooms.get(i).getCheckInTime();
+				ArrayList<Calendar> roomEndtime=rooms.get(i).getCheckOutTime();
+				
+				boolean isEmpty=(roomStarttime.size()==0)&&(roomEndtime.size()==0);
+				boolean isFreeForBooking=false;
+				for(int j=0; j<roomStarttime.size()-1; j++){
+					if((starttime.after(roomEndtime.get(j)))&&(endtime.before(roomStarttime.get(j+1)))){
+						isFreeForBooking=true;
+					}
+				}
+				if(roomStarttime.size()>0){
+					if(starttime.after(roomEndtime.get(roomStarttime.size()-1))){
+						isFreeForBooking=true;
+					}
+				}
+				
+				if(isEmpty||isFreeForBooking){
+					numOfRoom=numOfRoom+1;
+				}
+				
+			}
+		}
+		return numOfRoom;
 	}
 	
 	/**

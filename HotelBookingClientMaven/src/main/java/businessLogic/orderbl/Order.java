@@ -8,6 +8,7 @@ import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.orderVO.orderblVO.OrderVO;
 import dataService.orderDataService.OrderDataService;
+import businessLogic.TimeFormTrans;
 /**
  * 
  * @author 谢铠联
@@ -53,13 +54,16 @@ public class Order{
 	public boolean reverseOrder(OrderVO order) throws RemoteException {
 		if(order.getOrderstate().equals("nonExecute")){//当订单是未执行订单时，进行操作；否则报错
 			//撤销订单
-			order.setCanceltime(Calendar.getInstance());
+			TimeFormTrans t=new TimeFormTrans();
+			String cancleTime=t.myToString(Calendar.getInstance());
+			order.setCanceltime(cancleTime);
 			order.setOrderstate("cancel");
 			OrderPO orderPO=new OrderPO(order);
 			boolean isReverse=orderDataService.modify(orderPO);
 			//减少客户信用值
 			boolean isCreditChange=true;
-			if(Calendar.getInstance().compareTo(order.getLatestExecutetime())<6*60*60*1000){//如果撤销的订单距离最晚订单执行时间不足6个小时，扣除信用值
+			Calendar executeTime=t.myToCalendar(order.getLatestExecutetime());
+			if(Calendar.getInstance().compareTo(executeTime)<6*60*60*1000){//如果撤销的订单距离最晚订单执行时间不足6个小时，扣除信用值
 				UserController user=new UserController();
 				isCreditChange=user.changeCredit(order.getPersonname(), -(order.getOrderprice()/2));
 			}
@@ -78,7 +82,9 @@ public class Order{
 	 */
 	public boolean finishOrder(OrderVO order) throws RemoteException {
 		//将订单状态变为已执行
-		order.setExecutetime(Calendar.getInstance());
+		TimeFormTrans t=new TimeFormTrans();
+		String executeTime=t.myToString(Calendar.getInstance());
+		order.setExecutetime(executeTime);
 		order.setOrderstate("alreadyExecute");
 		OrderPO orderPO=new OrderPO(order);
 		boolean orderChange=orderDataService.modify(orderPO);
@@ -226,11 +232,16 @@ public class Order{
 		}
 		for(int i=0; i<netNumList.size(); i++){
 			OrderVO ordervo=netNumList.get(i);
-			if((ordervo.getProducttime().getTime().getYear()!=date.getTime().getYear())
-					||(ordervo.getProducttime().getTime().getMonth()!=date.getTime().getMonth())
-					||(ordervo.getProducttime().getTime().getDate()!=date.getTime().getDate())){
+			TimeFormTrans t=new TimeFormTrans();
+			Calendar producttime=t.myToCalendar(ordervo.getProducttime());
+			boolean isYearEqual=((producttime.get(Calendar.YEAR))
+					==(Calendar.getInstance().get(Calendar.YEAR)));
+			boolean isMonthEqual=((producttime.get(Calendar.MONTH))==(Calendar.getInstance().get(Calendar.MONTH)));
+			boolean isDateEqual=((producttime.get(Calendar.DATE))==(Calendar.getInstance().get(Calendar.DATE)));
+			if(!(isYearEqual&&isMonthEqual&&isDateEqual)){//只要三个钟有一个不等
 				netNumList.remove(i);
 			}
+			
 		}
 		return netNumList;
 	}

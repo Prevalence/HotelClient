@@ -3,6 +3,7 @@ package vo;
 import java.util.Calendar;
 
 import po.SearchPO;
+import businessLogic.TimeFormTrans;
 /**
  * 
  * @author 武秀峰
@@ -11,21 +12,24 @@ import po.SearchPO;
 
 public class SearchVO {
 	private String personname;
-	private Calendar time;
+	private String time;
 	private String hotelname;
 	
 	public SearchVO() {
 		super();
 	}
-	public SearchVO(String personname, Calendar time, String hotelname) {
+	public SearchVO(String personname, String time, String hotelname) {
 		super();
 		this.personname = personname;
-		this.time = time;
+		this.setTime(time);
 		this.hotelname = hotelname;
 	}
 	public SearchVO(SearchPO po) {
 		this.personname = po.getPersonname();
-		this.time = po.getTime();
+		
+		TimeFormTrans t=new TimeFormTrans();
+		String potime=t.myToString(po.getTime());
+		this.setTime(potime);
 		this.hotelname = po.getHotelname();
 	}
 	public String getPersonname() {
@@ -34,16 +38,16 @@ public class SearchVO {
 	public void setPersonname(String personname) {
 		this.personname = personname;
 	}
-	public Calendar getTime() {
-		return time;
-	}
-	public void setTime(Calendar time) {
-		this.time = time;
-	}
 	public String getHotelname() {
 		return hotelname;
 	}
 	public void setHotelname(String hotelname) {
 		this.hotelname = hotelname;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 }

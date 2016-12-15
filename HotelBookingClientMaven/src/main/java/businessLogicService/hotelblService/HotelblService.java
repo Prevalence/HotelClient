@@ -65,5 +65,17 @@ public interface HotelblService {
 	 * @param endtime
 	 * @return
 	 */
-	public RoomInfoVO findReqRoom(String hotelname, String roomtype, Calendar starttime, Calendar endtime);		
+	public RoomInfoVO findReqRoom(String hotelname, String roomtype, Calendar starttime, Calendar endtime);	
+	
+	/**
+	 * 返回符合条件的对应酒店的可用房间数量
+	 * @param hotelname
+	 * @param roomtype
+	 * @param starttime
+	 * @param endtime
+	 * @return 返回对应的房间剩余数量
+	 */
+	public int getAvailableNumber(String hotelname, String roomtype, String starttime, String endtime);
+	
+	
 }

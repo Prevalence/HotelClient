@@ -17,7 +17,7 @@ public class PersonPO implements Serializable{
 	private int credit;
 	private Calendar birthday;//客户生日，仅包含年月日信息
 	private String vipType;	//no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
-	private int vipLevel;//只有0-5这几个等级，vipLevel=消费金额/1000；最高5级；消费金额不足1000元时等级为0
+	private int vipLevel;//只有0-5这几个等级，vipLevel=credit/1000；最高5级；消费金额不足1000元时等级为0
 	private String enterpriseName;//企业会员登记企业名称
 	private String phoneNumber;//由11位数字组成的电话号码
 
