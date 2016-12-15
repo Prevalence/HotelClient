@@ -144,4 +144,24 @@ public class HotelController implements HotelblService{
 			return null;
 		}
 	}
+	
+	/**
+	 * 返回符合条件的对应酒店的可用房间数量
+	 * @param hotelname
+	 * @param roomtype
+	 * @param starttime
+	 * @param endtime
+	 * @return 返回对应的房间剩余数量
+	 */
+	@Override
+	public int getAvailableNumber(String hotelname, String roomtype, String starttime, String endtime) {
+		// TODO Auto-generated method stub
+		try {
+			return hotel.getAvailableNumber(hotelname,roomtype,starttime,endtime);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+	}
 }

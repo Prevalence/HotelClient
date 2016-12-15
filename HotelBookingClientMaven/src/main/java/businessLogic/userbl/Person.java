@@ -52,9 +52,9 @@ public class Person {
 	 */
 	@SuppressWarnings("static-access")
 	public boolean registeMember(PersonVO personvo, String vipType, String vipInfo) throws ParseException, RemoteException{
-		if(personvo.getVipType().equals("no")){//不是会员，可以注册
+		if(personvo.getVipType().equals("普通客户")){//不是会员，可以注册
 			//判断vipInfo是否符合格式
-			if(vipType.equals("ordinary")){//注册普通会员
+			if(vipType.equals("普通会员")){//注册普通会员
 				if(vipInfo.length()!=8){
 					return false;//生日格式不符合要求
 				}else{
@@ -78,15 +78,15 @@ public class Person {
 					}
 				}
 				
-				personvo.setVipType("ordinary");
-			}else if(vipType.equals("enterprise")){//注册企业会员
+				personvo.setVipType("普通会员");
+			}else if(vipType.equals("企业会员")){//注册企业会员
 				if(vipInfo.length()>0){
 					personvo.setEnterpriseName(vipInfo);
 				}else{
 					return false;//企业名称格式不符合要求
 				}
 				
-				personvo.setVipType("enterprise");
+				personvo.setVipType("企业会员");
 			}
 			personvo.setVipLevel((int)(personvo.getCredit()/100));
 			PersonPO personPO=new PersonPO(personvo);

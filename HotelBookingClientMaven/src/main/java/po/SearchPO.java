@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import vo.SearchVO;
+import businessLogic.TimeFormTrans;
 /**
  * 
  * @author 武秀峰
@@ -26,7 +27,10 @@ public class SearchPO implements Serializable{
 	}
 	public SearchPO(SearchVO vo) {
 		this.personname = vo.getPersonname();
-		this.time = vo.getTime();
+		
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar c=t.myToCalendar(vo.getTime());
+		this.time = c;
 		this.hotelname = vo.getHotelname();
 	}
 	public String getPersonname() {

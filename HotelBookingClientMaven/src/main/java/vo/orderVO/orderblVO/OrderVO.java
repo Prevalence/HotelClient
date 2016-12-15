@@ -1,10 +1,10 @@
 package vo.orderVO.orderblVO;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import po.OrderPO;
 import po.hotelPO.RoomPO;
 import vo.hotelVO.hotelblVO.RoomVO;
+import businessLogic.TimeFormTrans;
 
 public class OrderVO {
 	//订单的基本信息
@@ -25,13 +25,12 @@ public class OrderVO {
 	private int childnum;//儿童的人数。默认为0
 	
 	//一系列时间
-	private Calendar producttime;//订单生成时间
-	private Calendar executetime;//订单执行时间
-	private Calendar canceltime;//订单取消时间
-	private Calendar latestExecutetime;//订单最晚执行时间
-	private Calendar predictLeaveTime;//预计退房时间
-	private Calendar actualLeaveTime;//实际退房时间
-	
+	private String producttime;//订单生成时间
+	private String executetime;//订单执行时间
+	private String canceltime;//订单取消时间
+	private String latestExecutetime;//订单最晚执行时间
+	private String predictLeaveTime;//预计退房时间
+	private String actualLeaveTime;//实际退房时间
 	//空构造函数
 	public OrderVO() {
 		
@@ -59,18 +58,19 @@ public class OrderVO {
 		this.peoplenum=orderPO.getPeoplenum();//包括child的人数
 		this.childnum=orderPO.getChildnum();//儿童的人数。默认为0
 		
-		this.producttime=orderPO.getProducttime();//订单生成时间
-		this.executetime=orderPO.getExecutetime();//订单执行时间
-		this.canceltime=orderPO.getCanceltime();//订单取消时间
-		this.latestExecutetime=orderPO.getLatestExecutetime();//订单最晚执行时间
-		this.predictLeaveTime = orderPO.getPredictLeaveTime();
-		this.actualLeaveTime=orderPO.getActualLeaveTime();//退房时间
+		TimeFormTrans t=new TimeFormTrans();
+		this.producttime=t.myToString(orderPO.getProducttime());//订单生成时间
+		this.executetime=t.myToString(orderPO.getExecutetime());//订单执行时间
+		this.canceltime=t.myToString(orderPO.getCanceltime());//订单取消时间
+		this.latestExecutetime=t.myToString(orderPO.getLatestExecutetime());//订单最晚执行时间
+		this.predictLeaveTime = t.myToString(orderPO.getLatestExecutetime());
+		this.actualLeaveTime=t.myToString(orderPO.getActualLeaveTime());//退房时间
 	}
 
 	//有所有参数的构造函数
 	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
-			String personname, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
-			Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime) {
+			String personname, String realname, int peoplenum, int childnum, String producttime, String executetime,
+			String canceltime, String latestExecutetime, String predictLeaveTime, String actualLeaveTime) {
 		super();
 		this.orderID = orderID;
 		this.orderprice = orderprice;
@@ -88,7 +88,7 @@ public class OrderVO {
 		this.predictLeaveTime = predictLeaveTime;
 		this.actualLeaveTime = actualLeaveTime;
 	}
-	
+
 	//get and set
 	public String getOrderID() {
 		return orderID;
@@ -162,53 +162,52 @@ public class OrderVO {
 		this.childnum = childnum;
 	}
 
-	public Calendar getProducttime() {
+	public String getProducttime() {
 		return producttime;
 	}
 
-	public void setProducttime(Calendar producttime) {
+	public void setProducttime(String producttime) {
 		this.producttime = producttime;
 	}
 
-	public Calendar getExecutetime() {
+	public String getExecutetime() {
 		return executetime;
 	}
 
-	public void setExecutetime(Calendar executetime) {
+	public void setExecutetime(String executetime) {
 		this.executetime = executetime;
 	}
 
-	public Calendar getCanceltime() {
+	public String getCanceltime() {
 		return canceltime;
 	}
 
-	public void setCanceltime(Calendar canceltime) {
+	public void setCanceltime(String canceltime) {
 		this.canceltime = canceltime;
 	}
 
-	public Calendar getLatestExecutetime() {
+	public String getLatestExecutetime() {
 		return latestExecutetime;
 	}
 
-	public void setLatestExecutetime(Calendar latestExecutetime) {
+	public void setLatestExecutetime(String latestExecutetime) {
 		this.latestExecutetime = latestExecutetime;
 	}
 
-	public Calendar getPredictLeaveTime() {
+	public String getPredictLeaveTime() {
 		return predictLeaveTime;
 	}
 
-	public void setPredictLeaveTime(Calendar predictLeaveTime) {
+	public void setPredictLeaveTime(String predictLeaveTime) {
 		this.predictLeaveTime = predictLeaveTime;
 	}
 
-	public Calendar getActualLeaveTime() {
+	public String getActualLeaveTime() {
 		return actualLeaveTime;
 	}
 
-	public void setActualLeaveTime(Calendar actualLeaveTime) {
+	public void setActualLeaveTime(String actualLeaveTime) {
 		this.actualLeaveTime = actualLeaveTime;
 	}
-
 
 }
