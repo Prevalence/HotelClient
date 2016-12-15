@@ -1,8 +1,8 @@
 package vo.personVO;
 
-import java.util.Calendar;
 
 import po.personPO.PersonPO;
+import businessLogic.TimeFormTrans;
 
 
 public class PersonVO {
@@ -10,26 +10,25 @@ public class PersonVO {
 	private String password;
 	private int personID;
 	private int credit;
-	private Calendar birthday;//客户生日，仅包含年月日信息
-	private String vipType;	//no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
+	private String birthday;//客户生日，仅包含年月日信息
+	private String vipType;	//"普通客户"、“普通会员”、“企业会员”
 	private int vipLevel;//只有0-5这几个等级，vipLevel=credit/1000；最高5级；消费金额不足1000元时等级为0
 	private String enterpriseName;//企业会员登记企业名称
 	private String phoneNumber;//由11位数字组成的电话号码
-	
 	
 	public PersonVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PersonVO(String username, String password, int personID, int credit, Calendar birthday, String vipType,
+	public PersonVO(String username, String password, int personID, int credit, String birthday, String vipType,
 			int vipLevel, String enterpriseName, String phoneNumber) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.personID = personID;
 		this.credit = credit;
-		this.birthday = birthday;
+		this.setBirthday(birthday);
 		this.vipType = vipType;
 		this.vipLevel = vipLevel;
 		this.enterpriseName = enterpriseName;
@@ -42,7 +41,10 @@ public class PersonVO {
 		this.password = po.getPassword();
 		this.personID = po.getPersonID();
 		this.credit = po.getCredit();
-		this.birthday = po.getBirthday();
+		
+		TimeFormTrans t=new TimeFormTrans();
+		String birth=t.myToString(po.getBirthday());
+		this.birthday=birth;
 		this.vipType = po.getVipType();
 		this.vipLevel = po.getVipLevel();
 		this.enterpriseName = po.getEnterpriseName();
@@ -74,12 +76,7 @@ public class PersonVO {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
-	public Calendar getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(Calendar birthday) {
-		this.birthday = birthday;
-	}
+
 	public String getVipType() {
 		return vipType;
 	}
@@ -106,6 +103,13 @@ public class PersonVO {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 	
 }

@@ -35,7 +35,7 @@ public class Order{
 	 */
 	public boolean handleAbnormalOrder(OrderVO order, int percentOfCredit) throws RemoteException {
 		//改变订单状态
-		order.setOrderstate("alreadyExecute");//此步将异常订单变为已执行
+		order.setOrderstate("已执行");//此步将异常订单变为已执行
 		OrderPO orderpo=new OrderPO(order);
 		boolean orderChange=orderDataService.modify(orderpo);
 		//恢复信用值
@@ -52,12 +52,12 @@ public class Order{
 	 * @throws RemoteException 
 	 */
 	public boolean reverseOrder(OrderVO order) throws RemoteException {
-		if(order.getOrderstate().equals("nonExecute")){//当订单是未执行订单时，进行操作；否则报错
+		if(order.getOrderstate().equals("未执行")){//当订单是未执行订单时，进行操作；否则报错
 			//撤销订单
 			TimeFormTrans t=new TimeFormTrans();
 			String cancleTime=t.myToString(Calendar.getInstance());
 			order.setCanceltime(cancleTime);
-			order.setOrderstate("cancel");
+			order.setOrderstate("已撤销");
 			OrderPO orderPO=new OrderPO(order);
 			boolean isReverse=orderDataService.modify(orderPO);
 			//减少客户信用值
@@ -85,7 +85,7 @@ public class Order{
 		TimeFormTrans t=new TimeFormTrans();
 		String executeTime=t.myToString(Calendar.getInstance());
 		order.setExecutetime(executeTime);
-		order.setOrderstate("alreadyExecute");
+		order.setOrderstate("已执行");
 		OrderPO orderPO=new OrderPO(order);
 		boolean orderChange=orderDataService.modify(orderPO);
 		//增加客户信用值
@@ -167,9 +167,7 @@ public class Order{
 	/**
 	 * 在个人订单查看过程中，进一步查看某个状态（未执行，已执行，已撤销，异常）的订单
 	 * @param personname
-	 * @param 订单状态
-	 * 	 附：订单状态,"nonExecute"代表未执行订单、"alreadyExecute"代表已执行订单、
-			"cancel"代表已撤销订单、"abnormal"代表异常订单、"delay"代表延期订单
+	 * @param 订单状态，分为“未执行”、“已执行”、“已撤销”、“异常”、“延期”
 	 * @return 符合条件的酒店列表
 	 * @throws RemoteException 
 	 */
@@ -193,9 +191,7 @@ public class Order{
 	/**
 	 * 在酒店订单查看过程中，进一步查看某状态订单
 	 * @param hotelname
-	 * @param state 订单状态
-	 * 	 附：订单状态,"nonExecute"代表未执行订单、"alreadyExecute"代表已执行订单、
-			"cancel"代表已撤销订单、"abnormal"代表异常订单、"delay"代表延期订单
+	 * @param state 订单状态,“未执行”、“已执行”、“已撤销”、“异常”、“延期”
 	 * @return ArrayList<OrderVO> 订单列表
 	 * @throws RemoteException 
 	 */
@@ -217,12 +213,13 @@ public class Order{
 	
 	/**
 	 * 在浏览网站订单的过程中，进一步查看某日订单
-	 * @param date 需要精确到年月日
+	 * @param date1 需要精确到年月日，格式“2016-02-02”
 	 * @return ArrayList<OrderVO> 订单列表
 	 * @throws RemoteException 
 	 */
-	@SuppressWarnings("deprecation")
-	public ArrayList<OrderVO> netNumOrders(Calendar date)throws RemoteException{
+	public ArrayList<OrderVO> netNumOrders(String date1)throws RemoteException{
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar date=t.myToCalendar(date1+" 00:00:00");
 		ArrayList<OrderVO> netNumList=new ArrayList<OrderVO>();
 		try {
 			netNumList.addAll(netOrders());
@@ -232,12 +229,13 @@ public class Order{
 		}
 		for(int i=0; i<netNumList.size(); i++){
 			OrderVO ordervo=netNumList.get(i);
-			TimeFormTrans t=new TimeFormTrans();
 			Calendar producttime=t.myToCalendar(ordervo.getProducttime());
 			boolean isYearEqual=((producttime.get(Calendar.YEAR))
-					==(Calendar.getInstance().get(Calendar.YEAR)));
-			boolean isMonthEqual=((producttime.get(Calendar.MONTH))==(Calendar.getInstance().get(Calendar.MONTH)));
-			boolean isDateEqual=((producttime.get(Calendar.DATE))==(Calendar.getInstance().get(Calendar.DATE)));
+					==(date.get(Calendar.YEAR)));
+			boolean isMonthEqual=((producttime.get(Calendar.MONTH))
+					==(date.get(Calendar.MONTH)));
+			boolean isDateEqual=((producttime.get(Calendar.DATE))
+					==(date.get(Calendar.DATE)));
 			if(!(isYearEqual&&isMonthEqual&&isDateEqual)){//只要三个钟有一个不等
 				netNumList.remove(i);
 			}

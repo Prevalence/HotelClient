@@ -69,7 +69,7 @@ public class Market {
 		PersonVO personvo=person.getPersonInfo(personname);
 		int oriCredit=personvo.getCredit();
 		personvo.setCredit(oriCredit+credit);
-		if(personvo.getVipType().equals("no")==false){//当客户是VIP时
+		if(personvo.getVipType().equals("普通客户")==false){//当客户是VIP时
 			personvo.setVipLevel((oriCredit+credit)/1000);
 		}
 		return person.modifyPerson(personvo);

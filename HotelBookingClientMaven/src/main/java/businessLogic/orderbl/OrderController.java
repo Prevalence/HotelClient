@@ -161,10 +161,10 @@ public class OrderController implements OrderblService{
 	
 	/**
 	 * 在浏览网站订单的过程中，进一步查看某日订单
-	 * @param date 需要精确到年月日
+	 * @param date 需要精确到年月日，格式“2016-02-02”
 	 * @return ArrayList<OrderVO> 订单列表
 	 */
-	public ArrayList<OrderVO> netNumOrders(Calendar date){
+	public ArrayList<OrderVO> netNumOrders(String date){
 		try {
 			return order1.netNumOrders(date);
 		} catch (RemoteException e) {

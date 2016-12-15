@@ -1,5 +1,6 @@
 package businessLogicService.orderblService;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -68,17 +69,20 @@ public interface OrderblService {
 	public ArrayList<OrderVO> personStateOrders(String personname, String state);
 	
 	/**
-	 * 在酒店订单查看过程中，进一步查看某个状态（未执行，已执行，已撤销，异常）的订单
-	 * @param time
-	 * @return
+	 * 在酒店订单查看过程中，进一步查看某状态订单
+	 * @param hotelname
+	 * @param state 订单状态,“未执行”、“已执行”、“已撤销”、“异常”、“延期”
+	 * @return ArrayList<OrderVO> 订单列表
+	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> hotelStateOrders(String hotelname, String state);
 	
 	/**
 	 * 在浏览网站订单的过程中，进一步查看某日订单
-	 * @param num
-	 * @return
+	 * @param date1 需要精确到年月日，格式“2016-02-02”
+	 * @return ArrayList<OrderVO> 订单列表
+	 * @throws RemoteException 
 	 */
-	public ArrayList<OrderVO> netNumOrders(Calendar date);
+	public ArrayList<OrderVO> netNumOrders(String date);
 }
 

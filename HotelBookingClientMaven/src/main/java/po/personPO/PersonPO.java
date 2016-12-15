@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import vo.personVO.PersonVO;
+import businessLogic.TimeFormTrans;
 
 /**
  * 
@@ -44,7 +45,10 @@ public class PersonPO implements Serializable{
 		this.password=vo.getPassword();
 		this.personID=vo.getPersonID();
 		this.credit=vo.getCredit();
-		this.birthday = vo.getBirthday();
+		
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar c=t.myToCalendar(vo.getBirthday());
+		this.birthday = c;
 		this.vipType = vo.getVipType();
 		this.vipLevel = vo.getVipLevel();
 		this.enterpriseName = vo.getEnterpriseName();
