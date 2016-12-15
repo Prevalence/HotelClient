@@ -9,8 +9,12 @@ import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.userblService.UserblService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -24,7 +28,7 @@ import vo.hotelVO.hoteluiVO.CommentInfoVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
 public class CreateOrderuiController {
-	
+
 	@FXML
 	private Label wifiLabel;
 	@FXML
@@ -46,6 +50,15 @@ public class CreateOrderuiController {
 	@FXML
 	private Label areaLabel;
 	@FXML
+	private Label numberLabel;
+	@FXML
+	private Label roomPriceLabel;
+	@FXML
+	private TextField peopleField;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private ChoiceBox roomChoices;
+	@FXML
 	private Pane mainPane;
 
 	@SuppressWarnings("unused")
@@ -59,14 +72,14 @@ public class CreateOrderuiController {
 
 	// 填充进hotelInfoTable的酒店数据
 	private ObservableList<RoomInfoVO> roomData;
-	
+
 	private ArrayList<RoomInfoVO> roomInfoList;
 
 	private RoomInfoVO roomInfo;
 
 	// 填充进commentTable的酒店数据
 	private ObservableList<CommentInfoVO> commentData;
-	
+
 	private ArrayList<CommentVO> comment;
 
 	private ArrayList<CommentInfoVO> commentList;
@@ -88,6 +101,8 @@ public class CreateOrderuiController {
 
 	@SuppressWarnings("unused")
 	private String hotelName;
+
+	private String roomSelected;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -130,13 +145,13 @@ public class CreateOrderuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelSearchPane);
 	}
-	
+
 	/**
 	 * 生成订单，跳转到订单信息填写界面
 	 */
 	@FXML
-	private void createOrder(){
-		
+	private void createOrder() {
+
 	}
 
 	/**
@@ -156,7 +171,7 @@ public class CreateOrderuiController {
 	public void setPersonname(String personname) {
 		this.personname = personname;
 	}
-	
+
 	/**
 	 * 传递酒店信息的VO
 	 * 
@@ -164,6 +179,7 @@ public class CreateOrderuiController {
 	 */
 	public void setHotelVO(HotelVO hotelInfo) {
 		this.hotelInfo = hotelInfo;
+		room = hotelInfo.getRoom();
 	}
 
 	/**
@@ -175,25 +191,44 @@ public class CreateOrderuiController {
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
 		hotelInfo = hotelbl.showHotelInfo(hotelName);
-		if(hotelInfo.getService().get(0)){
+		if (hotelInfo.getService().get(0)) {
 			wifiLabel.setText("wifi");
 		}
-		if(hotelInfo.getService().get(1)){
+		if (hotelInfo.getService().get(1)) {
 			wifiLabel.setText("电视");
 		}
-		if(hotelInfo.getService().get(2)){
+		if (hotelInfo.getService().get(2)) {
 			wifiLabel.setText("沙发");
 		}
-		if(hotelInfo.getService().get(3)){
+		if (hotelInfo.getService().get(3)) {
 			wifiLabel.setText("餐厅");
 		}
 		featureLabel.setText(hotelInfo.getFeature());
-		//connectionLabel.setText(hotelInfo.get);
-		scoreLabel.setText(String.valueOf(hotelInfo.getScore())+"/5");
+		// connectionLabel.setText(hotelInfo.get);
+		scoreLabel.setText(String.valueOf(hotelInfo.getScore()) + "/5");
 		areaLabel.setText(hotelInfo.getCircle());
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
-		
+
+	}
+
+	/**
+	 * 设置评分区间选择的组件
+	 * 
+	 * @param others
+	 */
+	@SuppressWarnings("unchecked")
+	public void setRoomChoiceBox(ObservableList<String> others) {
+		roomChoices.setItems(others);
+		roomChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				//就是房间类型
+				roomSelected = roomChoices.getSelectionModel().getSelectedItem().toString();
+				roomPriceLabel.setText(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomType());
+				numberLabel.setText(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomnum());
+				
+			}
+		});
 	}
 
 }

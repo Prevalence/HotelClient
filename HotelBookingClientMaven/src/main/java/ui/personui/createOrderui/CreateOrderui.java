@@ -1,9 +1,14 @@
 package ui.personui.createOrderui;
 
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 
 public class CreateOrderui extends Pane {
 	private Stage primaryStage;
@@ -13,6 +18,10 @@ public class CreateOrderui extends Pane {
 	private String hotelName;
 
 	private HotelVO hotelInfo;
+	
+	private ArrayList<RoomVO> room;
+	
+	private ObservableList<String> types=FXCollections.observableArrayList();
 
 	private CreateOrderuiController createOrderuiController;
 
@@ -26,6 +35,10 @@ public class CreateOrderui extends Pane {
 		this.personname = personname;
 		this.hotelName = hotelName;
 		this.hotelInfo = hotelInfo;
+		this.room=hotelInfo.getRoom();
+		for(int i=0;i<room.size();i++){
+			types.add(room.get(i).getRoomType());
+		}
 		initcreateOrderui();
 	};
 
@@ -48,5 +61,6 @@ public class CreateOrderui extends Pane {
 		createOrderuiController.setPersonname(personname);
 		createOrderuiController.setHotelNameAndShowInfo(hotelName);
 		createOrderuiController.setHotelVO(hotelInfo);
+		createOrderuiController.setRoomChoiceBox(types);;
 	}
 }
