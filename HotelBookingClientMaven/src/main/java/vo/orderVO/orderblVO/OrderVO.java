@@ -1,4 +1,4 @@
-package vo;
+package vo.orderVO.orderblVO;
 
 import java.util.ArrayList;
 import java.util.Calendar;

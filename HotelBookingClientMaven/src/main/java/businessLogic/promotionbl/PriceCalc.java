@@ -7,10 +7,10 @@ import businessLogic.userbl.Person;
 import po.OrderPO;
 import po.PromotionPO;
 import po.personPO.PersonPO;
-import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
+import vo.orderVO.orderblVO.OrderVO;
 /**
  * 
  * @author John

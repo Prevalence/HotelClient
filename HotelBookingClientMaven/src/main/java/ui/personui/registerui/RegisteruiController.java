@@ -3,26 +3,50 @@ package ui.personui.registerui;
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.loginui.Loginui;
+import ui.personui.personInfoui.PersonInfoui;
+import vo.personVO.PersonVO;
 
 public class RegisteruiController {
-	//TODO
-	
+
+	@FXML
+	private Button loginButton;
+	@FXML
+	private Button signupButton;
+	@FXML
+	private ChoiceBox<String> otherChoices;
+	@FXML
+	private TextField userNameField;
+	@FXML
+	private TextField passwordField;
+	@FXML
+	private Label feedBackLabel;
+	@FXML
+	private Pane loginPane;
 	@FXML
 	private Pane mainPane;
 
-	@SuppressWarnings("unused")
 	private UserblService userbl;
 
-	// 酒店详情查看界面
+	// 登录界面
 	private Pane loginuiPane;
 
 	// 个人信息界面
-	private Pane succeedToRegisterPane;
+	private Pane personInfoPane;
 
 	private Stage primaryStage;
+
+	private String personname;
+
+	private PersonVO personInfo;
+
+	private String password;
 
 	public RegisteruiController() {
 		userbl = new UserController();
@@ -30,8 +54,6 @@ public class RegisteruiController {
 
 	/**
 	 * 返回到登录界面
-	 * 
-	 * @return boolean
 	 */
 
 	@FXML
@@ -46,9 +68,31 @@ public class RegisteruiController {
 	 */
 	@FXML
 	private void succeedToRegister() {
-		succeedToRegisterPane = new SucceedToRegisterui(primaryStage);
+		personInfoPane = new PersonInfoui(primaryStage, personname);
 		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(succeedToRegisterPane);
+		mainPane.getChildren().add(personInfoPane);
+	}
+
+	/**
+	 * 注册操作，如果注册成功就跳转到个人信息界面，如果失败则反馈注册失败信息
+	 * 
+	 * @return boolean
+	 */
+
+	@FXML
+	private void signup() {
+		personname = userNameField.getText();
+		password = passwordField.getText();
+		if (!userbl.isExist(personname, "person")) {
+			personInfo = new PersonVO(personname, password, -1, 1000, null, "no", 0, "", "");
+			userbl.register(personInfo);
+			personInfoPane = new PersonInfoui(primaryStage,personname);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(personInfoPane);
+		}
+		else{
+			
+		}
 	}
 
 	/**

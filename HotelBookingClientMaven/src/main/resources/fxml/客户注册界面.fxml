@@ -18,11 +18,6 @@
             <Image url="@../登录界面/账户.png" />
          </image>
       </ImageView>
-      <Button fx:id="signupButton" layoutX="106.0" layoutY="431.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="41.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT">
-         <font>
-            <Font size="1.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="22.0" fitWidth="41.0" layoutX="106.0" layoutY="227.0">
          <image>
             <Image url="@../登录界面/密码.png" />
@@ -54,6 +49,18 @@
             <Image url="@../客户注册界面/注册Title.png" />
          </image>
       </ImageView>
+      <Button fx:id="signupButton" layoutX="96.0" layoutY="423.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="41.0" style="-fx-background-color: transparent;" textFill="#10bf1000">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../客户注册界面/返回登录界面.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <Button fx:id="passwordButton" layoutX="455.0" layoutY="261.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="27.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT">
          <font>
             <Font size="1.0" />
@@ -66,7 +73,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="loginButton" layoutX="106.0" layoutY="333.0" mnemonicParsing="false" onAction="#Login" prefHeight="74.0" prefWidth="388.0" style="-fx-background-color: transparent;">
+      <Button fx:id="signupButton" layoutX="106.0" layoutY="333.0" mnemonicParsing="false" onAction="#signup" prefHeight="74.0" prefWidth="388.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>

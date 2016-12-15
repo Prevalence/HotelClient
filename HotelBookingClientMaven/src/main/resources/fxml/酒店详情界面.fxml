@@ -47,7 +47,7 @@
                   <Image url="@../酒店详情界面/Shape%2016.png" />
                </image>
             </ImageView>
-            <Label layoutX="136.0" layoutY="80.0" text="4.98/5" />
+            <Label fx:id="scoreLabel" layoutX="136.0" layoutY="80.0" text="4.98/5" />
             <Label layoutX="115.0" layoutY="15.0" text="南京大酒店">
                <font>
                   <Font size="24.0" />
@@ -67,6 +67,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label layoutX="407.0" layoutY="21.0" text="Label" />
          </children>
       </Pane>
       <Button fx:id="hotelSearchButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
@@ -110,23 +111,22 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <TableView fx:id="hotelInfoTable" layoutX="162.0" layoutY="237.0" prefHeight="200.0" prefWidth="785.0" style="-fx-border-color: ;">
+      <TableView fx:id="roomInfoTable" layoutX="162.0" layoutY="237.0" prefHeight="200.0" prefWidth="785.0" style="-fx-border-color: ;">
         <columns>
-            <TableColumn prefWidth="240.0" />
-          <TableColumn prefWidth="275.0" />
-          <TableColumn prefWidth="260.0" />
+            <TableColumn fx:id="roomtypeCol" prefWidth="401.0" />
+          <TableColumn fx:id="priceCol" prefWidth="383.0" />
         </columns>
       </TableView>
       <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="163.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../酒店详情界面/价格.png" />
+            <Image url="@../酒店详情界面/价格栏2.png" />
          </image>
       </ImageView>
       <TableView fx:id="commentTable" layoutX="162.0" layoutY="477.0" prefHeight="200.0" prefWidth="785.0" style="-fx-border-color: ;">
          <columns>
-            <TableColumn prefWidth="240.0" />
-            <TableColumn prefWidth="275.0" />
-            <TableColumn prefWidth="260.0" />
+            <TableColumn fx:id="nameCol" prefWidth="147.0" />
+            <TableColumn fx:id="timeCol" prefWidth="171.0" />
+            <TableColumn fx:id="commentCol" prefWidth="457.0" />
          </columns>
       </TableView>
       <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="162.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
