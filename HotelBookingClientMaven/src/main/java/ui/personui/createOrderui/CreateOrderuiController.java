@@ -1,4 +1,4 @@
-package ui.personui.hotelInfoViewui;
+package ui.personui.createOrderui;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,10 +9,12 @@ import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.userblService.UserblService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -25,7 +27,7 @@ import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.CommentInfoVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
-public class HotelInfoViewuiController {
+public class CreateOrderuiController {
 
 	@FXML
 	private Label wifiLabel;
@@ -47,27 +49,15 @@ public class HotelInfoViewuiController {
 	private Label scoreLabel;
 	@FXML
 	private Label areaLabel;
+	@FXML
+	private Label numberLabel;
+	@FXML
+	private Label roomPriceLabel;
+	@FXML
+	private TextField peopleField;
 	@SuppressWarnings("rawtypes")
 	@FXML
-	private TableView roomInfoTable;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn roomtypeCol;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn priceCol;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableView commentTable;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn nameCol;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn timeCol;
-	@SuppressWarnings("rawtypes")
-	@FXML
-	private TableColumn commentCol;
+	private ChoiceBox roomChoices;
 	@FXML
 	private Pane mainPane;
 
@@ -82,14 +72,14 @@ public class HotelInfoViewuiController {
 
 	// 填充进hotelInfoTable的酒店数据
 	private ObservableList<RoomInfoVO> roomData;
-	
+
 	private ArrayList<RoomInfoVO> roomInfoList;
 
 	private RoomInfoVO roomInfo;
 
 	// 填充进commentTable的酒店数据
 	private ObservableList<CommentInfoVO> commentData;
-	
+
 	private ArrayList<CommentVO> comment;
 
 	private ArrayList<CommentInfoVO> commentList;
@@ -112,11 +102,13 @@ public class HotelInfoViewuiController {
 	@SuppressWarnings("unused")
 	private String hotelName;
 
+	private String roomSelected;
+
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public HotelInfoViewuiController() {
+	public CreateOrderuiController() {
 		userbl = new UserController();
 		hotelbl = new HotelController();
 	}
@@ -153,13 +145,13 @@ public class HotelInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelSearchPane);
 	}
-	
+
 	/**
 	 * 生成订单，跳转到订单信息填写界面
 	 */
 	@FXML
-	private void createOrder(){
-		
+	private void createOrder() {
+
 	}
 
 	/**
@@ -181,6 +173,16 @@ public class HotelInfoViewuiController {
 	}
 
 	/**
+	 * 传递酒店信息的VO
+	 * 
+	 * @param hotelInfo
+	 */
+	public void setHotelVO(HotelVO hotelInfo) {
+		this.hotelInfo = hotelInfo;
+		room = hotelInfo.getRoom();
+	}
+
+	/**
 	 * 传递酒店名，并将该酒店详情显示在界面上
 	 * 
 	 * @param hotelName
@@ -189,83 +191,44 @@ public class HotelInfoViewuiController {
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
 		hotelInfo = hotelbl.showHotelInfo(hotelName);
-		if(hotelInfo.getService().get(0)){
+		if (hotelInfo.getService().get(0)) {
 			wifiLabel.setText("wifi");
 		}
-		if(hotelInfo.getService().get(1)){
+		if (hotelInfo.getService().get(1)) {
 			wifiLabel.setText("电视");
 		}
-		if(hotelInfo.getService().get(2)){
+		if (hotelInfo.getService().get(2)) {
 			wifiLabel.setText("沙发");
 		}
-		if(hotelInfo.getService().get(3)){
+		if (hotelInfo.getService().get(3)) {
 			wifiLabel.setText("餐厅");
 		}
 		featureLabel.setText(hotelInfo.getFeature());
-		//connectionLabel.setText(hotelInfo.get);
-		scoreLabel.setText(String.valueOf(hotelInfo.getScore())+"/5");
+		// connectionLabel.setText(hotelInfo.get);
+		scoreLabel.setText(String.valueOf(hotelInfo.getScore()) + "/5");
 		areaLabel.setText(hotelInfo.getCircle());
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
-		
-		
-		comment = hotelInfo.getComment();
-		room = hotelInfo.getRoom();
-		commentList = getCommentList(comment);
-		roomInfoList = getRoomInfoList(room);
-		roomData = FXCollections.observableArrayList(roomInfoList);
-		commentData = FXCollections.observableArrayList(commentList);
-		roomInfoTable.setItems(roomData);
-		commentTable.setItems(commentData);
+
 	}
 
 	/**
-	 * 从commentVO列表中获取comment字符串组成列表，用于界面显示
+	 * 设置评分区间选择的组件
 	 * 
-	 * @return commentList
-	 */
-	private ArrayList<CommentInfoVO> getCommentList(ArrayList<CommentVO> comment) {
-		ArrayList<CommentInfoVO> commentList = new ArrayList<CommentInfoVO>();
-		String name = "";
-		Calendar time = null;
-		String content = "";
-		for (int i = 0; i < comment.size(); i++) {
-			name = comment.get(i).getPersonname();
-			time = comment.get(i).getTime();
-			content = comment.get(i).getContent();
-			commentInfo=new CommentInfoVO(name,time,content);
-			commentList.add(commentInfo);
-		}
-		return commentList;
-	}
-
-	/**
-	 * 从roomVO列表中获取用于界面显示的roomInfo列表
-	 * 
-	 * @return roomInfo
-	 */
-	private ArrayList<RoomInfoVO> getRoomInfoList(ArrayList<RoomVO> room) {
-		ArrayList<RoomInfoVO> roomInfoList = new ArrayList<RoomInfoVO>();
-		String roomtype="";
-		int roomPrice=0;
-		for (int i = 0; i < room.size(); i++) {
-			roomtype=room.get(i).getRoomType();
-			roomPrice=room.get(i).getRoomPrice();
-			roomInfo=new RoomInfoVO(roomtype,roomPrice);
-			roomInfoList.add(roomInfo);
-		}
-		return roomInfoList;
-	}
-	
-	/**
-	 * 初始设置TableView的属性，绑定内部按钮
+	 * @param others
 	 */
 	@SuppressWarnings("unchecked")
-	public void initTableView() {
-		roomtypeCol.setCellValueFactory(new PropertyValueFactory<>("roomtype"));
-		priceCol.setCellValueFactory(new PropertyValueFactory<>("roomPrice"));
-		nameCol.setCellValueFactory(new PropertyValueFactory<>("personname"));
-		timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
-		commentCol.setCellValueFactory(new PropertyValueFactory<>("content"));
+	public void setRoomChoiceBox(ObservableList<String> others) {
+		roomChoices.setItems(others);
+		roomChoices.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				//就是房间类型
+				roomSelected = roomChoices.getSelectionModel().getSelectedItem().toString();
+				roomPriceLabel.setText(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomType());
+				numberLabel.setText(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomnum());
+				
+			}
+		});
 	}
+
 }
