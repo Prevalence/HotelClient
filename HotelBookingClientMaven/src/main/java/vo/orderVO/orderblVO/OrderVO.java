@@ -10,9 +10,7 @@ public class OrderVO {
 	//订单的基本信息
 	private String orderID;//时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
 	private int orderprice;
-	private String orderstate;
-	//订单状态,"nonExecute"代表未执行订单、"alreadyExecute"代表已执行订单、
-	//"cancel"代表已撤销订单、"abnormal"代表异常订单、"delay"代表延期订单
+	private String orderstate;//订单状态,“未执行”、“已执行”、“已撤销”、“异常”、“延期”
 	
 	//酒店信息
 	private String hotelname;

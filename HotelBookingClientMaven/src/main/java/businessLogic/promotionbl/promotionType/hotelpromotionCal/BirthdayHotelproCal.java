@@ -24,10 +24,8 @@ public class BirthdayHotelproCal implements CalculatePrice{
 		double discountPrice=initialtotal;
 		Calendar calendar=Calendar.getInstance();
 		//临时假逻辑，具体数字要从personpo里获得，personpo的属性可能需要修改，或者根据Calendar的API找一个String的返回值方法
-		@SuppressWarnings("deprecation")
-		boolean isMonthEqual=((calendar.get(Calendar.MONTH))==(personpo.getBirthday().getTime().getMonth()));
-		@SuppressWarnings("deprecation")
-		boolean isDateEqual=((calendar.get(Calendar.DATE))==(personpo.getBirthday().getTime().getDate()));
+		boolean isMonthEqual=((calendar.get(Calendar.MONTH))==(personpo.getBirthday().get(Calendar.MONTH)));
+		boolean isDateEqual=((calendar.get(Calendar.DATE))==(personpo.getBirthday().get(Calendar.DATE)));
 		if(isMonthEqual&&isDateEqual){
 			discountPrice=discountPrice*(((BirthdayHotelproPO) promotionpo).getDiscount())/100.0;
 		}

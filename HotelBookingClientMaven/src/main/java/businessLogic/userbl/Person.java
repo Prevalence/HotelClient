@@ -44,7 +44,7 @@ public class Person {
 	/**
 	 * 会员注册
 	 * @param personvo
-	 * @param vipType no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
+	 * @param vipType
 	 * @param vipInfo 若是普通VIP，info为生日，格式如：20160120；若是企业VIP，格式为非空字符
 	 * @return 是否注册成功
 	 * @throws ParseException
@@ -55,12 +55,12 @@ public class Person {
 		if(personvo.getVipType().equals("普通客户")){//不是会员，可以注册
 			//判断vipInfo是否符合格式
 			if(vipType.equals("普通会员")){//注册普通会员
-				if(vipInfo.length()!=8){
+				if(vipInfo.length()!=10){
 					return false;//生日格式不符合要求
 				}else{
 					int year=Integer.parseInt(vipInfo.substring(0, 4));
-					int month=Integer.parseInt(vipInfo.substring(4, 6));
-					int date=Integer.parseInt(vipInfo.substring(6, 8));
+					int month=Integer.parseInt(vipInfo.substring(5, 7));
+					int date=Integer.parseInt(vipInfo.substring(8, 10));
 //					//计算该月天数
 //					String strDate = year+""+date;
 //					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM"); 
@@ -69,9 +69,10 @@ public class Person {
 //					calendar.setTime(date1); //放入日期 
 //					int daysOfThisMonth=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 					
-					if((1900<=year)&&(year<=Calendar.getInstance().YEAR)&&(1<=month)&&(month<=12)&&(1<=date)&&(date<=31)){//日期正确
-						Calendar birthday=Calendar.getInstance();
-						birthday.set(year, month, date);
+					if((1900<=year)&&(year<=Calendar.getInstance().YEAR)
+							&&(1<=month)&&(month<=12)
+							&&(1<=date)&&(date<=31)){//日期正确
+						String birthday=vipInfo+" 00:00:00";
 						personvo.setBirthday(birthday);;
 					}else{
 						return false;//生日格式不符合要求

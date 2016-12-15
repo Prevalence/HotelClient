@@ -20,6 +20,7 @@ public class HotelPO implements Serializable{
 	private ArrayList<RoomPO> room;
 	private ArrayList<CommentPO> comment;
 	private String hotelworker;
+	private String hotelPhone;//酒店电话号码
 	
 	public HotelPO() {
 		super();
@@ -27,7 +28,7 @@ public class HotelPO implements Serializable{
 
 
 	public HotelPO(int hotelID, String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
-			String circle, double score, ArrayList<RoomPO> room, ArrayList<CommentPO> comment, String hotelworker) {
+			String circle, double score, ArrayList<RoomPO> room, ArrayList<CommentPO> comment, String hotelworker,String hotelPhone) {
 		super();
 		this.setHotelID(hotelID);
 		this.hotelname = hotelname;
@@ -40,6 +41,7 @@ public class HotelPO implements Serializable{
 		this.room = room;
 		this.comment = comment;
 		this.hotelworker = hotelworker;
+		this.hotelPhone=hotelPhone;
 	}
 
 	public HotelPO(HotelVO vo){
@@ -157,6 +159,16 @@ public class HotelPO implements Serializable{
 
 	public void setHotelID(int hotelID) {
 		this.hotelID = hotelID;
+	}
+
+
+	public String getHotelPhone() {
+		return hotelPhone;
+	}
+
+
+	public void setHotelPhone(String hotelPhone) {
+		this.hotelPhone = hotelPhone;
 	}
 	
 

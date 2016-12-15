@@ -18,13 +18,14 @@ public class HotelVO {
 	private ArrayList<RoomVO> room;
 	private ArrayList<CommentVO> comment;
 	private String hotelworker;
+	private String hotelPhone;//酒店电话号码
 	
 	public HotelVO() {
 		super();
 	}
 
 	public HotelVO(int hotelID, String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
-			String circle, double score, ArrayList<RoomVO> room, ArrayList<CommentVO> comment, String hotelworker) {
+			String circle, double score, ArrayList<RoomVO> room, ArrayList<CommentVO> comment, String hotelworker, String hotelPhone) {
 		super();
 		this.setHotelID(hotelID);
 		this.hotelname = hotelname;
@@ -37,6 +38,7 @@ public class HotelVO {
 		this.room = room;
 		this.comment = comment;
 		this.hotelworker = hotelworker;
+		this.hotelPhone=hotelPhone;
 	}
 
 	public HotelVO(HotelPO po){
@@ -153,5 +155,13 @@ public class HotelVO {
 
 	public void setHotelID(int hotelID) {
 		this.hotelID = hotelID;
+	}
+
+	public String getHotelPhone() {
+		return hotelPhone;
+	}
+
+	public void setHotelPhone(String hotelPhone) {
+		this.hotelPhone = hotelPhone;
 	}
 }

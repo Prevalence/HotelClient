@@ -2,10 +2,13 @@ package businessLogicService.userblService;
 
 import java.rmi.RemoteException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
+import po.personPO.RecordPO;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.personVO.PersonVO;
+import vo.personVO.RecordVO;
 
 public interface UserblService {
 
@@ -95,4 +98,20 @@ public interface UserblService {
 	 * @return boolean
 	 */
 	public boolean isExist(String username, String usertype);
+	
+	/**
+	 * 写入客户信用记录
+	 * @param personname
+	 * @param record
+	 * @return
+	 */
+	public boolean writeRecord(String personname, RecordVO record);
+	
+	/**
+	 * 获取客户信用记录
+	 * @param personID
+	 * @return
+	 */
+	public ArrayList<RecordVO> getRecord(String personname);
+	
 }
