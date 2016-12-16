@@ -213,7 +213,7 @@ public class CreateOrderuiController {
 	}
 
 	/**
-	 * 设置评分区间选择的组件
+	 * 设置房间类型选择的组件
 	 * 
 	 * @param others
 	 */
