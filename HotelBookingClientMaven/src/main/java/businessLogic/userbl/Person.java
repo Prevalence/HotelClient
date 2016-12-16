@@ -109,8 +109,9 @@ public class Person {
 		PersonVO vo=new PersonVO();
 		if(po!=null){
 			vo=new PersonVO(po);	
+			return vo;
 		}
-		return vo;
+		return null;
 	}
 	
 	/**
@@ -124,8 +125,9 @@ public class Person {
 		PersonVO vo=new PersonVO();
 		if(po!=null){
 			vo=new PersonVO(po);
+			return vo;
 		}
-		return vo;
+		return null;
 	}
 	
 	/**

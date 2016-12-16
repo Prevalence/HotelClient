@@ -33,9 +33,9 @@ public class Manager {
 	}
 	
 	/**
-	 * 保存网站营销人员信息
+	 * 保存或修改网站营销人员信息
 	 * @param marketInfo
-	 * @return 是否保存成功
+	 * @return 是否保存或修改成功
 	 * @throws RemoteException
 	 */
 	public boolean marketSave(MarketVO marketInfo) throws RemoteException{
@@ -44,9 +44,9 @@ public class Manager {
 	}
 	
 	/**
-	 * 保存酒店工作人员信息
+	 * 保存或修改酒店工作人员信息
 	 * @param hotelWorkerInfo
-	 * @return 是否保存成功
+	 * @return 是否保存或修改成功
 	 * @throws RemoteException
 	 */
 	public boolean hotelWorkerSave(HotelWorkerVO hotelWorkerInfo) throws RemoteException{
@@ -65,8 +65,9 @@ public class Manager {
 		PersonVO vo=new PersonVO();
 		if(vo!=null){
 			vo=new PersonVO(po);
+			return vo;
 		}
-		return vo;
+		return null;
 		
 	}
 	
@@ -81,8 +82,9 @@ public class Manager {
 		HotelWorkerVO vo=new HotelWorkerVO();
 		if(po!=null){
 			vo=new HotelWorkerVO(po);
+			return vo;
 		}
-		return vo;
+		return null;
 	}
 	
 	/**
@@ -120,8 +122,9 @@ public class Manager {
 		MarketVO vo=new MarketVO();
 		if(po!=null){
 			vo=new MarketVO(po);
+			return vo;
 		}
-		return vo;
+		return null;
 	}
 	
 }
