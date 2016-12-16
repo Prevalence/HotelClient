@@ -118,8 +118,8 @@ public class OrderControllerTest {
 
 	@Test
 	public void testNetNumOrders() {
-		Calendar calendar=Calendar.getInstance();
-		assertEquals(3,oc.netNumOrders(calendar).size());
+		String date="2016-11-21";
+		assertEquals(3,oc.netNumOrders(date).size());
 	}
 	
 }

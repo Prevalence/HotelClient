@@ -165,10 +165,10 @@ public class Order{
 	}
 
 	/**
-	 * 在个人订单查看过程中，进一步查看某个状态（未执行，已执行，已撤销，异常）的订单
+	 * 在个人订单查看过程中，进一步查看某个状态（未执行，已执行，已撤销，异常，异常）的订单
 	 * @param personname
 	 * @param 订单状态，分为“未执行”、“已执行”、“已撤销”、“异常”、“延期”
-	 * @return 符合条件的酒店列表
+	 * @return 符合条件的订单列表
 	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> personStateOrders(String personname, String state)throws RemoteException{
@@ -218,6 +218,9 @@ public class Order{
 	 * @throws RemoteException 
 	 */
 	public ArrayList<OrderVO> netNumOrders(String date1)throws RemoteException{
+		if(date1.length()!=10){
+			return null;
+		}
 		TimeFormTrans t=new TimeFormTrans();
 		Calendar date=t.myToCalendar(date1+" 00:00:00");
 		ArrayList<OrderVO> netNumList=new ArrayList<OrderVO>();

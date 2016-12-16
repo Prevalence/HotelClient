@@ -1,16 +1,12 @@
 package businessLogic.searchbl;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
-import businessLogic.hotelbl.Hotel;
 import businessLogic.userbl.HotelWorker;
 import businessLogic.userbl.Market;
 import businessLogic.userbl.Person;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
-import vo.hotelVO.hotelblVO.HotelConditionVO;
-import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.personVO.PersonVO;
 /**
  * 
@@ -18,18 +14,6 @@ import vo.personVO.PersonVO;
  *
  */
 public class Search {
-	
-	/**
-	 * 找到符合条件的酒店列表
-	 * @param worstCondition 最坏酒店条件
-	 * @param bestCondition 最好酒店条件
-	 * @return 符合条件的酒店列表
-	 * @throws RemoteException
-	 */
-	public ArrayList<HotelSearchVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) throws RemoteException{
-		Hotel hotel=new Hotel();
-		return hotel.findWithReq(worstCondition, bestCondition);
-	}
 	
 	/**
 	 * 根据客户名称，找到客户信息

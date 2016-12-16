@@ -7,8 +7,6 @@ import businessLogicService.searchblService.SearchblService;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.SearchVO;
-import vo.hotelVO.hotelblVO.HotelConditionVO;
-import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.personVO.PersonVO;
 
 /**
@@ -18,22 +16,6 @@ import vo.personVO.PersonVO;
 public class SearchController implements SearchblService {
 	private Search search=new Search();
 	private SearchHistory searchhistory=new SearchHistory();
-
-	/**
-	 * 找到符合条件的酒店列表
-	 * @param worstCondition 最坏酒店条件
-	 * @param bestCondition 最好酒店条件
-	 * @return 符合条件的酒店列表
-	 */
-	public ArrayList<HotelSearchVO> findHotel(HotelConditionVO worstCondition, HotelConditionVO bestCondition) {
-		try {
-			return search.findHotel(worstCondition, bestCondition);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
 
 	/**
 	 * 根据客户名称，找到客户信息

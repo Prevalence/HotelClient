@@ -38,8 +38,9 @@ public class Market {
 		PersonVO vo=new PersonVO();
 		if(po!=null){
 			vo=new PersonVO(po);
+			return vo;
 		}
-		return vo;
+		return null;
 	}
 	
 	/**
@@ -53,8 +54,9 @@ public class Market {
 		MarketVO vo=new MarketVO();
 		if(po!=null){
 			vo=new MarketVO(po);
+			return vo;
 		}
-		return vo;
+		return null;
 	}
 	
 	/**
