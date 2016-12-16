@@ -44,8 +44,9 @@ public class HotelWorker {
 		HotelWorkerVO vo=new HotelWorkerVO();
 		if(po!=null){
 			vo=new HotelWorkerVO(po);
+			return vo;
 		}
-		return vo;
+		return null;
 		
 	}
 	

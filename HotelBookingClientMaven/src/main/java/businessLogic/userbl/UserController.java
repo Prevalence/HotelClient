@@ -3,9 +3,11 @@ package businessLogic.userbl;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.personVO.PersonVO;
+import vo.personVO.RecordVO;
 
 import java.rmi.RemoteException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import businessLogicService.userblService.UserblService;
 
@@ -93,7 +95,7 @@ public class UserController  implements UserblService{
 	/**
 	 * 会员注册
 	 * @param personvo
-	 * @param vipType no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
+	 * @param vipType
 	 * @param vipInfo 若是普通VIP，info为生日，格式如：20160120；若是企业VIP，格式为非空字符
 	 * @return 是否注册成功
 	 * @throws ParseException
@@ -251,6 +253,43 @@ public class UserController  implements UserblService{
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	/**
+	 * 写入客户信用记录
+	 * @param personname
+	 * @param record
+	 * @return
+	 */
+	@Override
+	public boolean writeRecord(String personname, RecordVO record) {
+		// TODO Auto-generated method stub
+		Record rec=new Record();
+		try {
+			return rec.writeRecord(personname, record);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/**
+	 * 获取客户信用记录
+	 * @param personname
+	 * @return
+	 */
+	@Override
+	public ArrayList<RecordVO> getRecord(String personname) {
+		// TODO Auto-generated method stub
+		Record rec=new Record();
+		try {
+			rec.getRecord(personname);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	

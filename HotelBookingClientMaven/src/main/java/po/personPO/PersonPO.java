@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import vo.personVO.PersonVO;
+import businessLogic.TimeFormTrans;
 
 /**
  * 
@@ -17,7 +18,7 @@ public class PersonPO implements Serializable{
 	private int credit;
 	private Calendar birthday;//客户生日，仅包含年月日信息
 	private String vipType;	//no代表不是VIP，ordinary代表是普通VIP，enterprise代表是企业VIP
-	private int vipLevel;//只有0-5这几个等级，vipLevel=消费金额/1000；最高5级；消费金额不足1000元时等级为0
+	private int vipLevel;//只有0-5这几个等级，vipLevel=credit/1000；最高5级；消费金额不足1000元时等级为0
 	private String enterpriseName;//企业会员登记企业名称
 	private String phoneNumber;//由11位数字组成的电话号码
 
@@ -44,7 +45,10 @@ public class PersonPO implements Serializable{
 		this.password=vo.getPassword();
 		this.personID=vo.getPersonID();
 		this.credit=vo.getCredit();
-		this.birthday = vo.getBirthday();
+		
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar c=t.myToCalendar(vo.getBirthday());
+		this.birthday = c;
 		this.vipType = vo.getVipType();
 		this.vipLevel = vo.getVipLevel();
 		this.enterpriseName = vo.getEnterpriseName();

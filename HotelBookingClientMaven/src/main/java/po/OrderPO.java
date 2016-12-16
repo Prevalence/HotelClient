@@ -7,6 +7,7 @@ import java.util.Calendar;
 import po.hotelPO.RoomPO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.orderVO.orderblVO.OrderVO;
+import businessLogic.TimeFormTrans;
 /**
  * 
  * @author xiamutian
@@ -18,9 +19,7 @@ public class OrderPO implements Serializable{
 	private String orderID;//时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
 	private static final long serialVersionUID = 1L;
 	private int orderprice;
-	private String orderstate;
-	//订单状态,"nonExecute"代表未执行订单、"alreadyExecute"代表已执行订单、
-	//"cancel"代表已撤销订单、"abnormal"代表异常订单、"delay"代表延期订单
+	private String orderstate;//订单状态,“未执行”、“已执行”、“已撤销”、“异常”、“延期”
 	
 	//酒店信息
 	private String hotelname;
@@ -67,12 +66,13 @@ public class OrderPO implements Serializable{
 		this.peoplenum=orderVO.getPeoplenum();//包括child的人数
 		this.childnum=orderVO.getChildnum();//儿童的人数。默认为0
 		
-		this.producttime=orderVO.getProducttime();//订单生成时间
-		this.executetime=orderVO.getExecutetime();//订单执行时间
-		this.canceltime=orderVO.getCanceltime();//订单取消时间
-		this.latestExecutetime=orderVO.getLatestExecutetime();//订单最晚执行时间
-		this.predictLeaveTime = orderVO.getPredictLeaveTime();
-		this.actualLeaveTime=orderVO.getActualLeaveTime();//退房时间
+		TimeFormTrans t=new TimeFormTrans();
+		this.producttime=t.myToCalendar(orderVO.getProducttime());//订单生成时间
+		this.executetime=t.myToCalendar(orderVO.getExecutetime());//订单执行时间
+		this.canceltime=t.myToCalendar(orderVO.getCanceltime());//订单取消时间
+		this.latestExecutetime=t.myToCalendar(orderVO.getLatestExecutetime());//订单最晚执行时间
+		this.predictLeaveTime = t.myToCalendar(orderVO.getPredictLeaveTime());
+		this.actualLeaveTime=t.myToCalendar(orderVO.getActualLeaveTime());//退房时间
 	}
 
 	//有所有参数的构造函数

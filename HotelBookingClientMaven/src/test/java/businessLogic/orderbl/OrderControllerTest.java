@@ -43,8 +43,7 @@ public class OrderControllerTest {
 
 	@Test
 	public void testReverseOrder() {
-		Calendar latestExecutetime=Calendar.getInstance();
-		latestExecutetime.set(2016, 11, 29);
+		String latestExecutetime="2016-11-29 21:20:00";
 		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
 		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
 		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
@@ -59,8 +58,7 @@ public class OrderControllerTest {
 
 	@Test
 	public void testFinishOrder() {
-		Calendar latestExecutetime=Calendar.getInstance();
-		latestExecutetime.set(2016, 11, 29);
+		String latestExecutetime="2016-11-29 21:20:00";
 		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
 		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
 		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
@@ -75,8 +73,7 @@ public class OrderControllerTest {
 
 	@Test
 	public void testCreateOrder() {
-		Calendar latestExecutetime=Calendar.getInstance();
-		latestExecutetime.set(2016, 11, 29);
+		String latestExecutetime="2016-11-29 21:20:00";
 		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
 		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
 		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
@@ -121,8 +118,8 @@ public class OrderControllerTest {
 
 	@Test
 	public void testNetNumOrders() {
-		Calendar calendar=Calendar.getInstance();
-		assertEquals(3,oc.netNumOrders(calendar).size());
+		String date="2016-11-21";
+		assertEquals(3,oc.netNumOrders(date).size());
 	}
 	
 }

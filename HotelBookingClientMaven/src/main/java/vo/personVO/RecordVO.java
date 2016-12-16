@@ -1,22 +1,21 @@
 package vo.personVO;
 
-import java.util.Calendar;
-
+import businessLogic.TimeFormTrans;
 import po.personPO.RecordPO;
 
 public class RecordVO {
 	//时间，订单号，动作（订单执行、订单异常、订单撤销、充值），信用度变化、信用度结果
-	private Calendar time;
+	private String time;
 	private String orderId;
 	private String operation;//"执行"\"异常"\"撤销"\"充值"
-	private int changeCredit;
+	private String changeCredit;
 	private Integer resultCredit;
 	
 	public RecordVO() {
 		super();
 	}
 
-	public RecordVO(Calendar time, String orderId, String operation, int changeCredit, Integer resultCredit) {
+	public RecordVO(String time, String orderId, String operation, String changeCredit, Integer resultCredit) {
 		super();
 		this.time = time;
 		this.orderId = orderId;
@@ -24,61 +23,56 @@ public class RecordVO {
 		this.changeCredit = changeCredit;
 		this.resultCredit = resultCredit;
 	}
-	
+
 	public RecordVO(RecordPO po) {
-		this.time = po.getTime();
+		TimeFormTrans t=new TimeFormTrans();
+		this.time = t.myToString(po.getTime());
 		this.orderId = po.getOrderId();
 		this.operation = po.getOperation();
-		this.changeCredit = po.getChangeCredit();
+		String credit=Integer.toString(po.getChangeCredit());
+		this.changeCredit = credit;
 		this.resultCredit = po.getResultCredit();
 	}
 
-	public Calendar getTime() {
+	public String getTime() {
 		return time;
 	}
 
-
-	public void setTime(Calendar time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
-
 
 	public String getOrderId() {
 		return orderId;
 	}
 
-
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
-
 
 	public String getOperation() {
 		return operation;
 	}
 
-
 	public void setOperation(String operation) {
 		this.operation = operation;
 	}
 
-
-	public int getChangeCredit() {
+	public String getChangeCredit() {
 		return changeCredit;
 	}
 
-
-	public void setChangeCredit(int changeCredit) {
+	public void setChangeCredit(String changeCredit) {
 		this.changeCredit = changeCredit;
 	}
-
 
 	public Integer getResultCredit() {
 		return resultCredit;
 	}
 
-
 	public void setResultCredit(Integer resultCredit) {
 		this.resultCredit = resultCredit;
 	}
+
+
 }
