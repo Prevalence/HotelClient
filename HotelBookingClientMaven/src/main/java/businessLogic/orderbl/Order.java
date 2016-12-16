@@ -183,6 +183,7 @@ public class Order{
 		for(int i=0; i<personStateList.size(); i++){
 			if(!(personStateList.get(i).getOrderstate().equals(state))){
 				personStateList.remove(i);
+				i--;
 			}
 		}
 		return personStateList;
@@ -206,6 +207,7 @@ public class Order{
 		for(int i=0; i<hotelStateList.size(); i++){
 			if(hotelStateList.get(i).equals(state)!=false){
 				hotelStateList.remove(i);
+				i--;
 			}
 		}
 		return hotelStateList;
@@ -241,6 +243,7 @@ public class Order{
 					==(date.get(Calendar.DATE)));
 			if(!(isYearEqual&&isMonthEqual&&isDateEqual)){//只要三个钟有一个不等
 				netNumList.remove(i);
+				i--;
 			}
 			
 		}
