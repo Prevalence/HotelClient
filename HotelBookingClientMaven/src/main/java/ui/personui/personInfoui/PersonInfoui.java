@@ -40,5 +40,6 @@ public class PersonInfoui extends Pane{
 		personInfoViewuiController.launchStage(primaryStage);
 		personInfoViewuiController.setPersonname(personname);
 		personInfoViewuiController.initPersonInfo();
+		personInfoViewuiController.initTableView();
 	}
 }

@@ -169,7 +169,7 @@ public class OrderViewuiController {
 		ArrayList<OrderViewVO> orderList = new ArrayList<OrderViewVO>();
 		String orderNumber = "";
 		String orderState = "";
-		Calendar expectedTime = null;
+		String expectedTime = null;
 		String hotelName = "";
 		OrderViewVO order = null;
 		for (int i = 0; i < orders.size(); i++) {

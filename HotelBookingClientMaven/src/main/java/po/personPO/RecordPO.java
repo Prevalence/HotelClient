@@ -34,7 +34,7 @@ public class RecordPO implements Serializable {
 		this.operation = vo.getOperation();
 		int credit=Integer.parseInt(vo.getChangeCredit());
 		this.changeCredit = credit;
-		this.resultCredit = vo.getResultCredit();
+		this.resultCredit = Integer.parseInt(vo.getResultCredit());
 	}
 
 	public Calendar getTime() {

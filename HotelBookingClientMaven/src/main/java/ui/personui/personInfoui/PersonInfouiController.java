@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -25,7 +27,9 @@ import javafx.stage.Stage;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.orderViewui.OrderViewui;
 import vo.hotelVO.hotelblVO.RoomVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.personVO.PersonVO;
+import vo.personVO.RecordVO;
 
 public class PersonInfouiController {
 
@@ -70,10 +74,12 @@ public class PersonInfouiController {
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableColumn resultCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableView orderTable;
 	@FXML
 	private Pane mainPane;
 
-	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	// 酒店详情查看界面
@@ -87,6 +93,11 @@ public class PersonInfouiController {
 	private String personname;
 
 	private PersonVO personInfo;
+
+	private ArrayList<RecordVO> records;
+
+	// 填充进TableView的酒店数据
+	private ObservableList<RecordVO> recordData;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -117,7 +128,7 @@ public class PersonInfouiController {
 	}
 
 	/**
-	 * 跳转到酒店搜索界面
+	 * 保存修改后的个人信息
 	 */
 	@FXML
 	private void savePersonInfo() {
@@ -127,12 +138,13 @@ public class PersonInfouiController {
 		String time = year + "-" + month + "-" + day;
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		if (!userbl.isExist(nameField.getText(), "person") || nameField.getText().equals(personname)) {
+			Date date;
 			try {
-				Date date = df.parse(time);
+				date = df.parse(time);
 				Calendar birthday = new GregorianCalendar();
 				birthday.setTime(date);
 				PersonVO newPersonInfo = new PersonVO(nameField.getText(), personInfo.getPassword(),
-						personInfo.getPersonID(), personInfo.getCredit(), birthday, personInfo.getVipType(),
+						personInfo.getPersonID(), personInfo.getCredit(), time, personInfo.getVipType(),
 						personInfo.getVipLevel(), companyField.getText(), connectionField.getText());
 				userbl.personSave(newPersonInfo);
 				personname = nameField.getText();
@@ -142,6 +154,9 @@ public class PersonInfouiController {
 				feedbackLabel.setText("日起输入格式不正确，请按照“yyyy-MM-dd”的格式输入!");
 				e.printStackTrace();
 			}
+		} else {
+			feedbackLabel.setText("修改后的用户名称已被使用");
+			nameField.setText(personname);
 		}
 
 	}
@@ -158,22 +173,22 @@ public class PersonInfouiController {
 		connectionField.setEditable(true);
 		nameField.setEditable(true);
 	}
-	
+
 	/**
 	 * 撤销修改
 	 */
 	@FXML
 	private void reverse() {
-		yearField.setText(new SimpleDateFormat("yyyy-MM-dd").format(personInfo.getBirthday()).substring(0, 4));
-		monthField.setText(new SimpleDateFormat("yyyy-MM-dd").format(personInfo.getBirthday()).substring(5, 7));
-		dayField.setText(new SimpleDateFormat("yyyy-MM-dd").format(personInfo.getBirthday()).substring(8, 10));
+		yearField.setText(personInfo.getBirthday().substring(0, 4));
+		monthField.setText(personInfo.getBirthday().substring(5, 7));
+		dayField.setText(personInfo.getBirthday().substring(8, 10));
 		nameField.setText(personname);
 		companyField.setText(personInfo.getEnterpriseName());
 		connectionField.setText(personInfo.getPhoneNumber());
 	}
-	
+
 	/**
-	 * 将个人信息界面设置为可修改
+	 * 会员登记
 	 */
 	@FXML
 	private void memberRegister() {
@@ -181,8 +196,7 @@ public class PersonInfouiController {
 		String month = monthField.getText();
 		String day = dayField.getText();
 		String time = year + "-" + month + "-" + day;
-		String vipInfo = year+month+day;
-		int i= Integer.parseInt("01");
+		String vipInfo = year + month + day;
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		if (!userbl.isExist(nameField.getText(), "person") || nameField.getText().equals(personname)) {
 			try {
@@ -190,9 +204,9 @@ public class PersonInfouiController {
 				Calendar birthday = new GregorianCalendar();
 				birthday.setTime(date);
 				PersonVO newPersonInfo = new PersonVO(nameField.getText(), personInfo.getPassword(),
-						personInfo.getPersonID(), personInfo.getCredit(), birthday, personInfo.getVipType(),
+						personInfo.getPersonID(), personInfo.getCredit(), time, personInfo.getVipType(),
 						personInfo.getVipLevel(), companyField.getText(), connectionField.getText());
-				userbl.registeMember(personInfo, "", vipInfo);
+				userbl.registeMember(newPersonInfo, "普通会员", vipInfo);
 				personname = nameField.getText();
 				nameLabel.setText(personname);
 			} catch (ParseException e) {
@@ -200,6 +214,9 @@ public class PersonInfouiController {
 				feedbackLabel.setText("日起输入格式不正确，请按照“yyyy-MM-dd”的格式输入!");
 				e.printStackTrace();
 			}
+		} else {
+			feedbackLabel.setText("修改后的用户名称已被使用");
+			nameField.setText(personname);
 		}
 	}
 
@@ -227,11 +244,11 @@ public class PersonInfouiController {
 	 */
 	public void initPersonInfo() {
 		personInfo = userbl.getPersonInfo(personname);
-		yearField.setText(new SimpleDateFormat("yyyy-MM-dd").format(personInfo.getBirthday()).substring(0, 4));
+		yearField.setText(personInfo.getBirthday().substring(0, 4));
 		yearField.setEditable(false);
-		monthField.setText(new SimpleDateFormat("yyyy-MM-dd").format(personInfo.getBirthday()).substring(5, 7));
+		monthField.setText(personInfo.getBirthday().substring(5, 7));
 		monthField.setEditable(false);
-		dayField.setText(new SimpleDateFormat("yyyy-MM-dd").format(personInfo.getBirthday()).substring(8, 10));
+		dayField.setText(personInfo.getBirthday().substring(8, 10));
 		dayField.setEditable(false);
 		nameField.setText(personname);
 		nameField.setEditable(false);
@@ -243,7 +260,7 @@ public class PersonInfouiController {
 		levelLabel.setText(String.valueOf(personInfo.getVipLevel()));
 		creditLabel.setText(String.valueOf(personInfo.getCredit()));
 	}
-	
+
 	/**
 	 * 初始设置TableView的属性，绑定内部按钮
 	 */
@@ -254,8 +271,10 @@ public class PersonInfouiController {
 		actionCol.setCellValueFactory(new PropertyValueFactory<>("operation"));
 		changeCol.setCellValueFactory(new PropertyValueFactory<>("changeCredit"));
 		resultCol.setCellValueFactory(new PropertyValueFactory<>("resultCredit"));
-//		personInfo.get
+		records = userbl.getRecord(personname);
+		recordData = FXCollections.observableArrayList(records);
+		orderTable.setItems(recordData);
+		// personInfo.get
 	}
-	
-	
+
 }
