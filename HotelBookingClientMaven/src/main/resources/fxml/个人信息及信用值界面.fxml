@@ -201,15 +201,16 @@
       </Button>
       <TableView fx:id="OrderTable" layoutX="158.0" layoutY="223.0" prefHeight="439.0" prefWidth="785.0">
          <columns>
-            <TableColumn fx:id="IDCol" prefWidth="200.0" />
-            <TableColumn fx:id="timeCol" prefWidth="200.0" />
-            <TableColumn fx:id="actionCl" prefWidth="200.0" />
-            <TableColumn fx:id="changeCol" prefWidth="200.0" />
+            <TableColumn fx:id="IDCol" prefWidth="128.0" />
+            <TableColumn fx:id="timeCol" prefWidth="141.0" />
+            <TableColumn fx:id="actionCl" prefWidth="142.99993896484375" />
+            <TableColumn fx:id="changeCol" prefWidth="183.0" />
+            <TableColumn fx:id="resultCol" prefWidth="190.0" />
          </columns>
       </TableView>
       <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="159.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../个人信息及信用值界面/订单号.png" />
+            <Image url="@../个人信息及信用值界面/变化后信用.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">

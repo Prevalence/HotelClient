@@ -3,22 +3,28 @@ package ui.personui.personInfoui;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.orderViewui.OrderViewui;
+import vo.hotelVO.hotelblVO.RoomVO;
 import vo.personVO.PersonVO;
 
 public class PersonInfouiController {
@@ -61,6 +67,9 @@ public class PersonInfouiController {
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableColumn changeCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn resultCol;
 	@FXML
 	private Pane mainPane;
 
@@ -233,6 +242,20 @@ public class PersonInfouiController {
 		memberTypeLabel.setText(personInfo.getVipType());
 		levelLabel.setText(String.valueOf(personInfo.getVipLevel()));
 		creditLabel.setText(String.valueOf(personInfo.getCredit()));
-
 	}
+	
+	/**
+	 * 初始设置TableView的属性，绑定内部按钮
+	 */
+	@SuppressWarnings("unchecked")
+	public void initTableView() {
+		IDCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
+		timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+		actionCol.setCellValueFactory(new PropertyValueFactory<>("operation"));
+		changeCol.setCellValueFactory(new PropertyValueFactory<>("changeCredit"));
+		resultCol.setCellValueFactory(new PropertyValueFactory<>("resultCredit"));
+//		personInfo.get
+	}
+	
+	
 }
