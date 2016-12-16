@@ -2,6 +2,7 @@ package businessLogic.promotionbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import businessLogic.userbl.Person;
 import po.OrderPO;
@@ -11,6 +12,7 @@ import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.orderVO.orderblVO.OrderVO;
+import businessLogic.TimeFormTrans;
 /**
  * 
  * @author John
@@ -47,6 +49,14 @@ public class PriceCalc {
 				}
 			}
 		}
+		
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar leaveC=t.myToCalendar(ordervo.getPredictLeaveTime());
+		long leave=(leaveC.getTimeInMillis())/1000/3600/24;//预计离开时间的日
+		Calendar arriveC=t.myToCalendar(ordervo.getPredictExecutetime());
+		long arrive=(arriveC.getTimeInMillis())/1000/3600/24;//预计到达时间的日
+		int days=(int)(leave-arrive);
+		initialtotal=initialtotal*days;
 		
 		//以下方法实现获取所有促销策略（包括酒店与网站促销策略）
 		ArrayList<PromotionVO>promotionvolist=new Promotion().getProm(hotelvo.getHotelname());//加入酒店促销策略;
