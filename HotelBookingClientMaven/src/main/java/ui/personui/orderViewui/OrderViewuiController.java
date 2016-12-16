@@ -174,7 +174,7 @@ public class OrderViewuiController {
 		OrderViewVO order = null;
 		for (int i = 0; i < orders.size(); i++) {
 			orderNumber = orders.get(i).getOrderID();
-			expectedTime = orders.get(i).getLatestExecutetime();
+			expectedTime = orders.get(i).getPredictExecutetime();
 			hotelName = orders.get(i).getHotelname();
 			orderState = orders.get(i).getOrderstate();
 			order = new OrderViewVO(hotelName,orderNumber,expectedTime,orderState);
