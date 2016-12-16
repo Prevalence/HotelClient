@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="533.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.loginui.LoginuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="533.0" prefWidth="600.0" style="-fx-background-color: white;" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.registerui.RegisteruiController">
    <children>
       <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="106.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -49,7 +49,7 @@
             <Image url="@../客户注册界面/注册Title.png" />
          </image>
       </ImageView>
-      <Button fx:id="signupButton" layoutX="96.0" layoutY="423.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="41.0" style="-fx-background-color: transparent;" textFill="#10bf1000">
+      <Button fx:id="signupButton" layoutX="96.0" layoutY="423.0" mnemonicParsing="false" onAction="#backToLoginui" prefHeight="18.0" prefWidth="41.0" style="-fx-background-color: transparent;" textFill="#10bf1000">
          <font>
             <Font size="14.0" />
          </font>
@@ -86,4 +86,4 @@
          </graphic>
       </Button>
    </children>
-</Pane>
+</fx:root>
