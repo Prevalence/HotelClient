@@ -73,7 +73,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="loginButton" layoutX="106.0" layoutY="333.0" mnemonicParsing="false" onAction="#Login" prefHeight="74.0" prefWidth="388.0" style="-fx-background-color: transparent;">
+      <Button fx:id="signupButton" layoutX="106.0" layoutY="333.0" mnemonicParsing="false" onAction="#signup" prefHeight="74.0" prefWidth="388.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>

@@ -33,9 +33,9 @@ public class Manager {
 	}
 	
 	/**
-	 * 保存网站营销人员信息
+	 * 保存或修改网站营销人员信息
 	 * @param marketInfo
-	 * @return 是否保存成功
+	 * @return 是否保存或修改成功
 	 * @throws RemoteException
 	 */
 	public boolean marketSave(MarketVO marketInfo) throws RemoteException{
@@ -44,9 +44,9 @@ public class Manager {
 	}
 	
 	/**
-	 * 保存酒店工作人员信息
+	 * 保存或修改酒店工作人员信息
 	 * @param hotelWorkerInfo
-	 * @return 是否保存成功
+	 * @return 是否保存或修改成功
 	 * @throws RemoteException
 	 */
 	public boolean hotelWorkerSave(HotelWorkerVO hotelWorkerInfo) throws RemoteException{
@@ -62,8 +62,12 @@ public class Manager {
 	 */
 	public PersonVO getPersonInfo(String personname) throws RemoteException{
 		PersonPO po=userDataService.findPerson(personname);
-		PersonVO vo=new PersonVO(po);
-		return vo;
+		PersonVO vo=new PersonVO();
+		if(vo!=null){
+			vo=new PersonVO(po);
+			return vo;
+		}
+		return null;
 		
 	}
 	
@@ -75,8 +79,12 @@ public class Manager {
 	 */
 	public HotelWorkerVO getHotelWorkerInfo(String hotelWorkername) throws RemoteException{
 		HotelWorkerPO po=userDataService.findHotelWorker(hotelWorkername);
-		HotelWorkerVO vo=new HotelWorkerVO(po);
-		return vo;
+		HotelWorkerVO vo=new HotelWorkerVO();
+		if(po!=null){
+			vo=new HotelWorkerVO(po);
+			return vo;
+		}
+		return null;
 	}
 	
 	/**
@@ -111,8 +119,12 @@ public class Manager {
 	 */
 	public MarketVO getMarketInfo(String marketname) throws RemoteException{
 		MarketPO po=userDataService.findMarket(marketname);
-		MarketVO vo=new MarketVO(po);
-		return vo;
+		MarketVO vo=new MarketVO();
+		if(po!=null){
+			vo=new MarketVO(po);
+			return vo;
+		}
+		return null;
 	}
 	
 }

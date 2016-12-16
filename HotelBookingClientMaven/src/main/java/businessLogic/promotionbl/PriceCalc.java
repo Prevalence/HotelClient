@@ -7,10 +7,10 @@ import businessLogic.userbl.Person;
 import po.OrderPO;
 import po.PromotionPO;
 import po.personPO.PersonPO;
-import vo.OrderVO;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
+import vo.orderVO.orderblVO.OrderVO;
 /**
  * 
  * @author John
@@ -69,7 +69,7 @@ public class PriceCalc {
 			e.printStackTrace();
 		}
 		
-		//以下实现促销策略降价计算，这部分代码有问题
+		//以下实现促销策略降价计算
 		OrderPO orderpo=new OrderPO(ordervo);
 		double bestprice=initialtotal;
 		if((personpo!=null)&&(promotionpolist!=null)){
