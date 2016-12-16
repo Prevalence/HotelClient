@@ -1,8 +1,11 @@
 package ui.personui.orderViewui;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
+import businessLogic.orderbl.OrderController;
 import businessLogic.userbl.UserController;
+import businessLogicService.orderblService.OrderblService;
 import businessLogicService.userblService.UserblService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +21,9 @@ import javafx.util.Callback;
 import ui.helper.OrderButtonCell;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.personInfoui.PersonInfoui;
+import vo.hotelVO.hotelblVO.RoomVO;
+import vo.hotelVO.hoteluiVO.RoomInfoVO;
+import vo.orderVO.orderblVO.OrderVO;
 import vo.orderVO.orderuiVO.OrderViewVO;
 
 public class OrderViewuiController {
@@ -56,8 +62,16 @@ public class OrderViewuiController {
 	@SuppressWarnings("unused")
 	private UserblService userbl;
 
+	private OrderblService orderbl;
+
 	// 填充进TableView的酒店数据
 	private ObservableList<OrderViewVO> orderData;
+
+	private ArrayList<OrderViewVO> orderViewList;
+
+	// 订单数据表
+	private ArrayList<OrderVO> orders;
+
 	// 酒店搜索界面
 	private Pane hotelSearchPane;
 
@@ -74,6 +88,7 @@ public class OrderViewuiController {
 	 */
 	public OrderViewuiController() {
 		userbl = new UserController();
+		orderbl = new OrderController();
 	}
 
 	/**
@@ -131,18 +146,40 @@ public class OrderViewuiController {
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
 		expectedTimeCol.setCellValueFactory(new PropertyValueFactory<>("expectedTime"));
 		stateCol.setCellValueFactory(new PropertyValueFactory<>("state"));
-		buttonCol
-				.setCellFactory(new Callback<TableColumn<OrderViewVO, Boolean>, TableCell<OrderViewVO, Boolean>>() {
+		buttonCol.setCellFactory(new Callback<TableColumn<OrderViewVO, Boolean>, TableCell<OrderViewVO, Boolean>>() {
 
-					@Override
-					public TableCell<OrderViewVO, Boolean> call(TableColumn<OrderViewVO, Boolean> p) {
-						OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage,personname);
-						return buttonCell;
-					}
-				});
-		ArrayList<OrderViewVO> orderDataList = new ArrayList<OrderViewVO>();
-		orderDataList.add(new OrderViewVO("njuHotel", "2008", "20:00", "未执行"));
-		orderData = FXCollections.observableArrayList(orderDataList);
+			@Override
+			public TableCell<OrderViewVO, Boolean> call(TableColumn<OrderViewVO, Boolean> p) {
+				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, personname);
+				return buttonCell;
+			}
+		});
+		orders = orderbl.personOrders(personname);
+		orderViewList = getOrderViewList(orders);
+		orderData = FXCollections.observableArrayList(orderViewList);
 		orderTable.setItems(orderData);
+	}
+
+	/**
+	 * 从orderVO列表中获取用于界面显示的orderViewVO列表
+	 * 
+	 * @return orderList
+	 */
+	private ArrayList<OrderViewVO> getOrderViewList(ArrayList<OrderVO> orders) {
+		ArrayList<OrderViewVO> orderList = new ArrayList<OrderViewVO>();
+		String orderNumber = "";
+		String orderState = "";
+		Calendar expectedTime = null;
+		String hotelName = "";
+		OrderViewVO order = null;
+		for (int i = 0; i < orders.size(); i++) {
+			orderNumber = orders.get(i).getOrderID();
+			expectedTime = orders.get(i).getLatestExecutetime();
+			hotelName = orders.get(i).getHotelname();
+			orderState = orders.get(i).getOrderstate();
+			order = new OrderViewVO(hotelName,orderNumber,expectedTime,orderState);
+			orderList.add(order);
+		}
+		return orderList;
 	}
 }
