@@ -11,10 +11,10 @@ public class OrderViewVO {
 	private final SimpleStringProperty expectedTime;
 	private final SimpleStringProperty state;
 
-	public OrderViewVO(String hotelName, String orderNumber, Calendar expectedTime, String state) {
+	public OrderViewVO(String hotelName, String orderNumber, String expectedTime, String state) {
 		this.hotelName = new SimpleStringProperty(hotelName);
 		this.orderNumber = new SimpleStringProperty(orderNumber);
-		this.expectedTime = new SimpleStringProperty(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(expectedTime.getTime()));
+		this.expectedTime = new SimpleStringProperty(expectedTime);
 		this.state = new SimpleStringProperty(state);
 	}
 
