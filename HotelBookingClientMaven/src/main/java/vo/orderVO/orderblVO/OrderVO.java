@@ -24,11 +24,12 @@ public class OrderVO {
 	
 	//一系列时间
 	private String producttime;//订单生成时间
-	private String executetime;//订单执行时间
+	private String executetime;//订单实际执行时间
 	private String canceltime;//订单取消时间
-	private String latestExecutetime;//订单最晚执行时间
+	private String latestExecutetime;//预计入住时间
 	private String predictLeaveTime;//预计退房时间
 	private String actualLeaveTime;//实际退房时间
+	
 	//空构造函数
 	public OrderVO() {
 		
