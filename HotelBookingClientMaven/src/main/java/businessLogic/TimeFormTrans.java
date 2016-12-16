@@ -10,6 +10,9 @@ public class TimeFormTrans {
 	//String转Calendar
 	public Calendar myToCalendar(String votime){
 		//votime格式："2016-12-15 20:17:50"
+		if(votime.equals("")){
+			return null;
+		}
 		int year=Integer.parseInt(votime.substring(0, 4));
 		int month=Integer.parseInt(votime.substring(5, 7));
 		int date=Integer.parseInt(votime.substring(8, 10));
@@ -29,6 +32,10 @@ public class TimeFormTrans {
 	
 	//Calendar转String
 	public String myToString(Calendar calendar){
+		if(calendar==null){
+			return "";
+		}
+		
 		int year1=calendar.get(Calendar.YEAR);
 		int month1=calendar.get(Calendar.MONTH);
 		int date1=calendar.get(Calendar.DATE);
