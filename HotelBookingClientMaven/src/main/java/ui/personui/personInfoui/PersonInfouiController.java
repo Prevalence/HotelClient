@@ -238,6 +238,15 @@ public class PersonInfouiController {
 		this.personname = personname;
 		nameLabel.setText(personname);
 	}
+	
+	/**
+	 * 登录之后调整界面大小，和之后更大的工作区域匹配
+	 */
+	public void modifyStageSize() {
+		primaryStage.setWidth(980);
+		primaryStage.setHeight(832);
+		primaryStage.setX(400);
+	}
 
 	/**
 	 * 初始加载个人信息
@@ -272,8 +281,11 @@ public class PersonInfouiController {
 		changeCol.setCellValueFactory(new PropertyValueFactory<>("changeCredit"));
 		resultCol.setCellValueFactory(new PropertyValueFactory<>("resultCredit"));
 		records = userbl.getRecord(personname);
-		recordData = FXCollections.observableArrayList(records);
-		orderTable.setItems(recordData);
+		if (records != null) {
+			records = new ArrayList<RecordVO>();
+			recordData = FXCollections.observableArrayList(records);
+			orderTable.setItems(recordData);
+		}
 		// personInfo.get
 	}
 

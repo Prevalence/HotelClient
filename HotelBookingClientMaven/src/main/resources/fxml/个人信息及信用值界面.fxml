@@ -203,7 +203,7 @@
          <columns>
             <TableColumn fx:id="IDCol" prefWidth="128.0" />
             <TableColumn fx:id="timeCol" prefWidth="141.0" />
-            <TableColumn fx:id="actionCl" prefWidth="142.99993896484375" />
+            <TableColumn fx:id="actionCol" prefWidth="142.99993896484375" />
             <TableColumn fx:id="changeCol" prefWidth="183.0" />
             <TableColumn fx:id="resultCol" prefWidth="190.0" />
          </columns>
