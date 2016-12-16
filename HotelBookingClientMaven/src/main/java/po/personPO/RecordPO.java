@@ -12,13 +12,13 @@ public class RecordPO implements Serializable {
 	private String orderId;
 	private String operation;//"执行"\"异常"\"撤销"\"充值"
 	private int changeCredit;
-	private Integer resultCredit;
+	private int resultCredit;
 	
 	public RecordPO() {
 		super();
 	}
 
-	public RecordPO(Calendar time, String orderId, String operation, int changeCredit, Integer resultCredit) {
+	public RecordPO(Calendar time, String orderId, String operation, int changeCredit, int resultCredit) {
 		super();
 		this.time = time;
 		this.orderId = orderId;
@@ -69,11 +69,11 @@ public class RecordPO implements Serializable {
 		this.changeCredit = changeCredit;
 	}
 
-	public Integer getResultCredit() {
+	public int getResultCredit() {
 		return resultCredit;
 	}
 
-	public void setResultCredit(Integer resultCredit) {
+	public void setResultCredit(int resultCredit) {
 		this.resultCredit = resultCredit;
 	}
 	
