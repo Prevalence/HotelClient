@@ -33,9 +33,9 @@ public class OrderPO implements Serializable{
 	
 	//一系列时间
 	private Calendar producttime;//订单生成时间
-	private Calendar executetime;//订单执行时间
+	private Calendar executetime;//订单实际执行时间
 	private Calendar canceltime;//订单取消时间
-	private Calendar latestExecutetime;//订单最晚执行时间
+	private Calendar predictExecutetime;//订单预计执行时间
 	private Calendar predictLeaveTime;//预计退房时间
 	private Calendar actualLeaveTime;//实际退房时间
 	
@@ -70,7 +70,7 @@ public class OrderPO implements Serializable{
 		this.producttime=t.myToCalendar(orderVO.getProducttime());//订单生成时间
 		this.executetime=t.myToCalendar(orderVO.getExecutetime());//订单执行时间
 		this.canceltime=t.myToCalendar(orderVO.getCanceltime());//订单取消时间
-		this.latestExecutetime=t.myToCalendar(orderVO.getLatestExecutetime());//订单最晚执行时间
+		this.predictExecutetime=t.myToCalendar(orderVO.getPredictExecutetime());//订单最晚执行时间
 		this.predictLeaveTime = t.myToCalendar(orderVO.getPredictLeaveTime());
 		this.actualLeaveTime=t.myToCalendar(orderVO.getActualLeaveTime());//退房时间
 	}
@@ -78,7 +78,7 @@ public class OrderPO implements Serializable{
 	//有所有参数的构造函数
 	public OrderPO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomPO> room,
 			String personname, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
-			Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime) {
+			Calendar canceltime, Calendar predictExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime) {
 		super();
 		this.orderID = orderID;
 		this.orderprice = orderprice;
@@ -92,7 +92,7 @@ public class OrderPO implements Serializable{
 		this.producttime = producttime;
 		this.executetime = executetime;
 		this.canceltime = canceltime;
-		this.latestExecutetime = latestExecutetime;
+		this.predictExecutetime = predictExecutetime;
 		this.predictLeaveTime = predictLeaveTime;
 		this.actualLeaveTime = actualLeaveTime;
 	}
@@ -194,12 +194,12 @@ public class OrderPO implements Serializable{
 		this.canceltime = canceltime;
 	}
 
-	public Calendar getLatestExecutetime() {
-		return latestExecutetime;
+	public Calendar getPredictExecutetime() {
+		return predictExecutetime;
 	}
 
-	public void setLatestExecutetime(Calendar latestExecutetime) {
-		this.latestExecutetime = latestExecutetime;
+	public void setPredictExecutetime(Calendar predictExecutetime) {
+		this.predictExecutetime =predictExecutetime;
 	}
 
 	public Calendar getPredictLeaveTime() {
