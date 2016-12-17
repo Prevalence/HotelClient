@@ -253,6 +253,8 @@ public class HotelInfoViewuiController {
 			roomPrice=room.get(i).getRoomPrice();
 			roomInfo=new RoomInfoVO(roomtype,roomPrice);
 			roomInfoList.add(roomInfo);
+			System.out.println("roomPrice:"+roomInfo.getRoomPrice());
+			System.out.println("roomtype:"+roomInfo.getRoomtype());
 		}
 		return roomInfoList;
 	}

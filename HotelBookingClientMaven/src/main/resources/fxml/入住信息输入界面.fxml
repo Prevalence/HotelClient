@@ -67,6 +67,13 @@
             <Label layoutX="363.0" layoutY="108.0" text="地址：" />
             <Label layoutX="362.0" layoutY="48.0" text="特色：" />
             <Label layoutX="362.0" layoutY="19.0" text="设施：" />
+            <Label fx:id="wifiLabel" layoutX="407.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" />
+            <Label fx:id="TVLabel" layoutX="474.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" />
+            <Label fx:id="sofaLabel" layoutX="542.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" />
+            <Label fx:id="diningLabel" layoutX="612.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" />
+            <Label fx:id="featureLabel" layoutX="407.0" layoutY="50.0" prefHeight="20.0" prefWidth="273.0" />
+            <Label fx:id="connectionLabel" layoutX="435.0" layoutY="81.0" prefHeight="20.0" prefWidth="242.0" />
+            <Label fx:id="locationLabel" layoutX="411.0" layoutY="110.0" prefHeight="20.0" prefWidth="310.0" />
          </children>
       </Pane>
       <Button fx:id="hotelSearchButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
