@@ -27,7 +27,7 @@ public class Loginui extends Pane{
      */
     public void initLoginui() {
         	// 设置新的Pane
-    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HotelSearchui.fxml"));
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Loginui2.fxml"));
     		loader.setRoot(this);
     		try {
     			loader.load();
