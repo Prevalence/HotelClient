@@ -6,9 +6,14 @@ import java.util.Calendar;
 import businessLogic.userbl.UserController;
 import po.OrderPO;
 import rmi.RemoteHelper;
+import vo.hotelVO.hotelblVO.HotelVO;
 import vo.orderVO.orderblVO.OrderVO;
+import vo.personVO.PersonVO;
 import dataService.orderDataService.OrderDataService;
 import businessLogic.TimeFormTrans;
+import businessLogic.hotelbl.HotelController;
+import businessLogic.promotionbl.PriceCalc;
+
 /**
  * 
  * @author 谢铠联
@@ -106,6 +111,43 @@ public class Order{
 			return false;
 		}
 		OrderPO orderPO=new OrderPO(order);
+		//orderID共20位，时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
+		String hotelname=order.getHotelname();
+		HotelController hotel=new HotelController();
+		HotelVO hotelvo=hotel.getHotelInfoByHotelworkerOrManager(hotelname);
+		String hotelID=Integer.toString(hotelvo.getHotelID());
+		int hotelIDLength=hotelID.length();
+		for(int i=0;i<5-hotelIDLength;i++){
+			hotelID="0"+hotelID;
+		}
+		
+		String personname=order.getPersonname();
+		UserController usercontroller=new UserController();
+		PersonVO personvo= usercontroller.getPersonInfo(personname);
+		String personID=Integer.toString(personvo.getPersonID());
+		int personIDLength=personID.length();
+		for(int i=0;i<5-personIDLength;i++){
+			personID="0"+personID;
+		}
+		
+		Calendar calendar=Calendar.getInstance();
+		TimeFormTrans t=new TimeFormTrans();
+		String time=t.myToString(calendar);
+		String year=time.substring(0, 4);
+		String month=time.substring(5, 7);
+		String date=time.substring(8, 10);
+		String hour=time.substring(11, 13);
+		String minute=time.substring(14, 16);
+		time=year+month+date+hour+minute;
+		String orderID=time+hotelID+personID;
+		orderPO.setOrderID(orderID);//确定好了20位的酒店ID
+		
+		PriceCalc priceCalc=new PriceCalc();
+		int orderprice=(int)(priceCalc.priceCut(hotelvo, order));
+		orderPO.setOrderprice(orderprice);//确定订单价格，已经用了促销策略
+		
+		orderPO.setProducttime(calendar);
+		
 		return orderDataService.add(orderPO);
 	}
 

@@ -31,7 +31,7 @@ public class CircleWebproCal implements CalculatePrice {
 			Hotel hotel=new Hotel();
 			String hotelCircle = null;
 			try {
-				hotelCircle = hotel.showHotelInfo(hotelname).getCircle();
+				hotelCircle = hotel.getHotelInfoByHotelworkerOrManager(hotelname).getCircle();
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

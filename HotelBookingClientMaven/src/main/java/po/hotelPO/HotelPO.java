@@ -56,8 +56,10 @@ public class HotelPO implements Serializable{
 		
 		ArrayList<RoomPO> roompo=new ArrayList<RoomPO>();
 		ArrayList<RoomVO> roomvo=vo.getRoom();
-		for(int i=0; i<roomvo.size(); i++){
-			roompo.add(new RoomPO(roomvo.get(i)));
+		if(roomvo!=null){
+			for(int i=0; i<roomvo.size(); i++){
+				roompo.add(new RoomPO(roomvo.get(i)));
+			}
 		}
 		this.room=roompo;
 		

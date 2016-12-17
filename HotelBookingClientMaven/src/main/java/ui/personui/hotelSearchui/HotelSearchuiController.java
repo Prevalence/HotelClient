@@ -177,7 +177,7 @@ public class HotelSearchuiController {
 	private void searchHotelInfo() {
 		String hotelName = searchField.getText();
 		// hotelInfo = hotelbl.showHotelInfo(hotelName);
-		if (hotelbl.showHotelInfo(hotelName) != null) {
+		if (hotelbl.getHotelInfoByHotelworkerOrManager(hotelName) != null) {
 			hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(hotelInfoViewPane);
