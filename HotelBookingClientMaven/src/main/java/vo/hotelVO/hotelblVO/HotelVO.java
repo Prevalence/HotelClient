@@ -53,8 +53,10 @@ public class HotelVO {
 		
 		ArrayList<RoomVO> roomvo=new ArrayList<RoomVO>();
 		ArrayList<RoomPO> roompo=po.getRoom();
-		for(int i=0; i<roompo.size(); i++){
-			roomvo.add(new RoomVO(roompo.get(i)));
+		if(roompo!=null){
+			for(int i=0; i<roompo.size(); i++){
+				roomvo.add(new RoomVO(roompo.get(i)));
+			}
 		}
 		this.room=roomvo;
 		

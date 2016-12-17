@@ -12,11 +12,18 @@ import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
 public interface HotelblService {
 	/**
-	 * 根据酒店名称，获取酒店信息
+	 * 酒店工作人员或网站管理人员，根据酒店名称，获取酒店信息
 	 * @param Hotelname 酒店名
 	 * @return 酒店信息
 	 */
-	public HotelVO showHotelInfo(String Hotelname);
+	public HotelVO getHotelInfoByHotelworkerOrManager(String Hotelname);
+	
+	/**
+	 * 客户根据酒店名称，获取酒店信息
+	 * @param Hotelname 酒店名
+	 * @return 酒店信息
+	 */
+	public HotelVO getHotelInfoByPerson(String Hotelname);
 	
 	/**
 	 * 根据待修改的酒店信息（酒店名称不能修改）

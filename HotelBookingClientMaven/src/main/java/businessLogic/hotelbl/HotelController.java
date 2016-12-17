@@ -24,19 +24,36 @@ public class HotelController implements HotelblService{
 	}
 	
 	/**
-	 * 根据酒店名称，获取酒店信息
-	 * @param Hotelname
-	 * @return HotelVO
+	 * 酒店工作人员或网站管理人员，根据酒店名称，获取酒店信息
+	 * @param Hotelname 酒店名
+	 * @return 酒店信息
 	 */
-	public HotelVO showHotelInfo(String Hotelname){
+	public HotelVO getHotelInfoByHotelworkerOrManager(String Hotelname){
 		HotelVO result = null;
 		try {
-			result = hotel.showHotelInfo(Hotelname);
+			result = hotel.getHotelInfoByHotelworkerOrManager(Hotelname);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	/**
+	 * 客户根据酒店名称，获取酒店信息
+	 * @param Hotelname 酒店名
+	 * @return 酒店信息
+	 */
+	@Override
+	public HotelVO getHotelInfoByPerson(String Hotelname) {
+		// TODO Auto-generated method stub
+		try {
+			hotel.getHotelInfoByPerson(Hotelname);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**
@@ -163,4 +180,6 @@ public class HotelController implements HotelblService{
 			return 0;
 		}
 	}
+
+
 }

@@ -29,14 +29,27 @@ public class Hotel {
 	Order order=new Order();
 	
 	/**
-	 * 根据酒店名称，获取酒店信息
-	 * @param Hotelname
-	 * @return HotelVO
-	 * @throws RemoteException 
+	 * 酒店工作人员或网站管理人员，根据酒店名称，获取酒店信息
+	 * @param Hotelname 酒店名
+	 * @return 酒店信息
 	 */
-	public HotelVO showHotelInfo(String Hotelname) throws RemoteException{
+	public HotelVO getHotelInfoByHotelworkerOrManager(String Hotelname) throws RemoteException{
 		HotelPO hotelpo=hoteldataservice.showHotelinfo(Hotelname);
 		HotelVO hotelvo=new HotelVO(hotelpo);
+		return hotelvo;
+	}
+	
+	/**
+	 * 客户根据酒店名称，获取酒店信息
+	 * @param Hotelname 酒店名
+	 * @return 酒店信息
+	 */
+	public HotelVO getHotelInfoByPerson(String Hotelname)  throws RemoteException {
+		HotelPO hotelpo=hoteldataservice.showHotelinfo(Hotelname);
+		HotelVO hotelvo=new HotelVO(hotelpo);
+		if(hotelvo.getRoom()==null){
+			return null;
+		}
 		return hotelvo;
 	}
 	
@@ -168,7 +181,7 @@ public class Hotel {
 		Calendar endtime=t.myToCalendar(endtime1);
 		
 		HotelController hotelcontroller=new HotelController();
-		HotelVO hotelvo=hotelcontroller.showHotelInfo(hotelname);
+		HotelVO hotelvo=hotelcontroller.getHotelInfoByHotelworkerOrManager(hotelname);
 		ArrayList<RoomVO> rooms=hotelvo.getRoom();
 				
 		int roomPrice=0;
@@ -215,7 +228,7 @@ public class Hotel {
 		Calendar endtime=t.myToCalendar(endtime1);
 		
 		HotelController hotelcontroller=new HotelController();
-		HotelVO hotelvo=hotelcontroller.showHotelInfo(hotelname);
+		HotelVO hotelvo=hotelcontroller.getHotelInfoByHotelworkerOrManager(hotelname);
 		ArrayList<RoomVO> rooms=hotelvo.getRoom();
 		
 		int numOfRoom=0;

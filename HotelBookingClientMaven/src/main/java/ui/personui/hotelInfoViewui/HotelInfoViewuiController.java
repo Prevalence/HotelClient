@@ -188,7 +188,7 @@ public class HotelInfoViewuiController {
 	@SuppressWarnings("unchecked")
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
-		hotelInfo = hotelbl.showHotelInfo(hotelName);
+		hotelInfo = hotelbl.getHotelInfoByHotelworkerOrManager(hotelName);
 		if(hotelInfo.getService().get(0)){
 			wifiLabel.setText("wifi");
 		}
