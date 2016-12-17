@@ -9,7 +9,7 @@ public class RecordVO {
 	private String orderId;
 	private String operation;//"执行"\"异常"\"撤销"\"充值"
 	private String changeCredit;
-	private Integer resultCredit;
+	private String resultCredit;
 	
 	public RecordVO() {
 		super();
@@ -21,7 +21,7 @@ public class RecordVO {
 		this.orderId = orderId;
 		this.operation = operation;
 		this.changeCredit = changeCredit;
-		this.resultCredit = resultCredit;
+		this.resultCredit = String.valueOf(resultCredit);
 	}
 
 	public RecordVO(RecordPO po) {
@@ -31,7 +31,7 @@ public class RecordVO {
 		this.operation = po.getOperation();
 		String credit=Integer.toString(po.getChangeCredit());
 		this.changeCredit = credit;
-		this.resultCredit = po.getResultCredit();
+		this.resultCredit = String.valueOf(po.getResultCredit());
 	}
 
 	public String getTime() {
@@ -66,12 +66,12 @@ public class RecordVO {
 		this.changeCredit = changeCredit;
 	}
 
-	public Integer getResultCredit() {
+	public String getResultCredit() {
 		return resultCredit;
 	}
 
 	public void setResultCredit(Integer resultCredit) {
-		this.resultCredit = resultCredit;
+		this.resultCredit = String.valueOf(resultCredit);
 	}
 
 

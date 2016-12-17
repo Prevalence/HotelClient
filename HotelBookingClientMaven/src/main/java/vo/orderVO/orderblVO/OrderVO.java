@@ -24,11 +24,12 @@ public class OrderVO {
 	
 	//一系列时间
 	private String producttime;//订单生成时间
-	private String executetime;//订单执行时间
+	private String executetime;//订单实际执行时间
 	private String canceltime;//订单取消时间
-	private String latestExecutetime;//订单最晚执行时间
+	private String predictExecutetime;//预计入住时间
 	private String predictLeaveTime;//预计退房时间
 	private String actualLeaveTime;//实际退房时间
+	
 	//空构造函数
 	public OrderVO() {
 		
@@ -60,15 +61,15 @@ public class OrderVO {
 		this.producttime=t.myToString(orderPO.getProducttime());//订单生成时间
 		this.executetime=t.myToString(orderPO.getExecutetime());//订单执行时间
 		this.canceltime=t.myToString(orderPO.getCanceltime());//订单取消时间
-		this.latestExecutetime=t.myToString(orderPO.getLatestExecutetime());//订单最晚执行时间
-		this.predictLeaveTime = t.myToString(orderPO.getLatestExecutetime());
+		this.setPredictExecutetime(t.myToString(orderPO.getPredictExecutetime()));//订单最晚执行时间
+		this.predictLeaveTime = t.myToString(orderPO.getPredictExecutetime());
 		this.actualLeaveTime=t.myToString(orderPO.getActualLeaveTime());//退房时间
 	}
 
 	//有所有参数的构造函数
 	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
 			String personname, String realname, int peoplenum, int childnum, String producttime, String executetime,
-			String canceltime, String latestExecutetime, String predictLeaveTime, String actualLeaveTime) {
+			String canceltime, String predictExecutetime, String predictLeaveTime, String actualLeaveTime) {
 		super();
 		this.orderID = orderID;
 		this.orderprice = orderprice;
@@ -82,7 +83,7 @@ public class OrderVO {
 		this.producttime = producttime;
 		this.executetime = executetime;
 		this.canceltime = canceltime;
-		this.latestExecutetime = latestExecutetime;
+		this.setPredictExecutetime(predictExecutetime);
 		this.predictLeaveTime = predictLeaveTime;
 		this.actualLeaveTime = actualLeaveTime;
 	}
@@ -184,13 +185,7 @@ public class OrderVO {
 		this.canceltime = canceltime;
 	}
 
-	public String getLatestExecutetime() {
-		return latestExecutetime;
-	}
 
-	public void setLatestExecutetime(String latestExecutetime) {
-		this.latestExecutetime = latestExecutetime;
-	}
 
 	public String getPredictLeaveTime() {
 		return predictLeaveTime;
@@ -206,6 +201,14 @@ public class OrderVO {
 
 	public void setActualLeaveTime(String actualLeaveTime) {
 		this.actualLeaveTime = actualLeaveTime;
+	}
+
+	public String getPredictExecutetime() {
+		return predictExecutetime;
+	}
+
+	public void setPredictExecutetime(String predictExecutetime) {
+		this.predictExecutetime = predictExecutetime;
 	}
 
 }

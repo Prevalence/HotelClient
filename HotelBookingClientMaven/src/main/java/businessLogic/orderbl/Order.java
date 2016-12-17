@@ -62,7 +62,7 @@ public class Order{
 			boolean isReverse=orderDataService.modify(orderPO);
 			//减少客户信用值
 			boolean isCreditChange=true;
-			Calendar executeTime=t.myToCalendar(order.getLatestExecutetime());
+			Calendar executeTime=t.myToCalendar(order.getPredictExecutetime());
 			if(Calendar.getInstance().compareTo(executeTime)<6*60*60*1000){//如果撤销的订单距离最晚订单执行时间不足6个小时，扣除信用值
 				UserController user=new UserController();
 				isCreditChange=user.changeCredit(order.getPersonname(), -(order.getOrderprice()/2));
@@ -183,6 +183,7 @@ public class Order{
 		for(int i=0; i<personStateList.size(); i++){
 			if(!(personStateList.get(i).getOrderstate().equals(state))){
 				personStateList.remove(i);
+				i--;
 			}
 		}
 		return personStateList;
@@ -206,6 +207,7 @@ public class Order{
 		for(int i=0; i<hotelStateList.size(); i++){
 			if(hotelStateList.get(i).equals(state)!=false){
 				hotelStateList.remove(i);
+				i--;
 			}
 		}
 		return hotelStateList;
@@ -241,6 +243,7 @@ public class Order{
 					==(date.get(Calendar.DATE)));
 			if(!(isYearEqual&&isMonthEqual&&isDateEqual)){//只要三个钟有一个不等
 				netNumList.remove(i);
+				i--;
 			}
 			
 		}

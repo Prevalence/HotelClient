@@ -39,6 +39,8 @@ public class PersonInfoui extends Pane{
 		personInfoViewuiController = loader.getController();
 		personInfoViewuiController.launchStage(primaryStage);
 		personInfoViewuiController.setPersonname(personname);
+		personInfoViewuiController.modifyStageSize();
 		personInfoViewuiController.initPersonInfo();
+		personInfoViewuiController.initTableView();
 	}
 }

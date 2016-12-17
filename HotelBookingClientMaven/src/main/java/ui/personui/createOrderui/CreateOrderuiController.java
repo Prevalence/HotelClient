@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import businessLogic.hotelbl.HotelController;
+import businessLogic.orderbl.OrderController;
 import businessLogic.userbl.UserController;
 import businessLogicService.hotelblService.HotelblService;
+import businessLogicService.orderblService.OrderblService;
 import businessLogicService.userblService.UserblService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +28,7 @@ import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.CommentInfoVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
+import vo.orderVO.orderblVO.OrderVO;
 
 public class CreateOrderuiController {
 
@@ -54,17 +57,47 @@ public class CreateOrderuiController {
 	@FXML
 	private Label roomPriceLabel;
 	@FXML
+	private Label feedbackLabel;
+	@FXML
 	private TextField peopleField;
+	@FXML
+	private TextField yearField1;
+	@FXML
+	private TextField yearField2;
+	@FXML
+	private TextField customerField;
+	@FXML
+	private TextField connectionField;
+	@FXML
+	private TextField roomNumberField;
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private ChoiceBox roomChoices;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private ChoiceBox monthChoices1;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private ChoiceBox monthChoices2;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private ChoiceBox dayChoices1;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private ChoiceBox dayChoices2;
 	@FXML
 	private Pane mainPane;
+
+	private ObservableList<String> days1 = FXCollections.observableArrayList();
+
+	private ObservableList<String> days2 = FXCollections.observableArrayList();
 
 	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	private HotelblService hotelbl;
+	
+	private OrderblService orderbl;
 
 	private HotelVO hotelInfo;
 
@@ -85,6 +118,8 @@ public class CreateOrderuiController {
 	private ArrayList<CommentInfoVO> commentList;
 
 	private CommentInfoVO commentInfo;
+	
+	private OrderVO orderInfo;
 
 	// 酒店搜索界面
 	private Pane hotelSearchPane;
@@ -104,6 +139,30 @@ public class CreateOrderuiController {
 
 	private String roomSelected;
 
+	private String year1;
+
+	private String year2;
+
+	private String month1;
+
+	private String month2;
+
+	private String day1;
+
+	private String day2;
+
+	private String startTime;
+
+	private String endTime;
+
+	private String peopleNumber;
+
+	private String customer;
+
+	private String connection;
+
+	private String roomNumber;
+
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
@@ -111,6 +170,18 @@ public class CreateOrderuiController {
 	public CreateOrderuiController() {
 		userbl = new UserController();
 		hotelbl = new HotelController();
+		orderbl = new OrderController();
+		roomSelected = "";
+		year1 = "";
+		year2 = "";
+		month1 = "";
+		month1 = "";
+		day1 = "";
+		day2 = "";
+		roomNumber = "";
+		connection = "";
+		customer = "";
+		peopleNumber = "";
 	}
 
 	/**
@@ -118,7 +189,6 @@ public class CreateOrderuiController {
 	 * 
 	 * @return boolean
 	 */
-
 	@FXML
 	private void viewPersonInfo() {
 		personInfoViewPane = new PersonInfoui(primaryStage, personname);
@@ -151,7 +221,38 @@ public class CreateOrderuiController {
 	 */
 	@FXML
 	private void createOrder() {
+		if (roomSelected.equals("") || year1.equals("") || year2.equals("") || month1.equals("") || month2.equals("")
+				|| day1.equals("") || day2.equals("") || roomNumber.equals("") || connection.equals("")
+				|| customer.equals("")|| peopleNumber.equals("")) {
+			feedbackLabel.setText("订单信息填写不完整！");
+			
+		}
+		else {
+//			orderbl.order
+//			orderInfo=new OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
+//					String personname, String realname, int peoplenum, int childnum, String producttime, String executetime,
+//					String canceltime, String predictExecutetime, String predictLeaveTime, String actualLeaveTime);
+		}
+	}
 
+	/**
+	 * 查看当前时段内酒店剩余的某房间类型数量 前提是房间类型、入住时间和退房时间都已经填写
+	 */
+	@FXML
+	private void seeNumber() {
+		year1 = yearField1.getText();
+		year2 = yearField2.getText();
+		if (roomSelected.equals("")) {
+			feedbackLabel.setText("未选择房间类型！");
+		} else if (year1.equals("") || year2.equals("") || month1.equals("") || month2.equals("") || day1.equals("")
+				|| day2.equals("")) {
+			feedbackLabel.setText("日期填写不完整！");
+		} else {
+			startTime = year1 + "-" + month1 + "-" + day1 + " 12:00:00";
+			endTime = year2 + "-" + month2 + "-" + day2 + " 12:00:00";
+			numberLabel.setText(String
+					.valueOf(hotelbl.getAvailableNumber(hotelInfo.getHotelname(), roomSelected, startTime, endTime)));
+		}
 	}
 
 	/**
@@ -187,7 +288,6 @@ public class CreateOrderuiController {
 	 * 
 	 * @param hotelName
 	 */
-	@SuppressWarnings("unchecked")
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
 		hotelInfo = hotelbl.showHotelInfo(hotelName);
@@ -213,7 +313,7 @@ public class CreateOrderuiController {
 	}
 
 	/**
-	 * 设置评分区间选择的组件
+	 * 设置房间类型选择的组件 当选择房间类型之后，在界面显示该房间类型的单价
 	 * 
 	 * @param others
 	 */
@@ -222,11 +322,93 @@ public class CreateOrderuiController {
 		roomChoices.setItems(others);
 		roomChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				//就是房间类型
+				// 就是房间类型
 				roomSelected = roomChoices.getSelectionModel().getSelectedItem().toString();
-				roomPriceLabel.setText(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomType());
-				numberLabel.setText(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomnum());
-				
+				roomPriceLabel.setText(
+						String.valueOf(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomPrice()));
+				// numberLabel.setText(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomnum());
+
+			}
+		});
+	}
+
+	/**
+	 * 设置月份选择的组件
+	 * 
+	 * @param others
+	 */
+	@SuppressWarnings("unchecked")
+	public void setMonthChoiceBox(ObservableList<String> others) {
+		monthChoices1.setItems(others);
+		monthChoices2.setItems(others);
+		monthChoices1.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				month1 = monthChoices1.getSelectionModel().getSelectedItem().toString();
+				if (month1.equals("01") || month1.equals("03") || month1.equals("05") || month1.equals("07")
+						|| month1.equals("08") || month1.equals("10") || month1.equals("12")) {
+					days1.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
+							"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+							"30", "31");
+				} else if (month1.equals("04") || month1.equals("06") || month1.equals("09") || month1.equals("11")) {
+					days1.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
+							"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+							"30");
+				} else {
+					days1.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
+							"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28");
+				}
+				setDayChoiceBox1(days1);
+			}
+		});
+		monthChoices2.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				month2 = monthChoices2.getSelectionModel().getSelectedItem().toString();
+				if (month2.equals("01") || month2.equals("03") || month2.equals("05") || month2.equals("07")
+						|| month2.equals("08") || month2.equals("10") || month2.equals("12")) {
+					days2.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
+							"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+							"30", "31");
+				} else if (month2.equals("04") || month2.equals("06") || month2.equals("09") || month2.equals("11")) {
+					days2.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
+							"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+							"30");
+				} else {
+					days2.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
+							"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28");
+				}
+				setDayChoiceBox2(days2);
+			}
+		});
+	}
+
+	/**
+	 * 设置第一个日选择的组件
+	 * 
+	 * @param others
+	 */
+	@SuppressWarnings("unchecked")
+	private void setDayChoiceBox1(ObservableList<String> others) {
+		dayChoices1.setItems(others);
+		dayChoices1.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				// 就是房间类型
+				day1 = dayChoices1.getSelectionModel().getSelectedItem().toString();
+			}
+		});
+	}
+
+	/**
+	 * 设置第二个日选择的组件
+	 * 
+	 * @param others
+	 */
+	@SuppressWarnings("unchecked")
+	private void setDayChoiceBox2(ObservableList<String> others) {
+		dayChoices2.setItems(others);
+		dayChoices2.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				// 就是房间类型
+				day2 = dayChoices2.getSelectionModel().getSelectedItem().toString();
 			}
 		});
 	}
