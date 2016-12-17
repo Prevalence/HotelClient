@@ -84,6 +84,9 @@ public class Hotel {
 	 */
 	public boolean roomModify(String hotelname, ArrayList<RoomVO> roomvoList) throws RemoteException{
 		ArrayList<RoomPO> roompoList=new ArrayList<RoomPO>();
+		if(roomvoList.size()==0){
+			return false;
+		}
 		for(int i=0; i<roomvoList.size(); i++){
 			RoomPO roompo=new RoomPO(roomvoList.get(i));
 			roompoList.add(roompo);
@@ -112,8 +115,10 @@ public class Hotel {
 			
 			if(hotelpoList!=null){
 				for(int i=0; i<hotelpoList.size(); i++){
-					HotelVO hotelvo=new HotelVO(hotelpoList.get(i));
-					hotelvoList.add(hotelvo);
+					if(hotelpoList.get(i).getRoom()!=null){
+						HotelVO hotelvo=new HotelVO(hotelpoList.get(i));
+						hotelvoList.add(hotelvo);
+					}
 				}	
 			}
 			
@@ -158,6 +163,7 @@ public class Hotel {
 	public boolean addHotel(HotelVO hotelvo) throws RemoteException{
 		try {
 			HotelPO hotelpo=new HotelPO(hotelvo);
+			hotelpo.setHotelID(-1);
 			return hoteldataservice.addHotel(hotelpo);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -183,7 +189,10 @@ public class Hotel {
 		HotelController hotelcontroller=new HotelController();
 		HotelVO hotelvo=hotelcontroller.getHotelInfoByHotelworkerOrManager(hotelname);
 		ArrayList<RoomVO> rooms=hotelvo.getRoom();
-				
+		if(rooms==null){
+			return null;
+		}
+		
 		int roomPrice=0;
 		for(int i=0; i<rooms.size(); i++){
 			if(rooms.get(i).getRoomType().equals(roomtype)){//当roomtype符合时
@@ -230,6 +239,9 @@ public class Hotel {
 		HotelController hotelcontroller=new HotelController();
 		HotelVO hotelvo=hotelcontroller.getHotelInfoByHotelworkerOrManager(hotelname);
 		ArrayList<RoomVO> rooms=hotelvo.getRoom();
+		if(rooms==null){
+			return 0;
+		}
 		
 		int numOfRoom=0;
 		for(int i=0; i<rooms.size(); i++){
