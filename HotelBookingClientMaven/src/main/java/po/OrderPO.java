@@ -19,7 +19,7 @@ public class OrderPO implements Serializable{
 	private String orderID;//时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
 	private static final long serialVersionUID = 1L;
 	private int orderprice;
-	private String orderstate;//订单状态,“未执行”、“已执行”、“已撤销”、“异常”、“延期”
+	private String orderstate;//订单状态,“未执行”、“已执行”、“已撤销”、“异常”
 	
 	//酒店信息
 	private String hotelname;
