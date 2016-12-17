@@ -22,6 +22,8 @@ public class CreateOrderui extends Pane {
 	private ArrayList<RoomVO> room;
 	
 	private ObservableList<String> types=FXCollections.observableArrayList();
+	
+	private ObservableList<String> months=FXCollections.observableArrayList();
 
 	private CreateOrderuiController createOrderuiController;
 
@@ -39,6 +41,7 @@ public class CreateOrderui extends Pane {
 		for(int i=0;i<room.size();i++){
 			types.add(room.get(i).getRoomType());
 		}
+		months.addAll("01","02","03","04","05","06","07","08","09","10","11","12");
 		initcreateOrderui();
 	};
 
@@ -61,6 +64,7 @@ public class CreateOrderui extends Pane {
 		createOrderuiController.setPersonname(personname);
 		createOrderuiController.setHotelNameAndShowInfo(hotelName);
 		createOrderuiController.setHotelVO(hotelInfo);
-		createOrderuiController.setRoomChoiceBox(types);;
+		createOrderuiController.setRoomChoiceBox(types);
+		createOrderuiController.setMonthChoiceBox(months);
 	}
 }

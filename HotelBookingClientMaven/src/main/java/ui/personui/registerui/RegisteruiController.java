@@ -26,7 +26,7 @@ public class RegisteruiController {
 	@FXML
 	private TextField passwordField;
 	@FXML
-	private Label feedBackLabel;
+	private Label feedbackLabel;
 	@FXML
 	private Pane loginPane;
 	@FXML
@@ -90,7 +90,7 @@ public class RegisteruiController {
 			mainPane.getChildren().add(personInfoPane);
 		}
 		else{
-			System.out.println("pppp");
+			feedbackLabel.setText("该用户名已被使用");
 		}
 	}
 
