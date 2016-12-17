@@ -42,6 +42,7 @@ public class Order{
 		//改变订单状态
 		order.setOrderstate("已执行");//此步将异常订单变为已执行
 		OrderPO orderpo=new OrderPO(order);
+		orderpo.setExecutetime(Calendar.getInstance());
 		boolean orderChange=orderDataService.modify(orderpo);
 		//恢复信用值
 		UserController user=new UserController();
@@ -64,6 +65,7 @@ public class Order{
 			order.setCanceltime(cancleTime);
 			order.setOrderstate("已撤销");
 			OrderPO orderPO=new OrderPO(order);
+			orderPO.setCanceltime(Calendar.getInstance());
 			boolean isReverse=orderDataService.modify(orderPO);
 			//减少客户信用值
 			boolean isCreditChange=true;
