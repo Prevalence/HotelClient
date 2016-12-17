@@ -68,7 +68,7 @@
                   <Image url="@../酒店详情界面/Shape%2016.png" />
                </image>
             </ImageView>
-            <Button fx:id="editButton" layoutX="678.0" layoutY="40.0" mnemonicParsing="false" onAction="#setEditable" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+            <Button fx:id="editButton" layoutX="677.0" layoutY="23.0" mnemonicParsing="false" onAction="#setEditable" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,7 +77,16 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="reverseButton" layoutX="734.0" layoutY="38.0" mnemonicParsing="false" onAction="#reverse" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+            <Button fx:id="editButton1" layoutX="690.0" layoutY="68.0" mnemonicParsing="false" onAction="#setEditable" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../酒店评价界面/确定.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="reverseButton" layoutX="733.0" layoutY="21.0" mnemonicParsing="false" onAction="#reverse" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
