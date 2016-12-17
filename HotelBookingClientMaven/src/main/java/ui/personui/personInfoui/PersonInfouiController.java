@@ -135,8 +135,8 @@ public class PersonInfouiController {
 		String year = yearField.getText();
 		String month = monthField.getText();
 		String day = dayField.getText();
-		String time = year + "-" + month + "-" + day;
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String time = year + "-" + month + "-" + day + " 00:00:00";
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		if (!userbl.isExist(nameField.getText(), "person") || nameField.getText().equals(personname)) {
 			Date date;
 			try {
@@ -195,9 +195,9 @@ public class PersonInfouiController {
 		String year = yearField.getText();
 		String month = monthField.getText();
 		String day = dayField.getText();
-		String time = year + "-" + month + "-" + day;
+		String time = year + "-" + month + "-" + day + " 00:00:00";
 		String vipInfo = year + month + day;
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		if (!userbl.isExist(nameField.getText(), "person") || nameField.getText().equals(personname)) {
 			try {
 				Date date = df.parse(time);
@@ -238,7 +238,7 @@ public class PersonInfouiController {
 		this.personname = personname;
 		nameLabel.setText(personname);
 	}
-	
+
 	/**
 	 * 登录之后调整界面大小，和之后更大的工作区域匹配
 	 */

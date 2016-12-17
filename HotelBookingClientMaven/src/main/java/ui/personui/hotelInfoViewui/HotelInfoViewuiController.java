@@ -207,7 +207,7 @@ public class HotelInfoViewuiController {
 		areaLabel.setText(hotelInfo.getCircle());
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
-		
+		connectionLabel.setText(hotelInfo.getHotelPhone());
 		
 		comment = hotelInfo.getComment();
 		room = hotelInfo.getRoom();
