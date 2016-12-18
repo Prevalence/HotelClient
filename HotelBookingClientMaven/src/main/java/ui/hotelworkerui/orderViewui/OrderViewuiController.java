@@ -87,7 +87,7 @@ public class OrderViewuiController {
 
 	private Stage primaryStage;
 
-	private String hotelName;
+	private String workerName;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -103,7 +103,7 @@ public class OrderViewuiController {
 	 */
 	@FXML
 	private void viewHotelOrder() {
-		hotelOrderPane = new HotelOrderViewui(primaryStage, hotelName);
+		hotelOrderPane = new HotelOrderViewui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelOrderPane);
 	}
@@ -113,7 +113,7 @@ public class OrderViewuiController {
 	 */
 	@FXML
 	private void viewPromotion() {
-		promotionPane = new Promotionui(primaryStage, hotelName);
+		promotionPane = new Promotionui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(promotionPane);
 	}
@@ -123,8 +123,8 @@ public class OrderViewuiController {
 	 */
 	@FXML
 	private void viewHotelInfo() {
-		// hotelInfo = hotelbl.showHotelInfo(hotelName);
-		hotelInfoPane = new HotelInfoui(primaryStage, hotelName);
+		// hotelInfo = hotelbl.showHotelInfo(workerName);
+		hotelInfoPane = new HotelInfoui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelInfoPane);
 	}
@@ -134,8 +134,8 @@ public class OrderViewuiController {
 	 */
 	@FXML
 	private void viewRoomInfo() {
-		// hotelInfo = hotelbl.showHotelInfo(hotelName);
-		roomInfoPane = new RoomInfoui(primaryStage, hotelName);
+		// hotelInfo = hotelbl.showHotelInfo(workerName);
+		roomInfoPane = new RoomInfoui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(roomInfoPane);
 	}
@@ -145,7 +145,7 @@ public class OrderViewuiController {
 	 */
 	@FXML
 	private void searchWithDate() {
-		// hotelInfo = hotelbl.showHotelInfo(hotelName);
+		// hotelInfo = hotelbl.showHotelInfo(workerName);
 
 	}
 
@@ -161,11 +161,11 @@ public class OrderViewuiController {
 	/**
 	 * 传递用户名
 	 * 
-	 * @param hotelName
+	 * @param workerName
 	 */
-	public void setHotelName(String hotelName) {
-		this.hotelName = hotelName;
-		nameLabel.setText(hotelName);
+	public void setWorkerName(String workerName) {
+		this.workerName = workerName;
+		nameLabel.setText(workerName);
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class OrderViewuiController {
 	 */
 	@SuppressWarnings("unchecked")
 	public void initOrderTable() {
-		orderIDCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+		orderIDCol.setCellValueFactory(new PropertyValueFactory<>("workerName"));
 		timeCol.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
 		personCol.setCellValueFactory(new PropertyValueFactory<>("expectedTime"));
 		stateCol.setCellValueFactory(new PropertyValueFactory<>("state"));
@@ -199,11 +199,11 @@ public class OrderViewuiController {
 			@Override
 			public TableCell<HotelOrderVO, Boolean> call(TableColumn<HotelOrderVO, Boolean> p) {
 				@SuppressWarnings("rawtypes")
-				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, hotelName,"hotelworker",orders);
+				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, workerName,"hotelworker",orders);
 				return buttonCell;
 			}
 		});
-		orders = orderbl.hotelOrders(hotelName);
+		orders = orderbl.hotelOrders(userbl.getHotelWorkerInfo(workerName).getHotelName());
 		orderViewList = getOrderViewList(orders);
 		orderData = FXCollections.observableArrayList(orderViewList);
 		orderTable.setItems(orderData);
@@ -219,14 +219,14 @@ public class OrderViewuiController {
 		String orderNumber = "";
 		String orderState = "";
 		String expectedTime = "";
-		String hotelName = "";
+		String person = "";
 		HotelOrderVO order = null;
 		for (int i = 0; i < orders.size(); i++) {
 			orderNumber = orders.get(i).getOrderID();
 			expectedTime = orders.get(i).getPredictExecutetime();
-			hotelName = orders.get(i).getHotelname();
+			person = orders.get(i).getPersonname();
 			orderState = orders.get(i).getOrderstate();
-			order = new HotelOrderVO(hotelName,orderNumber,expectedTime,orderState);
+			order = new HotelOrderVO(orderNumber,expectedTime,person,orderState);
 			orderList.add(order);
 		}
 		return orderList;

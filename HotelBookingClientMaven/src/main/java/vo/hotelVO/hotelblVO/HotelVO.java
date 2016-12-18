@@ -50,6 +50,7 @@ public class HotelVO {
 		this.address = po.getAddress();
 		this.circle = po.getCircle();
 		this.score = po.getScore();
+		this.hotelPhone=po.getHotelPhone();
 		
 		ArrayList<RoomVO> roomvo=new ArrayList<RoomVO>();
 		ArrayList<RoomPO> roompo=po.getRoom();

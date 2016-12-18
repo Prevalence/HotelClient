@@ -61,7 +61,7 @@ public class OrderVO {
 		this.producttime=t.myToString(orderPO.getProducttime());//订单生成时间
 		this.executetime=t.myToString(orderPO.getExecutetime());//订单执行时间
 		this.canceltime=t.myToString(orderPO.getCanceltime());//订单取消时间
-		this.setPredictExecutetime(t.myToString(orderPO.getPredictExecutetime()));//订单最晚执行时间
+		this.predictExecutetime=t.myToString(orderPO.getPredictExecutetime());//订单最晚执行时间
 		this.predictLeaveTime = t.myToString(orderPO.getPredictExecutetime());
 		this.actualLeaveTime=t.myToString(orderPO.getActualLeaveTime());//退房时间
 	}
@@ -83,7 +83,7 @@ public class OrderVO {
 		this.producttime = producttime;
 		this.executetime = executetime;
 		this.canceltime = canceltime;
-		this.setPredictExecutetime(predictExecutetime);
+		this.predictExecutetime=predictExecutetime;
 		this.predictLeaveTime = predictLeaveTime;
 		this.actualLeaveTime = actualLeaveTime;
 	}

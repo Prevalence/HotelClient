@@ -48,12 +48,12 @@ public class HotelController implements HotelblService{
 	public HotelVO getHotelInfoByPerson(String Hotelname) {
 		// TODO Auto-generated method stub
 		try {
-			hotel.getHotelInfoByPerson(Hotelname);
+			return hotel.getHotelInfoByPerson(Hotelname);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 	/**
