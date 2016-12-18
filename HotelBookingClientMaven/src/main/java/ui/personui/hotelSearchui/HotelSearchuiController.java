@@ -81,6 +81,9 @@ public class HotelSearchuiController {
 	private TableColumn starCol;
 	@SuppressWarnings("rawtypes")
 	@FXML
+	private TableColumn scoreCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
 	private TableColumn areaCol;
 	@SuppressWarnings("rawtypes")
 	@FXML
@@ -178,7 +181,7 @@ public class HotelSearchuiController {
 	private void searchHotelInfo() {
 		String hotelName = searchField.getText();
 		// hotelInfo = hotelbl.showHotelInfo(hotelName);
-		if (hotelbl.getHotelInfoByHotelworkerOrManager(hotelName) != null) {
+		if (hotelbl.getHotelInfoByPerson(hotelName) != null) {
 			hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(hotelInfoViewPane);
@@ -234,11 +237,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithBooked() {
 		searchTable.refresh();
-
-		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel5", "2", "nanjing", "nju"));
-		searchData = FXCollections.observableArrayList(searchDataList);
-
 		searchTable.setItems(searchData);
 	}
 
@@ -480,6 +478,7 @@ public class HotelSearchuiController {
 	public void initTableView() {
 		hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
 		starCol.setCellValueFactory(new PropertyValueFactory<>("star"));
+		scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
 		areaCol.setCellValueFactory(new PropertyValueFactory<>("area"));
 		locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
 		buttonCol

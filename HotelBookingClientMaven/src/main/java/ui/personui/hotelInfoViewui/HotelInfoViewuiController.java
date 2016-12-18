@@ -48,6 +48,8 @@ public class HotelInfoViewuiController {
 	private Label scoreLabel;
 	@FXML
 	private Label areaLabel;
+	@FXML
+	private Label nameLabel;
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView roomInfoTable;
@@ -194,7 +196,7 @@ public class HotelInfoViewuiController {
 	@SuppressWarnings("unchecked")
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
-		hotelInfo = hotelbl.getHotelInfoByHotelworkerOrManager(hotelName);
+		hotelInfo = hotelbl.getHotelInfoByPerson(hotelName);
 		if(hotelInfo.getService().get(0)){
 			wifiLabel.setText("wifi");
 		}
@@ -214,6 +216,7 @@ public class HotelInfoViewuiController {
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
 		connectionLabel.setText(hotelInfo.getHotelPhone());
+		System.out.println("connection:"+hotelInfo.getHotelPhone());
 		
 		comment = hotelInfo.getComment();
 		room = hotelInfo.getRoom();

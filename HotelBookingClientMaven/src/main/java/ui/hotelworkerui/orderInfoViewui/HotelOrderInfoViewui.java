@@ -3,24 +3,28 @@ package ui.hotelworkerui.orderInfoViewui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import vo.orderVO.orderblVO.OrderVO;
 
-public class OrderInfoViewui extends Pane{
+public class HotelOrderInfoViewui extends Pane {
 	private Stage primaryStage;
 
 	private String hotelName;
 
+	private OrderVO order;
+
 	private OrderInfoViewuiController orderInfoViewuiController;
 
 	/**
-		 * 接受primarystage用来完成界面最小化和可移动化设置
-		 * 
-		 * @param primaryStage
-		 */
-		public OrderInfoViewui(Stage primaryStage, String hotelName) {
-			this.primaryStage = primaryStage;
-			this.hotelName = hotelName;
-			initOrderInfoViewui();
-		};
+	 * 接受primarystage用来完成界面最小化和可移动化设置
+	 * 
+	 * @param primaryStage
+	 */
+	public HotelOrderInfoViewui(Stage primaryStage, String hotelName, OrderVO order) {
+		this.primaryStage = primaryStage;
+		this.hotelName = hotelName;
+		this.order = order;
+		initOrderInfoViewui();
+	};
 
 	/**
 	 * 初始化界面
@@ -39,5 +43,6 @@ public class OrderInfoViewui extends Pane{
 		orderInfoViewuiController = loader.getController();
 		orderInfoViewuiController.launchStage(primaryStage);
 		orderInfoViewuiController.setPersonname(hotelName);
+		orderInfoViewuiController.setAndShowOrder(order);
 	}
 }
