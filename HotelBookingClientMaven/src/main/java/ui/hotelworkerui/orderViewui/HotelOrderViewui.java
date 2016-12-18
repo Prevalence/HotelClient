@@ -38,7 +38,8 @@ public class HotelOrderViewui extends Pane{
 		// primaryStage.setScene(scene);
 		orderViewuiController = loader.getController();
 		orderViewuiController.launchStage(primaryStage);
-		orderViewuiController.setHotelName(personname);
+		orderViewuiController.setWorkerName(personname);
 		orderViewuiController.modifyStageSize();
+		orderViewuiController.initOrderTable();
 	}
 }

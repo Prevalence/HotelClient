@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.orderInfoViewui.OrderInfoViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.orderReviewui.OrderReviewuiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -77,18 +77,6 @@
             <Label layoutX="415.0" layoutY="48.0" prefHeight="20.0" prefWidth="278.0" />
          </children>
       </Pane>
-      <Button fx:id="hotelSearchButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="16.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/酒店搜索.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button fx:id="personOrderButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewPersonOrder" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -180,27 +168,27 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="enterTimeLabel" layoutX="130.0" layoutY="217.0" prefHeight="24.0" prefWidth="176.0">
+            <Label fx:id="enterTimeLabel" layoutX="130.0" layoutY="217.0" prefHeight="24.0" prefWidth="273.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="endTimeLabel" layoutX="130.0" layoutY="272.0" prefHeight="24.0" prefWidth="176.0">
+            <Label fx:id="endTimeLabel" layoutX="130.0" layoutY="272.0" prefHeight="24.0" prefWidth="273.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="customerLabel" layoutX="130.0" layoutY="331.0" prefHeight="24.0" prefWidth="133.0">
+            <Label fx:id="customerLabel" layoutX="130.0" layoutY="331.0" prefHeight="24.0" prefWidth="196.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="connectionLabel" layoutX="130.0" layoutY="387.0" prefHeight="24.0" prefWidth="133.0">
+            <Label fx:id="connectionLabel" layoutX="130.0" layoutY="387.0" prefHeight="24.0" prefWidth="196.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="roomtypeLabel" layoutX="390.0" layoutY="112.0" prefHeight="24.0" prefWidth="105.0">
+            <Label fx:id="roomNumberLabel" layoutX="390.0" layoutY="112.0" prefHeight="24.0" prefWidth="105.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -217,7 +205,7 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="reverseButton" layoutX="485.0" layoutY="692.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="okButton" layoutX="485.0" layoutY="692.0" mnemonicParsing="false" onAction="#createOrder" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -234,5 +222,17 @@
             <Image url="@../酒店详情界面/色块.png" />
          </image>
       </ImageView>
+      <Button fx:id="hotelSearchButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../酒店详情界面/酒店搜索.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </fx:root>

@@ -53,9 +53,23 @@ public class OrderReviewuiController {
 	@FXML
 	private Label areaLabel;
 	@FXML
-	private Label numberLabel;
+	private Label roomNumberLabel;
 	@FXML
-	private Label roomPriceLabel;
+	private Label priceLabel;
+	@FXML
+	private Label orderNumberLabel;
+	@FXML
+	private Label roomtypeLabel;
+	@FXML
+	private Label peopleLabel;
+	@FXML
+	private Label enterTimeLabel;
+	@FXML
+	private Label endTimeLabel;
+	@FXML
+	private Label customerLabel;	
+	@FXML
+	private Label personConnectionLabel;
 	@FXML
 	private Label feedbackLabel;
 	@FXML
@@ -113,6 +127,9 @@ public class OrderReviewuiController {
 
 	// 订单填写界面
 	private Pane createOrderPane;
+	
+	//酒店搜索界面
+	private Pane hotelSearchPane;
 
 	private Pane orderInfoPane;
 
@@ -170,6 +187,16 @@ public class OrderReviewuiController {
 		peopleNumber = "";
 	}
 
+	/**
+	 * 跳转到酒店搜索界面
+	 */
+	@FXML
+	private void viewHotelSearch() {
+		hotelSearchPane = new HotelSearchui(primaryStage, personname);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(hotelSearchPane);
+	}
+	
 	/**
 	 * 跳转到个人信息维护界面
 	 * 
@@ -239,6 +266,7 @@ public class OrderReviewuiController {
 	public void setHotelVO(HotelVO hotelInfo) {
 		this.hotelInfo = hotelInfo;
 		room = hotelInfo.getRoom();
+		
 	}
 
 	/**
@@ -275,8 +303,17 @@ public class OrderReviewuiController {
 	 * 
 	 * @param orderInfo
 	 */
-	public void setOrderVO(OrderVO orderInfo) {
+	public void setAndShowOrderVO(OrderVO orderInfo) {
 		this.orderInfo = orderInfo;
+//		roomNumberLabel.setText(orderInfo.get);
+		priceLabel.setText(String.valueOf(orderInfo.getRoom().get(0).getRoomPrice()));
+		orderNumberLabel.setText(orderInfo.getOrderID());
+		roomtypeLabel.setText(orderInfo.getRoom().get(0).getRoomType());
+		peopleLabel.setText(String.valueOf(orderInfo.getPeoplenum()));
+		enterTimeLabel.setText(orderInfo.getPredictExecutetime());
+		endTimeLabel.setText(orderInfo.getPredictLeaveTime());
+		customerLabel.setText(orderInfo.getRealname());	
+//		personConnectionLabel.setText(orderInfo.get);
 	}
 
 }

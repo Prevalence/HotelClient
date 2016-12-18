@@ -42,6 +42,31 @@
             </ImageView>
          </graphic>
       </Button>
+      <TableView fx:id="orderTable" layoutX="155.0" layoutY="98.0" prefHeight="683.0" prefWidth="785.0">
+         <columns>
+            <TableColumn fx:id="orderNumberCol" prefWidth="181.0" />
+            <TableColumn fx:id="hotelNameCol" prefWidth="145.0" />
+            <TableColumn fx:id="expectedTimeCol" prefWidth="247.99993896484375" />
+            <TableColumn fx:id="stateCol" prefWidth="150.0" />
+            <TableColumn fx:id="buttonCol" prefWidth="61.0" />
+         </columns>
+      </TableView>
+      <Button fx:id="orderInfoViewButton" layoutX="483.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="155.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../个人订单界面/状态.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/Shape%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/色块.png" />
+         </image>
+      </ImageView>
       <Button fx:id="personOrderButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -67,30 +92,5 @@
          </graphic>
       </Button>
       <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-      <TableView fx:id="orderTable" layoutX="155.0" layoutY="98.0" prefHeight="683.0" prefWidth="785.0">
-         <columns>
-            <TableColumn fx:id="orderNumberCol" prefWidth="155.0" />
-            <TableColumn fx:id="hotelNameCol" prefWidth="170.99993896484375" />
-            <TableColumn fx:id="expectedTimeCol" prefWidth="247.99993896484375" />
-            <TableColumn fx:id="stateCol" prefWidth="150.0" />
-            <TableColumn fx:id="buttonCol" prefWidth="61.0" />
-         </columns>
-      </TableView>
-      <Button fx:id="orderInfoViewButton" layoutX="483.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-      <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="155.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../个人订单界面/状态.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../酒店详情界面/Shape%201.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../酒店详情界面/色块.png" />
-         </image>
-      </ImageView>
    </children>
 </fx:root>
