@@ -21,7 +21,7 @@ public class TimeFormTrans {
 		int second=Integer.parseInt(votime.substring(17, 19));
 		Calendar calendar=Calendar.getInstance();
 		calendar.set(Calendar.YEAR,year);
-		calendar.set(Calendar.MONTH,month);
+		calendar.set(Calendar.MONTH,month-1);
 		calendar.set(Calendar.DATE,date);
 		calendar.set(Calendar.HOUR_OF_DAY,hour);
 		calendar.set(Calendar.MINUTE,minute);
@@ -37,11 +37,12 @@ public class TimeFormTrans {
 		}
 		
 		int year1=calendar.get(Calendar.YEAR);
-		int month1=calendar.get(Calendar.MONTH);
+		int month1=calendar.get(Calendar.MONTH)+1;
 		int date1=calendar.get(Calendar.DATE);
 		int hour1=calendar.get(Calendar.HOUR_OF_DAY);
 		int minute1=calendar.get(Calendar.MINUTE);
 		int second1=calendar.get(Calendar.SECOND);
+		
 		String year2=Integer.toString(year1);
 		String month2=Integer.toString(month1);
 		String date2=Integer.toString(date1);
@@ -88,7 +89,8 @@ public class TimeFormTrans {
 //	calendar.set(Calendar.MONTH,9);
 //	calendar.set(Calendar.DATE,20);
 //	t.myToString(calendar);
-//	t.myToCalendar("2016-10-12 08:00:50");
+//	t.myToCalendar("2014-01-12 08:00:50");
+//	System.out.println("in line 93: "+t.myToString(t.myToCalendar("2016-12-31 08:00:50")));
 //}
 	
 }
