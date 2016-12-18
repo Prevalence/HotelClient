@@ -293,6 +293,23 @@ public class Order{
 		}
 		return netNumList;
 	}
+	
+	/**
+	 * 根据订单ID返回订单详细信息
+	 * @param orderID
+	 * @return
+	 */
+	public OrderVO getOrderInfo(String orderID) throws RemoteException{
+		// TODO Auto-generated method stub
+		if(orderDataService.getOrderInfo(orderID)!=null){
+			OrderPO orderpo=orderDataService.getOrderInfo(orderID);
+			OrderVO ordervo=new OrderVO(orderpo);
+			return ordervo;
+		}else{
+			return null;
+		}
+		
+	}
 }
 
 
