@@ -174,6 +174,23 @@ public class OrderController implements OrderblService{
 		
 	}
 
+	/**
+	 * 根据订单ID返回订单详细信息
+	 * @param orderID
+	 * @return
+	 */
+	@Override
+	public OrderVO getOrderInfo(String orderID) {
+		// TODO Auto-generated method stub
+		try {
+			return order1.getOrderInfo(orderID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
 
 

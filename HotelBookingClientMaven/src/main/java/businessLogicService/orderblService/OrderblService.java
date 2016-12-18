@@ -82,5 +82,12 @@ public interface OrderblService {
 	 * @return ArrayList<OrderVO> 订单列表，若没有，返回空的 ArrayList<OrderVO>
 	 */
 	public ArrayList<OrderVO> netNumOrders(String date);
+	
+	/**
+	 * 根据订单ID返回订单详细信息
+	 * @param orderID
+	 * @return
+	 */
+	public OrderVO getOrderInfo(String orderID);
 }
 

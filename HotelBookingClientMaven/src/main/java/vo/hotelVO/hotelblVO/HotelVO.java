@@ -62,8 +62,10 @@ public class HotelVO {
 		
 		ArrayList<CommentVO> commentpo=new ArrayList<CommentVO>();
 		ArrayList<CommentPO> commentvo=po.getComment();
-		for(int i=0; i<commentvo.size(); i++){
-			commentpo.add(new CommentVO(commentvo.get(i)));
+		if(commentpo!=null){
+			for(int i=0; i<commentvo.size(); i++){
+				commentpo.add(new CommentVO(commentvo.get(i)));
+			}
 		}
 		this.comment = commentpo;
 		
