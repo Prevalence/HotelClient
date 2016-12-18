@@ -2,25 +2,25 @@ package vo.orderVO.orderuiVO;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class OrderViewVO {
-	private final SimpleStringProperty hotelName;
+public class HotelOrderVO {
 	private final SimpleStringProperty orderNumber;
-	private final SimpleStringProperty expectedTime;
+	private final SimpleStringProperty time;
+	private final SimpleStringProperty person;
 	private final SimpleStringProperty state;
 
-	public OrderViewVO(String hotelName, String orderNumber, String expectedTime, String state) {
-		this.hotelName = new SimpleStringProperty(hotelName);
+	public HotelOrderVO(String orderNumber,String time, String person, String state) {
+		this.person = new SimpleStringProperty(person);
 		this.orderNumber = new SimpleStringProperty(orderNumber);
-		this.expectedTime = new SimpleStringProperty(expectedTime);
+		this.time = new SimpleStringProperty(time);
 		this.state = new SimpleStringProperty(state);
 	}
 
-	public String getHotelName() {
-		return hotelName.get();
+	public String getPerson() {
+		return person.get();
 	}
 
-	public void setHotelName(String content) {
-		hotelName.set(content);
+	public void setPerson(String content) {
+		person.set(content);
 	}
 
 	public String getOrderNumber() {
@@ -31,12 +31,12 @@ public class OrderViewVO {
 		orderNumber.set(content);
 	}
 
-	public String getExpectedTime() {
-		return expectedTime.get();
+	public String getTime() {
+		return time.get();
 	}
 
-	public void setExpectedTime(String content) {
-		expectedTime.set(content);
+	public void setTime(String content) {
+		time.set(content);
 	}
 
 	public String getState() {

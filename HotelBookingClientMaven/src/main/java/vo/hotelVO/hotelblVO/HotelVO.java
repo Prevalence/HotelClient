@@ -50,18 +50,23 @@ public class HotelVO {
 		this.address = po.getAddress();
 		this.circle = po.getCircle();
 		this.score = po.getScore();
+		this.hotelPhone=po.getHotelPhone();
 		
 		ArrayList<RoomVO> roomvo=new ArrayList<RoomVO>();
 		ArrayList<RoomPO> roompo=po.getRoom();
-		for(int i=0; i<roompo.size(); i++){
-			roomvo.add(new RoomVO(roompo.get(i)));
+		if(roompo!=null){
+			for(int i=0; i<roompo.size(); i++){
+				roomvo.add(new RoomVO(roompo.get(i)));
+			}
 		}
 		this.room=roomvo;
 		
 		ArrayList<CommentVO> commentpo=new ArrayList<CommentVO>();
 		ArrayList<CommentPO> commentvo=po.getComment();
-		for(int i=0; i<commentvo.size(); i++){
-			commentpo.add(new CommentVO(commentvo.get(i)));
+		if(commentpo!=null){
+			for(int i=0; i<commentvo.size(); i++){
+				commentpo.add(new CommentVO(commentvo.get(i)));
+			}
 		}
 		this.comment = commentpo;
 		

@@ -12,7 +12,7 @@ public class HotelMock extends Hotel{
 	 * @param Hotelname
 	 * @return 获取酒店信息（PO）
 	 */
-	public HotelVO showHotelInfo(String Hotelname){
+	public HotelVO getHotelInfoByHotelworkerOrManager(String Hotelname){
 		RoomVO roomvo=new RoomVO("单人间", "111", 300, null, null);
 		ArrayList<RoomVO> roomvoList=new ArrayList<RoomVO>();
 		roomvoList.add(roomvo);

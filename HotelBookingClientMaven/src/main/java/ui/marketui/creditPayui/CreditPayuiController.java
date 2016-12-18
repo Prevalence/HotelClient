@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.marketui.orderViewui.MarketOrderViewui;
-import ui.marketui.promotionui.Promotionui;
+import ui.marketui.promotionui.MarketPromotionui;
 
 public class CreditPayuiController {
 	@FXML
@@ -62,7 +62,7 @@ public class CreditPayuiController {
 	 */
 	@FXML
 	private void viewPromotion() {
-		promotionPane = new Promotionui(primaryStage, marketName);
+		promotionPane = new MarketPromotionui(primaryStage, marketName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(promotionPane);
 	}

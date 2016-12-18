@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.orderViewui.OrderViewuiController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.marketui.orderInfoViewui.OrderInfoViewuiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -93,17 +93,17 @@
       </ImageView>
       <Pane layoutX="298.0" layoutY="233.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="25.0" layoutY="50.0" prefHeight="45.0" prefWidth="82.0" text="订单号：" textFill="#74d5df">
+            <Label fx:id="orderIDLabel" layoutX="25.0" layoutY="50.0" prefHeight="45.0" prefWidth="307.0" text="订单号： " textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="95.0" prefHeight="58.0" prefWidth="105.0" text="房间类型：" textFill="#74d5df">
+            <Label fx:id="roomtypeLabel" layoutX="25.0" layoutY="95.0" prefHeight="58.0" prefWidth="313.0" text="房间类型：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="153.0" prefHeight="45.0" prefWidth="82.0" text="人数：" textFill="#74d5df">
+            <Label fx:id="peopleNumberLabel" layoutX="25.0" layoutY="153.0" prefHeight="45.0" prefWidth="313.0" text="人数：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
@@ -113,34 +113,39 @@
                   <Image url="@../订单详情界面/酒店工作人员首界面.fxml.png" />
                </image>
             </ImageView>
-            <Label layoutX="25.0" layoutY="205.0" prefHeight="48.0" prefWidth="105.0" text="入住时间：" textFill="#74d5df">
+            <Label fx:id="startTimeLabel" layoutX="25.0" layoutY="205.0" prefHeight="48.0" prefWidth="479.0" text="入住时间：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="260.0" prefHeight="48.0" prefWidth="105.0" text="退房时间：" textFill="#74d5df">
+            <Label fx:id="endTimeLabel" layoutX="25.0" layoutY="260.0" prefHeight="48.0" prefWidth="479.0" text="退房时间：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="319.0" prefHeight="48.0" prefWidth="105.0" text="入住人：" textFill="#74d5df">
+            <Label fx:id="personLabel" layoutX="25.0" layoutY="319.0" prefHeight="48.0" prefWidth="479.0" text="入住人：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="375.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
+            <Label fx:id="connectionLabel" layoutX="25.0" layoutY="375.0" prefHeight="48.0" prefWidth="327.0" text="联系方式：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="362.0" layoutY="387.0" prefHeight="48.0" prefWidth="105.0" text="价格：" textFill="#74d5df">
+            <Label fx:id="priceLabel" layoutX="362.0" layoutY="387.0" prefHeight="48.0" prefWidth="145.0" text="价格：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="343.0" layoutY="49.0" prefHeight="48.0" prefWidth="105.0" text="状态：" textFill="#74d5df">
+            <Label layoutX="343.0" layoutY="49.0" prefHeight="48.0" prefWidth="79.0" text="状态：" textFill="#74d5df">
                <font>
                   <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="stateLabel" layoutX="414.0" layoutY="55.0" prefHeight="37.0" prefWidth="99.0" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>

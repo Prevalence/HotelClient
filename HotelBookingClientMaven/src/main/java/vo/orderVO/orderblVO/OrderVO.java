@@ -10,14 +10,16 @@ public class OrderVO {
 	//订单的基本信息
 	private String orderID;//时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
 	private int orderprice;
-	private String orderstate;//订单状态,“未执行”、“已执行”、“已撤销”、“异常”、“延期”
+	private String orderstate;//订单状态,“未执行”、“已执行”、“已撤销”、“异常”
 	
 	//酒店信息
 	private String hotelname;
 	private ArrayList<RoomVO> room;//包括房间类型、房间号、房间价格
+	private int roomNum;//房间数量
 	
 	//入住者信息
 	private String personname;//客户唯一标识，相当于personID
+	private String personPhone;//客户电话
 	private String realname;//客户真实姓名
 	private int peoplenum;//包括child的人数
 	private int childnum;//儿童的人数。默认为0
@@ -51,8 +53,10 @@ public class OrderVO {
 			}
 		}
 		this.room=roomvoList;
+		this.roomNum=orderPO.getRoomNum();
 		
 		this.personname=orderPO.getPersonname();
+		this.personPhone=orderPO.getPersonPhone();
 		this.realname=orderPO.getRealname();//客户真实姓名
 		this.peoplenum=orderPO.getPeoplenum();//包括child的人数
 		this.childnum=orderPO.getChildnum();//儿童的人数。默认为0
@@ -61,14 +65,14 @@ public class OrderVO {
 		this.producttime=t.myToString(orderPO.getProducttime());//订单生成时间
 		this.executetime=t.myToString(orderPO.getExecutetime());//订单执行时间
 		this.canceltime=t.myToString(orderPO.getCanceltime());//订单取消时间
-		this.setPredictExecutetime(t.myToString(orderPO.getPredictExecutetime()));//订单最晚执行时间
+		this.predictExecutetime=t.myToString(orderPO.getPredictExecutetime());//订单最晚执行时间
 		this.predictLeaveTime = t.myToString(orderPO.getPredictExecutetime());
 		this.actualLeaveTime=t.myToString(orderPO.getActualLeaveTime());//退房时间
 	}
 
 	//有所有参数的构造函数
-	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
-			String personname, String realname, int peoplenum, int childnum, String producttime, String executetime,
+	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,int roomNum,
+			String personname,String personPhone,String realname, int peoplenum, int childnum, String producttime, String executetime,
 			String canceltime, String predictExecutetime, String predictLeaveTime, String actualLeaveTime) {
 		super();
 		this.orderID = orderID;
@@ -76,14 +80,16 @@ public class OrderVO {
 		this.orderstate = orderstate;
 		this.hotelname = hotelname;
 		this.room = room;
+		this.roomNum=roomNum;
 		this.personname = personname;
+		this.setPersonPhone(personPhone);
 		this.realname = realname;
 		this.peoplenum = peoplenum;
 		this.childnum = childnum;
 		this.producttime = producttime;
 		this.executetime = executetime;
 		this.canceltime = canceltime;
-		this.setPredictExecutetime(predictExecutetime);
+		this.predictExecutetime=predictExecutetime;
 		this.predictLeaveTime = predictLeaveTime;
 		this.actualLeaveTime = actualLeaveTime;
 	}
@@ -209,6 +215,22 @@ public class OrderVO {
 
 	public void setPredictExecutetime(String predictExecutetime) {
 		this.predictExecutetime = predictExecutetime;
+	}
+
+	public String getPersonPhone() {
+		return personPhone;
+	}
+
+	public void setPersonPhone(String personPhone) {
+		this.personPhone = personPhone;
+	}
+
+	public int getRoomNum() {
+		return roomNum;
+	}
+
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
 	}
 
 }

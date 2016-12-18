@@ -24,9 +24,11 @@ public class OrderPO implements Serializable{
 	//酒店信息
 	private String hotelname;
 	private ArrayList<RoomPO> room;//包括房间类型、房间号、房间价格
+	private int roomNum;//房间数量
 	
 	//入住者信息
 	private String personname;//客户唯一标识，相当于personID
+	private String personPhone;//客户电话
 	private String realname;//客户真实姓名
 	private int peoplenum;//包括child的人数
 	private int childnum;//儿童的人数。默认为0
@@ -60,8 +62,10 @@ public class OrderPO implements Serializable{
 			}
 		}
 		this.room=roompoList;
+		this.roomNum=orderVO.getRoomNum();
 		
 		this.personname=orderVO.getPersonname();
+		this.personPhone=orderVO.getPersonPhone();
 		this.realname=orderVO.getRealname();//客户真实姓名
 		this.peoplenum=orderVO.getPeoplenum();//包括child的人数
 		this.childnum=orderVO.getChildnum();//儿童的人数。默认为0
@@ -76,8 +80,8 @@ public class OrderPO implements Serializable{
 	}
 
 	//有所有参数的构造函数
-	public OrderPO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomPO> room,
-			String personname, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
+	public OrderPO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomPO> room,int roomNum,
+			String personname,String personPhone, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
 			Calendar canceltime, Calendar predictExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime) {
 		super();
 		this.orderID = orderID;
@@ -85,7 +89,9 @@ public class OrderPO implements Serializable{
 		this.orderstate = orderstate;
 		this.hotelname = hotelname;
 		this.room = room;
+		this.roomNum=roomNum;
 		this.personname = personname;
+		this.personPhone=personPhone;
 		this.realname = realname;
 		this.peoplenum = peoplenum;
 		this.childnum = childnum;
@@ -216,6 +222,22 @@ public class OrderPO implements Serializable{
 
 	public void setActualLeaveTime(Calendar actualLeaveTime) {
 		this.actualLeaveTime = actualLeaveTime;
+	}
+
+	public String getPersonPhone() {
+		return personPhone;
+	}
+
+	public void setPersonPhone(String personPhone) {
+		this.personPhone = personPhone;
+	}
+
+	public int getRoomNum() {
+		return roomNum;
+	}
+
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
 	}
 	
 

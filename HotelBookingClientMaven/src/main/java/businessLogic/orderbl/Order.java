@@ -6,9 +6,14 @@ import java.util.Calendar;
 import businessLogic.userbl.UserController;
 import po.OrderPO;
 import rmi.RemoteHelper;
+import vo.hotelVO.hotelblVO.HotelVO;
 import vo.orderVO.orderblVO.OrderVO;
+import vo.personVO.PersonVO;
 import dataService.orderDataService.OrderDataService;
 import businessLogic.TimeFormTrans;
+import businessLogic.hotelbl.HotelController;
+import businessLogic.promotionbl.PriceCalc;
+
 /**
  * 
  * @author 谢铠联
@@ -37,6 +42,7 @@ public class Order{
 		//改变订单状态
 		order.setOrderstate("已执行");//此步将异常订单变为已执行
 		OrderPO orderpo=new OrderPO(order);
+		orderpo.setExecutetime(Calendar.getInstance());
 		boolean orderChange=orderDataService.modify(orderpo);
 		//恢复信用值
 		UserController user=new UserController();
@@ -59,6 +65,7 @@ public class Order{
 			order.setCanceltime(cancleTime);
 			order.setOrderstate("已撤销");
 			OrderPO orderPO=new OrderPO(order);
+			orderPO.setCanceltime(Calendar.getInstance());
 			boolean isReverse=orderDataService.modify(orderPO);
 			//减少客户信用值
 			boolean isCreditChange=true;
@@ -106,6 +113,43 @@ public class Order{
 			return false;
 		}
 		OrderPO orderPO=new OrderPO(order);
+		//orderID共20位，时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
+		String hotelname=order.getHotelname();
+		HotelController hotel=new HotelController();
+		HotelVO hotelvo=hotel.getHotelInfoByHotelworkerOrManager(hotelname);
+		String hotelID=Integer.toString(hotelvo.getHotelID());
+		int hotelIDLength=hotelID.length();
+		for(int i=0;i<5-hotelIDLength;i++){
+			hotelID="0"+hotelID;
+		}
+		
+		String personname=order.getPersonname();
+		UserController usercontroller=new UserController();
+		PersonVO personvo= usercontroller.getPersonInfo(personname);
+		String personID=Integer.toString(personvo.getPersonID());
+		int personIDLength=personID.length();
+		for(int i=0;i<5-personIDLength;i++){
+			personID="0"+personID;
+		}
+		
+		Calendar calendar=Calendar.getInstance();
+		TimeFormTrans t=new TimeFormTrans();
+		String time=t.myToString(calendar);
+		String year=time.substring(0, 4);
+		String month=time.substring(5, 7);
+		String date=time.substring(8, 10);
+		String hour=time.substring(11, 13);
+		String minute=time.substring(14, 16);
+		time=year+month+date+hour+minute;
+		String orderID=time+hotelID+personID;
+		orderPO.setOrderID(orderID);//确定好了20位的酒店ID
+		
+		PriceCalc priceCalc=new PriceCalc();
+		int orderprice=(int)(priceCalc.priceCut(hotelvo, order));
+		orderPO.setOrderprice(orderprice);//确定订单价格，已经用了促销策略
+		
+		orderPO.setProducttime(calendar);
+		
 		return orderDataService.add(orderPO);
 	}
 
@@ -248,6 +292,23 @@ public class Order{
 			
 		}
 		return netNumList;
+	}
+	
+	/**
+	 * 根据订单ID返回订单详细信息
+	 * @param orderID
+	 * @return
+	 */
+	public OrderVO getOrderInfo(String orderID) throws RemoteException{
+		// TODO Auto-generated method stub
+		if(orderDataService.getOrderInfo(orderID)!=null){
+			OrderPO orderpo=orderDataService.getOrderInfo(orderID);
+			OrderVO ordervo=new OrderVO(orderpo);
+			return ordervo;
+		}else{
+			return null;
+		}
+		
 	}
 }
 

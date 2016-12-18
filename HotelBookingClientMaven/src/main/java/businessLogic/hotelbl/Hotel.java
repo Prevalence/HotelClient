@@ -29,14 +29,28 @@ public class Hotel {
 	Order order=new Order();
 	
 	/**
-	 * 根据酒店名称，获取酒店信息
-	 * @param Hotelname
-	 * @return HotelVO
-	 * @throws RemoteException 
+	 * 酒店工作人员或网站管理人员，根据酒店名称，获取酒店信息
+	 * @param Hotelname 酒店名
+	 * @return 酒店信息
 	 */
-	public HotelVO showHotelInfo(String Hotelname) throws RemoteException{
+	public HotelVO getHotelInfoByHotelworkerOrManager(String Hotelname) throws RemoteException{
 		HotelPO hotelpo=hoteldataservice.showHotelinfo(Hotelname);
 		HotelVO hotelvo=new HotelVO(hotelpo);
+		return hotelvo;
+	}
+	
+	/**
+	 * 客户根据酒店名称，获取酒店信息
+	 * @param Hotelname 酒店名
+	 * @return 酒店信息
+	 */
+	public HotelVO getHotelInfoByPerson(String Hotelname)  throws RemoteException {
+		HotelPO hotelpo=hoteldataservice.showHotelinfo(Hotelname);
+		System.out.println("-------------phone:"+hotelpo.getHotelPhone());
+		HotelVO hotelvo=new HotelVO(hotelpo);
+		if(hotelvo.getRoom()==null){
+			return null;
+		}
 		return hotelvo;
 	}
 	
@@ -71,6 +85,9 @@ public class Hotel {
 	 */
 	public boolean roomModify(String hotelname, ArrayList<RoomVO> roomvoList) throws RemoteException{
 		ArrayList<RoomPO> roompoList=new ArrayList<RoomPO>();
+		if(roomvoList.size()==0){
+			return false;
+		}
 		for(int i=0; i<roomvoList.size(); i++){
 			RoomPO roompo=new RoomPO(roomvoList.get(i));
 			roompoList.add(roompo);
@@ -98,13 +115,18 @@ public class Hotel {
 			ArrayList<HotelPO> hotelpoList= hoteldataservice.findWithReq(worstConditionPO, bestConditionPO);
 			
 			if(hotelpoList!=null){
+				System.out.println("-----------");
 				for(int i=0; i<hotelpoList.size(); i++){
-					HotelVO hotelvo=new HotelVO(hotelpoList.get(i));
-					hotelvoList.add(hotelvo);
+					if(hotelpoList.get(i).getRoom()!=null){
+						HotelVO hotelvo=new HotelVO(hotelpoList.get(i));
+						hotelvoList.add(hotelvo);
+						System.out.println("name:"+hotelvo.getHotelname());
+					}
 				}	
 			}
 			
 		}else{
+			System.out.println("=============");
 			return null;//需要提醒客户先明确商圈
 		}
 		
@@ -129,7 +151,9 @@ public class Hotel {
 		ArrayList<HotelSearchVO> hotelSearchVOList=new ArrayList<HotelSearchVO>();
 		for(int i=0; i<resulthotelvolist.size(); i++){
 			HotelVO hotel=resulthotelvolist.get(i);
-			HotelSearchVO hotelSearchVO=new HotelSearchVO(hotel.getHotelname(), Integer.toString(hotel.getStar()), hotel.getCircle(), hotel.getAddress());
+			HotelSearchVO hotelSearchVO=new HotelSearchVO(hotel.getHotelname(), 
+					Integer.toString(hotel.getStar()), String.valueOf(hotel.getScore()), 
+					hotel.getCircle(), hotel.getAddress());
 			hotelSearchVOList.add(hotelSearchVO);
 		}
 		
@@ -145,6 +169,7 @@ public class Hotel {
 	public boolean addHotel(HotelVO hotelvo) throws RemoteException{
 		try {
 			HotelPO hotelpo=new HotelPO(hotelvo);
+			hotelpo.setHotelID(-1);
 			return hoteldataservice.addHotel(hotelpo);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -168,9 +193,12 @@ public class Hotel {
 		Calendar endtime=t.myToCalendar(endtime1);
 		
 		HotelController hotelcontroller=new HotelController();
-		HotelVO hotelvo=hotelcontroller.showHotelInfo(hotelname);
+		HotelVO hotelvo=hotelcontroller.getHotelInfoByHotelworkerOrManager(hotelname);
 		ArrayList<RoomVO> rooms=hotelvo.getRoom();
-				
+		if(rooms==null){
+			return null;
+		}
+		
 		int roomPrice=0;
 		for(int i=0; i<rooms.size(); i++){
 			if(rooms.get(i).getRoomType().equals(roomtype)){//当roomtype符合时
@@ -208,6 +236,7 @@ public class Hotel {
 	 * @param endtime
 	 * @return 返回对应的房间剩余数量
 	 */
+	@SuppressWarnings("null")
 	public int getAvailableNumber(String hotelname, String roomtype, String starttime1, String endtime1)throws RemoteException {
 		// TODO Auto-generated method stub
 		TimeFormTrans t=new TimeFormTrans();
@@ -215,8 +244,11 @@ public class Hotel {
 		Calendar endtime=t.myToCalendar(endtime1);
 		
 		HotelController hotelcontroller=new HotelController();
-		HotelVO hotelvo=hotelcontroller.showHotelInfo(hotelname);
+		HotelVO hotelvo=hotelcontroller.getHotelInfoByHotelworkerOrManager(hotelname);
 		ArrayList<RoomVO> rooms=hotelvo.getRoom();
+		if(rooms==null){
+			return 0;
+		}
 		
 		int numOfRoom=0;
 		for(int i=0; i<rooms.size(); i++){
@@ -224,16 +256,18 @@ public class Hotel {
 				ArrayList<Calendar> roomStarttime=rooms.get(i).getCheckInTime();
 				ArrayList<Calendar> roomEndtime=rooms.get(i).getCheckOutTime();
 				
-				boolean isEmpty=(roomStarttime.size()==0)&&(roomEndtime.size()==0);
+				boolean isEmpty=(roomStarttime==null)&&(roomEndtime==null);
 				boolean isFreeForBooking=false;
-				for(int j=0; j<roomStarttime.size()-1; j++){
-					if((starttime.after(roomEndtime.get(j)))&&(endtime.before(roomStarttime.get(j+1)))){
-						isFreeForBooking=true;
+				if(!(roomStarttime==null)&&(roomEndtime==null)){
+					for(int j=0; j<roomStarttime.size()-1; j++){
+						if((starttime.after(roomEndtime.get(j)))&&(endtime.before(roomStarttime.get(j+1)))){
+							isFreeForBooking=true;
+						}
 					}
-				}
-				if(roomStarttime.size()>0){
-					if(starttime.after(roomEndtime.get(roomStarttime.size()-1))){
-						isFreeForBooking=true;
+					if(roomStarttime.size()>0){
+						if(starttime.after(roomEndtime.get(roomStarttime.size()-1))){
+							isFreeForBooking=true;
+						}
 					}
 				}
 				
@@ -244,6 +278,40 @@ public class Hotel {
 			}
 		}
 		return numOfRoom;
+	}
+	
+	/**
+	 * 根据酒店名称返回对应酒店的房间类型和价格的ArrayList
+	 * @param hotelname
+	 * @return ArrayList<RoomInfoVO>，若没有，返回空的ArrayList<RoomInfoVO>
+	 */
+	public ArrayList<RoomInfoVO> getHotelRoomInfo(String hotelname) throws RemoteException {
+		// TODO Auto-generated method stub
+		ArrayList<RoomInfoVO> roomInfoList=new ArrayList<RoomInfoVO>();
+		
+		HotelController hotelcontroller=new HotelController();
+		HotelVO hotelvo=hotelcontroller.getHotelInfoByHotelworkerOrManager(hotelname);
+		ArrayList<RoomVO> rooms=hotelvo.getRoom();
+		if(rooms==null){
+			return roomInfoList;
+		}
+		for(int i=0; i<rooms.size();i++){
+			boolean isExist=false;
+			for(int j=0;j<i;j++){
+				if(rooms.get(i).getRoomType()==rooms.get(j).getRoomType()){
+					isExist=true;
+				}
+			}
+			
+			if(isExist==false){
+				String roomtype=rooms.get(i).getRoomType();
+				int roomprice=rooms.get(i).getRoomPrice();
+				RoomInfoVO roomInfoVO=new RoomInfoVO(roomtype,roomprice);
+				roomInfoList.add(roomInfoVO);
+			}
+		}
+		
+		return roomInfoList;
 	}
 	
 	/**

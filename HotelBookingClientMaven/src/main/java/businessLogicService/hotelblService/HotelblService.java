@@ -12,11 +12,18 @@ import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
 public interface HotelblService {
 	/**
-	 * 根据酒店名称，获取酒店信息
+	 * 酒店工作人员或网站管理人员，根据酒店名称，获取酒店信息
 	 * @param Hotelname 酒店名
 	 * @return 酒店信息
 	 */
-	public HotelVO showHotelInfo(String Hotelname);
+	public HotelVO getHotelInfoByHotelworkerOrManager(String Hotelname);
+	
+	/**
+	 * 客户根据酒店名称，获取酒店信息
+	 * @param Hotelname 酒店名
+	 * @return 酒店信息
+	 */
+	public HotelVO getHotelInfoByPerson(String Hotelname);
 	
 	/**
 	 * 根据待修改的酒店信息（酒店名称不能修改）
@@ -75,6 +82,12 @@ public interface HotelblService {
 	 * @return 返回对应的房间剩余数量
 	 */
 	public int getAvailableNumber(String hotelname, String roomtype, String starttime, String endtime);
-	
+
+	/**
+	 * 根据酒店名称返回对应酒店的房间类型和价格的ArrayList
+	 * @param hotelname
+	 * @return ArrayList<RoomInfoVO>，若没有，返回空的ArrayList<RoomInfoVO>
+	 */
+	public ArrayList<RoomInfoVO> getHotelRoomInfo(String hotelname);
 	
 }

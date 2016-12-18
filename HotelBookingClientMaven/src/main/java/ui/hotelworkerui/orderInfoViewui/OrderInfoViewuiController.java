@@ -3,67 +3,145 @@ package ui.hotelworkerui.orderInfoViewui;
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.hotelworkerui.hotelInfoui.HotelInfoui;
+import ui.hotelworkerui.orderViewui.HotelOrderViewui;
+import ui.hotelworkerui.promotionui.Promotionui;
+import ui.hotelworkerui.roomInfoui.RoomInfoui;
+import vo.orderVO.orderblVO.OrderVO;
 
 public class OrderInfoViewuiController {
-	//TODO
-	
-		@FXML
-		private Pane mainPane;
 
-		@SuppressWarnings("unused")
-		private UserblService userbl;
+	@FXML
+	private Label orderIDLabel;
+	@FXML
+	private Label roomtypeLabel;
+	@FXML
+	private Label peopleNumberLabel;
+	@FXML
+	private Label startTimeLabel;
+	@FXML
+	private Label endTimeLabel;
+	@FXML
+	private Label personLabel;
+	@FXML
+	private Label connectionLabel;
+	@FXML
+	private Label stateLabel;
+	@FXML
+	private Label priceLabel;
+	@FXML
+	private Pane mainPane;
 
-		// 酒店订单浏览界面
-		@SuppressWarnings("unused")
-		private Pane hotelOrderPane;
+	@SuppressWarnings("unused")
+	private UserblService userbl;
 
-		// 促销策略界面
-		@SuppressWarnings("unused")
-		private Pane promotionPane;
+	// 酒店订单浏览界面
+	@SuppressWarnings("unused")
+	private Pane hotelOrderPane;
 
-		// 酒店信息界面
-		@SuppressWarnings("unused")
-		private Pane hotelInfoPane;
+	// 促销策略界面
+	@SuppressWarnings("unused")
+	private Pane promotionPane;
 
-		// 房间信息界面
-		@SuppressWarnings("unused")
-		private Pane roomInfoPane;
+	// 酒店信息界面
+	@SuppressWarnings("unused")
+	private Pane hotelInfoPane;
 
-		@SuppressWarnings("unused")
-		private Stage primaryStage;
+	// 房间信息界面
+	@SuppressWarnings("unused")
+	private Pane roomInfoPane;
 
-		@SuppressWarnings("unused")
-		private String personname;
+	@SuppressWarnings("unused")
+	private Stage primaryStage;
 
-		/**
-		 * The constructor. The constructor is called before the initialize()
-		 * method.
-		 */
-		public OrderInfoViewuiController() {
-			userbl = new UserController();
-		}
+	@SuppressWarnings("unused")
+	private String workerName;
 
-		
-		
-		
+	/**
+	 * The constructor. The constructor is called before the initialize()
+	 * method.
+	 */
+	public OrderInfoViewuiController() {
+		userbl = new UserController();
+	}
 
-		/**
-		 * 传递Main的primaryStage
-		 * 
-		 * @param primaryStage
-		 */
-		public void launchStage(Stage primaryStage) {
-			this.primaryStage = primaryStage;
-		}
+	/**
+	 * 跳转到酒店订单浏览界面
+	 */
+	@FXML
+	private void viewHotelOrder() {
+		hotelOrderPane = new HotelOrderViewui(primaryStage, workerName);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(hotelOrderPane);
+	}
 
-		/**
-		 * 传递用户名
-		 * 
-		 * @param personname
-		 */
-		public void setPersonname(String personname) {
-			this.personname = personname;
-		}
+	/**
+	 * 跳转到促销策略界面
+	 */
+	@FXML
+	private void viewPromotion() {
+		promotionPane = new Promotionui(primaryStage, workerName);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(promotionPane);
+	}
+
+	/**
+	 * 跳转到酒店信息维护界面
+	 */
+	@FXML
+	private void viewHotelInfo() {
+		// hotelInfo = hotelbl.showHotelInfo(workerName);
+		hotelInfoPane = new HotelInfoui(primaryStage, workerName);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(hotelInfoPane);
+	}
+
+	/**
+	 * 跳转到房间信息查看界面
+	 */
+	@FXML
+	private void viewRoomInfo() {
+		// hotelInfo = hotelbl.showHotelInfo(workerName);
+		roomInfoPane = new RoomInfoui(primaryStage, workerName);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(roomInfoPane);
+	}
+
+	/**
+	 * 设置并显示订单信息
+	 * 
+	 * @param order
+	 */
+	public void setAndShowOrder(OrderVO order) {
+		orderIDLabel.setText("订单号："+order.getOrderID());
+		roomtypeLabel.setText("房间类型："+order.getRoom().get(0).getRoomType());
+		peopleNumberLabel.setText("人数："+String.valueOf(order.getPeoplenum()));
+		startTimeLabel.setText("入住时间："+order.getExecutetime());
+		endTimeLabel.setText("退房时间："+order.getCanceltime());
+		personLabel.setText("入住人："+order.getRealname());
+//		connectionLabel.setText("联系方式："+order.get);
+		stateLabel.setText("状态："+order.getOrderstate());
+		priceLabel.setText("价格："+String.valueOf(order.getRoom().get(0).getRoomPrice()));
+	}
+
+	/**
+	 * 传递Main的primaryStage
+	 * 
+	 * @param primaryStage
+	 */
+	public void launchStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
+
+	/**
+	 * 传递用户名
+	 * 
+	 * @param workerName
+	 */
+	public void setWorkerName(String workerName) {
+		this.workerName = workerName;
+	}
 }

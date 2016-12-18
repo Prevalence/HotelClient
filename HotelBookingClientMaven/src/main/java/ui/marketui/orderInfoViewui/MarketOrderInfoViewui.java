@@ -3,11 +3,14 @@ package ui.marketui.orderInfoViewui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import vo.orderVO.orderblVO.OrderVO;
 
-public class OrderInfoViewui extends Pane{
+public class MarketOrderInfoViewui extends Pane{
 	private Stage primaryStage;
+	
+	private OrderVO order;
 
-	private String personname;
+	private String marketName;
 
 	private OrderInfoViewuiController orderInfoViewViewuiController;
 
@@ -16,9 +19,9 @@ public class OrderInfoViewui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public OrderInfoViewui(Stage primaryStage, String personname) {
+		public MarketOrderInfoViewui(Stage primaryStage, String marketName,OrderVO order) {
 			this.primaryStage = primaryStage;
-			this.personname = personname;
+			this.marketName = marketName;
 			initOrderInfoViewViewui();
 		};
 
@@ -27,7 +30,7 @@ public class OrderInfoViewui extends Pane{
 	 */
 	public void initOrderInfoViewViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrderInfoViewui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/网站营销人员订单详细查看界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -38,6 +41,6 @@ public class OrderInfoViewui extends Pane{
 		// primaryStage.setScene(scene);
 		orderInfoViewViewuiController = loader.getController();
 		orderInfoViewViewuiController.launchStage(primaryStage);
-		orderInfoViewViewuiController.setPersonname(personname);
+		orderInfoViewViewuiController.setMarketName(marketName);
 	}
 }
