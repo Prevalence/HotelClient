@@ -7,28 +7,28 @@ import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 
-public class HotelPO implements Serializable{
+public class HotelPO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int hotelID;//酒店唯一标识
+	private int hotelID;// 酒店唯一标识
 	private String hotelname;
-	private int star;//酒店星级
-	private String feature;//酒店简介
-	private ArrayList <Boolean> service;//设施服务，需要初始化list，所有的都要设为false
+	private int star;// 酒店星级
+	private String feature;// 酒店简介
+	private ArrayList<Boolean> service;// 设施服务，需要初始化list，所有的都要设为false
 	private String address;
 	private String circle;
-	private double score;//酒店平均评分
+	private double score;// 酒店平均评分
 	private ArrayList<RoomPO> room;
 	private ArrayList<CommentPO> comment;
 	private String hotelworker;
-	private String hotelPhone;//酒店电话号码
-	
+	private String hotelPhone;// 酒店电话号码
+
 	public HotelPO() {
 		super();
 	}
 
-
 	public HotelPO(int hotelID, String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
-			String circle, double score, ArrayList<RoomPO> room, ArrayList<CommentPO> comment, String hotelworker,String hotelPhone) {
+			String circle, double score, ArrayList<RoomPO> room, ArrayList<CommentPO> comment, String hotelworker,
+			String hotelPhone) {
 		super();
 		this.setHotelID(hotelID);
 		this.hotelname = hotelname;
@@ -41,11 +41,11 @@ public class HotelPO implements Serializable{
 		this.room = room;
 		this.comment = comment;
 		this.hotelworker = hotelworker;
-		this.hotelPhone=hotelPhone;
+		this.hotelPhone = hotelPhone;
 	}
 
-	public HotelPO(HotelVO vo){
-		this.hotelID=vo.getHotelID();
+	public HotelPO(HotelVO vo) {
+		this.hotelID = vo.getHotelID();
 		this.hotelname = vo.getHotelname();
 		this.star = vo.getStar();
 		this.feature = vo.getFeature();
@@ -53,11 +53,11 @@ public class HotelPO implements Serializable{
 		this.address = vo.getAddress();
 		this.circle = vo.getCircle();
 		this.score = vo.getScore();
-		
-		ArrayList<RoomPO> roompo=new ArrayList<RoomPO>();
-		ArrayList<RoomVO> roomvo=vo.getRoom();
-		if(roomvo!=null){
-			for(int i=0; i<roomvo.size(); i++){
+
+		ArrayList<RoomPO> roompo = new ArrayList<RoomPO>();
+		ArrayList<RoomVO> roomvo = vo.getRoom();
+		if (roomvo != null) {
+			for (int i = 0; i < roomvo.size(); i++) {
 				roompo.add(new RoomPO(roomvo.get(i)));
 			}
 		}
@@ -71,7 +71,7 @@ public class HotelPO implements Serializable{
 			}
 		}
 		this.comment = commentpo;
-		
+
 		this.hotelworker = vo.getHotelworker();
 	}
 
@@ -155,26 +155,20 @@ public class HotelPO implements Serializable{
 		this.hotelworker = hotelworker;
 	}
 
-
 	public int getHotelID() {
 		return hotelID;
 	}
-
 
 	public void setHotelID(int hotelID) {
 		this.hotelID = hotelID;
 	}
 
-
 	public String getHotelPhone() {
 		return hotelPhone;
 	}
 
-
 	public void setHotelPhone(String hotelPhone) {
 		this.hotelPhone = hotelPhone;
 	}
-	
 
 }
-

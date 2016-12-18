@@ -42,6 +42,7 @@ public class HotelInfoViewui extends Pane {
 		// primaryStage.setScene(scene);
 		hotelInfoViewuiController = loader.getController();
 		hotelInfoViewuiController.launchStage(primaryStage);
+		hotelInfoViewuiController.initTableView();
 		hotelInfoViewuiController.setPersonname(personname);
 		hotelInfoViewuiController.setHotelNameAndShowInfo(hotelName);
 	}

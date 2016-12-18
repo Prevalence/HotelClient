@@ -30,7 +30,7 @@
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
-      <Pane layoutX="147.0" layoutY="68.0" prefHeight="148.0" prefWidth="852.0">
+      <Pane layoutX="147.0" layoutY="68.0" prefHeight="138.0" prefWidth="817.0">
          <children>
             <ImageView fitHeight="143.0" fitWidth="817.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
                <image>

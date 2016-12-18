@@ -30,60 +30,24 @@
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
-      <Pane layoutX="145.0" layoutY="62.0" prefHeight="138.0" prefWidth="817.0">
-         <children>
-            <ImageView fitHeight="250.0" fitWidth="817.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/Rectangle%208.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="19.0" fitWidth="145.0" layoutX="115.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/5.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="19.0" fitWidth="14.0" layoutX="115.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/Shape%2016.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="136.0" layoutY="80.0" text="4.98/5" />
-            <Label layoutX="115.0" layoutY="15.0" text="南京大酒店">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="593.0" layoutY="110.0" text="联系方式：" />
-            <Label layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
-            <Button layoutX="717.0" layoutY="40.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../酒店详情界面/reply.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </Pane>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <Pane layoutX="288.0" layoutY="223.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
+      <Pane layoutX="289.0" layoutY="133.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="25.0" layoutY="50.0" prefHeight="45.0" prefWidth="82.0" text="订单号：" textFill="#74d5df">
+            <Label fx:id="orderIDLabel" layoutX="25.0" layoutY="50.0" prefHeight="45.0" prefWidth="307.0" text="订单号： " textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="95.0" prefHeight="58.0" prefWidth="105.0" text="房间类型：" textFill="#74d5df">
+            <Label fx:id="roomtypeLabel" layoutX="25.0" layoutY="95.0" prefHeight="58.0" prefWidth="313.0" text="房间类型：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="153.0" prefHeight="45.0" prefWidth="82.0" text="人数：" textFill="#74d5df">
+            <Label fx:id="peopleNumberLabel" layoutX="25.0" layoutY="153.0" prefHeight="45.0" prefWidth="313.0" text="人数：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
@@ -93,39 +57,44 @@
                   <Image url="@../订单详情界面/酒店工作人员首界面.fxml.png" />
                </image>
             </ImageView>
-            <Label layoutX="25.0" layoutY="205.0" prefHeight="48.0" prefWidth="105.0" text="入住时间：" textFill="#74d5df">
+            <Label fx:id="startTimeLabel" layoutX="25.0" layoutY="205.0" prefHeight="48.0" prefWidth="479.0" text="入住时间：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="260.0" prefHeight="48.0" prefWidth="105.0" text="退房时间：" textFill="#74d5df">
+            <Label fx:id="endTimeLabel" layoutX="25.0" layoutY="260.0" prefHeight="48.0" prefWidth="479.0" text="退房时间：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="319.0" prefHeight="48.0" prefWidth="105.0" text="入住人：" textFill="#74d5df">
+            <Label fx:id="personLabel" layoutX="25.0" layoutY="319.0" prefHeight="48.0" prefWidth="479.0" text="入住人：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="375.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
+            <Label fx:id="connectionLabel" layoutX="25.0" layoutY="375.0" prefHeight="48.0" prefWidth="327.0" text="联系方式：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="362.0" layoutY="387.0" prefHeight="48.0" prefWidth="105.0" text="价格：" textFill="#74d5df">
+            <Label fx:id="priceLabel" layoutX="362.0" layoutY="387.0" prefHeight="48.0" prefWidth="145.0" text="价格：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="343.0" layoutY="49.0" prefHeight="48.0" prefWidth="105.0" text="状态：" textFill="#74d5df">
+            <Label layoutX="343.0" layoutY="49.0" prefHeight="48.0" prefWidth="79.0" text="状态：" textFill="#74d5df">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <Label fx:id="stateLabel" layoutX="414.0" layoutY="55.0" prefHeight="37.0" prefWidth="99.0" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Button layoutX="422.0" layoutY="694.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="enterButton" layoutX="418.0" layoutY="620.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -137,7 +106,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="568.0" layoutY="694.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="leaveButton" layoutX="575.0" layoutY="620.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -149,7 +118,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1.0" layoutY="263.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button layoutX="1.0" layoutY="263.0" mnemonicParsing="false" onAction="#viewRoomInfo" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -161,7 +130,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutY="146.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button layoutY="146.0" mnemonicParsing="false" onAction="#viewPromotion" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -173,7 +142,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="6.0" layoutY="204.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+      <Button layoutX="6.0" layoutY="204.0" mnemonicParsing="false" onAction="#viewHotelInfo" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -185,7 +154,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutY="89.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="orderViewButton" layoutY="89.0" mnemonicParsing="false" onAction="#viewHotelOrder" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
