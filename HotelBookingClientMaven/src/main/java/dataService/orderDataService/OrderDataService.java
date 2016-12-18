@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.OrderPO;
+import vo.orderVO.orderblVO.OrderVO;
 /**
  * 
  * @author 铠联
@@ -42,4 +43,11 @@ public interface OrderDataService extends Remote{
 	 * @return ArrayList<OrderPO>
 	 */
 	public ArrayList<OrderPO> exceptionFind()throws RemoteException;
+	
+	/**
+	 * 根据订单ID返回订单详细信息
+	 * @param orderID
+	 * @return
+	 */
+	public OrderPO getOrderInfo(String orderID)throws RemoteException;
 }
