@@ -18,6 +18,7 @@ public class OrderVO {
 	
 	//入住者信息
 	private String personname;//客户唯一标识，相当于personID
+	private String personPhone;//客户电话
 	private String realname;//客户真实姓名
 	private int peoplenum;//包括child的人数
 	private int childnum;//儿童的人数。默认为0
@@ -53,6 +54,7 @@ public class OrderVO {
 		this.room=roomvoList;
 		
 		this.personname=orderPO.getPersonname();
+		this.personPhone=orderPO.getPersonPhone();
 		this.realname=orderPO.getRealname();//客户真实姓名
 		this.peoplenum=orderPO.getPeoplenum();//包括child的人数
 		this.childnum=orderPO.getChildnum();//儿童的人数。默认为0
@@ -68,7 +70,7 @@ public class OrderVO {
 
 	//有所有参数的构造函数
 	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
-			String personname, String realname, int peoplenum, int childnum, String producttime, String executetime,
+			String personname,String personPhone,String realname, int peoplenum, int childnum, String producttime, String executetime,
 			String canceltime, String predictExecutetime, String predictLeaveTime, String actualLeaveTime) {
 		super();
 		this.orderID = orderID;
@@ -77,6 +79,7 @@ public class OrderVO {
 		this.hotelname = hotelname;
 		this.room = room;
 		this.personname = personname;
+		this.setPersonPhone(personPhone);
 		this.realname = realname;
 		this.peoplenum = peoplenum;
 		this.childnum = childnum;
@@ -209,6 +212,14 @@ public class OrderVO {
 
 	public void setPredictExecutetime(String predictExecutetime) {
 		this.predictExecutetime = predictExecutetime;
+	}
+
+	public String getPersonPhone() {
+		return personPhone;
+	}
+
+	public void setPersonPhone(String personPhone) {
+		this.personPhone = personPhone;
 	}
 
 }
