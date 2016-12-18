@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.orderInfoViewui.OrderInfoViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.createOrderui.CreateOrderuiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,13 +47,13 @@
                   <Image url="@../酒店详情界面/Shape%2016.png" />
                </image>
             </ImageView>
-            <Label layoutX="136.0" layoutY="80.0" text="4.98/5" />
-            <Label layoutX="115.0" layoutY="15.0" text="南京大酒店">
+            <Label fx:id="scoreLabel" layoutX="136.0" layoutY="80.0" text="4.98/5" />
+            <Label fx:id="hotelNameLabel" layoutX="115.0" layoutY="15.0" text="南京大酒店">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
+            <Label fx:id="areaLabel" layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
             <Button fx:id="returnButton" layoutX="717.0" layoutY="40.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -160,52 +160,52 @@
                </font>
             </Label>
             <TextField fx:id="peopleField" layoutX="130.0" layoutY="161.0" prefHeight="30.0" prefWidth="119.0" />
-            <TextField fx:id="yearField1" layoutX="130.0" layoutY="214.0" prefHeight="30.0" prefWidth="58.0" />
-            <TextField fx:id="monthField2" layoutX="207.0" layoutY="269.0" prefHeight="30.0" prefWidth="34.0" />
+            <TextField fx:id="yearField1" layoutX="130.0" layoutY="214.0" prefHeight="30.0" prefWidth="54.0" />
+            <TextField fx:id="monthField2" layoutX="199.0" layoutY="269.0" prefHeight="30.0" prefWidth="52.0" />
             <TextField fx:id="customerField" layoutX="130.0" layoutY="328.0" prefHeight="30.0" prefWidth="119.0" />
             <TextField fx:id="connectionField" layoutX="130.0" layoutY="384.0" prefHeight="30.0" prefWidth="119.0" />
-            <Label layoutX="321.0" layoutY="152.0" prefHeight="48.0" prefWidth="105.0" text="剩余数量：" textFill="#74d5df">
+            <Label layoutX="356.0" layoutY="152.0" prefHeight="48.0" prefWidth="105.0" text="剩余数量：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="321.0" layoutY="104.0" prefHeight="45.0" prefWidth="82.0" text="房间数：" textFill="#74d5df">
+            <Label layoutX="356.0" layoutY="105.0" prefHeight="45.0" prefWidth="82.0" text="房间数：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="roomNumberField" layoutX="403.0" layoutY="111.0" prefHeight="30.0" prefWidth="92.0" />
-            <Label layoutX="321.0" layoutY="203.0" prefHeight="48.0" prefWidth="105.0" text="房间单价：" textFill="#74d5df">
+            <TextField fx:id="roomNumberField" layoutX="438.0" layoutY="112.0" prefHeight="30.0" prefWidth="58.0" />
+            <Label layoutX="356.0" layoutY="205.0" prefHeight="48.0" prefWidth="105.0" text="房间单价：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="roomPriceLabel" layoutX="426.0" layoutY="216.0" prefHeight="27.0" prefWidth="82.0">
+            <Label fx:id="roomPriceLabel" layoutX="451.0" layoutY="217.0" prefHeight="27.0" prefWidth="58.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="numberLabel" layoutX="426.0" layoutY="162.0" prefHeight="27.0" prefWidth="75.0">
+            <Label fx:id="numberLabel" layoutX="451.0" layoutY="163.0" prefHeight="27.0" prefWidth="58.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="roomChoices" layoutX="130.0" layoutY="110.0" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-border-color: gray;" />
-            <Label layoutX="189.0" layoutY="219.0" prefHeight="20.0" prefWidth="22.0" text="年" />
-            <Label layoutX="240.0" layoutY="219.0" text="月" />
-            <Label layoutX="290.0" layoutY="219.0" text="日" />
-            <TextField fx:id="monthField1" layoutX="205.0" layoutY="214.0" onAction="#remind" prefHeight="30.0" prefWidth="34.0" />
-            <TextField fx:id="dayField1" layoutX="255.0" layoutY="214.0" prefHeight="30.0" prefWidth="34.0" />
-            <TextField fx:id="yearField2" layoutX="130.0" layoutY="269.0" prefHeight="30.0" prefWidth="58.0" />
-            <Label layoutX="189.0" layoutY="274.0" prefHeight="20.0" prefWidth="22.0" text="年" />
-            <TextField fx:id="dayField2" layoutX="255.0" layoutY="269.0" prefHeight="30.0" prefWidth="34.0" />
-            <Label layoutX="241.0" layoutY="274.0" text="月" />
-            <Label layoutX="290.0" layoutY="274.0" text="日" />
+            <Label layoutX="185.0" layoutY="219.0" prefHeight="20.0" prefWidth="22.0" text="年" />
+            <Label layoutX="252.0" layoutY="219.0" text="月" />
+            <Label layoutX="319.0" layoutY="220.0" text="日" />
+            <TextField fx:id="monthField1" layoutX="199.0" layoutY="214.0" prefHeight="30.0" prefWidth="52.0" />
+            <TextField fx:id="dayField1" layoutX="267.0" layoutY="215.0" prefHeight="30.0" prefWidth="52.0" />
+            <TextField fx:id="yearField2" layoutX="130.0" layoutY="269.0" prefHeight="30.0" prefWidth="54.0" />
+            <Label layoutX="185.0" layoutY="274.0" prefHeight="20.0" prefWidth="22.0" text="年" />
+            <TextField fx:id="dayField2" layoutX="267.0" layoutY="269.0" prefHeight="30.0" prefWidth="52.0" />
+            <Label layoutX="252.0" layoutY="274.0" text="月" />
+            <Label layoutX="319.0" layoutY="274.0" text="日" />
             <Label fx:id="remindLabel" layoutX="25.0" layoutY="423.0" prefHeight="27.0" prefWidth="491.0" text="填写时间请按照“2016年01月01日”的格式" textFill="#1a1b00" />
-            <ChoiceBox fx:id="monthChoices1" layoutX="206.0" layoutY="214.0" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: transparent;" />
-            <ChoiceBox fx:id="dayChoices1" layoutX="256.0" layoutY="214.0" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: transparent;" />
-            <ChoiceBox fx:id="dayChoices2" layoutX="256.0" layoutY="269.0" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: transparent;" />
-            <ChoiceBox fx:id="monthChoices2" layoutX="206.0" layoutY="269.0" prefHeight="30.0" prefWidth="34.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="monthChoices1" layoutX="199.0" layoutY="214.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="dayChoices2" layoutX="268.0" layoutY="269.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="monthChoices2" layoutX="199.0" layoutY="269.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="dayChoices1" layoutX="268.0" layoutY="215.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
          </children>
       </Pane>
       <Button fx:id="createOrderButton" layoutX="543.0" layoutY="689.0" mnemonicParsing="false" onAction="#createOrder" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">

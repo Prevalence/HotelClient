@@ -47,13 +47,13 @@
                   <Image url="@../酒店详情界面/Shape%2016.png" />
                </image>
             </ImageView>
-            <Label layoutX="136.0" layoutY="80.0" text="4.98/5" />
-            <Label layoutX="115.0" layoutY="15.0" text="南京大酒店">
+            <Label fx:id="scoreLabel" layoutX="136.0" layoutY="80.0" text="4.98/5" />
+            <Label fx:id="hotelNameLabel" layoutX="115.0" layoutY="15.0" text="南京大酒店">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
+            <Label fx:id="areaLabel" layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
             <Button fx:id="returnButton" layoutX="717.0" layoutY="40.0" mnemonicParsing="false" onAction="#returnToOrder" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">

@@ -24,6 +24,7 @@ import ui.helper.SearchButtonCell;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
+import vo.hotelVO.hotelblVO.CommentVO;
 import vo.hotelVO.hotelblVO.HotelConditionVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchMock;
@@ -193,11 +194,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithPrice() {
 		searchTable.refresh();
-
-		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel1", "5", "nanjing", "nju"));
-		searchData = FXCollections.observableArrayList(searchDataList);
-
 		searchTable.setItems(searchData);
 	}
 
@@ -208,11 +204,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithStar() {
 		searchTable.refresh();
-
-		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel2", "4", "nanjing", "nju"));
-		searchData = FXCollections.observableArrayList(searchDataList);
-
 		searchTable.setItems(searchData);
 	}
 
@@ -223,11 +214,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithScore() {
 		searchTable.refresh();
-
-		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel3", "1", "商圈", "nju"));
-		searchData = FXCollections.observableArrayList(searchDataList);
-
 		searchTable.setItems(searchData);
 	}
 
@@ -238,11 +224,6 @@ public class HotelSearchuiController {
 	@FXML
 	private void searchWithArea() {
 		searchTable.refresh();
-
-		ArrayList<HotelSearchVO> searchDataList = new ArrayList<HotelSearchVO>();
-		searchDataList.add(new HotelSearchMock("njuHotel4", "3", "nanjing", "nju"));
-		searchData = FXCollections.observableArrayList(searchDataList);
-
 		searchTable.setItems(searchData);
 	}
 
@@ -397,6 +378,8 @@ public class HotelSearchuiController {
 					hotelBestConditionVO.setCircle(area);
 					hotelWorstConditionVO.setBooked(bookedSelected);
 					hotelBestConditionVO.setBooked(bookedSelected);
+					ArrayList<CommentVO> comments=new ArrayList<CommentVO>();
+					hotelBestConditionVO.setBooked(bookedSelected);
 					// ArrayList<HotelSearchVO> searchDataList =
 					// hotelbl.findWithReq(hotelWorstConditionVO,
 					// hotelBestConditionVO);
@@ -438,11 +421,9 @@ public class HotelSearchuiController {
 					hotelBestConditionVO.setCircle(area);
 					hotelWorstConditionVO.setBooked(bookedSelected);
 					hotelBestConditionVO.setBooked(bookedSelected);
-					// ArrayList<HotelSearchVO> searchDataList =
-					// hotelbl.findWithReq(hotelWorstConditionVO,
-					// hotelBestConditionVO);
-					// searchData =
-					// FXCollections.observableArrayList(searchDataList);
+					ArrayList<HotelSearchVO> searchDataList = hotelbl.findWithReq(hotelWorstConditionVO,
+							hotelBestConditionVO);
+					searchData = FXCollections.observableArrayList(searchDataList);
 					searchWithArea();
 				} else {
 					feedbackLabel.setText("必须先选择商圈才能进行酒店筛选！");

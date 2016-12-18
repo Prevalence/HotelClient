@@ -248,7 +248,7 @@ public class OrderReviewuiController {
 	 */
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
-		hotelInfo = hotelbl.showHotelInfo(hotelName);
+		hotelInfo = hotelbl.getHotelInfoByPerson(hotelName);
 		if (hotelInfo.getService().get(0)) {
 			wifiLabel.setText("wifi");
 		}
@@ -267,7 +267,7 @@ public class OrderReviewuiController {
 		areaLabel.setText(hotelInfo.getCircle());
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
-
+		connectionLabel.setText(connection);
 	}
 
 	/**

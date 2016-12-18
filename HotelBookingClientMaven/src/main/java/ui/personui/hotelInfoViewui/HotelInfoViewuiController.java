@@ -16,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.personui.createOrderui.CreateOrderui;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
@@ -104,6 +105,9 @@ public class HotelInfoViewuiController {
 
 	// 订单查看界面
 	private Pane personOrderViewPane;
+	
+	//订单信息填写界面
+	private Pane createOrderPane;
 
 	private Stage primaryStage;
 
@@ -159,7 +163,9 @@ public class HotelInfoViewuiController {
 	 */
 	@FXML
 	private void createOrder(){
-		
+		createOrderPane = new CreateOrderui(primaryStage, personname,hotelName,hotelInfo);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(createOrderPane);
 	}
 
 	/**
