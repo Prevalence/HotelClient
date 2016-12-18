@@ -4,6 +4,7 @@ import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
@@ -22,6 +23,8 @@ public class HotelInfouiController {
 	private Button roomInfoButton;
 	@FXML
 	private Button searchButton;
+	@FXML
+	private Label nameLabel;
 	@FXML
 	private Pane mainPane;
 
@@ -110,5 +113,6 @@ public class HotelInfouiController {
 	 */
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
+		nameLabel.setText(hotelName);
 	}
 }

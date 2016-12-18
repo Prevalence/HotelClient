@@ -15,7 +15,7 @@ public class UserFactory {
 		case "person":
 			userPane = new HotelSearchui(primaryStage, username);
 			break;
-		case "hoteworker":
+		case "hotelworker":
 			userPane = new HotelOrderViewui(primaryStage, username);
 			break;
 		case "market":

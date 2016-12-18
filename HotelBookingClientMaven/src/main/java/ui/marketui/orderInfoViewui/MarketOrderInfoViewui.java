@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class OrderInfoViewui extends Pane{
+public class MarketOrderInfoViewui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
@@ -16,7 +16,7 @@ public class OrderInfoViewui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public OrderInfoViewui(Stage primaryStage, String personname) {
+		public MarketOrderInfoViewui(Stage primaryStage, String personname) {
 			this.primaryStage = primaryStage;
 			this.personname = personname;
 			initOrderInfoViewViewui();

@@ -21,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.personui.hotelSearchui.HotelSearchui;
+import ui.personui.orderReviewui.OrderReviewui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
 import vo.hotelVO.hotelblVO.CommentVO;
@@ -129,6 +130,9 @@ public class CreateOrderuiController {
 
 	// 订单查看界面
 	private Pane personOrderViewPane;
+	
+	//订单二次确认界面
+	private Pane orderReviewPane;
 
 	private Stage primaryStage;
 
@@ -221,17 +225,26 @@ public class CreateOrderuiController {
 	 */
 	@FXML
 	private void createOrder() {
+		year1 = yearField1.getText();
+		year2 = yearField2.getText();
+		startTime = year1 + "-" + month1 + "-" + day1 + " 12:00:00";
+		endTime = year2 + "-" + month2 + "-" + day2 + " 12:00:00";
+		peopleNumber=peopleField.getText();
+		customer=customerField.getText();
+		connection=connectionField.getText();
+		roomNumber=roomNumberField.getText();
 		if (roomSelected.equals("") || year1.equals("") || year2.equals("") || month1.equals("") || month2.equals("")
 				|| day1.equals("") || day2.equals("") || roomNumber.equals("") || connection.equals("")
 				|| customer.equals("")|| peopleNumber.equals("")) {
 			feedbackLabel.setText("订单信息填写不完整！");
-			
 		}
 		else {
-//			orderbl.order
-//			orderInfo=new OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
-//					String personname, String realname, int peoplenum, int childnum, String producttime, String executetime,
-//					String canceltime, String predictExecutetime, String predictLeaveTime, String actualLeaveTime);
+			orderInfo=new OrderVO("", 0, "未执行", hotelName, room,
+					personname, customer, Integer.parseInt(peopleNumber), 0, "", "",
+					"", startTime, endTime, "");
+			orderReviewPane = new OrderReviewui(primaryStage, personname,hotelName,hotelInfo,orderInfo);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(orderReviewPane);
 		}
 	}
 
@@ -309,7 +322,8 @@ public class CreateOrderuiController {
 		areaLabel.setText(hotelInfo.getCircle());
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
-
+		connectionLabel.setText(hotelInfo.getHotelPhone());
+		
 	}
 
 	/**

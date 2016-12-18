@@ -16,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.personui.createOrderui.CreateOrderui;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.orderViewui.OrderViewui;
 import ui.personui.personInfoui.PersonInfoui;
@@ -47,6 +48,8 @@ public class HotelInfoViewuiController {
 	private Label scoreLabel;
 	@FXML
 	private Label areaLabel;
+	@FXML
+	private Label nameLabel;
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView roomInfoTable;
@@ -104,6 +107,9 @@ public class HotelInfoViewuiController {
 
 	// 订单查看界面
 	private Pane personOrderViewPane;
+	
+	//订单信息填写界面
+	private Pane createOrderPane;
 
 	private Stage primaryStage;
 
@@ -159,7 +165,9 @@ public class HotelInfoViewuiController {
 	 */
 	@FXML
 	private void createOrder(){
-		
+		createOrderPane = new CreateOrderui(primaryStage, personname,hotelName,hotelInfo);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(createOrderPane);
 	}
 
 	/**
@@ -188,7 +196,7 @@ public class HotelInfoViewuiController {
 	@SuppressWarnings("unchecked")
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
-		hotelInfo = hotelbl.getHotelInfoByHotelworkerOrManager(hotelName);
+		hotelInfo = hotelbl.getHotelInfoByPerson(hotelName);
 		if(hotelInfo.getService().get(0)){
 			wifiLabel.setText("wifi");
 		}
@@ -208,6 +216,7 @@ public class HotelInfoViewuiController {
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
 		connectionLabel.setText(hotelInfo.getHotelPhone());
+		System.out.println("connection:"+hotelInfo.getHotelPhone());
 		
 		comment = hotelInfo.getComment();
 		room = hotelInfo.getRoom();
@@ -253,6 +262,8 @@ public class HotelInfoViewuiController {
 			roomPrice=room.get(i).getRoomPrice();
 			roomInfo=new RoomInfoVO(roomtype,roomPrice);
 			roomInfoList.add(roomInfo);
+			System.out.println("roomPrice:"+roomInfo.getRoomPrice());
+			System.out.println("roomtype:"+roomInfo.getRoomtype());
 		}
 		return roomInfoList;
 	}

@@ -114,15 +114,18 @@ public class Hotel {
 			ArrayList<HotelPO> hotelpoList= hoteldataservice.findWithReq(worstConditionPO, bestConditionPO);
 			
 			if(hotelpoList!=null){
+				System.out.println("-----------");
 				for(int i=0; i<hotelpoList.size(); i++){
 					if(hotelpoList.get(i).getRoom()!=null){
 						HotelVO hotelvo=new HotelVO(hotelpoList.get(i));
 						hotelvoList.add(hotelvo);
+						System.out.println("name:"+hotelvo.getHotelname());
 					}
 				}	
 			}
 			
 		}else{
+			System.out.println("=============");
 			return null;//需要提醒客户先明确商圈
 		}
 		

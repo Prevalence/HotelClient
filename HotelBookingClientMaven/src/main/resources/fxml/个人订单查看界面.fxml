@@ -20,7 +20,7 @@
          </image>
       </ImageView>
       <Circle fill="WHITE" layoutX="30.0" layoutY="33.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
@@ -30,59 +30,6 @@
             <Image url="@../酒店详情界面/Rectangle%203%20copy.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="250.0" fitWidth="817.0" layoutX="146.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../酒店详情界面/Rectangle%208.png" />
-         </image>
-      </ImageView>
-      <Pane layoutX="146.0" layoutY="64.0" prefHeight="138.0" prefWidth="817.0">
-         <children>
-            <Label layoutX="132.0" layoutY="14.0" text="夏沐天" textFill="#76d4de">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="133.0" layoutY="51.0" text="普通会员" textFill="#76d4de">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="208.0" layoutY="51.0" text="VIP3" textFill="#76d4de">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="156.0" layoutY="83.0" text="9036" textFill="#76d4de">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="378.0" layoutY="83.0" text="联系方式：" textFill="#76d4de">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="22.0" fitWidth="15.0" layoutX="134.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/Shape%2016.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="734.0" layoutY="38.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../酒店详情界面/reply.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label layoutX="378.0" layoutY="50.0" text="所属企业：" textFill="#76d4de">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
       <Button fx:id="hotelSearchButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -119,25 +66,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="841.0" layoutY="688.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="7.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/Back.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/Next.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <TableView fx:id="orderTable" layoutX="158.0" layoutY="223.0" prefHeight="439.0" prefWidth="785.0">
+      <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+      <TableView fx:id="orderTable" layoutX="155.0" layoutY="98.0" prefHeight="683.0" prefWidth="785.0">
          <columns>
             <TableColumn fx:id="orderNumberCol" prefWidth="155.0" />
             <TableColumn fx:id="hotelNameCol" prefWidth="170.99993896484375" />
@@ -146,28 +76,12 @@
             <TableColumn fx:id="buttonCol" prefWidth="61.0" />
          </columns>
       </TableView>
-      <Button fx:id="orderInfoViewButton" layoutX="483.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="46.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../个人订单界面/详情查看.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="159.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="orderInfoViewButton" layoutX="483.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="155.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../个人订单界面/状态.png" />
          </image>
       </ImageView>
-      <MenuButton layoutX="827.0" layoutY="226.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="64.0" style="-fx-background-color: transparent;">
-        <items>
-          <MenuItem mnemonicParsing="false" text="已执行" />
-          <MenuItem mnemonicParsing="false" text="未执行" />
-            <MenuItem mnemonicParsing="false" text="已撤销" />
-            <MenuItem mnemonicParsing="false" text="异常" />
-        </items>
-      </MenuButton>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Shape%201.png" />
