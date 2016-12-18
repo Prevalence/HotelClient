@@ -166,6 +166,8 @@ public class CreateOrderuiController {
 	private String connection;
 
 	private String roomNumber;
+	
+	private String phoneNumber;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -239,8 +241,8 @@ public class CreateOrderuiController {
 			feedbackLabel.setText("订单信息填写不完整！");
 		}
 		else {
-			orderInfo=new OrderVO("", 0, "未执行", hotelName, room,
-					personname, customer, Integer.parseInt(peopleNumber), 0, "", "",
+			orderInfo=new OrderVO("", 0, "未执行", hotelName, room,0,
+					personname, phoneNumber,customer, Integer.parseInt(peopleNumber), 0, "", "",
 					"", startTime, endTime, "");
 			orderReviewPane = new OrderReviewui(primaryStage, personname,hotelName,hotelInfo,orderInfo);
 			mainPane.getChildren().remove(0);
