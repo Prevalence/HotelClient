@@ -123,8 +123,8 @@ public class OrderInfoViewuiController {
 		endTimeLabel.setText(order.getCanceltime());
 		personLabel.setText(order.getRealname());
 //		connectionLabel.setText(order);
-		stateLabel.setText(order.getOrderID());
-		priceLabel.setText(order.getOrderID());
+		stateLabel.setText(order.getOrderstate());
+		priceLabel.setText(String.valueOf(order.getRoom().get(0).getRoomPrice()));
 	}
 
 	/**

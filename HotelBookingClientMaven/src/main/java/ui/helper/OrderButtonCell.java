@@ -15,7 +15,7 @@ import ui.personui.orderInfoViewui.OrderInfoViewui;
 import vo.orderVO.orderblVO.OrderVO;
 import vo.orderVO.orderuiVO.OrderViewVO;
 
-public class OrderButtonCell extends TableCell<OrderViewVO, Boolean> {
+public class OrderButtonCell<T> extends TableCell<T, Boolean> {
 	private final Button cellButton = new Button("查看详情");
 	private Pane newPane;
 	@SuppressWarnings("unused")

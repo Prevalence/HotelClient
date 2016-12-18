@@ -198,7 +198,8 @@ public class OrderViewuiController {
 			
 			@Override
 			public TableCell<HotelOrderVO, Boolean> call(TableColumn<HotelOrderVO, Boolean> p) {
-				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, hotelName,orderID);
+				@SuppressWarnings("rawtypes")
+				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, hotelName,"hotelworker",orders);
 				return buttonCell;
 			}
 		});
