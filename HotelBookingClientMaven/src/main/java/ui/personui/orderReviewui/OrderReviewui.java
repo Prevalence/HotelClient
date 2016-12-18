@@ -19,7 +19,7 @@ public class OrderReviewui extends Pane {
 	private String hotelName;
 
 	private HotelVO hotelInfo;
-	
+
 	private OrderVO orderInfo;
 
 	private OrderReviewuiController orderReviewuiController;
@@ -35,6 +35,7 @@ public class OrderReviewui extends Pane {
 		this.personname = personname;
 		this.hotelName = hotelName;
 		this.hotelInfo = hotelInfo;
+		this.orderInfo = orderInfo;
 		initorderReviewui();
 	};
 
@@ -43,7 +44,7 @@ public class OrderReviewui extends Pane {
 	 */
 	public void initorderReviewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/入住信息输入界面（带价格）.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/入住信息确认界面（带价格）.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -57,6 +58,6 @@ public class OrderReviewui extends Pane {
 		orderReviewuiController.setPersonname(personname);
 		orderReviewuiController.setHotelNameAndShowInfo(hotelName);
 		orderReviewuiController.setHotelVO(hotelInfo);
-		orderReviewuiController.setOrderVO(orderInfo);
+		orderReviewuiController.setAndShowOrderVO(orderInfo);
 	}
 }

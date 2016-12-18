@@ -148,9 +148,11 @@ public class OrderViewuiController {
 		stateCol.setCellValueFactory(new PropertyValueFactory<>("state"));
 		buttonCol.setCellFactory(new Callback<TableColumn<OrderViewVO, Boolean>, TableCell<OrderViewVO, Boolean>>() {
 
+			@SuppressWarnings("rawtypes")
 			@Override
 			public TableCell<OrderViewVO, Boolean> call(TableColumn<OrderViewVO, Boolean> p) {
-				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, personname);
+				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, personname,
+						"person", null);
 				return buttonCell;
 			}
 		});
@@ -158,6 +160,8 @@ public class OrderViewuiController {
 		orderViewList = getOrderViewList(orders);
 		orderData = FXCollections.observableArrayList(orderViewList);
 		orderTable.setItems(orderData);
+		
+		
 	}
 
 	/**
@@ -177,7 +181,7 @@ public class OrderViewuiController {
 			expectedTime = orders.get(i).getPredictExecutetime();
 			hotelName = orders.get(i).getHotelname();
 			orderState = orders.get(i).getOrderstate();
-			order = new OrderViewVO(hotelName,orderNumber,expectedTime,orderState);
+			order = new OrderViewVO(hotelName, orderNumber, expectedTime, orderState);
 			orderList.add(order);
 		}
 		return orderList;

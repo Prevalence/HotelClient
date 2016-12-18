@@ -15,7 +15,7 @@ import ui.personui.orderInfoViewui.OrderInfoViewui;
 import vo.orderVO.orderblVO.OrderVO;
 import vo.orderVO.orderuiVO.OrderViewVO;
 
-public class OrderButtonCell extends TableCell<OrderViewVO, Boolean> {
+public class OrderButtonCell<T> extends TableCell<T, Boolean> {
 	private final Button cellButton = new Button("查看详情");
 	private Pane newPane;
 	@SuppressWarnings("unused")
@@ -45,12 +45,13 @@ public class OrderButtonCell extends TableCell<OrderViewVO, Boolean> {
 		cellButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent t) {
-				OrderVO order=orders.get(getTableRow().getIndex());
 				if (type.equals("person")) {
-					newPane = new OrderInfoViewui(primaryStage, username,order);
+					newPane = new OrderInfoViewui(primaryStage, username);
 				} else if (type.equals("hotelworker")) {
+					OrderVO order=orders.get(getTableRow().getIndex());
 					newPane = new HotelOrderInfoViewui(primaryStage, username,order);
 				} else if (type.equals("market")) {
+					OrderVO order=orders.get(getTableRow().getIndex());
 					newPane = new MarketOrderInfoViewui(primaryStage, username,order);
 				}
 				mainPane.getChildren().remove(0);

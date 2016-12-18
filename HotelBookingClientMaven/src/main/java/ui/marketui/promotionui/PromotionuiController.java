@@ -60,7 +60,7 @@ public class PromotionuiController {
 	 */
 	@FXML
 	private void viewPromotion() {
-		promotionPane = new Promotionui(primaryStage, marketName);
+		promotionPane = new MarketPromotionui(primaryStage, marketName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(promotionPane);
 	}

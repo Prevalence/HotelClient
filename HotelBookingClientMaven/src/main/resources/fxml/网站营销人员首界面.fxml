@@ -35,7 +35,7 @@
             <Image url="@../酒店详情界面/Rectangle%208.png" />
          </image>
       </ImageView>
-      <TextField layoutX="472.0" layoutY="111.0" />
+      <TextField fx:id="orderIDField" layoutX="472.0" layoutY="111.0" />
       <Button fx:id="searchButton" layoutX="717.0" layoutY="106.0" mnemonicParsing="false" onAction="#searchWithOrderNumber" style="-fx-background-color: transprent;">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
@@ -91,39 +91,16 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Button layoutX="841.0" layoutY="688.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="7.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/Back.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/Next.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="500.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="33.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../个人订单界面/详情查看.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <TableView layoutX="158.0" layoutY="223.0" prefHeight="439.0" prefWidth="785.0">
+      <Button layoutX="841.0" layoutY="688.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="7.0" style="-fx-background-color: transparent;" />
+      <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+      <Button layoutX="500.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
+      <TableView fx:id="orderTable" layoutX="159.0" layoutY="238.0" prefHeight="543.0" prefWidth="785.0">
          <columns>
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
-            <TableColumn prefWidth="200.0" />
+            <TableColumn fx:id="orderIDCol" prefWidth="212.0" />
+            <TableColumn fx:id="timeCol" prefWidth="187.99993896484375" />
+            <TableColumn fx:id="personCol" prefWidth="200.0" />
+            <TableColumn fx:id="stateCol" prefWidth="114.0" />
+            <TableColumn fx:id="buttonCol" prefWidth="75.0" />
          </columns>
       </TableView>
       <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="159.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
