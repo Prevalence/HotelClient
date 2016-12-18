@@ -281,6 +281,40 @@ public class Hotel {
 	}
 	
 	/**
+	 * 根据酒店名称返回对应酒店的房间类型和价格的ArrayList
+	 * @param hotelname
+	 * @return ArrayList<RoomInfoVO>，若没有，返回空的ArrayList<RoomInfoVO>
+	 */
+	public ArrayList<RoomInfoVO> getHotelRoomInfo(String hotelname) throws RemoteException {
+		// TODO Auto-generated method stub
+		ArrayList<RoomInfoVO> roomInfoList=new ArrayList<RoomInfoVO>();
+		
+		HotelController hotelcontroller=new HotelController();
+		HotelVO hotelvo=hotelcontroller.getHotelInfoByHotelworkerOrManager(hotelname);
+		ArrayList<RoomVO> rooms=hotelvo.getRoom();
+		if(rooms==null){
+			return roomInfoList;
+		}
+		for(int i=0; i<rooms.size();i++){
+			boolean isExist=false;
+			for(int j=0;j<i;j++){
+				if(rooms.get(i).getRoomType()==rooms.get(j).getRoomType()){
+					isExist=true;
+				}
+			}
+			
+			if(isExist==false){
+				String roomtype=rooms.get(i).getRoomType();
+				int roomprice=rooms.get(i).getRoomPrice();
+				RoomInfoVO roomInfoVO=new RoomInfoVO(roomtype,roomprice);
+				roomInfoList.add(roomInfoVO);
+			}
+		}
+		
+		return roomInfoList;
+	}
+	
+	/**
 	 * 构造方法
 	 */
 	public Hotel(){
