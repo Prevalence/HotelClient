@@ -101,10 +101,10 @@
       <Button layoutX="841.0" layoutY="688.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="7.0" style="-fx-background-color: transparent;" />
       <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
       <Button layoutX="487.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-      <TableView layoutX="159.0" layoutY="238.0" prefHeight="542.0" prefWidth="785.0">
+      <TableView fx:id="orderTable" layoutX="159.0" layoutY="238.0" prefHeight="542.0" prefWidth="785.0">
          <columns>
-            <TableColumn fx:id="orderIDCol" prefWidth="200.0" />
-            <TableColumn fx:id="timeCol" prefWidth="200.0" />
+            <TableColumn fx:id="orderIDCol" prefWidth="212.0" />
+            <TableColumn fx:id="timeCol" prefWidth="178.99993896484375" />
             <TableColumn fx:id="personCol" prefWidth="198.0" />
             <TableColumn fx:id="stateCol" prefWidth="114.0" />
             <TableColumn fx:id="buttonCol" prefWidth="75.0" />

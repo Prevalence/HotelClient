@@ -116,15 +116,15 @@ public class OrderInfoViewuiController {
 	 * @param order
 	 */
 	public void setAndShowOrder(OrderVO order) {
-		orderIDLabel.setText(order.getOrderID());
-		roomtypeLabel.setText(order.getRoom().get(0).getRoomType());
-		peopleNumberLabel.setText(String.valueOf(order.getPeoplenum()));
-		startTimeLabel.setText(order.getExecutetime());
-		endTimeLabel.setText(order.getCanceltime());
-		personLabel.setText(order.getRealname());
-//		connectionLabel.setText(order);
-		stateLabel.setText(order.getOrderstate());
-		priceLabel.setText(String.valueOf(order.getRoom().get(0).getRoomPrice()));
+		orderIDLabel.setText("订单号："+order.getOrderID());
+		roomtypeLabel.setText("房间类型："+order.getRoom().get(0).getRoomType());
+		peopleNumberLabel.setText("人数："+String.valueOf(order.getPeoplenum()));
+		startTimeLabel.setText("入住时间："+order.getExecutetime());
+		endTimeLabel.setText("退房时间："+order.getCanceltime());
+		personLabel.setText("入住人："+order.getRealname());
+//		connectionLabel.setText("联系方式："+order.get);
+		stateLabel.setText("状态："+order.getOrderstate());
+		priceLabel.setText("价格："+String.valueOf(order.getRoom().get(0).getRoomPrice()));
 	}
 
 	/**

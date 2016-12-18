@@ -31,7 +31,7 @@ public class HotelOrderInfoViewui extends Pane {
 	 */
 	public void initOrderInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrderInfoViewui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店订单查看界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();

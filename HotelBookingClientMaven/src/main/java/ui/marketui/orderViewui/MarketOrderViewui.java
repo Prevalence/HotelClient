@@ -40,5 +40,6 @@ public class MarketOrderViewui extends Pane{
 		orderViewuiController.launchStage(primaryStage);
 		orderViewuiController.setMarketName(marketName);
 		orderViewuiController.modifyStageSize();
+		orderViewuiController.initOrderTable();
 	}
 }

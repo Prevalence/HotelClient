@@ -190,9 +190,9 @@ public class OrderViewuiController {
 	 */
 	@SuppressWarnings("unchecked")
 	public void initOrderTable() {
-		orderIDCol.setCellValueFactory(new PropertyValueFactory<>("workerName"));
-		timeCol.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
-		personCol.setCellValueFactory(new PropertyValueFactory<>("expectedTime"));
+		timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+		personCol.setCellValueFactory(new PropertyValueFactory<>("person"));
+		orderIDCol.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
 		stateCol.setCellValueFactory(new PropertyValueFactory<>("state"));
 		buttonCol.setCellFactory(new Callback<TableColumn<HotelOrderVO, Boolean>, TableCell<HotelOrderVO, Boolean>>() {
 			
@@ -206,6 +206,7 @@ public class OrderViewuiController {
 		orders = orderbl.hotelOrders(userbl.getHotelWorkerInfo(workerName).getHotelName());
 		orderViewList = getOrderViewList(orders);
 		orderData = FXCollections.observableArrayList(orderViewList);
+//		System.out.println("order:"+orders.get(0).getOrderID());
 		orderTable.setItems(orderData);
 	}
 	
