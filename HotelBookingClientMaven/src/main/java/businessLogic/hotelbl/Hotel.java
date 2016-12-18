@@ -150,7 +150,9 @@ public class Hotel {
 		ArrayList<HotelSearchVO> hotelSearchVOList=new ArrayList<HotelSearchVO>();
 		for(int i=0; i<resulthotelvolist.size(); i++){
 			HotelVO hotel=resulthotelvolist.get(i);
-			HotelSearchVO hotelSearchVO=new HotelSearchVO(hotel.getHotelname(), Integer.toString(hotel.getStar()), hotel.getCircle(), hotel.getAddress());
+			HotelSearchVO hotelSearchVO=new HotelSearchVO(hotel.getHotelname(), 
+					Integer.toString(hotel.getStar()), String.valueOf(hotel.getScore()), 
+					hotel.getCircle(), hotel.getAddress());
 			hotelSearchVOList.add(hotelSearchVO);
 		}
 		
