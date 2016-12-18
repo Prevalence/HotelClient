@@ -15,6 +15,7 @@ public class OrderVO {
 	//酒店信息
 	private String hotelname;
 	private ArrayList<RoomVO> room;//包括房间类型、房间号、房间价格
+	private int roomNum;//房间数量
 	
 	//入住者信息
 	private String personname;//客户唯一标识，相当于personID
@@ -52,6 +53,7 @@ public class OrderVO {
 			}
 		}
 		this.room=roomvoList;
+		this.roomNum=orderPO.getRoomNum();
 		
 		this.personname=orderPO.getPersonname();
 		this.personPhone=orderPO.getPersonPhone();
@@ -69,7 +71,7 @@ public class OrderVO {
 	}
 
 	//有所有参数的构造函数
-	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
+	public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,int roomNum,
 			String personname,String personPhone,String realname, int peoplenum, int childnum, String producttime, String executetime,
 			String canceltime, String predictExecutetime, String predictLeaveTime, String actualLeaveTime) {
 		super();
@@ -78,6 +80,7 @@ public class OrderVO {
 		this.orderstate = orderstate;
 		this.hotelname = hotelname;
 		this.room = room;
+		this.roomNum=roomNum;
 		this.personname = personname;
 		this.setPersonPhone(personPhone);
 		this.realname = realname;
@@ -220,6 +223,14 @@ public class OrderVO {
 
 	public void setPersonPhone(String personPhone) {
 		this.personPhone = personPhone;
+	}
+
+	public int getRoomNum() {
+		return roomNum;
+	}
+
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
 	}
 
 }
