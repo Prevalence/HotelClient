@@ -82,6 +82,12 @@ public interface HotelblService {
 	 * @return 返回对应的房间剩余数量
 	 */
 	public int getAvailableNumber(String hotelname, String roomtype, String starttime, String endtime);
-	
+
+	/**
+	 * 根据酒店名称返回对应酒店的房间类型和价格的ArrayList
+	 * @param hotelname
+	 * @return ArrayList<RoomInfoVO>，若没有，返回空的ArrayList<RoomInfoVO>
+	 */
+	public ArrayList<RoomInfoVO> getHotelRoomInfo(String hotelname);
 	
 }

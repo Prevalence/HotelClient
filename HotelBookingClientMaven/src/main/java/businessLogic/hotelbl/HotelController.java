@@ -181,5 +181,22 @@ public class HotelController implements HotelblService{
 		}
 	}
 
+	/**
+	 * 根据酒店名称返回对应酒店的房间类型和价格的ArrayList
+	 * @param hotelname
+	 * @return ArrayList<RoomInfoVO>，若没有，返回空的ArrayList<RoomInfoVO>
+	 */
+	@Override
+	public ArrayList<RoomInfoVO> getHotelRoomInfo(String hotelname) {
+		// TODO Auto-generated method stub
+		try {
+			return hotel.getHotelRoomInfo(hotelname);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 }
