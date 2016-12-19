@@ -97,7 +97,7 @@ public class CreateOrderuiController {
 	private UserblService userbl;
 
 	private HotelblService hotelbl;
-	
+
 	private OrderblService orderbl;
 
 	private HotelVO hotelInfo;
@@ -119,7 +119,7 @@ public class CreateOrderuiController {
 	private ArrayList<CommentInfoVO> commentList;
 
 	private CommentInfoVO commentInfo;
-	
+
 	private OrderVO orderInfo;
 
 	// 酒店搜索界面
@@ -130,8 +130,8 @@ public class CreateOrderuiController {
 
 	// 订单查看界面
 	private Pane personOrderViewPane;
-	
-	//订单二次确认界面
+
+	// 订单二次确认界面
 	private Pane orderReviewPane;
 
 	private Stage primaryStage;
@@ -166,7 +166,7 @@ public class CreateOrderuiController {
 	private String connection;
 
 	private String roomNumber;
-	
+
 	private String phoneNumber;
 
 	/**
@@ -231,20 +231,19 @@ public class CreateOrderuiController {
 		year2 = yearField2.getText();
 		startTime = year1 + "-" + month1 + "-" + day1 + " 12:00:00";
 		endTime = year2 + "-" + month2 + "-" + day2 + " 12:00:00";
-		peopleNumber=peopleField.getText();
-		customer=customerField.getText();
-		connection=connectionField.getText();
-		roomNumber=roomNumberField.getText();
+		peopleNumber = peopleField.getText();
+		customer = customerField.getText();
+		connection = connectionField.getText();
+		roomNumber = roomNumberField.getText();
+		phoneNumber = connectionField.getText();
 		if (roomSelected.equals("") || year1.equals("") || year2.equals("") || month1.equals("") || month2.equals("")
 				|| day1.equals("") || day2.equals("") || roomNumber.equals("") || connection.equals("")
-				|| customer.equals("")|| peopleNumber.equals("")) {
+				|| customer.equals("") || peopleNumber.equals("") || phoneNumber.equals("")) {
 			feedbackLabel.setText("订单信息填写不完整！");
-		}
-		else {
-			orderInfo=new OrderVO("", 0, "未执行", hotelName, room,0,
-					personname, phoneNumber,customer, Integer.parseInt(peopleNumber), 0, "", "",
-					"", startTime, endTime, "");
-			orderReviewPane = new OrderReviewui(primaryStage, personname,hotelName,hotelInfo,orderInfo);
+		} else {
+			orderInfo = new OrderVO("", 0, "未执行", hotelName, room, Integer.parseInt(roomNumber), personname,
+					phoneNumber, customer, Integer.parseInt(peopleNumber), 0, "", "", "", startTime, endTime, "");
+			orderReviewPane = new OrderReviewui(primaryStage, personname, hotelName, hotelInfo, orderInfo);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(orderReviewPane);
 		}
@@ -325,7 +324,7 @@ public class CreateOrderuiController {
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
 		connectionLabel.setText(hotelInfo.getHotelPhone());
-		
+
 	}
 
 	/**

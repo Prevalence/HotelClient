@@ -178,18 +178,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="personInfoButton" layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/个人信息.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button layoutX="841.0" layoutY="688.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="7.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -232,6 +220,18 @@
             <Image url="@../酒店详情界面/色块.png" />
          </image>
       </ImageView>
+      <Button fx:id="personInfoButton" layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../酒店详情界面/个人信息.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="751.0" prefHeight="34.0" prefWidth="824.0" textFill="#f80202">
          <font>
             <Font size="20.0" />
