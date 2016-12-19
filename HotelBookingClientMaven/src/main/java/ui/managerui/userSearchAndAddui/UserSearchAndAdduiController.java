@@ -56,8 +56,12 @@ public class UserSearchAndAdduiController {
 		username = usernameField.getText();
 		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("添加信息不全，无法继续，请补全用户类型或用户名称！");
+		} else if (usertype.equals("客户")) {
+			feedbackLabel.setText("没有添加和客户的权限！");
+		} else if (userbl.isExist(username, usertype)) {
+			feedbackLabel.setText("该用户已经存在！");
 		} else {
-			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
+			userInfoPane = ManagerFactory.createUserAddPane(primaryStage, usertype, managerName, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userInfoPane);
 		}

@@ -8,7 +8,7 @@ public class HotelworkerInfoui extends Pane {
 	private Stage primaryStage;
 
 	private String managerName;
-	
+
 	private String hotelworkerName;
 
 	private HotelworkerInfouiController hotelworkerInfouiController;
@@ -18,9 +18,10 @@ public class HotelworkerInfoui extends Pane {
 	 * 
 	 * @param primaryStage
 	 */
-	public HotelworkerInfoui(Stage primaryStage, String managerName,String hotelworkerName) {
+	public HotelworkerInfoui(Stage primaryStage, String managerName, String hotelworkerName) {
 		this.primaryStage = primaryStage;
 		this.managerName = managerName;
+		this.hotelworkerName = hotelworkerName;
 		inithotelworkerInfoui();
 	};
 
@@ -42,6 +43,6 @@ public class HotelworkerInfoui extends Pane {
 		hotelworkerInfouiController.launchStage(primaryStage);
 		hotelworkerInfouiController.setManagerName(managerName);
 		hotelworkerInfouiController.modifyStageSize();
-		hotelworkerInfouiController.setHotelworkerName(hotelworkerName);
+		hotelworkerInfouiController.setWorkerAndShowInfo(hotelworkerName);
 	}
 }
