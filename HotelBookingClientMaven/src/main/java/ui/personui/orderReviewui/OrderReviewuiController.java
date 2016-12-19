@@ -235,7 +235,7 @@ public class OrderReviewuiController {
 	@FXML
 	private void createOrder() {
 		orderbl.createOrder(orderInfo);
-		orderInfoPane = new OrderInfoViewui(primaryStage, personname);
+		orderInfoPane = new OrderInfoViewui(primaryStage, personname,orderInfo);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(orderInfoPane);
 	}

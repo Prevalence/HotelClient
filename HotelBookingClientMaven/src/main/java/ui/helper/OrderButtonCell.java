@@ -46,7 +46,8 @@ public class OrderButtonCell<T> extends TableCell<T, Boolean> {
 			@Override
 			public void handle(ActionEvent t) {
 				if (type.equals("person")) {
-					newPane = new OrderInfoViewui(primaryStage, username);
+					OrderVO order=orders.get(getTableRow().getIndex());
+					newPane = new OrderInfoViewui(primaryStage, username,order);
 				} else if (type.equals("hotelworker")) {
 					OrderVO order=orders.get(getTableRow().getIndex());
 					newPane = new HotelOrderInfoViewui(primaryStage, username,order);
