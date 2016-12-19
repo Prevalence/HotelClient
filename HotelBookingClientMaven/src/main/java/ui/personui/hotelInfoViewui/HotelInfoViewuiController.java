@@ -210,7 +210,6 @@ public class HotelInfoViewuiController {
 			wifiLabel.setText("餐厅");
 		}
 		featureLabel.setText(hotelInfo.getFeature());
-		//connectionLabel.setText(hotelInfo.get);
 		scoreLabel.setText(String.valueOf(hotelInfo.getScore())+"/5");
 		areaLabel.setText(hotelInfo.getCircle());
 		locationLabel.setText(hotelInfo.getAddress());
