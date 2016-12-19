@@ -20,7 +20,7 @@
          </image>
       </ImageView>
       <Circle fill="WHITE" layoutX="30.0" layoutY="33.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
@@ -154,6 +154,11 @@
             </ImageView>
          </graphic>
       </Button>
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/色块.png" />
+         </image>
+      </ImageView>
       <Button fx:id="orderViewButton" layoutY="89.0" mnemonicParsing="false" onAction="#viewHotelOrder" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -166,10 +171,5 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../酒店详情界面/色块.png" />
-         </image>
-      </ImageView>
    </children>
 </fx:root>
