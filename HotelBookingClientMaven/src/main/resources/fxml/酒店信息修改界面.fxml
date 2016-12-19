@@ -138,7 +138,7 @@
             <Image url="@../酒店详情界面/价格.png" />
          </image>
       </ImageView>
-      <Button layoutX="502.0" layoutY="655.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button layoutX="502.0" layoutY="655.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
          <font>
             <Font size="1.0" />
          </font>
