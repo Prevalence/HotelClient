@@ -46,7 +46,7 @@
                   <Image url="@../酒店促销策略/促销策略.png" />
                </image>
             </ImageView>
-            <Button fx:id="addButton" layoutX="114.0" layoutY="503.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+            <Button fx:id="addButton" layoutX="114.0" layoutY="503.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
                <font>
                   <Font size="1.0" />
                </font>
@@ -58,7 +58,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="editButton" layoutX="356.0" layoutY="503.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+            <Button fx:id="editButton" layoutX="356.0" layoutY="503.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
                <font>
                   <Font size="1.0" />
                </font>
@@ -70,7 +70,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="deleteButton" layoutX="593.0" layoutY="503.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+            <Button fx:id="deleteButton" layoutX="593.0" layoutY="503.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
                <font>
                   <Font size="1.0" />
                </font>

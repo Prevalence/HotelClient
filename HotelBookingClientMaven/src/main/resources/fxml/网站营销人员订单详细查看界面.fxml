@@ -36,7 +36,7 @@
          </image>
       </ImageView>
       <TextField layoutX="472.0" layoutY="111.0" />
-      <Button layoutX="717.0" layoutY="106.0" mnemonicParsing="false" style="-fx-background-color: transprent;">
+      <Button layoutX="717.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" stylesheets="@../酒店促销策略/搜索键.css">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -150,7 +150,7 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="501.0" layoutY="703.0" mnemonicParsing="false" style="-fx-background-color: transprent;">
+      <Button layoutX="501.0" layoutY="703.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" stylesheets="@../酒店促销策略/搜索键.css">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
