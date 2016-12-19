@@ -1,5 +1,7 @@
 package ui.helper;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -10,6 +12,8 @@ import javafx.stage.Stage;
 import ui.personui.hotelInfoViewui.HotelInfoViewui;
 import ui.personui.orderInfoViewui.OrderInfoViewui;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
+import vo.orderVO.orderblVO.OrderVO;
+import vo.orderVO.orderuiVO.OrderViewVO;
 
 public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 	private final Button cellButton = new Button("查看详情");
@@ -24,6 +28,8 @@ public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 	private String selectedHotelName;
 	@SuppressWarnings({ "rawtypes", "unused" })
 	private TableView table;
+	// 订单数据表
+	private ArrayList<OrderVO> orders;
 
 	/**
 	 * 搜索列表初始化
@@ -45,7 +51,7 @@ public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 			public void handle(ActionEvent t) {
 				String selectedHotelName = ((HotelSearchVO) table.getItems().get(getTableRow().getIndex()))
 						.getHotelName();
-				System.out.println("hotelName:"+selectedHotelName);
+				System.out.println("hotelName:" + selectedHotelName);
 				newPane = new HotelInfoViewui(primaryStage, personname, selectedHotelName);
 				mainPane.getChildren().remove(0);
 				mainPane.getChildren().add(newPane);
@@ -70,7 +76,7 @@ public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 		cellButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent t) {
-				newPane = new OrderInfoViewui(primaryStage, personname);
+//				newPane = new OrderInfoViewui(primaryStage, personname);
 				mainPane.getChildren().remove(0);
 				mainPane.getChildren().add(newPane);
 			}
@@ -88,6 +94,29 @@ public class SearchButtonCell extends TableCell<HotelSearchVO, Boolean> {
 			setGraphic(cellButton);
 			setText(null);
 		}
+	}
+
+	/**
+	 * 从orderVO列表中获取用于界面显示的orderViewVO列表
+	 * 
+	 * @return orderList
+	 */
+	private ArrayList<OrderViewVO> getOrderViewList(ArrayList<OrderVO> orders) {
+		ArrayList<OrderViewVO> orderList = new ArrayList<OrderViewVO>();
+		String orderNumber = "";
+		String orderState = "";
+		String expectedTime = "";
+		String hotelName = "";
+		OrderViewVO order = null;
+		for (int i = 0; i < orders.size(); i++) {
+			orderNumber = orders.get(i).getOrderID();
+			expectedTime = orders.get(i).getPredictExecutetime();
+			hotelName = orders.get(i).getHotelname();
+			orderState = orders.get(i).getOrderstate();
+			order = new OrderViewVO(hotelName, orderNumber, expectedTime, orderState);
+			orderList.add(order);
+		}
+		return orderList;
 	}
 
 }
