@@ -31,7 +31,7 @@ public class HotelSearchui extends Pane {
 	public HotelSearchui(Stage primaryStage, String personname) {
 		this.primaryStage = primaryStage;
 		this.personname = personname;
-		prices.addAll("0-300","300-600","600-1200","1200以上");
+		prices.addAll("0-300","300-600","600-900","900-1200","1200以上");
 		stars.addAll("1-5","2-5","3-5","4-5","5");
 		scores.addAll("1.0-5.0","2.0-5.0","3.0-5.0","4.0-5.0","5.0");
 		areas.addAll("商圈1","商圈2");

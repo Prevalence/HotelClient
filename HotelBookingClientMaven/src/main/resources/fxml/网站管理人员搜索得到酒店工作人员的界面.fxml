@@ -72,9 +72,14 @@
             <TextField fx:id="workIDField" layoutX="107.0" layoutY="59.0" prefHeight="30.0" prefWidth="177.0" />
             <TextField fx:id="passwordField" layoutX="107.0" layoutY="164.0" prefHeight="30.0" prefWidth="262.0" />
             <TextField fx:id="hotelField" layoutX="394.0" layoutY="58.0" prefHeight="30.0" prefWidth="114.0" />
+            <Label fx:id="feedbackLabel" layoutX="-1.0" layoutY="310.0" prefHeight="28.0" prefWidth="515.0" textFill="#ff0202">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Button layoutX="358.0" layoutY="577.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="saveButton" layoutX="358.0" layoutY="577.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
