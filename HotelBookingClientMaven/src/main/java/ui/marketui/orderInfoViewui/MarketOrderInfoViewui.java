@@ -5,9 +5,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import vo.orderVO.orderblVO.OrderVO;
 
-public class MarketOrderInfoViewui extends Pane{
+public class MarketOrderInfoViewui extends Pane {
 	private Stage primaryStage;
-	
+
 	private OrderVO order;
 
 	private String marketName;
@@ -15,15 +15,16 @@ public class MarketOrderInfoViewui extends Pane{
 	private OrderInfoViewuiController orderInfoViewViewuiController;
 
 	/**
-		 * 接受primarystage用来完成界面最小化和可移动化设置
-		 * 
-		 * @param primaryStage
-		 */
-		public MarketOrderInfoViewui(Stage primaryStage, String marketName,OrderVO order) {
-			this.primaryStage = primaryStage;
-			this.marketName = marketName;
-			initOrderInfoViewViewui();
-		};
+	 * 接受primarystage用来完成界面最小化和可移动化设置
+	 * 
+	 * @param primaryStage
+	 */
+	public MarketOrderInfoViewui(Stage primaryStage, String marketName, OrderVO order) {
+		this.primaryStage = primaryStage;
+		this.marketName = marketName;
+		this.order = order;
+		initOrderInfoViewViewui();
+	};
 
 	/**
 	 * 初始化界面
@@ -42,5 +43,7 @@ public class MarketOrderInfoViewui extends Pane{
 		orderInfoViewViewuiController = loader.getController();
 		orderInfoViewViewuiController.launchStage(primaryStage);
 		orderInfoViewViewuiController.setMarketName(marketName);
+		orderInfoViewViewuiController.setAndShowOrder(order);
+		;
 	}
 }
