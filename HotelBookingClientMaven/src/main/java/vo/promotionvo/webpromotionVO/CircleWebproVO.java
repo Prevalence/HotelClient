@@ -1,7 +1,7 @@
 package vo.promotionvo.webpromotionVO;
 
 import po.PromotionPO;
-import po.promotionpo.webpromotionPO.CircleWebproPO;
+import po.promotionpo.webpromotionPO1.CircleWebproPO;
 import vo.PromotionVO;
 
 /**

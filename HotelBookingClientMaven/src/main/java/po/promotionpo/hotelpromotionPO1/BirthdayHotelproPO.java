@@ -1,4 +1,4 @@
-package po.promotionpo.hotelpromotionPO;
+package po.promotionpo.hotelpromotionPO1;
 
 import po.PromotionPO;
 import vo.PromotionVO;

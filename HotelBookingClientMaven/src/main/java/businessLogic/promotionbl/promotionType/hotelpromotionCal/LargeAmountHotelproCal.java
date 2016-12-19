@@ -7,7 +7,7 @@ import po.OrderPO;
 import po.PromotionPO;
 import po.hotelPO.RoomPO;
 import po.personPO.PersonPO;
-import po.promotionpo.hotelpromotionPO.LargeAmountHotelproPO;
+import po.promotionpo.hotelpromotionPO1.LargeAmountHotelproPO;
 
 /**
  *  @author 武秀峰

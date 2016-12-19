@@ -3,7 +3,7 @@ package vo.promotionvo.webpromotionVO;
 import java.util.ArrayList;
 
 import po.PromotionPO;
-import po.promotionpo.webpromotionPO.VipLevelWebproPO;
+import po.promotionpo.webpromotionPO1.VipLevelWebproPO;
 import vo.PromotionVO;
 
 /**

@@ -6,7 +6,7 @@ import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
 import po.PromotionPO;
 import po.personPO.PersonPO;
-import po.promotionpo.hotelpromotionPO.PeriodHotelproPO;
+import po.promotionpo.hotelpromotionPO1.PeriodHotelproPO;
 
 /**
  *  @author 武秀峰

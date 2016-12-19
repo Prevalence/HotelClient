@@ -7,7 +7,7 @@ import businessLogic.promotionbl.CalculatePrice;
 import po.OrderPO;
 import po.PromotionPO;
 import po.personPO.PersonPO;
-import po.promotionpo.webpromotionPO.CircleWebproPO;;
+import po.promotionpo.webpromotionPO1.CircleWebproPO;;
 
 /**
  *  @author 武秀峰
