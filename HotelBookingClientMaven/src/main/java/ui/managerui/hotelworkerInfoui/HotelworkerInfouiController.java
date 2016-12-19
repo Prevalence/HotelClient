@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
 import vo.HotelWorkerVO;
@@ -71,7 +72,14 @@ public class HotelworkerInfouiController {
 			feedbackLabel.setText("信息填写不完整！");
 		} else {
 			hotelworkerInfo = new HotelWorkerVO(workID, password, hotel);
-			userbl.hotelWorkerSave(hotelworkerInfo);
+			if (userbl.hotelWorkerSave(hotelworkerInfo)) {
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("修改成功！");
+			}
+			else{
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("网络连接有问题！");
+			}
 		}
 	}
 
@@ -102,8 +110,16 @@ public class HotelworkerInfouiController {
 		primaryStage.setX(400);
 	}
 
-	public void setHotelworkerName(String hotelworkerName) {
+	/**
+	 * 设置并显示酒店工作人员信息
+	 * @param hotelworkerName
+	 */
+	public void setWorkerAndShowInfo(String hotelworkerName) {
 		this.hotelworkerName = hotelworkerName;
+		hotelworkerInfo=userbl.getHotelWorkerInfo(hotelworkerName);
 		workIDField.setText(hotelworkerName);
+		passwordField.setText(hotelworkerInfo.getPassword());
+		hotelField.setText(hotelworkerInfo.getHotelName());
 	}
+	
 }

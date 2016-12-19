@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.managerui.personInfoui.PersonInfouiController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.managerui.marketAddui.MarketAdduiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,19 +35,7 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <Button layoutX="358.0" layoutY="577.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../网站管理人员搜索人员结果界面/保存.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="609.0" layoutY="577.0" mnemonicParsing="false" onAction="#returnToFirst" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button fx:id="returnButton" layoutX="609.0" layoutY="577.0" mnemonicParsing="false" onAction="#returnToFirst" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -61,7 +49,7 @@
       </Button>
       <Pane layoutX="280.0" layoutY="186.0" prefHeight="334.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="14.0" layoutY="52.0" prefHeight="45.0" prefWidth="82.0" text="客户名：" textFill="#74d5df">
+            <Label layoutX="25.0" layoutY="51.0" prefHeight="45.0" prefWidth="82.0" text="工作ID：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
@@ -71,37 +59,31 @@
                   <Image url="@../订单详情界面/酒店工作人员首界面.fxml.png" />
                </image>
             </ImageView>
-            <Label layoutX="14.0" layoutY="280.0" prefHeight="48.0" prefWidth="105.0" text="联系方式：" textFill="#74d5df">
+            <Label layoutX="25.0" layoutY="155.0" prefHeight="48.0" prefWidth="64.0" text="密码：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="129.0" prefHeight="48.0" prefWidth="105.0" text="VIP类型：" textFill="#74d5df">
+            <TextField fx:id="marketNameField" layoutX="107.0" layoutY="59.0" prefHeight="30.0" prefWidth="287.0" />
+            <TextField fx:id="passwordField" layoutX="107.0" layoutY="167.0" prefHeight="30.0" prefWidth="287.0" />
+            <Label fx:id="feedbackLabel" layoutX="4.0" layoutY="306.0" prefHeight="29.0" prefWidth="508.0" textFill="#fc0303">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="206.0" prefHeight="48.0" prefWidth="94.0" text="VIP等级：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="294.0" layoutY="49.0" prefHeight="48.0" prefWidth="105.0" text="信用值：" textFill="#74d5df">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <TextField fx:id="personnameField" layoutX="113.0" layoutY="59.0" prefHeight="30.0" prefWidth="153.0" />
-            <TextField fx:id="VIPTypeField" layoutX="113.0" layoutY="138.0" prefHeight="30.0" prefWidth="153.0" />
-            <TextField fx:id="connectionField" layoutX="113.0" layoutY="289.0" prefHeight="30.0" prefWidth="153.0" />
-            <TextField fx:id="creditField" layoutX="390.0" layoutY="58.0" prefHeight="30.0" prefWidth="116.0" />
-            <TextField fx:id="VIPLevelField" layoutX="113.0" layoutY="215.0" prefHeight="30.0" prefWidth="153.0" />
          </children>
       </Pane>
-      <Label fx:id="feedbackLabel" layoutX="145.0" layoutY="754.0" prefHeight="30.0" prefWidth="817.0" textFill="#fc0101">
+      <Button fx:id="saveButton" layoutX="358.0" layoutY="577.0" mnemonicParsing="false" onAction="#addMarket" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
-            <Font size="20.0" />
+            <Font size="1.0" />
          </font>
-      </Label>
+         <graphic>
+            <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../网站管理人员搜索人员结果界面/保存.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </fx:root>

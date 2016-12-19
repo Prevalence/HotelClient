@@ -82,7 +82,7 @@ public class RegisteruiController {
 	private void signup() {
 		personname = userNameField.getText();
 		password = passwordField.getText();
-		if (!userbl.isExist(personname, "person")) {
+		if (!userbl.isExist(personname, "客户")) {
 			personInfo = new PersonVO(personname, password, -1, 1000, "2016-01-01 00:00:00", "普通客户", 0, "", "");
 			userbl.register(personInfo);
 			personInfoPane = new PersonInfoui(primaryStage,personname);
