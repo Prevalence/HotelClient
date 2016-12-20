@@ -289,7 +289,6 @@ public class PersonInfouiController {
 		else{
 			feedbackLabel.setText("目前还没有信用记录，欢迎使用我们的系统预订酒店。");
 		}
-		// personInfo.get
 	}
 
 }
