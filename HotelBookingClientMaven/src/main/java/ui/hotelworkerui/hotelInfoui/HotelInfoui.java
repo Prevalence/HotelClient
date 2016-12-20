@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class HotelInfoui extends Pane{
 	private Stage primaryStage;
 
-	private String personname;
+	private String workerName;
 
 	private HotelInfouiController hotelInfoViewuiController;
 
@@ -16,9 +16,9 @@ public class HotelInfoui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public HotelInfoui(Stage primaryStage, String personname) {
+		public HotelInfoui(Stage primaryStage, String workerName) {
 			this.primaryStage = primaryStage;
-			this.personname = personname;
+			this.workerName = workerName;
 			initHotelInfoViewui();
 		};
 
@@ -38,6 +38,6 @@ public class HotelInfoui extends Pane{
 		// primaryStage.setScene(scene);
 		hotelInfoViewuiController = loader.getController();
 		hotelInfoViewuiController.launchStage(primaryStage);
-		hotelInfoViewuiController.setHotelName(personname);
+		hotelInfoViewuiController.setWorkerNameAndShowInfo(workerName);
 	}
 }

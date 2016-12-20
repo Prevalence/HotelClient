@@ -67,10 +67,10 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="wifiLabel" layoutX="407.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" text="123" />
-            <Label fx:id="TVLabel" layoutX="474.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" text="123" />
-            <Label fx:id="sofaLabel" layoutX="542.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" text="123" />
-            <Label fx:id="diningLabel" layoutX="612.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" text="123" />
+            <Label fx:id="wifiLabel" layoutX="407.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" />
+            <Label fx:id="TVLabel" layoutX="474.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" />
+            <Label fx:id="sofaLabel" layoutX="542.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" />
+            <Label fx:id="diningLabel" layoutX="612.0" layoutY="21.0" prefHeight="20.0" prefWidth="48.0" />
             <Label fx:id="featureLabel" layoutX="407.0" layoutY="50.0" prefHeight="20.0" prefWidth="273.0" />
             <Label fx:id="connectionLabel" layoutX="431.0" layoutY="81.0" prefHeight="20.0" prefWidth="242.0" />
             <Label fx:id="locationLabel" layoutX="397.0" layoutY="110.0" prefHeight="20.0" prefWidth="310.0" />
