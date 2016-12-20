@@ -35,17 +35,7 @@
             <Image url="@../酒店详情界面/Rectangle%208.png" />
          </image>
       </ImageView>
-      <TextField layoutX="472.0" layoutY="111.0" />
-      <Button fx:id="searchButton" layoutX="717.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchWithDate" prefHeight="33.0" prefWidth="85.0" stylesheets="@../酒店促销策略/搜索键.css">
-         <graphic>
-            <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店评价界面/确定.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label layoutX="349.0" layoutY="111.0" text="订单状态：" textFill="#5db9c2">
+      <Label layoutX="421.0" layoutY="113.0" text="订单状态：" textFill="#5db9c2">
          <font>
             <Font size="22.0" />
          </font>
@@ -125,5 +115,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <ChoiceBox fx:id="stateChoices" layoutX="541.0" layoutY="112.0" prefHeight="30.0" prefWidth="82.0" stylesheets="@../酒店搜索界面/选择框.css" />
    </children>
 </fx:root>

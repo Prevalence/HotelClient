@@ -1,10 +1,15 @@
 package ui.hotelworkerui.orderInfoViewui;
 
+import businessLogic.hotelbl.HotelController;
+import businessLogic.orderbl.OrderController;
 import businessLogic.userbl.UserController;
+import businessLogicService.hotelblService.HotelblService;
+import businessLogicService.orderblService.OrderblService;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
@@ -33,10 +38,16 @@ public class OrderInfoViewuiController {
 	@FXML
 	private Label priceLabel;
 	@FXML
+	private Label feedbackLabel;
+	@FXML
 	private Pane mainPane;
 
 	@SuppressWarnings("unused")
 	private UserblService userbl;
+	
+	private OrderblService orderbl;
+	
+	private HotelblService hotelbl;
 
 	// 酒店订单浏览界面
 	@SuppressWarnings("unused")
@@ -68,6 +79,8 @@ public class OrderInfoViewuiController {
 	 */
 	public OrderInfoViewuiController() {
 		userbl = new UserController();
+		orderbl = new OrderController();
+		hotelbl = new HotelController();
 	}
 
 	/**
@@ -110,6 +123,37 @@ public class OrderInfoViewuiController {
 		roomInfoPane = new RoomInfoui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(roomInfoPane);
+	}
+	
+	/**
+	 * 确认入住
+	 */
+	@FXML
+	private void liveIn() {
+		if(orderbl.finishOrder(orderInfo)){
+			feedbackLabel.setTextFill(Color.web("#058cff"));
+			feedbackLabel.setText("成功办理入住！");;
+		}
+		else{
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("系统出现异常!");
+		}
+	}
+	
+	/**
+	 * 退房
+	 */
+	@FXML
+	private void leave() {
+//		if(orderbl){
+//			orderInfo.get
+//			feedbackLabel.setTextFill(Color.web("#058cff"));
+//			feedbackLabel.setText("成功办理入住！");;
+//		}
+//		else{
+//			feedbackLabel.setTextFill(Color.web("#f80202"));
+//			feedbackLabel.setText("系统出现异常!");
+//		}
 	}
 
 	/**

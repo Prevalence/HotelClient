@@ -46,9 +46,8 @@ public class Hotel {
 	 */
 	public HotelVO getHotelInfoByPerson(String Hotelname)  throws RemoteException {
 		HotelPO hotelpo=hoteldataservice.showHotelinfo(Hotelname);
-		System.out.println("-------------phone:"+hotelpo.getHotelPhone());
 		HotelVO hotelvo=new HotelVO(hotelpo);
-		if(hotelvo.getRoom()==null){
+		if(hotelvo.getRoom().size()==0){
 			return null;
 		}
 		return hotelvo;

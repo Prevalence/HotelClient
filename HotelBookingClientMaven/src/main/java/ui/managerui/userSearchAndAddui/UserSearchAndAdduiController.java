@@ -62,6 +62,7 @@ public class UserSearchAndAdduiController {
 			System.out.println("yyyyyyyes!");
 			feedbackLabel.setText("该用户已经存在！");
 		} else {
+			System.out.println("username:"+username);
 			userInfoPane = ManagerFactory.createUserAddPane(primaryStage, usertype, managerName, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userInfoPane);
@@ -78,6 +79,7 @@ public class UserSearchAndAdduiController {
 		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("搜索信息不全，无法搜索，请补全用户类型或用户名称！");
 		} else {
+			System.out.println("username1:"+username);
 			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userInfoPane);

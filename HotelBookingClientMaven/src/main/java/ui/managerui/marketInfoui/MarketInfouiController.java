@@ -68,6 +68,7 @@ public class MarketInfouiController {
 		String marketName = marketNameField.getText();
 		String password = passwordField.getText();
 		if (marketName.equals("") || password.equals("")) {
+			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("信息填写不完整！");
 		} else {
 			marketInfo = new MarketVO(marketName, password);
