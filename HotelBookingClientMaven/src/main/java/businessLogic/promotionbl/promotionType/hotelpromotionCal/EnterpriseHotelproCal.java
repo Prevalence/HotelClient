@@ -23,16 +23,20 @@ public class EnterpriseHotelproCal implements CalculatePrice{
 	public double getprice(double initialtotal,PromotionPO promotionpo,PersonPO personpo,OrderPO orderpo) {
 		ArrayList<String> enterprise;//合作企业名称列表
 		double discountPrice=initialtotal;
-		boolean contains=false;
-		enterprise=((EnterpriseHotelproPO)promotionpo).getEnterprise();
-		for(int i=0;i<enterprise.size();i++){
-			if(enterprise.get(i).equals(personpo.getEnterpriseName())){
-				contains=true;
-				break;
+		if(personpo.getEnterpriseName()!=null){
+
+			boolean contains=false;
+			enterprise=((EnterpriseHotelproPO)promotionpo).getEnterprise();
+			for(int i=0;i<enterprise.size();i++){
+				if(enterprise.get(i).equals(personpo.getEnterpriseName())){
+					contains=true;
+					break;
+				}
 			}
+			if(contains)
+				discountPrice=discountPrice*(((EnterpriseHotelproPO)promotionpo).getDiscount())/100.0;
 		}
-		if(contains)
-			discountPrice=discountPrice*(((EnterpriseHotelproPO)promotionpo).getDiscount())/100.0;
+		
 		return discountPrice;
 		
 	}

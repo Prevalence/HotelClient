@@ -1,6 +1,4 @@
-package ui.managerui.marketInfoui;
-
-import java.rmi.RemoteException;
+package ui.managerui.hotelworkerAddui;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
@@ -12,15 +10,17 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
-import vo.MarketVO;
+import vo.HotelWorkerVO;
 
-public class MarketInfouiController {
+public class HotelworkerAdduiController {
 	@FXML
 	private Button returnButton;
 	@FXML
 	private Button saveButton;
 	@FXML
-	private TextField marketNameField;
+	private TextField workIDField;
+	@FXML
+	private TextField hotelField;
 	@FXML
 	private TextField passwordField;
 	@FXML
@@ -35,18 +35,18 @@ public class MarketInfouiController {
 
 	private Stage primaryStage;
 
-	private MarketVO marketInfo;
+	private HotelWorkerVO hotelworkerInfo;
 
 	private String managerName;
 
 	@SuppressWarnings("unused")
-	private String marketName;
+	private String hotelworkerName;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public MarketInfouiController() {
+	public HotelworkerAdduiController() {
 		userbl = new UserController();
 	}
 
@@ -64,26 +64,21 @@ public class MarketInfouiController {
 	 * 添加酒店工作人员
 	 */
 	@FXML
-	private void saveChanges() {
-		String marketName = marketNameField.getText();
+	private void addHotelworker() {
+		String workID = workIDField.getText();
 		String password = passwordField.getText();
-		if (marketName.equals("") || password.equals("")) {
+		String hotel = hotelField.getText();
+		if (workID.equals("") || password.equals("") || hotel.equals("")) {
 			feedbackLabel.setText("信息填写不完整！");
 		} else {
-			marketInfo = new MarketVO(marketName, password);
-			try {
-				if (userbl.marketSave(marketInfo)) {
-					feedbackLabel.setTextFill(Color.web("#058cff"));
-					feedbackLabel.setText("修改成功！");
-				}
-				else{
-					feedbackLabel.setTextFill(Color.web("#f80202"));
-					feedbackLabel.setText("修改的名称已被使用！");
-				}
-			} catch (RemoteException e) {
+			hotelworkerInfo = new HotelWorkerVO(workID, password, hotel);
+			if (userbl.hotelWorkerAdd(hotelworkerInfo)) {
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("添加成功！");
+			}
+			else{
 				feedbackLabel.setTextFill(Color.web("#f80202"));
-				feedbackLabel.setText("网络连接出错！");
-				e.printStackTrace();
+				feedbackLabel.setText("无法重复添加！");
 			}
 		}
 	}
@@ -116,13 +111,11 @@ public class MarketInfouiController {
 	}
 
 	/**
-	 * 设置并显示网站营销人员名称
+	 * 设置并显示酒店工作人员名称
 	 * @param marketName
 	 */
-	public void setMarketAndShowInfo(String marketName) {
-		this.marketName = marketName;
-		marketInfo=userbl.getMarketInfo(marketName);
-		marketNameField.setText(marketName);
-		passwordField.setText(marketInfo.getPassword());
+	public void setHotelworkerName(String hotelworkerName) {
+		this.hotelworkerName = hotelworkerName;
+		workIDField.setText(hotelworkerName);
 	}
 }

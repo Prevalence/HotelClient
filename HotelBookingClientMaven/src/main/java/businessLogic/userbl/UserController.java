@@ -239,11 +239,11 @@ public class UserController  implements UserblService{
 	public boolean isExist(String username, String usertype) {
 		// TODO Auto-generated method stub
 		try {
-			if(usertype.equals("person")){
+			if(usertype.equals("客户")){
 				return person.isExist(username);
-			}else if(usertype.equals("hotelworker")){
+			}else if(usertype.equals("酒店工作人员")){
 				return hotelworker.isExist(username);
-			}else if(usertype.equals("market")){
+			}else if(usertype.equals("网站营销人员")){
 				return market.isExist(username);
 			}else{
 				return false;

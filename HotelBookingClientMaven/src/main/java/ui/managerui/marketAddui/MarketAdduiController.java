@@ -1,6 +1,4 @@
-package ui.managerui.marketInfoui;
-
-import java.rmi.RemoteException;
+package ui.managerui.marketAddui;
 
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
@@ -14,7 +12,7 @@ import javafx.stage.Stage;
 import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
 import vo.MarketVO;
 
-public class MarketInfouiController {
+public class MarketAdduiController {
 	@FXML
 	private Button returnButton;
 	@FXML
@@ -46,7 +44,7 @@ public class MarketInfouiController {
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public MarketInfouiController() {
+	public MarketAdduiController() {
 		userbl = new UserController();
 	}
 
@@ -64,26 +62,20 @@ public class MarketInfouiController {
 	 * 添加酒店工作人员
 	 */
 	@FXML
-	private void saveChanges() {
+	private void addMarket() {
 		String marketName = marketNameField.getText();
 		String password = passwordField.getText();
 		if (marketName.equals("") || password.equals("")) {
 			feedbackLabel.setText("信息填写不完整！");
 		} else {
 			marketInfo = new MarketVO(marketName, password);
-			try {
-				if (userbl.marketSave(marketInfo)) {
-					feedbackLabel.setTextFill(Color.web("#058cff"));
-					feedbackLabel.setText("修改成功！");
-				}
-				else{
-					feedbackLabel.setTextFill(Color.web("#f80202"));
-					feedbackLabel.setText("修改的名称已被使用！");
-				}
-			} catch (RemoteException e) {
+			if (userbl.marketAdd(marketInfo)) {
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("添加成功！");
+			}
+			else{
 				feedbackLabel.setTextFill(Color.web("#f80202"));
-				feedbackLabel.setText("网络连接出错！");
-				e.printStackTrace();
+				feedbackLabel.setText("无法重复添加！");
 			}
 		}
 	}
@@ -119,10 +111,8 @@ public class MarketInfouiController {
 	 * 设置并显示网站营销人员名称
 	 * @param marketName
 	 */
-	public void setMarketAndShowInfo(String marketName) {
+	public void setMarketName(String marketName) {
 		this.marketName = marketName;
-		marketInfo=userbl.getMarketInfo(marketName);
 		marketNameField.setText(marketName);
-		passwordField.setText(marketInfo.getPassword());
 	}
 }

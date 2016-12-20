@@ -42,6 +42,6 @@ public class MarketInfoui extends Pane {
 		marketInfouiController.launchStage(primaryStage);
 		marketInfouiController.setManagerName(managerName);
 		marketInfouiController.modifyStageSize();
-		marketInfouiController.setMarketName(marketName);
+		marketInfouiController.setMarketAndShowInfo(marketName);
 	}
 }

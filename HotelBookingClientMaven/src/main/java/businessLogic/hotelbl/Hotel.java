@@ -156,7 +156,6 @@ public class Hotel {
 					hotel.getCircle(), hotel.getAddress());
 			hotelSearchVOList.add(hotelSearchVO);
 		}
-		
 		return hotelSearchVOList;
 	}
 	

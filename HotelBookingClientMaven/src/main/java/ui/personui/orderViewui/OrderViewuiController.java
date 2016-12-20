@@ -152,7 +152,7 @@ public class OrderViewuiController {
 			@Override
 			public TableCell<OrderViewVO, Boolean> call(TableColumn<OrderViewVO, Boolean> p) {
 				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, personname,
-						"person", null);
+						"person", orders);
 				return buttonCell;
 			}
 		});
