@@ -82,9 +82,9 @@ public class UserController  implements UserblService{
 	 * @param credit
 	 * @return 是否修改成功
 	 */
-	public boolean changeCredit(String personname, int credit) {
+	public boolean changeCredit(String personname, RecordVO recordvo) {
 		try {
-			return market.changeCredit(personname, credit);
+			return market.changeCredit(personname, recordvo);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

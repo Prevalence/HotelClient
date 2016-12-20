@@ -48,11 +48,11 @@ public class UserControllerTest {
 		assertEquals(false,uc.personSave(personvo2));
 	}
 
-	@Test
-	public void testChangeCredit() {
-		assertEquals(true,uc.changeCredit("wuxiufeng", 100));
-		assertEquals(true,uc.changeCredit("xiamutian", 100));
-	}
+//	@Test
+//	public void testChangeCredit() {
+//		assertEquals(true,uc.changeCredit("wuxiufeng", 100));
+//		assertEquals(true,uc.changeCredit("xiamutian", 100));
+//	}
 
 	@Test
 	public void testRegisteMember() throws ParseException {

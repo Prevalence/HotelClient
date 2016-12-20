@@ -1,6 +1,7 @@
 package businessLogic.userbl;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
 
 import dataService.userDataService.UserDataService;
 import po.MarketPO;
@@ -8,6 +9,8 @@ import po.personPO.PersonPO;
 import rmi.RemoteHelper;
 import vo.MarketVO;
 import vo.personVO.PersonVO;
+import vo.personVO.RecordVO;
+import businessLogic.TimeFormTrans;
 /**
  * @author xiamutian
  * @author 武秀峰
@@ -66,15 +69,35 @@ public class Market {
 	 * @return 是否修改成功
 	 * @throws RemoteException
 	 */
-	public boolean changeCredit (String personname,int credit) throws RemoteException{
+	public boolean changeCredit (String personname,RecordVO recordvo) throws RemoteException{
+		//修改客户信用值
 		Person person=new Person();
 		PersonVO personvo=person.getPersonInfo(personname);
 		int oriCredit=personvo.getCredit();
+		int credit=Integer.parseInt(recordvo.getChangeCredit());
 		personvo.setCredit(oriCredit+credit);
 		if(personvo.getVipType().equals("普通客户")==false){//当客户是VIP时
 			personvo.setVipLevel((oriCredit+credit)/1000);
 		}
-		return person.modifyPerson(personvo);
+		boolean isModify=person.modifyPerson(personvo);
+		
+		//记录信用变化
+		//public RecordVO(String time, String orderId, String operation, String changeCredit, Integer resultCredit)
+		Calendar calendar=Calendar.getInstance();
+		TimeFormTrans t=new TimeFormTrans();
+		String time=t.myToString(calendar);
+		String orderId="";
+		String operand="充值";
+		String changeCredit=String.valueOf(credit);
+		int creditAfter=oriCredit+credit;
+		String resultCredit=String.valueOf(creditAfter);
+		recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);
+		
+		Record r=new Record();
+		//boolean writeRecord(String personname, RecordVO record)
+		boolean isRecord=r.writeRecord(personname, recordvo);
+		
+		return isModify&&isRecord;
 	}
 	
 	/**

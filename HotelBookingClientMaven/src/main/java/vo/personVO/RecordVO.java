@@ -15,13 +15,13 @@ public class RecordVO {
 		super();
 	}
 
-	public RecordVO(String time, String orderId, String operation, String changeCredit, Integer resultCredit) {
+	public RecordVO(String time, String orderId, String operation, String changeCredit, String resultCredit) {
 		super();
 		this.time = time;
 		this.orderId = orderId;
 		this.operation = operation;
 		this.changeCredit = changeCredit;
-		this.resultCredit = String.valueOf(resultCredit);
+		this.resultCredit = resultCredit;
 	}
 
 	public RecordVO(RecordPO po) {
@@ -70,8 +70,8 @@ public class RecordVO {
 		return resultCredit;
 	}
 
-	public void setResultCredit(Integer resultCredit) {
-		this.resultCredit = String.valueOf(resultCredit);
+	public void setResultCredit(String resultCredit) {
+		this.resultCredit = resultCredit;
 	}
 
 
