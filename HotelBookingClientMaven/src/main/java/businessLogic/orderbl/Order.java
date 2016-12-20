@@ -311,6 +311,22 @@ public class Order{
 		}
 		
 	}
+	
+	/**
+	 * 酒店工作人员改变订单状态
+	 * @param orderID
+	 * @param newState
+	 * @return 是否修改成功
+	 */
+	public boolean changeOrderState(String orderID, String newState)  throws RemoteException{
+		// TODO Auto-generated method stub
+		OrderController oc=new OrderController();
+		OrderVO ordervo=oc.getOrderInfo(orderID);
+		ordervo.setOrderstate(newState);
+		OrderPO orderpo=new OrderPO(ordervo);
+		return orderDataService.modify(orderpo);
+	}
+	
 }
 
 

@@ -191,6 +191,24 @@ public class OrderController implements OrderblService{
 		return null;
 	}
 
+	/**
+	 * 酒店工作人员改变订单状态
+	 * @param orderID
+	 * @param newState
+	 * @return 是否修改成功
+	 */
+	@Override
+	public boolean changeOrderState(String orderID, String newState) {
+		// TODO Auto-generated method stub
+		try {
+			return order1.changeOrderState(orderID, newState);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }
 
 
