@@ -63,6 +63,8 @@ public class HotelSearchuiController {
 	@FXML
 	private Label feedbackLabel;
 	@FXML
+	private Label nameLabel;
+	@FXML
 	private ChoiceBox<String> priceChoices;
 	@FXML
 	private ChoiceBox<String> starChoices;
@@ -266,6 +268,7 @@ public class HotelSearchuiController {
 	 */
 	public void setPersonname(String personname) {
 		this.personname = personname;
+		nameLabel.setText(personname);
 	}
 
 	/**

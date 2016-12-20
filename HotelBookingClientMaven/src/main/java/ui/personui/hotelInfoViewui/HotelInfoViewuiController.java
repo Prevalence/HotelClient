@@ -186,6 +186,7 @@ public class HotelInfoViewuiController {
 	 */
 	public void setPersonname(String personname) {
 		this.personname = personname;
+		nameLabel.setText(personname);
 	}
 
 	/**
@@ -201,13 +202,13 @@ public class HotelInfoViewuiController {
 			wifiLabel.setText("wifi");
 		}
 		if (hotelInfo.getService().get(1)) {
-			wifiLabel.setText("电视");
+			TVLabel.setText("电视");
 		}
 		if (hotelInfo.getService().get(2)) {
-			wifiLabel.setText("沙发");
+			sofaLabel.setText("沙发");
 		}
 		if (hotelInfo.getService().get(3)) {
-			wifiLabel.setText("餐厅");
+			diningLabel.setText("餐厅");
 		}
 		featureLabel.setText(hotelInfo.getFeature());
 		scoreLabel.setText(String.valueOf(hotelInfo.getScore()) + "/5");

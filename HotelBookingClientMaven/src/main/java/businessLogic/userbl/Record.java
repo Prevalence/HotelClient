@@ -34,7 +34,7 @@ public class Record {
 	public ArrayList<RecordVO> getRecord(String personname) throws RemoteException{
 		// TODO Auto-generated method stub
 		ArrayList<RecordPO> polist=userDataService.getRecord(personname);
-		ArrayList<RecordVO> volist=new 		ArrayList<RecordVO>();
+		ArrayList<RecordVO> volist=new ArrayList<RecordVO>();
 		if(polist!=null){
 			for(int i=0;i<polist.size();i++){
 				RecordVO vo=new RecordVO(polist.get(i));

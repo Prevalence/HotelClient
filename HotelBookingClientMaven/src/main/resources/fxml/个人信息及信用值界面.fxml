@@ -178,24 +178,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="841.0" layoutY="688.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="7.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/Back.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/Next.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button layoutX="841.0" layoutY="688.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="7.0" style="-fx-background-color: transparent;" />
+      <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
       <TableView fx:id="OrderTable" layoutX="158.0" layoutY="223.0" prefHeight="439.0" prefWidth="785.0">
          <columns>
             <TableColumn fx:id="IDCol" prefWidth="128.0" />
@@ -233,6 +217,11 @@
          </graphic>
       </Button>
       <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="751.0" prefHeight="34.0" prefWidth="824.0" textFill="#f80202">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="756.0" prefHeight="28.0" prefWidth="817.0" textFill="#058cff">
          <font>
             <Font size="20.0" />
          </font>

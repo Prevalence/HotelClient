@@ -21,6 +21,7 @@ public class MarketInfoui extends Pane {
 	public MarketInfoui(Stage primaryStage, String managerName, String marketName) {
 		this.primaryStage = primaryStage;
 		this.managerName = managerName;
+		this.marketName = marketName;
 		initMarketInfoui();
 	};
 

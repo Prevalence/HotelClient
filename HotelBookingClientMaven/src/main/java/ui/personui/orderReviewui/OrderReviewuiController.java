@@ -73,6 +73,8 @@ public class OrderReviewuiController {
 	@FXML
 	private Label feedbackLabel;
 	@FXML
+	private Label nameLabel;
+	@FXML
 	private TextField peopleField;
 	@FXML
 	private TextField yearField1;
@@ -256,6 +258,7 @@ public class OrderReviewuiController {
 	 */
 	public void setPersonname(String personname) {
 		this.personname = personname;
+		nameLabel.setText(personname);
 	}
 
 	/**
@@ -295,7 +298,7 @@ public class OrderReviewuiController {
 		areaLabel.setText(hotelInfo.getCircle());
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
-		connectionLabel.setText(connection);
+		connectionLabel.setText(hotelInfo.getHotelPhone());
 	}
 
 	/**

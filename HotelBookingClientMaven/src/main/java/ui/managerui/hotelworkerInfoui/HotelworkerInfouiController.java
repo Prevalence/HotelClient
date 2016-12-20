@@ -69,6 +69,7 @@ public class HotelworkerInfouiController {
 		String password = passwordField.getText();
 		String hotel = hotelField.getText();
 		if (workID.equals("") || password.equals("") || hotel.equals("")) {
+			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("信息填写不完整！");
 		} else {
 			hotelworkerInfo = new HotelWorkerVO(workID, password, hotel);

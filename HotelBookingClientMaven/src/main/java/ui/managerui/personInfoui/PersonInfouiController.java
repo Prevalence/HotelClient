@@ -79,6 +79,7 @@ public class PersonInfouiController {
 		String connection = connectionField.getText();
 		String credit = creditField.getText();
 		if (personname.equals("") || vipType.equals("")||vipLevel.equals("") || connection.equals("")||credit.equals("")) {
+			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("信息填写不完整！");
 		} else {
 			personInfo.setUsername(personname);

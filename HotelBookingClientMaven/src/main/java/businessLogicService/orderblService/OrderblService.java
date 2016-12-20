@@ -1,12 +1,12 @@
 package businessLogicService.orderblService;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import vo.orderVO.orderblVO.OrderVO;
 	/**
 	 * 
 	 * @author 谢铠联
+	 * @author 武秀峰
 	 *
 	 */
 public interface OrderblService {
@@ -89,5 +89,13 @@ public interface OrderblService {
 	 * @return
 	 */
 	public OrderVO getOrderInfo(String orderID);
+	
+	/**
+	 * 酒店工作人员改变订单状态
+	 * @param orderID
+	 * @param newState
+	 * @return 是否修改成功
+	 */
+	public boolean changeOrderState(String orderID,String newState);
 }
 

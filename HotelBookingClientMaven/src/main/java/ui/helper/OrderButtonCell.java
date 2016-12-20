@@ -13,7 +13,6 @@ import ui.hotelworkerui.orderInfoViewui.HotelOrderInfoViewui;
 import ui.marketui.orderInfoViewui.MarketOrderInfoViewui;
 import ui.personui.orderInfoViewui.OrderInfoViewui;
 import vo.orderVO.orderblVO.OrderVO;
-import vo.orderVO.orderuiVO.OrderViewVO;
 
 public class OrderButtonCell<T> extends TableCell<T, Boolean> {
 	private final Button cellButton = new Button("查看详情");

@@ -1,5 +1,7 @@
 package ui.hotelworkerui.orderViewui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -8,6 +10,8 @@ public class HotelOrderViewui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
+	
+	private ObservableList<String> states=FXCollections.observableArrayList();
 
 	private OrderViewuiController orderViewuiController;
 
@@ -19,6 +23,7 @@ public class HotelOrderViewui extends Pane{
 		public HotelOrderViewui(Stage primaryStage, String personname) {
 			this.primaryStage = primaryStage;
 			this.personname = personname;
+			states.addAll("未执行","已执行","已撤销","异常","全部");
 			initOrderViewui();
 		};
 
@@ -41,5 +46,6 @@ public class HotelOrderViewui extends Pane{
 		orderViewuiController.setWorkerName(personname);
 		orderViewuiController.modifyStageSize();
 		orderViewuiController.initOrderTable();
+		orderViewuiController.setBookedChoiceBox(states);
 	}
 }

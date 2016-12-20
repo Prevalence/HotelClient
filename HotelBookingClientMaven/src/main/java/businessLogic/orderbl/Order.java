@@ -249,11 +249,12 @@ public class Order{
 			e.printStackTrace();
 		}
 		for(int i=0; i<hotelStateList.size(); i++){
-			if(hotelStateList.get(i).equals(state)!=false){
+			if(!hotelStateList.get(i).getOrderstate().equals(state)){
 				hotelStateList.remove(i);
 				i--;
 			}
 		}
+		System.out.println("size:::"+hotelStateList.size());
 		return hotelStateList;
 	}
 	
@@ -310,6 +311,27 @@ public class Order{
 		}
 		
 	}
+	
+	/**
+	 * 酒店工作人员改变订单状态
+	 * @param orderID
+	 * @param newState
+	 * @return 是否修改成功
+	 */
+	public boolean changeOrderState(String orderID, String newState)  throws RemoteException{
+		// TODO Auto-generated method stub
+		OrderController oc=new OrderController();
+		if(oc.getOrderInfo(orderID)!=null){
+			OrderVO ordervo=oc.getOrderInfo(orderID);
+			ordervo.setOrderstate(newState);
+			OrderPO orderpo=new OrderPO(ordervo);
+			return orderDataService.modify(orderpo);
+		}else{
+			return false;
+		}
+		
+	}
+	
 }
 
 
