@@ -154,5 +154,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
    </children>
 </fx:root>

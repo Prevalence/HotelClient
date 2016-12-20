@@ -324,7 +324,6 @@ public class CreateOrderuiController {
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
 		connectionLabel.setText(hotelInfo.getHotelPhone());
-
 	}
 
 	/**
