@@ -23,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.orderViewui.OrderViewui;
@@ -206,15 +207,24 @@ public class PersonInfouiController {
 				PersonVO newPersonInfo = new PersonVO(nameField.getText(), personInfo.getPassword(),
 						personInfo.getPersonID(), personInfo.getCredit(), time, personInfo.getVipType(),
 						personInfo.getVipLevel(), companyField.getText(), connectionField.getText());
-				userbl.registeMember(newPersonInfo, "普通会员", vipInfo);
-				personname = nameField.getText();
-				nameLabel.setText(personname);
+				if(userbl.registeMember(newPersonInfo, "普通会员", vipInfo)){
+					feedbackLabel.setTextFill(Color.web("#058cff"));
+					feedbackLabel.setText("成功登记为普通会员。");
+					personname = nameField.getText();
+					nameLabel.setText(personname);
+				}
+				else{
+					feedbackLabel.setTextFill(Color.web("#ff0000"));
+					feedbackLabel.setText("信用值不够，无法成为会员。");
+				}
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
+				feedbackLabel.setTextFill(Color.web("#ff0000"));
 				feedbackLabel.setText("日起输入格式不正确，请按照“yyyy-MM-dd”的格式输入!");
 				e.printStackTrace();
 			}
 		} else {
+			feedbackLabel.setTextFill(Color.web("#ff0000"));
 			feedbackLabel.setText("修改后的用户名称已被使用");
 			nameField.setText(personname);
 		}

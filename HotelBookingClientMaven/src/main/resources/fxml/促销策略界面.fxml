@@ -102,7 +102,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView layoutX="163.0" layoutY="224.0" prefHeight="439.0" prefWidth="785.0" style="-fx-border-color: ;">
+      <TableView fx:id="promotionTabel" layoutX="163.0" layoutY="224.0" prefHeight="439.0" prefWidth="785.0" style="-fx-border-color: ;">
          <columns>
             <TableColumn prefWidth="200.0" />
             <TableColumn prefWidth="200.0" />

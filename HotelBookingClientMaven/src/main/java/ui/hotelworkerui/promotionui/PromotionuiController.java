@@ -1,6 +1,8 @@
 package ui.hotelworkerui.promotionui;
 
+import businessLogic.promotionbl.PromotionController;
 import businessLogic.userbl.UserController;
+import businessLogicService.promotionblService.PromotionblService;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -31,6 +33,8 @@ public class PromotionuiController {
 
 	@SuppressWarnings("unused")
 	private UserblService userbl;
+	
+	private PromotionblService promotionbl;
 
 	// 酒店订单浏览界面
 	private Pane hotelOrderPane;
@@ -54,6 +58,7 @@ public class PromotionuiController {
 	 */
 	public PromotionuiController() {
 		userbl = new UserController();
+		promotionbl = new PromotionController();
 	}
 
 	/**
