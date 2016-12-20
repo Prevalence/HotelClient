@@ -59,6 +59,7 @@ public class UserSearchAndAdduiController {
 		} else if (usertype.equals("客户")) {
 			feedbackLabel.setText("没有添加和客户的权限！");
 		} else if (userbl.isExist(username, usertype)) {
+			System.out.println("yyyyyyyes!");
 			feedbackLabel.setText("该用户已经存在！");
 		} else {
 			userInfoPane = ManagerFactory.createUserAddPane(primaryStage, usertype, managerName, username);

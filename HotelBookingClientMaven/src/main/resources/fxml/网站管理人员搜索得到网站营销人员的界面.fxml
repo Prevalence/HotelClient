@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -66,7 +66,7 @@
             </Label>
             <TextField fx:id="marketNameField" layoutX="107.0" layoutY="59.0" prefHeight="30.0" prefWidth="287.0" />
             <TextField fx:id="passwordField" layoutX="107.0" layoutY="167.0" prefHeight="30.0" prefWidth="287.0" />
-            <Label fx:id="feedbackLabel" layoutX="4.0" layoutY="306.0" prefHeight="28.0" prefWidth="508.0" text="Label" textFill="#fc0303">
+            <Label fx:id="feedbackLabel" layoutX="4.0" layoutY="306.0" prefHeight="28.0" prefWidth="508.0" textFill="#fc0303">
                <font>
                   <Font size="16.0" />
                </font>
