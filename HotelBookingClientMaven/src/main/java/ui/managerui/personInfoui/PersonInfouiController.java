@@ -1,13 +1,19 @@
 package ui.managerui.personInfoui;
 
+import java.rmi.RemoteException;
+
 import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
+import vo.MarketVO;
+import vo.personVO.PersonVO;
 
 public class PersonInfouiController {
 	@FXML
@@ -25,6 +31,8 @@ public class PersonInfouiController {
 	@FXML
 	private TextField creditField;
 	@FXML
+	private Label feedbackLabel;
+	@FXML
 	private Pane mainPane;
 
 	@SuppressWarnings("unused")
@@ -39,6 +47,8 @@ public class PersonInfouiController {
 	
 	@SuppressWarnings("unused")
 	private String personname;
+	
+	private PersonVO personInfo;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -63,7 +73,28 @@ public class PersonInfouiController {
 	 */
 	@FXML
 	private void saveChanges() {
-		
+		String personname = personnameField.getText();
+		String vipType = VIPTypeField.getText();
+		String vipLevel = VIPLevelField.getText();
+		String connection = connectionField.getText();
+		String credit = creditField.getText();
+		if (personname.equals("") || vipType.equals("")||vipLevel.equals("") || connection.equals("")||credit.equals("")) {
+			feedbackLabel.setText("信息填写不完整！");
+		} else {
+			personInfo.setUsername(personname);
+			personInfo.setVipType(vipType);
+			personInfo.setVipLevel(Integer.parseInt(vipLevel));;
+			personInfo.setPhoneNumber(connection);
+			personInfo.setCredit(Integer.parseInt(credit));
+			if (userbl.personSave(personInfo)) {
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("修改成功！");
+			}
+			else{
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("修改的名称已被使用！");
+			}
+		} 	
 	}
 
 	/**
@@ -93,8 +124,13 @@ public class PersonInfouiController {
 		primaryStage.setX(400);
 	}
 	
-	public void setPersonname(String personname){
+	public void setPersonAndShowInfo(String personname){
 		this.personname=personname;
+		personInfo=userbl.getPersonInfo(personname);
 		personnameField.setText(personname);
+		VIPTypeField.setText(personInfo.getVipType());
+		VIPLevelField.setText(String.valueOf(personInfo.getVipLevel()));
+		connectionField.setText(personInfo.getPhoneNumber());
+		creditField.setText(String.valueOf(personInfo.getCredit()));
 	}
 }

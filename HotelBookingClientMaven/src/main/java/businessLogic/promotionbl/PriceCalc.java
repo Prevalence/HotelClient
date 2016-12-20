@@ -27,6 +27,7 @@ public class PriceCalc {
 	 * @param ordervo
 	 * @return 计算优惠后的最低价格
 	 */
+	@SuppressWarnings("unused")
 	public double priceCut(HotelVO hotelvo,OrderVO ordervo){
 		/**
 		 * 	public HotelVO(int hotelID, String hotelname, int star, String feature, ArrayList<Boolean> service, String address,
@@ -38,7 +39,7 @@ public class PriceCalc {
 		 */
 		
 		//以下方法实现计算原价
-		int initialtotal=0;//原价
+		double initialtotal=0;//原价
 		ArrayList<RoomVO> orderRoomvoList=ordervo.getRoom();
 		ArrayList<RoomVO> hotelRoomvoList=hotelvo.getRoom();
 		for(int i=0; i<orderRoomvoList.size(); i++){
@@ -63,6 +64,10 @@ public class PriceCalc {
 		promotionvolist.addAll(new Promotion().getProm("WebPromotion"));//加入网站促销策略
 		
 		ArrayList<PromotionPO>promotionpolist = new ArrayList<PromotionPO>();
+		if(promotionpolist==null){
+			return initialtotal;
+		}
+		
 		for(int i=0; i<promotionvolist.size(); i++){
 			PromotionPO propo=new PromotionPO();
 			propo=promotionvolist.get(i).toPO(promotionvolist.get(i));
