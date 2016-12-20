@@ -249,11 +249,12 @@ public class Order{
 			e.printStackTrace();
 		}
 		for(int i=0; i<hotelStateList.size(); i++){
-			if(hotelStateList.get(i).equals(state)!=false){
+			if(!hotelStateList.get(i).getOrderstate().equals(state)){
 				hotelStateList.remove(i);
 				i--;
 			}
 		}
+		System.out.println("size:::"+hotelStateList.size());
 		return hotelStateList;
 	}
 	
