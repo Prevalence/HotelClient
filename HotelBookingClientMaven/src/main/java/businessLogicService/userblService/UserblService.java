@@ -41,7 +41,7 @@ public interface UserblService {
 	 * @return 是否修改成功
 	 * @throws RemoteException
 	 */
-	public boolean changeCredit (String personname,int credit);	
+	public boolean changeCredit (String personname,RecordVO recordvo);	
 	
 	/**
 	 * 会员注册
