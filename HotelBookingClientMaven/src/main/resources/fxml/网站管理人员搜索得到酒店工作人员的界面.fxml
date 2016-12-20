@@ -20,7 +20,7 @@
          </image>
       </ImageView>
       <Circle fill="WHITE" layoutX="30.0" layoutY="33.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
@@ -35,7 +35,7 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <Button fx:id="returnButton" layoutX="609.0" layoutY="577.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#returnToFirst" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
+      <Button fx:id="returnButton" layoutX="609.0" layoutY="577.0" mnemonicParsing="false" onAction="#returnToFirst" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -72,9 +72,14 @@
             <TextField fx:id="workIDField" layoutX="107.0" layoutY="59.0" prefHeight="30.0" prefWidth="177.0" />
             <TextField fx:id="passwordField" layoutX="107.0" layoutY="164.0" prefHeight="30.0" prefWidth="262.0" />
             <TextField fx:id="hotelField" layoutX="394.0" layoutY="58.0" prefHeight="30.0" prefWidth="114.0" />
+            <Label fx:id="feedbackLabel" layoutX="-1.0" layoutY="310.0" prefHeight="28.0" prefWidth="515.0" textFill="#ff0202">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Button layoutX="358.0" layoutY="577.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
+      <Button fx:id="saveButton" layoutX="358.0" layoutY="577.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
