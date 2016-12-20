@@ -68,7 +68,7 @@
                   <Image url="@../酒店详情界面/Shape%2016.png" />
                </image>
             </ImageView>
-            <Button fx:id="editButton" layoutX="679.0" layoutY="30.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setEditable" prefHeight="33.0" prefWidth="35.0" stylesheets="@../酒店促销策略/搜索键.css">
+            <Button fx:id="editButton" layoutX="677.0" layoutY="23.0" mnemonicParsing="false" onAction="#setEditable" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,20 +77,20 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="reverseButton" layoutX="735.0" layoutY="30.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#reverse" prefHeight="33.0" prefWidth="35.0" stylesheets="@../酒店促销策略/搜索键.css">
-               <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../酒店详情界面/reply.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="saveButton" layoutX="690.0" layoutY="68.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#savePersonInfo" prefHeight="30.0" prefWidth="69.0" stylesheets="@../酒店促销策略/搜索键.css">
+            <Button fx:id="saveButton" layoutX="690.0" layoutY="68.0" mnemonicParsing="false" onAction="#savePersonInfo" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../酒店评价界面/确定.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="reverseButton" layoutX="733.0" layoutY="21.0" mnemonicParsing="false" onAction="#reverse" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../酒店详情界面/reply.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -166,23 +166,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../酒店详情界面/色块.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="hotelSearchButton1" layoutY="148.0" mnemonicParsing="false" onAction="#viewHotelSearch" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店详情界面/个人信息.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button fx:id="personOrderButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewPersonOrder" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -195,7 +178,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="841.0" layoutY="693.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="40.0" stylesheets="@../酒店促销策略/搜索键.css">
+      <Button layoutX="841.0" layoutY="688.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="7.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -204,7 +187,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="898.0" layoutY="693.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="40.0" stylesheets="@../酒店促销策略/搜索键.css">
+      <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -232,6 +215,23 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/色块.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="personInfoButton" layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../酒店详情界面/个人信息.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="751.0" prefHeight="34.0" prefWidth="824.0" textFill="#f80202">
          <font>
             <Font size="20.0" />
