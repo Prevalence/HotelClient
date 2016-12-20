@@ -42,8 +42,7 @@ public class Main extends Application {
             rootLayout =  loader.load();
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
-            scene.getStylesheets().add(getClass().getResource("/酒店搜索界面/搜索键.css").toExternalForm());
-            scene.getStylesheets().add(getClass().getResource("/酒店搜索界面/选择框.css").toExternalForm());
+            
             primaryStage.setScene(scene);
             primaryStage.show();
             //将primaryStage传递到controller中
