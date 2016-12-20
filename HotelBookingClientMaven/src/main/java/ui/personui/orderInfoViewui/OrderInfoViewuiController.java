@@ -32,6 +32,8 @@ public class OrderInfoViewuiController {
 	@FXML
 	private Label priceLabel;
 	@FXML
+	private Label nameLabel;
+	@FXML
 	private Button hotelSearchButton;
 	@FXML
 	private Button personInfoButton;
@@ -112,6 +114,7 @@ public class OrderInfoViewuiController {
 	 */
 	public void setPersonname(String personname) {
 		this.personname = personname;
+		nameLabel.setText(personname);
 	}
 	
 	/**
@@ -128,7 +131,7 @@ public class OrderInfoViewuiController {
 		endTimeLabel.setText("退房时间：" + order.getCanceltime());
 		personLabel.setText("入住人：" + order.getRealname());
 		connectionLabel.setText("联系方式："+order.getPersonPhone());
-		stateLabel.setText("状态：" + order.getOrderstate());
+		stateLabel.setText(order.getOrderstate());
 		priceLabel.setText("价格：" + String.valueOf(order.getRoom().get(0).getRoomPrice()));
 	}
 }

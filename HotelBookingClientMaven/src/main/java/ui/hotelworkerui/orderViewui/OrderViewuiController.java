@@ -222,7 +222,8 @@ public class OrderViewuiController {
 		orders = orderbl.hotelOrders(userbl.getHotelWorkerInfo(workerName).getHotelName());
 		orderViewList = getOrderViewList(orders);
 		orderData = FXCollections.observableArrayList(orderViewList);
-		// System.out.println("order:"+orders.get(0).getOrderID());
+		 System.out.println("order:"+orders.get(0).getOrderID());
+		 System.out.println("order:"+orders.get(1).getOrderID());
 		orderTable.setItems(orderData);
 	}
 

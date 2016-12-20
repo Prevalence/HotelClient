@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -28,6 +29,8 @@ import vo.orderVO.orderuiVO.OrderViewVO;
 
 public class OrderViewuiController {
 
+	@FXML
+	private Label nameLabel;
 	@FXML
 	private Button hotelSearchButton;
 	@FXML
@@ -112,14 +115,6 @@ public class OrderViewuiController {
 	}
 
 	/**
-	 * 查看订单详细内容
-	 */
-	@FXML
-	private void viewOrderInfo() {
-
-	}
-
-	/**
 	 * 传递Main的primaryStage
 	 * 
 	 * @param primaryStage
@@ -135,6 +130,7 @@ public class OrderViewuiController {
 	 */
 	public void setPersonname(String personname) {
 		this.personname = personname;
+		nameLabel.setText(personname);
 	}
 
 	/**
