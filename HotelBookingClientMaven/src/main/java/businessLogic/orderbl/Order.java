@@ -321,10 +321,15 @@ public class Order{
 	public boolean changeOrderState(String orderID, String newState)  throws RemoteException{
 		// TODO Auto-generated method stub
 		OrderController oc=new OrderController();
-		OrderVO ordervo=oc.getOrderInfo(orderID);
-		ordervo.setOrderstate(newState);
-		OrderPO orderpo=new OrderPO(ordervo);
-		return orderDataService.modify(orderpo);
+		if(oc.getOrderInfo(orderID)!=null){
+			OrderVO ordervo=oc.getOrderInfo(orderID);
+			ordervo.setOrderstate(newState);
+			OrderPO orderpo=new OrderPO(ordervo);
+			return orderDataService.modify(orderpo);
+		}else{
+			return false;
+		}
+		
 	}
 	
 }
