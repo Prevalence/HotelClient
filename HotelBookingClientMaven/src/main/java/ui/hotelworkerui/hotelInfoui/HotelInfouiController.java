@@ -1,15 +1,23 @@
 package ui.hotelworkerui.hotelInfoui;
 
+import java.util.ArrayList;
+
+import businessLogic.hotelbl.HotelController;
 import businessLogic.userbl.UserController;
+import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.promotionui.Promotionui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
+import vo.hotelVO.hotelblVO.HotelVO;
 
 public class HotelInfouiController {
 
@@ -26,10 +34,34 @@ public class HotelInfouiController {
 	@FXML
 	private Label nameLabel;
 	@FXML
+	private Label feedbackLabel;
+	@FXML
+	private TextField hotelNameField;
+	@FXML
+	private TextField areaField;
+	@FXML
+	private TextField featureField;
+	@FXML
+	private TextField locationField;
+	@FXML
+	private TextField starField;
+	@FXML
+	private TextField connectionField;
+	@FXML
+	private CheckBox wifiCheck;
+	@FXML
+	private CheckBox TVCheck;
+	@FXML
+	private CheckBox sofaCheck;
+	@FXML
+	private CheckBox diningCheck;
+	@FXML
 	private Pane mainPane;
 
 	@SuppressWarnings("unused")
 	private UserblService userbl;
+
+	private HotelblService hotelbl;
 
 	// 酒店订单浏览界面
 	private Pane hotelOrderPane;
@@ -45,7 +77,13 @@ public class HotelInfouiController {
 
 	private Stage primaryStage;
 
+	private HotelVO hotelInfo;
+
+	private String workerName;
+
 	private String hotelName;
+
+	private ArrayList<Boolean> service;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -53,6 +91,7 @@ public class HotelInfouiController {
 	 */
 	public HotelInfouiController() {
 		userbl = new UserController();
+		hotelbl = new HotelController();
 	}
 
 	/**
@@ -60,7 +99,7 @@ public class HotelInfouiController {
 	 */
 	@FXML
 	private void viewHotelOrder() {
-		hotelOrderPane = new HotelOrderViewui(primaryStage, hotelName);
+		hotelOrderPane = new HotelOrderViewui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelOrderPane);
 	}
@@ -70,7 +109,7 @@ public class HotelInfouiController {
 	 */
 	@FXML
 	private void viewPromotion() {
-		promotionPane = new Promotionui(primaryStage, hotelName);
+		promotionPane = new Promotionui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(promotionPane);
 	}
@@ -80,8 +119,8 @@ public class HotelInfouiController {
 	 */
 	@FXML
 	private void viewHotelInfo() {
-		// hotelInfo = hotelbl.showHotelInfo(hotelName);
-		hotelInfoPane = new HotelInfoui(primaryStage, hotelName);
+		// hotelInfo = hotelbl.showHotelInfo(workerName);
+		hotelInfoPane = new HotelInfoui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelInfoPane);
 	}
@@ -91,10 +130,50 @@ public class HotelInfouiController {
 	 */
 	@FXML
 	private void viewRoomInfo() {
-		// hotelInfo = hotelbl.showHotelInfo(hotelName);
-		roomInfoPane = new RoomInfoui(primaryStage, hotelName);
+		// hotelInfo = hotelbl.showHotelInfo(workerName);
+		roomInfoPane = new RoomInfoui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(roomInfoPane);
+	}
+
+	/**
+	 * 保存酒店信息
+	 */
+	@FXML
+	private void saveHotelInfo() {
+		String hotelName = hotelNameField.getText();
+		String area = areaField.getText();
+		String feature = featureField.getText();
+		String location = locationField.getText();
+		String star = starField.getText();
+		String connection = connectionField.getText();
+		service = new ArrayList<Boolean>();
+		service.add(wifiCheck.isSelected());
+		service.add(TVCheck.isSelected());
+		service.add(sofaCheck.isSelected());
+		service.add(diningCheck.isSelected());
+		if (hotelName.equals("") || area.equals("") || feature.equals("") || location.equals("") || star.equals("")
+				|| connection.equals("")) {
+			feedbackLabel.setText("修改后的信息不能为空！");
+		}
+		else if(!this.hotelName.equals(hotelName)){
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("不能修改酒店名称！");
+		}
+		else{
+			hotelInfo.setCircle(area);
+			hotelInfo.setFeature(feature);
+			hotelInfo.setAddress(location);
+			hotelInfo.setStar(Integer.parseInt(star));
+			hotelInfo.setHotelPhone(connection);
+			hotelInfo.setService(service);
+			if(hotelbl.modifyHotelInfo(hotelInfo)){
+				feedbackLabel.setText("修改成功！");
+			}
+			else{
+				feedbackLabel.setText("系统出现错误！");
+			}
+		}
 	}
 
 	/**
@@ -109,10 +188,33 @@ public class HotelInfouiController {
 	/**
 	 * 传递用户名
 	 * 
-	 * @param hotelName
+	 * @param workerName
 	 */
-	public void setHotelName(String hotelName) {
-		this.hotelName = hotelName;
-		nameLabel.setText(hotelName);
+	public void setWorkerNameAndShowInfo(String workerName) {
+		this.workerName = workerName;
+		nameLabel.setText(workerName);
+		hotelName = userbl.getHotelWorkerInfo(workerName).getHotelName();
+		hotelInfo = hotelbl.getHotelInfoByHotelworkerOrManager(hotelName);
+		nameLabel.setText(workerName);
+		hotelNameField.setText(hotelName);
+		areaField.setText(hotelInfo.getCircle());
+		featureField.setText(hotelInfo.getFeature());
+		locationField.setText(hotelInfo.getAddress());
+		starField.setText(String.valueOf(hotelInfo.getStar()));
+		connectionField.setText(hotelInfo.getHotelPhone());
+		;
+		service = hotelInfo.getService();
+		if (service.get(0)) {
+			wifiCheck.setSelected(true);
+		}
+		if (service.get(1)) {
+			TVCheck.setSelected(true);
+		}
+		if (service.get(2)) {
+			sofaCheck.setSelected(true);
+		}
+		if (service.get(3)) {
+			diningCheck.setSelected(true);
+		}
 	}
 }
