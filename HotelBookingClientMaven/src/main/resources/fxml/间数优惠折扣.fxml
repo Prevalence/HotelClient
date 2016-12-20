@@ -20,7 +20,7 @@
          </image>
       </ImageView>
       <Circle fill="WHITE" layoutX="30.0" layoutY="33.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
@@ -86,18 +86,6 @@
             <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../酒店工作人员首界面/酒店信息.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/促销策略.png" />
                </image>
             </ImageView>
          </graphic>
@@ -171,5 +159,17 @@
             <Image url="@../酒店详情界面/色块.png" />
          </image>
       </ImageView>
+      <Button layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../酒店工作人员首界面/促销策略.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </Pane>

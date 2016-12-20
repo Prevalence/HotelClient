@@ -1,0 +1,14 @@
+.button {
+    	-fx-background-color: white;
+	-fx-border-width:0px;
+}
+.button:hover {
+    -fx-background-color: lightskyblue;
+}
+.button:pressed {
+    	-fx-border-width:1px;
+        -fx-border-color:lightskyblue;
+}
+.button:focused {
+	 -fx-effect: dropshadow( one-pass-box,grey);
+}

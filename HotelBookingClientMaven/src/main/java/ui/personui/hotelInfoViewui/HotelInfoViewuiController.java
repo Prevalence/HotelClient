@@ -85,14 +85,14 @@ public class HotelInfoViewuiController {
 
 	// 填充进hotelInfoTable的酒店数据
 	private ObservableList<RoomInfoVO> roomData;
-	
+
 	private ArrayList<RoomInfoVO> roomInfoList;
 
 	private RoomInfoVO roomInfo;
 
 	// 填充进commentTable的酒店数据
 	private ObservableList<CommentInfoVO> commentData;
-	
+
 	private ArrayList<CommentVO> comment;
 
 	private ArrayList<CommentInfoVO> commentList;
@@ -107,8 +107,8 @@ public class HotelInfoViewuiController {
 
 	// 订单查看界面
 	private Pane personOrderViewPane;
-	
-	//订单信息填写界面
+
+	// 订单信息填写界面
 	private Pane createOrderPane;
 
 	private Stage primaryStage;
@@ -159,13 +159,13 @@ public class HotelInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelSearchPane);
 	}
-	
+
 	/**
 	 * 生成订单，跳转到订单信息填写界面
 	 */
 	@FXML
-	private void createOrder(){
-		createOrderPane = new CreateOrderui(primaryStage, personname,hotelName,hotelInfo);
+	private void createOrder() {
+		createOrderPane = new CreateOrderui(primaryStage, personname, hotelName, hotelInfo);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(createOrderPane);
 	}
@@ -186,6 +186,7 @@ public class HotelInfoViewuiController {
 	 */
 	public void setPersonname(String personname) {
 		this.personname = personname;
+		nameLabel.setText(personname);
 	}
 
 	/**
@@ -197,31 +198,30 @@ public class HotelInfoViewuiController {
 	public void setHotelNameAndShowInfo(String hotelName) {
 		this.hotelName = hotelName;
 		hotelInfo = hotelbl.getHotelInfoByPerson(hotelName);
-		if(hotelInfo.getService().get(0)){
+		if (hotelInfo.getService().get(0)) {
 			wifiLabel.setText("wifi");
 		}
-		if(hotelInfo.getService().get(1)){
+		if (hotelInfo.getService().get(1)) {
 			wifiLabel.setText("电视");
 		}
-		if(hotelInfo.getService().get(2)){
+		if (hotelInfo.getService().get(2)) {
 			wifiLabel.setText("沙发");
 		}
-		if(hotelInfo.getService().get(3)){
+		if (hotelInfo.getService().get(3)) {
 			wifiLabel.setText("餐厅");
 		}
 		featureLabel.setText(hotelInfo.getFeature());
-		//connectionLabel.setText(hotelInfo.get);
-		scoreLabel.setText(String.valueOf(hotelInfo.getScore())+"/5");
+		scoreLabel.setText(String.valueOf(hotelInfo.getScore()) + "/5");
 		areaLabel.setText(hotelInfo.getCircle());
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
 		connectionLabel.setText(hotelInfo.getHotelPhone());
-		System.out.println("connection:"+hotelInfo.getHotelPhone());
-		
+		System.out.println("connection:" + hotelInfo.getHotelPhone());
+
 		comment = hotelInfo.getComment();
 		room = hotelInfo.getRoom();
 		commentList = getCommentList(comment);
-		roomInfoList = getRoomInfoList(room);
+		roomInfoList = hotelbl.getHotelRoomInfo(hotelName);
 		roomData = FXCollections.observableArrayList(roomInfoList);
 		commentData = FXCollections.observableArrayList(commentList);
 		roomInfoTable.setItems(roomData);
@@ -242,7 +242,7 @@ public class HotelInfoViewuiController {
 			name = comment.get(i).getPersonname();
 			time = comment.get(i).getTime();
 			content = comment.get(i).getContent();
-			commentInfo=new CommentInfoVO(name,time,content);
+			commentInfo = new CommentInfoVO(name, time, content);
 			commentList.add(commentInfo);
 		}
 		return commentList;
@@ -255,19 +255,19 @@ public class HotelInfoViewuiController {
 	 */
 	private ArrayList<RoomInfoVO> getRoomInfoList(ArrayList<RoomVO> room) {
 		ArrayList<RoomInfoVO> roomInfoList = new ArrayList<RoomInfoVO>();
-		String roomtype="";
-		int roomPrice=0;
+		String roomtype = "";
+		int roomPrice = 0;
 		for (int i = 0; i < room.size(); i++) {
-			roomtype=room.get(i).getRoomType();
-			roomPrice=room.get(i).getRoomPrice();
-			roomInfo=new RoomInfoVO(roomtype,roomPrice);
+			roomtype = room.get(i).getRoomType();
+			roomPrice = room.get(i).getRoomPrice();
+			roomInfo = new RoomInfoVO(roomtype, roomPrice);
 			roomInfoList.add(roomInfo);
-			System.out.println("roomPrice:"+roomInfo.getRoomPrice());
-			System.out.println("roomtype:"+roomInfo.getRoomtype());
+			System.out.println("roomPrice:" + roomInfo.getRoomPrice());
+			System.out.println("roomtype:" + roomInfo.getRoomtype());
 		}
 		return roomInfoList;
 	}
-	
+
 	/**
 	 * 初始设置TableView的属性，绑定内部按钮
 	 */

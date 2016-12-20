@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.marketui.orderInfoViewui.OrderInfoViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.marketui.orderInfoViewui.OrderInfoViewuiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,7 +20,7 @@
          </image>
       </ImageView>
       <Circle fill="WHITE" layoutX="30.0" layoutY="33.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
@@ -36,7 +36,7 @@
          </image>
       </ImageView>
       <TextField layoutX="472.0" layoutY="111.0" />
-      <Button layoutX="717.0" layoutY="106.0" mnemonicParsing="false" style="-fx-background-color: transprent;">
+      <Button layoutX="717.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" stylesheets="@../酒店促销策略/搜索键.css">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -62,7 +62,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+      <Button fx:id="creditButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -74,7 +74,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button fx:id="promotionButton" layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -150,7 +150,7 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="501.0" layoutY="703.0" mnemonicParsing="false" style="-fx-background-color: transprent;">
+      <Button layoutX="501.0" layoutY="703.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" stylesheets="@../酒店促销策略/搜索键.css">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -8,8 +8,11 @@ import businessLogicService.orderblService.OrderblService;
 import businessLogicService.userblService.UserblService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -22,6 +25,8 @@ import ui.helper.OrderButtonCell;
 import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.promotionui.Promotionui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
+import vo.hotelVO.hotelblVO.RoomVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.orderVO.orderblVO.OrderVO;
 import vo.orderVO.orderuiVO.HotelOrderVO;
 
@@ -39,6 +44,8 @@ public class OrderViewuiController {
 	private Button searchButton;
 	@FXML
 	private Label nameLabel;
+	@FXML
+	private Label feedbackLabel;
 	@FXML
 	private Pane mainPane;
 	@SuppressWarnings("rawtypes")
@@ -60,9 +67,12 @@ public class OrderViewuiController {
 	@FXML
 	private TableColumn buttonCol;
 
+	@FXML
+	private ChoiceBox<String> stateChoices;
+
 	@SuppressWarnings("unused")
 	private UserblService userbl;
-	
+
 	private OrderblService orderbl;
 
 	// 酒店订单浏览界面
@@ -76,11 +86,13 @@ public class OrderViewuiController {
 
 	// 房间信息界面
 	private Pane roomInfoPane;
-	
+
 	// 填充进TableView的酒店数据
 	private ObservableList<HotelOrderVO> orderData;
 
 	private ArrayList<HotelOrderVO> orderViewList;
+
+	private String[] states = { "未执行", "已执行", "已撤销", "异常", "全部" };
 
 	// 订单数据表
 	private ArrayList<OrderVO> orders;
@@ -88,6 +100,8 @@ public class OrderViewuiController {
 	private Stage primaryStage;
 
 	private String workerName;
+
+	private String state;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -176,15 +190,16 @@ public class OrderViewuiController {
 		primaryStage.setHeight(832);
 		primaryStage.setX(400);
 	}
-	
+
 	/**
-	 * 设置并显示订单信息
+	 * 用订单编号搜索
+	 * 
 	 * @param order
 	 */
-	public void setAndShowOrder(OrderVO order){
-		
+	public void searchWithOrderNumber() {
+
 	}
-	
+
 	/**
 	 * 初始化订单列表
 	 */
@@ -195,21 +210,23 @@ public class OrderViewuiController {
 		orderIDCol.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
 		stateCol.setCellValueFactory(new PropertyValueFactory<>("state"));
 		buttonCol.setCellFactory(new Callback<TableColumn<HotelOrderVO, Boolean>, TableCell<HotelOrderVO, Boolean>>() {
-			
+
 			@Override
 			public TableCell<HotelOrderVO, Boolean> call(TableColumn<HotelOrderVO, Boolean> p) {
 				@SuppressWarnings("rawtypes")
-				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, workerName,"hotelworker",orders);
+				OrderButtonCell buttonCell = new OrderButtonCell(orderTable, mainPane, primaryStage, workerName,
+						"hotelworker", orders);
 				return buttonCell;
 			}
 		});
 		orders = orderbl.hotelOrders(userbl.getHotelWorkerInfo(workerName).getHotelName());
 		orderViewList = getOrderViewList(orders);
 		orderData = FXCollections.observableArrayList(orderViewList);
-//		System.out.println("order:"+orders.get(0).getOrderID());
+		 System.out.println("order:"+orders.get(0).getOrderID());
+		 System.out.println("order:"+orders.get(1).getOrderID());
 		orderTable.setItems(orderData);
 	}
-	
+
 	/**
 	 * 从orderVO列表中获取用于界面显示的HotelOrderVO列表
 	 * 
@@ -227,9 +244,41 @@ public class OrderViewuiController {
 			expectedTime = orders.get(i).getPredictExecutetime();
 			person = orders.get(i).getPersonname();
 			orderState = orders.get(i).getOrderstate();
-			order = new HotelOrderVO(orderNumber,expectedTime,person,orderState);
+			order = new HotelOrderVO(orderNumber, expectedTime, person, orderState);
 			orderList.add(order);
 		}
 		return orderList;
+	}
+
+	/**
+	 * 设置订单状态选择的组件
+	 * 
+	 * @param others
+	 */
+	public void setBookedChoiceBox(ObservableList<String> others) {
+		stateChoices.setItems(others);
+		stateChoices.setOnAction(new EventHandler<ActionEvent>() {
+			@SuppressWarnings("unchecked")
+			public void handle(ActionEvent event) {
+				state = states[stateChoices.getSelectionModel().getSelectedIndex()];
+				if (state.equals("全部")) {
+					orders = orderbl.hotelOrders(userbl.getHotelWorkerInfo(workerName).getHotelName());
+					orderViewList = getOrderViewList(orders);
+					orderData = FXCollections.observableArrayList(orderViewList);
+					// System.out.println("order:"+orders.get(0).getOrderID());
+					orderTable.refresh();
+					orderTable.setItems(orderData);
+				} else {
+					String hotelName = userbl.getHotelWorkerInfo(workerName).getHotelName();
+					orders = orderbl.hotelStateOrders(hotelName, state);
+					orderViewList = getOrderViewList(orders);
+					orderData = FXCollections.observableArrayList(orderViewList);
+					System.out.println("hotelName:" + hotelName+" size:"+orderData.size());
+					// System.out.println("order:"+orders.get(0).getOrderID());
+					orderTable.refresh();
+					orderTable.setItems(orderData);
+				}
+			}
+		});
 	}
 }

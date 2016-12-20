@@ -27,7 +27,7 @@ public class PersonInfoui extends Pane{
 	 */
 	public void initUserInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserInfoui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/网站管理人员搜索得到客户的界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -38,6 +38,6 @@ public class PersonInfoui extends Pane{
 		// primaryStage.setScene(scene);
 		userInfoViewuiController = loader.getController();
 		userInfoViewuiController.launchStage(primaryStage);
-		userInfoViewuiController.setPersonname(personname);
+		userInfoViewuiController.setPersonAndShowInfo(personname);
 	}
 }

@@ -42,18 +42,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="hotelInfoButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewHotelInfo" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店工作人员首界面/酒店信息.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button fx:id="promotionButton" layoutY="148.0" mnemonicParsing="false" onAction="#viewPromotion" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -138,7 +126,7 @@
             <Image url="@../酒店详情界面/价格.png" />
          </image>
       </ImageView>
-      <Button layoutX="502.0" layoutY="655.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+      <Button layoutX="502.0" layoutY="655.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
          <font>
             <Font size="1.0" />
          </font>
@@ -155,5 +143,17 @@
             <Image url="@../酒店详情界面/色块.png" />
          </image>
       </ImageView>
+      <Button fx:id="hotelInfoButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewHotelInfo" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../酒店工作人员首界面/酒店信息.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </fx:root>

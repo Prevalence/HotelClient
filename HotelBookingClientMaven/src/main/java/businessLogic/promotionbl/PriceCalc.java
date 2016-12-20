@@ -92,6 +92,9 @@ public class PriceCalc {
 				PromotionPO temp=promotionpolist.get(i);
 				String promotionType=temp.getPromotionType();
 				discount=Helper.getcalculateinstance(promotionType);
+				if(discount==null){
+					break;
+				}
 				double thisprice=discount.getprice(initialtotal,promotionpolist.get(i), personpo, orderpo);
 				if(thisprice<bestprice)
 					bestprice=thisprice;

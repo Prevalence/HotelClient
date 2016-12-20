@@ -1,8 +1,10 @@
-package ui.managerui.personInfoui;
+package ui.managerui.hotelworkerAddui;
 
-import java.rmi.RemoteException;
+import java.util.ArrayList;
 
+import businessLogic.hotelbl.HotelController;
 import businessLogic.userbl.UserController;
+import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,50 +14,50 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.managerui.userSearchAndAddui.UserSearchAndAddui;
-import vo.MarketVO;
-import vo.personVO.PersonVO;
+import vo.HotelWorkerVO;
+import vo.hotelVO.hotelblVO.CommentVO;
+import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
 
-public class PersonInfouiController {
+public class HotelworkerAdduiController {
 	@FXML
 	private Button returnButton;
 	@FXML
 	private Button saveButton;
 	@FXML
-	private TextField personnameField;
+	private TextField workIDField;
 	@FXML
-	private TextField VIPTypeField;
+	private TextField hotelField;
 	@FXML
-	private TextField VIPLevelField;
-	@FXML
-	private TextField connectionField;
-	@FXML
-	private TextField creditField;
+	private TextField passwordField;
 	@FXML
 	private Label feedbackLabel;
 	@FXML
 	private Pane mainPane;
 
-	@SuppressWarnings("unused")
 	private UserblService userbl;
+	
+	private HotelblService hotelbl;
 
 	// 网站管理人员首界面
 	private Pane userSearchAndAddPane;
 
 	private Stage primaryStage;
 
+	private HotelWorkerVO hotelworkerInfo;
+
 	private String managerName;
-	
+
 	@SuppressWarnings("unused")
-	private String personname;
-	
-	private PersonVO personInfo;
+	private String hotelworkerName;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public PersonInfouiController() {
+	public HotelworkerAdduiController() {
 		userbl = new UserController();
+		hotelbl = new HotelController();
 	}
 
 	/**
@@ -67,35 +69,37 @@ public class PersonInfouiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(userSearchAndAddPane);
 	}
-	
+
 	/**
-	 * 保存修改的信息
+	 * 添加酒店工作人员
 	 */
 	@FXML
-	private void saveChanges() {
-		String personname = personnameField.getText();
-		String vipType = VIPTypeField.getText();
-		String vipLevel = VIPLevelField.getText();
-		String connection = connectionField.getText();
-		String credit = creditField.getText();
-		if (personname.equals("") || vipType.equals("")||vipLevel.equals("") || connection.equals("")||credit.equals("")) {
+	private void addHotelworker() {
+		String workID = workIDField.getText();
+		String password = passwordField.getText();
+		String hotel = hotelField.getText();
+		if (workID.equals("") || password.equals("") || hotel.equals("")) {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("信息填写不完整！");
 		} else {
-			personInfo.setUsername(personname);
-			personInfo.setVipType(vipType);
-			personInfo.setVipLevel(Integer.parseInt(vipLevel));;
-			personInfo.setPhoneNumber(connection);
-			personInfo.setCredit(Integer.parseInt(credit));
-			if (userbl.personSave(personInfo)) {
+			hotelworkerInfo = new HotelWorkerVO(workID, password, hotel);
+			if (userbl.hotelWorkerAdd(hotelworkerInfo)) {
+				ArrayList<Boolean> booked = new ArrayList<Boolean>();
+				ArrayList<RoomVO> room = new ArrayList<RoomVO>();
+				 ArrayList<CommentVO> comment= new ArrayList<CommentVO>();
+				for(int i=0;i<4;i++){
+					booked.add(true);
+				}
+				hotelbl.addHotel(new HotelVO(0, hotel, 1, "未填写", booked, "未填写",
+						"未填写", 5.0,room,comment, workID, "未填写"));
 				feedbackLabel.setTextFill(Color.web("#058cff"));
-				feedbackLabel.setText("修改成功！");
+				feedbackLabel.setText("添加成功！");
 			}
 			else{
 				feedbackLabel.setTextFill(Color.web("#f80202"));
-				feedbackLabel.setText("修改的名称已被使用！");
+				feedbackLabel.setText("无法重复添加！");
 			}
-		} 	
+		}
 	}
 
 	/**
@@ -115,7 +119,7 @@ public class PersonInfouiController {
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}
-	
+
 	/**
 	 * 登录之后调整界面大小，和之后更大的工作区域匹配
 	 */
@@ -124,14 +128,13 @@ public class PersonInfouiController {
 		primaryStage.setHeight(800);
 		primaryStage.setX(400);
 	}
-	
-	public void setPersonAndShowInfo(String personname){
-		this.personname=personname;
-		personInfo=userbl.getPersonInfo(personname);
-		personnameField.setText(personname);
-		VIPTypeField.setText(personInfo.getVipType());
-		VIPLevelField.setText(String.valueOf(personInfo.getVipLevel()));
-		connectionField.setText(personInfo.getPhoneNumber());
-		creditField.setText(String.valueOf(personInfo.getCredit()));
+
+	/**
+	 * 设置并显示酒店工作人员名称
+	 * @param marketName
+	 */
+	public void setHotelworkerName(String hotelworkerName) {
+		this.hotelworkerName = hotelworkerName;
+		workIDField.setText(hotelworkerName);
 	}
 }
