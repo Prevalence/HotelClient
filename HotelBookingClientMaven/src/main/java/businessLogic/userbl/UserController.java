@@ -282,7 +282,7 @@ public class UserController  implements UserblService{
 	public ArrayList<RecordVO> getRecord(String personname) {
 		// TODO Auto-generated method stub
 		try {
-			person.getRecord(personname);
+			return person.getRecord(personname);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
