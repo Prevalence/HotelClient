@@ -183,6 +183,8 @@ public class Person {
 		if(polist!=null){
 			for(int i=0;i<polist.size();i++){
 				RecordVO vo=new RecordVO(polist.get(i));
+				System.out.println(vo.getOperation());
+				System.out.println(vo.getOrderId());
 				volist.add(vo);
 			}
 			

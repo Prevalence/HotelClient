@@ -154,13 +154,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <Circle fill="WHITE" layoutX="30.0" layoutY="33.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
       <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="754.0" prefHeight="35.0" prefWidth="820.0" style="-fx-background-color: transparent;" textFill="RED">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="28.0" layoutY="19.0" prefHeight="28.0" prefWidth="104.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>

@@ -7,6 +7,7 @@ import businessLogic.TimeFormTrans;
 import vo.personVO.RecordVO;
 
 public class RecordPO implements Serializable {
+	private static final long serialVersionUID = 1L;
 	//时间，订单号，动作（订单执行、订单异常、订单撤销、充值），信用度变化、信用度结果
 	private Calendar time;
 	private String orderId;
