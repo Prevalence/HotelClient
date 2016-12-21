@@ -263,10 +263,9 @@ public class UserController  implements UserblService{
 	 */
 	@Override
 	public boolean writeRecord(String personname, RecordVO record) {
-		// TODO Auto-generated method stub
-		Record rec=new Record();
+		// TODO Auto-generated method stub		
 		try {
-			return rec.writeRecord(personname, record);
+			return person.writeRecord(personname, record);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -282,9 +281,8 @@ public class UserController  implements UserblService{
 	@Override
 	public ArrayList<RecordVO> getRecord(String personname) {
 		// TODO Auto-generated method stub
-		Record rec=new Record();
 		try {
-			rec.getRecord(personname);
+			person.getRecord(personname);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
