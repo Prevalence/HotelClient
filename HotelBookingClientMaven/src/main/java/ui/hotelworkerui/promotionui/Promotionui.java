@@ -1,5 +1,7 @@
 package ui.hotelworkerui.promotionui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -7,7 +9,9 @@ import javafx.stage.Stage;
 public class Promotionui extends Pane{
 	private Stage primaryStage;
 
-	private String personname;
+	private String workerName;
+	
+	private ObservableList<String> promotions=FXCollections.observableArrayList();
 
 	private PromotionuiController promotionViewuiController;
 
@@ -16,9 +20,10 @@ public class Promotionui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public Promotionui(Stage primaryStage, String personname) {
+		public Promotionui(Stage primaryStage, String workerName) {
 			this.primaryStage = primaryStage;
-			this.personname = personname;
+			this.workerName = workerName;
+			promotions.addAll("生日优惠","特定时间优惠");
 			initPromotionViewui();
 		};
 
@@ -38,6 +43,7 @@ public class Promotionui extends Pane{
 		// primaryStage.setScene(scene);
 		promotionViewuiController = loader.getController();
 		promotionViewuiController.launchStage(primaryStage);
-		promotionViewuiController.setHotelName(personname);
+		promotionViewuiController.setWorkerName(workerName);
+		promotionViewuiController.setBookedChoiceBox(promotions);;
 	}
 }
