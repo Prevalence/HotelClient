@@ -202,7 +202,6 @@ public class HotelInfouiController {
 		locationField.setText(hotelInfo.getAddress());
 		starField.setText(String.valueOf(hotelInfo.getStar()));
 		connectionField.setText(hotelInfo.getHotelPhone());
-		;
 		service = hotelInfo.getService();
 		if (service.get(0)) {
 			wifiCheck.setSelected(true);

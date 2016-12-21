@@ -138,28 +138,26 @@ public class PersonInfouiController {
 		String day = dayField.getText();
 		String time = year + "-" + month + "-" + day + " 00:00:00";
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		if (!userbl.isExist(nameField.getText(), "person") || nameField.getText().equals(personname)) {
-			Date date;
-			try {
-				date = df.parse(time);
-				Calendar birthday = new GregorianCalendar();
-				birthday.setTime(date);
-				PersonVO newPersonInfo = new PersonVO(nameField.getText(), personInfo.getPassword(),
-						personInfo.getPersonID(), personInfo.getCredit(), time, personInfo.getVipType(),
-						personInfo.getVipLevel(), companyField.getText(), connectionField.getText());
-				userbl.personSave(newPersonInfo);
-				personname = nameField.getText();
-				nameLabel.setText(personname);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				feedbackLabel.setText("日起输入格式不正确，请按照“yyyy-MM-dd”的格式输入!");
-				e.printStackTrace();
+		Date date;
+		try {
+			date = df.parse(time);
+			Calendar birthday = new GregorianCalendar();
+			birthday.setTime(date);
+			PersonVO newPersonInfo = new PersonVO(nameField.getText(), personInfo.getPassword(),
+					personInfo.getPersonID(), personInfo.getCredit(), time, personInfo.getVipType(),
+					personInfo.getVipLevel(), companyField.getText(), connectionField.getText());
+			if (userbl.personSave(newPersonInfo)) {
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("修改成功!");
+			} else {
+				feedbackLabel.setTextFill(Color.web("#ff0000"));
+				feedbackLabel.setText("系统出错!");
 			}
-		} else {
-			feedbackLabel.setText("修改后的用户名称已被使用");
-			nameField.setText(personname);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			feedbackLabel.setText("日起输入格式不正确，请按照“yyyy-MM-dd”的格式输入!");
+			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -172,7 +170,6 @@ public class PersonInfouiController {
 		dayField.setEditable(true);
 		companyField.setEditable(true);
 		connectionField.setEditable(true);
-		nameField.setEditable(true);
 	}
 
 	/**
@@ -199,7 +196,6 @@ public class PersonInfouiController {
 		String time = year + "-" + month + "-" + day + " 00:00:00";
 		String vipInfo = year + month + day;
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		if (!userbl.isExist(nameField.getText(), "person") || nameField.getText().equals(personname)) {
 			try {
 				Date date = df.parse(time);
 				Calendar birthday = new GregorianCalendar();
@@ -207,13 +203,12 @@ public class PersonInfouiController {
 				PersonVO newPersonInfo = new PersonVO(nameField.getText(), personInfo.getPassword(),
 						personInfo.getPersonID(), personInfo.getCredit(), time, personInfo.getVipType(),
 						personInfo.getVipLevel(), companyField.getText(), connectionField.getText());
-				if(userbl.registeMember(newPersonInfo, "普通会员", vipInfo)){
+				if (userbl.registeMember(newPersonInfo, "普通会员", vipInfo)) {
 					feedbackLabel.setTextFill(Color.web("#058cff"));
 					feedbackLabel.setText("成功登记为普通会员。");
 					personname = nameField.getText();
 					nameLabel.setText(personname);
-				}
-				else{
+				} else {
 					feedbackLabel.setTextFill(Color.web("#ff0000"));
 					feedbackLabel.setText("信用值不够，无法成为会员。");
 				}
@@ -223,11 +218,6 @@ public class PersonInfouiController {
 				feedbackLabel.setText("日起输入格式不正确，请按照“yyyy-MM-dd”的格式输入!");
 				e.printStackTrace();
 			}
-		} else {
-			feedbackLabel.setTextFill(Color.web("#ff0000"));
-			feedbackLabel.setText("修改后的用户名称已被使用");
-			nameField.setText(personname);
-		}
 	}
 
 	/**
@@ -295,8 +285,7 @@ public class PersonInfouiController {
 			records = new ArrayList<RecordVO>();
 			recordData = FXCollections.observableArrayList(records);
 			orderTable.setItems(recordData);
-		}
-		else{
+		} else {
 			feedbackLabel.setText("目前还没有信用记录，欢迎使用我们的系统预订酒店。");
 		}
 	}
