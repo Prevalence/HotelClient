@@ -90,4 +90,14 @@ public interface HotelblService {
 	 */
 	public ArrayList<RoomInfoVO> getHotelRoomInfo(String hotelname);
 	
+	/**
+	 * 新增某酒店的某类型房间n个
+	 * @param roomtype
+	 * @param roomnum 新增房间类型的房间数量
+	 * @param roomprice
+	 * @param hotelname
+	 * @return 若酒店已有此房间类型，返回false；否则添加房间并返回true
+	 */
+	public boolean addRoom(String roomtype,int roomnum,int roomprice,String hotelname);
+	
 }
