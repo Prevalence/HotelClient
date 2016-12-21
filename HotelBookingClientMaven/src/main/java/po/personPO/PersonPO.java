@@ -42,7 +42,9 @@ public class PersonPO implements Serializable{
 	}
 	public PersonPO(PersonVO vo) {
 		this.username=vo.getUsername();
-		this.password=vo.getPassword();
+		if(vo.getPassword()!=null){
+			this.password=vo.getPassword();
+		}
 		this.personID=vo.getPersonID();
 		this.credit=vo.getCredit();
 		

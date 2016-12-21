@@ -311,6 +311,40 @@ public class Hotel {
 		
 		return roomInfoList;
 	}
+	/**
+	 * 新增某酒店的某类型房间n个
+	 * @param roomtype
+	 * @param roomnum 新增房间类型的房间数量
+	 * @param roomprice
+	 * @param hotelname
+	 * @return 若酒店已有此房间类型，返回false；否则添加房间并返回true
+	 */
+	public boolean addRoom(String roomtype, int roomnum, int roomprice, String hotelname) throws RemoteException {
+		// TODO Auto-generated method stub
+		HotelController hc=new HotelController();
+		ArrayList<RoomInfoVO> roomlist=hc.getHotelRoomInfo(hotelname);
+		for(int i=0;i<roomlist.size();i++){
+			if(roomlist.get(i).getRoomtype().equals(roomtype)){
+				return false;//若酒店已有此房间类型，返回false
+			}
+		}
+		
+		//以下进行新增房间操作
+		//public boolean roomModify(String hotelname, ArrayList<RoomVO> roomvoList)
+//		public HotelVO getHotelInfoByPerson(String Hotelname)
+		HotelVO hotelvo=hc.getHotelInfoByPerson(hotelname);
+		ArrayList<RoomVO> roomvolist=hotelvo.getRoom();
+		RoomVO roomvo=new RoomVO();
+		roomvo.setRoomType(roomtype);
+		roomvo.setRoomPrice(roomprice);
+		for(int i=0;i<roomnum;i++){
+			roomvolist.add(roomvo);
+		}
+		boolean result=hc.roomModify(hotelname, roomvolist);
+		
+		return result;
+	}
+	
 	
 	/**
 	 * 构造方法

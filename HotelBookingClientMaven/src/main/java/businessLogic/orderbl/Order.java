@@ -8,6 +8,8 @@ import businessLogic.userbl.Person;
 import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
+import vo.hotelVO.hoteluiVO.RoomInfoVO;
 import vo.orderVO.orderblVO.OrderVO;
 import vo.personVO.PersonVO;
 import vo.personVO.RecordVO;
@@ -175,9 +177,51 @@ public class Order{
 		if(user.getPersonInfo(order.getPersonname()).getCredit()<0){//如果客户的信用值小于0，用户不能生成订单
 			return false;
 		}
+		
+		//以下检查订单中的房间等信息是否满足
+		
+		ArrayList<RoomVO> orderroomvolist=order.getRoom();
+		ArrayList<String> roomtypelist=new ArrayList<String>();
+		ArrayList<Integer> roomnumlist=new ArrayList<Integer>();
+		for(int i=0;i<orderroomvolist.size();i++){
+			if(i==0){
+				roomtypelist.add(orderroomvolist.get(i).getRoomType());
+				roomnumlist.add(1);
+			}else{
+				String roomtype=orderroomvolist.get(i).getRoomType();
+				boolean isExist=false;
+				for(int j=0;j<roomtypelist.size();j++){
+					if(roomtype==roomtypelist.get(j)){
+						isExist=true;
+						int afternum=roomnumlist.get(j)+1;
+						roomnumlist.remove(j);
+						roomnumlist.add(j, afternum);
+					}
+				}
+				if(!isExist){
+					roomtypelist.add(orderroomvolist.get(i).getRoomType());
+					roomnumlist.add(1);
+				}
+			}
+			
+		}
+		HotelController hotelcontroller=new HotelController();
+		String hotelname=order.getHotelname();
+//		public int getAvailableNumber(String hotelname, String roomtype, String starttime1, String endtime1);
+		String predictExecutetime=order.getPredictExecutetime();//预计入住时间
+		String predictLeaveTime=order.getPredictLeaveTime();//预计离开时间
+
+		for(int i=0;i<roomtypelist.size();i++){
+			String roomtype=roomtypelist.get(i);
+			int num=hotelcontroller.getAvailableNumber(hotelname, roomtype, predictExecutetime,predictLeaveTime);
+			if(num<roomnumlist.size()){
+				return false;//可用房间数量不足
+			}
+		}
+		
+		//以下生成订单
 		OrderPO orderPO=new OrderPO(order);
 		//orderID共20位，时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
-		String hotelname=order.getHotelname();
 		HotelController hotel=new HotelController();
 		HotelVO hotelvo=hotel.getHotelInfoByHotelworkerOrManager(hotelname);
 		String hotelID=Integer.toString(hotelvo.getHotelID());

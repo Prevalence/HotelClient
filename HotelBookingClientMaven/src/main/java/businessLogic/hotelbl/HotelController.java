@@ -198,5 +198,26 @@ public class HotelController implements HotelblService{
 		return null;
 	}
 
+	/**
+	 * 新增某酒店的某类型房间n个
+	 * @param roomtype
+	 * @param roomnum 新增房间类型的房间数量
+	 * @param roomprice
+	 * @param hotelname
+	 * @return 若酒店已有此房间类型，返回false；否则添加房间并返回true
+	 */
+	@Override
+	public boolean addRoom(String roomtype, int roomnum, int roomprice, String hotelname) {
+		// TODO Auto-generated method stub
+		try {
+			return hotel.addRoom(roomtype, roomnum, roomprice, hotelname);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
 
 }
