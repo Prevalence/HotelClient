@@ -38,7 +38,9 @@ public class PersonVO {
 	public PersonVO(PersonPO po) {
 		super();
 		this.username = po.getUsername();
-		this.password = po.getPassword();
+		if(po.getPassword()!=null){
+			this.password = po.getPassword();
+		}
 		this.personID = po.getPersonID();
 		this.credit = po.getCredit();
 		
