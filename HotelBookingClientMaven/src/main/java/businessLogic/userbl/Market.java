@@ -93,9 +93,9 @@ public class Market {
 		String resultCredit=String.valueOf(creditAfter);
 		recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);
 		
-		Record r=new Record();
+		Person personbl=new Person();
 		//boolean writeRecord(String personname, RecordVO record)
-		boolean isRecord=r.writeRecord(personname, recordvo);
+		boolean isRecord=personbl.writeRecord(personname, recordvo);
 		
 		return isModify&&isRecord;
 	}

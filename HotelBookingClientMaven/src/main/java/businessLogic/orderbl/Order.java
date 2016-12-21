@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import businessLogic.userbl.UserController;
-import businessLogic.userbl.Record;
+import businessLogic.userbl.Person;
 import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.hotelVO.hotelblVO.HotelVO;
@@ -67,8 +67,8 @@ public class Order{
 		String changeCredit=String.valueOf(credit);
 		String resultCredit=String.valueOf(creditAfter);
 		RecordVO recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);
-		Record recordbl=new Record();
-		boolean isRecordWrite=recordbl.writeRecord(ordervo.getPersonname(), recordvo);
+		Person personbl=new Person();
+		boolean isRecordWrite=personbl.writeRecord(ordervo.getPersonname(), recordvo);
 		return orderChange&&isPersonModify&&isRecordWrite;
 	}
 
@@ -113,8 +113,8 @@ public class Order{
 				String changeCredit=String.valueOf(-credit);
 				String resultCredit=String.valueOf(creditAfter);
 				RecordVO recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);
-				Record recordbl=new Record();
-				isRecordWrite=recordbl.writeRecord(order.getPersonname(), recordvo);
+				Person personbl=new Person();
+				isRecordWrite=personbl.writeRecord(order.getPersonname(), recordvo);
 			}
 
 			return isReverse&&isPersonModify&&isRecordWrite;
@@ -158,8 +158,8 @@ public class Order{
 		String changeCredit=String.valueOf(credit);
 		String resultCredit=String.valueOf(creditAfter);
 		RecordVO recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);
-		Record recordbl=new Record();
-		boolean isRecordWrite=recordbl.writeRecord(order.getPersonname(), recordvo);
+		Person personbl=new Person();
+		boolean isRecordWrite=personbl.writeRecord(order.getPersonname(), recordvo);
 		
 		return orderChange&& isPersonModify&& isRecordWrite;
 	}
