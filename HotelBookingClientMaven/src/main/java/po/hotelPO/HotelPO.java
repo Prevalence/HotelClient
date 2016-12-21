@@ -53,6 +53,7 @@ public class HotelPO implements Serializable {
 		this.address = vo.getAddress();
 		this.circle = vo.getCircle();
 		this.score = vo.getScore();
+		this.hotelPhone = vo.getHotelPhone();
 
 		ArrayList<RoomPO> roompo = new ArrayList<RoomPO>();
 		ArrayList<RoomVO> roomvo = vo.getRoom();

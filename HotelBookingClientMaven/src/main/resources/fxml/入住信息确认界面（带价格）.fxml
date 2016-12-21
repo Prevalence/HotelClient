@@ -19,8 +19,7 @@
             <Image url="@../酒店详情界面/蓝色色块.png" />
          </image>
       </ImageView>
-      <Circle fill="WHITE" layoutX="30.0" layoutY="33.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="28.0" layoutY="19.0" prefWidth="104.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
