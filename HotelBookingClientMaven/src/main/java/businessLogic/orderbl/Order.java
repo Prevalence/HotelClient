@@ -4,11 +4,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import businessLogic.userbl.UserController;
+import businessLogic.userbl.Person;
 import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.orderVO.orderblVO.OrderVO;
 import vo.personVO.PersonVO;
+import vo.personVO.RecordVO;
 import dataService.orderDataService.OrderDataService;
 import businessLogic.TimeFormTrans;
 import businessLogic.hotelbl.HotelController;
@@ -33,22 +35,41 @@ public class Order{
 	
 	/**
 	 * 处理异常订单，将订单状态变为已执行并且增加用户被扣除的信用值
-	 * @param order
+	 * @param ordervo
 	 * @param percentOfCredit 为网站营销人员选择的恢复信用值的一半还是全部，1代表一半，2代表全部
 	 * @return boolean
 	 * @throws RemoteException 
 	 */
-	public boolean handleAbnormalOrder(OrderVO order, int percentOfCredit) throws RemoteException {
+	public boolean handleAbnormalOrder(OrderVO ordervo, int percentOfCredit) throws RemoteException {
 		//改变订单状态
-		order.setOrderstate("已执行");//此步将异常订单变为已执行
-		OrderPO orderpo=new OrderPO(order);
+		ordervo.setOrderstate("已执行");//此步将异常订单变为已执行
+		OrderPO orderpo=new OrderPO(ordervo);
 		orderpo.setExecutetime(Calendar.getInstance());
 		boolean orderChange=orderDataService.modify(orderpo);
-		//恢复信用值
+		
+		//恢复客户信用值
 		UserController user=new UserController();
-		int credit=percentOfCredit* order.getOrderprice() /2;
-		boolean creditChange=user.changeCredit(order.getPersonname(), credit);
-		return orderChange&&creditChange;
+		int credit=percentOfCredit* ordervo.getOrderprice() /2;
+		//public RecordVO(String time, String orderId, String operation, String changeCredit, Integer resultCredit)
+		String personname=ordervo.getPersonname();
+		PersonVO personvo=user.getPersonInfo(personname);
+		int oriCredit=personvo.getCredit();
+		int creditAfter=oriCredit+credit;
+		personvo.setCredit(creditAfter);
+		boolean isPersonModify=user.personSave(personvo);
+		
+		//记录信用变化
+		Calendar calendar=Calendar.getInstance();
+		TimeFormTrans t=new TimeFormTrans();
+		String time=t.myToString(calendar);
+		String orderId=ordervo.getOrderID();
+		String operand="执行";
+		String changeCredit=String.valueOf(credit);
+		String resultCredit=String.valueOf(creditAfter);
+		RecordVO recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);
+		Person personbl=new Person();
+		boolean isRecordWrite=personbl.writeRecord(ordervo.getPersonname(), recordvo);
+		return orderChange&&isPersonModify&&isRecordWrite;
 	}
 
 	/**
@@ -68,14 +89,35 @@ public class Order{
 			orderPO.setCanceltime(Calendar.getInstance());
 			boolean isReverse=orderDataService.modify(orderPO);
 			//减少客户信用值
-			boolean isCreditChange=true;
+			boolean isPersonModify=true;
+			boolean isRecordWrite=true;
 			Calendar executeTime=t.myToCalendar(order.getPredictExecutetime());
 			if(Calendar.getInstance().compareTo(executeTime)<6*60*60*1000){//如果撤销的订单距离最晚订单执行时间不足6个小时，扣除信用值
+				//减少客户信用值
 				UserController user=new UserController();
-				isCreditChange=user.changeCredit(order.getPersonname(), -(order.getOrderprice()/2));
+				int credit=order.getOrderprice();
+				//public RecordVO(String time, String orderId, String operation, String changeCredit, Integer resultCredit)
+				String personname=order.getPersonname();
+				PersonVO personvo=user.getPersonInfo(personname);
+				int oriCredit=personvo.getCredit();
+				int creditAfter=oriCredit-credit;
+				personvo.setCredit(creditAfter);
+				isPersonModify=user.personSave(personvo);
+				
+				//记录信用变化
+				Calendar calendar=Calendar.getInstance();
+				TimeFormTrans t1=new TimeFormTrans();
+				String time=t1.myToString(calendar);
+				String orderId=order.getOrderID();
+				String operand="撤销";
+				String changeCredit=String.valueOf(-credit);
+				String resultCredit=String.valueOf(creditAfter);
+				RecordVO recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);
+				Person personbl=new Person();
+				isRecordWrite=personbl.writeRecord(order.getPersonname(), recordvo);
 			}
 
-			return isReverse&&isCreditChange;
+			return isReverse&&isPersonModify&&isRecordWrite;
 		}else{
 			return false;
 		}
@@ -95,10 +137,31 @@ public class Order{
 		order.setOrderstate("已执行");
 		OrderPO orderPO=new OrderPO(order);
 		boolean orderChange=orderDataService.modify(orderPO);
+		
 		//增加客户信用值
 		UserController user=new UserController();
-		boolean creditChange=user.changeCredit(order.getPersonname(), order.getOrderprice());
-		return orderChange&&creditChange;
+		int credit=order.getOrderprice();
+		//public RecordVO(String time, String orderId, String operation, String changeCredit, Integer resultCredit)
+		String personname=order.getPersonname();
+		PersonVO personvo=user.getPersonInfo(personname);
+		int oriCredit=personvo.getCredit();
+		int creditAfter=oriCredit+credit;
+		personvo.setCredit(creditAfter);
+		boolean isPersonModify=user.personSave(personvo);
+				
+		//记录信用变化
+		Calendar calendar=Calendar.getInstance();
+		TimeFormTrans t1=new TimeFormTrans();
+		String time=t1.myToString(calendar);
+		String orderId=order.getOrderID();
+		String operand="执行";
+		String changeCredit=String.valueOf(credit);
+		String resultCredit=String.valueOf(creditAfter);
+		RecordVO recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);
+		Person personbl=new Person();
+		boolean isRecordWrite=personbl.writeRecord(order.getPersonname(), recordvo);
+		
+		return orderChange&& isPersonModify&& isRecordWrite;
 	}
 
 	/**

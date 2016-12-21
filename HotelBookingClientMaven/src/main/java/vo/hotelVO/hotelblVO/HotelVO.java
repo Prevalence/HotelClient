@@ -61,14 +61,14 @@ public class HotelVO {
 		}
 		this.room=roomvo;
 		
-		ArrayList<CommentVO> commentpo=new ArrayList<CommentVO>();
-		ArrayList<CommentPO> commentvo=po.getComment();
+		ArrayList<CommentVO> commentvo=new ArrayList<CommentVO>();
+		ArrayList<CommentPO> commentpo=po.getComment();
 		if(commentpo!=null){
-			for(int i=0; i<commentvo.size(); i++){
-				commentpo.add(new CommentVO(commentvo.get(i)));
+			for(int i=0; i<commentpo.size(); i++){
+				commentvo.add(new CommentVO(commentpo.get(i)));
 			}
 		}
-		this.comment = commentpo;
+		this.comment = commentvo;
 		
 		this.hotelworker = po.getHotelworker();
 	}

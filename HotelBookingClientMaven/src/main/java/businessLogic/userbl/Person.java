@@ -2,12 +2,15 @@ package businessLogic.userbl;
 
 import java.rmi.RemoteException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import dataService.userDataService.UserDataService;
 import po.personPO.PersonPO;
+import po.personPO.RecordPO;
 import rmi.RemoteHelper;
 import vo.personVO.PersonVO;
+import vo.personVO.RecordVO;
 /**
  * @authorxiamutian 
  * @author 武秀峰
@@ -154,6 +157,39 @@ public class Person {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * 写入客户信用记录
+	 * @param personname
+	 * @param record
+	 * @return
+	 */
+	public boolean writeRecord(String personname, RecordVO record) throws RemoteException{
+		// TODO Auto-generated method stub
+		RecordPO po=new RecordPO(record);
+		return userDataService.writeRecord(personname, po);
+	}
+
+	/**
+	 * 获取客户信用记录
+	 * @param personID
+	 * @return
+	 */
+	public ArrayList<RecordVO> getRecord(String personname) throws RemoteException{
+		// TODO Auto-generated method stub
+		ArrayList<RecordPO> polist=userDataService.getRecord(personname);
+		ArrayList<RecordVO> volist=new ArrayList<RecordVO>();
+		if(polist!=null){
+			for(int i=0;i<polist.size();i++){
+				RecordVO vo=new RecordVO(polist.get(i));
+				System.out.println(vo.getOperation());
+				System.out.println(vo.getOrderId());
+				volist.add(vo);
+			}
+			
+		}
+		return volist;
 	}
 
 }
