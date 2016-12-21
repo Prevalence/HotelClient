@@ -44,5 +44,6 @@ public class OrderInfoViewui extends Pane {
 		orderInfoViewuiController.launchStage(primaryStage);
 		orderInfoViewuiController.setPersonname(personname);
 		orderInfoViewuiController.setAndShowOrder(order);
+		orderInfoViewuiController.setHotelNameAndShowInfo(order.getHotelname());
 	}
 }

@@ -1,18 +1,45 @@
 package ui.personui.orderInfoViewui;
 
+import businessLogic.hotelbl.HotelController;
+import businessLogic.orderbl.OrderController;
 import businessLogic.userbl.UserController;
+import businessLogicService.hotelblService.HotelblService;
+import businessLogicService.orderblService.OrderblService;
 import businessLogicService.userblService.UserblService;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.personInfoui.PersonInfoui;
+import vo.hotelVO.hotelblVO.HotelVO;
 import vo.orderVO.orderblVO.OrderVO;
 
 public class OrderInfoViewuiController {
 	
+	@FXML
+	private Label wifiLabel;
+	@FXML
+	private Label TVLabel;
+	@FXML
+	private Label sofaLabel;
+	@FXML
+	private Label diningLabel;
+	@FXML
+	private Label featureLabel;
+	@FXML
+	private Label hotelPhoneLabel;
+	@FXML
+	private Label locationLabel;
+	@FXML
+	private Label hotelNameLabel;
+	@FXML
+	private Label scoreLabel;
+	@FXML
+	private Label areaLabel;
 	@FXML
 	private Label orderIDLabel;
 	@FXML
@@ -34,6 +61,8 @@ public class OrderInfoViewuiController {
 	@FXML
 	private Label nameLabel;
 	@FXML
+	private Label feedbackLabel;
+	@FXML
 	private Button hotelSearchButton;
 	@FXML
 	private Button personInfoButton;
@@ -44,6 +73,10 @@ public class OrderInfoViewuiController {
 
 	@SuppressWarnings("unused")
 	private UserblService userbl;
+	
+	private HotelblService hotelbl;
+	
+	private OrderblService orderbl;
 	
 	private OrderVO orderInfo;
 
@@ -59,6 +92,10 @@ public class OrderInfoViewuiController {
 	private Stage primaryStage;
 
 	private String personname;
+	
+	private String hotelName;
+	
+	private HotelVO hotelInfo;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -66,6 +103,8 @@ public class OrderInfoViewuiController {
 	 */
 	public OrderInfoViewuiController() {
 		userbl = new UserController();
+		hotelbl = new HotelController();
+		orderbl = new OrderController();
 	}
 
 	/**
@@ -96,6 +135,31 @@ public class OrderInfoViewuiController {
 		personOrderPane = new PersonInfoui(primaryStage, personname);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(personOrderPane);
+	}
+	
+	/**
+	 * 撤销未执行订单
+	 */
+	@FXML
+	private void reverseOrder() {
+		if(orderInfo.getOrderstate().equals("未执行")){
+			if(orderbl.reverseOrder(orderInfo)){
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("成功撤销订单。");
+				orderInfo.setOrderstate("已撤销");
+			}
+		}
+		else{
+			feedbackLabel.setText("该订单已经生效，无法撤销。");
+		}
+	}
+	
+	/**
+	 * 评价酒店
+	 */
+	@FXML
+	private void commentHotel() {
+		
 	}
 
 	/**
@@ -133,5 +197,33 @@ public class OrderInfoViewuiController {
 		connectionLabel.setText("联系方式："+order.getPersonPhone());
 		stateLabel.setText(order.getOrderstate());
 		priceLabel.setText("价格：" + String.valueOf(order.getRoom().get(0).getRoomPrice()));
+	}
+	
+	/**
+	 * 传递酒店名，并将该酒店详情显示在界面上
+	 * 
+	 * @param hotelName
+	 */
+	public void setHotelNameAndShowInfo(String hotelName) {
+		this.hotelName = hotelName;
+		hotelInfo = hotelbl.getHotelInfoByPerson(hotelName);
+		if (hotelInfo.getService().get(0)) {
+			wifiLabel.setText("wifi");
+		}
+		if (hotelInfo.getService().get(1)) {
+			TVLabel.setText("电视");
+		}
+		if (hotelInfo.getService().get(2)) {
+			sofaLabel.setText("沙发");
+		}
+		if (hotelInfo.getService().get(3)) {
+			diningLabel.setText("餐厅");
+		}
+		featureLabel.setText(hotelInfo.getFeature());
+		scoreLabel.setText(String.valueOf(hotelInfo.getScore()) + "/5");
+		areaLabel.setText(hotelInfo.getCircle());
+		locationLabel.setText(hotelInfo.getAddress());
+		hotelNameLabel.setText(hotelName);
+		hotelPhoneLabel.setText(hotelInfo.getHotelPhone());
 	}
 }

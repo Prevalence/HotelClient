@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,15 +47,15 @@
                   <Image url="@../酒店详情界面/Shape%2016.png" />
                </image>
             </ImageView>
-            <Label layoutX="136.0" layoutY="80.0" text="4.98/5" />
-            <Label layoutX="115.0" layoutY="15.0" text="南京大酒店">
+            <Label fx:id="scoreLabel" layoutX="136.0" layoutY="80.0" text="4.98/5" />
+            <Label fx:id="hotelNameLabel" layoutX="115.0" layoutY="15.0" text="南京大酒店">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="593.0" layoutY="110.0" text="联系方式：" />
-            <Label layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
-            <Button layoutX="717.0" layoutY="40.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <Label fx:id="areaLabel" layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
+            <Button layoutX="717.0" layoutY="40.0" mnemonicParsing="false" onAction="#viewPromotion" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -64,6 +64,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label fx:id="connectionLabel" layoutX="668.0" layoutY="110.0" prefHeight="20.0" prefWidth="145.0" />
          </children>
       </Pane>
       <Button layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
@@ -102,11 +103,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="711.0" layoutY="693.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
-         <font>
-            <Font size="1.0" />
-         </font>
-      </Button>
       <Pane layoutX="301.0" layoutY="223.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="171.0" layoutY="248.0" prefHeight="45.0" prefWidth="48.0" text="折扣:" textFill="#74d5df">
@@ -123,11 +119,6 @@
             <ImageView fitHeight="94.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../特定时间优惠策略/特定时间优惠策略.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="93.0" layoutX="412.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店评价界面/确定.png" />
                </image>
             </ImageView>
             <Label layoutX="119.0" layoutY="174.0" prefHeight="27.0" prefWidth="105.0" text="起始时间：" textFill="#74d5df">
@@ -148,6 +139,23 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <Label fx:id="feedbackLabel" layoutX="1.0" layoutY="424.0" prefHeight="28.0" prefWidth="371.0" textFill="#fc0101">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="okButton" layoutX="396.0" layoutY="398.0" mnemonicParsing="false" onAction="#addPromotion" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../酒店评价界面/确定.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
@@ -173,4 +181,4 @@
          </graphic>
       </Button>
    </children>
-</Pane>
+</fx:root>
