@@ -9,7 +9,6 @@ import vo.PromotionVO;
  * 酒店促销策略：生日特惠折扣*/
 public class BirthdayHotelproVO extends PromotionVO{
 //	private String promotionType="BirthdayHotelPromtion";
-	private int discount;//如打九五折时，discount=95
 	
 	public BirthdayHotelproVO() {
 		// TODO Auto-generated constructor stub
@@ -21,15 +20,7 @@ public class BirthdayHotelproVO extends PromotionVO{
 		super.setPromotionName(promotionName);
 		super.setPromotionType(promotionType);
 		super.setHotelnameOrWeb(hotelnameOrWeb);
-		this.setDiscount(discount);
-	}
-	
-	public int getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(int discount) {
-		this.discount = discount;
+		super.setDiscount(discount);
 	}
 	
 	public PromotionPO toPO(PromotionVO vo){

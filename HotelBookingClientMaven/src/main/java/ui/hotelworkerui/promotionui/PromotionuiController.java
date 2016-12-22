@@ -172,21 +172,24 @@ public class PromotionuiController {
 	}
 
 	/**
-	 * 新增酒店促销策略
-	 */
-	@FXML
-	private void addPromotion() {
-
-	}
-
-	/**
 	 * 编辑原有酒店促销策略
 	 */
 	@FXML
 	private void editPromotion() {
-
+		if (promotionTable.getSelectionModel().getSelectedIndex() == -1) {
+			feedbackLabel.setText("没有选中要编辑的促销策略！");
+		} else {
+			PromotionVO promotion = promotionVOs.get(promotionTable.getSelectionModel().getSelectedIndex());
+			String promotiontype = promotionVOs.get(promotionTable.getSelectionModel().getSelectedIndex())
+					.getPromotionType();
+			System.out.println("promotiontype:" + promotiontype);
+			newPromotionPane = PromotionFactory.createPromotionEditPane(primaryStage, promotiontype, workerName,
+					promotion);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(newPromotionPane);
+		}
 	}
-	
+
 	/**
 	 * 删除原有酒店促销策略
 	 */
@@ -252,6 +255,9 @@ public class PromotionuiController {
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("promotionName"));
 		typeCol.setCellValueFactory(new PropertyValueFactory<>("promotiontype"));
 		promotionVOs = promotionbl.getProm(hotelName);
+		if (promotionVOs != null) {
+			System.out.println("promotion:" + promotionVOs.size());
+		}
 		promotionList = getpromotionViewList(promotionVOs);
 		promotionData = FXCollections.observableArrayList(promotionList);
 		promotionTable.setItems(promotionData);

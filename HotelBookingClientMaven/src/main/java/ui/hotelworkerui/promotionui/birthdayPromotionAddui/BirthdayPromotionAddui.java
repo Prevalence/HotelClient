@@ -1,22 +1,22 @@
-package ui.hotelworkerui.promotionui.birthdayPromotionui;
+package ui.hotelworkerui.promotionui.birthdayPromotionAddui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class BirthdayPromotionui extends Pane{
+public class BirthdayPromotionAddui extends Pane{
 	private Stage primaryStage;
 
 	private String workerName;
 
-	private BirthdayPromotionuiController birthdayPromotionuiController;
+	private BirthdayPromotionAdduiController birthdayPromotionuiController;
 
 	/**
 		 * 接受primarystage用来完成界面最小化和可移动化设置
 		 * 
 		 * @param primaryStage
 		 */
-		public BirthdayPromotionui(Stage primaryStage, String workerName) {
+		public BirthdayPromotionAddui(Stage primaryStage, String workerName) {
 			this.primaryStage = primaryStage;
 			this.workerName = workerName;
 			initPromotionViewui();
