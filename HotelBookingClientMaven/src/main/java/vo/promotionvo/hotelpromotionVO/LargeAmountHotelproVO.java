@@ -6,9 +6,8 @@ import vo.PromotionVO;
 
 /**
  * @author 武秀峰
- * 酒店促销策略：三间及以上预订特惠*/
+ * 酒店促销策略：多购优惠策略*/
 public class LargeAmountHotelproVO extends PromotionVO{
-//	private String promotionType="LargeAmountHotelPromtion";
 	private int discount;//如打九五折时，discount=95
 	
 	public LargeAmountHotelproVO() {

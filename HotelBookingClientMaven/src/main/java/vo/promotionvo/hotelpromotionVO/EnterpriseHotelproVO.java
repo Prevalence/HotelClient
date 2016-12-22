@@ -8,9 +8,8 @@ import vo.PromotionVO;
 
 /**
  * @author 武秀峰
- * 酒店促销策略：合作企业客户折扣*/
+ * 酒店促销策略：企业优惠策略*/
 public class EnterpriseHotelproVO extends PromotionVO {
-//	private String promotionType="EnterpriseHotelPromtion";
 	private ArrayList<String> enterprise;//合作企业名称列表
 	private int discount;//如打九五折时，discount=95
 	
