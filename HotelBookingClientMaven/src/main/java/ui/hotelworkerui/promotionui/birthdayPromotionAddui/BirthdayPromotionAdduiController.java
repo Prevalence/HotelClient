@@ -1,4 +1,4 @@
-package ui.hotelworkerui.promotionui.birthdayPromotionui;
+package ui.hotelworkerui.promotionui.birthdayPromotionAddui;
 
 import businessLogic.hotelbl.HotelController;
 import businessLogic.promotionbl.PromotionController;
@@ -21,7 +21,7 @@ import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
-public class BirthdayPromotionuiController {
+public class BirthdayPromotionAdduiController {
 	@FXML
 	private Button hotelOrderButton;
 	@FXML
@@ -83,7 +83,7 @@ public class BirthdayPromotionuiController {
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public BirthdayPromotionuiController() {
+	public BirthdayPromotionAdduiController() {
 		userbl = new UserController();
 		promotionbl = new PromotionController();
 		hotelbl = new HotelController();

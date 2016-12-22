@@ -56,6 +56,8 @@ public class CreateOrderuiController {
 	@FXML
 	private Label numberLabel;
 	@FXML
+	private Label nameLabel;
+	@FXML
 	private Label roomPriceLabel;
 	@FXML
 	private Label feedbackLabel;
@@ -142,6 +144,8 @@ public class CreateOrderuiController {
 	private String hotelName;
 
 	private String roomSelected;
+	
+	private String priceSelected;
 
 	private String year1;
 
@@ -241,7 +245,10 @@ public class CreateOrderuiController {
 				|| customer.equals("") || peopleNumber.equals("") || phoneNumber.equals("")) {
 			feedbackLabel.setText("订单信息填写不完整！");
 		} else {
-			orderInfo = new OrderVO("", 0, "未执行", hotelName, room, Integer.parseInt(roomNumber), personname,
+			ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
+			RoomVO room=new RoomVO(roomSelected,"",Integer.parseInt(priceSelected),null,null);
+			rooms.add(room);
+			orderInfo = new OrderVO("", 0, "未执行", hotelName, rooms, Integer.parseInt(roomNumber), personname,
 					phoneNumber, customer, Integer.parseInt(peopleNumber), 0, "", "", "", startTime, endTime, "");
 			orderReviewPane = new OrderReviewui(primaryStage, personname, hotelName, hotelInfo, orderInfo);
 			mainPane.getChildren().remove(0);
@@ -285,6 +292,7 @@ public class CreateOrderuiController {
 	 */
 	public void setPersonname(String personname) {
 		this.personname = personname;
+		nameLabel.setText(personname);
 	}
 
 	/**
@@ -294,7 +302,7 @@ public class CreateOrderuiController {
 	 */
 	public void setHotelVO(HotelVO hotelInfo) {
 		this.hotelInfo = hotelInfo;
-		room = hotelInfo.getRoom();
+		roomInfoList = hotelbl.getHotelRoomInfo(hotelName);
 	}
 
 	/**
@@ -324,6 +332,7 @@ public class CreateOrderuiController {
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
 		connectionLabel.setText(hotelInfo.getHotelPhone());
+		
 	}
 
 	/**
@@ -338,8 +347,10 @@ public class CreateOrderuiController {
 			public void handle(ActionEvent event) {
 				// 就是房间类型
 				roomSelected = roomChoices.getSelectionModel().getSelectedItem().toString();
+				System.out.println("roomSelected:"+roomSelected);
+				priceSelected = roomInfoList.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomPrice();
 				roomPriceLabel.setText(
-						String.valueOf(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomPrice()));
+						roomInfoList.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomPrice());
 				// numberLabel.setText(room.get(roomChoices.getSelectionModel().getSelectedIndex()).getRoomnum());
 
 			}

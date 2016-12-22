@@ -232,12 +232,12 @@ public class OrderReviewuiController {
 	}
 
 	/**
-	 * 生成订单，跳转到订单详情界面
+	 * 生成订单，跳转到订单浏览界面
 	 */
 	@FXML
 	private void createOrder() {
 		orderbl.createOrder(orderInfo);
-		orderInfoPane = new OrderInfoViewui(primaryStage, personname,orderInfo);
+		orderInfoPane = new OrderViewui(primaryStage, personname);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(orderInfoPane);
 	}

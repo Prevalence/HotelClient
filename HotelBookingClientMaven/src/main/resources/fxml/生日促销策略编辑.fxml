@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.promotionui.PromotionuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.promotionui.birthdayPromotionEditui.BirthdayPromotionEdituiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,7 +19,8 @@
             <Image url="@../酒店详情界面/蓝色色块.png" />
          </image>
       </ImageView>
-      <Label fx:id="nameLabel" layoutX="28.0" layoutY="19.0" prefHeight="28.0" prefWidth="104.0" text="小谢" textFill="WHITE">
+      <Circle fill="WHITE" layoutX="30.0" layoutY="33.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="nameLabel" layoutX="79.0" layoutY="19.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
@@ -54,7 +55,7 @@
             </Label>
             <Label layoutX="593.0" layoutY="110.0" text="联系方式：" />
             <Label fx:id="areaLabel" layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
-            <Button layoutX="717.0" layoutY="40.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <Button layoutX="717.0" layoutY="40.0" mnemonicParsing="false" onAction="#viewPromotion" prefHeight="48.0" prefWidth="58.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -66,7 +67,7 @@
             <Label fx:id="connectionLabel" layoutX="668.0" layoutY="110.0" prefHeight="20.0" prefWidth="145.0" />
          </children>
       </Pane>
-      <Button fx:id="hotelOrderButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelOrder" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button layoutY="91.0" mnemonicParsing="false" onAction="#viewHotelOrder" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -78,7 +79,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="hotelInfoButton" layoutX="6.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewHotelInfo" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
+      <Button layoutX="6.0" layoutY="206.0" mnemonicParsing="false" onAction="#viewHotelInfo" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -90,7 +91,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="roomInfoButton" layoutX="1.0" layoutY="265.0" mnemonicParsing="false" onAction="#viewRoomInfo" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button layoutX="1.0" layoutY="265.0" mnemonicParsing="false" onAction="#viewRoomInfo" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -102,53 +103,60 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="promotionTable" layoutX="163.0" layoutY="238.0" prefHeight="424.0" prefWidth="785.0" style="-fx-border-color: ;">
-         <columns>
-            <TableColumn fx:id="IDCol" prefWidth="248.0" />
-            <TableColumn fx:id="nameCol" prefWidth="282.99993896484375" />
-            <TableColumn fx:id="typeCol" prefWidth="254.0" />
-         </columns>
-      </TableView>
-      <ImageView fitHeight="48.0" fitWidth="784.0" layoutX="163.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../酒店促销策略/促销策略.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="deleteButton" layoutX="770.0" layoutY="687.0" mnemonicParsing="false" onAction="#deletePromotion" prefHeight="41.0" prefWidth="93.0" stylesheets="@../酒店促销策略/搜索键.css">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+      <Pane layoutX="301.0" layoutY="223.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="137.0" layoutY="181.0" prefHeight="45.0" prefWidth="82.0" text="折扣:" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="discountField" layoutX="205.0" layoutY="189.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="325.0" layoutY="190.0" text="\%" textFill="#76d4de">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="94.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../酒店促销策略/删除.png" />
+                  <Image url="@../生日促销策略/生日促销策略.png" />
                </image>
             </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="editButton" layoutX="495.0" layoutY="687.0" mnemonicParsing="false" onAction="#editPromotion" prefHeight="41.0" prefWidth="93.0" stylesheets="@../酒店促销策略/搜索键.css">
-         <font>
-            <Font size="1.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../酒店促销策略/编辑.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+            <Label layoutX="129.0" layoutY="135.0" prefHeight="27.0" prefWidth="68.0" text="名称：" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="promotionNameField" layoutX="205.0" layoutY="133.0" prefHeight="30.0" prefWidth="105.0" />
+            <Button fx:id="okButton" layoutX="396.0" layoutY="398.0" mnemonicParsing="false" onAction="#addPromotion" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../酒店评价界面/确定.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="feedbackLabel" layoutX="1.0" layoutY="423.0" prefHeight="28.0" prefWidth="371.0" textFill="#fc0101">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="37.0" fitWidth="145.0" layoutX="-2.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/色块.png" />
          </image>
       </ImageView>
-      <Button fx:id="promotionButton" layoutY="148.0" mnemonicParsing="false" onAction="#viewPromotion" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
+      <Button layoutY="148.0" mnemonicParsing="false" onAction="#viewPromotion" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
          </font>
@@ -160,16 +168,5 @@
             </ImageView>
          </graphic>
       </Button>
-      <ChoiceBox fx:id="promotionChoices" layoutX="243.0" layoutY="691.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="93.0" stylesheets="@../酒店促销策略/选择框.css" />
-      <Label layoutX="269.0" layoutY="696.0" text="新增" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="feedbackLabel" layoutX="144.0" layoutY="757.0" prefHeight="28.0" prefWidth="817.0" textFill="RED">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
    </children>
 </fx:root>
