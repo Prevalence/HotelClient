@@ -26,10 +26,10 @@ public class PromotionFactory {
 	 */
 	public static Pane createPromotionPane(Stage primaryStage, String promotiontype, String workerName) {
 		switch (promotiontype) {
-		case "BirthdayHotelPromotion":
+		case "生日优惠策略":
 			promotionPane = new BirthdayPromotionAddui(primaryStage, workerName);
 			break;
-		case "PeriodHotelPromotion":
+		case "特定时间优惠策略":
 			 promotionPane = new PeriodPromotionAddui(primaryStage, workerName);
 			break;
 		default:
@@ -41,10 +41,10 @@ public class PromotionFactory {
 	public static Pane createPromotionEditPane(Stage primaryStage, String promotiontype, String workerName,
 			PromotionVO promotion) {
 		switch (promotiontype) {
-		case "BirthdayHotelPromotion":
+		case "生日优惠策略":
 			promotionPane = new BirthdayPromotionEditui(primaryStage, workerName,promotion);
 			break;
-		case "PeriodHotelPromotion":
+		case "特定时间优惠策略":
 			 promotionPane = new PeriodPromotionEditui(primaryStage, workerName,
 			 (PeriodHotelproVO)promotion);
 			break;

@@ -13,13 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import ui.personui.hotelCommentui.HotelCommentui;
 import ui.personui.hotelSearchui.HotelSearchui;
 import ui.personui.personInfoui.PersonInfoui;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.orderVO.orderblVO.OrderVO;
 
 public class OrderInfoViewuiController {
-	
+
 	@FXML
 	private Label wifiLabel;
 	@FXML
@@ -73,28 +74,31 @@ public class OrderInfoViewuiController {
 
 	@SuppressWarnings("unused")
 	private UserblService userbl;
-	
+
 	private HotelblService hotelbl;
-	
+
 	private OrderblService orderbl;
-	
+
 	private OrderVO orderInfo;
 
-	// 酒店详情查看界面
+	// 酒店搜索界面
 	private Pane hotelSearchPane;
 
 	// 个人信息界面
 	private Pane personInfoPane;
-	
-	//个人订单界面
+
+	// 个人订单界面
 	private Pane personOrderPane;
+
+	// 评价酒店界面
+	private Pane hotelCommentPane;
 
 	private Stage primaryStage;
 
 	private String personname;
-	
+
 	private String hotelName;
-	
+
 	private HotelVO hotelInfo;
 
 	/**
@@ -126,7 +130,7 @@ public class OrderInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(personInfoPane);
 	}
-	
+
 	/**
 	 * 跳转个人信息界面
 	 */
@@ -136,34 +140,34 @@ public class OrderInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(personOrderPane);
 	}
-	
+
 	/**
 	 * 撤销未执行订单
 	 */
 	@FXML
 	private void reverseOrder() {
-		if(orderInfo.getOrderstate().equals("未执行")){
-			if(orderbl.reverseOrder(orderInfo)){
+		if (orderInfo.getOrderstate().equals("未执行")) {
+			if (orderbl.reverseOrder(orderInfo)) {
 				feedbackLabel.setTextFill(Color.web("#058cff"));
 				feedbackLabel.setText("成功撤销订单。");
 				orderInfo.setOrderstate("已撤销");
-			}
-			else{
+			} else {
 				feedbackLabel.setTextFill(Color.web("#ff0000"));
 				feedbackLabel.setText("系统错误。");
 			}
-		}
-		else{
+		} else {
 			feedbackLabel.setText("该订单已经生效，无法撤销。");
 		}
 	}
-	
+
 	/**
 	 * 评价酒店
 	 */
 	@FXML
 	private void commentHotel() {
-		
+		hotelCommentPane = new HotelCommentui(primaryStage, personname,hotelName);
+		mainPane.getChildren().remove(0);
+		mainPane.getChildren().add(hotelCommentPane);
 	}
 
 	/**
@@ -184,7 +188,7 @@ public class OrderInfoViewuiController {
 		this.personname = personname;
 		nameLabel.setText(personname);
 	}
-	
+
 	/**
 	 * 设置并显示订单信息
 	 * 
@@ -198,11 +202,11 @@ public class OrderInfoViewuiController {
 		startTimeLabel.setText("入住时间：" + order.getExecutetime());
 		endTimeLabel.setText("退房时间：" + order.getCanceltime());
 		personLabel.setText("入住人：" + order.getRealname());
-		connectionLabel.setText("联系方式："+order.getPersonPhone());
+		connectionLabel.setText("联系方式：" + order.getPersonPhone());
 		stateLabel.setText(order.getOrderstate());
 		priceLabel.setText("价格：" + String.valueOf(order.getRoom().get(0).getRoomPrice()));
 	}
-	
+
 	/**
 	 * 传递酒店名，并将该酒店详情显示在界面上
 	 * 

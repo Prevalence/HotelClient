@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.promotionui.periodPromotionEditui.PeriodPromotionEdituiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -110,7 +110,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="239.0" layoutY="256.0" prefHeight="30.0" prefWidth="105.0" />
+            <TextField fx:id="discountField" layoutX="239.0" layoutY="256.0" prefHeight="30.0" prefWidth="105.0" />
             <Label layoutX="359.0" layoutY="257.0" text="\%" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
@@ -126,14 +126,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="239.0" layoutY="172.0" prefHeight="30.0" prefWidth="105.0" />
-            <TextField layoutX="239.0" layoutY="214.0" prefHeight="30.0" prefWidth="105.0" />
             <Label layoutX="119.0" layoutY="216.0" prefHeight="27.0" prefWidth="105.0" text="终止时间：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="239.0" layoutY="126.0" prefHeight="30.0" prefWidth="105.0" />
+            <TextField fx:id="promotionField" layoutX="239.0" layoutY="126.0" prefHeight="30.0" prefWidth="105.0" />
             <Label layoutX="158.0" layoutY="128.0" prefHeight="27.0" prefWidth="68.0" text="名称：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
@@ -156,6 +154,22 @@
                   </ImageView>
                </graphic>
             </Button>
+            <TextField fx:id="dayField112" layoutX="376.0" layoutY="215.0" prefHeight="30.0" prefWidth="52.0" />
+            <TextField fx:id="dayField111" layoutX="310.0" layoutY="215.0" prefHeight="30.0" prefWidth="52.0" />
+            <TextField fx:id="dayField11" layoutX="376.0" layoutY="172.0" prefHeight="30.0" prefWidth="52.0" />
+            <TextField fx:id="dayField1" layoutX="310.0" layoutY="172.0" prefHeight="30.0" prefWidth="52.0" />
+            <ChoiceBox fx:id="dayChoices1" layoutX="377.0" layoutY="173.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="monthChoices2" layoutX="308.0" layoutY="215.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="dayChoices2" layoutX="377.0" layoutY="215.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
+            <ChoiceBox fx:id="monthChoices1" layoutX="308.0" layoutY="172.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
+            <Label layoutX="428.0" layoutY="220.0" text="日" />
+            <Label layoutX="361.0" layoutY="220.0" text="月" />
+            <Label layoutX="294.0" layoutY="220.0" prefHeight="20.0" prefWidth="22.0" text="年" />
+            <TextField fx:id="yearField2" layoutX="239.0" layoutY="215.0" prefHeight="30.0" prefWidth="54.0" />
+            <Label layoutX="428.0" layoutY="178.0" text="日" />
+            <Label layoutX="361.0" layoutY="177.0" text="月" />
+            <Label layoutX="294.0" layoutY="177.0" prefHeight="20.0" prefWidth="22.0" text="年" />
+            <TextField fx:id="yearField1" layoutX="239.0" layoutY="172.0" prefHeight="30.0" prefWidth="54.0" />
          </children>
       </Pane>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">

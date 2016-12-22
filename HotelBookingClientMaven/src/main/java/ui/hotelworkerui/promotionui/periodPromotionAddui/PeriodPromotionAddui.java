@@ -1,5 +1,7 @@
 package ui.hotelworkerui.promotionui.periodPromotionAddui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -8,6 +10,8 @@ public class PeriodPromotionAddui extends Pane{
 	private Stage primaryStage;
 
 	private String workerName;
+	
+	private ObservableList<String> months = FXCollections.observableArrayList();
 	
 	private PeriodPromotionAdduiController birthdayPromotionuiController;
 
@@ -19,6 +23,7 @@ public class PeriodPromotionAddui extends Pane{
 		public PeriodPromotionAddui(Stage primaryStage, String workerName) {
 			this.primaryStage = primaryStage;
 			this.workerName = workerName;
+			months.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
 			initPromotionViewui();
 		};
 
@@ -39,5 +44,6 @@ public class PeriodPromotionAddui extends Pane{
 		birthdayPromotionuiController = loader.getController();
 		birthdayPromotionuiController.launchStage(primaryStage);
 		birthdayPromotionuiController.setWorkerNameAndShowInfo(workerName);
+		birthdayPromotionuiController.setMonthChoiceBox(months);
 	}
 }

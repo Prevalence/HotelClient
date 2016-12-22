@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.orderInfoViewui.OrderInfoViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.personui.hotelCommentui.HotelCommentuiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -70,13 +70,13 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextArea layoutX="10.0" layoutY="167.0" prefHeight="200.0" prefWidth="494.0" />
-            <RadioButton layoutX="32.0" layoutY="92.0" mnemonicParsing="false" text="1分" />
-            <RadioButton layoutX="138.0" layoutY="92.0" mnemonicParsing="false" text="2分" />
-            <RadioButton layoutX="225.0" layoutY="92.0" mnemonicParsing="false" text="3分" />
-            <RadioButton layoutX="331.0" layoutY="92.0" mnemonicParsing="false" text="4分" />
-            <RadioButton layoutX="438.0" layoutY="92.0" mnemonicParsing="false" text="5分" />
-            <Button fx:id="reverseButton" layoutX="203.0" layoutY="387.0" mnemonicParsing="false" onAction="#reverseOrder" prefHeight="41.0" prefWidth="93.0" stylesheets="@../酒店促销策略/搜索键.css">
+            <TextArea fx:id="commentArea" layoutX="10.0" layoutY="167.0" prefHeight="200.0" prefWidth="494.0" />
+            <RadioButton fx:id="pointButton1" layoutX="22.0" layoutY="92.0" mnemonicParsing="false" text="1分" />
+            <RadioButton fx:id="pointButton2" layoutX="126.0" layoutY="92.0" mnemonicParsing="false" text="2分" />
+            <RadioButton fx:id="pointButton3" layoutX="225.0" layoutY="92.0" mnemonicParsing="false" text="3分" />
+            <RadioButton fx:id="pointButton4" layoutX="331.0" layoutY="92.0" mnemonicParsing="false" text="4分" />
+            <RadioButton fx:id="pointButton5" layoutX="438.0" layoutY="92.0" mnemonicParsing="false" text="5分" />
+            <Button fx:id="submitButton" layoutX="203.0" layoutY="387.0" mnemonicParsing="false" onAction="#submitComment" prefHeight="41.0" prefWidth="93.0" stylesheets="@../酒店促销策略/搜索键.css">
                <font>
                   <Font size="1.0" />
                </font>
@@ -135,7 +135,7 @@
             <Label layoutX="352.0" layoutY="110.0" text="地址：" />
             <Label layoutX="351.0" layoutY="81.0" text="联系方式：" />
             <Label fx:id="areaLabel" layoutX="117.0" layoutY="110.0" text="仙林大学城商圈" />
-            <Button layoutX="717.0" layoutY="40.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="35.0" stylesheets="@../酒店促销策略/搜索键.css">
+            <Button fx:id="returnButton" layoutX="717.0" layoutY="40.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="35.0" stylesheets="@../酒店促销策略/搜索键.css">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -153,7 +153,12 @@
             <Label fx:id="locationLabel" layoutX="397.0" layoutY="110.0" prefHeight="20.0" prefWidth="310.0" />
          </children>
       </Pane>
-      <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="756.0" prefHeight="28.0" prefWidth="817.0" text="123" textFill="#fc0303">
+      <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="756.0" prefHeight="28.0" prefWidth="817.0" textFill="#fc0303">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="756.0" prefHeight="28.0" prefWidth="817.0" textFill="#058cff">
          <font>
             <Font size="20.0" />
          </font>

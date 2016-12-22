@@ -145,15 +145,14 @@ public class OrderInfoViewuiController {
 	 */
 	@FXML
 	private void leave() {
-//		if(orderbl.){
-//			orderInfo.get
-//			feedbackLabel.setTextFill(Color.web("#058cff"));
-//			feedbackLabel.setText("成功办理入住！");;
-//		}
-//		else{
-//			feedbackLabel.setTextFill(Color.web("#f80202"));
-//			feedbackLabel.setText("系统出现异常!");
-//		}
+		if(orderbl.leaveRoom(orderInfo.getOrderID())){
+			feedbackLabel.setTextFill(Color.web("#058cff"));
+			feedbackLabel.setText("成功退房！");;
+		}
+		else{
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("系统出现异常!");
+		}
 	}
 
 	/**
