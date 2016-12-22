@@ -71,10 +71,37 @@ public class Hotel {
 	 * @throws RemoteException 
 	 */
 	public boolean addComment(CommentVO commentvo) throws RemoteException{
+		//增加评论
 		CommentPO commentpo=new CommentPO(commentvo);
 		Calendar c=Calendar.getInstance();
 		commentpo.setTime(c);
-		return hoteldataservice.addComment(commentpo);
+		boolean isComment=hoteldataservice.addComment(commentpo);
+		
+		String hotelname=commentvo.getHotelname();
+		HotelVO hotelvo=getHotelInfoByHotelworkerOrManager(hotelname);
+		
+		//改变酒店评分
+		int personScore=commentvo.getScore();
+		double afterScore;
+		if(hotelvo.getComment()==null){
+			afterScore=(double)personScore;
+		}else{
+			double oriScore=hotelvo.getScore();
+			int size=hotelvo.getComment().size();
+			afterScore=(size*oriScore+personScore)/(size+1);
+		}
+		hotelvo.setScore(afterScore);
+		
+		//增加评论
+		ArrayList<CommentVO> commentvolist=hotelvo.getComment();
+		commentvolist.add(commentvo);
+		hotelvo.setComment(commentvolist);
+		
+		//数据库同步
+		HotelPO hotelpo=new HotelPO(hotelvo);
+		boolean isHotelModify=hoteldataservice.modify(hotelpo);
+		
+		return isComment&&isHotelModify;
 	}
 	
 	/**
