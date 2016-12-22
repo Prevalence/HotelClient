@@ -79,6 +79,7 @@ public class HotelConditionVO {
 	public HotelVO toHotelVO(HotelConditionVO hotelConditionVO){
 		//注意转化过程少了condition的是否预订过这个条件，因此在bl层实现是需要注意判断
 		HotelVO hotelVO=new HotelVO();
+		hotelVO.setHotelname(hotelConditionVO.getHotelName());
 		hotelVO.setStar(hotelConditionVO.getStar());
 		hotelVO.setCircle(hotelConditionVO.getCircle());
 		hotelVO.setScore(hotelConditionVO.getScore());
