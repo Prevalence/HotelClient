@@ -2,8 +2,10 @@ package ui.hotelworkerui.promotionui;
 
 import java.util.ArrayList;
 
+import businessLogic.hotelbl.HotelController;
 import businessLogic.promotionbl.PromotionController;
 import businessLogic.userbl.UserController;
+import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.promotionblService.PromotionblService;
 import businessLogicService.userblService.UserblService;
 import javafx.collections.FXCollections;
@@ -16,6 +18,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -25,8 +28,12 @@ import ui.helper.SearchButtonCell;
 import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
+import vo.PromotionVO;
+import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
+import vo.orderVO.orderuiVO.OrderViewVO;
+import vo.promotionvo.promotionuiVO.PromotionuiVO;
 
 public class PromotionuiController {
 
@@ -35,7 +42,15 @@ public class PromotionuiController {
 	@FXML
 	private Label feedbackLabel;
 	@FXML
-	private Button hotelOrderButton;
+	private Label hotelNameLabel;
+	@FXML
+	private Label scoreLabel;
+	@FXML
+	private Label areaLabel;
+	@FXML
+	private Label connectionLabel;
+	@FXML
+	private Button hotelpromotionButton;
 	@FXML
 	private Button promotionButton;
 	@FXML
@@ -48,18 +63,31 @@ public class PromotionuiController {
 	private Button editButton;
 	@FXML
 	private Button deleteButton;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableView promotionTable;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn IDCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn nameCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn typeCol;
 	@FXML
 	private Pane mainPane;
 	@FXML
 	private ChoiceBox<String> promotionChoices;
 
-	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	private PromotionblService promotionbl;
 
+	private HotelblService hotelbl;
+
 	// 酒店订单浏览界面
-	private Pane hotelOrderPane;
+	private Pane hotelpromotionPane;
 
 	// 促销策略界面
 	private Pane promotionPane;
@@ -77,9 +105,19 @@ public class PromotionuiController {
 
 	private String workerName;
 
+	private String hotelName;
+
 	private String promotionSelected;
 
 	private String[] promotions = { "BirthdayHotelPromotion", "PeriodHotelPromotion" };
+
+	private ArrayList<PromotionVO> promotionVOs;
+
+	private ArrayList<PromotionuiVO> promotionList;
+
+	private ObservableList<PromotionuiVO> promotionData;
+
+	private HotelVO hotelInfo;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -88,6 +126,7 @@ public class PromotionuiController {
 	public PromotionuiController() {
 		userbl = new UserController();
 		promotionbl = new PromotionController();
+		hotelbl = new HotelController();
 	}
 
 	/**
@@ -95,9 +134,9 @@ public class PromotionuiController {
 	 */
 	@FXML
 	private void viewHotelOrder() {
-		hotelOrderPane = new HotelOrderViewui(primaryStage, workerName);
+		hotelpromotionPane = new HotelOrderViewui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(hotelOrderPane);
+		mainPane.getChildren().add(hotelpromotionPane);
 	}
 
 	/**
@@ -147,6 +186,14 @@ public class PromotionuiController {
 	private void editPromotion() {
 
 	}
+	
+	/**
+	 * 删除原有酒店促销策略
+	 */
+	@FXML
+	private void deletePromotion() {
+
+	}
 
 	/**
 	 * 传递Main的primaryStage
@@ -162,9 +209,21 @@ public class PromotionuiController {
 	 * 
 	 * @param workerName
 	 */
-	public void setWorkerName(String workerName) {
+	/**
+	 * 传递用户名
+	 * 
+	 * @param workerName
+	 */
+	public void setWorkerNameAndShowInfo(String workerName) {
 		this.workerName = workerName;
 		nameLabel.setText(workerName);
+		hotelName = userbl.getHotelWorkerInfo(workerName).getHotelName();
+		hotelInfo = hotelbl.getHotelInfoByHotelworkerOrManager(hotelName);
+		nameLabel.setText(workerName);
+		hotelNameLabel.setText(hotelName);
+		areaLabel.setText(hotelInfo.getCircle());
+		scoreLabel.setText(String.valueOf(hotelInfo.getScore()));
+		connectionLabel.setText(hotelInfo.getHotelPhone());
 	}
 
 	/**
@@ -172,7 +231,7 @@ public class PromotionuiController {
 	 * 
 	 * @param others
 	 */
-	public void setBookedChoiceBox(ObservableList<String> others) {
+	public void setPromotionChoiceBox(ObservableList<String> others) {
 		promotionChoices.setItems(others);
 		promotionChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -187,26 +246,35 @@ public class PromotionuiController {
 	/**
 	 * 初始设置TableView的属性，绑定内部按钮
 	 */
-	// @SuppressWarnings("unchecked")
-	// public void initTableView() {
-	// workerNameCol.setCellValueFactory(new
-	// PropertyValueFactory<>("workerName"));
-	// starCol.setCellValueFactory(new PropertyValueFactory<>("star"));
-	// scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
-	// areaCol.setCellValueFactory(new PropertyValueFactory<>("area"));
-	// locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-	// buttonCol
-	// .setCellFactory(new Callback<TableColumn<HotelSearchVO, Boolean>,
-	// TableCell<HotelSearchVO, Boolean>>() {
-	//
-	// @Override
-	// public TableCell<HotelSearchVO, Boolean> call(TableColumn<HotelSearchVO,
-	// Boolean> p) {
-	// SearchButtonCell buttonCell = new SearchButtonCell(searchTable, mainPane,
-	// primaryStage,
-	// personname);
-	// return buttonCell;
-	// }
-	// });
-	// }
+	@SuppressWarnings("unchecked")
+	public void initTableView() {
+		IDCol.setCellValueFactory(new PropertyValueFactory<>("promotionID"));
+		nameCol.setCellValueFactory(new PropertyValueFactory<>("promotionName"));
+		typeCol.setCellValueFactory(new PropertyValueFactory<>("promotiontype"));
+		promotionVOs = promotionbl.getProm(hotelName);
+		promotionList = getpromotionViewList(promotionVOs);
+		promotionData = FXCollections.observableArrayList(promotionList);
+		promotionTable.setItems(promotionData);
+	}
+
+	/**
+	 * 从promotionVO列表中获取用于界面显示的PromotionuiVO列表
+	 * 
+	 * @return promotionList
+	 */
+	private ArrayList<PromotionuiVO> getpromotionViewList(ArrayList<PromotionVO> promotions) {
+		ArrayList<PromotionuiVO> promotionList = new ArrayList<PromotionuiVO>();
+		String promotionID = "";
+		String promotionName = "";
+		String promotiontype = "";
+		PromotionuiVO promotion = null;
+		for (int i = 0; i < promotions.size(); i++) {
+			promotionID = String.valueOf(promotions.get(i).getPromotionID());
+			promotiontype = promotions.get(i).getPromotionType();
+			promotionName = promotions.get(i).getPromotionName();
+			promotion = new PromotionuiVO(promotionID, promotionName, promotiontype);
+			promotionList.add(promotion);
+		}
+		return promotionList;
+	}
 }

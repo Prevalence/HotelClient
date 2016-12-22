@@ -43,7 +43,8 @@ public class Promotionui extends Pane{
 		// primaryStage.setScene(scene);
 		promotionViewuiController = loader.getController();
 		promotionViewuiController.launchStage(primaryStage);
-		promotionViewuiController.setWorkerName(workerName);
-		promotionViewuiController.setBookedChoiceBox(promotions);;
+		promotionViewuiController.setWorkerNameAndShowInfo(workerName);
+		promotionViewuiController.setPromotionChoiceBox(promotions);
+		promotionViewuiController.initTableView();
 	}
 }
