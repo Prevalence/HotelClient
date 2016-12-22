@@ -72,6 +72,8 @@ public class Hotel {
 	 */
 	public boolean addComment(CommentVO commentvo) throws RemoteException{
 		CommentPO commentpo=new CommentPO(commentvo);
+		Calendar c=Calendar.getInstance();
+		commentpo.setTime(c);
 		return hoteldataservice.addComment(commentpo);
 	}
 	
