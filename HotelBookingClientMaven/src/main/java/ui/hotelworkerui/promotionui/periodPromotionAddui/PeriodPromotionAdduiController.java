@@ -47,12 +47,15 @@ public class PeriodPromotionAdduiController {
 	@FXML
 	private TextField promotionNameField;
 	@FXML
+	private TextField startTimeField;
+	@FXML
+	private TextField endTimeField;
+	@FXML
 	private TextField discountField;
 
 	@FXML
 	private Pane mainPane;
 
-	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	private HotelblService hotelbl;
@@ -137,6 +140,8 @@ public class PeriodPromotionAdduiController {
 	@FXML
 	private void addPromotion() {
 		String promotionName = promotionNameField.getText();
+		String startTime = startTimeField.getText();
+		String endTime = endTimeField.getText();
 		String discount = discountField.getText();
 		if (discount.equals("") || promotionName.equals("")) {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
