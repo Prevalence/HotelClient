@@ -1,29 +1,28 @@
-package ui.hotelworkerui.promotionui.periodPromotionAddui;
+package ui.hotelworkerui.promotionui.periodPromotionEditui;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
 
-public class PeriodPromotionAddui extends Pane{
+public class PeriodPromotionEditui extends Pane{
 	private Stage primaryStage;
 
 	private String workerName;
 	
-	private ObservableList<String> months = FXCollections.observableArrayList();
-	
-	private PeriodPromotionAdduiController birthdayPromotionuiController;
+	private PeriodHotelproVO promotion;
+
+	private PeriodPromotionEdituiController birthdayPromotionuiController;
 
 	/**
 		 * 接受primarystage用来完成界面最小化和可移动化设置
 		 * 
 		 * @param primaryStage
 		 */
-		public PeriodPromotionAddui(Stage primaryStage, String workerName) {
+		public PeriodPromotionEditui(Stage primaryStage, String workerName,PeriodHotelproVO promotion) {
 			this.primaryStage = primaryStage;
 			this.workerName = workerName;
-			months.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+			this.promotion = promotion;
 			initPromotionViewui();
 		};
 
@@ -44,6 +43,5 @@ public class PeriodPromotionAddui extends Pane{
 		birthdayPromotionuiController = loader.getController();
 		birthdayPromotionuiController.launchStage(primaryStage);
 		birthdayPromotionuiController.setWorkerNameAndShowInfo(workerName);
-		birthdayPromotionuiController.setMonthChoiceBox(months);
 	}
 }

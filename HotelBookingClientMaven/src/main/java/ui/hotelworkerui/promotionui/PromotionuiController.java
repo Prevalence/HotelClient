@@ -109,7 +109,7 @@ public class PromotionuiController {
 
 	private String promotionSelected;
 
-	private String[] promotions = { "BirthdayHotelPromotion", "PeriodHotelPromotion" };
+	private String[] promotions = { "生日优惠策略", "特定时间优惠策略" };
 
 	private ArrayList<PromotionVO> promotionVOs;
 

@@ -113,15 +113,6 @@ public class CreateOrderuiController {
 
 	private RoomInfoVO roomInfo;
 
-	// 填充进commentTable的酒店数据
-	private ObservableList<CommentInfoVO> commentData;
-
-	private ArrayList<CommentVO> comment;
-
-	private ArrayList<CommentInfoVO> commentList;
-
-	private CommentInfoVO commentInfo;
-
 	private OrderVO orderInfo;
 
 	// 酒店搜索界面

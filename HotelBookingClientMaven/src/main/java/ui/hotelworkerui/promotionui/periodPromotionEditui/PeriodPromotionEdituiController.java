@@ -1,4 +1,4 @@
-package ui.hotelworkerui.promotionui.birthdayPromotionAddui;
+package ui.hotelworkerui.promotionui.periodPromotionEditui;
 
 import businessLogic.hotelbl.HotelController;
 import businessLogic.promotionbl.PromotionController;
@@ -21,7 +21,7 @@ import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
-public class BirthdayPromotionAdduiController {
+public class PeriodPromotionEdituiController {
 	@FXML
 	private Button hotelOrderButton;
 	@FXML
@@ -47,12 +47,15 @@ public class BirthdayPromotionAdduiController {
 	@FXML
 	private TextField promotionNameField;
 	@FXML
+	private TextField startTimeField;
+	@FXML
+	private TextField endTimeField;
+	@FXML
 	private TextField discountField;
 
 	@FXML
 	private Pane mainPane;
 
-	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	private HotelblService hotelbl;
@@ -83,7 +86,7 @@ public class BirthdayPromotionAdduiController {
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public BirthdayPromotionAdduiController() {
+	public PeriodPromotionEdituiController() {
 		userbl = new UserController();
 		promotionbl = new PromotionController();
 		hotelbl = new HotelController();
@@ -137,6 +140,8 @@ public class BirthdayPromotionAdduiController {
 	@FXML
 	private void addPromotion() {
 		String promotionName = promotionNameField.getText();
+		String startTime = startTimeField.getText();
+		String endTime = endTimeField.getText();
 		String discount = discountField.getText();
 		if (discount.equals("") || promotionName.equals("")) {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
@@ -165,7 +170,7 @@ public class BirthdayPromotionAdduiController {
 	}
 
 	/**
-	 * 传递用户名并显示信息
+	 * 传递用户名
 	 * 
 	 * @param workerName
 	 */

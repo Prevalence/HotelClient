@@ -204,7 +204,7 @@
             <Label fx:id="locationLabel" layoutX="397.0" layoutY="110.0" prefHeight="20.0" prefWidth="310.0" />
          </children>
       </Pane>
-      <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="756.0" prefHeight="28.0" prefWidth="817.0" text="123" textFill="#fc0303">
+      <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="756.0" prefHeight="28.0" prefWidth="817.0" textFill="#fc0303">
          <font>
             <Font size="20.0" />
          </font>
