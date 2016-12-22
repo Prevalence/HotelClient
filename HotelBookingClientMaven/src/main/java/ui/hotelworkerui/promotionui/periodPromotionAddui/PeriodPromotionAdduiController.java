@@ -1,13 +1,15 @@
-package ui.hotelworkerui.orderInfoViewui;
+package ui.hotelworkerui.promotionui.periodPromotionAddui;
 
 import businessLogic.hotelbl.HotelController;
-import businessLogic.orderbl.OrderController;
+import businessLogic.promotionbl.PromotionController;
 import businessLogic.userbl.UserController;
 import businessLogicService.hotelblService.HotelblService;
-import businessLogicService.orderblService.OrderblService;
+import businessLogicService.promotionblService.PromotionblService;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -15,71 +17,75 @@ import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.promotionui.Promotionui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
-import vo.orderVO.orderblVO.OrderVO;
+import vo.PromotionVO;
+import vo.hotelVO.hotelblVO.HotelVO;
+import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
-public class OrderInfoViewuiController {
-
+public class PeriodPromotionAdduiController {
 	@FXML
-	private Label orderIDLabel;
+	private Button hotelOrderButton;
 	@FXML
-	private Label roomtypeLabel;
+	private Button promotionButton;
 	@FXML
-	private Label peopleNumberLabel;
+	private Button hotelInfoButton;
 	@FXML
-	private Label startTimeLabel;
+	private Button roomInfoButton;
 	@FXML
-	private Label endTimeLabel;
+	private Button oButton;
 	@FXML
-	private Label personLabel;
+	private Label nameLabel;
+	@FXML
+	private Label hotelNameLabel;
+	@FXML
+	private Label scoreLabel;
+	@FXML
+	private Label areaLabel;
 	@FXML
 	private Label connectionLabel;
 	@FXML
-	private Label stateLabel;
-	@FXML
-	private Label priceLabel;
-	@FXML
 	private Label feedbackLabel;
+	@FXML
+	private TextField promotionNameField;
+	@FXML
+	private TextField discountField;
+
 	@FXML
 	private Pane mainPane;
 
 	@SuppressWarnings("unused")
 	private UserblService userbl;
-	
-	private OrderblService orderbl;
-	
+
 	private HotelblService hotelbl;
 
+	private PromotionblService promotionbl;
+
 	// 酒店订单浏览界面
-	@SuppressWarnings("unused")
 	private Pane hotelOrderPane;
 
 	// 促销策略界面
-	@SuppressWarnings("unused")
 	private Pane promotionPane;
 
 	// 酒店信息界面
-	@SuppressWarnings("unused")
 	private Pane hotelInfoPane;
 
 	// 房间信息界面
-	@SuppressWarnings("unused")
 	private Pane roomInfoPane;
 
-	@SuppressWarnings("unused")
 	private Stage primaryStage;
 
-	@SuppressWarnings("unused")
+	private String hotelName;
+
 	private String workerName;
 
-	private OrderVO orderInfo;
+	private HotelVO hotelInfo;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public OrderInfoViewuiController() {
+	public PeriodPromotionAdduiController() {
 		userbl = new UserController();
-		orderbl = new OrderController();
+		promotionbl = new PromotionController();
 		hotelbl = new HotelController();
 	}
 
@@ -108,7 +114,7 @@ public class OrderInfoViewuiController {
 	 */
 	@FXML
 	private void viewHotelInfo() {
-		// hotelInfo = hotelbl.showHotelInfo(workerName);
+		// hotelInfo = hotelbl.showHotelInfo(hotelName);
 		hotelInfoPane = new HotelInfoui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(hotelInfoPane);
@@ -119,59 +125,34 @@ public class OrderInfoViewuiController {
 	 */
 	@FXML
 	private void viewRoomInfo() {
-		// hotelInfo = hotelbl.showHotelInfo(workerName);
+		// hotelInfo = hotelbl.showHotelInfo(hotelName);
 		roomInfoPane = new RoomInfoui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(roomInfoPane);
 	}
-	
-	/**
-	 * 确认入住
-	 */
-	@FXML
-	private void liveIn() {
-		if(orderbl.finishOrder(orderInfo)){
-			feedbackLabel.setTextFill(Color.web("#058cff"));
-			feedbackLabel.setText("成功办理入住！");;
-		}
-		else{
-			feedbackLabel.setTextFill(Color.web("#f80202"));
-			feedbackLabel.setText("系统出现异常!");
-		}
-	}
-	
-	/**
-	 * 退房
-	 */
-	@FXML
-	private void leave() {
-//		if(orderbl.){
-//			orderInfo.get
-//			feedbackLabel.setTextFill(Color.web("#058cff"));
-//			feedbackLabel.setText("成功办理入住！");;
-//		}
-//		else{
-//			feedbackLabel.setTextFill(Color.web("#f80202"));
-//			feedbackLabel.setText("系统出现异常!");
-//		}
-	}
 
 	/**
-	 * 设置并显示订单信息
-	 * 
-	 * @param order
+	 * 新增酒店促销策略
 	 */
-	public void setAndShowOrder(OrderVO order) {
-		this.orderInfo = order;
-		orderIDLabel.setText(order.getOrderID());
-		roomtypeLabel.setText("房间类型：" + order.getRoom().get(0).getRoomType());
-		peopleNumberLabel.setText("人数：" + String.valueOf(order.getPeoplenum()));
-		startTimeLabel.setText("入住时间：" + order.getExecutetime());
-		endTimeLabel.setText("退房时间：" + order.getCanceltime());
-		personLabel.setText("入住人：" + order.getRealname());
-		connectionLabel.setText("联系方式："+order.getPersonPhone());
-		stateLabel.setText(order.getOrderstate());
-		priceLabel.setText("价格：" + String.valueOf(order.getRoom().get(0).getRoomPrice()));
+	@FXML
+	private void addPromotion() {
+		String promotionName = promotionNameField.getText();
+		String discount = discountField.getText();
+		if (discount.equals("") || promotionName.equals("")) {
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("促销策略信息不全！");
+		} else {
+			PromotionVO promotion = new BirthdayHotelproVO(0, promotionName, "BirthdayHotelPromotion", hotelName,
+					Integer.parseInt(discount));
+			if(promotionbl.addProm(promotion)){
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("添加成功！");
+			}
+			else{
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("系统错误！");
+			}
+		}
 	}
 
 	/**
@@ -188,7 +169,15 @@ public class OrderInfoViewuiController {
 	 * 
 	 * @param workerName
 	 */
-	public void setWorkerName(String workerName) {
+	public void setWorkerNameAndShowInfo(String workerName) {
 		this.workerName = workerName;
+		nameLabel.setText(workerName);
+		hotelName = userbl.getHotelWorkerInfo(workerName).getHotelName();
+		hotelInfo = hotelbl.getHotelInfoByHotelworkerOrManager(hotelName);
+		nameLabel.setText(workerName);
+		hotelNameLabel.setText(hotelName);
+		areaLabel.setText(hotelInfo.getCircle());
+		scoreLabel.setText(String.valueOf(hotelInfo.getScore()));
+		connectionLabel.setText(hotelInfo.getHotelPhone());
 	}
 }

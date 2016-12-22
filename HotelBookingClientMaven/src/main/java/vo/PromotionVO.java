@@ -8,7 +8,7 @@ public class PromotionVO {
 	private String promotionName;//promotion的名称，客户可见
 	private String promotionType;
 	private String hotelnameOrWeb;//若是酒店促销策略，则为酒店名称;若是网站促销策略，则为“WebPromotion”
-	
+	private int discount;
 	
 	public PromotionVO() {
 		super();
@@ -58,6 +58,12 @@ public class PromotionVO {
 	public PromotionPO toPO(PromotionVO promotionvo){
 		return null;
 	}
+	public int getDiscount() {
+		return discount;
+	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}	
 
 	
 }

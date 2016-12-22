@@ -6,7 +6,7 @@ import businessLogic.promotionbl.promotionType.hotelpromotionCal.LargeAmountHote
 import businessLogic.promotionbl.promotionType.hotelpromotionCal.PeriodHotelproCal;
 import businessLogic.promotionbl.promotionType.webpromotionCal.CircleWebproCal;
 import businessLogic.promotionbl.promotionType.webpromotionCal.PeriodWebproCal;
-import businessLogic.promotionbl.promotionType.webpromotionCal.VipLevelWebproCal;
+//import businessLogic.promotionbl.promotionType.webpromotionCal.VipLevelWebproCal;
 
 /**
  * 
@@ -29,8 +29,8 @@ public class Helper {
 			return new CircleWebproCal();
 		if(promotionType.equals("PeriodWebPromotion"))
 			return new PeriodWebproCal();
-		if(promotionType.equals("VipLevelWebPromotion"))
-			return new VipLevelWebproCal();
+//		if(promotionType.equals("VipLevelWebPromotion"))
+//			return new VipLevelWebproCal();
 		
 		return null;
 	}

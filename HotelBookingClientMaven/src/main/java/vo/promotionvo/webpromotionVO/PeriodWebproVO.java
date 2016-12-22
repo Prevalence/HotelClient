@@ -13,8 +13,6 @@ public class PeriodWebproVO extends PromotionVO{
 //	private String promotionType="PeriodWebPromtion";
 	private Calendar startTime;
 	private Calendar endTime;
-	private int discount;//如打九五折时，discount=95
-	
 
 	public PeriodWebproVO() {
 		super();
@@ -28,7 +26,7 @@ public class PeriodWebproVO extends PromotionVO{
 		super.setHotelnameOrWeb(hotelnameOrWeb);
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.discount = discount;
+		super.setDiscount(discount);
 	}
 
 
@@ -49,16 +47,6 @@ public class PeriodWebproVO extends PromotionVO{
 
 	public void setEndTime(Calendar endTime) {
 		this.endTime = endTime;
-	}
-
-
-	public int getDiscount() {
-		return discount;
-	}
-
-
-	public void setDiscount(int discount) {
-		this.discount = discount;
 	}
 
 

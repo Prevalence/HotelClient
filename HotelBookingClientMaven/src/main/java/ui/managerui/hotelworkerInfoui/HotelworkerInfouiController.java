@@ -120,6 +120,7 @@ public class HotelworkerInfouiController {
 		hotelworkerInfo=userbl.getHotelWorkerInfo(hotelworkerName);
 		workIDField.setText(hotelworkerName);
 		passwordField.setText(hotelworkerInfo.getPassword());
+		System.out.println("password:"+hotelworkerInfo.getPassword());
 		hotelField.setText(hotelworkerInfo.getHotelName());
 	}
 	

@@ -12,7 +12,6 @@ public class CircleWebproVO extends PromotionVO{
 	/*会员等级、商圈、折扣为一组，即vipLevel[i]、circle[i]、discount[i]为对应一组某等级的会员在某商圈的折扣*/
 	private int vipLevel;
 	private String circle;//商圈
-	private int discount;//如打九五折时，discount=95
 	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +27,7 @@ public class CircleWebproVO extends PromotionVO{
 		super.setHotelnameOrWeb(hotelnameOrWeb);
 		this.vipLevel = vipLevel;
 		this.circle = circle;
-		this.discount = discount;
+		super.setDiscount(discount);
 	}
 
 	
@@ -46,14 +45,6 @@ public class CircleWebproVO extends PromotionVO{
 
 	public void setCircle(String circle) {
 		this.circle = circle;
-	}
-
-	public int getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(int discount) {
-		this.discount = discount;
 	}
 
 	public PromotionPO toPO(PromotionVO vo){
