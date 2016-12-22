@@ -209,6 +209,23 @@ public class OrderController implements OrderblService{
 		}
 	}
 
+	/**
+	 * 客户离开酒店，增添订单中的离开酒店时间
+	 * @param orderID
+	 * @return 是否操作成功
+	 */
+	@Override
+	public boolean leaveRoom(String orderID) {
+		// TODO Auto-generated method stub
+		try {
+			return order1.leaveRoom(orderID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }
 
 
