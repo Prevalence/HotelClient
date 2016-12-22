@@ -142,7 +142,7 @@ public class BirthdayPromotionAdduiController {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("促销策略信息不全！");
 		} else {
-			PromotionVO promotion = new BirthdayHotelproVO(0, promotionName, "BirthdayHotelPromotion", hotelName,
+			PromotionVO promotion = new BirthdayHotelproVO(0, promotionName, "生日优惠策略", hotelName,
 					Integer.parseInt(discount));
 			if(promotionbl.addProm(promotion)){
 				feedbackLabel.setTextFill(Color.web("#058cff"));
