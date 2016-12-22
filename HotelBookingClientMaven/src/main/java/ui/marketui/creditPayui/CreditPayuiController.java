@@ -4,12 +4,33 @@ import businessLogic.userbl.UserController;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.marketui.orderViewui.MarketOrderViewui;
 import ui.marketui.promotionui.MarketPromotionui;
+import vo.personVO.PersonVO;
 
 public class CreditPayuiController {
+	
+	@FXML
+	private TextField personNumberField;
+	@FXML
+	private TextField creditAddField;
+	@FXML
+	private Label personNameField;
+	@FXML
+	private Label VIPTypeField;
+	@FXML
+	private Label connectionField;
+	@FXML
+	private Label creditField;
+	@FXML
+	private Label VIPLevelField;
+	@FXML
+	private Label feedbackLabel;
 	@FXML
 	private Button hotelOrderButton;
 	@FXML
@@ -38,6 +59,8 @@ public class CreditPayuiController {
 	private Stage primaryStage;
 
 	private String marketName;
+	
+	private PersonVO personInfo;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -83,7 +106,25 @@ public class CreditPayuiController {
 	 */
 	@FXML
 	private void searchWithPersonNumber() {
-
+		String personNumber = personNumberField.getText();
+		if(personNumber.equals("")){
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("搜索信息不能为空!");
+		}
+		else{
+			personInfo = userbl.getPersonInfo(Integer.parseInt(personNumber));
+			if(personInfo==null){
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("没有找到该客户!");
+			}
+			else{
+				personNameField.setText(personInfo.getUsername());
+				VIPTypeField.setText(personInfo.getVipType());
+				connectionField.setText(personInfo.getPhoneNumber());
+				creditField.setText(String.valueOf(personInfo.getCredit()));
+				VIPLevelField.setText(String.valueOf(personInfo.getVipLevel()));
+			}
+		}
 	}
 
 	/**
@@ -91,7 +132,15 @@ public class CreditPayuiController {
 	 */
 	@FXML
 	private void addCredit() {
-
+		String credit = creditAddField.getText();
+		if(credit.equals("")){
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("增加的信用值不能为空!");
+		}
+		else if(personInfo==null){
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("还没有确定充值客户对象!");
+		}
 	}
 
 	/**
