@@ -283,7 +283,6 @@ public class PersonInfouiController {
 		records = userbl.getRecord(personname);
 		if (records != null) {
 			recordData = FXCollections.observableArrayList(records);
-			System.out.println("record:"+records.get(0).getOrderId());
 			orderTable.setItems(recordData);
 		} else {
 			feedbackLabel.setText("目前还没有信用记录，欢迎使用我们的系统预订酒店。");
