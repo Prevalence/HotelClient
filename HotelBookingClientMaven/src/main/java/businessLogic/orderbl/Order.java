@@ -9,7 +9,6 @@ import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
-import vo.hotelVO.hoteluiVO.RoomInfoVO;
 import vo.orderVO.orderblVO.OrderVO;
 import vo.personVO.PersonVO;
 import vo.personVO.RecordVO;
@@ -406,6 +405,7 @@ public class Order{
 	 * 根据订单ID返回订单详细信息
 	 * @param orderID
 	 * @return
+	 * @throws RemoteException
 	 */
 	public OrderVO getOrderInfo(String orderID) throws RemoteException{
 		// TODO Auto-generated method stub
@@ -424,6 +424,7 @@ public class Order{
 	 * @param orderID
 	 * @param newState
 	 * @return 是否修改成功
+	 * @throws RemoteException
 	 */
 	public boolean changeOrderState(String orderID, String newState)  throws RemoteException{
 		// TODO Auto-generated method stub
@@ -437,6 +438,23 @@ public class Order{
 			return false;
 		}
 		
+	}
+	
+	/**
+	 * 客户离开酒店，增添订单中的离开酒店时间
+	 * @param orderID
+	 * @return 是否操作成功
+	 * @throws RemoteException
+	 */
+	public boolean leaveRoom(String orderID) throws RemoteException{
+		// TODO Auto-generated method stub
+		OrderController oc=new OrderController();
+		OrderVO ordervo=oc.getOrderInfo(orderID);
+		OrderPO orderpo=new OrderPO(ordervo);
+		Calendar calendar=Calendar.getInstance();
+		orderpo.setActualLeaveTime(calendar);
+		boolean result=orderDataService.modify(orderpo);
+		return result;
 	}
 	
 }

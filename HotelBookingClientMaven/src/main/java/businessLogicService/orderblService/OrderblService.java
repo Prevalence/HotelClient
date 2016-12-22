@@ -97,5 +97,12 @@ public interface OrderblService {
 	 * @return 是否修改成功
 	 */
 	public boolean changeOrderState(String orderID,String newState);
+	
+	/**
+	 * 客户离开酒店，增添订单中的离开酒店时间
+	 * @param orderID
+	 * @return 是否操作成功
+	 */
+	public boolean leaveRoom(String orderID);
 }
 
