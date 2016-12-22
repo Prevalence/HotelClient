@@ -112,7 +112,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="162.0" layoutY="331.0" prefHeight="296.0" prefWidth="785.0" style="-fx-border-color: ;">
+      <TableView layoutX="163.0" layoutY="331.0" prefHeight="296.0" prefWidth="785.0" style="-fx-border-color: ;">
          <columns>
             <TableColumn prefWidth="240.0" />
             <TableColumn prefWidth="275.0" />
