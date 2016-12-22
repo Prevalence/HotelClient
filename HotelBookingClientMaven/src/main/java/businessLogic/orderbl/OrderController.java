@@ -13,7 +13,14 @@ public class OrderController implements OrderblService{
 	public OrderController(){
 		order1=new Order();
 	}
-	
+	public OrderVO returnBestPrice (OrderVO order) {
+		try {
+			return order1.returnBestPrice(order);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	/**
 	 * 处理异常订单，将订单状态变为已执行并且增加用户被扣除的信用值
 	 * @param order
