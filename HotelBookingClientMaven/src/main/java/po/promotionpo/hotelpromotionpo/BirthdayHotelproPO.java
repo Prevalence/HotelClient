@@ -8,7 +8,7 @@ import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
  *  @author 武秀峰
  *  酒店促销策略：生日特惠折扣*/
 public class BirthdayHotelproPO extends PromotionPO{
-//	private String promotionType="BirthdayHotelPromotion";
+//	private String promotionType="生日优惠策略";
 	private int discount;//如打九五折时，discount=95
 	private static final long serialVersionUID = 1L;
 	

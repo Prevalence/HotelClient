@@ -6,9 +6,8 @@ import vo.PromotionVO;
 
 /**
  * @author 武秀峰
- * 酒店促销策略：生日特惠折扣*/
+ * 酒店促销策略：生日优惠策略*/
 public class BirthdayHotelproVO extends PromotionVO{
-//	private String promotionType="BirthdayHotelPromtion";
 	
 	public BirthdayHotelproVO() {
 		// TODO Auto-generated constructor stub

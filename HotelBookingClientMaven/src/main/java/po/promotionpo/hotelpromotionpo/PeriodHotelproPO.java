@@ -5,12 +5,13 @@ import java.util.Calendar;
 import po.PromotionPO;
 import vo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
+import businessLogic.TimeFormTrans;
 
 /**
  *  @author 武秀峰
  *  酒店促销策略：双11活动折扣（在特定的期间住宿有折扣）*/
 public class PeriodHotelproPO extends PromotionPO {
-//	private String promotionType="PeriodHotelPromotion";
+//	private String promotionType="特定时间优惠策略";
 	private static final long serialVersionUID = 1L;
 	private Calendar startTime;
 	private Calendar endTime;
@@ -69,8 +70,11 @@ public class PeriodHotelproPO extends PromotionPO {
 		vo.setPromotionName(po.getPromotionName());
 		vo.setPromotionType(po.getPromotionType());
 		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
-		vo.setStartTime(((PeriodHotelproPO)po).getStartTime());
-		vo.setEndTime(((PeriodHotelproPO)po).getEndTime());
+		TimeFormTrans t=new TimeFormTrans();
+		String start=t.myToString(((PeriodHotelproPO)po).getStartTime());
+		vo.setStartTime(start);
+		String end=t.myToString(((PeriodHotelproPO)po).getEndTime());
+		vo.setEndTime(end);
 		vo.setDiscount(((PeriodHotelproPO)po).getDiscount());
 		return vo;
 		
