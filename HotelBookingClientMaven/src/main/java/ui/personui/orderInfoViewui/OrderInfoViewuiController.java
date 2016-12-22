@@ -200,7 +200,7 @@ public class OrderInfoViewuiController {
 		roomtypeLabel.setText("房间类型：" + order.getRoom().get(0).getRoomType());
 		peopleNumberLabel.setText("人数：" + String.valueOf(order.getPeoplenum()));
 		startTimeLabel.setText("入住时间：" + order.getExecutetime());
-		endTimeLabel.setText("退房时间：" + order.getCanceltime());
+		endTimeLabel.setText("退房时间：" + order.getActualLeaveTime());
 		personLabel.setText("入住人：" + order.getRealname());
 		connectionLabel.setText("联系方式：" + order.getPersonPhone());
 		stateLabel.setText(order.getOrderstate());
