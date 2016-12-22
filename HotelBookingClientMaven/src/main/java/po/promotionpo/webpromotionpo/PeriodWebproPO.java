@@ -10,7 +10,7 @@ import vo.promotionvo.webpromotionVO.PeriodWebproVO;
  *  @author 武秀峰
  *  网站促销策略：双11活动折扣（在特定的期间预订有折扣）*/
 public class PeriodWebproPO extends PromotionPO {
-//	private String promotionType="PeriodWebPromotion";
+//	private String promotionType="网站特定时间优惠策略";
 	private Calendar startTime;
 	private Calendar endTime;
 	private int discount;//如打九五折时，discount=95
