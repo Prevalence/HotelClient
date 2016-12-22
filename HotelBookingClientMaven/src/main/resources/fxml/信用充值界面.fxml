@@ -44,11 +44,16 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="349.0" layoutY="111.0" text="客户编号：" textFill="#5db9c2">
+      <Label layoutX="349.0" layoutY="111.0" text="客户名称：" textFill="#5db9c2">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutX="-1.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../酒店详情界面/色块.png" />
+         </image>
+      </ImageView>
       <Button fx:id="marketOrderrButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewMarketOrder" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">
          <font>
             <Font size="1.0" />
@@ -144,11 +149,6 @@
          </graphic>
       </Button>
       <TextField fx:id="creditAddField" layoutX="528.0" layoutY="615.0" prefHeight="30.0" prefWidth="110.0" />
-      <ImageView fitHeight="37.0" fitWidth="145.0" layoutX="-1.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../酒店详情界面/色块.png" />
-         </image>
-      </ImageView>
       <Label fx:id="feedbackLabel" layoutX="146.0" layoutY="756.0" prefHeight="28.0" prefWidth="817.0" />
    </children>
 </fx:root>

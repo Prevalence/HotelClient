@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import ui.marketui.orderViewui.MarketOrderViewui;
 import ui.marketui.promotionui.MarketPromotionui;
 import vo.personVO.PersonVO;
+import vo.personVO.RecordVO;
 
 public class CreditPayuiController {
 	
@@ -20,15 +21,15 @@ public class CreditPayuiController {
 	@FXML
 	private TextField creditAddField;
 	@FXML
-	private Label personNameField;
+	private TextField personNameField;
 	@FXML
-	private Label VIPTypeField;
+	private TextField VIPTypeField;
 	@FXML
-	private Label connectionField;
+	private TextField connectionField;
 	@FXML
-	private Label creditField;
+	private TextField creditField;
 	@FXML
-	private Label VIPLevelField;
+	private TextField VIPLevelField;
 	@FXML
 	private Label feedbackLabel;
 	@FXML
@@ -112,12 +113,13 @@ public class CreditPayuiController {
 			feedbackLabel.setText("搜索信息不能为空!");
 		}
 		else{
-			personInfo = userbl.getPersonInfo(Integer.parseInt(personNumber));
+			personInfo = userbl.getPersonInfo(personNumber);
 			if(personInfo==null){
 				feedbackLabel.setTextFill(Color.web("#f80202"));
 				feedbackLabel.setText("没有找到该客户!");
 			}
 			else{
+				feedbackLabel.setText("");
 				personNameField.setText(personInfo.getUsername());
 				VIPTypeField.setText(personInfo.getVipType());
 				connectionField.setText(personInfo.getPhoneNumber());
@@ -140,6 +142,16 @@ public class CreditPayuiController {
 		else if(personInfo==null){
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("还没有确定充值客户对象!");
+		}else{
+			RecordVO record=new RecordVO("", "", "", credit, "");
+			if(userbl.changeCredit(personInfo.getUsername(), record)){
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("充值成功！");
+			}
+			else{
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("系统出错!");
+			}
 		}
 	}
 
