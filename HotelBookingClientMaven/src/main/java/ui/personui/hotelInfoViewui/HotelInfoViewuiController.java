@@ -216,7 +216,6 @@ public class HotelInfoViewuiController {
 		locationLabel.setText(hotelInfo.getAddress());
 		hotelNameLabel.setText(hotelName);
 		connectionLabel.setText(hotelInfo.getHotelPhone());
-		System.out.println("connection:" + hotelInfo.getHotelPhone());
 
 		comment = hotelInfo.getComment();
 		room = hotelInfo.getRoom();
