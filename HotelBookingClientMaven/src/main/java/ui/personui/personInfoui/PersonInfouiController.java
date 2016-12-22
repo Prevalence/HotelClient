@@ -275,14 +275,13 @@ public class PersonInfouiController {
 	 */
 	@SuppressWarnings("unchecked")
 	public void initTableView() {
-		IDCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
+		IDCol.setCellValueFactory(new PropertyValueFactory<>("orderId"));
 		timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
 		actionCol.setCellValueFactory(new PropertyValueFactory<>("operation"));
 		changeCol.setCellValueFactory(new PropertyValueFactory<>("changeCredit"));
 		resultCol.setCellValueFactory(new PropertyValueFactory<>("resultCredit"));
 		records = userbl.getRecord(personname);
 		if (records != null) {
-			records = new ArrayList<RecordVO>();
 			recordData = FXCollections.observableArrayList(records);
 			System.out.println("record:"+records.get(0).getOrderId());
 			orderTable.setItems(recordData);
