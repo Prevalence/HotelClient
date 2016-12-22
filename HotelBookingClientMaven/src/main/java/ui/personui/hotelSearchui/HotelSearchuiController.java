@@ -122,6 +122,8 @@ public class HotelSearchuiController {
 	private Stage primaryStage;
 
 	private String personname;
+	
+	String hotelName;
 
 	private int[] lowerPrice = { 0, 300, 600, 900, 1200 };
 
@@ -290,6 +292,10 @@ public class HotelSearchuiController {
 		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				priceLabel.setText("");
+				hotelName=searchField.getText();
+				if(hotelName.equals("")){
+					hotelName=null;
+				}
 				if (!area.equals("")) {
 					priceLower = lowerPrice[priceChoices.getSelectionModel().getSelectedIndex()];
 					priceHigher = higherPrice[priceChoices.getSelectionModel().getSelectedIndex()];
@@ -299,6 +305,8 @@ public class HotelSearchuiController {
 					RoomVO roomHigher = new RoomVO(null, null, priceHigher, null, null);
 					roomListLower.add(roomLower);
 					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setHotelName(hotelName);
+					hotelBestConditionVO.setHotelName(hotelName);
 					hotelWorstConditionVO.setRoom(roomListLower);
 					hotelBestConditionVO.setRoom(roomListHigher);
 					hotelWorstConditionVO.setStar(starSelected);
@@ -335,6 +343,10 @@ public class HotelSearchuiController {
 		starChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				starLabel.setText("");
+				hotelName=searchField.getText();
+				if(hotelName.equals("")){
+					hotelName=null;
+				}
 				if (!area.equals("")) {
 					starSelected = star[starChoices.getSelectionModel().getSelectedIndex()];
 					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
@@ -343,6 +355,8 @@ public class HotelSearchuiController {
 					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
 					roomListLower.add(roomLower);
 					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setHotelName(hotelName);
+					hotelBestConditionVO.setHotelName(hotelName);
 					hotelWorstConditionVO.setStar(starSelected);
 					hotelBestConditionVO.setStar(5);
 					hotelWorstConditionVO.setScore(scoreSelected);
@@ -372,6 +386,10 @@ public class HotelSearchuiController {
 		scoreChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				scoreLabel.setText("");
+				hotelName=searchField.getText();
+				if(hotelName.equals("")){
+					hotelName=null;
+				}
 				if (!area.equals("")) {
 					scoreSelected = score[scoreChoices.getSelectionModel().getSelectedIndex()];
 					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
@@ -380,6 +398,8 @@ public class HotelSearchuiController {
 					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
 					roomListLower.add(roomLower);
 					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setHotelName(hotelName);
+					hotelBestConditionVO.setHotelName(hotelName);
 					hotelWorstConditionVO.setRoom(roomListLower);
 					hotelBestConditionVO.setRoom(roomListHigher);
 					hotelWorstConditionVO.setStar(starSelected);
@@ -411,6 +431,10 @@ public class HotelSearchuiController {
 		areaChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				areaLabel.setText("");
+				hotelName=searchField.getText();
+				if(hotelName.equals("")){
+					hotelName=null;
+				}
 				area = areas[areaChoices.getSelectionModel().getSelectedIndex()];
 				if (!area.equals("")) {
 					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
@@ -419,6 +443,8 @@ public class HotelSearchuiController {
 					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
 					roomListLower.add(roomLower);
 					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setHotelName(hotelName);
+					hotelBestConditionVO.setHotelName(hotelName);
 					hotelWorstConditionVO.setRoom(roomListLower);
 					hotelBestConditionVO.setRoom(roomListHigher);
 					hotelWorstConditionVO.setStar(starSelected);
@@ -450,6 +476,10 @@ public class HotelSearchuiController {
 		bookedChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				bookedLabel.setText("");
+				hotelName=searchField.getText();
+				if(hotelName.equals("")){
+					hotelName=null;
+				}
 				if (!area.equals("")) {
 					bookedSelected = booked[bookedChoices.getSelectionModel().getSelectedIndex()];
 					ArrayList<RoomVO> roomListLower = new ArrayList<RoomVO>();
@@ -458,6 +488,8 @@ public class HotelSearchuiController {
 					RoomVO roomHigher = new RoomVO(null, null, -1, null, null);
 					roomListLower.add(roomLower);
 					roomListHigher.add(roomHigher);
+					hotelWorstConditionVO.setHotelName(hotelName);
+					hotelBestConditionVO.setHotelName(hotelName);
 					hotelWorstConditionVO.setRoom(roomListLower);
 					hotelBestConditionVO.setRoom(roomListHigher);
 					hotelWorstConditionVO.setStar(starSelected);

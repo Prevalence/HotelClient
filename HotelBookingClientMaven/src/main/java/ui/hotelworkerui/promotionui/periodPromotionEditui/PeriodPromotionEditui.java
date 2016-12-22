@@ -31,7 +31,7 @@ public class PeriodPromotionEditui extends Pane{
 	 */
 	public void initPromotionViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/特定时间优惠.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/特定时间优惠编辑.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();

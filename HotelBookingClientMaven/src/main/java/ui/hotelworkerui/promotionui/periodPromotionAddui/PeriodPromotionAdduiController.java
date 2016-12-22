@@ -191,7 +191,7 @@ public class PeriodPromotionAdduiController {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("促销策略信息不全！");
 		} else {
-			PromotionVO promotion = new PeriodHotelproVO(0, promotionName, "BirthdayHotelPromotion", hotelName,
+			PromotionVO promotion = new PeriodHotelproVO(0, promotionName, "特定时间优惠策略", hotelName,
 					startTime, endTime, Integer.parseInt(discount));
 			if(promotionbl.addProm(promotion)){
 				feedbackLabel.setTextFill(Color.web("#058cff"));

@@ -20,6 +20,7 @@ import ui.hotelworkerui.roomInfoui.RoomInfoui;
 import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
+import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
 
 public class PeriodPromotionEdituiController {
 	@FXML
@@ -81,6 +82,8 @@ public class PeriodPromotionEdituiController {
 	private String workerName;
 
 	private HotelVO hotelInfo;
+	
+	private PeriodHotelproVO promotion;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -147,7 +150,7 @@ public class PeriodPromotionEdituiController {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("促销策略信息不全！");
 		} else {
-			PromotionVO promotion = new BirthdayHotelproVO(0, promotionName, "BirthdayHotelPromotion", hotelName,
+			PromotionVO promotion = new BirthdayHotelproVO(0, promotionName, "特定时间优惠策略", hotelName,
 					Integer.parseInt(discount));
 			if(promotionbl.addProm(promotion)){
 				feedbackLabel.setTextFill(Color.web("#058cff"));
@@ -184,5 +187,16 @@ public class PeriodPromotionEdituiController {
 		areaLabel.setText(hotelInfo.getCircle());
 		scoreLabel.setText(String.valueOf(hotelInfo.getScore()));
 		connectionLabel.setText(hotelInfo.getHotelPhone());
+	}
+	
+	/**
+	 * 传递促销策略信息
+	 * 
+	 * @param workerName
+	 */
+	public void setPromotionVO(PeriodHotelproVO promotion) {
+		this.promotion=promotion;
+		promotionNameField.setText(promotion.getPromotionName());
+		discountField.setText(String.valueOf(promotion.getDiscount()));
 	}
 }
