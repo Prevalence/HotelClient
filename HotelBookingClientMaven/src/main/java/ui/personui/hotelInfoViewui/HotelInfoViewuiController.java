@@ -252,6 +252,7 @@ public class HotelInfoViewuiController {
 	 * 
 	 * @return roomInfo
 	 */
+	@SuppressWarnings("unused")
 	private ArrayList<RoomInfoVO> getRoomInfoList(ArrayList<RoomVO> room) {
 		ArrayList<RoomInfoVO> roomInfoList = new ArrayList<RoomInfoVO>();
 		String roomtype = "";

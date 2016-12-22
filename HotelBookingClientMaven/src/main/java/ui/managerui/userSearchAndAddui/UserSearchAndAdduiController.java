@@ -78,11 +78,13 @@ public class UserSearchAndAdduiController {
 		username = usernameField.getText();
 		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("搜索信息不全，无法搜索，请补全用户类型或用户名称！");
-		} else {
-			System.out.println("username1:"+username);
+		} else if(userbl.isExist(username, usertype)){
 			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userInfoPane);
+		}
+		else{
+			feedbackLabel.setText("该用户不存在！");
 		}
 	}
 

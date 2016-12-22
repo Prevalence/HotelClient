@@ -145,7 +145,7 @@ public class OrderInfoViewuiController {
 	 */
 	@FXML
 	private void leave() {
-//		if(orderbl){
+//		if(orderbl.){
 //			orderInfo.get
 //			feedbackLabel.setTextFill(Color.web("#058cff"));
 //			feedbackLabel.setText("成功办理入住！");;

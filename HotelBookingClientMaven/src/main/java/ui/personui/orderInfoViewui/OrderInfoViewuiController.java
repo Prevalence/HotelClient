@@ -148,6 +148,10 @@ public class OrderInfoViewuiController {
 				feedbackLabel.setText("成功撤销订单。");
 				orderInfo.setOrderstate("已撤销");
 			}
+			else{
+				feedbackLabel.setTextFill(Color.web("#ff0000"));
+				feedbackLabel.setText("系统错误。");
+			}
 		}
 		else{
 			feedbackLabel.setText("该订单已经生效，无法撤销。");
