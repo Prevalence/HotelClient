@@ -64,22 +64,9 @@ public class Person {
 					int year=Integer.parseInt(vipInfo.substring(0, 4));
 					int month=Integer.parseInt(vipInfo.substring(5, 7));
 					int date=Integer.parseInt(vipInfo.substring(8, 10));
-//					//计算该月天数
-//					String strDate = year+""+date;
-//					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM"); 
-//					Calendar calendar = new GregorianCalendar(); 
-//					Date date1 = sdf.parse(strDate); 
-//					calendar.setTime(date1); //放入日期 
-//					int daysOfThisMonth=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 					
-					if((1900<=year)&&(year<=Calendar.getInstance().YEAR)
-							&&(1<=month)&&(month<=12)
-							&&(1<=date)&&(date<=31)){//日期正确
-						String birthday=vipInfo+" 00:00:00";
-						personvo.setBirthday(birthday);;
-					}else{
-						return false;//生日格式不符合要求
-					}
+					String birthday=vipInfo+" 00:00:00";
+					personvo.setBirthday(birthday);;
 				}
 				
 				personvo.setVipType("普通会员");
@@ -94,8 +81,7 @@ public class Person {
 			}
 			personvo.setVipLevel((int)(personvo.getCredit()/100));
 			PersonPO personPO=new PersonPO(personvo);
-			userDataService.modifyPerson(personPO);
-			return true;
+			return userDataService.modifyPerson(personPO);
 		}else{//已是会员，不能再注册
 			return false;
 		}

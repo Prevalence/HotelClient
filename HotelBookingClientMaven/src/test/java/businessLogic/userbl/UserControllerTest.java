@@ -18,9 +18,9 @@ public class UserControllerTest {
 //	PersonVO personvo=new PersonVO(String username, String password, int personID, int credit, Calendar birthday, String vipType,
 //			int vipLevel, String enterpriseName, String phoneNumber);
 
-	PersonVO personvo1=new PersonVO("xiamutian", "123", 12345, 3000, null, "enterprise",
+	PersonVO personvo1=new PersonVO("xiamutian", "123", 12345, 3000, null, "企业会员",
 			3, "南京大学", "11122223333");
-	PersonVO personvo2=new PersonVO("wuxiufeng", "123", 23456, 2000, null, "no",
+	PersonVO personvo2=new PersonVO("wuxiufeng", "123", 23456, 2000, null, "普通客户",
 			2, null, "22233334444");
 
 	@Before
@@ -56,7 +56,7 @@ public class UserControllerTest {
 
 	@Test
 	public void testRegisteMember() throws ParseException {
-		assertEquals(true,uc.registeMember(personvo2, "enterprise", "nju"));
+		assertEquals(true,uc.registeMember(personvo2, "普通会员", "2015-01-05"));
 	}
 
 	@Test

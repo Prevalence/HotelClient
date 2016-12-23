@@ -47,14 +47,21 @@ public class PersonPO implements Serializable{
 		}
 		this.personID=vo.getPersonID();
 		this.credit=vo.getCredit();
+		if(vo.getBirthday()!=null){
+			TimeFormTrans t=new TimeFormTrans();
+			Calendar c=t.myToCalendar(vo.getBirthday());
+			this.birthday = c;
+		}
 		
-		TimeFormTrans t=new TimeFormTrans();
-		Calendar c=t.myToCalendar(vo.getBirthday());
-		this.birthday = c;
 		this.vipType = vo.getVipType();
 		this.vipLevel = vo.getVipLevel();
-		this.enterpriseName = vo.getEnterpriseName();
-		this.phoneNumber=vo.getPhoneNumber();
+		if(vo.getEnterpriseName()!=null){
+			this.enterpriseName = vo.getEnterpriseName();
+		}
+		if(vo.getPhoneNumber()!=null){
+			this.phoneNumber=vo.getPhoneNumber();
+		}
+		
 	}
 	
 	//get and set
