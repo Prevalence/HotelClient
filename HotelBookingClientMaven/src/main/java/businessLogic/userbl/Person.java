@@ -79,7 +79,7 @@ public class Person {
 				
 				personvo.setVipType("企业会员");
 			}
-			personvo.setVipLevel((int)(personvo.getCredit()/100));
+			personvo.setVipLevel((int)(personvo.getCredit()/10000));
 			PersonPO personPO=new PersonPO(personvo);
 			return userDataService.modifyPerson(personPO);
 		}else{//已是会员，不能再注册

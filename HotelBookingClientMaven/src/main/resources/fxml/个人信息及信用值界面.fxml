@@ -182,9 +182,9 @@
       <Button layoutX="898.0" layoutY="688.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
       <TableView fx:id="orderTable" layoutX="159.0" layoutY="238.0" prefHeight="439.0" prefWidth="785.0">
          <columns>
-            <TableColumn fx:id="IDCol" prefWidth="128.0" />
-            <TableColumn fx:id="timeCol" prefWidth="141.0" />
-            <TableColumn fx:id="actionCol" prefWidth="142.99993896484375" />
+            <TableColumn fx:id="IDCol" prefWidth="149.0" />
+            <TableColumn fx:id="timeCol" prefWidth="132.0" />
+            <TableColumn fx:id="actionCol" prefWidth="130.99993896484375" />
             <TableColumn fx:id="changeCol" prefWidth="183.0" />
             <TableColumn fx:id="resultCol" prefWidth="190.0" />
          </columns>

@@ -43,5 +43,6 @@ public class PeriodPromotionEditui extends Pane{
 		birthdayPromotionuiController = loader.getController();
 		birthdayPromotionuiController.launchStage(primaryStage);
 		birthdayPromotionuiController.setWorkerNameAndShowInfo(workerName);
+		birthdayPromotionuiController.setPromotionVO(promotion);
 	}
 }
