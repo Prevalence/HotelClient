@@ -48,7 +48,7 @@ public class Person {
 	 * 会员注册
 	 * @param personvo
 	 * @param vipType
-	 * @param vipInfo 若是普通VIP，info为生日，格式如：20160120；若是企业VIP，格式为非空字符
+	 * @param vipInfo 若是普通VIP，info为生日，格式如：2016-01-20；若是企业VIP，格式为非空字符
 	 * @return 是否注册成功
 	 * @throws ParseException
 	 * @throws RemoteException
