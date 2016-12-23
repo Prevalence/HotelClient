@@ -43,14 +43,21 @@ public class PersonVO {
 		}
 		this.personID = po.getPersonID();
 		this.credit = po.getCredit();
+		if(po.getBirthday()!=null){
+			TimeFormTrans t=new TimeFormTrans();
+			String birth=t.myToString(po.getBirthday());
+			this.birthday=birth;	
+		}
 		
-		TimeFormTrans t=new TimeFormTrans();
-		String birth=t.myToString(po.getBirthday());
-		this.birthday=birth;
 		this.vipType = po.getVipType();
 		this.vipLevel = po.getVipLevel();
-		this.enterpriseName = po.getEnterpriseName();
-		this.phoneNumber = po.getPhoneNumber();
+		if(po.getEnterpriseName()!=null){
+			this.enterpriseName = po.getEnterpriseName();	
+		}
+		if(po.getPhoneNumber()!=null){
+			this.phoneNumber = po.getPhoneNumber();	
+		}
+		
 	}
 	
 	//get and set
