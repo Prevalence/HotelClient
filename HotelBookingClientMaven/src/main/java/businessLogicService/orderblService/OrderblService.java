@@ -104,5 +104,12 @@ public interface OrderblService {
 	 * @return 是否操作成功
 	 */
 	public boolean leaveRoom(String orderID);
+	
+	/**
+	 * 返回最优价格
+	 * @param order
+	 * @return
+	 */
+	public OrderVO returnBestPrice (OrderVO order);
 }
 

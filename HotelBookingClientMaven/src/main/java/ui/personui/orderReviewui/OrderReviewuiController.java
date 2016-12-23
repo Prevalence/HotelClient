@@ -309,7 +309,7 @@ public class OrderReviewuiController {
 	public void setAndShowOrderVO(OrderVO orderInfo) {
 		this.orderInfo = orderInfo;
 		roomNumberLabel.setText(String.valueOf(orderInfo.getRoomNum()));
-		priceLabel.setText(String.valueOf(orderInfo.getRoomNum()*orderInfo.getRoom().get(0).getRoomPrice()));
+		priceLabel.setText(String.valueOf(orderInfo.getOrderprice()));
 		orderNumberLabel.setText(orderInfo.getOrderID());
 		roomtypeLabel.setText(orderInfo.getRoom().get(0).getRoomType());
 		peopleLabel.setText(String.valueOf(orderInfo.getPeoplenum()));
