@@ -237,10 +237,13 @@ public class CreateOrderuiController {
 			feedbackLabel.setText("订单信息填写不完整！");
 		} else {
 			ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-			RoomVO room=new RoomVO(roomSelected,"",Integer.parseInt(priceSelected),null,null);
-			rooms.add(room);
+			for(int i=0;i<Integer.parseInt(roomNumber);i++){
+				RoomVO room=new RoomVO(roomSelected,"",Integer.parseInt(priceSelected),null,null);
+				rooms.add(room);
+			}
 			orderInfo = new OrderVO("", 0, "未执行", hotelName, rooms, Integer.parseInt(roomNumber), personname,
 					phoneNumber, customer, Integer.parseInt(peopleNumber), 0, "", "", "", startTime, endTime, "");
+			orderInfo=orderbl.returnBestPrice(orderInfo);
 			orderReviewPane = new OrderReviewui(primaryStage, personname, hotelName, hotelInfo, orderInfo);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(orderReviewPane);
