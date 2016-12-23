@@ -172,89 +172,7 @@ public class Order{
 	 * @throws RemoteException 
 	 */
 	public boolean createOrder(OrderVO order) throws RemoteException {
-		UserController user=new UserController();
-		if(user.getPersonInfo(order.getPersonname()).getCredit()<0){//如果客户的信用值小于0，用户不能生成订单
-			return false;
-		}
-		
-		//以下检查订单中的房间等信息是否满足
-		
-		ArrayList<RoomVO> orderroomvolist=order.getRoom();
-		ArrayList<String> roomtypelist=new ArrayList<String>();
-		ArrayList<Integer> roomnumlist=new ArrayList<Integer>();
-		for(int i=0;i<orderroomvolist.size();i++){
-			if(i==0){
-				roomtypelist.add(orderroomvolist.get(i).getRoomType());
-				roomnumlist.add(1);
-			}else{
-				String roomtype=orderroomvolist.get(i).getRoomType();
-				boolean isExist=false;
-				for(int j=0;j<roomtypelist.size();j++){
-					if(roomtype==roomtypelist.get(j)){
-						isExist=true;
-						int afternum=roomnumlist.get(j)+1;
-						roomnumlist.remove(j);
-						roomnumlist.add(j, afternum);
-					}
-				}
-				if(!isExist){
-					roomtypelist.add(orderroomvolist.get(i).getRoomType());
-					roomnumlist.add(1);
-				}
-			}
-			
-		}
-		HotelController hotelcontroller=new HotelController();
-		String hotelname=order.getHotelname();
-//		public int getAvailableNumber(String hotelname, String roomtype, String starttime1, String endtime1);
-		String predictExecutetime=order.getPredictExecutetime();//预计入住时间
-		String predictLeaveTime=order.getPredictLeaveTime();//预计离开时间
-
-		for(int i=0;i<roomtypelist.size();i++){
-			String roomtype=roomtypelist.get(i);
-			int num=hotelcontroller.getAvailableNumber(hotelname, roomtype, predictExecutetime,predictLeaveTime);
-			if(num<roomnumlist.size()){
-				return false;//可用房间数量不足
-			}
-		}
-		
-		//以下生成订单
 		OrderPO orderPO=new OrderPO(order);
-		//orderID共20位，时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
-		HotelController hotel=new HotelController();
-		HotelVO hotelvo=hotel.getHotelInfoByHotelworkerOrManager(hotelname);
-		String hotelID=Integer.toString(hotelvo.getHotelID());
-		int hotelIDLength=hotelID.length();
-		for(int i=0;i<5-hotelIDLength;i++){
-			hotelID="0"+hotelID;
-		}
-		
-		String personname=order.getPersonname();
-		UserController usercontroller=new UserController();
-		PersonVO personvo= usercontroller.getPersonInfo(personname);
-		String personID=Integer.toString(personvo.getPersonID());
-		int personIDLength=personID.length();
-		for(int i=0;i<5-personIDLength;i++){
-			personID="0"+personID;
-		}
-		
-		Calendar calendar=Calendar.getInstance();
-		TimeFormTrans t=new TimeFormTrans();
-		String time=t.myToString(calendar);
-		String year=time.substring(0, 4);
-		String month=time.substring(5, 7);
-		String date=time.substring(8, 10);
-		String hour=time.substring(11, 13);
-		String minute=time.substring(14, 16);
-		time=year+month+date+hour+minute;
-		String orderID=time+hotelID+personID;
-		orderPO.setOrderID(orderID);//确定好了20位的酒店ID
-		
-		PriceCalc priceCalc=new PriceCalc();
-		int orderprice=(int)(priceCalc.priceCut(hotelvo, order));
-		orderPO.setOrderprice(orderprice);//确定订单价格，已经用了促销策略
-		
-		orderPO.setProducttime(calendar);
 		
 		return orderDataService.add(orderPO);
 	}
@@ -313,7 +231,97 @@ public class Order{
 
 		return netListVO;
 	}
+	public OrderVO returnBestPrice (OrderVO order) throws RemoteException{
+		UserController user=new UserController();
+		if(user.getPersonInfo(order.getPersonname()).getCredit()<0){//如果客户的信用值小于0，用户不能生成订单
+			return null;
+		}
+		
+		//以下检查订单中的房间等信息是否满足
+		
+		ArrayList<RoomVO> orderroomvolist=order.getRoom();
+		ArrayList<String> roomtypelist=new ArrayList<String>();
+		ArrayList<Integer> roomnumlist=new ArrayList<Integer>();
+		for(int i=0;i<orderroomvolist.size();i++){
+			if(i==0){
+				roomtypelist.add(orderroomvolist.get(i).getRoomType());
+				roomnumlist.add(1);
+			}else{
+				String roomtype=orderroomvolist.get(i).getRoomType();
+				boolean isExist=false;
+				for(int j=0;j<roomtypelist.size();j++){
+					if(roomtype==roomtypelist.get(j)){
+						isExist=true;
+						int afternum=roomnumlist.get(j)+1;
+						roomnumlist.remove(j);
+						roomnumlist.add(j, afternum);
+					}
+				}
+				if(!isExist){
+					roomtypelist.add(orderroomvolist.get(i).getRoomType());
+					roomnumlist.add(1);
+				}
+			}
+			
+		}
+		HotelController hotelcontroller=new HotelController();
+		String hotelname=order.getHotelname();
+//		public int getAvailableNumber(String hotelname, String roomtype, String starttime1, String endtime1);
+		String predictExecutetime=order.getPredictExecutetime();//预计入住时间
+		String predictLeaveTime=order.getPredictLeaveTime();//预计离开时间
 
+		for(int i=0;i<roomtypelist.size();i++){
+			String roomtype=roomtypelist.get(i);
+			int num=hotelcontroller.getAvailableNumber(hotelname, roomtype, predictExecutetime,predictLeaveTime);
+			if(num<roomnumlist.size()){
+				return null;//可用房间数量不足
+			}
+		}
+		
+		//以下生成订单
+		OrderPO orderPO=new OrderPO(order);
+		//orderID共20位，时间201602020512（4年2月2日2时2分）+酒店ID（5位）+客户ID(5位)
+		HotelController hotel=new HotelController();
+		HotelVO hotelvo=hotel.getHotelInfoByHotelworkerOrManager(hotelname);
+		String hotelID=Integer.toString(hotelvo.getHotelID());
+		int hotelIDLength=hotelID.length();
+		for(int i=0;i<5-hotelIDLength;i++){
+			hotelID="0"+hotelID;
+		}
+		
+		String personname=order.getPersonname();
+		UserController usercontroller=new UserController();
+		PersonVO personvo= usercontroller.getPersonInfo(personname);
+		String personID=Integer.toString(personvo.getPersonID());
+		int personIDLength=personID.length();
+		for(int i=0;i<5-personIDLength;i++){
+			personID="0"+personID;
+		}
+		
+		Calendar calendar=Calendar.getInstance();
+		TimeFormTrans t=new TimeFormTrans();
+		String time=t.myToString(calendar);
+		String year=time.substring(0, 4);
+		String month=time.substring(5, 7);
+		String date=time.substring(8, 10);
+		String hour=time.substring(11, 13);
+		String minute=time.substring(14, 16);
+		time=year+month+date+hour+minute;
+		String orderID=time+hotelID+personID;
+		orderPO.setOrderID(orderID);//确定好了20位的酒店ID
+		
+		PriceCalc priceCalc=new PriceCalc();
+		int orderprice=(int)(priceCalc.priceCut(hotelvo, order));
+		orderPO.setOrderprice(orderprice);//确定订单价格，已经用了促销策略
+		
+		orderPO.setProducttime(calendar);
+
+		OrderVO result=new OrderVO(orderPO);
+		
+		
+		return result;
+		
+	}
 	/**
 	 * 在个人订单查看过程中，进一步查看某个状态（未执行，已执行，已撤销，异常，异常）的订单
 	 * @param personname

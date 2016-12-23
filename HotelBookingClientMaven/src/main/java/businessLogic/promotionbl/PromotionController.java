@@ -38,6 +38,7 @@ public class PromotionController implements PromotionblService{
 	 * @return 是否成功增加促销策略
 	 */
 	public boolean addProm(PromotionVO prom){
+		System.out.println("vo:"+prom.getPromotionType());
 		Promotion pro=new Promotion();
 		boolean result=pro.addProm(prom);
 		return result;

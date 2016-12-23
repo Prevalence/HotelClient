@@ -10,6 +10,7 @@ public class HotelConditionVO {
 	 * 3.	可以限定只搜索自己预定过的酒店
 	 */
 //	private String address;
+	private String hotelName;
 	private String circle;
 	private ArrayList<RoomVO> room;
 	private int star;//酒店星级
@@ -67,11 +68,18 @@ public class HotelConditionVO {
 	public void setPersonname(String personname) {
 		this.personname = personname;
 	}
+	public String getHotelName() {
+		return hotelName;
+	}
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
 	
 	//向hotelVO转化
 	public HotelVO toHotelVO(HotelConditionVO hotelConditionVO){
 		//注意转化过程少了condition的是否预订过这个条件，因此在bl层实现是需要注意判断
 		HotelVO hotelVO=new HotelVO();
+		hotelVO.setHotelname(hotelConditionVO.getHotelName());
 		hotelVO.setStar(hotelConditionVO.getStar());
 		hotelVO.setCircle(hotelConditionVO.getCircle());
 		hotelVO.setScore(hotelConditionVO.getScore());

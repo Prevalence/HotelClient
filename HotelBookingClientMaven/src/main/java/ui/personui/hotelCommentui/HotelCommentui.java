@@ -8,6 +8,8 @@ public class HotelCommentui extends Pane{
 	private Stage primaryStage;
 
 	private String personname;
+	
+	private String hotelName;
 
 	private HotelCommentuiController hotelCommentuiController;
 
@@ -16,9 +18,10 @@ public class HotelCommentui extends Pane{
 		 * 
 		 * @param primaryStage
 		 */
-		public HotelCommentui(Stage primaryStage, String personname) {
+		public HotelCommentui(Stage primaryStage, String personname,String hotelName) {
 			this.primaryStage = primaryStage;
 			this.personname = personname;
+			this.hotelName = hotelName;
 			initHotelCommentui();
 		};
 
@@ -27,7 +30,7 @@ public class HotelCommentui extends Pane{
 	 */
 	public void initHotelCommentui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HotelCommentui.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/客户评价酒店界面.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -39,5 +42,6 @@ public class HotelCommentui extends Pane{
 		hotelCommentuiController = loader.getController();
 		hotelCommentuiController.launchStage(primaryStage);
 		hotelCommentuiController.setPersonname(personname);
+		hotelCommentuiController.setHotelNameAndShowInfo(hotelName);
 	}
 }
