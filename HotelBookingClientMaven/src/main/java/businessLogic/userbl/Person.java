@@ -48,7 +48,7 @@ public class Person {
 	 * 会员注册
 	 * @param personvo
 	 * @param vipType
-	 * @param vipInfo 若是普通VIP，info为生日，格式如：2016-01-20；若是企业VIP，格式为非空字符
+	 * @param vipInfo 若是普通VIP，info为生日，格式如：2016-01-20 //企业VIP线下进行
 	 * @return 是否注册成功
 	 * @throws ParseException
 	 * @throws RemoteException
@@ -57,29 +57,11 @@ public class Person {
 	public boolean registeMember(PersonVO personvo, String vipType, String vipInfo) throws ParseException, RemoteException{
 		if(personvo.getVipType().equals("普通客户")){//不是会员，可以注册
 			//判断vipInfo是否符合格式
-			if(vipType.equals("普通会员")){//注册普通会员
-				if(vipInfo.length()!=10){
-					return false;//生日格式不符合要求
-				}else{
-					int year=Integer.parseInt(vipInfo.substring(0, 4));
-					int month=Integer.parseInt(vipInfo.substring(5, 7));
-					int date=Integer.parseInt(vipInfo.substring(8, 10));
-					
-					String birthday=vipInfo+" 00:00:00";
-					personvo.setBirthday(birthday);;
-				}
-				
-				personvo.setVipType("普通会员");
-			}else if(vipType.equals("企业会员")){//注册企业会员
-				if(vipInfo.length()>0){
-					personvo.setEnterpriseName(vipInfo);
-				}else{
-					return false;//企业名称格式不符合要求
-				}
-				
-				personvo.setVipType("企业会员");
-			}
-			personvo.setVipLevel((int)(personvo.getCredit()/100));
+			String birthday=vipInfo+" 00:00:00";
+			personvo.setBirthday(birthday);;
+			personvo.setVipType("普通会员");
+			if
+			personvo.setVipLevel((int)(personvo.getCredit()/1000));
 			PersonPO personPO=new PersonPO(personvo);
 			return userDataService.modifyPerson(personPO);
 		}else{//已是会员，不能再注册
