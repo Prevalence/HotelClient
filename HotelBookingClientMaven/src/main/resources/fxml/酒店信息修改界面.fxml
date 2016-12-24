@@ -112,11 +112,11 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="163.0" layoutY="331.0" prefHeight="296.0" prefWidth="785.0" style="-fx-border-color: ;">
+      <TableView fx:id="roomTable" layoutX="163.0" layoutY="331.0" prefHeight="296.0" prefWidth="785.0" style="-fx-border-color: ;">
          <columns>
-            <TableColumn prefWidth="240.0" />
-            <TableColumn prefWidth="275.0" />
-            <TableColumn prefWidth="260.0" />
+            <TableColumn fx:id="typeCol" prefWidth="240.0" />
+            <TableColumn fx:id="numberCol" prefWidth="288.99993896484375" />
+            <TableColumn fx:id="priceCol" prefWidth="256.0" />
          </columns>
       </TableView>
       <ImageView fitHeight="48.0" fitWidth="785.0" layoutX="163.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
