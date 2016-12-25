@@ -78,7 +78,10 @@ public class UserSearchAndAdduiController {
 		username = usernameField.getText();
 		if (usertype.equals("") || username.equals("")) {
 			feedbackLabel.setText("搜索信息不全，无法搜索，请补全用户类型或用户名称！");
-		} else if(userbl.isExist(username, usertype)){
+		}else if(!usertype.equals("客户")||!usertype.equals("酒店工作人员")||!usertype.equals("网站营销人员人员")){
+			feedbackLabel.setText("用户类型只能是客户、酒店工作人员和网站营销人员！");
+		}
+		else if(userbl.isExist(username, usertype)){
 			userInfoPane = ManagerFactory.createUserInfoPane(primaryStage, usertype, managerName, username);
 			mainPane.getChildren().remove(0);
 			mainPane.getChildren().add(userInfoPane);

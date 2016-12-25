@@ -204,7 +204,7 @@ public class OrderInfoViewuiController {
 		personLabel.setText("入住人：" + order.getRealname());
 		connectionLabel.setText("联系方式：" + order.getPersonPhone());
 		stateLabel.setText(order.getOrderstate());
-		priceLabel.setText("价格：" + String.valueOf(order.getRoom().get(0).getRoomPrice()));
+		priceLabel.setText("价格：" + String.valueOf(order.getOrderprice()));
 	}
 
 	/**

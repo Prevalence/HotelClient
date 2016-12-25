@@ -194,7 +194,7 @@ public class PersonInfouiController {
 		String month = monthField.getText();
 		String day = dayField.getText();
 		String time = year + "-" + month + "-" + day + " 00:00:00";
-		String vipInfo = year + month + day;
+		String vipInfo = year + "-" +month + "-" + day;
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			try {
 				Date date = df.parse(time);
@@ -208,6 +208,8 @@ public class PersonInfouiController {
 					feedbackLabel.setText("成功登记为普通会员。");
 					personname = nameField.getText();
 					nameLabel.setText(personname);
+					memberTypeLabel.setText("普通会员");
+					levelLabel.setText("userbl.getPersonInfo(personname).getVipLevel()");;
 				} else {
 					feedbackLabel.setTextFill(Color.web("#ff0000"));
 					feedbackLabel.setText("信用值不够，无法成为会员。");

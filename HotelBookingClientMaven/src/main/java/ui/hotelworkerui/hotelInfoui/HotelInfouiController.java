@@ -6,18 +6,30 @@ import businessLogic.hotelbl.HotelController;
 import businessLogic.userbl.UserController;
 import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.userblService.UserblService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import ui.helper.SearchButtonCell;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.promotionui.Promotionui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.hotelVO.hotelblVO.RoomVO;
+import vo.hotelVO.hoteluiVO.HotelRoomVO;
+import vo.hotelVO.hoteluiVO.HotelSearchVO;
+import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
 public class HotelInfouiController {
 
@@ -55,10 +67,21 @@ public class HotelInfouiController {
 	private CheckBox sofaCheck;
 	@FXML
 	private CheckBox diningCheck;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableView roomTable;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn typeCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn priceCol;
+	@SuppressWarnings("rawtypes")
+	@FXML
+	private TableColumn numberCol;
 	@FXML
 	private Pane mainPane;
 
-	@SuppressWarnings("unused")
 	private UserblService userbl;
 
 	private HotelblService hotelbl;
@@ -84,6 +107,15 @@ public class HotelInfouiController {
 	private String hotelName;
 
 	private ArrayList<Boolean> service;
+
+	private ArrayList<RoomInfoVO> rooms;
+
+	private ArrayList<HotelRoomVO> roomList;
+
+	// 填充进TableView的酒店数据
+	private ObservableList<HotelRoomVO> roomData;
+
+	private HotelRoomVO room;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
@@ -155,22 +187,19 @@ public class HotelInfouiController {
 		if (hotelName.equals("") || area.equals("") || feature.equals("") || location.equals("") || star.equals("")
 				|| connection.equals("")) {
 			feedbackLabel.setText("修改后的信息不能为空！");
-		}
-		else if(!this.hotelName.equals(hotelName)){
+		} else if (!this.hotelName.equals(hotelName)) {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("不能修改酒店名称！");
-		}
-		else{
+		} else {
 			hotelInfo.setCircle(area);
 			hotelInfo.setFeature(feature);
 			hotelInfo.setAddress(location);
 			hotelInfo.setStar(Integer.parseInt(star));
 			hotelInfo.setHotelPhone(connection);
 			hotelInfo.setService(service);
-			if(hotelbl.modifyHotelInfo(hotelInfo)){
+			if (hotelbl.modifyHotelInfo(hotelInfo)) {
 				feedbackLabel.setText("修改成功！");
-			}
-			else{
+			} else {
 				feedbackLabel.setText("系统出现错误！");
 			}
 		}
@@ -215,5 +244,43 @@ public class HotelInfouiController {
 		if (service.get(3)) {
 			diningCheck.setSelected(true);
 		}
+	}
+
+	/**
+	 * 初始设置TableView的属性，绑定内部按钮
+	 */
+	@SuppressWarnings("unchecked")
+	public void initTableView() {
+		typeCol.setCellValueFactory(new PropertyValueFactory<>("roomtype"));
+		numberCol.setCellValueFactory(new PropertyValueFactory<>("totalNumber"));
+		priceCol.setCellValueFactory(new PropertyValueFactory<>("roomPrice"));
+		rooms = hotelbl.getHotelRoomInfo(hotelName);
+		roomList = getHotelRoomList(rooms);
+		roomData = FXCollections.observableArrayList(roomList);
+		roomTable.setItems(roomData);
+		System.out.println("roomm:"+rooms.get(0).getRoomtype());
+	}
+
+	/**
+	 * 从roomVO列表中获取用于界面显示的roomInfo列表
+	 * 
+	 * @return roomInfo
+	 */
+	@SuppressWarnings("unused")
+	private ArrayList<HotelRoomVO> getHotelRoomList(ArrayList<RoomInfoVO> rooms) {
+		ArrayList<RoomInfoVO> roomInfoList = new ArrayList<RoomInfoVO>();
+		ArrayList<HotelRoomVO> roomList = new ArrayList<HotelRoomVO>();
+		String roomtype = "";
+		int roomPrice = 0;
+		int totalNumber = 0;
+		for (int i = 0; i < rooms.size(); i++) {
+			roomtype = rooms.get(i).getRoomtype();
+			roomPrice = Integer.parseInt(rooms.get(i).getRoomPrice());
+			// totalNumber = hotelbl.getAvailableNumber(hotelName, roomtype,
+			// starttime, endtime)
+			room = new HotelRoomVO(roomtype, roomPrice, totalNumber);
+			roomList.add(room);
+		}
+		return roomList;
 	}
 }
