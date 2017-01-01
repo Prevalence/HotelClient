@@ -1,15 +1,12 @@
 package ui.marketui.orderInfoViewui;
 
 import businessLogic.userbl.UserController;
+import businessLogicService.orderblService.OrderblService;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ui.hotelworkerui.hotelInfoui.HotelInfoui;
-import ui.hotelworkerui.orderViewui.HotelOrderViewui;
-import ui.hotelworkerui.promotionui.Promotionui;
-import ui.hotelworkerui.roomInfoui.RoomInfoui;
 import ui.marketui.creditPayui.CreditPayui;
 import ui.marketui.orderViewui.MarketOrderViewui;
 import ui.marketui.promotionui.MarketPromotionui;
@@ -35,12 +32,16 @@ public class OrderInfoViewuiController {
 	@FXML
 	private Label priceLabel;
 	@FXML
+	private Label feedbackLabel;
+	@FXML
 	private Pane mainPane;
 
 	@SuppressWarnings("unused")
 	private UserblService userbl;
+	
+	private OrderblService orderbl;
 
-	// 酒店订单浏览界面
+	// 网站订单浏览界面
 	@SuppressWarnings("unused")
 	private Pane marketOrderPane;
 
@@ -48,13 +49,13 @@ public class OrderInfoViewuiController {
 	@SuppressWarnings("unused")
 	private Pane promotionPane;
 
-	// 酒店信息界面
+	// 信用充值信息界面
+	@SuppressWarnings("unused")
+	private Pane creditPayPane;
+
+	// 恢复信用值选择界面
 	@SuppressWarnings("unused")
 	private Pane creditPane;
-
-	// 房间信息界面
-	@SuppressWarnings("unused")
-	private Pane roomInfoPane;
 	@SuppressWarnings("unused")
 	private Stage primaryStage;
 
@@ -72,7 +73,7 @@ public class OrderInfoViewuiController {
 	}
 
 	/**
-	 * 跳转到酒店订单浏览界面
+	 * 跳转到网站订单浏览界面
 	 */
 	@FXML
 	private void viewMarketOrder() {
@@ -90,16 +91,29 @@ public class OrderInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(promotionPane);
 	}
-
+	
 	/**
-	 * 跳转到酒店信息维护界面
+	 * 跳转到信用充值界面
 	 */
 	@FXML
-	private void viewHotelInfo() {
+	private void rechargeCredit() {
 		// hotelInfo = hotelbl.showHotelInfo(marketName);
-		creditPane = new CreditPayui(primaryStage, marketName);
+		creditPayPane = new CreditPayui(primaryStage, marketName);
 		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(creditPane);
+		mainPane.getChildren().add(creditPayPane);
+	}
+	
+	/**
+	 * 处理异常订单
+	 */
+	@FXML
+	private void handleOrder() {
+		if(orderInfo.getOrderstate().equals("异常")){
+//			creditPane 
+		}
+		else{
+			feedbackLabel.setText("该订单不是异常订单！");
+		}
 	}
 
 	/**

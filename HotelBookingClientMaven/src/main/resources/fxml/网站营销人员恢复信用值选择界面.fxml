@@ -97,12 +97,12 @@
                   <Image url="@../订单详情界面/酒店工作人员首界面.fxml.png" />
                </image>
             </ImageView>
-            <RadioButton layoutX="170.0" layoutY="87.0" mnemonicParsing="false" text="恢复一半信用值" textFill="#74d5df">
+            <RadioButton fx:id="halfButton" layoutX="170.0" layoutY="87.0" mnemonicParsing="false" text="恢复一半信用值" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="170.0" layoutY="182.0" mnemonicParsing="false" text="恢复全部信用值" textFill="#74d5df">
+            <RadioButton fx:id="allButton" layoutX="170.0" layoutY="182.0" mnemonicParsing="false" text="恢复全部信用值" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>

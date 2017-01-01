@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -33,6 +34,8 @@ public class OrderViewuiController {
 	private Button creditRechargeButton;
 	@FXML
 	private Button searchButton;
+	@FXML
+	private TextField orderIDField;
 	@FXML
 	private Pane mainPane;
 	@SuppressWarnings("rawtypes")
@@ -121,11 +124,11 @@ public class OrderViewuiController {
 	}
 
 	/**
-	 * 根据订单号查看订单详情
+	 * 根据订单号查看订单详情,且必须是异常订单
 	 */
 	@FXML
 	private void searchWithOrderNumber() {
-
+		orderbl.getOrderInfo(orderIDField.getText());
 	}
 
 	/**
