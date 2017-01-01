@@ -1,32 +1,28 @@
-package ui.hotelworkerui.promotionui.periodPromotionEditui;
+package ui.marketui.promotionui.periodPromotionAddui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
 
-public class PeriodPromotionEditui extends Pane{
+public class WebPeriodPromotionAddui extends Pane{
 	private Stage primaryStage;
 
-	private String workerName;
+	private String marketName;
 	
 	private ObservableList<String> months = FXCollections.observableArrayList();
 	
-	private PeriodHotelproVO promotion;
-
-	private PeriodPromotionEdituiController birthdayPromotionuiController;
+	private WebPeriodPromotionAdduiController birthdayPromotionuiController;
 
 	/**
 		 * 接受primarystage用来完成界面最小化和可移动化设置
 		 * 
 		 * @param primaryStage
 		 */
-		public PeriodPromotionEditui(Stage primaryStage, String workerName,PeriodHotelproVO promotion) {
+		public WebPeriodPromotionAddui(Stage primaryStage, String marketName) {
 			this.primaryStage = primaryStage;
-			this.workerName = workerName;
-			this.promotion = promotion;
+			this.marketName = marketName;
 			months.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
 			initPromotionViewui();
 		};
@@ -36,7 +32,7 @@ public class PeriodPromotionEditui extends Pane{
 	 */
 	public void initPromotionViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/特定时间优惠编辑.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/网站促销策略之特定时间优惠.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -47,8 +43,7 @@ public class PeriodPromotionEditui extends Pane{
 		// primaryStage.setScene(scene);
 		birthdayPromotionuiController = loader.getController();
 		birthdayPromotionuiController.launchStage(primaryStage);
-		birthdayPromotionuiController.setWorkerNameAndShowInfo(workerName);
+		birthdayPromotionuiController.setMarketName(marketName);
 		birthdayPromotionuiController.setMonthChoiceBox(months);
-		birthdayPromotionuiController.setPromotionVO(promotion);
 	}
 }

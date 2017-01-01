@@ -1,25 +1,26 @@
-package ui.hotelworkerui.promotionui.birthdayPromotionEditui;
+package ui.marketui.promotionui.periodPromotionEditui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import vo.promotionvo.PromotionVO;
+import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
+import vo.promotionvo.webpromotionVO.PeriodWebproVO;
 
-public class BirthdayPromotionEditui extends Pane{
+public class WebPeriodPromotionEditui extends Pane{
 	private Stage primaryStage;
 
 	private String workerName;
 	
-	private PromotionVO promotion;
+	private PeriodWebproVO promotion;
 
-	private BirthdayPromotionEdituiController birthdayPromotionuiController;
+	private WebPeriodPromotionEdituiController birthdayPromotionuiController;
 
 	/**
 		 * 接受primarystage用来完成界面最小化和可移动化设置
 		 * 
 		 * @param primaryStage
 		 */
-		public BirthdayPromotionEditui(Stage primaryStage, String workerName,PromotionVO promotion) {
+		public WebPeriodPromotionEditui(Stage primaryStage, String workerName,PeriodWebproVO promotion) {
 			this.primaryStage = primaryStage;
 			this.workerName = workerName;
 			this.promotion = promotion;
@@ -31,7 +32,7 @@ public class BirthdayPromotionEditui extends Pane{
 	 */
 	public void initPromotionViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/生日促销策略编辑.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/网站促销策略之特定时间优惠编辑.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -42,7 +43,7 @@ public class BirthdayPromotionEditui extends Pane{
 		// primaryStage.setScene(scene);
 		birthdayPromotionuiController = loader.getController();
 		birthdayPromotionuiController.launchStage(primaryStage);
-		birthdayPromotionuiController.setWorkerNameAndShowInfo(workerName);
-		birthdayPromotionuiController.setPromotionVO(promotion);;
+		birthdayPromotionuiController.setMarketName(workerName);
+		birthdayPromotionuiController.setPromotionVO(promotion);
 	}
 }

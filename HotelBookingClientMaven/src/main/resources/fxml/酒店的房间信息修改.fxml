@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.promotionui.periodPromotionEditui.PeriodPromotionEdituiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.promotionui.birthdayPromotionAddui.BirthdayPromotionAdduiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -105,43 +105,28 @@
       </Button>
       <Pane layoutX="301.0" layoutY="223.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="171.0" layoutY="248.0" prefHeight="45.0" prefWidth="48.0" text="折扣:" textFill="#74d5df">
+            <Label layoutX="144.0" layoutY="230.0" prefHeight="45.0" prefWidth="82.0" text="数量:" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="discountField" layoutX="239.0" layoutY="256.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="359.0" layoutY="257.0" text="\%" textFill="#76d4de">
+            <TextField fx:id="discountField" layoutX="212.0" layoutY="238.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="332.0" layoutY="239.0" text="间" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
             <ImageView fitHeight="94.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../特定时间优惠策略/特定时间优惠策略.png" />
+                  <Image url="@../生日促销策略/生日促销策略.png" />
                </image>
             </ImageView>
-            <Label layoutX="119.0" layoutY="174.0" prefHeight="27.0" prefWidth="105.0" text="起始时间：" textFill="#74d5df">
+            <Label layoutX="99.0" layoutY="184.0" prefHeight="27.0" prefWidth="105.0" text="房间类型：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="119.0" layoutY="216.0" prefHeight="27.0" prefWidth="105.0" text="终止时间：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="promotionNameField" layoutX="239.0" layoutY="126.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="158.0" layoutY="128.0" prefHeight="27.0" prefWidth="68.0" text="名称：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="feedbackLabel" layoutX="1.0" layoutY="424.0" prefHeight="28.0" prefWidth="371.0" textFill="#fc0101">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
+            <TextField fx:id="promotionNameField" layoutX="212.0" layoutY="182.0" prefHeight="30.0" prefWidth="105.0" />
             <Button fx:id="okButton" layoutX="396.0" layoutY="398.0" mnemonicParsing="false" onAction="#addPromotion" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
                <font>
                   <Font size="1.0" />
@@ -154,32 +139,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TextField fx:id="dayField112" layoutX="376.0" layoutY="215.0" prefHeight="30.0" prefWidth="52.0" />
-            <TextField fx:id="dayField111" layoutX="310.0" layoutY="215.0" prefHeight="30.0" prefWidth="52.0" />
-            <TextField fx:id="dayField11" layoutX="376.0" layoutY="172.0" prefHeight="30.0" prefWidth="52.0" />
-            <TextField fx:id="dayField1" layoutX="310.0" layoutY="172.0" prefHeight="30.0" prefWidth="52.0" />
-            <ChoiceBox fx:id="dayChoices1" layoutX="377.0" layoutY="173.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
-            <ChoiceBox fx:id="monthChoices2" layoutX="308.0" layoutY="215.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
-            <ChoiceBox fx:id="dayChoices2" layoutX="377.0" layoutY="215.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
-            <ChoiceBox fx:id="monthChoices1" layoutX="308.0" layoutY="172.0" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: transparent;" />
-            <Label layoutX="428.0" layoutY="220.0" text="日" />
-            <Label layoutX="361.0" layoutY="220.0" text="月" />
-            <Label layoutX="294.0" layoutY="220.0" prefHeight="20.0" prefWidth="22.0" text="年" />
-            <TextField fx:id="yearField2" layoutX="239.0" layoutY="215.0" prefHeight="30.0" prefWidth="54.0" />
-            <Label layoutX="428.0" layoutY="178.0" text="日" />
-            <Label layoutX="361.0" layoutY="177.0" text="月" />
-            <Label layoutX="294.0" layoutY="177.0" prefHeight="20.0" prefWidth="22.0" text="年" />
-            <TextField fx:id="yearField1" layoutX="239.0" layoutY="172.0" prefHeight="30.0" prefWidth="54.0" />
-            <Label fx:id="oldEndTimeLabel" layoutX="235.0" layoutY="344.0" prefHeight="20.0" prefWidth="270.0" />
-            <Label layoutX="116.0" layoutY="340.0" prefHeight="27.0" prefWidth="133.0" text="原终止时间：" textFill="#74d5df">
+            <Label fx:id="feedbackLabel" layoutX="1.0" layoutY="423.0" prefHeight="28.0" prefWidth="371.0" textFill="#fc0101">
                <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="oldStartTimeLabel" layoutX="235.0" layoutY="306.0" prefHeight="20.0" prefWidth="270.0" />
-            <Label layoutX="116.0" layoutY="302.0" prefHeight="27.0" prefWidth="133.0" text="原起始时间：" textFill="#74d5df">
-               <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
          </children>
@@ -189,7 +151,7 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="37.0" fitWidth="145.0" layoutX="-1.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/色块.png" />
          </image>

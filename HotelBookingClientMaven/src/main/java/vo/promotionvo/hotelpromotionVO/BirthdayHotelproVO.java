@@ -2,7 +2,7 @@ package vo.promotionvo.hotelpromotionVO;
 
 import po.PromotionPO;
 import po.promotionpo.hotelpromotionPO.BirthdayHotelproPO;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 
 /**
  * @author 武秀峰

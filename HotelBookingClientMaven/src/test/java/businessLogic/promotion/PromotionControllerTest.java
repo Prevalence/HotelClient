@@ -9,10 +9,10 @@ import org.junit.Test;
 
 import businessLogic.promotionbl.PromotionController;
 import rmi.ClientRunner;
-import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.orderVO.orderblVO.OrderVO;
+import vo.promotionvo.PromotionVO;
 
 public class PromotionControllerTest {
 	ClientRunner cr=new ClientRunner();

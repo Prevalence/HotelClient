@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import dataService.promotionDataService.PromotionDataService;
 import po.PromotionPO;
 import rmi.RemoteHelper;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 /**
  * 
  * @author John

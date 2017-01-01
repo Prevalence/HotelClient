@@ -91,6 +91,7 @@
       <ChoiceBox fx:id="starChoices" layoutX="347.0" layoutY="181.0" prefHeight="32.0" prefWidth="95.0" stylesheets="@../酒店搜索界面/选择框.css" />
       <ChoiceBox fx:id="areaChoices" layoutX="632.0" layoutY="181.0" prefHeight="32.0" prefWidth="95.0" stylesheets="@../酒店搜索界面/选择框.css" />
       <ChoiceBox fx:id="bookedChoices" layoutX="773.0" layoutY="181.0" prefHeight="32.0" prefWidth="181.0" stylesheets="@../酒店搜索界面/选择框.css" />
+      <ChoiceBox layoutX="808.0" layoutY="125.0" prefHeight="32.0" prefWidth="95.0" stylesheets="@../酒店搜索界面/选择框.css" />
       <ChoiceBox fx:id="scoreChoices" layoutX="489.0" layoutY="181.0" prefHeight="32.0" prefWidth="95.0" stylesheets="@../酒店搜索界面/选择框.css" />
       <Label fx:id="scoreLabel" layoutX="518.0" layoutY="185.0" text="评分" textFill="WHITE">
          <font>
@@ -175,6 +176,11 @@
          </font>
       </Label>
       <Label fx:id="bookedLabel" layoutX="792.0" layoutY="185.0" text="是否必须预定过" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="starLabel1" layoutX="838.0" layoutY="129.0" text="排序" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

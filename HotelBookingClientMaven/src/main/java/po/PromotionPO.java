@@ -2,7 +2,7 @@ package po;
 
 import java.io.Serializable;
 
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 
 
 /**

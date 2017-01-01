@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import po.PromotionPO;
 import po.promotionpo.hotelpromotionPO.EnterpriseHotelproPO;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 
 /**
  * @author 武秀峰

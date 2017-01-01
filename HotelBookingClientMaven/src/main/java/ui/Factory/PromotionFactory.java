@@ -6,11 +6,11 @@ import ui.hotelworkerui.promotionui.birthdayPromotionAddui.BirthdayPromotionAddu
 import ui.hotelworkerui.promotionui.birthdayPromotionEditui.BirthdayPromotionEditui;
 import ui.hotelworkerui.promotionui.periodPromotionAddui.PeriodPromotionAddui;
 import ui.hotelworkerui.promotionui.periodPromotionEditui.PeriodPromotionEditui;
-import ui.managerui.hotelworkerInfoui.HotelworkerInfoui;
-import ui.managerui.marketInfoui.MarketInfoui;
-import ui.managerui.personInfoui.PersonInfoui;
-import vo.PromotionVO;
+import ui.marketui.promotionui.periodPromotionAddui.WebPeriodPromotionAddui;
+import ui.marketui.promotionui.periodPromotionEditui.WebPeriodPromotionEditui;
+import vo.promotionvo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
+import vo.promotionvo.webpromotionVO.PeriodWebproVO;
 
 public class PromotionFactory {
 	private static Pane promotionPane;
@@ -20,17 +20,20 @@ public class PromotionFactory {
 	 * 
 	 * @param primaryStage
 	 * @param promotiontype
-	 * @param workerName
+	 * @param userName
 	 * @param username
 	 * @return
 	 */
-	public static Pane createPromotionPane(Stage primaryStage, String promotiontype, String workerName) {
+	public static Pane createPromotionPane(Stage primaryStage, String promotiontype, String userName) {
 		switch (promotiontype) {
 		case "生日优惠策略":
-			promotionPane = new BirthdayPromotionAddui(primaryStage, workerName);
+			promotionPane = new BirthdayPromotionAddui(primaryStage, userName);
 			break;
 		case "特定时间优惠策略":
-			 promotionPane = new PeriodPromotionAddui(primaryStage, workerName);
+			 promotionPane = new PeriodPromotionAddui(primaryStage, userName);
+			break;
+		case "网站特定时间优惠策略":
+			 promotionPane = new WebPeriodPromotionAddui(primaryStage, userName);
 			break;
 		default:
 			break;
@@ -38,15 +41,19 @@ public class PromotionFactory {
 		return promotionPane;
 	}
 
-	public static Pane createPromotionEditPane(Stage primaryStage, String promotiontype, String workerName,
+	public static Pane createPromotionEditPane(Stage primaryStage, String promotiontype, String userName,
 			PromotionVO promotion) {
 		switch (promotiontype) {
 		case "生日优惠策略":
-			promotionPane = new BirthdayPromotionEditui(primaryStage, workerName,promotion);
+			promotionPane = new BirthdayPromotionEditui(primaryStage, userName,promotion);
 			break;
 		case "特定时间优惠策略":
-			 promotionPane = new PeriodPromotionEditui(primaryStage, workerName,
+			 promotionPane = new PeriodPromotionEditui(primaryStage, userName,
 			 (PeriodHotelproVO)promotion);
+			break;
+		case "网站特定时间优惠策略":
+			 promotionPane = new WebPeriodPromotionEditui(primaryStage, userName,
+			 (PeriodWebproVO)promotion);
 			break;
 		default:
 			break;

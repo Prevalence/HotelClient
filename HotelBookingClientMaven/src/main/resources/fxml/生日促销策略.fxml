@@ -118,7 +118,7 @@
             </Label>
             <ImageView fitHeight="94.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../生日促销策略/生日促销策略.png" />
+                  <Image url="@../房间信息/生日促销策略.png" />
                </image>
             </ImageView>
             <Label layoutX="129.0" layoutY="135.0" prefHeight="27.0" prefWidth="68.0" text="名称：" textFill="#74d5df">
