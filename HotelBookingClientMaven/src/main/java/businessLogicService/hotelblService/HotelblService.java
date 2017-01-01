@@ -117,4 +117,12 @@ public interface HotelblService {
 	 */
 	public int getHighestPrice(String hotelname);
 	
+	/**
+	 * 删除某酒店的某类型的所有房间
+	 * @param roomtype
+	 * @param hotelName
+	 * @return
+	 */
+	public boolean removeRoom(String roomtype,String hotelName);
+	
 }

@@ -439,6 +439,30 @@ public class Hotel {
 		return highPrice;
 	}
 	
+	/**
+	 * 删除某酒店的某类型的所有房间
+	 * @param roomtype
+	 * @param hotelName
+	 * @return
+	 * @throws RemoteException 
+	 */
+	public boolean removeRoom(String roomtype, String hotelname) throws RemoteException{
+		// TODO Auto-generated method stub
+		HotelController hc=new HotelController();
+		HotelVO hotelvo=hc.getHotelInfoByPerson(hotelname);
+		ArrayList<RoomVO> roomvolist=hotelvo.getRoom();
+		
+		//删去房间
+		for(int i=0;i<roomvolist.size();i++){
+			if(roomvolist.get(i).getRoomType().equals(roomtype)){
+				roomvolist.remove(i);
+				i--;
+			}
+		}
+		
+		boolean result=hc.roomModify(hotelname, roomvolist);
+		return result;
+	}
 	
 	/**
 	 * 构造方法
