@@ -185,7 +185,6 @@ public class PeriodPromotionAdduiController {
 		year2 = yearField2.getText();
 		String startTime = year1 + "-" + month1 + "-" + day1 + " 12:00:00";
 		String endTime = year2 + "-" + month2 + "-" + day2 + " 12:00:00";
-		System.out.println("time:--"+startTime);
 		String discount = discountField.getText();
 		if (discount.equals("") || promotionName.equals("")) {
 			feedbackLabel.setTextFill(Color.web("#f80202"));

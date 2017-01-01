@@ -22,6 +22,8 @@ public class HotelSearchui extends Pane {
 	private ObservableList<String> areas=FXCollections.observableArrayList();
 	
 	private ObservableList<String> booked=FXCollections.observableArrayList();
+	
+	private ObservableList<String> sort=FXCollections.observableArrayList();
 
 	/**
 	 * 接受primarystage用来完成界面最小化和可移动化设置
@@ -36,6 +38,7 @@ public class HotelSearchui extends Pane {
 		scores.addAll("1.0-5.0","2.0-5.0","3.0-5.0","4.0-5.0","5.0");
 		areas.addAll("商圈1","商圈2");
 		booked.addAll("是","否");
+		sort.addAll("价格","星级","评分");
 		System.out.println(prices.get(0));
 		initHotelSearchui();
 	};
@@ -63,6 +66,7 @@ public class HotelSearchui extends Pane {
 		hotelSearchuiController.setScoreChoiceBox(scores);
 		hotelSearchuiController.setAreaChoiceBox(areas);
 		hotelSearchuiController.setBookedChoiceBox(booked);
+		hotelSearchuiController.setSortChoiceBox(sort);
 		hotelSearchuiController.initTableView();
 	}
 }

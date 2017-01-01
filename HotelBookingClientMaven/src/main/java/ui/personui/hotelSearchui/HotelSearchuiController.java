@@ -61,6 +61,8 @@ public class HotelSearchuiController {
 	@FXML
 	private Label bookedLabel;
 	@FXML
+	private Label sortLabel;
+	@FXML
 	private Label feedbackLabel;
 	@FXML
 	private Label nameLabel;
@@ -74,6 +76,8 @@ public class HotelSearchuiController {
 	private ChoiceBox<String> areaChoices;
 	@FXML
 	private ChoiceBox<String> bookedChoices;
+	@FXML
+	private ChoiceBox<String> sortChoices;
 	@SuppressWarnings("rawtypes")
 	@FXML
 	private TableView searchTable;
@@ -122,7 +126,7 @@ public class HotelSearchuiController {
 	private Stage primaryStage;
 
 	private String personname;
-	
+
 	String hotelName;
 
 	private int[] lowerPrice = { 0, 300, 600, 900, 1200 };
@@ -150,11 +154,6 @@ public class HotelSearchuiController {
 	private boolean[] booked = { true, false };
 
 	private boolean bookedSelected = false;
-
-	// 填充进TableView的酒店数据
-	private ObservableList<OrderViewVO> orderData;
-
-	private ArrayList<OrderViewVO> orderViewList;
 
 	// 订单数据表
 	private ArrayList<OrderVO> orders;
@@ -195,12 +194,17 @@ public class HotelSearchuiController {
 	private void searchHotelInfo() {
 		String hotelName = searchField.getText();
 		// hotelInfo = hotelbl.showHotelInfo(hotelName);
-		if (hotelbl.getHotelInfoByPerson(hotelName) != null) {
-			hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
-			mainPane.getChildren().remove(0);
-			mainPane.getChildren().add(hotelInfoViewPane);
-		} else {
-			feedbackLabel.setText("搜索的酒店不存在，请确保酒店名称正确。");
+		if (!hotelName.equals("")) {
+			if (hotelbl.getHotelInfoByPerson(hotelName) != null) {
+				hotelInfoViewPane = new HotelInfoViewui(primaryStage, personname, hotelName);
+				mainPane.getChildren().remove(0);
+				mainPane.getChildren().add(hotelInfoViewPane);
+			} else {
+				feedbackLabel.setText("搜索的酒店不存在，请确保酒店名称正确。");
+			}
+		}
+		else{
+			feedbackLabel.setText("未输入酒店名称！");
 		}
 	}
 
@@ -292,9 +296,9 @@ public class HotelSearchuiController {
 		priceChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				priceLabel.setText("");
-				hotelName=searchField.getText();
-				if(hotelName.equals("")){
-					hotelName=null;
+				hotelName = searchField.getText();
+				if (hotelName.equals("")) {
+					hotelName = null;
 				}
 				if (!area.equals("")) {
 					priceLower = lowerPrice[priceChoices.getSelectionModel().getSelectedIndex()];
@@ -343,9 +347,9 @@ public class HotelSearchuiController {
 		starChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				starLabel.setText("");
-				hotelName=searchField.getText();
-				if(hotelName.equals("")){
-					hotelName=null;
+				hotelName = searchField.getText();
+				if (hotelName.equals("")) {
+					hotelName = null;
 				}
 				if (!area.equals("")) {
 					starSelected = star[starChoices.getSelectionModel().getSelectedIndex()];
@@ -386,9 +390,9 @@ public class HotelSearchuiController {
 		scoreChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				scoreLabel.setText("");
-				hotelName=searchField.getText();
-				if(hotelName.equals("")){
-					hotelName=null;
+				hotelName = searchField.getText();
+				if (hotelName.equals("")) {
+					hotelName = null;
 				}
 				if (!area.equals("")) {
 					scoreSelected = score[scoreChoices.getSelectionModel().getSelectedIndex()];
@@ -431,9 +435,9 @@ public class HotelSearchuiController {
 		areaChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				areaLabel.setText("");
-				hotelName=searchField.getText();
-				if(hotelName.equals("")){
-					hotelName=null;
+				hotelName = searchField.getText();
+				if (hotelName.equals("")) {
+					hotelName = null;
 				}
 				area = areas[areaChoices.getSelectionModel().getSelectedIndex()];
 				if (!area.equals("")) {
@@ -476,9 +480,9 @@ public class HotelSearchuiController {
 		bookedChoices.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				bookedLabel.setText("");
-				hotelName=searchField.getText();
-				if(hotelName.equals("")){
-					hotelName=null;
+				hotelName = searchField.getText();
+				if (hotelName.equals("")) {
+					hotelName = null;
 				}
 				if (!area.equals("")) {
 					bookedSelected = booked[bookedChoices.getSelectionModel().getSelectedIndex()];
@@ -509,6 +513,75 @@ public class HotelSearchuiController {
 				}
 			}
 		});
+	}
+
+	/**
+	 * 设置排序方式选择的组件
+	 * 
+	 * @param others
+	 */
+	public void setSortChoiceBox(ObservableList<String> others) {
+		sortChoices.setItems(others);
+		sortChoices.setOnAction(new EventHandler<ActionEvent>() {
+			@SuppressWarnings("unchecked")
+			public void handle(ActionEvent event) {
+				sortLabel.setText("");
+				int index = sortChoices.getSelectionModel().getSelectedIndex();
+				System.out.println("index:" + index);
+				sort(index);
+				searchTable.setItems(searchData);
+			}
+		});
+	}
+
+	/**
+	 * 排序
+	 * 
+	 * @param index
+	 */
+	private void sort(int index) {
+		HotelSearchVO temp;
+		switch (index) {
+		case 0:
+			for (int i = 0; i < searchData.size(); i++) {
+				for (int j = i + 1; j < searchData.size(); j++) {
+
+					// if(searchData.get(i).<searchData.get(j));
+					// searchData.
+				}
+
+			}
+			break;
+		case 1:
+			for (int i = 0; i < searchData.size(); i++) {
+				for (int j = i + 1; j < searchData.size(); j++) {
+
+					if (Integer.parseInt(searchData.get(i).getStar()) < Integer.parseInt(searchData.get(j).getStar())) {
+						temp = searchData.get(i);
+						searchData.set(i, searchData.get(j));
+						searchData.set(j, temp);
+					}
+
+				}
+			}
+			break;
+		case 2:
+			for (int i = 0; i < searchData.size(); i++) {
+				for (int j = i + 1; j < searchData.size(); j++) {
+
+					if (Double.parseDouble(searchData.get(i).getScore()) < Double
+							.parseDouble(searchData.get(j).getScore())) {
+						temp = searchData.get(i);
+						searchData.set(i, searchData.get(j));
+						searchData.set(j, temp);
+					}
+
+				}
+			}
+			break;
+		default:
+			break;
+		}
 	}
 
 	/**

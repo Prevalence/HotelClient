@@ -146,9 +146,9 @@ public class BirthdayPromotionEdituiController {
 		} else {
 			PromotionVO promotion = new BirthdayHotelproVO(0, promotionName, "生日优惠策略", hotelName,
 					Integer.parseInt(discount));
-			if(promotionbl.addProm(promotion)){
+			if(promotionbl.modifyProm(promotion)){
 				feedbackLabel.setTextFill(Color.web("#058cff"));
-				feedbackLabel.setText("添加成功！");
+				feedbackLabel.setText("编辑成功！");
 			}
 			else{
 				feedbackLabel.setTextFill(Color.web("#f80202"));

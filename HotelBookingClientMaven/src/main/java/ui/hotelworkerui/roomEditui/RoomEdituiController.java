@@ -6,7 +6,6 @@ import businessLogic.hotelbl.HotelController;
 import businessLogic.userbl.UserController;
 import businessLogicService.hotelblService.HotelblService;
 import businessLogicService.userblService.UserblService;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,9 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
@@ -42,19 +39,19 @@ public class RoomEdituiController {
 	@FXML
 	private Label nameLabel;
 	@FXML
+	private Label hotelNameLabel;
+	@FXML
+	private Label scoreLabel;
+	@FXML
+	private Label areaLabel;
+	@FXML
+	private Label connectionLabel;
+	@FXML
 	private Label feedbackLabel;
 	@FXML
-	private TextField hotelNameField;
+	private TextField roomtypeField;
 	@FXML
-	private TextField areaField;
-	@FXML
-	private TextField featureField;
-	@FXML
-	private TextField locationField;
-	@FXML
-	private TextField starField;
-	@FXML
-	private TextField connectionField;
+	private TextField numberField;
 	@FXML
 	private CheckBox wifiCheck;
 	@FXML
@@ -177,66 +174,6 @@ public class RoomEdituiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(newRoomPane);
 	}
-	
-	/**
-	 * 增加新的房型
-	 */
-	@FXML
-	private void addRoom() {
-		// hotelInfo = hotelbl.showHotelInfo(workerName);
-		newRoomPane = new RoomInfoui(primaryStage, workerName);
-		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(newRoomPane);
-	}
-	
-	/**
-	 * 删除房型
-	 */
-	@FXML
-	private void deleteRoom() {
-		// hotelInfo = hotelbl.showHotelInfo(workerName);
-		newRoomPane = new RoomInfoui(primaryStage, workerName);
-		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(newRoomPane);
-	}
-
-
-	/**
-	 * 保存酒店信息
-	 */
-	@FXML
-	private void saveHotelInfo() {
-		String hotelName = hotelNameField.getText();
-		String area = areaField.getText();
-		String feature = featureField.getText();
-		String location = locationField.getText();
-		String star = starField.getText();
-		String connection = connectionField.getText();
-		service = new ArrayList<Boolean>();
-		service.add(wifiCheck.isSelected());
-		service.add(TVCheck.isSelected());
-		service.add(sofaCheck.isSelected());
-		service.add(diningCheck.isSelected());
-		if (hotelName.equals("") || area.equals("") || feature.equals("") || location.equals("") || star.equals("")
-				|| connection.equals("")) {
-			feedbackLabel.setText("修改后的信息不能为空！");
-		} else if (!this.hotelName.equals(hotelName)) {
-			feedbackLabel.setTextFill(Color.web("#f80202"));
-			feedbackLabel.setText("不能修改酒店名称！");
-		} else {
-			hotelInfo.setCircle(area);
-			hotelInfo.setFeature(feature);
-			hotelInfo.setAddress(location);
-			hotelInfo.setStar(Integer.parseInt(star));
-			hotelInfo.setHotelPhone(connection);
-			hotelInfo.setService(service);
-			if (hotelbl.modifyHotelInfo(hotelInfo)) {
-				feedbackLabel.setText("修改成功！");
-			} else {
-				feedbackLabel.setText("系统出现错误！");
-			}
-		}
-	}
 
 	/**
 	 * 传递Main的primaryStage
@@ -258,62 +195,13 @@ public class RoomEdituiController {
 		hotelName = userbl.getHotelWorkerInfo(workerName).getHotelName();
 		hotelInfo = hotelbl.getHotelInfoByHotelworkerOrManager(hotelName);
 		nameLabel.setText(workerName);
-		hotelNameField.setText(hotelName);
-		areaField.setText(hotelInfo.getCircle());
-		featureField.setText(hotelInfo.getFeature());
-		locationField.setText(hotelInfo.getAddress());
-		starField.setText(String.valueOf(hotelInfo.getStar()));
-		connectionField.setText(hotelInfo.getHotelPhone());
-		service = hotelInfo.getService();
-		if (service.get(0)) {
-			wifiCheck.setSelected(true);
-		}
-		if (service.get(1)) {
-			TVCheck.setSelected(true);
-		}
-		if (service.get(2)) {
-			sofaCheck.setSelected(true);
-		}
-		if (service.get(3)) {
-			diningCheck.setSelected(true);
-		}
+		hotelNameLabel.setText(hotelName);
+		areaLabel.setText(hotelInfo.getCircle());
+		scoreLabel.setText(String.valueOf(hotelInfo.getScore()));
+		connectionLabel.setText(hotelInfo.getHotelPhone());
 	}
-
-	/**
-	 * 初始设置TableView的属性，绑定内部按钮
-	 */
-	@SuppressWarnings("unchecked")
-	public void initTableView() {
-		typeCol.setCellValueFactory(new PropertyValueFactory<>("roomtype"));
-		numberCol.setCellValueFactory(new PropertyValueFactory<>("totalNumber"));
-		priceCol.setCellValueFactory(new PropertyValueFactory<>("roomPrice"));
-		rooms = hotelbl.getHotelRoomInfo(hotelName);
-		roomList = getHotelRoomList(rooms);
-		roomData = FXCollections.observableArrayList(roomList);
-		roomTable.setItems(roomData);
-		System.out.println("roomm:"+rooms.get(0).getRoomtype());
-	}
-
-	/**
-	 * 从roomVO列表中获取用于界面显示的roomInfo列表
-	 * 
-	 * @return roomInfo
-	 */
-	@SuppressWarnings("unused")
-	private ArrayList<HotelRoomVO> getHotelRoomList(ArrayList<RoomInfoVO> rooms) {
-		ArrayList<RoomInfoVO> roomInfoList = new ArrayList<RoomInfoVO>();
-		ArrayList<HotelRoomVO> roomList = new ArrayList<HotelRoomVO>();
-		String roomtype = "";
-		int roomPrice = 0;
-		int totalNumber = 0;
-		for (int i = 0; i < rooms.size(); i++) {
-			roomtype = rooms.get(i).getRoomtype();
-			roomPrice = Integer.parseInt(rooms.get(i).getRoomPrice());
-			// totalNumber = hotelbl.getAvailableNumber(hotelName, roomtype,
-			// starttime, endtime)
-			room = new HotelRoomVO(roomtype, roomPrice, totalNumber);
-			roomList.add(room);
-		}
-		return roomList;
+	
+	public void setRoom(RoomInfoVO room){
+		
 	}
 }

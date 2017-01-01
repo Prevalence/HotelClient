@@ -106,7 +106,7 @@ public class PeriodPromotionEdituiController {
 	private String hotelName;
 
 	private String workerName;
-	
+
 	private String year1;
 
 	private String year2;
@@ -120,9 +120,9 @@ public class PeriodPromotionEdituiController {
 	private String day2;
 
 	private HotelVO hotelInfo;
-	
+
 	private PeriodHotelproVO promotion;
-	
+
 	private ObservableList<String> days1 = FXCollections.observableArrayList();
 
 	private ObservableList<String> days2 = FXCollections.observableArrayList();
@@ -189,19 +189,19 @@ public class PeriodPromotionEdituiController {
 		year2 = yearField2.getText();
 		String startTime = year1 + "-" + month1 + "-" + day1 + " 12:00:00";
 		String endTime = year2 + "-" + month2 + "-" + day2 + " 12:00:00";
-		System.out.println("time:--"+startTime);
+		System.out.println("time:--" + startTime);
 		String discount = discountField.getText();
-		if (discount.equals("") || promotionName.equals("")) {
+		if (discount.equals("") || promotionName.equals("") || year1.equals("") || year2.equals("") || month1.equals("")
+				|| month2.equals("") || day1.equals("") || day2.equals("")) {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("促销策略信息不全！");
 		} else {
-			PromotionVO promotion = new PeriodHotelproVO(0, promotionName, "特定时间优惠策略", hotelName,
-					startTime, endTime, Integer.parseInt(discount));
-			if(promotionbl.addProm(promotion)){
+			PromotionVO promotion = new PeriodHotelproVO(0, promotionName, "特定时间优惠策略", hotelName, startTime, endTime,
+					Integer.parseInt(discount));
+			if (promotionbl.modifyProm(promotion)) {
 				feedbackLabel.setTextFill(Color.web("#058cff"));
 				feedbackLabel.setText("编辑成功！");
-			}
-			else{
+			} else {
 				feedbackLabel.setTextFill(Color.web("#f80202"));
 				feedbackLabel.setText("系统错误！");
 			}
@@ -233,7 +233,7 @@ public class PeriodPromotionEdituiController {
 		scoreLabel.setText(String.valueOf(hotelInfo.getScore()));
 		connectionLabel.setText(hotelInfo.getHotelPhone());
 	}
-	
+
 	/**
 	 * 设置月份选择的组件
 	 * 
@@ -314,20 +314,20 @@ public class PeriodPromotionEdituiController {
 			}
 		});
 	}
-	
+
 	/**
 	 * 传递促销策略信息
 	 * 
 	 * @param workerName
 	 */
 	public void setPromotionVO(PeriodHotelproVO promotion) {
-		this.promotion=promotion;
+		this.promotion = promotion;
 		promotionNameField.setText(promotion.getPromotionName());
 		discountField.setText(String.valueOf(promotion.getDiscount()));
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		String dateStr=sdf.format(promotion.getStartTime().getTime());
-		oldStartTimeLabel.setText(dateStr.substring(0,10));
-		dateStr=sdf.format(promotion.getEndTime().getTime());
-		oldStartTimeLabel.setText(dateStr.substring(0,10));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String dateStr = sdf.format(promotion.getStartTime().getTime());
+		oldStartTimeLabel.setText(dateStr.substring(0, 10));
+		dateStr = sdf.format(promotion.getEndTime().getTime());
+		oldEndTimeLabel.setText(dateStr.substring(0, 10));
 	}
 }
