@@ -415,6 +415,30 @@ public class Hotel {
 		return result;
 	}
 	
+	/**
+	 * 获取某酒店中最贵的房间价格
+	 * @param hotelname
+	 * @return
+	 * @throws RemoteException 
+	 */
+	public int getHighestPrice(String hotelname) throws RemoteException {
+		// TODO Auto-generated method stub
+		int highPrice=0;
+		HotelController hc=new HotelController();
+		HotelVO hotelvo=hc.getHotelInfoByPerson(hotelname);
+		ArrayList<RoomVO> roomvolist=hotelvo.getRoom();
+		if(roomvolist!=null){
+			for(int i=0;i<roomvolist.size();i++){
+				RoomVO roomvo=roomvolist.get(i);
+				if(roomvo.getRoomPrice()>highPrice){
+					highPrice=roomvo.getRoomPrice();
+				}
+			}
+		}
+		
+		return highPrice;
+	}
+	
 	
 	/**
 	 * 构造方法
