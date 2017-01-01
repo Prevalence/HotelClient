@@ -74,6 +74,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Label fx:id="feedbackLabel" layoutY="694.0" prefHeight="24.0" prefWidth="818.0" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Button fx:id="marketOrderButton" layoutY="91.0" mnemonicParsing="false" onAction="#viewMarketOrder" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: transparent;">

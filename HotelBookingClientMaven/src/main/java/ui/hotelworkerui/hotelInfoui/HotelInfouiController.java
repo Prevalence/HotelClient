@@ -200,12 +200,27 @@ public class HotelInfouiController {
 	/**
 	 * 删除房型
 	 */
+	@SuppressWarnings("unchecked")
 	@FXML
 	private void deleteRoom() {
-		// hotelInfo = hotelbl.showHotelInfo(workerName);
-		newRoomPane = new RoomInfoui(primaryStage, workerName);
-		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(newRoomPane);
+		if (roomTable.getSelectionModel().getSelectedIndex() == -1) {
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("没有选中要删除的房型！");
+		} else {
+			HotelRoomVO room = roomData.get(roomTable.getSelectionModel().getSelectedIndex());
+			if(hotelbl.removeRoom(room.getRoomtype(), hotelName)){
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("删除成功！");
+				rooms = hotelbl.getHotelRoomInfo(hotelName);
+				roomList = getHotelRoomList(rooms);
+				roomData = FXCollections.observableArrayList(roomList);
+				roomTable.setItems(roomData);
+			}
+			else{
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("系统错误，删除失败！");
+			}
+		}
 	}
 
 
@@ -299,7 +314,6 @@ public class HotelInfouiController {
 		roomList = getHotelRoomList(rooms);
 		roomData = FXCollections.observableArrayList(roomList);
 		roomTable.setItems(roomData);
-		System.out.println("roomm:"+rooms.get(0).getRoomtype());
 	}
 
 	/**
