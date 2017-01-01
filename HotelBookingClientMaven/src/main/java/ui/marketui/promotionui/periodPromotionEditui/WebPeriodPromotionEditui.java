@@ -1,5 +1,7 @@
 package ui.marketui.promotionui.periodPromotionEditui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -12,6 +14,8 @@ public class WebPeriodPromotionEditui extends Pane{
 	private String workerName;
 	
 	private PeriodWebproVO promotion;
+	
+	private ObservableList<String> months = FXCollections.observableArrayList();
 
 	private WebPeriodPromotionEdituiController birthdayPromotionuiController;
 
@@ -24,6 +28,7 @@ public class WebPeriodPromotionEditui extends Pane{
 			this.primaryStage = primaryStage;
 			this.workerName = workerName;
 			this.promotion = promotion;
+			months.addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
 			initPromotionViewui();
 		};
 
@@ -45,5 +50,6 @@ public class WebPeriodPromotionEditui extends Pane{
 		birthdayPromotionuiController.launchStage(primaryStage);
 		birthdayPromotionuiController.setMarketName(workerName);
 		birthdayPromotionuiController.setPromotionVO(promotion);
+		birthdayPromotionuiController.setMonthChoiceBox(months);
 	}
 }

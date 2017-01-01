@@ -86,10 +86,8 @@ public class HotelCommentuiController {
 	// 个人订单界面
 	private Pane personOrderPane;
 
-	@SuppressWarnings("unused")
 	private Stage primaryStage;
 
-	@SuppressWarnings("unused")
 	private String personname;
 
 	private String hotelName;

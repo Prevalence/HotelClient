@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.orderViewui.OrderViewuiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.marketui.creditSelectui.CreditSelectuiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,7 +19,7 @@
             <Image url="@../酒店详情界面/蓝色色块.png" />
          </image>
       </ImageView>
-      <Label layoutX="28.0" layoutY="19.0" prefWidth="104.0" text="小谢" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="28.0" layoutY="19.0" prefWidth="104.0" text="小谢" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
@@ -109,7 +109,7 @@
             </RadioButton>
          </children>
       </Pane>
-      <Button layoutX="498.0" layoutY="605.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="88.0" stylesheets="@../酒店促销策略/搜索键.css">
+      <Button layoutX="498.0" layoutY="605.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOrder" prefHeight="35.0" prefWidth="88.0" stylesheets="@../酒店促销策略/搜索键.css">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -118,5 +118,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="feedbackLabel" layoutX="145.0" layoutY="758.0" prefHeight="28.0" prefWidth="817.0" textFill="#ff0101">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </fx:root>

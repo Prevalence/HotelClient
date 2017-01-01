@@ -32,7 +32,7 @@
       <Pane layoutX="145.0" layoutY="65.0" prefHeight="718.0" prefWidth="817.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="718.0" layoutY="1.0" stroke="WHITE" strokeType="INSIDE" width="817.0" />
-            <TableView fx:id="promotionTable" layoutX="50.0" layoutY="49.0" prefHeight="439.0" prefWidth="717.0" style="-fx-border-color: ;">
+            <TableView fx:id="promotionTable" layoutX="51.0" layoutY="60.0" prefHeight="439.0" prefWidth="717.0" style="-fx-border-color: ;">
                <columns>
                   <TableColumn fx:id="IDCol" prefWidth="221.0" />
                   <TableColumn fx:id="nameCol" prefWidth="256.99993896484375" />
@@ -44,7 +44,7 @@
                   <Image url="@../酒店促销策略/促销策略.png" />
                </image>
             </ImageView>
-            <Button fx:id="editButton" layoutX="356.0" layoutY="503.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editPromotion" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
+            <Button fx:id="editButton" layoutX="350.0" layoutY="525.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editPromotion" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
                <font>
                   <Font size="1.0" />
                </font>
@@ -56,7 +56,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="deleteButton" layoutX="593.0" layoutY="503.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deletePromotion" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
+            <Button fx:id="deleteButton" layoutX="595.0" layoutY="524.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deletePromotion" prefHeight="42.0" prefWidth="100.0" stylesheets="@../酒店促销策略/搜索键.css">
                <font>
                   <Font size="1.0" />
                </font>
@@ -68,8 +68,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ChoiceBox fx:id="promotionChoices" layoutX="118.0" layoutY="508.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="93.0" stylesheets="@../酒店促销策略/选择框.css" />
-            <Label layoutX="143.0" layoutY="513.0" text="新增" textFill="WHITE">
+            <ChoiceBox fx:id="promotionChoices" layoutX="117.0" layoutY="529.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="93.0" stylesheets="@../酒店促销策略/选择框.css" />
+            <Label layoutX="139.0" layoutY="533.0" text="新增" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

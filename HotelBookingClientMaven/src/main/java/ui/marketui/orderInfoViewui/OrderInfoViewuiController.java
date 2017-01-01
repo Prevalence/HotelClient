@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.marketui.creditPayui.CreditPayui;
+import ui.marketui.creditSelectui.CreditSelectui;
 import ui.marketui.orderViewui.MarketOrderViewui;
 import ui.marketui.promotionui.MarketPromotionui;
 import vo.orderVO.orderblVO.OrderVO;
@@ -36,25 +37,20 @@ public class OrderInfoViewuiController {
 	@FXML
 	private Pane mainPane;
 
-	@SuppressWarnings("unused")
 	private UserblService userbl;
 	
 	private OrderblService orderbl;
 
 	// 网站订单浏览界面
-	@SuppressWarnings("unused")
 	private Pane marketOrderPane;
 
 	// 促销策略界面
-	@SuppressWarnings("unused")
 	private Pane promotionPane;
 
 	// 信用充值信息界面
-	@SuppressWarnings("unused")
 	private Pane creditPayPane;
 
 	// 恢复信用值选择界面
-	@SuppressWarnings("unused")
 	private Pane creditPane;
 	@SuppressWarnings("unused")
 	private Stage primaryStage;
@@ -109,7 +105,9 @@ public class OrderInfoViewuiController {
 	@FXML
 	private void handleOrder() {
 		if(orderInfo.getOrderstate().equals("异常")){
-//			creditPane 
+			creditPane = new CreditSelectui(primaryStage,marketName,orderInfo);
+			mainPane.getChildren().remove(0);
+			mainPane.getChildren().add(creditPane);
 		}
 		else{
 			feedbackLabel.setText("该订单不是异常订单！");
@@ -130,7 +128,7 @@ public class OrderInfoViewuiController {
 		endTimeLabel.setText("退房时间：" + order.getCanceltime());
 		personLabel.setText("入住人：" + order.getRealname());
 		connectionLabel.setText("联系方式："+order.getPersonPhone());
-		stateLabel.setText("状态：" + order.getOrderstate());
+		stateLabel.setText(order.getOrderstate());
 		priceLabel.setText("价格：" + String.valueOf(order.getRoom().get(0).getRoomPrice()));
 	}
 	
