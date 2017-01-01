@@ -2,7 +2,7 @@ package vo.promotionvo.webpromotionVO;
 
 import po.PromotionPO;
 import po.promotionpo.webpromotionPO.CircleWebproPO;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 
 /**
  * @author 武秀峰

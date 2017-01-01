@@ -1,7 +1,7 @@
 package po.promotionpo.hotelpromotionPO;
 
 import po.PromotionPO;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
 /**
