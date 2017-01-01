@@ -100,4 +100,14 @@ public interface HotelblService {
 	 */
 	public boolean addRoom(String roomtype,int roomnum,int roomprice,String hotelname);
 	
+	/**
+	 * 修改酒店某类型的房间数量和价格
+	 * @param roomtype
+	 * @param roomnum 要修改成的房间数量
+	 * @param roomprice 要修改成的房间价格
+	 * @param hotelname
+	 * @return 是否修改成功
+	 */
+	public boolean editRoom(String roomtype,int roomnum,int roomprice,String hotelname);
+	
 }

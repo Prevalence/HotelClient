@@ -5,6 +5,7 @@ import java.util.Calendar;
 import po.PromotionPO;
 import po.promotionpo.webpromotionPO.PeriodWebproPO;
 import vo.promotionvo.PromotionVO;
+import businessLogic.TimeFormTrans;
 
 /**
  * @author 武秀峰
@@ -19,34 +20,45 @@ public class PeriodWebproVO extends PromotionVO{
 	}
 
 	public PeriodWebproVO(int promotionID, String promotionName, String promotionType,
-			String hotelnameOrWeb,Calendar startTime, Calendar endTime, int discount) {
+			String hotelnameOrWeb,String startTime, String endTime, int discount) {
 		super.setPromotionID(promotionID);
 		super.setPromotionName(promotionName);
 		super.setPromotionType(promotionType);
 		super.setHotelnameOrWeb(hotelnameOrWeb);
-		this.startTime = startTime;
-		this.endTime = endTime;
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar sc=t.myToCalendar(startTime);
+		this.startTime = sc;
+		Calendar et=t.myToCalendar(endTime);
+		this.endTime = et;
 		super.setDiscount(discount);
 	}
 
 
-	public Calendar getStartTime() {
-		return startTime;
+	public String getStartTime() {
+		TimeFormTrans t=new TimeFormTrans();
+		String sc=t.myToString(startTime);
+		return sc;
 	}
 
 
-	public void setStartTime(Calendar startTime) {
-		this.startTime = startTime;
+	public void setStartTime(String startTime) {
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar sc=t.myToCalendar(startTime);
+		this.startTime = sc;
 	}
 
 
-	public Calendar getEndTime() {
-		return endTime;
+	public String getEndTime() {
+		TimeFormTrans t=new TimeFormTrans();
+		String et=t.myToString(endTime);
+		return et;
 	}
 
 
-	public void setEndTime(Calendar endTime) {
-		this.endTime = endTime;
+	public void setEndTime(String endTime) {
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar et=t.myToCalendar(endTime);
+		this.endTime = et;
 	}
 
 
@@ -56,8 +68,12 @@ public class PeriodWebproVO extends PromotionVO{
 		po.setPromotionName(vo.getPromotionName());
 		po.setPromotionType(vo.getPromotionType());
 		po.setHotelnameOrWeb(vo.getHotelnameOrWeb());
-		po.setStartTime(((PeriodWebproVO)vo).getStartTime());
-		po.setEndTime(((PeriodWebproVO)vo).getEndTime());
+		
+		TimeFormTrans t=new TimeFormTrans();
+		Calendar sc=t.myToCalendar(((PeriodWebproVO)vo).getStartTime());
+		Calendar et=t.myToCalendar(((PeriodWebproVO)vo).getEndTime());
+		po.setStartTime(sc);
+		po.setEndTime(et);
 		po.setDiscount(((PeriodWebproVO)vo).getDiscount());
 		return po;
 	}
