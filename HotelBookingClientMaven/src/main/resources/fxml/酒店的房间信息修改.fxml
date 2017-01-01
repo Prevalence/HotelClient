@@ -105,28 +105,28 @@
       </Button>
       <Pane layoutX="301.0" layoutY="223.0" prefHeight="449.0" prefWidth="515.0" style="-fx-background-color: white;">
          <children>
-            <Label layoutX="137.0" layoutY="181.0" prefHeight="45.0" prefWidth="82.0" text="折扣:" textFill="#74d5df">
+            <Label layoutX="144.0" layoutY="230.0" prefHeight="45.0" prefWidth="82.0" text="数量:" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="discountField" layoutX="205.0" layoutY="189.0" prefHeight="30.0" prefWidth="105.0" />
-            <Label layoutX="325.0" layoutY="190.0" text="\%" textFill="#76d4de">
+            <TextField fx:id="discountField" layoutX="212.0" layoutY="238.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="332.0" layoutY="239.0" text="间" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
             <ImageView fitHeight="94.0" fitWidth="515.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../房间信息/生日促销策略.png" />
+                  <Image url="@../生日促销策略/生日促销策略.png" />
                </image>
             </ImageView>
-            <Label layoutX="129.0" layoutY="135.0" prefHeight="27.0" prefWidth="68.0" text="名称：" textFill="#74d5df">
+            <Label layoutX="99.0" layoutY="184.0" prefHeight="27.0" prefWidth="105.0" text="房间类型：" textFill="#74d5df">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="promotionNameField" layoutX="205.0" layoutY="133.0" prefHeight="30.0" prefWidth="105.0" />
+            <TextField fx:id="promotionNameField" layoutX="212.0" layoutY="182.0" prefHeight="30.0" prefWidth="105.0" />
             <Button fx:id="okButton" layoutX="396.0" layoutY="398.0" mnemonicParsing="false" onAction="#addPromotion" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
                <font>
                   <Font size="1.0" />
@@ -151,7 +151,7 @@
             <Image url="@../酒店详情界面/Shape%201.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="37.0" fitWidth="145.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../酒店详情界面/色块.png" />
          </image>
