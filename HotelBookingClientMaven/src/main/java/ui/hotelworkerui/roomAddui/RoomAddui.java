@@ -1,28 +1,25 @@
-package ui.hotelworkerui.roomEditui;
+package ui.hotelworkerui.roomAddui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import vo.hotelVO.hoteluiVO.HotelRoomVO;
 
-public class RoomEditui extends Pane {
+public class RoomAddui extends Pane{
 	private Stage primaryStage;
 
 	private String workerName;
 
-	private HotelRoomVO room;
-
-	private RoomEdituiController hotelInfoViewuiController;
+	private RoomAdduiController roomAdduiController;
 
 	/**
 	 * 接受primarystage用来完成界面最小化和可移动化设置
 	 * 
 	 * @param primaryStage
 	 */
-	public RoomEditui(Stage primaryStage, String workerName, HotelRoomVO room) {
+	public RoomAddui(Stage primaryStage, String workerName) {
 		this.primaryStage = primaryStage;
 		this.workerName = workerName;
-		this.room = room;
 		initHotelInfoViewui();
 	};
 
@@ -31,7 +28,7 @@ public class RoomEditui extends Pane {
 	 */
 	public void initHotelInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店的房间信息修改.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店的房间添加.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -40,9 +37,8 @@ public class RoomEditui extends Pane {
 		}
 		// Scene scene = new Scene(this);
 		// primaryStage.setScene(scene);
-		hotelInfoViewuiController = loader.getController();
-		hotelInfoViewuiController.launchStage(primaryStage);
-		hotelInfoViewuiController.setWorkerNameAndShowInfo(workerName);
-		hotelInfoViewuiController.setRoom(room);
+		roomAdduiController = loader.getController();
+		roomAdduiController.launchStage(primaryStage);
+		roomAdduiController.setWorkerNameAndShowInfo(workerName);
 	}
 }

@@ -1,4 +1,4 @@
-package ui.hotelworkerui.roomEditui;
+package ui.hotelworkerui.roomAddui;
 
 import java.util.ArrayList;
 
@@ -23,9 +23,8 @@ import ui.hotelworkerui.promotionui.Promotionui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hoteluiVO.HotelRoomVO;
-import vo.hotelVO.hoteluiVO.HotelRoomVO;
 
-public class RoomEdituiController {
+public class RoomAdduiController {
 
 	@FXML
 	private Button hotelOrderButton;
@@ -50,7 +49,7 @@ public class RoomEdituiController {
 	@FXML
 	private Label feedbackLabel;
 	@FXML
-	private Label roomtypeLabel;
+	private TextField roomtypeField;
 	@FXML
 	private TextField numberField;
 	@FXML
@@ -105,12 +104,6 @@ public class RoomEdituiController {
 
 	private String hotelName;
 
-	private ArrayList<Boolean> service;
-
-	private ArrayList<HotelRoomVO> rooms;
-
-	private ArrayList<HotelRoomVO> roomList;
-
 	// 填充进TableView的酒店数据
 	private ObservableList<HotelRoomVO> roomData;
 
@@ -120,7 +113,7 @@ public class RoomEdituiController {
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public RoomEdituiController() {
+	public RoomAdduiController() {
 		userbl = new UserController();
 		hotelbl = new HotelController();
 	}
@@ -171,15 +164,22 @@ public class RoomEdituiController {
 	 * 编辑房间信息
 	 */
 	@FXML
-	private void editRoom() {
-		if (hotelbl.editRoom(room.getRoomtype(), Integer.parseInt(numberField.getText()),
-				Integer.parseInt(priceField.getText()), hotelName)) {
-			feedbackLabel.setTextFill(Color.web("#058cff"));
-			feedbackLabel.setText("添加成功！");
-		}
-		else{
+	private void addRoom() {
+		String roomtype = roomtypeField.getText();
+		String roomNumber = numberField.getText();
+		String roomPrice = priceField.getText();
+		if (roomtype.equals("") || roomNumber.equals("") || roomPrice.equals("")) {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
-			feedbackLabel.setText("系统错误！");
+			feedbackLabel.setText("信息填写不完整！");
+		} else {
+			if (hotelbl.addRoom(roomtype, Integer.parseInt(roomNumber),
+					Integer.parseInt(roomPrice), hotelName)) {
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("添加成功！");
+			} else {
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("系统错误！");
+			}
 		}
 	}
 
@@ -207,12 +207,5 @@ public class RoomEdituiController {
 		areaLabel.setText(hotelInfo.getCircle());
 		scoreLabel.setText(String.valueOf(hotelInfo.getScore()));
 		connectionLabel.setText(hotelInfo.getHotelPhone());
-	}
-
-	public void setRoom(HotelRoomVO room) {
-		this.room = room;
-		roomtypeLabel.setText(room.getRoomtype());
-		numberField.setText(room.getTotalNumber());
-		priceField.setText(room.getRoomPrice());
 	}
 }

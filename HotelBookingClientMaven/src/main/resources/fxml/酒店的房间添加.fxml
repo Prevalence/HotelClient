@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.roomEditui.RoomEdituiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.roomAddui.RoomAdduiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -126,7 +126,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="okButton" layoutX="396.0" layoutY="398.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
+            <Button fx:id="okButton" layoutX="396.0" layoutY="398.0" mnemonicParsing="false" onAction="#addRoom" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
                <font>
                   <Font size="1.0" />
                </font>
@@ -154,7 +154,7 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label fx:id="roomtypeLabel" layoutX="212.0" layoutY="188.0" prefHeight="20.0" prefWidth="105.0" />
+            <TextField fx:id="roomtypeField" layoutX="212.0" layoutY="183.0" prefHeight="30.0" prefWidth="105.0" />
          </children>
       </Pane>
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="531.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
