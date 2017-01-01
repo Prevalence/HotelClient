@@ -1,4 +1,4 @@
-package ui.hotelworkerui.hotelInfoui;
+package ui.hotelworkerui.roomEditui;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -20,18 +19,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import ui.helper.SearchButtonCell;
+import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.promotionui.Promotionui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
 import vo.hotelVO.hotelblVO.HotelVO;
-import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelRoomVO;
-import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
-public class HotelInfouiController {
+public class RoomEdituiController {
 
 	@FXML
 	private Button hotelOrderButton;
@@ -124,7 +120,7 @@ public class HotelInfouiController {
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public HotelInfouiController() {
+	public RoomEdituiController() {
 		userbl = new UserController();
 		hotelbl = new HotelController();
 	}

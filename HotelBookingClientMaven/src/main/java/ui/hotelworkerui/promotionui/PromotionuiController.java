@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import ui.Factory.PromotionFactory;
@@ -98,7 +99,7 @@ public class PromotionuiController {
 	// 房间信息界面
 	private Pane roomInfoPane;
 
-	// 房间信息界面
+	//  具体促销策略界面界面
 	private Pane newPromotionPane;
 
 	private Stage primaryStage;
@@ -177,12 +178,12 @@ public class PromotionuiController {
 	@FXML
 	private void editPromotion() {
 		if (promotionTable.getSelectionModel().getSelectedIndex() == -1) {
+			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("没有选中要编辑的促销策略！");
 		} else {
 			PromotionVO promotion = promotionVOs.get(promotionTable.getSelectionModel().getSelectedIndex());
 			String promotiontype = promotionVOs.get(promotionTable.getSelectionModel().getSelectedIndex())
 					.getPromotionType();
-			System.out.println("promotiontype:" + promotiontype);
 			newPromotionPane = PromotionFactory.createPromotionEditPane(primaryStage, promotiontype, workerName,
 					promotion);
 			mainPane.getChildren().remove(0);
@@ -193,9 +194,27 @@ public class PromotionuiController {
 	/**
 	 * 删除原有酒店促销策略
 	 */
+	@SuppressWarnings("unchecked")
 	@FXML
 	private void deletePromotion() {
-
+		if (promotionTable.getSelectionModel().getSelectedIndex() == -1) {
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("没有选中要删除的促销策略！");
+		} else {
+			PromotionVO promotion = promotionVOs.get(promotionTable.getSelectionModel().getSelectedIndex());
+			if(promotionbl.deleteProm(promotion)){
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("删除成功！");
+				promotionVOs = promotionbl.getProm(hotelName);
+				promotionList = getpromotionViewList(promotionVOs);
+				promotionData = FXCollections.observableArrayList(promotionList);
+				promotionTable.setItems(promotionData);
+			}
+			else{
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("系统错误，删除失败！");
+			}
+		}
 	}
 
 	/**
@@ -255,9 +274,6 @@ public class PromotionuiController {
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("promotionName"));
 		typeCol.setCellValueFactory(new PropertyValueFactory<>("promotiontype"));
 		promotionVOs = promotionbl.getProm(hotelName);
-		if (promotionVOs != null) {
-			System.out.println("promotion:" + promotionVOs.size());
-		}
 		promotionList = getpromotionViewList(promotionVOs);
 		promotionData = FXCollections.observableArrayList(promotionList);
 		promotionTable.setItems(promotionData);

@@ -1,5 +1,7 @@
 package ui.marketui.promotionui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -8,6 +10,8 @@ public class MarketPromotionui extends Pane{
 	private Stage primaryStage;
 
 	private String marketName;
+	
+	private ObservableList<String> promotions=FXCollections.observableArrayList();
 
 	private PromotionuiController promotionViewuiController;
 
@@ -19,6 +23,7 @@ public class MarketPromotionui extends Pane{
 		public MarketPromotionui(Stage primaryStage, String marketName) {
 			this.primaryStage = primaryStage;
 			this.marketName = marketName;
+			promotions.addAll("特定时间优惠");
 			initPromotionViewui();
 		};
 
@@ -39,5 +44,7 @@ public class MarketPromotionui extends Pane{
 		promotionViewuiController = loader.getController();
 		promotionViewuiController.launchStage(primaryStage);
 		promotionViewuiController.setMarketName(marketName);
+		promotionViewuiController.setPromotionChoiceBox(promotions);
+		promotionViewuiController.initTableView();
 	}
 }
