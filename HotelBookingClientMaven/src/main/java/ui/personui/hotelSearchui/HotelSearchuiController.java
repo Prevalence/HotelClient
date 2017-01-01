@@ -202,8 +202,7 @@ public class HotelSearchuiController {
 			} else {
 				feedbackLabel.setText("搜索的酒店不存在，请确保酒店名称正确。");
 			}
-		}
-		else{
+		} else {
 			feedbackLabel.setText("未输入酒店名称！");
 		}
 	}
@@ -546,8 +545,12 @@ public class HotelSearchuiController {
 			for (int i = 0; i < searchData.size(); i++) {
 				for (int j = i + 1; j < searchData.size(); j++) {
 
-//					 if(hotelbl.get<searchData.get(j));
-//					 searchData.
+					if (hotelbl.getHighestPrice(searchData.get(i).getHotelName()) < hotelbl
+							.getHighestPrice(searchData.get(j).getHotelName())) {
+						temp = searchData.get(i);
+						searchData.set(i, searchData.get(j));
+						searchData.set(j, temp);
+					}
 				}
 
 			}

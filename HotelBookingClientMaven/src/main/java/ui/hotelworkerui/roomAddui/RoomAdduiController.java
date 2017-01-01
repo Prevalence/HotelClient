@@ -166,8 +166,8 @@ public class RoomAdduiController {
 	@FXML
 	private void addRoom() {
 		String roomtype = roomtypeField.getText();
-		String roomNumber = roomtypeField.getText();
-		String roomPrice = roomtypeField.getText();
+		String roomNumber = numberField.getText();
+		String roomPrice = priceField.getText();
 		if (roomtype.equals("") || roomNumber.equals("") || roomPrice.equals("")) {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("信息填写不完整！");
