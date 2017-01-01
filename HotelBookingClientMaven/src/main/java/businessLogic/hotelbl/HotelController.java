@@ -239,5 +239,22 @@ public class HotelController implements HotelblService{
 		}
 	}
 
+	/**
+	 * 获取某酒店中最贵的房间价格
+	 * @param hotelname
+	 * @return
+	 */
+	@Override
+	public int getHighestPrice(String hotelname) {
+		// TODO Auto-generated method stub
+		try {
+			return hotel.getHighestPrice(hotelname);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
 
 }
