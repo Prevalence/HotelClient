@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
@@ -22,7 +23,7 @@ import ui.hotelworkerui.promotionui.Promotionui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hoteluiVO.HotelRoomVO;
-import vo.hotelVO.hoteluiVO.RoomInfoVO;
+import vo.hotelVO.hoteluiVO.HotelRoomVO;
 
 public class RoomEdituiController {
 
@@ -49,9 +50,11 @@ public class RoomEdituiController {
 	@FXML
 	private Label feedbackLabel;
 	@FXML
-	private TextField roomtypeField;
+	private Label roomtypeLabel;
 	@FXML
 	private TextField numberField;
+	@FXML
+	private TextField priceField;
 	@FXML
 	private CheckBox wifiCheck;
 	@FXML
@@ -90,7 +93,7 @@ public class RoomEdituiController {
 
 	// 房间信息界面
 	private Pane roomInfoPane;
-	
+
 	// 房间信息界面
 	private Pane newRoomPane;
 
@@ -104,7 +107,7 @@ public class RoomEdituiController {
 
 	private ArrayList<Boolean> service;
 
-	private ArrayList<RoomInfoVO> rooms;
+	private ArrayList<HotelRoomVO> rooms;
 
 	private ArrayList<HotelRoomVO> roomList;
 
@@ -163,13 +166,21 @@ public class RoomEdituiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(roomInfoPane);
 	}
-	
+
 	/**
 	 * 编辑房间信息
 	 */
 	@FXML
 	private void editRoom() {
-		
+		if (hotelbl.editRoom(room.getRoomtype(), Integer.parseInt(numberField.getText()),
+				Integer.parseInt(priceField.getText()), hotelName)) {
+			feedbackLabel.setTextFill(Color.web("#058cff"));
+			feedbackLabel.setText("添加成功！");
+		}
+		else{
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("系统错误！");
+		}
 	}
 
 	/**
@@ -197,8 +208,11 @@ public class RoomEdituiController {
 		scoreLabel.setText(String.valueOf(hotelInfo.getScore()));
 		connectionLabel.setText(hotelInfo.getHotelPhone());
 	}
-	
-	public void setRoom(RoomInfoVO room){
-		
+
+	public void setRoom(HotelRoomVO room) {
+		this.room = room;
+		roomtypeLabel.setText(room.getRoomtype());
+		numberField.setText(room.getTotalNumber());
+		priceField.setText(room.getRoomPrice());
 	}
 }

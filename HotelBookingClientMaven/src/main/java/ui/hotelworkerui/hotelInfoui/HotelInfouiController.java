@@ -179,7 +179,7 @@ public class HotelInfouiController {
 	@FXML
 	private void editRoom() {
 		// hotelInfo = hotelbl.showHotelInfo(workerName);
-		RoomInfoVO room = rooms.get(roomTable.getSelectionModel().getSelectedIndex());
+		HotelRoomVO room = roomData.get(roomTable.getSelectionModel().getSelectedIndex());
 		newRoomPane = new RoomEditui(primaryStage, workerName,room);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(newRoomPane);
@@ -316,8 +316,8 @@ public class HotelInfouiController {
 		for (int i = 0; i < rooms.size(); i++) {
 			roomtype = rooms.get(i).getRoomtype();
 			roomPrice = Integer.parseInt(rooms.get(i).getRoomPrice());
-			// totalNumber = hotelbl.getAvailableNumber(hotelName, roomtype,
-			// starttime, endtime)
+			totalNumber = hotelbl.getAvailableNumber(hotelName, roomtype,
+			"2000-01-01 00:00:00", "2000-01-02 00:00:00");
 			room = new HotelRoomVO(roomtype, roomPrice, totalNumber);
 			roomList.add(room);
 		}

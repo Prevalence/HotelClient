@@ -3,14 +3,14 @@ package ui.hotelworkerui.roomEditui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import vo.hotelVO.hoteluiVO.RoomInfoVO;
+import vo.hotelVO.hoteluiVO.HotelRoomVO;
 
 public class RoomEditui extends Pane {
 	private Stage primaryStage;
 
 	private String workerName;
 
-	private RoomInfoVO room;
+	private HotelRoomVO room;
 
 	private RoomEdituiController hotelInfoViewuiController;
 
@@ -19,7 +19,7 @@ public class RoomEditui extends Pane {
 	 * 
 	 * @param primaryStage
 	 */
-	public RoomEditui(Stage primaryStage, String workerName, RoomInfoVO room) {
+	public RoomEditui(Stage primaryStage, String workerName, HotelRoomVO room) {
 		this.primaryStage = primaryStage;
 		this.workerName = workerName;
 		this.room = room;
@@ -31,7 +31,7 @@ public class RoomEditui extends Pane {
 	 */
 	public void initHotelInfoViewui() {
 		// 设置新的Pane
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店信息修改界面.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/酒店的房间信息修改.fxml"));
 		loader.setRoot(this);
 		try {
 			loader.load();
@@ -43,5 +43,6 @@ public class RoomEditui extends Pane {
 		hotelInfoViewuiController = loader.getController();
 		hotelInfoViewuiController.launchStage(primaryStage);
 		hotelInfoViewuiController.setWorkerNameAndShowInfo(workerName);
+		hotelInfoViewuiController.setRoom(room);
 	}
 }
