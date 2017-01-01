@@ -546,8 +546,8 @@ public class HotelSearchuiController {
 			for (int i = 0; i < searchData.size(); i++) {
 				for (int j = i + 1; j < searchData.size(); j++) {
 
-					// if(searchData.get(i).<searchData.get(j));
-					// searchData.
+//					 if(hotelbl.get<searchData.get(j));
+//					 searchData.
 				}
 
 			}

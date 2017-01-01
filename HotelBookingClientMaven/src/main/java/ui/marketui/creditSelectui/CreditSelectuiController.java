@@ -1,47 +1,45 @@
-package ui.marketui.orderInfoViewui;
+package ui.marketui.creditSelectui;
 
+import businessLogic.orderbl.OrderController;
 import businessLogic.userbl.UserController;
 import businessLogicService.orderblService.OrderblService;
 import businessLogicService.userblService.UserblService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ui.marketui.creditPayui.CreditPayui;
-import ui.marketui.creditSelectui.CreditSelectui;
 import ui.marketui.orderViewui.MarketOrderViewui;
 import ui.marketui.promotionui.MarketPromotionui;
+import vo.hotelVO.hotelblVO.HotelVO;
 import vo.orderVO.orderblVO.OrderVO;
 
-public class OrderInfoViewuiController {
+public class CreditSelectuiController {
 	@FXML
-	private Label orderIDLabel;
-	@FXML
-	private Label roomtypeLabel;
-	@FXML
-	private Label peopleNumberLabel;
-	@FXML
-	private Label startTimeLabel;
-	@FXML
-	private Label endTimeLabel;
-	@FXML
-	private Label personLabel;
-	@FXML
-	private Label connectionLabel;
-	@FXML
-	private Label stateLabel;
-	@FXML
-	private Label priceLabel;
+	private Label nameLabel;
 	@FXML
 	private Label feedbackLabel;
 	@FXML
+	private TextArea commentArea;
+
+	private final ToggleGroup group = new ToggleGroup();
+	@FXML
+	private RadioButton halfButton;
+	@FXML
+	private RadioButton allButton;
+	@FXML
 	private Pane mainPane;
 
+	@SuppressWarnings("unused")
 	private UserblService userbl;
-	
+
 	private OrderblService orderbl;
 
-	// 网站订单浏览界面
+	/// 网站订单浏览界面
 	private Pane marketOrderPane;
 
 	// 促销策略界面
@@ -50,22 +48,21 @@ public class OrderInfoViewuiController {
 	// 信用充值信息界面
 	private Pane creditPayPane;
 
-	// 恢复信用值选择界面
-	private Pane creditPane;
-	@SuppressWarnings("unused")
 	private Stage primaryStage;
 
-	@SuppressWarnings("unused")
 	private String marketName;
-	
+
 	private OrderVO orderInfo;
+
+	private int percentOfCredit = 1;
 
 	/**
 	 * The constructor. The constructor is called before the initialize()
 	 * method.
 	 */
-	public OrderInfoViewuiController() {
+	public CreditSelectuiController() {
 		userbl = new UserController();
+		orderbl = new OrderController();
 	}
 
 	/**
@@ -87,7 +84,7 @@ public class OrderInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(promotionPane);
 	}
-	
+
 	/**
 	 * 跳转到信用充值界面
 	 */
@@ -98,40 +95,31 @@ public class OrderInfoViewuiController {
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(creditPayPane);
 	}
-	
+
 	/**
 	 * 处理异常订单
 	 */
 	@FXML
 	private void handleOrder() {
-		if(orderInfo.getOrderstate().equals("异常")){
-			creditPane = new CreditSelectui(primaryStage,marketName,orderInfo);
-			mainPane.getChildren().remove(0);
-			mainPane.getChildren().add(creditPane);
+		if (halfButton.isSelected()) {
+			percentOfCredit = 1;
+		} else if (halfButton.isSelected()) {
+			percentOfCredit = 2;
 		}
-		else{
-			feedbackLabel.setText("该订单不是异常订单！");
+		if (orderInfo.getOrderstate().equals("异常")) {
+			if (orderbl.handleAbnormalOrder(orderInfo, percentOfCredit)) {
+				feedbackLabel.setTextFill(Color.web("#058cff"));
+				feedbackLabel.setText("成功处理异常订单！");
+			} else {
+				feedbackLabel.setTextFill(Color.web("#f80202"));
+				feedbackLabel.setText("系统错误！");
+			}
+		} else {
+			feedbackLabel.setTextFill(Color.web("#f80202"));
+			feedbackLabel.setText("不能重复恢复信用值！");
 		}
 	}
 
-	/**
-	 * 设置并显示订单信息
-	 * 
-	 * @param order
-	 */
-	public void setAndShowOrder(OrderVO order) {
-		this.orderInfo = order;
-		orderIDLabel.setText("订单号：" + order.getOrderID());
-		roomtypeLabel.setText("房间类型：" + order.getRoom().get(0).getRoomType());
-		peopleNumberLabel.setText("人数：" + String.valueOf(order.getPeoplenum()));
-		startTimeLabel.setText("入住时间：" + order.getExecutetime());
-		endTimeLabel.setText("退房时间：" + order.getCanceltime());
-		personLabel.setText("入住人：" + order.getRealname());
-		connectionLabel.setText("联系方式："+order.getPersonPhone());
-		stateLabel.setText(order.getOrderstate());
-		priceLabel.setText("价格：" + String.valueOf(order.getRoom().get(0).getRoomPrice()));
-	}
-	
 	/**
 	 * 传递Main的primaryStage
 	 * 
@@ -142,12 +130,24 @@ public class OrderInfoViewuiController {
 	}
 
 	/**
+	 * 设置并显示订单信息
+	 * 
+	 * @param order
+	 */
+	public void setAndShowOrder(OrderVO order) {
+		this.orderInfo = order;
+	}
+
+	/**
 	 * 传递用户名
 	 * 
 	 * @param marketName
 	 */
 	public void setMarketName(String marketName) {
 		this.marketName = marketName;
+		nameLabel.setText(marketName);
+		halfButton.setToggleGroup(group);
+		allButton.setToggleGroup(group);
+		halfButton.setSelected(true);
 	}
-	
 }

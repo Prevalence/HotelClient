@@ -78,7 +78,7 @@ public class BirthdayPromotionEdituiController {
 	private String workerName;
 
 	private HotelVO hotelInfo;
-	
+
 	private PromotionVO promotion;
 
 	/**
@@ -144,13 +144,12 @@ public class BirthdayPromotionEdituiController {
 			feedbackLabel.setTextFill(Color.web("#f80202"));
 			feedbackLabel.setText("促销策略信息不全！");
 		} else {
-			PromotionVO promotion = new BirthdayHotelproVO(0, promotionName, "生日优惠策略", hotelName,
-					Integer.parseInt(discount));
-			if(promotionbl.modifyProm(promotion)){
+			PromotionVO promotion = new BirthdayHotelproVO(this.promotion.getPromotionID(), promotionName, "生日优惠策略",
+					hotelName, Integer.parseInt(discount));
+			if (promotionbl.modifyProm(promotion)) {
 				feedbackLabel.setTextFill(Color.web("#058cff"));
 				feedbackLabel.setText("编辑成功！");
-			}
-			else{
+			} else {
 				feedbackLabel.setTextFill(Color.web("#f80202"));
 				feedbackLabel.setText("系统错误！");
 			}
@@ -182,15 +181,16 @@ public class BirthdayPromotionEdituiController {
 		scoreLabel.setText(String.valueOf(hotelInfo.getScore()));
 		connectionLabel.setText(hotelInfo.getHotelPhone());
 	}
-	
+
 	/**
 	 * 传递促销策略信息
 	 * 
 	 * @param workerName
 	 */
 	public void setPromotionVO(PromotionVO promotion) {
-		this.promotion=promotion;
-		promotionNameField.setText(promotion.getPromotionName());;
+		this.promotion = promotion;
+		promotionNameField.setText(promotion.getPromotionName());
+		;
 		discountField.setText(String.valueOf(promotion.getDiscount()));
 	}
 }

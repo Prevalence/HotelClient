@@ -169,10 +169,7 @@ public class RoomEdituiController {
 	 */
 	@FXML
 	private void editRoom() {
-		// hotelInfo = hotelbl.showHotelInfo(workerName);
-		newRoomPane = new RoomInfoui(primaryStage, workerName);
-		mainPane.getChildren().remove(0);
-		mainPane.getChildren().add(newRoomPane);
+		
 	}
 
 	/**
