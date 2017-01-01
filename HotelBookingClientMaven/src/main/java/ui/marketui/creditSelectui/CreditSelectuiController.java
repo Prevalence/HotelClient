@@ -103,7 +103,7 @@ public class CreditSelectuiController {
 	private void handleOrder() {
 		if (halfButton.isSelected()) {
 			percentOfCredit = 1;
-		} else if (halfButton.isSelected()) {
+		} else if (allButton.isSelected()) {
 			percentOfCredit = 2;
 		}
 		if (orderInfo.getOrderstate().equals("异常")) {
