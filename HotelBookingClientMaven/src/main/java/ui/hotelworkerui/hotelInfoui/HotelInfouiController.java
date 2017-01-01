@@ -24,12 +24,14 @@ import javafx.util.Callback;
 import ui.helper.SearchButtonCell;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.promotionui.Promotionui;
+import ui.hotelworkerui.roomEditui.RoomEditui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelRoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.hotelVO.hoteluiVO.RoomInfoVO;
+import vo.promotionvo.PromotionVO;
 
 public class HotelInfouiController {
 
@@ -177,7 +179,8 @@ public class HotelInfouiController {
 	@FXML
 	private void editRoom() {
 		// hotelInfo = hotelbl.showHotelInfo(workerName);
-		newRoomPane = new RoomInfoui(primaryStage, workerName);
+		RoomInfoVO room = rooms.get(roomTable.getSelectionModel().getSelectedIndex());
+		newRoomPane = new RoomEditui(primaryStage, workerName,room);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(newRoomPane);
 	}

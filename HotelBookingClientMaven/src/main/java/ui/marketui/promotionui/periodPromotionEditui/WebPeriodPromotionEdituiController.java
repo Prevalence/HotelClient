@@ -154,7 +154,7 @@ public class WebPeriodPromotionEdituiController {
 		} else {
 			PromotionVO promotion = new PeriodWebproVO(0, promotionName, "特定时间优惠策略", "WebPromotion",
 					startTime, endTime, Integer.parseInt(discount));
-			if(promotionbl.addProm(promotion)){
+			if(promotionbl.modifyProm(promotion)){
 				feedbackLabel.setTextFill(Color.web("#058cff"));
 				feedbackLabel.setText("编辑成功！");
 			}
@@ -193,10 +193,9 @@ public class WebPeriodPromotionEdituiController {
 		this.promotion=promotion;
 		promotionNameField.setText(promotion.getPromotionName());
 		discountField.setText(String.valueOf(promotion.getDiscount()));
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		String dateStr=sdf.format(promotion.getStartTime().getTime());
-		oldStartTimeLabel.setText(dateStr.substring(0,10));
-		dateStr=sdf.format(promotion.getEndTime().getTime());
-		oldStartTimeLabel.setText(dateStr.substring(0,10));
+//		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//		String dateStr=sdf.format(.getTime());
+		oldStartTimeLabel.setText(promotion.getStartTime());
+		oldEndTimeLabel.setText(promotion.getEndTime());
 	}
 }

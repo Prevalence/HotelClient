@@ -1,25 +1,30 @@
 package ui.hotelworkerui.roomEditui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import vo.hotelVO.hoteluiVO.RoomInfoVO;
 
-public class RoomEditui {
+public class RoomEditui extends Pane {
 	private Stage primaryStage;
 
 	private String workerName;
 
+	private RoomInfoVO room;
+
 	private RoomEdituiController hotelInfoViewuiController;
 
 	/**
-		 * 接受primarystage用来完成界面最小化和可移动化设置
-		 * 
-		 * @param primaryStage
-		 */
-		public RoomEditui(Stage primaryStage, String workerName) {
-			this.primaryStage = primaryStage;
-			this.workerName = workerName;
-			initHotelInfoViewui();
-		};
+	 * 接受primarystage用来完成界面最小化和可移动化设置
+	 * 
+	 * @param primaryStage
+	 */
+	public RoomEditui(Stage primaryStage, String workerName, RoomInfoVO room) {
+		this.primaryStage = primaryStage;
+		this.workerName = workerName;
+		this.room = room;
+		initHotelInfoViewui();
+	};
 
 	/**
 	 * 初始化界面
@@ -38,6 +43,5 @@ public class RoomEditui {
 		hotelInfoViewuiController = loader.getController();
 		hotelInfoViewuiController.launchStage(primaryStage);
 		hotelInfoViewuiController.setWorkerNameAndShowInfo(workerName);
-		hotelInfoViewuiController.initTableView();
 	}
 }

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.promotionui.birthdayPromotionAddui.BirthdayPromotionAdduiController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="962.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.hotelworkerui.roomEditui.RoomEdituiController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="983.0" layoutX="-7.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -110,7 +110,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="discountField" layoutX="212.0" layoutY="238.0" prefHeight="30.0" prefWidth="105.0" />
+            <TextField fx:id="numberField" layoutX="212.0" layoutY="238.0" prefHeight="30.0" prefWidth="105.0" />
             <Label layoutX="332.0" layoutY="239.0" text="间" textFill="#76d4de">
                <font>
                   <Font size="21.0" />
@@ -126,7 +126,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="promotionNameField" layoutX="212.0" layoutY="182.0" prefHeight="30.0" prefWidth="105.0" />
+            <TextField fx:id="roomtypeField" layoutX="212.0" layoutY="182.0" prefHeight="30.0" prefWidth="105.0" />
             <Button fx:id="okButton" layoutX="396.0" layoutY="398.0" mnemonicParsing="false" onAction="#addPromotion" prefHeight="37.0" prefWidth="105.0" style="-fx-background-color: transparent;">
                <font>
                   <Font size="1.0" />
@@ -142,6 +142,17 @@
             <Label fx:id="feedbackLabel" layoutX="1.0" layoutY="423.0" prefHeight="28.0" prefWidth="371.0" textFill="#fc0101">
                <font>
                   <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="144.0" layoutY="281.0" prefHeight="45.0" prefWidth="58.0" text="价格:" textFill="#74d5df">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="priceField" layoutX="212.0" layoutY="289.0" prefHeight="30.0" prefWidth="105.0" />
+            <Label layoutX="332.0" layoutY="290.0" text="元" textFill="#76d4de">
+               <font>
+                  <Font size="21.0" />
                </font>
             </Label>
          </children>

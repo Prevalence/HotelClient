@@ -236,6 +236,7 @@ public class PromotionuiController {
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("promotionName"));
 		typeCol.setCellValueFactory(new PropertyValueFactory<>("promotiontype"));
 		promotionVOs = promotionbl.getProm("WebPromotion");
+		
 		promotionList = getpromotionViewList(promotionVOs);
 		promotionData = FXCollections.observableArrayList(promotionList);
 		promotionTable.setItems(promotionData);
