@@ -55,6 +55,7 @@ public class Promotion {
 		//返回酒店促销策略或者网站促销策略，当hotelNameOrWeb为"WebPromotion"时，返网站促销策略；
 		//否则为酒店名称，返回对应酒店促销策略
 		ArrayList<PromotionPO> propoList=promotiondataservice.find(hotelnameOrWeb);
+//		System.out.println("promotion:"+propoList.size());
 		ArrayList<PromotionVO> provoList=new ArrayList<PromotionVO>();
 		if(propoList!=null){
 			for(int i=0; i<propoList.size(); i++){
