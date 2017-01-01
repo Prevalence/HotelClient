@@ -2,6 +2,7 @@ package po.promotionpo.webpromotionPO;
 
 import java.util.Calendar;
 
+import businessLogic.TimeFormTrans;
 import po.PromotionPO;
 import vo.promotionvo.PromotionVO;
 import vo.promotionvo.webpromotionVO.PeriodWebproVO;
@@ -68,8 +69,12 @@ public class PeriodWebproPO extends PromotionPO {
 		vo.setPromotionName(po.getPromotionName());
 		vo.setPromotionType(po.getPromotionType());
 		vo.setHotelnameOrWeb(po.getHotelnameOrWeb());
-		vo.setStartTime(((PeriodWebproPO)po).getStartTime());
-		vo.setEndTime(((PeriodWebproPO)po).getEndTime());
+		
+		TimeFormTrans t=new TimeFormTrans();
+		String st=t.myToString(((PeriodWebproPO)po).getStartTime());
+		String et=t.myToString(((PeriodWebproPO)po).getEndTime());
+		vo.setStartTime(st);
+		vo.setEndTime(et);
 		vo.setDiscount(((PeriodWebproPO)po).getDiscount());
 		return vo;
 	}

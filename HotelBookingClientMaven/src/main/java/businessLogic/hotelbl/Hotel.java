@@ -212,6 +212,7 @@ public class Hotel {
 	 * @param starttime
 	 * @param endtime
 	 * @return 符合条件的对应酒店的房间
+	 * @throws RemoteException 
 	 */
 	public RoomInfoVO findReqRoom(String hotelname, String roomtype, String starttime1, String endtime1)throws RemoteException {
 		// TODO Auto-generated method stub
@@ -262,6 +263,7 @@ public class Hotel {
 	 * @param starttime
 	 * @param endtime
 	 * @return 返回对应的房间剩余数量
+	 * @throws RemoteException 
 	 */
 	@SuppressWarnings("null")
 	public int getAvailableNumber(String hotelname, String roomtype, String starttime1, String endtime1)throws RemoteException {
@@ -311,6 +313,7 @@ public class Hotel {
 	 * 根据酒店名称返回对应酒店的房间类型和价格的ArrayList
 	 * @param hotelname
 	 * @return ArrayList<RoomInfoVO>，若没有，返回空的ArrayList<RoomInfoVO>
+	 * @throws RemoteException 
 	 */
 	public ArrayList<RoomInfoVO> getHotelRoomInfo(String hotelname) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -347,6 +350,7 @@ public class Hotel {
 	 * @param roomprice
 	 * @param hotelname
 	 * @return 若酒店已有此房间类型，返回false；否则添加房间并返回true
+	 * @throws RemoteException 
 	 */
 	public boolean addRoom(String roomtype, int roomnum, int roomprice, String hotelname) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -363,6 +367,43 @@ public class Hotel {
 //		public HotelVO getHotelInfoByPerson(String Hotelname)
 		HotelVO hotelvo=hc.getHotelInfoByPerson(hotelname);
 		ArrayList<RoomVO> roomvolist=hotelvo.getRoom();
+		RoomVO roomvo=new RoomVO();
+		roomvo.setRoomType(roomtype);
+		roomvo.setRoomPrice(roomprice);
+		for(int i=0;i<roomnum;i++){
+			roomvolist.add(roomvo);
+		}
+		boolean result=hc.roomModify(hotelname, roomvolist);
+		
+		return result;
+	}
+	
+	/**
+	 * 修改酒店某类型的房间数量和价格
+	 * @param roomtype
+	 * @param roomnum 要修改成的房间数量
+	 * @param roomprice 要修改成的房间价格
+	 * @param hotelname
+	 * @return 是否修改成功
+	 * @throws RemoteException 
+	 */
+	public boolean editRoom(String roomtype, int roomnum, int roomprice, String hotelname) throws RemoteException {
+		// TODO Auto-generated method stub
+		HotelController hc=new HotelController();
+		//public boolean roomModify(String hotelname, ArrayList<RoomVO> roomvoList)
+//		public HotelVO getHotelInfoByPerson(String Hotelname)
+		HotelVO hotelvo=hc.getHotelInfoByPerson(hotelname);
+		ArrayList<RoomVO> roomvolist=hotelvo.getRoom();
+		
+		//删去之前的房间
+		for(int i=0;i<roomvolist.size();i++){
+			if(roomvolist.get(i).getRoomType().equals(roomtype)){
+				roomvolist.remove(i);
+				i--;
+			}
+		}
+		
+		//新增修改后的房间
 		RoomVO roomvo=new RoomVO();
 		roomvo.setRoomType(roomtype);
 		roomvo.setRoomPrice(roomprice);
