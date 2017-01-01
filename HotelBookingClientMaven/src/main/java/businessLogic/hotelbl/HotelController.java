@@ -256,5 +256,23 @@ public class HotelController implements HotelblService{
 		}
 	}
 
+	/**
+	 * 删除某酒店的某类型的所有房间
+	 * @param roomtype
+	 * @param hotelName
+	 * @return
+	 */
+	@Override
+	public boolean removeRoom(String roomtype, String hotelName) {
+		// TODO Auto-generated method stub
+		try {
+			return hotel.removeRoom(roomtype, hotelName);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 
 }
