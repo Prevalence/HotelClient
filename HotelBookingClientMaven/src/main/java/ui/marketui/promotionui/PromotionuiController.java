@@ -81,7 +81,6 @@ public class PromotionuiController {
 
 	private String workerName;
 
-	private String hotelName;
 
 	private String promotionSelected;
 
@@ -179,7 +178,7 @@ public class PromotionuiController {
 			if(promotionbl.deleteProm(promotion)){
 				feedbackLabel.setTextFill(Color.web("#058cff"));
 				feedbackLabel.setText("删除成功！");
-				promotionVOs = promotionbl.getProm(hotelName);
+				promotionVOs = promotionbl.getProm("WebPromotion");
 				promotionList = getpromotionViewList(promotionVOs);
 				promotionData = FXCollections.observableArrayList(promotionList);
 				promotionTable.setItems(promotionData);
