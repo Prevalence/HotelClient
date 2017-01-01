@@ -110,4 +110,11 @@ public interface HotelblService {
 	 */
 	public boolean editRoom(String roomtype,int roomnum,int roomprice,String hotelname);
 	
+	/**
+	 * 获取某酒店中最贵的房间价格
+	 * @param hotelname
+	 * @return 该酒店中最贵的房间价格，若为-1，则表示获取失败
+	 */
+	public int getHighestPrice(String hotelname);
+	
 }
