@@ -3,7 +3,7 @@ package ui.hotelworkerui.promotionui.birthdayPromotionEditui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 
 public class BirthdayPromotionEditui extends Pane{
 	private Stage primaryStage;

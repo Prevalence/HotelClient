@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import po.PromotionPO;
 import po.promotionpo.hotelpromotionPO.PeriodHotelproPO;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 import businessLogic.TimeFormTrans;
 
 /**

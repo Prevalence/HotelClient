@@ -17,8 +17,8 @@ import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.promotionui.Promotionui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
-import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
+import vo.promotionvo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.BirthdayHotelproVO;
 
 public class BirthdayPromotionEdituiController {

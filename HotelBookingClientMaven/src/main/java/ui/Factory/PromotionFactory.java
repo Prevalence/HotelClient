@@ -9,7 +9,7 @@ import ui.hotelworkerui.promotionui.periodPromotionEditui.PeriodPromotionEditui;
 import ui.managerui.hotelworkerInfoui.HotelworkerInfoui;
 import ui.managerui.marketInfoui.MarketInfoui;
 import ui.managerui.personInfoui.PersonInfoui;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
 
 public class PromotionFactory {

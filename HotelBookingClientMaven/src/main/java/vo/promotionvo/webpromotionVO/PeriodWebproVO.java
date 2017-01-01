@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import po.PromotionPO;
 import po.promotionpo.webpromotionPO.PeriodWebproPO;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 
 /**
  * @author 武秀峰

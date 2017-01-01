@@ -2,9 +2,9 @@ package businessLogicService.promotionblService;
 
 import java.util.ArrayList;
 
-import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.orderVO.orderblVO.OrderVO;
+import vo.promotionvo.PromotionVO;
 
 public interface PromotionblService {
 	/**

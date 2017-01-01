@@ -28,11 +28,11 @@ import ui.helper.SearchButtonCell;
 import ui.hotelworkerui.hotelInfoui.HotelInfoui;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
-import vo.PromotionVO;
 import vo.hotelVO.hotelblVO.HotelVO;
 import vo.hotelVO.hotelblVO.RoomVO;
 import vo.hotelVO.hoteluiVO.HotelSearchVO;
 import vo.orderVO.orderuiVO.OrderViewVO;
+import vo.promotionvo.PromotionVO;
 import vo.promotionvo.promotionuiVO.PromotionuiVO;
 
 public class PromotionuiController {

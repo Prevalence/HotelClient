@@ -3,7 +3,7 @@ package po.promotionpo.hotelpromotionPO;
 import java.util.Calendar;
 
 import po.PromotionPO;
-import vo.PromotionVO;
+import vo.promotionvo.PromotionVO;
 import vo.promotionvo.hotelpromotionVO.PeriodHotelproVO;
 import businessLogic.TimeFormTrans;
 
