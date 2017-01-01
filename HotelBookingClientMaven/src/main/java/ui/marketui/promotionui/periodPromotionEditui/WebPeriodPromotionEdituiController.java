@@ -193,10 +193,9 @@ public class WebPeriodPromotionEdituiController {
 		this.promotion=promotion;
 		promotionNameField.setText(promotion.getPromotionName());
 		discountField.setText(String.valueOf(promotion.getDiscount()));
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		String dateStr=sdf.format(promotion.getStartTime().getTime());
-		oldStartTimeLabel.setText(dateStr.substring(0,10));
-		dateStr=sdf.format(promotion.getEndTime().getTime());
-		oldEndTimeLabel.setText(dateStr.substring(0,10));
+//		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//		String dateStr=sdf.format(.getTime());
+		oldStartTimeLabel.setText(promotion.getStartTime());
+		oldEndTimeLabel.setText(promotion.getEndTime());
 	}
 }
