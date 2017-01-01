@@ -24,6 +24,7 @@ import javafx.util.Callback;
 import ui.helper.SearchButtonCell;
 import ui.hotelworkerui.orderViewui.HotelOrderViewui;
 import ui.hotelworkerui.promotionui.Promotionui;
+import ui.hotelworkerui.roomAddui.RoomAddui;
 import ui.hotelworkerui.roomEditui.RoomEditui;
 import ui.hotelworkerui.roomInfoui.RoomInfoui;
 import vo.hotelVO.hotelblVO.HotelVO;
@@ -191,7 +192,7 @@ public class HotelInfouiController {
 	@FXML
 	private void addRoom() {
 		// hotelInfo = hotelbl.showHotelInfo(workerName);
-		newRoomPane = new RoomInfoui(primaryStage, workerName);
+		newRoomPane = new RoomAddui(primaryStage, workerName);
 		mainPane.getChildren().remove(0);
 		mainPane.getChildren().add(newRoomPane);
 	}
