@@ -43,7 +43,7 @@ public class Order{
 	 */
 	public boolean handleAbnormalOrder(OrderVO ordervo, int percentOfCredit) throws RemoteException {
 		//改变订单状态
-		ordervo.setOrderstate("已执行");//此步将异常订单变为已执行
+		ordervo.setOrderstate("已撤销");//此步将异常订单变为已执行
 		OrderPO orderpo=new OrderPO(ordervo);
 		orderpo.setExecutetime(Calendar.getInstance());
 		boolean orderChange=orderDataService.modify(orderpo);
@@ -64,7 +64,7 @@ public class Order{
 		TimeFormTrans t=new TimeFormTrans();
 		String time=t.myToString(calendar);
 		String orderId=ordervo.getOrderID();
-		String operand="执行";
+		String operand="恢复";
 		String changeCredit=String.valueOf(credit);
 		String resultCredit=String.valueOf(creditAfter);
 		RecordVO recordvo=new RecordVO(time, orderId, operand, changeCredit, resultCredit);

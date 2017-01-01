@@ -544,7 +544,7 @@ public class HotelSearchuiController {
 		case 0:
 			for (int i = 0; i < searchData.size(); i++) {
 				for (int j = i + 1; j < searchData.size(); j++) {
-
+					System.out.println("sssssssssss:"+searchData.get(j).getHotelName());
 					if (hotelbl.getHighestPrice(searchData.get(i).getHotelName()) < hotelbl
 							.getHighestPrice(searchData.get(j).getHotelName())) {
 						temp = searchData.get(i);
