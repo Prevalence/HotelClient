@@ -11,12 +11,11 @@ import rmi.ClientRunner;
 import vo.HotelWorkerVO;
 import vo.MarketVO;
 import vo.personVO.PersonVO;
+import vo.personVO.RecordVO;
 
 public class UserControllerTest {
 	ClientRunner cr=new ClientRunner();
 	UserController uc=new UserController();
-//	PersonVO personvo=new PersonVO(String username, String password, int personID, int credit, Calendar birthday, String vipType,
-//			int vipLevel, String enterpriseName, String phoneNumber);
 
 	PersonVO personvo1=new PersonVO("xiamutian", "123", 12345, 3000, null, "企业会员",
 			3, "南京大学", "11122223333");
@@ -48,11 +47,13 @@ public class UserControllerTest {
 		assertEquals(false,uc.personSave(personvo2));
 	}
 
-//	@Test
-//	public void testChangeCredit() {
-//		assertEquals(true,uc.changeCredit("wuxiufeng", 100));
-//		assertEquals(true,uc.changeCredit("xiamutian", 100));
-//	}
+	@Test
+	public void testChangeCredit() {
+		RecordVO v=new RecordVO();
+		v.setChangeCredit("+100");
+		assertEquals(true,uc.changeCredit("wuxiufeng", v));
+		assertEquals(true,uc.changeCredit("xiamutian", v));
+	}
 
 	@Test
 	public void testRegisteMember() throws ParseException {

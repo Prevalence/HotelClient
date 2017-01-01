@@ -24,21 +24,15 @@ public class OrderControllerTest {
 
 	@Test
 	public void testHandleAbnormalOrder() {
-//		public OrderVO(String orderID, int orderprice, String orderstate, String hotelname, ArrayList<RoomVO> room,
-//				String personname, String realname, int peoplenum, int childnum, Calendar producttime, Calendar executetime,
-//				Calendar canceltime, Calendar latestExecutetime, Calendar predictLeaveTime, Calendar actualLeaveTime)
-
-//		public RoomVO(String roomType, String roomnum, int roomPrice, ArrayList<Calendar> checkInTime,
-//				ArrayList<Calendar> checkOutTime) 
 		RoomVO room1=new RoomVO("单人间", "111", 300, null, null);
 		RoomVO room2=new RoomVO("双人间", "222", 500, null, null);
 		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
 		roomList.add(room1);
 		roomList.add(room2);
-//		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,0
-//				"xiamutian","","xiamutian", 3, 0, null, null,
-//				null, null, null, null);
-//		assertEquals(true,oc.handleAbnormalOrder(order, 2));
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,0
+				,"xiamutian","","xiamutian", 3, 0, null, null,
+				null, null, null, null);
+		assertEquals(true,oc.handleAbnormalOrder(order, 2));
 	}
 
 	@Test
@@ -49,11 +43,11 @@ public class OrderControllerTest {
 		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
 		roomList.add(room1);
 		roomList.add(room2);
-//		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
-//				"xiamutian","xiamutian", 3, 0, null, null,
-//				null, latestExecutetime, null, null);
-//		
-//		assertEquals(true,oc.reverseOrder(order));
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				0, "xiamutian","xiamutian", latestExecutetime, 3, 0, null, null,
+				null, latestExecutetime, null, null);
+		
+		assertEquals(true,oc.reverseOrder(order));
 	}
 
 	@Test
@@ -64,11 +58,11 @@ public class OrderControllerTest {
 		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
 		roomList.add(room1);
 		roomList.add(room2);
-//		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
-//				"xiamutian","xiamutian", 3, 0, null, null,
-//				null, latestExecutetime, null, null);
-//		
-//		assertEquals(true,oc.finishOrder(order));
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				0, "xiamutian","xiamutian", latestExecutetime, 3, 0, null, null,
+				null, latestExecutetime, null, null);
+		
+		assertEquals(true,oc.finishOrder(order));
 	}
 
 	@Test
@@ -79,11 +73,11 @@ public class OrderControllerTest {
 		ArrayList<RoomVO> roomList=new ArrayList<RoomVO>();
 		roomList.add(room1);
 		roomList.add(room2);
-//		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
-//				"xiamutian","xiamutian", 3, 0, null, null,
-//				null, latestExecutetime, null, null);
+		OrderVO order=new OrderVO("2016020205121234512345", 800, "nonExecute", "南京大酒店", roomList,
+				0, "xiamutian","xiamutian", latestExecutetime, 3, 0, null, null,
+				null, latestExecutetime, null, null);
 		
-//		assertEquals(true,oc.createOrder(order));
+		assertEquals(true,oc.createOrder(order));
 	}
 
 	@Test
